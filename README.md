@@ -11,7 +11,7 @@ The goal of the hca-ebi-data-wrangling repository is to track datasets for the H
 
 The [`docs/`](https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/docs) folder contains a collection of documents not directly related to a particular dataset but otherwise useful for the wrangler process including:
 
-- [SOP documents](https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/docs/SOP_docs)
+- [SOP documents](https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/docs/SOPs)
 - [EBI wrangler onboarding document](https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/docs/ebi-wrangler-onboarding.md)
 
 ## Repo implementation
