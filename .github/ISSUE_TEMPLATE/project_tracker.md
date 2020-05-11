@@ -21,19 +21,19 @@ Google Drive:
 **Key Events**
 
 - [ ] Send initial instructions about contributing, including questionnaire and T&Cs
-- [ ] Receive project questionnaire and move project from potential to in_progress projects
+- [ ] Receive project questionnaire
 - [ ] Assign the Primary Wrangler
 - [ ] Receive T&C form filled out by at least 1 representative of group/project
 - [ ] Send custom metadata template spreadsheet, how-to guide and directions for submitting data files
 - [ ] Receive spreadsheet (to a sufficient standard to submit dataset) 
 - [ ] Receive data (to a sufficient standard to submit dataset)
 - [ ] Curate metadata spreadsheet with ontologies
-- [ ] Upload sheet to validate metadata (most likely in staging)
+- [ ] Upload sheet to validate metadata
 - [ ] Check linking
 - [ ] Validate data files
 - [ ] Ask the Secondary Wrangler for an end-to-end review of the project. Ask the Expertise Wrangler to review specific tabs if needed
 - [ ] Get final approval of submission including metadata spreadsheet and data files
-- [ ] Submit dataset to Production and hand off tracking to data dashboard
+- [ ] Submit to production and inform ingest-devs the project is ready for archiving
 - [ ] Email UX to inform that they're ready to send survey
 
 **Please track the below as well as the key events:**
