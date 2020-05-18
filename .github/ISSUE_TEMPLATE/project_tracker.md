@@ -29,6 +29,7 @@ Google Drive:
 - [ ] Receive data (to a sufficient standard to submit dataset)
 - [ ] Curate metadata spreadsheet with ontologies
 - [ ] Upload sheet to validate metadata
+- [ ] Run graph validator
 - [ ] Check linking
 - [ ] Validate data files
 - [ ] Ask the Secondary Wrangler for an end-to-end review of the project. Ask the Expertise Wrangler to review specific tabs if needed
