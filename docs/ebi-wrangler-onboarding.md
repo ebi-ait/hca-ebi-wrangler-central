@@ -42,15 +42,15 @@ The [HCA white paper](https://arxiv.org/abs/1810.05192) gives a great view of th
 ### Feedback
 This is a living document we want to make it better with every person that joins the team. If you have any ideas for improvement, for example if you can't find certain topics that you think should be here, please write them down and report back as to improve this documentation.
 
-## Wranglers currently working at the HCA DCP 2.0
+## Wranglers currently working at the HCA DCP
 
 
 | Name                | Institution | E-mail              |
 |---------------------|-------------|---------------------|
-| Zinaida Perova      | EBI         | zina@ebi.ac.uk      |
 | Enrique Sapena Ventura     | EBI         | enrique@ebi.ac.uk   |
 | Marion Shadbolt     | EBI         | mshadbolt@ebi.ac.uk |
 | Ray Stefancsik      | EBI         | ray@ebi.ac.uk       |
+| Amy Day             | EBI         | ami@ebi.ac.uk       |
 | Parisa Nejad        | UCSC        | pnejad@ucsc.edu     |
 | William Sullivan    | UCSC        | wisulliv@ucsc.edu   |
 
@@ -114,12 +114,11 @@ Key meetings that wranglers are summarised in the table below:
 
 | Meeting                              | Day       | Time   | Frequency             | Notes                                |
 |--------------------------------------|-----------|--------|-----------------------|--------------------------------------|
-| Ingest project coordination          | Monday    | 4pm    | Monthly               | Telecon                              |
-| Metadata                             | Monday    | 4pm    | Monthly               | Telecon                              |
-| EBI wrangler story point estimation  | Monday    | 2pm    | Bi-weekly             | In-person                            |
-| EBI wrangler Pre-sprint prioritisation & planning | Tuesday   | 9.30am | Bi-weekly| In-person                            |
+| Metadata community call              | Monday    | 4pm    | First monday Monthly  | Telecon                              |
+| EBI wrangler Pre-sprint prioritisation & planning  | Monday    | 2pm    | Bi-weekly             | In-person                            |
+| EBI wrangler  | Tuesday   | 9.30am | Bi-weekly| In-person                            |
 | EBI-DCP Sprint Planning & Demo       | Tuesday   | 2pm    | Bi-weekly             | 2 hours, in-person                   |
-| ~DCP Sprint Demo~ (currently suspended)| Tuesday   | 4pm    | Bi-weekly             | Teleconference                       |
+| DCP Sprint Demo                      | Tuesday   | 4pm    | Bi-weekly             | Teleconference                       |
 | Wrangler catch-up                    | Thursday  | 4pm    | Weekly                | Teleconference                       |
 | AIT Team meetings                    | Thursday  | 3pm    | Bi-weekly             | In person, alternates between dev and general interest |
 
@@ -133,27 +132,22 @@ Scientific meetings are held a few times a year and are a great opportunity to c
 
 ### Slack
 
-By this point you have probably already joined, but if not, join the `HumanCellAtlas` workspace.
-Make sure you also join the following channels:
-~~- `data-pipelines-team`    ~~
-- `data-wrangling`: This is where general HCA data wrangling discussions happen
-- `data-wrangling-int` (private, request access): This is our internal data wrangling team channel. It is one of the few private channels because we discuss ongoing wrangling work with contributors whose data might not be public yet. You will have to be invited to this channel.
-~~- `dcp`: This is the general channel for DCP discussions. I would introduce yourself to everyone here, say, mid afternoon when the Americans are mostly online.~~
-~~- `dcp-integration`~~
-~~- `dcp-meeting-digest`: A summary of the different DCP weekly meetings is posted here within a couple of days of a meeting happening~~
-~~- `dcp-ops` (private, request access)~~
-~~- `dcp-ops-help`: Where to go to ask for technical help~~
-- `ebi-content-internal` (private, request access)
-- `ebi-dev-team`: This is where EBI developer work is discussed and place to get in contact with the `ingest-devs`
+By this point you have probably already joined, but if not, join the `HumanCellAtlas` workspace. Since DCP2 was announced in April 2020, Slack is much less used than before. The main channels you should join and pay attention to are:
+
 - `ebi-wrangler-metadata`: Private channel for the ebi based wrangler and metadata team
 - `hca-metadata`: This is where general HCA metadata discussions happen.
 - `hca-metadata-int`: integrated with the metadata-schema github repo, used mainly for discussions about updates to the repo
-- `ingestion-service`: updates about the current status of the ingestion service
-~~- `meeting-organization`: automated feed of everything in the DCP meeting calendar~~
-- `papers`: papers that could be of interest to the DCP community
-- `schema-pub-events`
-~~- `upload-service`: place to get in contact with the upload service~~
-* striked out channels are probably less relevant while we are in maintenance mode
+
+Feel free to browse other public channels within the workspace.
+
+For AIT communication there is also an AIT workspace (embl-ebi-ait.slack.com) . Relevant channels to join in this workspace include:
+- `hca`
+- `hca-to-archives`
+
+Social channels within AIT include:
+- `games`, `social-events`, `tea-time` & `whatson`
+
+There are also EBI-wide channels that will appear in your AIT workspace for institute-wide announcements
 
 For all the private channels, you will need to request access. Ask any of us to help you through!
 
@@ -161,9 +155,6 @@ If you have a quick question and you or the wrangler you want to ask are unavail
 
 Take into account that you might need to join more/less channels than the ones listed here.
 
-Starting June 3rd, the EBI has its own slack channel. All EBI staff possess an account for as long as they are working as staff members. More information can be found at the [EBI intranet](https://tsc.ebi.ac.uk/news/slack-day).
-
-For wranglers based at the EBI You should also join the AIT Slack: Embl-ebi-ait.slack.com. You should be able to login with your EMBL-EBI credentials
 
 ### SAP
 
@@ -243,17 +234,16 @@ The information here is general. You will go through all the specific details on
 Repositories you will mainly use:
 - [`HumanCellAtlas/metadata-schema`](https://github.com/HumanCellAtlas/metadata-schema): This is where the schema and most of the documentation for making changes to these schemas is stored. You should read through the documents, but to get you started, you should look at `commiters.md` and `structure.md`. This will shed some light for you on your first tasks.
 - Ask to be added to the [metadata-updates](https://github.com/orgs/HumanCellAtlas/teams/metadata-updates) HCA GitHub team. Only members of this team will be allowed to commit to the metadata-schema repo.
-- [`HumanCellAtlas/hca-data-wrangling`](https://github.com/HumanCellAtlas/hca-data-wrangling): You have to request access for this repository. Since this is a private repository, there is sensitive information here and no information taken from here should get into the public domain or in hands of people that do not have access. Read the docs, especially the ones in the [SOPs](https://github.com/HumanCellAtlas/hca-data-wrangling/tree/master/docs/SOP_docs) (Standard Operating Procedures) folder.
+- [`ebi-ait/hca-ebi-wrangler-central`](https://github.com/ebi-ait/hca-ebi-wrangler-central): Main repo for tracking all general wrangler tasks. Read the docs, especially the ones in the [SOPs](https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/docs/SOPs) (Standard Operating Procedures) folder.
 
 #### Other repos to be aware of
 
-- [`HumanCellAtlas/dcp-community`](https://github.com/HumanCellAtlas/dcp-community): This is where a lot of the documentation for how the DCP works as a whole lives. 
+- [`HumanCellAtlas/dcp-community`](https://github.com/HumanCellAtlas/dcp-community): This is where a lot of the documentation for how the DCP works as a whole lives - most is now out of date. 
   - **Charters**: It would be useful to read through the [Metadata Schema](https://github.com/HumanCellAtlas/dcp-community/blob/master/charters/MetadataSchema/charter.md) and [Ingestion Service](https://github.com/HumanCellAtlas/dcp-community/blob/master/charters/IngestionService/charter.md) charters as Data Wrangling forms part of both of these. 
-  - This is also where the Requests for Comment ([RFCs](https://github.com/HumanCellAtlas/dcp-community/tree/master/rfcs/text)) are located and it is recommended you read through the [RFC Process](https://github.com/HumanCellAtlas/dcp-community/blob/master/rfcs/text/0001-rfc-process.md) to understand when, why and how RFCs form part of the DCP development process. 
 
 ### Browser plug-ins
 
-- [Zenhub](https://chrome.google.com/webstore/detail/zenhub-for-github/ogcgkffhplmphkaahpmffcafajaocjbd): used by many of the other teams in the DCP as way to implement the SCRUM and Agile methodologies within github. It is also used within the `metadata-schema` repo. Not used within the `hca-data-wrangling` repo.
+- [Zenhub](https://chrome.google.com/webstore/detail/zenhub-for-github/ogcgkffhplmphkaahpmffcafajaocjbd): used by many of the teams in the DCP as way to implement the SCRUM and Agile methodologies within github. We have a combined [ingest board](https://github.com/ebi-ait/hca-ebi-wrangler-central/edit/master/docs/ebi-wrangler-onboarding.md#workspaces/ingest-dev-5cfe1cb26482e537cf35e8d1/board?repos=249765101,232300832,244611740,261790554,240563208,132741306,237019026,102351002) for tracking all work for the ingest team at EBI. You can play around with visibility to ensure the board is most relevant to your work.
 - [Octotree](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc): Adds easier navigation of repos in github
 - JSON viewer of your choice.
 
@@ -262,4 +252,3 @@ Repositories you will mainly use:
 - Printers: If you install the correspondent apps (You can search for them as “Printer”, under the “Managed software centre” app), you will be able to use the Konica printers in both buildings. Using them to print personal photocopies has a little cost (1 pence) that is automatically subtracted from your salary.
 - Fill in your details at the [`Bios and Photos – DCP`](https://docs.google.com/document/d/1Gwrn2KgGGiEV37g0vhWnBrGLRvAPp-xXgq569R5WuPY/edit) document.
 - Campus wifi: The mobile phone coverage on campus is quite patchy so you may wish to connect to the campus wifi. There is a Guest wifi (WGCGuest) as well as eduroam. To access eduroam you will need to first register. There are instructions via this link: https://tsc.ebi.ac.uk/article/wifi/eduroam
--->
