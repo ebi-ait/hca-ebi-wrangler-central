@@ -2,7 +2,6 @@
 
 Welcome to the EBI HCA data wrangling & metadata team! Here, you will find some guidelines for your onboarding process.
 
-<!--
 # Table of contents
   * [Where to find general information](#where-to-find-general-information)
   * [Wranglers currently working at the HCA DCP](#wranglers-currently-working-at-the-hca-dcp)
@@ -17,7 +16,7 @@ Welcome to the EBI HCA data wrangling & metadata team! Here, you will find some 
     + [Github](#github)
     + [Browser plug-ins](#browser-plug-ins)
     + [Miscellanea](#miscellanea)
--->
+
 ## Where to find general information
 
 ### About the EBI
@@ -109,7 +108,6 @@ If you need to create an event (e.g., to book a meeting with someone), you can l
 You can view the calendar from other people of the team, unless they make it private. This is useful when planning meetings and trying to find a time that suits everyone.
 
 #### Regular Meetings                                                                                                                                                                                                   
-<!--
 Key meetings that wranglers are summarised in the table below:
 
 | Meeting                              | Day       | Time   | Frequency             | Notes                                |
