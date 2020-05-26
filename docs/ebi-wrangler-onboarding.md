@@ -91,7 +91,7 @@ This is a living document we want to make it better with every person that joins
 ### Each week:
 - Fill in your timesheet (SAP)
 - Fill in the WAR (Confluence) - each Monday for the previous week of work
-<!--
+
 ## Specifics
 
 ### Calendar
