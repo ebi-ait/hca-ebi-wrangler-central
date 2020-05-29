@@ -19,7 +19,6 @@ def load_file_content(path):
     try:
         with open(path, "r") as f:
             names = f.read().splitlines()
-        print(names)
         assert all([name.endswith(".fastq.gz") for name in names])
     except FileNotFoundError:
         raise argparse.ArgumentTypeError(f"file {path} does not exist")
