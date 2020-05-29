@@ -1,75 +1,71 @@
 
 # How to run:
 
-#Requirements:
-#Bio
-#pandas
-
 # python get_dummy_fastq.py [input_file_path]
 # or: python get_dummy_fastq.py [input_file_path] [output_directory_path]
 # default output directory: "dummy_files"
 # input file is required; list of required gzipped fastq files (no header).
 
-# import required python modules
-
-import pandas as pd
-from Bio import SeqIO
-from Bio.Seq import Seq
-from Bio.SeqRecord import SeqRecord
 import argparse
 import os
-import subprocess
-from subprocess import check_call
+import gzip
 
-# function to check validity of input file
+FASTQ_DUMP = ("@SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345 length=36\n"
+              "GGGTGATGGCCGCTGCCGATGGCGTCAAATCCCACC\n"
+              "+SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345 length=36\n"
+              "IIIIIIIIIIIIIIIIIIIIIIIIIIIIII9IG9IC")
 
-def check_file(path):
-    if not os.path.exists(path):
-        raise argparse.ArgumentTypeError("file %s does not exist" % (path))
+def load_file_content(path):
     try:
-        df = pd.read_csv(path, sep="\t", header=None)
-    except:
-        raise argparse.ArgumentTypeError("file %s is not a valid format" % (path))
-    try:
-        names = list(df.loc[:,0])
-    except:
-        raise argparse.ArgumentTypeError("file %s is not a valid format" % (path))
+        with open(path, "r") as f:
+            names = f.read().splitlines()
+        print(names)
+        assert all([name.endswith(".fastq.gz") for name in names])
+    except FileNotFoundError:
+        raise argparse.ArgumentTypeError(f"file {path} does not exist")
+    except AssertionError:
+        raise argparse.ArgumentTypeError(f"file {path} does not contain fastq.gz filenames with a valid format")
+
     return names
-    
-# parse command-line arguments
 
-parser = argparse.ArgumentParser()
-parser.add_argument('input_file',type=check_file,help='path to input .txt file with fastq file names (no header)')
-parser.add_argument('--output_dir',default='dummy_files/',
-                    help='path to output directory; if it does not exist, the directory will be created')
+def parse_args():
 
-args = parser.parse_args()
+    # parse command-line arguments
 
-# main body of code to create the required gzipped fastq files
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--input_file', "-i", type=load_file_content,
+                        help='path to input .txt file with fastq.gz file names (no header)')
+    parser.add_argument('--output_dir', "-o", default='dummy_files/',
+                        help='path to output directory; if it does not exist, the directory will be created')
 
-# get the required fastq file names from the input file
-names = args.input_file
+    args = parser.parse_args()
 
-# check if the specified output directory exists; if not, create it
-if not os.path.exists(args.output_dir):
-	os.mkdir(args.output_dir)
-	output_dir = args.output_dir
-else:
-	output_dir = args.output_dir
+    return args
 
-# for each name in the list of file names, create a dummy fastq file with dummy sequence and quality scores
-for name in names:
+def main(args):
+    # main body of code to create the required gzipped fastq files
 
-	record = SeqRecord(id="dummy_read",description="",seq=Seq("ACGAC"))
-	record.letter_annotations["phred_quality"] = [26,26,26,26,26]
-	
-  # process the file names and paths
-  tmp = os.path.join(output_dir,name)
-	name = name.split(".gz")[0]
-	output_path = os.path.join(output_dir,name)
-	print("creating file %s" % (tmp))
-	
-  # write file to the output directory
-  with open(output_path, "w") as output_handle:
-    		SeqIO.write(record, output_handle, "fastq")
-	check_call(['gzip', output_path])
+    # get the required fastq file names from the input file
+    names = args.input_file
+
+    # check if the specified output directory exists; if not, create it
+    if not os.path.exists(args.output_dir):
+        os.mkdir(args.output_dir)
+        output_dir = args.output_dir
+    else:
+        output_dir = args.output_dir
+
+    # Create a binary representation of the fastq content to write it directly with gzip
+    binary_content = bytearray(FASTQ_DUMP, encoding="utf-8")
+
+    # for each name in the list of file names, create a dummy compressed fastq file
+    for name in names:
+        filename = os.path.join(output_dir, name)
+        with gzip.open(filename, "wb") as f:
+            f.write(binary_content)
+        print(f"Created file {filename.split('/')[-1]}")
+
+
+if __name__ == '__main__':
+    args = parse_args()
+    main(args)
