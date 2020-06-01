@@ -2,7 +2,7 @@
 # How to run:
 
 # python get_dummy_fastq.py [input_file_path]
-# or: python get_dummy_fastq.py [input_file_path] [output_directory_path]
+# or: python get_dummy_fastq.py [input_file_path] -o [output_directory_path]
 # default output directory: "dummy_files"
 # input file is required; list of required gzipped fastq files (no header).
 
@@ -32,10 +32,12 @@ def parse_args():
     # parse command-line arguments
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input_file', "-i", type=load_file_content,
-                        help='path to input .txt file with fastq.gz file names (no header)')
+    parser.add_argument('fastq list', type=load_file_content,
+                        help='path to input .txt file with list of fastq.gz file names, each on a new line with '
+                             'no header.')
     parser.add_argument('--output_dir', "-o", default='dummy_files/',
-                        help='path to output directory; if it does not exist, the directory will be created')
+                        help='path to output directory, by default creates a directory "dummy_files" in current working '
+                             'directory. If output directory does not exist, it will be created.')
 
     args = parser.parse_args()
 
