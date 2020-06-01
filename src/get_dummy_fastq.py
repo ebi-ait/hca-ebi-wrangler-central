@@ -32,7 +32,7 @@ def parse_args():
     # parse command-line arguments
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('fastq list', type=load_file_content,
+    parser.add_argument('input_file', type=load_file_content,
                         help='path to input .txt file with list of fastq.gz file names, each on a new line with '
                              'no header.')
     parser.add_argument('--output_dir', "-o", default='dummy_files/',
