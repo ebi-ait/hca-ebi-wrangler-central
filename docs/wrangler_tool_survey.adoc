@@ -1,0 +1,883 @@
+:toc: macro
+:toc-title:
+:toclevels: 3
+
+# Survey of helpful tools for wranglers
+
+## Table of Contents
+toc::[]
+
+## Submission tools
+
+The following wrangler tools are related to managing and submitting datasets to the DCP.
+
+### Downloading 10x files from archives
+
+These instructions are for getting BAM files of primary sequence data from the ENA that represent 10X sequencing data and converting them to the original I1, R1, and R2 files using the 10X `bamtofastq` tool. Please note that this tool only works for 10X data, and even then only for data processed with CellRanger and LongRagner. See the https://support.10xgenomics.com/docs/bamtofastq[10X website] for more information about what data can be converted with this tool.
+
+#### Pre-requisites and installation
+
+- wget
+- bamtofastq
+
+If you don't have `wget` installed on the machine where you want to download the files (it is on the EC2 already), you can find instructions how to install it with Homebrew for Mac https://www.cyberciti.biz/faq/howto-install-wget-om-mac-os-x-mountain-lion-mavericks-snow-leopard/[here].
+
+To "install" `bamtofastq`, go to https://support.10xgenomics.com/docs/bamtofastq[10X’s website] and click "Download bamtofastq 1.1.2" to download the executable file to your local machine. There is no need to compile the tool. Simply move or copy the file to the machine where you want to use it (e.g. your home directory on the EC2), making sure to put it somewhere on your `$PATH` if you want to be able to call it from any folder.
+
+#### Usage
+
+1. Find the project of interest in the ENA (can search by PRJN or SRP accession from GEO).
+1. From the "Study" view showing all the experiments, copy the ftp URL to the "BAM File 1" for the run you want from the "Submitted files (FTP)" column. **Pro-tip: right-click "BAM File 1" and select "Copy link address" to get the URL**.
+1. From wherever you want to temporarily store the files (e.g. EC2, another server), use `wget` to download the BAM file.
+
+	wget <paste ftp URL>
+
+1. After the BAM file has been downloaded, convert to fastq files using the `bamtofastq` tool.
+
+	bamtofastq <downloaded_bam>.bam <name of a folder to put fastqs in>
+
+1. By default, fastq files are generated with a max of 50M reads per file. If there are more reads, the files will be split across multiple sets of fastqs. It is recommended to avoid this (it means you'll have to concatenate them later) by using the `--reads-per-fastq` parameter. Below, the max reads per file is set to 500M: 
+
+	bamtofastq --reads-per-fastq=500000000 <downloaded_bam>.bam <name of a folder to put fastqs in>
+
+1. Bask in the joy of being able to get R1, R2, AND I1 files from BAMs
+
+
+### Diagnosing submission: dcp-diag
+
+#### Pre-requisites and installation
+
+- python3
+- pip
+- https://github.com/HumanCellAtlas/dcp-cli[hca cli]
+
+Install the hca cli tool locally or in a virtual environment (e.g. venv, conda) using pip:
+
+```
+pip install hca
+```
+
+Install the `dcp-diag` tool locally or in a virtual environment using pip:
+
+```
+pip install dcp-diag 
+```
+May need to use pip3 install (chris) 
+
+#### Usage
+
+This tool includes a diagnostic command - `analyze-submission` - which can be used to track submissions as they progress through the DCP. The input to the tool is an ingest-supplied **submission ID** and an indication of the environment - or **deployment** - to check. The output is a **summary of the submission progress** printed to the screen and a **JSON file** that contains the results of the command. Run diagnostics on the Mouse Melanoma dataset submitted in the production environment:
+
+```
+analyze-submission -d prod 5be1bede9460a300074d1fe2
+```
+
+The `-d` parameter indicates the deployment in which to check for the submission. Possible values are: prod, staging, int, and dev. The above command produces the following output to the terminal:
+
+```
+Using deployment: prod
+
+PHASE 1: Get submission primary bundle list from Ingest:
+	Retreiving submission...done.
+	Submission ID: 5be1bede9460a300074d1fe2
+	Project UUID: f396fa53-2a2d-4b8a-ad18-03bf4bd46833
+	Retrieving submission's primary bundle list...done.
+	Ingest created 6639 bundles.
+
+PHASE 2: Checking bundles are present in DSS:
+	Checking for bundle manifests: AWS: 6639/6639 GCP: 6639/6639...done.
+	6636 bundle are present in AWS
+	6635 bundle are present in GCP
+
+PHASE 3: Check DSS for primary bundles with this project UUID:
+	Searching DSS...done.
+	In AWS DSS, 6639 primary bundles are indexed by project
+	In GCP DSS, 6639 primary bundles are indexed by project
+
+PHASE 4: Check DSS for secondary bundles:
+	Searching for secondary bundles: AWS: 6639/6639 GCP: 6639/6639...done.
+	In AWS there are 6639 primary bundles with 0 results bundles
+	In GCP there are 6639 primary bundles with 0 results bundles
+
+PHASE 6: Save state:
+	Saving state in 5be1bede9460a300074d1fe2.json...done.
+```
+
+You can use dcpdig to list primary bundle IDs from a submission ID like so:
+```
+`dcpdig -d prod @ingest submission_id=<> --show bundles`
+```
+You can also pass it a project_uuid to list all submissions in that project or all bundles in the project like so:
+
+```
+dcpdig -d prod @ingest project_uuid=<> --show submissions,bundles
+```
+
+### Validating files on the ec2: fastq_info
+
+This is a workaround until the script for automatic validation of large files is fixed (Parth is working on it).
+
+#### Pre-requisites and installation
+
+- fastq_info
+
+Run the following command after ssh-ing into the EC2 instance:
+
+```
+export PATH=$PATH:/home/ubuntu/fastq_utils/bin
+```
+
+#### Usage
+
+Sync the files stuck in VALIDATING status from their S3 bucket to their corresponding folder on the EC2. 
+
+```
+aws s3 sync <s3 bucket URI> /data/<data-folder>/
+```
+
+Include only certain files using `--exclude` and `--include`:
+
+```
+aws s3 sync <s3 bucket URI> /data/<data-folder>/ --exclude "*" --includ "SRR43*.fastq.gz"
+```
+
+Run `fastq_info` for a particular file:
+
+```
+fastq_info -r -s </path/to/fastq-file-name>
+```
+
+Response like this means that the file is valid:
+
+```
+zperova@ip-172-31-3-111:/data/zperova-fetal-heart-10x-staging-0$ fastq_info -r -s 10X109_2_S4_L001_I1_001.fastq.gz
+fastq_utils 0.19.2
+Skipping check for duplicated read names
+CASAVA=1.8
+410700000
+------------------------------------
+Number of reads: 410725632
+Quality encoding range: 35 70
+Quality encoding: 33
+Read length: 9 9 9
+OK
+```
+
+If the response contains the word ERROR, the file is unvalid.
+
+Once all of the files have been validatated on the EC2, remove them from the EC2 and run the `set-to-valid.py` script. 
+
+
+### Setting files to valid: set-to-valid.py
+
+This tool is used for manually setting that state of files that are "Validating" to "Valid" state. Briefly, the script finds all file entities in "Validating" state and sets the state to "Valid". This tool should **only** be used if the files have independently been confirmed to be valid by running the validator previously. This tool is often used to set very large files to valid.
+
+#### Pre-requisites
+
+- python3
+- python3 packages: requests sys
+- git
+
+To access the tool, clone the hca-data-wrangling repository.
+
+```
+git clone https://github.com/HumanCellAtlas/hca-data-wrangling.git
+```
+
+#### Usage
+
+```
+python3 set-to-valid.py <submission_uri>
+```
+
+Note: submission_uri must be the full URI of the submission, e.g http://api.ingest.staging.data.humancellatlas.org/submissionEnvelopes/5c0a4f6fa73b170007f5c991
+
+
+### Kicking stuck submission: kick_validation.py
+
+This tool is used for "kicking" metadata stuck in "Validating" or "Draft" state. Briefly, the script finds all entities of the specific type that have the specific state, resets the state to "Draft", which retriggers validation in ingest.
+
+#### Pre-requisites
+
+- python3
+- python3 packages: requests, re, json, time, argparse
+- git
+
+To access the tool, clone the hca-data-wrangling repository.
+
+```
+git clone https://github.com/HumanCellAtlas/hca-data-wrangling.git
+```
+
+#### Usage
+
+This script is located in the `src/` directory in the hca-data-wrangling repository. It requires knowing the ingest submission ID of the submission and the deployment the submission is in. Check out the usage of `kick_validation.py` by using `--help`:
+
+
+```
+mfreeberg$ python kick_validation.py --help
+usage: kick_validation.py [-h] [-i SUBMISSION_ID] [-d {dev,int,staging}]
+                          [-s {DRAFT,INVALID,VALIDATING}]
+                          [-e {files,biomaterials,processes,protocols}]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i SUBMISSION_ID, --submission_id SUBMISSION_ID
+                        Ingest submission ID
+  -d {dev,int,staging}, --deployment {dev,int,staging}
+                        Deployment to check.
+  -s {DRAFT,INVALID,VALIDATING}, --state {DRAFT,INVALID,VALIDATING}
+                        Validation state to kick
+  -e {files,biomaterials,processes,protocols}, --entity {files,biomaterials,processes,protocols}
+                        Entity type to kick
+```
+
+To kick files stuck in "Validating" state for the submission with ID `5bbcc0b3f30bcd0007339dc3` in the staging environment, run:
+
+```
+python kick_validation.py -i 5bbcc0b3f30bcd0007339dc3 -d staging -s VALIDATING -e files
+```
+
+**Pro-tip**: Might have to run this line multiple times if there are 100s+ entities stuck in "Validating" state.
+
+### Generating submission summary report: generate_summary.py
+
+This tool generates two summary metadata reports for a submission/project. The first report counts the number specific entities in the submission/project. Currently, the entities counted is hard-coded and not complete. The second report contains a summary of other useful metadata pieces that can be used to populate projects pages. It is also not complete.
+
+#### Pre-requisites and installation
+
+- python3
+- git
+
+To install the tool, clone the ingest-broker repository.
+
+```
+git clone https://github.com/HumanCellAtlas/ingest-broker.git
+```
+
+#### Usage
+
+Move to the ingest broker directory.
+
+```
+cd ingest-broker
+```
+
+Check out the usage of `generate_summary.py` by using `--help`:
+
+```
+mfreeberg$ python generate_summary.py --help
+usage: generate_summary.py [-h] H T U O
+
+Process some integers.
+
+positional arguments:
+  H           the url of the ingest API (e.g
+              http://api.ingest.dev.data.humancellatlas.org)
+  T           the type of summary (project or submission)
+  U           the uuid of the project/submission
+  O           summary output format
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+Run the `generate_summary.py` script supplying the ingest API url, the type of summary (project or submission), the (project or submission envelope, respectively) UUID, and the desired output format (json or tsv). If you choose json, the report will be printed to the screen. If you choose tsv, the report be written to `report.tsv`.
+
+```
+mfreeberg$ python3 generate_summary.py http://api.ingest.dev.data.humancellatlas.org project 763e071c-34ed-4db5-9006-8929ccdf5b26 tsv
+mfreeberg$ cat report.tsv
+entity	count
+dissociation_protocol	1
+enrichment_protocol	1
+library_preparation_protocol	1
+sequencing_protocol	1
+process	5096
+donor_organism	8
+specimen_from_organism	8
+cell_suspension	2544
+sequence_file	5088
+
+```
+
+Also generated is a file `scrape.tsv` which contains a bit more key pieces of metadata that can be useful to fill out project pages.
+
+```
+mfreeberg$ cat scrape.tsv
+cell_type	['pancreatic A cell', 'acinar cell', 'type B pancreatic cell', 'pancreatic D cell', 'pancreatic ductal cell', 'mesenchymal cell']
+num_total_estimated_cells	2544
+organ	['pancreas', 'islet of Langerhans']
+organoid_organ_model	[]
+genus_species	['Homo sapiens']
+num_donors	8
+num_specimens	8
+num_cell lines	0
+num_organoids	0
+num_cell suspension	2544
+library_construction_approach	['Smart-seq2']
+num_fastqs	5088
+project_title	['Single cell transcriptome analysis of human pancreas reveals transcriptional signatures of aging and somatic mutation patterns.']
+contact_names/emails	['Martin, Enge', 'Laura,,Huerta', 'Matthew,,Green', 'martin.enge@gmail.com', 'lauhuema@ebi.ac.uk', 'hewgreen@ebi.ac.uk']
+```
+
+If you would like additional metadata reported by this tool, please make a request via a GitHub issue in the ingest-central repository.
+
+### Retrieving metadata for submission: hca-clear-tape
+
+#### Pre-requisites and installation
+
+- python3
+- pip
+- git
+
+To install the tool, clone the hca-clear-tape repository (maintained by Rodrey):
+
+```
+git clone https://github.com/rdgoite/hca-clear-tape.git
+```
+
+After cloning the repo, move to the repo
+
+```
+cd hca-clear-tape
+```
+
+and install the requirements by running:
+
+```
+pip install -r requirements.txt
+```
+
+#### Usage
+
+This tool has a nice https://github.com/rdgoite/hca-clear-tape/blob/master/README.md[README] which explains how to use it, so the instructions won't be copied here.
+
+A few caveats to remember when using hca-clear-tape:
+- Currently, only the dev and prod environments are supported
+- This tool can take a while to run
+- This tool is not officially part of the HCA; it was made by Rodrey independently
+- This tool does not interrogate secondary analysis bundles
+
+An example usage to download metadata-per-bundle for the pancreas6decades dataset (with submission ID=5bdc209b9460a300074b7e67) in the production environment:
+
+```
+export CT_ENV=PROD
+python clear_tape.py 5bdc209b9460a300074b7e67 pancreas6decades
+Preparing bundle #1 with id [487a28a3-b1a4-4368-bdf9-1a80eecf3862]...
+done
+Preparing bundle #2 with id [0bbff331-2e4c-4182-89c4-e9f888cdd93a]...
+done
+Preparing bundle #3 with id [2c3319dc-66bf-471b-b357-73aeceeef1e3]...
+done
+...
+```
+
+The results in the `output/` folder are:
+
+```
+mfreeberg$ ls output/
+pancreas6decades_1.json
+pancreas6decades_2.json
+pancreas6decades_3.json
+...
+```
+
+You can view an output JSON document, e.g. by using `cat`, and see all the metadata documents (biomaterials, protocols, processes, files, and project) for that bundle.
+
+### Viewing submission graph: TBD [neo4j tools]
+
+#### Pre-requisites and installation
+
+Coming soon!
+
+#### Usage
+
+Coming soon!
+
+### Organizing data files: aws s3
+
+#### Pre-requisites and installation
+
+- pip
+- aws
+
+Install the aws cli tool locally or in a virtual environment (e.g. venv, conda) using pip:
+
+```
+pip install awscli
+```
+
+Wranglers will most often be using the `aws` tool in relation to s3 buckets. [Here](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html) is the official documentation for `aws s3` commands.
+
+#### Usage
+
+1. Copy files
+
+    aws s3 cp my-file.txt s3://my-s3-bucket/data/
+
+1. List files in the bucket
+
+    aws s3 ls s3://my-s3-bucket/data/
+
+1. Please request additional commands!
+
+### Use terminal sessions in EC2: tmux, screen
+
+#### Pre-requisites and installation
+
+No pre-requisites or installation required. Both programs are already installed in the EC2.
+
+#### Usage
+
+Using `tmux` or `screen` in the EC2 (or in life) is useful because you can run a job in a session without it being cancelled due to a dropped connection. For example, you can run an `hca upload files *` job that takes hours to complete, and you don't have to worry about it being interrupted. Below are some hints for using `tmux`, but `screen` acts in a similar manner. Try `man tmux` or `man screen` in the EC2 to view the manual for the two commands.
+
+1. Make and enter a session using `tmux`:
+
+    tmux new -s <session_name>
+
+1. Run any command(s) like you normally would in the EC2:
+
+    hca upload files *.fastq.gz
+
+1. To detach from your session: press CTRL+b, release both keys, and then press d. You'll be back in EC2, and the command will still be running.
+1. To view all the session you have running:
+
+    tmux ls
+
+1. To get back to a session to see how the job is going:
+
+    tmux a -t <session_name>
+
+See the cheat sheet for more details like how to delete sessions and some other cool stuff: https://gist.github.com/henrik/1967800.
+
+
+### Transfer files between local machine and EC2: scp, rsync
+
+#### Pre-requisites and installation
+
+No pre-requisites or installation required. Both programs are already installed in the EC2 (and in most unix environments).
+
+#### Usage
+
+Using `scp` or `rsync` lets you transfer files from one location to another. `rsync` is better when you are transferring lots of files or large files (can pick up from where you left off if sync gets disconnected). `scp` is fine for small or just a few files. Below are some hints for using `rsync`, but `scp` acts in a similar manner. The argument `-r` is useful for recursively grabbing all files in a directory. Try `man rsync` or `man scp` in the EC2 to view the manual for the two commands.
+
+1. Transfer set of fastq files from EC2 to the current directory of your local machine (from your local machine):
+
+    cd target_directory
+    rsync -r <username>@@tool.staging.data.humancellatlas.org:/path/to/file/*.fastq.gz ./
+
+
+### Extract all text to ontology mappings from one or more submissions in ingest
+
+#### Pre-requisites and installation
+
+- python 3
+- pip
+- python requests module (install via `pip install requests` - only needed once!)
+
+#### Usage
+
+Edit the script by putting the submission envelope IDs for the submissions you want to extract mappings from into the empty array at the very bottom of the script:
+
+```
+# -----> PUT YOUR ENVELOPE IDs IN HERE <---------
+    envelope_ids = []
+```
+
+If you don't want the output file to have the default file name, you can also edit this.
+
+Run the script in the command line using
+
+```
+python3 ontology_mappings_extractor.py
+```
+
+Once the output file has been generated, remove duplicate entries from the file by running
+
+```
+sort all_mappings.txt | uniq > all_mappings_unique.txt
+```
+
+### Do a simple AUDR 
+
+Follow the ingest documentation here: https://github.com/HumanCellAtlas/ingest-central/wiki/Updating-Metadata-through-Spreadsheets
+
+
+## Metadata tools
+
+The following wrangler tools are related to helping with metadata tasks.
+
+### Generating custom YAML file:
+
+#### Pre-requisites and installation
+
+- python3
+- pip
+- git
+- docker
+
+To install the tool, clone the ingest-client repository:
+
+```
+git clone https://github.com/HumanCellAtlas/schema-template-generator.git
+```
+
+After cloning the repo, move to the repo
+
+```
+cd schema-template-generator
+```
+
+and install the requirements by running:
+
+```
+pip install -r requirements.txt
+```
+
+#### Usage
+
+Start the web application with
+
+```
+python generator/template_generator_app.py
+```
+
+Alternatively, you can build and run the app with docker. To run the web application with docker for build the docker image with
+
+```
+docker build . -t generator-demo:latest
+```
+
+then run the docker container. You will need to provide the URL to the [ingestion API](https://github.com/HumanCellAtlas/ingest-core) or a dummy equivalent
+
+```
+docker run -p 5000:5000 -e INGEST_API=http://localhost:8080 generator-demo:latest
+```
+
+The application will be available at http://localhost:5000
+
+In the application, you have 3 options:
+
+1. Load all available schemas
+
+This option will give you a collapsed list of all schemas with nothing pre-selected except for required properties in each schema. You can select any schema or subset of a schema you need. *Please note that a schema is only selected if the header line is selected!*
+
+2. Pre-select which schemas and modules you need
+
+This option will give you an intermediate screen where you can preselected the schemas and modules you need. On the 2nd screen, you can then fine-tune the properties for these schemas as well as add further schemas. *Please note that ontology properties are currently not selectable as modules but also aren't selected automatically*, eg if you pre-select donor_organism, the system will give you height and weight but not the related ontology unit field.
+
+3. Upload an existing yaml file to edit it
+
+This option allows you to upload an existing YAML file and update it to the latest schema version or add/remove properties and schema. This functionality is untested for yaml files containing schema versions that are wildly out of date.
+
+
+
+### Generating custom template metadata spreadsheet: template_generator_app.py
+
+The instructions below are outdated. For up to date instructions on how to use it refer to the [schema-template-generator repo](https://github.com/HumanCellAtlas/schema-template-generator)
+
+#### Pre-requisites and installation
+
+- python3
+- pip
+- git
+
+To install the tool, clone the schema-template-generator repository:
+
+```
+git clone https://github.com/HumanCellAtlas/schema-template-generator.git
+```
+
+After cloning the repo, move to the repo
+
+```
+cd schema-template-generator
+```
+
+and checkout the alternative_requirements branch (this is a workaround for some dependency issues):
+
+
+```
+git checkout alternative_requirements
+```
+
+Install the requirements by running:
+
+```
+pip install -r requirements.txt
+```
+
+#### Usage
+
+To run the spreadsheet builder code, move to the `template` directory:
+
+```
+cd generator
+```
+
+Launch the app:
+
+```
+python template_generator_app.py
+```
+
+Copy the local URL printed to the terminal and paste in a browser to launch the generator app. After selecting/loading the schemas/fields of interest, click "Generate spreadsheet" and the metadata spreadsheet will be downloaded to your machine.
+
+### Converting JSON schema properties to csv: json_fields_to_csv.py
+
+#### Pre-requisites and installation
+
+- python3
+- python packages: json, argparse, os, logging
+
+#### Usage
+
+This script converts all properties in the JSON schema files into csv format. A file path to the metadata repo needs to be provided. For guidance on how to use the tool, run the script with `--help`:
+
+```
+dwelter$ python3 json_fields_to_csv.py --path_to_schemas ../../metadata-schema/json_schema
+
+```
+
+
+## git commands
+
+The following wrangler tools are related to using git. When working in the terminal, there are a few useful git commands to remember. To use them, you must have run `git clone <repo>` locally to get a copy of the repository and you must be currently located somewhere in the cloned git folder.
+
+1. `git status` - check what changes have been made locally to the git repo.
+1. `git add .` - prepare (stage) all the files in the current directory (recursively) you have changed for committing back to the repo. Replace `.` with a specific file or regex to target ony specific file(s).
+1. `git commit -m "Message"` - commit your staged changes. Include a helpful commit message.
+1. `git push` - Push your committed changes to the repo.
+1. `git pull` - Pull any remote changes into your local repo.
+1. `git pull origin <branch>` - Pull any remote changes from an upstream branch and merge with your current branch. Used during release process.
+1. `git reset --hard origin/master` - Get rid of any local changes and revert to the current state of master branch
+1. `git checkout <branch>` - Switch to a specific branch locally.
+1. `git checkout -b <new_branch>` - Create a new branch from the current branch and switch to it.
+
+Please request additional commands!
+
+## Repository tools
+
+The following wrangler tools are related to managing and using this repository.
+
+### Converting markdown to pdf: grip
+
+#### Pre-requisites and installation
+
+- https://github.com/joeyespo/grip[grip]
+
+See the https://github.com/joeyespo/grip#installation[grip GitHub repo] for instructions on how to install `grip`.
+
+Briefly:
+
+To install grip, simply:
+
+```
+$ pip install grip
+```
+
+On OS X, you can also install with Homebrew:
+
+```
+$ brew install grip
+```
+
+#### Usage
+
+See the https://github.com/joeyespo/grip#usage[grip GitHub repo] for instructions on how to use `grip`.
+
+Briefly:
+
+1. Install grip locally
+1. Navigate to a directory with a markdown file
+1. Run `grip <file>.md`
+1. Navigate to local host name (e.g. `http://localhost:6419/`)
+1. Print screen and save as PDF
+
+### Converting yaml to csv: generic_yaml2csv.py
+
+#### Pre-requisites and installation
+
+- python3
+- python packages: yaml, argparse, csv, sys, pandas
+
+#### Usage
+
+This script converts any yaml file into csv format. The default file to convert is the potential_datasets.yaml file, but any file path can be provided. For guidance on how to use the tool, run the script with `--help`:
+
+```
+mfreeberg$ python3 generic_yaml2csv.py --help
+usage: generic_yaml2csv.py [-h] [--yaml_file YAML_FILE] [--csv_file CSV_FILE]
+
+Throw away script potential_datasets.yaml to csv
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --yaml_file YAML_FILE, -i YAML_FILE
+                        yaml file name
+  --csv_file CSV_FILE, -o CSV_FILE
+                        csv output file name
+```
+
+## hca cli commands
+
+The following wrangler tools are related to using the hca cli.
+
+### Upload: hca upload
+
+#### Pre-requisites and installation
+
+- pip
+
+Install the hca cli tool locally or in a virtual environment (e.g. venv, conda) using pip:
+
+```
+pip install hca
+```
+
+If you haven't updated the hca cli in a while, update to the newest version using pip:
+
+```
+pip install --upgrade hca
+```
+
+#### Usage
+
+The two main `hca upload` commands wranglers use is the one to select the upload area of interest (`hca upload select`) and to transfer files to that upload area (`hca upload files`). Wranglers might also want to view a list of files in the selected upload area (`hca upload list`) or view a list of all upload areas they have accessed (`hca upload areas`).
+
+To select an upload area:
+
+```
+mfreeberg$ hca upload select s3://org-humancellatlas-upload-staging/d2313de3-11bf-4a19-b1eb-a7b82a9467af/
+Upload area d2313de3-11bf-4a19-b1eb-a7b82a9467af selected.
+In future you may refer to this upload area using the alias "d"
+```
+
+To transfer all local files that end with `.fastq.gz` to the selected upload area:
+
+```
+mfreeberg$ hca upload files *.fastq.gz
+
+Starting upload of 2 files to upload area d2313de3-11bf-4a19-b1eb-a7b82a9467af
+
+Completed 122 KiB/249 KiB with 2 of 2 files remaining
+Download complete of R1.fastq.gz to upload area d2313de3-11bf-4a19-b1eb-a7b82a9467af/R1.fastq.gz
+
+Completed 249 KiB/249 KiB with 1 of 2 files remaining
+Download complete of R2.fastq.gz to upload area d2313de3-11bf-4a19-b1eb-a7b82a9467af/R2.fastq.gz
+
+Completed upload of 2 files to upload area d2313de3-11bf-4a19-b1eb-a7b82a9467af
+```
+
+To transfer all files from a source s3 bucket (`s3://org-humancellatlas-upload-staging/aaaaaaaa-bbbb-cccc-dddd-acf331bf0e8f/`) to the selected upload area:
+
+```
+hca upload files s3://org-humancellatlas-upload-staging/aaaaaaaa-bbbb-cccc-dddd-acf331bf0e8f/
+```
+
+To transfer all files that start with "SRR" from a source s3 bucket (`s3://org-humancellatlas-upload-staging/aaaaaaaa-bbbb-cccc-dddd-acf331bf0e8f/`) to the selected upload area:
+
+```
+hca upload files s3://org-humancellatlas-upload-staging/00104402-ccf2-45bd-9ef9-c172a5f7503b/SRR
+```
+
+
+To view the files in the selected upload area:
+
+```
+mfreeberg$ hca upload list
+R1.fastq.gz
+R2.fastq.gz
+```
+
+### Data Store: hca dss
+
+#### Pre-requisites and installation
+
+- pip
+
+Install the hca cli tool locally or in a virtual environment (e.g. venv, conda) using pip:
+
+```
+pip install hca
+```
+
+If you haven't updated the hca cli in a while, update to the newest version using pip:
+
+```
+pip install --upgrade hca
+```
+
+#### Usage
+
+Many of the `hca dss` commands can also be run using the Data Store's swagger API. The swagger API for the staging environment can be found https://dss.staging.data.humancellatlas.org/[here].
+
+1. To download a bundle manifest given a bundle UUID, use the `get-bundle` command:
+
+```
+hca dss get-bundle --uuid 6d9bd209-f9b6-4948-96c8-9cf1ebf3bbe6 --replica aws
+```
+
+This command will output the bundle manifest to the terminal screen. Append ` > <file>.json` to the end of the command to store the output in a file. Run `hca dss get-bundle --help` for more information about the `get-bundle` command.
+
+1. To download a specific file given a file UUID, use the `get-file` command:
+
+```
+hca dss get-file --uuid 9c32cf70-3ed7-4720-badc-5ee71e8a38af --replica aws
+```
+
+This command will output the file to the terminal screen. Append ` > <file>.json` to the end of the command to store the output in a file. Run `hca dss get-file --help` for more information about the `get-bundle` command.
+
+1. To search the DSS for a file by name:
+
+from swagger use `/search` and enter the followung elastic search query:
+```
+ {
+ "es_query": {
+   "query": {
+     "prefix": {
+       "manifest.files.name": "<FILENAME>"
+     }
+   }
+ }
+}
+```
+
+#### How do I retrieve a list of bundle uuids from the DSS?
+
+Use the ES (elastic search) tool in Swagger. Click on 'try it out' and use the following ES query.
+
+```
+{
+  "es_query": {
+    "query": {
+      "bool": { 
+        "must": [
+          {
+            "match": {
+              "files.project_json.provenance.document_id": "<SUBMISSION UUID>"
+            }
+          }
+        ],
+        "must_not": [
+          {
+            "match": {
+
+              "files.analysis_process_json.process_type.text": "analysis"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+This will then give you a curl command for you to post into your terminal.
+
+```
+curl -X POST "https://dss.staging.data.humancellatlas.org/v1/search?output_format=summary&replica=aws" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"es_query\": { \"query\": { \"bool\": { \"must\": [ { \"match\": { \"files.project_json.provenance.document_id\": \"<SUBMISSION UUID>\" } } ], \"must_not\": [ { \"match\": { \"files.analysis_process_json.process_type.text\": \"analysis\" } } ] } } }}"
+```
+
+https://docs.google.com/document/d/1JMUfEoODNgBJTmbgkmGcEW4i5JsVzU0pHRoOTt22060/edit?usp=sharing[Link to google doc guide]
+
+Please request additional commands!
