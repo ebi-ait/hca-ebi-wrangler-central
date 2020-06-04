@@ -1,0 +1,5 @@
+title: "HCA EBI Wrangler Docs"
+site_url: https://ebi-ait.github.io/hca-ebi-wrangler-central/
+remote_theme: pmarsceill/just-the-docs
+# remote_theme: leakyabstractions/pretty-docs
+search_enabled: true
