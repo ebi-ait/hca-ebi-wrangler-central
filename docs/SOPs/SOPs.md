@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Typography
+title: SOPs
 has_children: true
 nav_order: 1
 ---
