@@ -1,3 +1,9 @@
+---
+layout: default
+title: Wrangler Spreadsheet guide
+parent: SOPs
+---
+
 # HCA Metadata Spreadsheet Guide for Wranglers
 
 NOTE: a user facing version of this doc will eventually reside in the wrangling repo or ingest central as markdown.
