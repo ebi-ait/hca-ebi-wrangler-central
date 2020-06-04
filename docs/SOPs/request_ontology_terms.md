@@ -1,3 +1,9 @@
+---
+layout: default
+title: Request ontology terms
+parent: SOPs
+---
+
 # Request Ontology terms SOP
 
 ## Objectives of the document
