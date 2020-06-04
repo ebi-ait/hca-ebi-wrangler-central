@@ -1,4 +1,12 @@
-# Purpose of this SOP
+---
+layout: default
+title: BAM upload SOP
+parent: SOPs
+---
+
+# BAM upload SOP
+
+## Purpose of this SOP
 Showcase how convert raw data (fastq) into unaligned BAM and submit it through the DSP.
 
 # Table of contents
