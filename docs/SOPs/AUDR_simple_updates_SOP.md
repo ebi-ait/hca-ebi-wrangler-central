@@ -1,3 +1,9 @@
+---
+layout: default
+title: AUDR SOP
+parent: SOPs
+---
+
 # AUDR simple updates SOP
 
 ## Definitions:
