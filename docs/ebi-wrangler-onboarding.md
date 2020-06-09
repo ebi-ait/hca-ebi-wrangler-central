@@ -120,10 +120,6 @@ Key meetings that wranglers are summarised in the table below:
 | Wrangler catch-up                    | Thursday  | 4pm    | Weekly                | Teleconference                       |
 | AIT Team meetings                    | Thursday  | 3pm    | Bi-weekly             | In person, alternates between dev and general interest |
 
-#### DCP-wide Meetings
-
-DCP-wide meetings are held bi-annually and involve collaborators from other sites, such as UCSC, Broad and CZI getting together in the same place and discussing various issues. They generally last 3 days and involve multiple streams on different topics. It is a good idea to find out when and where the next one is being held so you ensure you are available to go. Check out the DCP meeting calendar to see the next proposed dates.
-
 #### HCA-wide Meetings
 
 Scientific meetings are held a few times a year and are a great opportunity to connect directly with researchers involved in the HCA. However, the tickets for these events are limited so Wranglers aren't guaranteed a spot. Project leads do their best to advocate for Wranglers attending so check on whether you are likely to attend the next one.
@@ -212,6 +208,22 @@ The advantage of this system is that the history of the email address is all rea
 
 - In order to be able to use most of the EBI services when you’re off-site, you will have to set up a VPN connection. You’ll have to set a 2-FOA (Factor Of Authentication) to be able to connect. A useful guide to do so can be found [here](https://tsc.ebi.ac.uk/article/linotp-tokens-setup-connecting). The easiest way is with a Google Authenticator compliant app, of your preference between the ones listed on the webpage.
 
+### Computing resources
+
+#### Amazon cloud services
+
+We have access to Amazon cloud services and mainly use them in our day-to-day for facilitating data upload.
+
+s3 buckets are created by wranglers and used to allow contributors to upload data into an accessible location. They are also used to upload data into the ingest system. We primarily use `hca-util` for administering these areas but you may also need to use the `aws cli` for some operations.
+
+We also use an EC2 instance for performing some computing actions in the cloud. Please ask a developer to help you get access to this. It will involve setting up a set of ssh keys.
+
+The address of the EC2 is `tool.archive.data.humancellatlas.org`
+
+#### EBI compute resources
+
+We also have access to various EBI compute resources including a cluster. TODO: add links and more info]
+
 ### Github
 
 The information here is general. You will go through all the specific details on the onboard meetings.
@@ -220,6 +232,7 @@ The information here is general. You will go through all the specific details on
 
 - Before beginning, you have to set up 2FOA security for your GitHub user. You can find the instructions on how to do so [here](https://help.github.com/en/articles/securing-your-account-with-two-factor-authentication-2fa).
 - Install [Git secrets](https://github.com/HumanCellAtlas/metadata-schema/issues/864)
+  - ensure you also add the AWS patterns to your global configuration `git secrets --register-aws --global`
 - Install the [pre-commit](https://github.com/HumanCellAtlas/metadata-schema/issues/1032) python package that is to be used only [within the](https://github.com/HumanCellAtlas/metadata-schema) `metadata-schema` repo.
 - It also makes things easier if you set up an SSH key. [GitHub's guide for adding an SSH key](https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account).
 
