@@ -29,7 +29,7 @@ New contributors will almost always contact us via the wranglers email list. Whe
 
 ## Early contact with contributors
 
-The wranglers and managers are first notified of a new contributor by email to a team-wide email list and as a team they decide who will be responsible for the new dataset. Generally speaking, UCSC wranglers are responsible for contributor relationships from Mid to Western USA and the Asia Pacific region up to ?, whereas EBI wranglers are responsible for Europe and Eastern USA. There are also some existing relationships between wranglers and certain labs which may influence the choice of who takes the lead on wrangling a particular dataset.
+The wranglers and managers are first notified of a new contributor by email to a team-wide email list and as a team they decide who will be responsible for the new dataset. Generally speaking, UCSC wranglers are responsible for contributor relationships from Central USA and the Pacific rim region, whereas EBI wranglers are responsible for Europe, Africa, Central Asia and Eastern USA. There are also some existing relationships between wranglers and certain labs which may influence the choice of who takes the lead on wrangling a particular dataset. Capacity is another consideration as the EBI wrangler team is larger than UCSC.
 
 From there, the primary wrangler will communicate with the contributor via email and often set up virtual or in-person meetings to discuss their project needs. 
 
