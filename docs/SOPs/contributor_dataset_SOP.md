@@ -113,10 +113,10 @@ Once the spreadsheet is considered complete by the primary wrangler, there are t
 ### Experimental graph validation
 The ingest graph validator allows wranglers to visualise the experimental graph of the experiment and also performs some tests to check against our current graph assumptions. 
 
-Please follow the documentation in the ingest graph validator repository located here: https://github.com/ebi-ait/ingest-graph-validator.
+Please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator).
 
 ### Spreadsheet and JSON schema validation
-The primary wrangler should also upload the spreadsheet to the production ui at https://ui.ingest.archive.data.humancellatlas.org/ to check the validity of the spreadsheet.
+The primary wrangler should also upload the spreadsheet to the [ingest production ui](https://ui.ingest.archive.data.humancellatlas.org/) to check the validity of the spreadsheet.
 
 To create a new submission from a spreadsheet, go to the `ALL SUBMISSIONS` tab then click the `Upload New Submission` button in the top right. If the metadata is valid, you can move on to uploading the fastq files data. If it is invalid, you will need to resolve any errors or problems and re-upload the metadata sheet again and repeat this process until it is valid.
 
