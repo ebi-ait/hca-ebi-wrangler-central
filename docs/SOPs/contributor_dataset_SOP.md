@@ -10,7 +10,7 @@ parent: SOPs
 ## Background
 {: .no_toc }
 
-This SOP document aims to describe the process of receiving new datasets from contributors and uploading their metadata and data to ingest for archiving in EBI archives and submission to DCP2.0. This SOP was written on 05/06/2020 and is subject to change as the AIT HCA team software evolves. It will be updated to reflect changes.
+This SOP document aims to describe the process of receiving new datasets from contributors and uploading their metadata and data to ingest for archiving in EBI archives and submission to DCP2.0. This SOP was last updated on {{ "now" | date: site.date_format }} and is subject to change as the AIT HCA team software evolves. It will be updated to reflect changes.
 
 ## Table of contents
 {: .no_toc .text-delta }
