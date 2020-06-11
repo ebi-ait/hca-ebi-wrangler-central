@@ -1,3 +1,9 @@
+---
+layout: default
+title: EBI wrangler onboarding
+nav_order: 6
+---
+
 # EBI Onboarding document
 
 Welcome to the EBI HCA data wrangling & metadata team! Here, you will find some guidelines for your onboarding process.
