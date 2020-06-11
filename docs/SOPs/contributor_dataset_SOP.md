@@ -5,10 +5,18 @@ parent: SOPs
 ---
 
 # Wrangling Contributor’s Datasets SOP
+{: .no_toc }
 
 ## Background
+{: .no_toc }
 
 This SOP document aims to describe the process of receiving new datasets from contributors and uploading their metadata and data to ingest for archiving in EBI archives and submission to DCP2.0. This SOP was written on 05/06/2020 and is subject to change as the AIT HCA team software evolves. It will be updated to reflect changes.
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 ## Project Management
 
@@ -45,6 +53,7 @@ Before metadata and data can be received from contributors they are required to 
 To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#.
 
 What to do in the case that a contributor’s data does not have full consent for public release?
+
 TBD
 {: .label .label-red }
 
