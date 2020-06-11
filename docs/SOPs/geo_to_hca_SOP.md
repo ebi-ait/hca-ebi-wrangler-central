@@ -2,6 +2,7 @@
 layout: default
 title: GEO to HCA Guide
 parent: SOPs
+nav_exclude: true
 ---
 
 # GEO to HCA Guide
