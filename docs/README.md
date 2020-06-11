@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Home
-nav_exclude: true
 ---
 
 # HCA EBI wrangler documentation
