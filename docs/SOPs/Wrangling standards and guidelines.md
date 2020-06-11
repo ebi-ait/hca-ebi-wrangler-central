@@ -1,3 +1,10 @@
+---
+layout: default
+title: Wrangling standards
+nav_order: 4
+nav_exclude: true
+---
+
 # Wrangling standards and guidelines
 
 > This document describes wrangling standards and guidelines.
