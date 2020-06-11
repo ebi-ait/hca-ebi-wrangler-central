@@ -23,10 +23,9 @@ This SOP document aims to describe the process of receiving new datasets from co
 There are some general project management tasks when working with new datasets to ensure all team members can track their status.
 
 New contributors will almost always contact us via the wranglers email list. When we work with them to get their projects submitted, the wranglers email list should be copied into all emails.
-A ticket to track dataset progress should be created in the hca-ebi-wrangler-central repo: https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=dataset&template=project_tracker.md&title= 
-The dataset should be added to the dataset tracker sheet found here: https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0
-While you are wrangling, please update the status and key information for the dataset in the relevant columns.
-Create a new folder to store the dataset metadata in the Brokering drive: https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA
+1. Create a [project tracker ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=dataset&template=project_tracker.md&title= ) to track dataset progress should be created in the hca-ebi-wrangler-central repo 
+1. Add the dataset to the [dataset tracker sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0). While you are wrangling, please update the status and key information for the dataset in the relevant columns.
+1. Create a new folder to store the dataset metadata in the [Brokering drive](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA) 
 
 ## Early contact with contributors
 
@@ -37,8 +36,9 @@ From there, the primary wrangler will communicate with the contributor via email
 ### Finding out about the dataset
 
 If nothing is known about the project, the first step is to find out enough information about the dataset in order to create a customised spreadsheet template for the contributor to fill in. This can be done either by:
-Sending the contributor the HCA Dataset Questionnaire form (https://docs.google.com/forms/d/e/1FAIpQLSdjPk2Z6xYozds53ycvXo57PvFsyqOF6XMpSWCVNTpQYalZzQ/viewform?usp=sf_link)
-Setting up an in-person or video call. The questions in the HCA Dataset Questionnaire form can be used as guide to know what questions to ask of the contributor
+
+1. Sending the contributor the [HCA Dataset Questionnaire form](https://docs.google.com/forms/d/e/1FAIpQLSdjPk2Z6xYozds53ycvXo57PvFsyqOF6XMpSWCVNTpQYalZzQ/viewform?usp=sf_link)
+1. Setting up an in-person or video call. The questions in the HCA Dataset Questionnaire form can be used as guide to know what questions to ask of the contributor
 
 If you already have some information about the dataset and don’t need the contributor to fill in the entire Dataset Questionnaire it is still important to find out answers to the following questions:
 
@@ -52,10 +52,9 @@ Before metadata and data can be received from contributors they are required to 
 
 To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#.
 
-What to do in the case that a contributor’s data does not have full consent for public release?
+**What to do in the case that a contributor’s data does not have full consent for public release?**
 
-TBD
-{: .label .label-red }
+Currently the DCP cannot accept datasets without full open consent for public release. We are currently working on a solution to help contributors make their data and metadata accessible via managed access.
 
 ## Gathering metadata
 
@@ -92,16 +91,18 @@ Basic medical info - cause of death, smoking status, alcohol status
 
 If donors are from CBTM or HDBR we have direct routes of obtaining more detailed metadata if it hasn’t been provided by the contributor.
 
-`organ` or `model_organ` should be the broad major organ type, not a system
-The `organ` or `model_organ_part` should be the most specific organ part available
-`biomaterial_id`s should be either consistent with the publication or the tissue provider to allow identification of biomaterials with shared donors
-Try to encourage the contributor to provide a meaningful identifier, not just a single digit
+- `organ` or `model_organ` should be the broad major organ type, not a system
+- The `organ_part` or `model_organ_part` should be the most specific organ part available
+- `biomaterial_id`s should be either consistent with the publication or the tissue provider to allow identification of biomaterials with shared donors
+- Try to encourage the contributor to provide a meaningful identifier, not just a single digit
 
 
 ## Raw data upload (fastq)
-Please see the following link with instructions on how to create an upload area for the contributors using the hca-util tool: https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-using-hca-util
+Follow the instructions on [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-using-hca-util)
 
-You will then need to provide the contributors with the upload area UUID as well as a set of AWS access keys, which only administrators (wranglers) have access to. When sending these to the contributor, please be cautious that you state the UUID and keys must not be shared outside of the person who performs the data upload. To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#.
+You will then need to provide the contributors with the upload area UUID as well as a set of AWS access keys, which only administrators (wranglers & ingest-devs) have access to. When sending these to the contributor, please be cautious that you state the UUID and keys must not be shared outside of the person who performs the data upload. 
+
+To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: [https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#](https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#).
 
 ## Metadata Validation
 Once the spreadsheet is considered complete by the primary wrangler, there are two phases of metadata validation that can be completed.
@@ -189,7 +190,7 @@ The path after submission can go one of several ways:
 1. The project needs to go to DCP2 only
 1. The project needs to go to EBI archives only 
 
-Further documentation for this process can be found here: https://docs.google.com/document/d/1S4fyCSqB3nLrCUssNMwSp6ff8tmeipMi_slnXW2Lrq4/edit?pli=1#heading=h.n3qy5yl0auvs
+Further documentation for this process can be found here: [Ingestion to Archives Instructions](https://docs.google.com/document/d/1S4fyCSqB3nLrCUssNMwSp6ff8tmeipMi_slnXW2Lrq4/edit?pli=1#heading=h.n3qy5yl0auvs)
 
 
 
