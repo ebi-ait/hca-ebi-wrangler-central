@@ -5,8 +5,15 @@ parent: Tools
 ---
 
 # Handy code snippets
+{: .no_toc }
 
 Handy snippets that are useful to wranglers that don't quite fit elsewhere
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 ## Downloading 10x files from archives
 
@@ -194,20 +201,26 @@ Using `tmux` or `screen` in the EC2 (or in life) is useful because you can run a
 
 1. Make and enter a session using `tmux`:
 
-    tmux new -s <session_name>
+```
+tmux new -s <session_name>
+```
 
 1. Run any command(s) like you normally would in the EC2:
 
-    hca upload files *.fastq.gz
+```
+hca upload files *.fastq.gz
+```
 
 1. To detach from your session: press CTRL+b, release both keys, and then press d. You'll be back in EC2, and the command will still be running.
 1. To view all the session you have running:
-
-    tmux ls
+```
+tmux ls
+```
 
 1. To get back to a session to see how the job is going:
-
-    tmux a -t <session_name>
+```
+tmux a -t <session_name>
+```
 
 See the cheat sheet for more details like how to delete sessions and some other cool stuff: https://gist.github.com/henrik/1967800.
 
@@ -223,10 +236,10 @@ No pre-requisites or installation required. Both programs are already installed 
 Using `scp` or `rsync` lets you transfer files from one location to another. `rsync` is better when you are transferring lots of files or large files (can pick up from where you left off if sync gets disconnected). `scp` is fine for small or just a few files. Below are some hints for using `rsync`, but `scp` acts in a similar manner. The argument `-r` is useful for recursively grabbing all files in a directory. Try `man rsync` or `man scp` in the EC2 to view the manual for the two commands.
 
 1. Transfer set of fastq files from EC2 to the current directory of your local machine (from your local machine):
-
-    cd target_directory
-    rsync -r <username>@@tool.archive.data.humancellatlas.org:/path/to/file/*.fastq.gz ./
-
+```
+cd target_directory
+rsync -r <username>@@tool.archive.data.humancellatlas.org:/path/to/file/*.fastq.gz ./
+```
 
 ## Extract all text to ontology mappings from one or more submissions in ingest
 
