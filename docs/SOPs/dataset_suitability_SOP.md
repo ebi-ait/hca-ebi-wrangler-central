@@ -24,7 +24,7 @@ Check that the sequence data is available in a valid format: i.e. fastq format a
 
 ## Assess Technology
 
-Is the technology supported by our defined HCA metadata schema? If we can’t capture the information appropriately, then the dataset is unsuitable. If the technology data type cannot be supported by our processing pipelines, the dataset is suitable but becomes a lower priority and is indicated by the HCA priority column (see [HCA dataset triage SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_triage_SOP.html).
+Is the technology supported by our defined HCA metadata schema? If we can’t capture the information appropriately, then the dataset is unsuitable. If the technology data type cannot be supported by our processing pipelines, the dataset is suitable but becomes a lower priority and is indicated by the HCA priority column (see [HCA dataset triage SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_triage_SOP.html)).
 
 ## Other
 
