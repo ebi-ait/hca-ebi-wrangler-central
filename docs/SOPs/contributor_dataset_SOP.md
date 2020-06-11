@@ -56,7 +56,7 @@ To see a full set of example emails sent between a contributor and an HCA wrangl
 
 Currently the DCP cannot accept datasets without full open consent for public release. We are currently working on a solution to help contributors make their data and metadata accessible via managed access.
 
-## Gathering metadata
+## Gathering data & metadata
 
 ### Spreadsheet template generation
 
@@ -65,15 +65,23 @@ Once the terms and conditions form has been submitted, and you have some initial
 The spreadsheet should be as simple as possible for the given experiment so that it is more easily understandable for the contributor so only select schema and properties that are relevant to their experiment.
 
 After the spreadsheet is generated some manual steps can help contributors understand the spreadsheet including:
-Ordering of tabs and ordering protocols between biomaterials can help contributors understand our graphical experiment model
-Ordering of columns: Move linking columns e.g. `INPUT DONOR ORGANISM` to be in the first few columns of the sheet to be more visible
-Ensure every tab that requires a link has a linking column (these are easy to miss)
-Delete or hide columns that you know aren’t relevant (if you forgot to uncheck during initial generation)
-Pre-fill any metadata you already know (optional): if the dataset has a publication it is normally possible to gain information from the publication and prefill it into the spreadsheet
+- Ordering of tabs and ordering protocols between biomaterials can help contributors understand our graphical experiment model
+- Ordering of columns: Move linking columns e.g. `INPUT DONOR ORGANISM` to be in the first few columns of the sheet to be more visible
+- Ensure every tab that requires a link has a linking column (these are easy to miss)
+- Delete or hide columns that you know aren’t relevant (if you forgot to uncheck during initial generation)
+- Pre-fill any metadata you already know (optional): if the dataset has a publication it is normally possible to gain information from the publication and prefill it into the spreadsheet
 
 Once you have a customised and potentially pre-filled spreadsheet it can be sent to the contributor along with the contributor spreadsheet guide. It is generally an iterative process of the contributor filling in what they can, the wrangler reviewing, curating and asking questions before further curation until the metadata is complete. 
 
 In the same email as the first spreadsheet that is sent,  it is a good idea to provide the contributors with instructions to upload their raw data (fastq) at this point while we validate and review their metadata.
+
+### Raw data upload (fastq)
+
+Follow the instructions on [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-using-hca-util)
+
+You will then need to provide the contributors with the upload area UUID as well as a set of AWS access keys, which only administrators (wranglers & ingest-devs) have access to. When sending these to the contributor, please be cautious that you state the UUID and keys must not be shared outside of the person who performs the data upload. 
+
+To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: [https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#](https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#).
 
 ## Curating metadata
 
@@ -97,12 +105,7 @@ If donors are from CBTM or HDBR we have direct routes of obtaining more detailed
 - Try to encourage the contributor to provide a meaningful identifier, not just a single digit
 
 
-## Raw data upload (fastq)
-Follow the instructions on [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-using-hca-util)
 
-You will then need to provide the contributors with the upload area UUID as well as a set of AWS access keys, which only administrators (wranglers & ingest-devs) have access to. When sending these to the contributor, please be cautious that you state the UUID and keys must not be shared outside of the person who performs the data upload. 
-
-To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: [https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#](https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#).
 
 ## Metadata Validation
 Once the spreadsheet is considered complete by the primary wrangler, there are two phases of metadata validation that can be completed.
