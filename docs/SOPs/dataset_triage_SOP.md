@@ -12,6 +12,7 @@ parent: SOPs
 The prioritisation of datasets in the ‘HCA priority’ column of the tracker sheet should be indicated on a scale from 0 - 8, so that highest priority dataset rows can be easily sorted to the top of the tracker sheet and low priority and complete dataset rows at bottom of the sheet. The following number system should be used when assigning datasets with a particular priority level.
 
 **0: in-progress datasets**
+
 Here, in-progress is defined as any state after acknowledgment and before completion. Completion here is defined as a dataset which has been validated in ingest and is in the ‘archiving’ state, or has been submitted to DCP1.0 or DCP2.0. NOTE: this should also include new contributor’s data; since they are always top priority, they should be started and in-progress very soon if not immediately as we hear about them. This should include datasets which have been stalled; in that case please indicate that they are ‘blocked’ in the ‘HCA status’ column and if possible, a note explaining why in the ‘HCA status comment’ column.
 
 **1: Human, primary, normal samples**
