@@ -1,3 +1,9 @@
+---
+layout: default
+title: Contributor dataset SOP
+parent: SOPs
+---
+
 # Wrangling Contributor’s Datasets SOP
 
 ## Background
