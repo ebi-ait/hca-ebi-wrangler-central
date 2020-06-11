@@ -73,9 +73,9 @@ After the spreadsheet is generated some manual steps can help contributors under
 
 Once you have a customised and potentially pre-filled spreadsheet it can be sent to the contributor along with the contributor spreadsheet guide. It is generally an iterative process of the contributor filling in what they can, the wrangler reviewing, curating and asking questions before further curation until the metadata is complete. 
 
-In the same email as the first spreadsheet that is sent,  it is a good idea to provide the contributors with instructions to upload their raw data (fastq) at this point while we validate and review their metadata.
-
 ### Raw data upload (fastq)
+
+In the same email as the first spreadsheet that is sent, it is a good idea to create an upload are and provide the credentials and instructions for [how to upload their raw data (fastq)](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) so they can start the process while we validate and review their metadata.
 
 Follow the instructions on [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-using-hca-util)
 
@@ -120,9 +120,13 @@ The primary wrangler should also upload the spreadsheet to the production ui at 
 
 To create a new submission from a spreadsheet, go to the `ALL SUBMISSIONS` tab then click the `Upload New Submission` button in the top right. If the metadata is valid, you can move on to uploading the fastq files data. If it is invalid, you will need to resolve any errors or problems and re-upload the metadata sheet again and repeat this process until it is valid.
 
-## Secondary Review:
+## Secondary Review
+
 Once the spreadsheet has passed both phases of validation, the primary wrangler should ask another wrangler in the team to review the spreadsheet and suggest any required edits or updates.
-If any edits or updates are made the existing submission in ingest will need to be deleted and the new spreadsheet uploaded in its place. If any changes may have also affected the linking in the spreadsheet it should also be run through the ingest-graph-validator again by the primary wrangler.
+
+If any edits or updates are made, the existing submission in ingest will need to be deleted and the new spreadsheet uploaded in its place. 
+
+If any changes may have also affected the linking in the spreadsheet it should also be run through the ingest-graph-validator again by the primary wrangler.
 
 A detailed guide to performing secondary review can be found here:
 
@@ -132,7 +136,7 @@ Once both the Primary and Secondary wrangler are happy with the submission and i
 The next step is to transfer the contributors data to ingest. 
 
 Pre-Requisites:
-Access to the Wrangler EC2
+Access to the EBI Wrangler EC2
 
 If this command is executed on the wrangler EC2, the files will be transferred from s3 to s3 directly.
 
