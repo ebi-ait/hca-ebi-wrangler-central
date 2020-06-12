@@ -130,7 +130,7 @@ If any edits or updates are made, the existing submission in ingest will need to
 
 If any changes may have also affected the linking in the spreadsheet it should also be run through the ingest-graph-validator again by the primary wrangler.
 
-A detailed guide to performing secondary review can be found here:
+A detailed guide to performing secondary review [can be found here](secondary_review_SOP).
 
 Once both the Primary and Secondary wrangler are happy with the submission and it is valid in ingest, the data files can be moved from the contributor bucket into the ingest upload area.
 
