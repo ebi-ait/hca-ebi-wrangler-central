@@ -29,13 +29,13 @@ New contributors will almost always contact us via the wranglers email list. Whe
 
 ## Early contact with contributors
 
-The wranglers and managers are first notified of a new contributor by email to a team-wide email list and as a team they decide who will be responsible for the new dataset. Generally speaking, UCSC wranglers are responsible for contributor relationships from Central USA and the Pacific rim region, whereas EBI wranglers are responsible for Europe, Africa, Central Asia and Eastern USA. There are also some existing relationships between wranglers and certain labs which may influence the choice of who takes the lead on wrangling a particular dataset. Capacity is another consideration as the EBI wrangler team is larger than UCSC.
+The wranglers and managers are first notified of a new contributor by email to a team-wide email list and as a team they decide who will be responsible for the new dataset. Work is divided between EBI and UCSC wranglers based on convenience, time zones, current workload and existing relationships. Generally speaking, UCSC wranglers are responsible for contributor relationships from Central USA, Central America and the Pacific rim region, whereas EBI wranglers are responsible for Europe, Africa, Central Asia, Eastern USA and most of South America. 
 
-From there, the primary wrangler will communicate with the contributor via email and often set up virtual or in-person meetings to discuss their project needs. 
+Once a primary wrangler is assigned, they will communicate with the contributor via email and set up virtual or in-person meetings to discuss their project needs. 
 
 ### Finding out about the dataset
 
-If nothing is known about the project, the first step is to find out enough information about the dataset in order to create a customised spreadsheet template for the contributor to fill in. This can be done either by:
+If nothing is known about the project, the first step is to find out enough information in order to create a customised spreadsheet template for the contributor to fill in. This can be done either by:
 
 1. Sending the contributor the [HCA Dataset Questionnaire form](https://docs.google.com/forms/d/e/1FAIpQLSdjPk2Z6xYozds53ycvXo57PvFsyqOF6XMpSWCVNTpQYalZzQ/viewform?usp=sf_link)
 1. Setting up an in-person or video call. The questions in the HCA Dataset Questionnaire form can be used as guide to know what questions to ask of the contributor
@@ -50,11 +50,11 @@ If you already have some information about the dataset and don’t need the cont
 
 Before metadata and data can be received from contributors they are required to fill in a terms and conditions agreement form which confirms open consent to their data and other agreements ([Terms and conditions form](https://docs.google.com/forms/d/e/1FAIpQLScYrxmDb9rD38J7k0lmfhM7JKmKgSaXegx7Imlbecsu4vNrcg/viewform)). This can be sent to them either straight away or after asking them and confirming that they do have full consent for public release. 
 
-To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#.
+To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please see: https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#.
 
-**What to do in the case that a contributor’s data does not have full consent for public release?**
+*What do I do if a contributor’s data is not fully consented for public release?*
 
-Currently the DCP cannot accept datasets without full open consent for public release. We are currently working on a solution to help contributors make their data and metadata accessible via managed access.
+Currently the HCA DCP cannot accept datasets without full open consent for public release. We are currently working on a solution to help contributors make their data and metadata accessible via managed access.
 
 ## Gathering data & metadata
 
@@ -87,7 +87,9 @@ To see a full set of example emails sent between a contributor and an HCA wrangl
 
 ### Ontology curation
 
-For ontologised fields, wranglers need to assign an ontology term that best suits the text provided by the contributor. The ontologised fields must be present within the latest version of the HCAO and meet the graph restriction present in the schema. The ontology filler tool can help with this process, but should be reviewed once complete. 
+For ontologised fields, wranglers need to assign an ontology term that best suits the text provided by the contributor. The ontologised fields must be present within the latest version of the HCAO and meet the graph restriction present in the schema. The [ontology filler tool](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/src/fill_ontologies.py) can help with this process, but should be reviewed once complete. 
+
+If a wrangler cannot find an accurate ontology term and believes a term should be added to the relevant ontology, they should follow the [Request ontology terms SOP](request_ontology_terms).
 
 ### General metadata curation tips
 
