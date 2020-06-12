@@ -3,3 +3,6 @@ site_url: https://ebi-ait.github.io/hca-ebi-wrangler-central/
 remote_theme: pmarsceill/just-the-docs
 # remote_theme: leakyabstractions/pretty-docs
 search_enabled: true
+aux_links:
+  "Edit these Docs on GitHub":
+    - "https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/docs"
