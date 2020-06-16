@@ -13,6 +13,7 @@ The [`docs/`](https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/do
 
 - [SOP documents](https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/docs/SOPs)
 - [EBI wrangler onboarding document](https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/docs/ebi-wrangler-onboarding.md)
+- [Docs website](https://ebi-ait.github.io/hca-ebi-wrangler-central/) - All md docs in the `docs` folder are also rendered into a website for easier reading and navigation
 
 ## Repo implementation
 
