@@ -11,6 +11,7 @@ Outline the process of **requesting ontology terms**, as well as document releas
 
 ### Requesting new ontology terms
 Ontology requests should be issued as tickets on the [ontology repository](https://github.com/HumanCellAtlas/ontology). Please request them using the issue template provided in there and tag Zoe.
+
 [Request an ontology term](https://github.com/HumanCellAtlas/ontology/issues/new/choose){: .btn .btn-blue }
 
 ### Release dates and plan of release
