@@ -47,6 +47,38 @@ To "install" `bamtofastq`, go to https://support.10xgenomics.com/docs/bamtofastq
 1. Bask in the joy of being able to get R1, R2, AND I1 files from BAMs
 
 
+## Uploading files to an s3 bucket from the archives
+
+### Pre-requisites and installation
+- `wget`
+- Connect to the EC2, create a virtual environment and install the python requirements:
+  ```
+  virtualenv <name_of_env>
+  source <name_of_env>/bin/activate
+  wget https://raw.githubusercontent.com/ebi-ait/hca-ebi-wrangler-central/master/src/requirements.txt
+  pip3 install -r requirements.txt
+  ```
+
+### Usage
+
+1. Connect to the EC2
+1. Create an upload area using the `hca-util` tool.
+1. `wget` the `move_data_from_indsc.py` script to your root directory in EC2
+   ```
+   wget https://raw.githubusercontent.com/ebi-ait/hca-ebi-wrangler-central/master/src/move_data_from_insdc.py
+   ```
+1. Run the script:
+   ```
+   python3 move_data_from_indsc.py -s <study/project accession> -o s3://hca-util-upload-area/<upload_area_id> -t <number_of_threads>
+   ```
+1. Enjoy while your data gets loaded into the s3 area!
+
+### Notes
+
+- Right now, even with a good amount of threads (>= 5) it takes about 5 hours to move 1 TB of data. It is best practice to [set up a virtual screen](tmux-screen) and leave it running.
+- The `output_path` (-o) argument can be pointed out to a local directory
+
+
 ## Validating files on the ec2: fastq_info
 
 TODO: Check whether we can do the syncing to ec2 currently
@@ -189,7 +221,7 @@ contact_names/emails	['Martin, Enge', 'Laura,,Huerta', 'Matthew,,Green', 'martin
 
 If you would like additional metadata reported by this tool, please make a request via a GitHub issue in the ingest-central repository.
 
-## Use terminal sessions in EC2: tmux, screen
+## [Use terminal sessions in EC2: tmux, screen](#tmux-screen)
 
 ### Pre-requisites and installation
 
