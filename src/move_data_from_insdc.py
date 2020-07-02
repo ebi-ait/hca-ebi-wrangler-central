@@ -8,7 +8,6 @@ from urllib.request import urlopen
 from urllib.request import OpenerDirector
 from multiprocessing import Pool
 from io import BytesIO
-import sys
 
 
 def parse_args() -> argparse.Namespace:
@@ -31,17 +30,18 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def retrieve_ena_file_urls(study_accession: str) -> list:
+def retrieve_file_urls(study_accession: str) -> list:
     """
-    Given an ENA study or project accession, retrieve and return a list of all the ftp addresses for the files.
+    Given an ENA/GEO study or project accession, retrieve and return a list of all the ftp addresses for the files.
 
     :param study_accession: str
                             Accession for an ENA project or study (e.g. PRJEBXXXX)
     :returns files: list
                     List of all the ftp addresses for the files within the study/project.
     """
+    field = "submitted_ftp" if "PRJ" in study_accession else "fastq_ftp"
     request_url = (f"https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession={study_accession}"
-                   f"&result=read_run&fields=submitted_ftp")
+                   f"&result=read_run&fields={field}")
     request = rq.get(request_url)
     lines = request.text.splitlines()[1:]
     files = []
@@ -208,7 +208,7 @@ def transfer_file_to_s3(url: BytesIO, bucket: str, filename: str, prefix: str = 
 
 
 def main(args):
-    ena_list = retrieve_ena_file_urls(args.study_accession)
+    ena_list = retrieve_file_urls(args.study_accession)
     output_args = [(ena, args.output_path) for ena in ena_list]
     try:
         with Pool(args.threads) as p:
