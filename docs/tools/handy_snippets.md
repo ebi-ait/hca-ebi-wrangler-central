@@ -237,19 +237,19 @@ Using `tmux` or `screen` in the EC2 (or in life) is useful because you can run a
 tmux new -s <session_name>
 ```
 
-1. Run any command(s) like you normally would in the EC2:
+2. Run any command(s) like you normally would in the EC2:
 
 ```
 hca upload files *.fastq.gz
 ```
 
-1. To detach from your session: press CTRL+b, release both keys, and then press d. You'll be back in EC2, and the command will still be running.
-1. To view all the session you have running:
+3. To detach from your session: press CTRL+b, release both keys, and then press d. You'll be back in EC2, and the command will still be running.
+4. To view all the session you have running:
 ```
 tmux ls
 ```
 
-1. To get back to a session to see how the job is going:
+5. To get back to a session to see how the job is going:
 ```
 tmux a -t <session_name>
 ```
