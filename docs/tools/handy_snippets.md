@@ -147,7 +147,7 @@ This tool generates two summary metadata reports for a submission/project. The f
 
 To install the tool, clone the [ingest-broker repository](https://github.com/ebi-ait/ingest-broker).
 
-#### Usage
+### Usage
 
 Move to the ingest broker directory.
 
