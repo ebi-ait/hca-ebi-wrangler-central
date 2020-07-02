@@ -340,9 +340,9 @@ The following wrangler tools are related to using git. When working in the termi
 
 Please request additional commands!
 
-### Converting markdown to pdf: grip
+## Converting markdown to pdf: grip
 
-#### Pre-requisites and installation
+### Pre-requisites and installation
 
 - https://github.com/joeyespo/grip[grip]
 
@@ -362,7 +362,7 @@ On OS X, you can also install with Homebrew:
 $ brew install grip
 ```
 
-#### Usage
+### Usage
 
 See the https://github.com/joeyespo/grip#usage[grip GitHub repo] for instructions on how to use `grip`.
 
@@ -374,14 +374,14 @@ Briefly:
 1. Navigate to local host name (e.g. `http://localhost:6419/`)
 1. Print screen and save as PDF
 
-### Converting yaml to csv: generic_yaml2csv.py
+## Converting yaml to csv: generic_yaml2csv.py
 
-#### Pre-requisites and installation
+### Pre-requisites and installation
 
 - python3
 - python packages: yaml, argparse, csv, sys, pandas
 
-#### Usage
+### Usage
 
 This script converts any yaml file into csv format. The default file to convert is the potential_datasets.yaml file, but any file path can be provided. For guidance on how to use the tool, run the script with `--help`:
 
@@ -403,8 +403,6 @@ optional arguments:
 
 The following wrangler tools are related to using the hca cli.
 
-## Upload: hca upload
-
 ### Pre-requisites and installation
 
 - pip
@@ -421,7 +419,9 @@ If you haven't updated the hca cli in a while, update to the newest version usin
 pip install --upgrade hca
 ```
 
-### Usage
+### Upload: hca upload
+
+#### Usage
 
 The two main `hca upload` commands wranglers use is the one to select the upload area of interest (`hca upload select`) and to transfer files to that upload area (`hca upload files`). Wranglers might also want to view a list of files in the selected upload area (`hca upload list`) or view a list of all upload areas they have accessed (`hca upload areas`).
 
