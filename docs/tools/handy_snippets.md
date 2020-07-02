@@ -75,7 +75,7 @@ To "install" `bamtofastq`, go to https://support.10xgenomics.com/docs/bamtofastq
 
 ### Notes
 
-- Right now, even with a good amount of threads (>= 5) it takes about 5 hours to move 1 TB of data. It is best practice to [set up a virtual screen](tmux-screen) and leave it running.
+- Right now, even with a good amount of threads (>= 5) it takes about 5 hours to move 1 TB of data. It is best practice to [set up a virtual screen](#uploading-files-to-an-s3-bucket-from-the-archives) and leave it running.
 - The `output_path` (-o) argument can be pointed out to a local directory
 
 
