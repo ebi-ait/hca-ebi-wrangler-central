@@ -157,79 +157,82 @@ On behalf of the HCA DCP Data Wrangling Team
 ```
 
 #### If data has living europeans, i.e. subject to GDPR
-```
-Dear <name/s of contributor/s>,
 
-Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
-
-Can you, or an authorised member of your lab, please officially confirm you have open consent to release data and metadata by this by agreeing to our terms and conditions via the following form: https://forms.gle/8XW8vapGQJRfKrc36  
-
-Once you have agreed, this confirms that we have permission to handle your metadata and data and we can share with you the next steps in metadata assembly and data upload.
-
-We can facilitate submitting your data and metadata to public EBI archives. We will then be able to provide you with accessions for your dataset. 
-
-Currently the HCA DCP is not accepting data that is subject to GDPR, but we are currently working on supporting this data. By submitting through us with metadata that meets the HCA metadata standard, we will ensure your dataset is incorporated into the HCA DCP once we are able to support it.
-
-Many thanks,
-
-<primary wrangler name>
-On behalf of the HCA DCP Data Wrangling Team
-```
+> Dear <name/s of contributor/s>,
+> 
+> Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
+> 
+> Can you, or an authorised member of your lab, please officially confirm you have open consent to release data and metadata by this by agreeing to our terms and conditions via the following form: https://forms.gle/8XW8vapGQJRfKrc36  
+> 
+> Once you have agreed, this confirms that we have permission to handle your metadata and data and we can share with you the next steps in metadata assembly and data upload.
+> 
+> We can facilitate submitting your data and metadata to public EBI archives. We will then be able to provide you with accessions for your dataset. 
+> 
+> Currently the HCA DCP is not accepting data that is subject to GDPR, but we are currently working on supporting this data. By submitting through us with metadata that meets the HCA metadata standard, we will ensure your dataset is incorporated into the HCA DCP once we are able to support it.
+> 
+> Many thanks,
+> 
+> [primary wrangler name]
+> On behalf of the HCA DCP Data Wrangling Team
 
 ### Spreadsheet and Data upload instructions
-```
-Dear <name/s of contributor/s>,
 
-Thank you for filling our terms and conditions form.
+> Dear [name/s of contributor/s],
+>
+> Thank you for filling our terms and conditions form.
+> 
+> The next steps are:
+> 
+> 1. Assemble your metadata to meet the HCA standard
+> Attached to this email you will find a custom metadata spreadsheet where you can fill in all the details of your experimental metadata. A guide to help in this process can be found here: [Spreadsheet Quick Guide](https://ebi-ait.github.io/hca-metadata-community/contributing/spreadsheet-guide.html)
+> 
+> 2. Upload your data to our cloud space
+> To upload your raw data files to our cloud space you will need to follow the instructions here: [How to upload data to an hca upload area with hca-util] (https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) 
+> 
+> The credentials you will need are:
+> 
+> Unique upload area identifier: <upload area uuid>
+> 
+> AWS Access key: <contributor access key> 
+> 
+> AWS Secret key: <contributor secret key>
+> 
+> Please treat these credentials securely and do not share them with anyone outside of those performing the file upload.
+> 
+> What’s next?
+> 
+> After we have put together your data and metadata into a valid submission we will archive your data and metadata in [BioStudies](https://www.ebi.ac.uk/biostudies/), [BioSamples](https://www.ebi.ac.uk/biosamples/) and the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser/home) and provide you with accessions for your manuscript. We will also ensure your data and metadata make it into the next HCA DCP snapshot releaserelease/snapshot. As indicated by you, we will ensure no data or metadata is made public until [enter date] / we will make the data public as soon as it is submitted.
+> 
+> If you would also like your study to be brokered to [ArrayExpress](https://www.ebi.ac.uk/arrayexpress/), please let us know. 
+> 
+> Don’t hesitate to get back in touch if you have any issues with any part of the process.
+> 
+> Kind regards,
+> 
+> [primary wrangler name]
+> On behalf of the HCA DCP Data Wrangling Team
 
-The next steps are:
-
-Assemble your metadata to meet the HCA standard
-Attached to this email you will find a custom metadata spreadsheet where you can fill in all the details of your experimental metadata. A guide to help in this process can be found here: Spreadsheet Quick Guide (https://ebi-ait.github.io/hca-metadata-community/contributing/spreadsheet-guide.html)
-
-Upload your data to our cloud space
-To upload your raw data files to our cloud space you will need to follow the instructions here: How to upload data to an hca upload area with hca-util (https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) 
-
-The credentials you will need are:
-Unique upload area identifier: <upload area uuid>
-AWS Access key: <contributor access key> 
-AWS Secret key: <contributor secret key>
-
-Please treat these credentials securely and do not share them with anyone outside of those performing the file upload.
-
-What’s next?
-
-After we have put together your data and metadata into a valid submission we will archive your data and metadata in BioStudies(https://www.ebi.ac.uk/biostudies/), BioSamples(https://www.ebi.ac.uk/biosamples/) and the European Nucleotide Archive(https://www.ebi.ac.uk/ena/browser/home) and provide you with accessions for your manuscript. We will also ensure your data and metadata make it into the next HCA DCP snapshot releaserelease/snapshot. As indicated by you, we will ensure no data or metadata is made public until <enter date> / we will make the data public as soon as it is submitted.
-
-If you would also like your study to be brokered to ArrayExpress(https://www.ebi.ac.uk/arrayexpress/), please let us know. 
-Don’t hesitate to get back in touch if you have any issues with any part of the process.
-
-Kind regards,
-
-<primary wrangler name>
-On behalf of the HCA DCP Data Wrangling Team
-```
 
 ### Final confirmation before submission
 
 
-> Dear /[name/s of contributor/s/],
+> Dear [name/s of contributor/s],
 >
 > I am excited to tell you that we are ready to submit your dataset to the HCA DCP!
 >
 > You will find attached the final metadata spreadsheet that will be submitted. 
 >
-> /[optional/] Please check /[specific things to check/].
+> [optional] Please check [specific things to check].
 >
 > We can confirm that we have received your data files and they are valid and match the file metadata provided.
 >
-> Once you give final approval we will proceed with submission and will make your data and metadata publicly available on /[enter date/] / immediately. We will get back in touch once we have accessions available for your dataset.
+> Once you give final approval we will proceed with submission and will make your data and metadata publicly available on [enter date] / immediately. We will get back in touch once we have accessions available for your dataset.
 >
-> We will also let you know when your data has been made public on the Human Cell Atlas portal as part of the next release/snapshot.
+> We will also let you know when your data has been made public on the Human Cell Atlas portal as part of the next snapshot release.
 >
 > Many thanks for your contribution to the Human Cell Atlas.
 >
-> /[primary wrangler name/]
+> [primary wrangler name]
 > 
 > On behalf of the HCA DCP Data Wrangling Team
 
