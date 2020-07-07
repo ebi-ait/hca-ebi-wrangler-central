@@ -95,70 +95,68 @@ These templates are considered a guide to provide a skeleton with the required i
 
 ### First contact - Data questionnaire
 
-```
-Dear <name/s of contributor/s>,
-
-Thank you for contacting us regarding your interest in registering your project with the Human Cell Atlas! Below you will find the first steps:
-
-1 - Register as part of the HCA by filling the following form: https://www.humancellatlas.org/register (if you haven’t already)
-
-2 - Please fill out the dataset questionnaire (https://forms.gle/HWADhk3Z6hUEbvVh8). The questionnaire  asks for information about your experiments. This will help us create a tailor spreadsheet for you to fill out about your project 
-
-After filling both forms, we will contact you with the next steps to continue the submission of your metadata collection and data.
-
-I am happy to set up a meeting or call about any concerns or queries that your team might have.
-
-Best regards,
-
-<primary wrangler name>
-On behalf of the HCA DCP Data Wrangling Team
-```
+> Dear [name/s of contributor/s],
+> 
+> Thank you for contacting us regarding your interest in registering your project with the Human Cell Atlas! Below you will find the first steps:
+> 
+> 1. Register as part of the HCA by filling the following form: https://www.humancellatlas.org/register (if you haven’t already)
+> 
+> 2. Please fill out the dataset questionnaire (https://forms.gle/HWADhk3Z6hUEbvVh8). The questionnaire  asks for information about your experiments. This will help us create a tailor spreadsheet for you to fill out about your project 
+> 
+> After filling both forms, we will contact you with the next steps to continue the submission of your metadata collection and data.
+> 
+> I am happy to set up a meeting or call about any concerns or queries that your team might have.
+> 
+> Best regards,
+> 
+> [primary wrangler name]
+> 
+> On behalf of the HCA DCP Data Wrangling Team
 
 ### Terms and Conditions/Consent
 
 #### If all data can be released openly:
 
-```
-Dear <name/s of contributor/s>,
-
-Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
-
-Can you, or an authorised member of your lab, please officially confirm you have open consent to release data and metadata by this by agreeing to our terms and conditions via the following form: https://forms.gle/8XW8vapGQJRfKrc36  
-
-Once you have agreed, this confirms that we have permission to handle your metadata and data and we can share with you the next steps in metadata assembly and data upload.
-
-We do/don’t think we will be able to provide you with accessions for your dataset by your requested date <enter date here>. 
-
-<If we don’t think we can meet the deadline> 
-The earliest date we can offer would be <enter date here>.
-
-Best regards,
-
-<primary wrangler name>
-On behalf of the HCA DCP Data Wrangling Team
-```
+> Dear [name/s of contributor/s],
+> 
+> Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
+> 
+> Can you, or an authorised member of your lab, please officially confirm you have open consent to release data and metadata by this by agreeing to our terms and conditions via the following form: https://forms.gle/8XW8vapGQJRfKrc36  
+> 
+> Once you have agreed, this confirms that we have permission to handle your metadata and data and we can share with you the next steps in metadata assembly and data upload.
+> 
+> We do/don’t think we will be able to provide you with accessions for your dataset by your requested date <enter date here>. 
+> 
+> *[If we don’t think we can meet the deadline]* 
+> The earliest date we can offer would be [enter date here].
+> 
+> Best regards,
+> 
+> [primary wrangler name]
+> 
+> On behalf of the HCA DCP Data Wrangling Team
 
 #### If data is managed access
 
-```
-Dear <name/s of contributor/s>,
-
-Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
-
-Currently we cannot handle managed access data directly. If you have public metadata that you would like to link to a managed access EGA submission, we can facilitate brokering your metadata to BioSamples, linking it to your EGA dataset and making processed data and open metadata available in ArrayExpress.
-
-This process is currently under development but if you would like to be part of the pilot we can further explain the process and next steps. Would you be available any of the following times:
-<suggest appropriate times based on schedule>
-
-Best regards,
-
-<primary wrangler name>
-On behalf of the HCA DCP Data Wrangling Team
-```
+> Dear <name/s of contributor/s>,
+> 
+> Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
+> 
+> Currently we cannot handle managed access data directly. If you have public metadata that you would like to link to a managed access EGA submission, we can facilitate brokering your metadata to BioSamples, linking it to your EGA dataset and making processed data and open metadata available in ArrayExpress.
+> 
+> This process is currently under development but if you would like to be part of the pilot we can further explain the process and next steps. Would you be available any of the following times:
+> 
+> [suggest appropriate times based on schedule]
+> 
+> Best regards,
+> 
+> [primary wrangler name]
+> 
+> On behalf of the HCA DCP Data Wrangling Team
 
 #### If data has living europeans, i.e. subject to GDPR
 
-> Dear <name/s of contributor/s>,
+> Dear [name/s of contributor/s],
 > 
 > Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
 > 
