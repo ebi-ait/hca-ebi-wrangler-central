@@ -123,9 +123,9 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > Thank you for contacting us regarding your interest in registering your project with the Human Cell Atlas! Below you will find the first steps:
 > 
-> 1. Register as part of the HCA by filling the following form: https://www.humancellatlas.org/register (if you haven’t already)
+> 1 Register as part of the HCA by filling the following form: https://www.humancellatlas.org/register (if you haven’t already)
 > 
-> 2. Please fill out the dataset questionnaire (https://forms.gle/HWADhk3Z6hUEbvVh8). The questionnaire  asks for information about your experiments. This will help us create a tailor spreadsheet for you to fill out about your project 
+> 2 Please fill out the dataset questionnaire (https://forms.gle/HWADhk3Z6hUEbvVh8). The questionnaire  asks for information about your experiments. This will help us create a tailor spreadsheet for you to fill out about your project 
 > 
 > After filling both forms, we will contact you with the next steps to continue the submission of your metadata collection and data.
 > 
@@ -205,11 +205,11 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > The next steps are:
 > 
-> 1. Assemble your metadata to meet the HCA standard
+> 1 Assemble your metadata to meet the HCA standard
 > 
 > Attached to this email you will find a custom metadata spreadsheet where you can fill in all the details of your experimental metadata. A guide to help in this process can be found here: [Spreadsheet Quick Guide](https://ebi-ait.github.io/hca-metadata-community/contributing/spreadsheet-guide.html)
 > 
-> 2. Upload your data to our cloud space
+> 2 Upload your data to our cloud space
 > 
 > To upload your raw data files to our cloud space you will need to follow the instructions here: [How to upload data to an hca upload area with hca-util] (https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) 
 > 
@@ -223,7 +223,7 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > Please treat these credentials securely and do not share them with anyone outside of those performing the file upload.
 > 
-> 3. What’s next?
+> 3 What’s next?
 > 
 > After we have put together your data and metadata into a valid submission we will archive your data and metadata in [BioStudies](https://www.ebi.ac.uk/biostudies/), [BioSamples](https://www.ebi.ac.uk/biosamples/) and the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser/home) and provide you with accessions for your manuscript. We will also ensure your data and metadata make it into the next HCA DCP snapshot releaserelease/snapshot. As indicated by you, we will ensure no data or metadata is made public until [enter date] / we will make the data public as soon as it is submitted.
 > 
