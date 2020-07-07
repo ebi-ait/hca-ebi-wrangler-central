@@ -97,7 +97,14 @@ It is also common for a wrangler to need to confirm ontology curations. It is po
 Only if there are supplementary files: Make sure the files have been input twice in the spreadsheet (In the proper tab and in the `Supplementary files` tab). Once the files are uploaded make sure that they are called exactly the same.
 
 ## Final confirmation before submission
+
 Once a submission is 100% valid and has been reviewed, a final confirmation email should be sent to the contributor with the latest spreadsheet attached to confirm they are happy with the curation.
+
+## Confirmation of Accessions
+
+Once the submission has been successfully archived, accessions should be communicated back to the contributor. If there is a risk that the deadline the contributor gave will not be met, the contributor should be contacted to inform them of the risk and offer alternatives or work arounds. The project level accessions should be provided within the main body of the email.
+
+Once the dataset is released in an HCA snapshot release, the contributor should be informed and provided with the link to their dataset on the HCA Data Browser.
 
 ## Template emails
 These templates are considered a guide to provide a skeleton with the required information. The primary wrangler can choose to edit and customise to make it more personal or appropriate for the situation.
