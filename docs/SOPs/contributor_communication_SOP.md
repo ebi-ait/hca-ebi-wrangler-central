@@ -3,7 +3,7 @@ layout: default
 title: Contributor communication
 parent: SOPs
 ---
-
+<script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
 # Contributor communication SOP
 ## Background
 
@@ -11,16 +11,13 @@ While wrangling a dataset from a contributor a wrangler needs to be in contact w
 
 ## General guidelines
 
-- CC the wrangler-team email
-{: .text-blue-000 } 
-{: .d-inline-block }
-in all communications with contributors so that the team is aware of the current status and can pick up on communications if the primary wrangler is unavailable.
-- Record key communication events in the related github project tracker ticket by ticking the relevant box or making a comment if more detail is useful. 
-- Keep emails clear, concise and to the point 
-- Ensure the most important information is first - expect that the reader could lose interest at any moment
-- Make the subject line capture attention, including HCA/Human Cell Atlas is useful
-- Be gracious, polite and friendly :)
-- Always leave the option of a meeting to chat if things seem to be getting complicated
+<i class="fa fa-reply-all" aria-hidden="true"></i> **CC the wrangler-team email** in all communications with contributors so that the team is aware of the current status and can pick up on communications if the primary wrangler is unavailable.
+<i class="fa fa-comments-o" aria-hidden="true"></i> <i class="fa fa-github-alt" aria-hidden="true"></i> **Record key communication events** in the related github project tracker ticket by ticking the relevant box or making a comment if more detail is useful. 
+<i class="fa fa-pencil-square-o" aria-hidden="true"></i> Keep emails **clear**, **concise** and to the point 
+<i class="fa fa-info-circle" aria-hidden="true"></i> Ensure the **most important information is first** - expect that the reader could lose interest at any moment
+<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Make the subject line **capture attention**, including HCA/Human Cell Atlas is useful
+<i class="fa fa-smile-o" aria-hidden="true"></i> Be **gracious, polite and friendly** 
+<i class="fa fa-phone-square" aria-hidden="true"></i> Always leave the option of a **meeting to chat** if things seem to be getting complicated
 
 ## First contact
 The aim of the first contact with a contributor is to find out some key information about the project and ask the contributor to provide more detailed information using the data questionnaire form(https://forms.gle/KFYna7zGdQvwya8b8) or by setting up a meeting in-person or via video chat.
