@@ -212,22 +212,22 @@ On behalf of the HCA DCP Data Wrangling Team
 
 ### Final confirmation before submission
 
-```
-Dear <name/s of contributor/s>,
 
-I am excited to tell you that we are ready to submit your dataset to the HCA DCP!
+>Dear <name/s of contributor/s>,
+>
+>I am excited to tell you that we are ready to submit your dataset to the HCA DCP!
+>
+>You will find attached the final metadata spreadsheet that will be submitted. 
+><optional> Please check <specific things to check>.
+>
+>We can confirm that we have received your data files and they are valid and match the file metadata provided.
+>
+>Once you give final approval we will proceed with submission and will make your data and metadata publicly available on <enter date> / immediately. We will get back in touch once we have accessions available for your dataset.
+>
+>We will also let you know when your data has been made public on the Human Cell Atlas portal as part of the next release/snapshot.
+>
+>Many thanks for your contribution to the Human Cell Atlas.
+>
+><primary wrangler name>
+>On behalf of the HCA DCP Data Wrangling Team
 
-You will find attached the final metadata spreadsheet that will be submitted. 
-<optional> Please check <specific things to check>.
-
-We can confirm that we have received your data files and they are valid and match the file metadata provided.
-
-Once you give final approval we will proceed with submission and will make your data and metadata publicly available on <enter date> / immediately. We will get back in touch once we have accessions available for your dataset.
-
-We will also let you know when your data has been made public on the Human Cell Atlas portal as part of the next release/snapshot.
-
-Many thanks for your contribution to the Human Cell Atlas.
-
-<primary wrangler name>
-On behalf of the HCA DCP Data Wrangling Team
-```
