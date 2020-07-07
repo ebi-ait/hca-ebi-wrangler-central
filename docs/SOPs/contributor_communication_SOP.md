@@ -195,6 +195,7 @@ These templates are considered a guide to provide a skeleton with the required i
 > Many thanks,
 > 
 > [primary wrangler name]
+> 
 > On behalf of the HCA DCP Data Wrangling Team
 
 ### Spreadsheet and Data upload instructions
@@ -234,6 +235,7 @@ These templates are considered a guide to provide a skeleton with the required i
 > Kind regards,
 > 
 > [primary wrangler name]
+> 
 > On behalf of the HCA DCP Data Wrangling Team
 
 
