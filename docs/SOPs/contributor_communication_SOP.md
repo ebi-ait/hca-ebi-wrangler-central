@@ -11,8 +11,10 @@ While wrangling a dataset from a contributor a wrangler needs to be in contact w
 
 ## General guidelines
 
-- CC the wrangler-team email 
-{: .text-blue-000 } in all communications with contributors so that the team is aware of the current status and can pick up on communications if the primary wrangler is unavailable.
+- CC the wrangler-team email
+{: .text-blue-000 } 
+{: .d-inline-block }
+in all communications with contributors so that the team is aware of the current status and can pick up on communications if the primary wrangler is unavailable.
 - Record key communication events in the related github project tracker ticket by ticking the relevant box or making a comment if more detail is useful. 
 - Keep emails clear, concise and to the point 
 - Ensure the most important information is first - expect that the reader could lose interest at any moment
