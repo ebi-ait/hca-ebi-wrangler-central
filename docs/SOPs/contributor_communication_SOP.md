@@ -5,9 +5,18 @@ parent: SOPs
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
 # Contributor communication SOP
+{: .no_toc }
+
 ## Background
+{: .no_toc }
 
 While wrangling a dataset from a contributor a wrangler needs to be in contact with the contributor in order to get the required metadata and data for a submission. This document provides guidance on how communication with contributors should be approached.
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 ## General guidelines
 
