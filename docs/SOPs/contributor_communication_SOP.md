@@ -41,13 +41,17 @@ The first contact email should contain:
 - Link to register as part of the HCA
 - Link to the dataset questionnaire(https://forms.gle/KFYna7zGdQvwya8b8) or an attempt to set up a meeting
 
+[Template email](#first-contact---data-questionnaire){: .btn .btn-blue }
+
 ## Follow-up contact
 Once the primary wrangler has gained more information about the dataset, a custom spreadsheet can be generated with the relevant tabs and fields for the contributor’s experiment. 
 
 Before any data and metadata can be received, either the contributor or an authorised representative from their lab, must agree to the HCA terms and conditions by completing the HCA terms and conditions form.
 
 The first follow up email should contain:
-Link to terms and conditions form (https://forms.gle/8XW8vapGQJRfKrc36)
+- Link to terms and conditions form (https://forms.gle/8XW8vapGQJRfKrc36)
+
+[Template email](#terms-and-conditions-and-consent){: .btn .btn-blue }
 
 Once the terms and conditions form is complete, the metadata spreadsheet and the instructions and credentials for uploading data to their ingest upload area can be provided to the contributor. 
 
@@ -57,6 +61,8 @@ The second follow-up email should contain:
 - Upload area uuid that is unique to the contributor
 - AWS contributor credentials
 - Link to instructions for how to upload data to an upload area(https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util)
+
+[Template email](#spreadsheet-and-data-upload-instructions){: .btn .btn-blue }
 
 ### Frequency of contact
 
@@ -100,6 +106,8 @@ Only if there are supplementary files: Make sure the files have been input twice
 
 Once a submission is 100% valid and has been reviewed, a final confirmation email should be sent to the contributor with the latest spreadsheet attached to confirm they are happy with the curation.
 
+[Template email](#final-confirmation-before-submission){: .btn .btn-blue }
+
 ## Confirmation of Accessions
 
 Once the submission has been successfully archived, accessions should be communicated back to the contributor. If there is a risk that the deadline the contributor gave will not be met, the contributor should be contacted to inform them of the risk and offer alternatives or work arounds. The project level accessions should be provided within the main body of the email.
@@ -129,7 +137,7 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > On behalf of the HCA DCP Data Wrangling Team
 
-### Terms and Conditions/Consent
+### Terms and Conditions and Consent
 
 #### If all data can be released openly:
 
@@ -228,7 +236,6 @@ These templates are considered a guide to provide a skeleton with the required i
 
 
 ### Final confirmation before submission
-
 
 > Dear [name/s of contributor/s],
 >
