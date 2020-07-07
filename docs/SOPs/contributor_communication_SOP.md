@@ -14,7 +14,7 @@ While wrangling a dataset from a contributor a wrangler needs to be in contact w
 - 
 
 CC the wrangler-team email 
-{: .text-blue-100 }
+{: .label }
 
 in all communications with contributors so that the team is aware of the current status and can pick up on communications if the primary wrangler is unavailable.
 - Record key communication events in the related github project tracker ticket by ticking the relevant box or making a comment if more detail is useful. 
