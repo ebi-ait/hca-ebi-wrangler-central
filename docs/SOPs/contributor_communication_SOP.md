@@ -12,11 +12,17 @@ While wrangling a dataset from a contributor a wrangler needs to be in contact w
 ## General guidelines
 
 <i class="fa fa-reply-all" aria-hidden="true"></i> **CC the wrangler-team email** in all communications with contributors so that the team is aware of the current status and can pick up on communications if the primary wrangler is unavailable.
+
 <i class="fa fa-comments-o" aria-hidden="true"></i> <i class="fa fa-github-alt" aria-hidden="true"></i> **Record key communication events** in the related github project tracker ticket by ticking the relevant box or making a comment if more detail is useful. 
+
 <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Keep emails **clear**, **concise** and to the point 
+
 <i class="fa fa-info-circle" aria-hidden="true"></i> Ensure the **most important information is first** - expect that the reader could lose interest at any moment
+
 <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Make the subject line **capture attention**, including HCA/Human Cell Atlas is useful
+
 <i class="fa fa-smile-o" aria-hidden="true"></i> Be **gracious, polite and friendly** 
+
 <i class="fa fa-phone-square" aria-hidden="true"></i> Always leave the option of a **meeting to chat** if things seem to be getting complicated
 
 ## First contact
@@ -60,8 +66,9 @@ If after two reminder emails have been sent without a response, the wrangler cou
 It is normal for some details to be missed by the contributor in the first instance. 
 
 There are some fields that aren’t strictly required but a wrangler should chase if possible:
-- For CBTM & HDBR donors
-  - We have other means of accessing the full set of releasable metadata from these tissue banks so it is a good idea to check our sources to ensure we can include as much information as possible
+
+For CBTM & HDBR donors
+ - We have other means of accessing the full set of releasable metadata from these tissue banks so it is a good idea to check our sources to ensure we can include as much information as possible
 
 For developmental donors
 - For embryos we ideally want carnegie stage, all HDBR samples should have this
@@ -88,6 +95,7 @@ These templates are considered a guide to provide a skeleton with the required i
 
 ### First contact - Data questionnaire
 
+```
 Dear <name/s of contributor/s>,
 
 Thank you for contacting us regarding your interest in registering your project with the Human Cell Atlas! Below you will find the first steps:
@@ -104,9 +112,13 @@ Best regards,
 
 <primary wrangler name>
 On behalf of the HCA DCP Data Wrangling Team
+```
+
 ### Terms and Conditions/Consent
+
 #### If all data can be released openly:
 
+```
 Dear <name/s of contributor/s>,
 
 Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
@@ -124,10 +136,11 @@ Best regards,
 
 <primary wrangler name>
 On behalf of the HCA DCP Data Wrangling Team
-
+```
 
 #### If data is managed access
 
+```
 Dear <name/s of contributor/s>,
 
 Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
@@ -141,9 +154,10 @@ Best regards,
 
 <primary wrangler name>
 On behalf of the HCA DCP Data Wrangling Team
+```
 
 #### If data has living europeans, i.e. subject to GDPR
-
+```
 Dear <name/s of contributor/s>,
 
 Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
@@ -160,8 +174,10 @@ Many thanks,
 
 <primary wrangler name>
 On behalf of the HCA DCP Data Wrangling Team
-### Spreadsheet and Data upload instructions
+```
 
+### Spreadsheet and Data upload instructions
+```
 Dear <name/s of contributor/s>,
 
 Thank you for filling our terms and conditions form.
@@ -192,9 +208,11 @@ Kind regards,
 
 <primary wrangler name>
 On behalf of the HCA DCP Data Wrangling Team
+```
 
 ### Final confirmation before submission
 
+```
 Dear <name/s of contributor/s>,
 
 I am excited to tell you that we are ready to submit your dataset to the HCA DCP!
@@ -212,3 +230,4 @@ Many thanks for your contribution to the Human Cell Atlas.
 
 <primary wrangler name>
 On behalf of the HCA DCP Data Wrangling Team
+```
