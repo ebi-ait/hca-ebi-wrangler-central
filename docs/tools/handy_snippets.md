@@ -17,16 +17,16 @@ Handy snippets that are useful to wranglers that don't quite fit elsewhere
 
 ## Downloading 10x files from archives
 
-These instructions are for getting BAM files of primary sequence data from the ENA that represent 10X sequencing data and converting them to the original I1, R1, and R2 files using the 10X `bamtofastq` tool. Please note that this tool only works for 10X data, and even then only for data processed with CellRanger and LongRagner. See the https://support.10xgenomics.com/docs/bamtofastq[10X website] for more information about what data can be converted with this tool.
+These instructions are for getting BAM files of primary sequence data from the ENA that represent 10X sequencing data and converting them to the original I1, R1, and R2 files using the 10X `bamtofastq` tool. Please note that this tool only works for 10X data, and even then only for data processed with CellRanger and LongRagner. See the [10X website](https://support.10xgenomics.com/docs/bamtofastq) for more information about what data can be converted with this tool.
 
 ### Pre-requisites and installation
 
 - wget
 - bamtofastq
 
-If you don't have `wget` installed on the machine where you want to download the files (it is on the EC2 already), you can find instructions how to install it with Homebrew for Mac https://www.cyberciti.biz/faq/howto-install-wget-om-mac-os-x-mountain-lion-mavericks-snow-leopard/[here].
+If you don't have `wget` installed on the machine where you want to download the files (it is on the EC2 already), you can find instructions how to install it with Homebrew for Mac [here](https://www.cyberciti.biz/faq/howto-install-wget-om-mac-os-x-mountain-lion-mavericks-snow-leopard/).
 
-To "install" `bamtofastq`, go to https://support.10xgenomics.com/docs/bamtofastq[10X’s website] and click "Download bamtofastq 1.1.2" to download the executable file to your local machine. There is no need to compile the tool. Simply move or copy the file to the machine where you want to use it (e.g. your home directory on the EC2), making sure to put it somewhere on your `$PATH` if you want to be able to call it from any folder.
+To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.com/docs/bamtofastq) and click "Download bamtofastq 1.1.2" to download the executable file to your local machine. There is no need to compile the tool. Simply move or copy the file to the machine where you want to use it (e.g. your home directory on the EC2), making sure to put it somewhere on your `$PATH` if you want to be able to call it from any folder.
 
 ### Usage
 
@@ -75,7 +75,7 @@ To "install" `bamtofastq`, go to https://support.10xgenomics.com/docs/bamtofastq
 
 ### Notes
 
-- Right now, even with a good amount of threads (>= 5) it takes about 5 hours to move 1 TB of data. It is best practice to [set up a virtual screen](tmux-screen) and leave it running.
+- Right now, even with a good amount of threads (>= 5) it takes about 5 hours to move 1 TB of data. It is best practice to [set up a virtual screen](#use-terminal-sessions-in-ec2-tmux-screen) and leave it running.
 - The `output_path` (-o) argument can be pointed out to a local directory
 
 
@@ -147,7 +147,7 @@ This tool generates two summary metadata reports for a submission/project. The f
 
 To install the tool, clone the [ingest-broker repository](https://github.com/ebi-ait/ingest-broker).
 
-#### Usage
+### Usage
 
 Move to the ingest broker directory.
 
@@ -237,19 +237,19 @@ Using `tmux` or `screen` in the EC2 (or in life) is useful because you can run a
 tmux new -s <session_name>
 ```
 
-1. Run any command(s) like you normally would in the EC2:
+2. Run any command(s) like you normally would in the EC2:
 
 ```
 hca upload files *.fastq.gz
 ```
 
-1. To detach from your session: press CTRL+b, release both keys, and then press d. You'll be back in EC2, and the command will still be running.
-1. To view all the session you have running:
+3. To detach from your session: press CTRL+b, release both keys, and then press d. You'll be back in EC2, and the command will still be running.
+4. To view all the session you have running:
 ```
 tmux ls
 ```
 
-1. To get back to a session to see how the job is going:
+5. To get back to a session to see how the job is going:
 ```
 tmux a -t <session_name>
 ```
@@ -340,9 +340,9 @@ The following wrangler tools are related to using git. When working in the termi
 
 Please request additional commands!
 
-### Converting markdown to pdf: grip
+## Converting markdown to pdf: grip
 
-#### Pre-requisites and installation
+### Pre-requisites and installation
 
 - https://github.com/joeyespo/grip[grip]
 
@@ -362,7 +362,7 @@ On OS X, you can also install with Homebrew:
 $ brew install grip
 ```
 
-#### Usage
+### Usage
 
 See the https://github.com/joeyespo/grip#usage[grip GitHub repo] for instructions on how to use `grip`.
 
@@ -374,14 +374,14 @@ Briefly:
 1. Navigate to local host name (e.g. `http://localhost:6419/`)
 1. Print screen and save as PDF
 
-### Converting yaml to csv: generic_yaml2csv.py
+## Converting yaml to csv: generic_yaml2csv.py
 
-#### Pre-requisites and installation
+### Pre-requisites and installation
 
 - python3
 - python packages: yaml, argparse, csv, sys, pandas
 
-#### Usage
+### Usage
 
 This script converts any yaml file into csv format. The default file to convert is the potential_datasets.yaml file, but any file path can be provided. For guidance on how to use the tool, run the script with `--help`:
 
@@ -403,8 +403,6 @@ optional arguments:
 
 The following wrangler tools are related to using the hca cli.
 
-## Upload: hca upload
-
 ### Pre-requisites and installation
 
 - pip
@@ -421,7 +419,9 @@ If you haven't updated the hca cli in a while, update to the newest version usin
 pip install --upgrade hca
 ```
 
-### Usage
+### Upload: hca upload
+
+#### Usage
 
 The two main `hca upload` commands wranglers use is the one to select the upload area of interest (`hca upload select`) and to transfer files to that upload area (`hca upload files`). Wranglers might also want to view a list of files in the selected upload area (`hca upload list`) or view a list of all upload areas they have accessed (`hca upload areas`).
 
