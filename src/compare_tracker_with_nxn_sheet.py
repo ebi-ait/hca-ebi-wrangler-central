@@ -4,6 +4,8 @@ Little script that compares the HCA dataset tracking sheet
 Svensson's curated single cell database (http://www.nxn.se/single-cell-studies)
 
 The output is a formatted list that can be copied over to the dataset tracking sheet.
+
+Usage: python3 compare_tracker_with_nxn_sheet.py
 """
 
 import requests as rq
@@ -17,9 +19,17 @@ def select_unique_studies(valentines_sheet, tracking_sheet):
 
     unregistered_dois = valentine_dois - tracking_sheet_dois
 
-    full_unregistered_table = [row for row in valentines_sheet if row[1] in unregistered_dois]
+    unregistered_table = [row for row in valentines_sheet if row[1] in unregistered_dois]
+
+    valentine_accessions = set([data[11] for data in unregistered_table if data[11]])
+    tracking_sheet_accessions = set([track[1] for track in tracking_sheet if track[1]])
+
+    unregistered_accessions = valentine_accessions - tracking_sheet_accessions
+
+    full_unregistered_table = [row for row in unregistered_table if row[11] in unregistered_accessions]
 
     return full_unregistered_table
+
 
 def filter_table(valentines_table):
     filtered_table = [row for row in valentines_table if row[8].lower() in ['human', 'human, mouse', 'mouse, human']]
@@ -28,15 +38,16 @@ def filter_table(valentines_table):
     filtered_table = [row for row in filtered_table if row[13].lower() == 'rna-seq']
     return filtered_table
 
+
 def print_output(filtered_table):
     table_final = []
     for row in filtered_table:
         table_final.append(
-            [f"https://doi.org/{row[1]}", row[4], row[7], row[8], row[9], row[10], row[15], f"{row[14]} {row[16]}"])
+            [f"https://doi.org/{row[1]}", row[4], row[7], row[8], row[9], row[10], row[15], row[11], f"{row[14]} {row[16]}"])
 
     tabu = '\t'
     for r in table_final:
-        print(tabu * 13 + r[0] + tabu + r[1] + tabu * 5 + r[4] + tabu * 10 + r[3] + tabu + r[5] + tabu * 3 + r[
+        print(tabu + r[7] + tabu * 12 + r[0] + tabu + r[1] + tabu * 5 + r[4] + tabu * 10 + r[3] + tabu + r[5] + tabu * 3 + r[
             6] + tabu * 2 + r[2] + tabu * 4 + r[-1])
 
 
