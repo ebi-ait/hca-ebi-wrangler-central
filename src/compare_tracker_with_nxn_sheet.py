@@ -26,7 +26,14 @@ def select_unique_studies(valentines_sheet, tracking_sheet):
 
     unregistered_accessions = valentine_accessions - tracking_sheet_accessions
 
-    full_unregistered_table = [row for row in unregistered_table if row[11] in unregistered_accessions]
+    second_unregistered_table = [row for row in unregistered_table if row[11] in unregistered_accessions]
+
+    valentine_titles = set([data[4].lower() for data in second_unregistered_table if data[4]])
+    tracking_sheet_titles = set([track[14].lower() for track in tracking_sheet if track[14]])
+
+    unregistered_titles = valentine_titles - tracking_sheet_titles
+
+    full_unregistered_table = [row for row in second_unregistered_table if row[4].lower() in unregistered_titles]
 
     return full_unregistered_table
 
