@@ -137,7 +137,7 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > On behalf of the HCA DCP Data Wrangling Team
 
-### Terms and Conditions and Consent
+### Terms and Conditions
 
 #### If all data can be released openly:
 
@@ -145,9 +145,9 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
 > 
-> Can you, or an authorised member of your lab, please officially confirm you have open consent to release data and metadata by this by agreeing to our terms and conditions via the following form: https://forms.gle/8XW8vapGQJRfKrc36  
+> Can you, or an authorised member of your lab, please officially confirm whether your data are from human research subjects and whether the data requires controlled access? You can do this by agreeing to our terms and conditions via the following form: https://forms.gle/8XW8vapGQJRfKrc36  
 > 
-> Once you have agreed, this confirms that we have permission to handle your metadata and data and we can share with you the next steps in metadata assembly and data upload.
+> Once you have confirmed we are able to handle your metadata and data and we can share with you the next steps in metadata assembly and data upload.
 > 
 > We do/don’t think we will be able to provide you with accessions for your dataset by your requested date <enter date here>. 
 > 
@@ -166,9 +166,9 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
 > 
-> Currently we cannot handle managed access data directly. If you have public metadata that you would like to link to a managed access EGA submission, we can facilitate brokering your metadata to BioSamples, linking it to your EGA dataset and making processed data and open metadata available in ArrayExpress.
+> Currently we cannot handle managed access data directly. If you have public sample metadata that you would like to link to a managed access EGA submission, we can facilitate brokering your metadata to the BioSamples Database at EMBL-EBI, linking it to your EGA dataset and making processed data and open metadata available in ArrayExpress.
 > 
-> This process is currently under development but if you would like to be part of the pilot we can further explain the process and next steps. Would you be available any of the following times:
+> Our processes for handling managed access data are currently under development and we would really value your input - would you be happy to be  part of a pilot we are aiming to run? If so, we can further explain the process and next steps. Would you be available any of the following times:
 > 
 > [suggest appropriate times based on schedule]
 > 
@@ -180,17 +180,19 @@ These templates are considered a guide to provide a skeleton with the required i
 
 #### If data has living europeans, i.e. subject to GDPR
 
+Note that this is a constantly changing space, this email was last updated 2020-07-13.
+
 > Dear [name/s of contributor/s],
 > 
 > Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
 > 
-> Can you, or an authorised member of your lab, please officially confirm you have open consent to release data and metadata by this by agreeing to our terms and conditions via the following form: https://forms.gle/8XW8vapGQJRfKrc36  
+> Can you, or an authorised member of your lab, please officially confirm whether your data are from human research subjects and whether the data requires controlled access? You can do this by agreeing to our terms and conditions via the following form: https://forms.gle/8XW8vapGQJRfKrc36   
 > 
-> Once you have agreed, this confirms that we have permission to handle your metadata and data and we can share with you the next steps in metadata assembly and data upload.
+> Once you have confirmed we are able to handle your metadata and data and we can share with you the next steps in metadata assembly and data upload.
 > 
-> We can facilitate submitting your data and metadata to public EBI archives. We will then be able to provide you with accessions for your dataset. 
+> We can then facilitate submitting your data and metadata to public EBI archives and provide you with accessions for your dataset.  
 > 
-> Currently the HCA DCP is not accepting data that is subject to GDPR, but we are currently working on supporting this data. By submitting through us with metadata that meets the HCA metadata standard, we will ensure your dataset is incorporated into the HCA DCP once we are able to support it.
+> Currently the HCA DCP is not accepting data from living donors from European Centres, but we are currently working on supporting this data. By submitting through us with metadata that meets the HCA metadata standard, we will ensure your dataset is incorporated into the HCA DCP once we are able to support it.
 > 
 > Many thanks,
 > 
@@ -251,7 +253,7 @@ These templates are considered a guide to provide a skeleton with the required i
 >
 > We can confirm that we have received your data files and they are valid and match the file metadata provided.
 >
-> Once you give final approval we will proceed with submission and will make your data and metadata publicly available on [enter date] / immediately. We will get back in touch once we have accessions available for your dataset.
+> If we don't hear otherwise, we will proceed with submission on <enter date 3 workings days from today> and will make your data and metadata publicly available on [enter date] / immediately. We will get back in touch once we have accessions available for your dataset.
 >
 > We will also let you know when your data has been made public on the Human Cell Atlas portal as part of the next snapshot release.
 >
