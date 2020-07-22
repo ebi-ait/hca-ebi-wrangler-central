@@ -199,6 +199,7 @@ The date they have identified for the data and metadata to be released publicly
 
 Warning
 {: .label .label-red } 
+
 Wranglers should not submit on Tuesday mornings when there is a release until after the release is completed. Releases to Prod occur at 10am on the mid-sprint Tuesday. Releases to Staging occur 10am on the sprint demo Tuesday. Updates are posted in the AIT HCA slack channel. See the [Ingest release SOP](https://github.com/HumanCellAtlas/ingest-central/wiki/Ingest-Release-SOP#release-schedule)
 
 Once you hit submit the project should go into ‘Archiving’ status. The precise process for identifying which of the paths the dataset will take after submission is currently being formalised by ingest. Until then the wrangler needs to inform the ingest team manually.
