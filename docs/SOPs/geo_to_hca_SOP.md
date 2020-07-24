@@ -18,6 +18,7 @@ nav_exclude: false
    cd geo_to_hca
    pip install -r requirements.txt --upgrade
    ```
+   ISSUE: Error installing requirements
    Please note that you might need to install with `pip3` instead of `pip` depending on your configuration
 
 ## Brief description
