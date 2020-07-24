@@ -9,7 +9,7 @@ nav_exclude: false
 
 
 ## Pre-requirements
-1. Clone the repo to your computer
+1. Clone the [Geo to HCA Repo](https://github.com/ebi-ait/geo_to_hca) to your computer
    ```
    git clone https://github.com/ebi-ait/geo_to_hca.git
    ```
