@@ -82,7 +82,7 @@ Once you have a customised and potentially pre-filled spreadsheet it can be sent
 
 In the same email as the first spreadsheet that is sent, it is a good idea to create an upload are and provide the credentials and instructions for [how to upload their raw data (fastq)](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) so they can start the process while we validate and review their metadata.
 
-Follow the instructions on [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-using-hca-util)
+Follow the instructions on [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
 
 You will then need to provide the contributors with the upload area UUID as well as a set of AWS access keys, which only administrators (wranglers & ingest-devs) have access to. When sending these to the contributor, please be cautious that you state the UUID and keys must not be shared outside of the person who performs the data upload. 
 
