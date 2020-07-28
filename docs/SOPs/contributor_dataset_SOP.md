@@ -84,9 +84,61 @@ In order for a contributor to upload their data, you will need to provide them w
 
 It is a good idea to create a data upload area and provide the credentials and instructions to the contributor in the same email as the first spreadsheet that is sent. Here are the instructions to send the contributor: [how to upload their raw data (fastq)](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) so they can start the process while we validate and review their metadata.
 
+## Transferring a contributor's raw data to ingest UI: latest method (testing on-going)
+
 In order to create the upload area, follow the instructions on [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util). These instructions will guide you to create an upload area for a contributor to upload their data, but also how to then transfer that data once uploaded to the ingest production s3 bucket using the same tool.
 
 To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: [https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#](https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#).
+
+## Transferring a contributor's raw data to ingest UI: old method
+
+Pre-Requisites:
+Access to the EBI Wrangler EC2
+
+If this command is executed on the wrangler EC2, the files will be transferred from s3 to s3 directly.
+
+Set up a virtual environment
+
+```bash
+virtualenv <name_of_env>
+source <name_of_env>/bin/activate
+```
+
+The DCP HCA CLI
+```bash
+python3 -m pip install hca
+```
+
+Use set_ingest_config.sh to configure the DCP CLI to point to EBI Ingest
+
+```
+wget https://raw.githubusercontent.com/ebi-ait/upload-service/master/set_ingest_config.sh
+source set_ingest_config.sh
+```
+
+Process:
+Get your submission's Upload Area Location
+Submission → Data → Upload Area Location → Copy
+Select Upload Location
+```bash
+hca upload select <Upload Area Location>
+```
+
+Upload files to ingest submission
+
+```bash
+hca upload files <(Local / S3 Bucket)> <file pattern>
+```
+
+Example:
+```bash
+hca upload select 
+  s3://org-hca-data-archive-upload-staging/68470f55-2e18-4957-94e3-4b297afe7c25/
+
+hca upload files s3://hca-util-upload-area/9296c147-72e7-4100-a19a-51bf01314a13/
+hca upload files dummy_fastq_file.fastq.gz
+```
+
 
 ## Curating metadata
 
