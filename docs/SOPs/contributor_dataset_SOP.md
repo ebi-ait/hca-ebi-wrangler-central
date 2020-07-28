@@ -84,13 +84,13 @@ In order for a contributor to upload their data, you will need to provide them w
 
 It is a good idea to create a data upload area and provide the credentials and instructions to the contributor in the same email as the first spreadsheet that is sent. Here are the instructions to send the contributor: [how to upload their raw data (fastq)](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) so they can start the process while we validate and review their metadata.
 
-## Transferring a contributor's raw data to ingest UI: latest method (testing on-going)
+# Transferring a contributor's raw data to ingest UI: latest method (testing on-going)
 
 In order to create the upload area, follow the instructions on [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util). These instructions will guide you to create an upload area for a contributor to upload their data, but also how to then transfer that data once uploaded to the ingest production s3 bucket using the same tool.
 
 To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: [https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#](https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#).
 
-## Transferring a contributor's raw data to ingest UI: old method
+# Transferring a contributor's raw data to ingest UI: old method
 
 Pre-Requisites:
 Access to the EBI Wrangler EC2
