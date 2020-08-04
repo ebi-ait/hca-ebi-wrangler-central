@@ -53,7 +53,7 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
 - `wget`
 - Connect to the EC2, create a virtual environment and install the python requirements:
   ```
-  virtualenv <name_of_env>
+  virtualenv -p python3.7 <name_of_env>
   source <name_of_env>/bin/activate
   wget https://raw.githubusercontent.com/ebi-ait/hca-ebi-wrangler-central/master/src/requirements.txt
   pip3 install -r requirements.txt
@@ -67,6 +67,10 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
    ```
    wget https://raw.githubusercontent.com/ebi-ait/hca-ebi-wrangler-central/master/src/move_data_from_insdc.py
    ```
+1. Activate your python>=3.6 virtual environment if not already active
+```
+source <name_of_env>/bin/activate
+```
 1. Run the script:
    ```
    python3 move_data_from_insdc.py -s <study/project accession> -o s3://hca-util-upload-area/<upload_area_id> -t <number_of_threads>
