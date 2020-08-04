@@ -69,7 +69,7 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
    ```
 1. Run the script:
    ```
-   python3 move_data_from_indsc.py -s <study/project accession> -o s3://hca-util-upload-area/<upload_area_id> -t <number_of_threads>
+   python3 move_data_from_insdc.py -s <study/project accession> -o s3://hca-util-upload-area/<upload_area_id> -t <number_of_threads>
    ```
 1. Enjoy while your data gets loaded into the s3 area!
 
