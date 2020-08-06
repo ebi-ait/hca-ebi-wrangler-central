@@ -4,6 +4,7 @@ from tqdm import tqdm
 from smart_open import open as op
 import requests as rq
 import argparse
+import xmltodict
 from urllib.request import urlopen
 from urllib.request import OpenerDirector
 from multiprocessing import Pool
@@ -39,7 +40,7 @@ def retrieve_file_urls(study_accession: str) -> list:
     :returns files: list
                     List of all the ftp addresses for the files within the study/project.
     """
-    field = "submitted_ftp" if "PRJ" in study_accession else "fastq_ftp"
+    field = "submitted_ftp" if "PRJEB" in study_accession else "fastq_ftp"
     request_url = (f"https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession={study_accession}"
                    f"&result=read_run&fields={field}")
     request = rq.get(request_url)
@@ -47,6 +48,28 @@ def retrieve_file_urls(study_accession: str) -> list:
     files = []
     [files.extend(line.split(';')) for line in lines]
     return files
+
+def correct_filename_from_sra(run_accession, filename):
+
+    search = rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term={run_accession}').content
+    sra_id = xmltodict.parse(search).get('eSearchResult', {}).get('IdList', {}).get('Id')
+
+    run_info = xmltodict.parse(rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id={sra_id}').content)
+    run_files = run_info.get('EXPERIMENT_PACKAGE_SET').get('EXPERIMENT_PACKAGE').get('RUN_SET').get('RUN').get('SRAFiles').get('SRAFile')
+
+    # Get a list of all the filenames for that run accession
+    filenames = [name['Alternatives'][0]['@url'].split('/')[-1] for name in run_files if name['@sratoolkit'] == '0']
+
+    # Check if R1 or R2
+    read_index = "1" if filename.endswith('_1.fastq.gz') else "2"
+
+    # Search in the options
+    real_filename = next(real_name for real_name in filenames if f"R{read_index}" in real_name)
+
+    # Correct the ".1" at the end
+    real_filename = real_filename.split('.1')[0] if real_filename.endswith('.1') else real_filename
+
+    return real_filename
 
 
 def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str, str):
@@ -87,6 +110,9 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
         source = "local"
 
     filename = path.split('/')[-1]
+
+    if 'SRR' in filename:
+        filename = correct_filename_from_sra(path.split('/')[-2], filename)
 
     return streamable, file_size, filename, source
 
