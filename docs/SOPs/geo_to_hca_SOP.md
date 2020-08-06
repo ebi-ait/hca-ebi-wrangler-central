@@ -25,7 +25,7 @@ This tool was written to assist in the automatic conversion of geo metadata to a
 
 ## Usage
 
-The script is stored under the `apps` folder, under the name `geo_to_hca.py`. It takes as input a single GEO accession or a space-delimited list of GEO accessions and a template HCA metadata excel spreadsheet (Included in the repository under the `docs` folder). It returns a pre-filled HCA metadata spreadsheet for each accession given. Each spreadsheet can then be used as an intermediate file for completion by manual curation. Optionally an output log file can also be generated which lists the availability of an SRA study accession and fastq file names for each GEO accession given as input.
+The script is stored under the `apps` folder, under the name `geo_to_hca.py`. It takes as input a single GEO accession or a comma-delimited list of GEO accessions and a template HCA metadata excel spreadsheet (Included in the repository under the `docs` folder). It returns a pre-filled HCA metadata spreadsheet for each accession given. Each spreadsheet can then be used as an intermediate file for completion by manual curation. Optionally an output log file can also be generated which lists the availability of an SRA study accession and fastq file names for each GEO accession given as input.
 
 
 ```

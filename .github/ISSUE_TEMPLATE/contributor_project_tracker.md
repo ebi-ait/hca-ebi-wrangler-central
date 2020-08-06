@@ -1,8 +1,8 @@
 ---
-name: Project Tracker
-about: Create a ticket for tracking key events of an in-progress project.
+name: Contributor Project Tracker
+about: Create a ticket for tracking key events of an in-progress project from a contributor.
 title: ''
-labels: dataset
+labels: dataset, operations
 assignees: ''
 
 ---
@@ -29,11 +29,10 @@ Google Drive:
 - [ ] Receive data (to a sufficient standard to submit dataset)
 - [ ] Curate metadata spreadsheet with ontologies
 - [ ] Upload sheet to validate metadata
-- [ ] Run graph validator
-- [ ] Check linking
+- [ ] Run graph validator & Check linking
 - [ ] Validate data files
 - [ ] Ask the Secondary Wrangler for an end-to-end review of the project. Ask the Expertise Wrangler to review specific tabs if needed
-- [ ] Get final approval of submission including metadata spreadsheet and data files
+- [ ] Get final approval of submission from the contributor including release date, metadata spreadsheet and data files 
 - [ ] Submit to production and inform ingest-devs the project is ready for archiving
 - [ ] Email UX to inform that they're ready to send survey
 
