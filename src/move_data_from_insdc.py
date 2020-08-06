@@ -45,12 +45,12 @@ def retrieve_from_sra(study_accession: str) -> list:
     search = rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term={study_accession}&retmax=100000').content
     sra_ids = xmltodict.parse(search).get('eSearchResult', {}).get('IdList', {}).get('Id')
     file_urls = []
-    for sra_id in sra_ids:
-        run_info = xmltodict.parse(
-            rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id={sra_id}').content)
-
+    run_info = xmltodict.parse(
+                               rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id={",".join(sra_ids)}').text)
+    experiment_packages = run_info.get('EXPERIMENT_PACKAGE_SET').get('EXPERIMENT_PACKAGE')
+    for experiment_package in experiment_packages:
         # For some reason sometimes it's a list and sometimes it's a dictionary
-        runs = run_info.get('EXPERIMENT_PACKAGE_SET').get('EXPERIMENT_PACKAGE').get('RUN_SET').get('RUN')
+        runs = experiment_package.get('RUN_SET').get('RUN')
         if not isinstance(runs, list):
             runs = [runs]
         for run in runs:
