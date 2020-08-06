@@ -31,6 +31,39 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def retrieve_from_ena(study_accession: str) -> list:
+    request_url = (f"https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession={study_accession}"
+                   f"&result=read_run&fields=submitted_ftp")
+    request = rq.get(request_url)
+    lines = request.text.splitlines()[1:]
+    files = []
+    [files.extend(line.split(';')) for line in lines]
+    return files
+
+
+def retrieve_from_sra(study_accession: str) -> list:
+    search = rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term={study_accession}&retmax=100000').content
+    sra_ids = xmltodict.parse(search).get('eSearchResult', {}).get('IdList', {}).get('Id')
+    file_urls = []
+    for sra_id in sra_ids:
+        run_info = xmltodict.parse(
+            rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id={sra_id}').content)
+
+        # For some reason sometimes it's a list and sometimes it's a dictionary
+        runs = run_info.get('EXPERIMENT_PACKAGE_SET').get('EXPERIMENT_PACKAGE').get('RUN_SET').get('RUN')
+        if not isinstance(runs, list):
+            runs = [runs]
+        for run in runs:
+            run_files = run.get('SRAFiles').get('SRAFile')
+            for file in run_files:
+                if file['@sratoolkit'] == '1':
+                    continue
+                if file.get('@url'):
+                    file_urls.append(file.get('@url'))
+
+    return file_urls if file_urls else retrieve_from_ena(study_accession)
+
+
 def retrieve_file_urls(study_accession: str) -> list:
     """
     Given an ENA/GEO study or project accession, retrieve and return a list of all the ftp addresses for the files.
@@ -40,16 +73,12 @@ def retrieve_file_urls(study_accession: str) -> list:
     :returns files: list
                     List of all the ftp addresses for the files within the study/project.
     """
-    field = "submitted_ftp" if "PRJEB" in study_accession else "fastq_ftp"
-    request_url = (f"https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession={study_accession}"
-                   f"&result=read_run&fields={field}")
-    request = rq.get(request_url)
-    lines = request.text.splitlines()[1:]
-    files = []
-    [files.extend(line.split(';')) for line in lines]
-    return files
+    source = "ena" if "PRJEB" in study_accession else "sra"
 
-def correct_filename_from_sra(run_accession, filename):
+    # Calling different functions depending on source
+    return globals()[f'retrieve_from_{source}'](study_accession)
+
+def correct_filename_from_ena(run_accession, filename):
 
     search = rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term={run_accession}').content
     sra_id = xmltodict.parse(search).get('eSearchResult', {}).get('IdList', {}).get('Id')
@@ -97,7 +126,7 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
     elif "s3" in path:
         streamable = path
         s3 = boto3.resource('s3')
-        bucket_name = path.split("/")[2]
+        bucket_name = path.split("/")[2].split('.')[0]
         key = "/".join(path.split("/")[-2:])
         s3_object = s3.Object(bucket_name, key)
         file_size = s3_object.content_length
@@ -110,9 +139,11 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
         source = "local"
 
     filename = path.split('/')[-1]
+    if filename.endswith('.1'):
+        filename = filename.strip('.1')
 
     if 'SRR' in filename:
-        filename = correct_filename_from_sra(path.split('/')[-2], filename)
+        filename = correct_filename_from_ena(path.split('/')[-2], filename)
 
     return streamable, file_size, filename, source
 
@@ -235,6 +266,9 @@ def transfer_file_to_s3(url: BytesIO, bucket: str, filename: str, prefix: str = 
 
 def main(args):
     ena_list = retrieve_file_urls(args.study_accession)
+    if not ena_list:
+        print("Couldn't find any mean of downloading the proper fastq. Try with the sratoolkit")
+
     output_args = [(ena, args.output_path) for ena in ena_list]
     try:
         with Pool(args.threads) as p:
