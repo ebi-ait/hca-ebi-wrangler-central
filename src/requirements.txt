@@ -7,3 +7,4 @@ xlrd>=1.0.0
 pandas
 openpyxl
 requests
+xmltodict
