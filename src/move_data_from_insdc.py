@@ -1,4 +1,5 @@
 import boto3
+from botocore.exceptions import ClientError
 import os
 from tqdm import tqdm
 from smart_open import open as op
@@ -134,7 +135,10 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
         bucket_name = path.split("/")[2].split('.')[0]
         key = "/".join(path.split("/")[-2:])
         s3_object = s3.Object(bucket_name, key)
-        file_size = s3_object.content_length
+        try:
+            file_size = s3_object.content_length
+        except ClientError:
+            file_size = 0
         source = "s3"
 
     # Local files
