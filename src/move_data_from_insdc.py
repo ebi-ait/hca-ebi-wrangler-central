@@ -9,6 +9,7 @@ import xmltodict
 from urllib.request import urlopen
 from urllib.request import OpenerDirector
 from urllib.parse import quote_plus
+from urllib.parse import unquote_plus
 from multiprocessing import Pool
 from io import BytesIO
 
@@ -220,7 +221,7 @@ def transfer_file_to_local(origin: any([str, BytesIO]), destination: str, filena
 
 
 def transfer_file_to_s3(url: BytesIO, bucket: str, filename: str, prefix: str = 'hca-util-upload-area',
-                        file_size: int = None):
+                        file_size: int = 0):
     """
     Transfer file to an s3 bucket
     :param url: BytesIO
@@ -243,6 +244,7 @@ def transfer_file_to_s3(url: BytesIO, bucket: str, filename: str, prefix: str = 
         if file_size == 0:
             file_size = int(rq.head(url, stream=True).headers['Content-Length'])
 
+    filename = unquote_plus(filename)
     full_filename = f"{bucket}/{filename}"
 
     # Check if file already exists in the bucket
