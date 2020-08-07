@@ -7,6 +7,7 @@ import argparse
 import xmltodict
 from urllib.request import urlopen
 from urllib.request import OpenerDirector
+from urllib.parse import quote_plus
 from multiprocessing import Pool
 from io import BytesIO
 
@@ -40,6 +41,7 @@ def retrieve_from_ena(study_accession: str) -> list:
     lines = [line.split('\t')[1] for line in lines]
     files = []
     [files.extend(line.split(';')) for line in lines if line]
+    files = [quote_plus(file, safe='/:') for file in files]
     return files
 
 
@@ -63,6 +65,7 @@ def retrieve_from_sra(study_accession: str) -> list:
                 if file.get('@url'):
                     file_urls.append(file.get('@url'))
 
+    file_urls = [quote_plus(file, safe='/:') for file in file_urls]
     return file_urls if file_urls else retrieve_from_ena(study_accession)
 
 
