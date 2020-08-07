@@ -138,7 +138,7 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
         try:
             file_size = s3_object.content_length
         except ClientError:
-            file_size = 0
+            file_size = 1
         source = "s3"
 
     # Local files
