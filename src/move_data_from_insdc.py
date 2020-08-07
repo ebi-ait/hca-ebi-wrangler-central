@@ -32,12 +32,14 @@ def parse_args() -> argparse.Namespace:
 
 
 def retrieve_from_ena(study_accession: str) -> list:
+    field = "submitted_ftp" if "PRJEB" in study_accession else "fastq_ftp"
     request_url = (f"https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession={study_accession}"
-                   f"&result=read_run&fields=submitted_ftp")
+                   f"&result=read_run&fields={field}")
     request = rq.get(request_url)
     lines = request.text.splitlines()[1:]
+    lines = [line.split('\t')[1] for line in lines]
     files = []
-    [files.extend(line.split(';')) for line in lines]
+    [files.extend(line.split(';')) for line in lines if line]
     return files
 
 
