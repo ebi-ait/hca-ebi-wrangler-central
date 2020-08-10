@@ -40,11 +40,12 @@ def retrieve_from_ena(study_accession: str) -> list:
                    f"&result=read_run&fields={field}")
     request = rq.get(request_url)
     lines = request.text.splitlines()[1:]
+    not_available = [line.split('\t')[0] for line in lines if not line.split('\t')[1]]
     lines = [line.split('\t')[1] for line in lines]
     files = []
     [files.extend(line.split(';')) for line in lines if line]
     files = [quote_plus(file, safe='/:') for file in files]
-    return files
+    return files, not_available
 
 
 def retrieve_from_sra(study_accession: str) -> list:
@@ -142,6 +143,10 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
             file_size = 1
         source = "s3"
 
+    elif 'https://' in path:
+        streamable = urlopen(path)
+        file_size = int(streamable.headers['Content-length'])
+        source = 'ftp'
     # Local files
     else:
         streamable = path
@@ -276,7 +281,7 @@ def transfer_file_to_s3(url: BytesIO, bucket: str, filename: str, prefix: str = 
 
 
 def main(args):
-    ena_list = retrieve_file_urls(args.study_accession)
+    ena_list, runs_not_available = retrieve_file_urls(args.study_accession)
     if not ena_list:
         print("Couldn't find any mean of downloading the proper fastq. Try with the sratoolkit")
 
@@ -287,6 +292,9 @@ def main(args):
     except KeyboardInterrupt:
         print("Process has been interrupted.")
         p.terminate()
+
+    if runs_not_available:
+        print(f"The following Runs weren't available for download: {','.join(runs_not_available)}")
 
 
 if __name__ == '__main__':
