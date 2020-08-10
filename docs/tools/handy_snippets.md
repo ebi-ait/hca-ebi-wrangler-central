@@ -58,7 +58,17 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
   wget https://raw.githubusercontent.com/ebi-ait/hca-ebi-wrangler-central/master/src/requirements.txt
   pip3 install -r requirements.txt
   ```
-
+- Set up your default aws credentials:
+   - Go to `~.aws/`
+   - `vim credentials`
+   - Copy this at the top of the file:
+   ```
+   [default]
+   aws_secret_access_key = <AWS_secret_key>
+   aws_access_key_id = <AWS_access_key>
+   ```
+   Replacing the keys with your wrangler access and secret keys
+   
 ### Usage
 
 1. Connect to the EC2
@@ -68,9 +78,9 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
    wget https://raw.githubusercontent.com/ebi-ait/hca-ebi-wrangler-central/master/src/move_data_from_insdc.py
    ```
 1. Activate your python>=3.6 virtual environment if not already active
-```
-source <name_of_env>/bin/activate
-```
+    ```
+    source <name_of_env>/bin/activate
+    ```
 1. Run the script:
    ```
    python3 move_data_from_insdc.py -s <study/project accession> -o s3://hca-util-upload-area/<upload_area_id> -t <number_of_threads>
@@ -81,6 +91,7 @@ source <name_of_env>/bin/activate
 
 - Right now, even with a good amount of threads (>= 5) it takes about 5 hours to move 1 TB of data. It is best practice to [set up a virtual screen](#use-terminal-sessions-in-ec2-tmux-screen) and leave it running.
 - The `output_path` (-o) argument can be pointed out to a local directory
+- Some GEO datasets do not have all their data available in a fastq format. For those datasets, a warning pointing to which runs the script failed to retrieve information from will be issued.
 
 
 ## Validating files on the ec2: fastq_info
