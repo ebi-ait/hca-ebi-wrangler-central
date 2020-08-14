@@ -62,6 +62,8 @@ def retrieve_from_sra(study_accession: str) -> list:
             runs = [runs]
         for run in runs:
             run_files = run.get('SRAFiles').get('SRAFile')
+            if not isinstance(run_files, list):
+                run_files = [run_files]
             for file in run_files:
                 if file['@sratoolkit'] == '1':
                     continue
