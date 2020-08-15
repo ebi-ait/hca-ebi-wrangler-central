@@ -14,6 +14,7 @@ from multiprocessing import Pool
 from io import BytesIO
 from xml.parsers.expat import ExpatError
 from time import sleep
+from collections import OrderedDict
 
 
 def parse_args() -> argparse.Namespace:
@@ -104,8 +105,16 @@ def correct_filename_from_ena(run_accession, filename):
             print(f"Got error {e}. This is probably due to NCBI receiving too many requests at once. Waiting 1 s...")
             sleep(1)
 
+    # If only 1 option, will return orderedDict instead of list. Correcting here
+    if isinstance(run_files, OrderedDict):
+        run_files = [run_files]
+
     # Get a list of all the filenames for that run accession
-    filenames = [name['Alternatives'][0]['@url'].split('/')[-1] for name in run_files if name['@sratoolkit'] == '0']
+    filenames = [name.get('Alternatives', [{}])[0].get('@url').split('/')[-1] for name in run_files if name.get('@sratoolkit', "1") == '0']
+
+    # Sometimes there are no filenames
+    if not filenames:
+        return filename
 
     # Check if R1 or R2
     read_index = "1" if filename.endswith('_1.fastq.gz') else "2"
