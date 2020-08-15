@@ -12,6 +12,8 @@ from urllib.parse import quote_plus
 from urllib.parse import unquote_plus
 from multiprocessing import Pool
 from io import BytesIO
+from xml.parsers.expat import ExpatError
+from time import sleep
 
 
 def parse_args() -> argparse.Namespace:
@@ -90,11 +92,17 @@ def retrieve_file_urls(study_accession: str) -> list:
 
 def correct_filename_from_ena(run_accession, filename):
 
-    search = rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term={run_accession}').content
-    sra_id = xmltodict.parse(search).get('eSearchResult', {}).get('IdList', {}).get('Id')
+    while True:
+        try:
+            search = rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term={run_accession}').content
+            sra_id = xmltodict.parse(search).get('eSearchResult', {}).get('IdList', {}).get('Id')
 
-    run_info = xmltodict.parse(rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id={sra_id}').content)
-    run_files = run_info.get('EXPERIMENT_PACKAGE_SET').get('EXPERIMENT_PACKAGE').get('RUN_SET').get('RUN').get('SRAFiles').get('SRAFile')
+            run_info = xmltodict.parse(rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id={sra_id}').content)
+            run_files = run_info.get('EXPERIMENT_PACKAGE_SET').get('EXPERIMENT_PACKAGE').get('RUN_SET').get('RUN').get('SRAFiles').get('SRAFile')
+            break
+        except ExpatError as e:
+            print(f"Got error {e}. This is probably due to NCBI receiving too many requests at once. Waiting 1 s...")
+            sleep(1)
 
     # Get a list of all the filenames for that run accession
     filenames = [name['Alternatives'][0]['@url'].split('/')[-1] for name in run_files if name['@sratoolkit'] == '0']
