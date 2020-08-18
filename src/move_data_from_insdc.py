@@ -74,7 +74,7 @@ def retrieve_from_sra(study_accession: str) -> list:
                     file_urls.append(file.get('@url'))
 
     file_urls = [quote_plus(file, safe='/:') for file in file_urls]
-    return file_urls if file_urls else retrieve_from_ena(study_accession)
+    return (file_urls, []) if file_urls else retrieve_from_ena(study_accession)
 
 
 def retrieve_file_urls(study_accession: str) -> list:
@@ -117,7 +117,12 @@ def correct_filename_from_ena(run_accession, filename):
         return filename
 
     # Check if R1 or R2
-    read_index = "1" if filename.endswith('_1.fastq.gz') else "2"
+    if filename.endswith('_1.fastq.gz'):
+        read_index = "1"
+    elif filename.endswith('_2.fastq.gz'):
+        read_index = "2"
+    else:
+        return filename
 
     # Search in the options
     real_filename = next(real_name for real_name in filenames if f"R{read_index}" in real_name)
