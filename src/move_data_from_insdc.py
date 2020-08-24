@@ -213,11 +213,7 @@ def transfer_file(path: str, output: str) -> None:
     """
     file_stream, file_size, filename, source = define_source_parameters(path)
     with op(file_stream, 'rb', ignore_ext=True) as f:
-        if define_destination_parameters(output) == "s3":
-            bucket_name = output.split("/")[-1]
-            transfer_file_to_s3(f, bucket_name, filename=filename, file_size=file_size)
-        else:
-            transfer_file_to_local(f, output, filename, file_size)
+        globals()[f'transfer_file_to_{define_destination_parameters(output)}'](f, output, filename, file_size)
 
 
 def transfer_file_to_local(origin: any([str, BytesIO]), destination: str, filename: str = '',
@@ -249,14 +245,14 @@ def transfer_file_to_local(origin: any([str, BytesIO]), destination: str, filena
                     t.update(len(chunk))
 
 
-def transfer_file_to_s3(url: BytesIO, bucket: str, filename: str, prefix: str = 'hca-util-upload-area',
-                        file_size: int = 0):
+def transfer_file_to_s3(url: BytesIO, output_path: str, filename: str,
+                        file_size: int = 0, prefix: str = 'hca-util-upload-area'):
     """
     Transfer file to an s3 bucket
     :param url: BytesIO
                 BytesIO object that can be streamed.
-    :param bucket: str
-                Key for the bucket, e.g. c4xxx5c4-dxxc-4xx8-8cc1-8xx0652xxxba
+    :param output_path: str
+                output path
     :param prefix: str
                 Bucket preffix, e.g. "hca-util-upload-area"
     :param filename: str
@@ -264,6 +260,9 @@ def transfer_file_to_s3(url: BytesIO, bucket: str, filename: str, prefix: str = 
     :param file_size: int
                       Size of the file
     """
+    # Check if path ends with / or not and retrieve bucket key
+    bucket = output_path.split('/')[-2] if output_path.endswith('/') else output_path.split('/')[-1]
+
     s3 = boto3.resource('s3')
     hca_util_upload = s3.Bucket(prefix)
 
