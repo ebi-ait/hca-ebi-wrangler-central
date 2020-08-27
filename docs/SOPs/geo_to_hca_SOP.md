@@ -63,7 +63,7 @@ GSE149689                            no                 yes
 
 #### Uploading the data to an s3 bucket
 
-1. Follow the guide provided in the [handy snippets documentation](../tools/handy_snippets.md#uploading_files_to_an_s3_bucket_from_the_archives)
+1. Follow the guide provided in the [handy snippets documentation](../tools/handy_snippets.md#uploading-files-to-an-s3-bucket-from-the-archives)
 
 #### Checking the data uploaded matches the expected
 

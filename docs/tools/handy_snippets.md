@@ -50,8 +50,10 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
 ## Uploading files to an s3 bucket from the archives
 
 ### Pre-requisites and installation
+- `virtualenv`
+- [`aws`](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 - `wget`
-- Connect to the EC2, create a virtual environment and install the python requirements:
+- Connect to the EC2, create a virtual environment and install the python dependencies:
   ```
   virtualenv -p python3.7 <name_of_env>
   source <name_of_env>/bin/activate
@@ -59,7 +61,7 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
   pip3 install -r requirements.txt
   ```
 - Set up your default aws credentials:
-   - Go to `~.aws/`
+   - Go to `~/.aws/`
    - `vim credentials`
    - Copy this at the top of the file:
    ```
