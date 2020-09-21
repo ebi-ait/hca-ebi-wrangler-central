@@ -93,7 +93,7 @@ def get_all_entities(submission_uuid: str) -> List[Dict]:
     # Get the archiveEntities response and put them into a list
     archive_submission = rq.get(f'https://api.ingest.archive.data.humancellatlas.org/archiveSubmissions/search/'
                                 f'findBySubmissionUuid?submissionUuid={submission_uuid}').json()
-    entities_link = archive_submission['_links']['entities']['href']
+    entities_link = archive_submission['_embedded']['archiveSubmissions'][0]['_links']['entities']['href']
     entities_page = rq.get(entities_link).json()
     all_entities = entities_page['_embedded']['archiveEntities']
 
