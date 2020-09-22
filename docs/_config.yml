@@ -1,5 +1,5 @@
 title: "HCA Wrangler Docs"
-site_url: https://ebi-ait.github.io/hca-ebi-wrangler-central/
+site_url: https://ebi-ait.github.io/hca-ebi-wrangler-central/tree/ncbi_cloud/
 remote_theme: pmarsceill/just-the-docs
 # remote_theme: leakyabstractions/pretty-docs
 search_enabled: true
