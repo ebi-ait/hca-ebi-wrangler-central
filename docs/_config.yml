@@ -5,4 +5,5 @@ remote_theme: pmarsceill/just-the-docs
 search_enabled: true
 aux_links:
   "Edit these Docs on GitHub":
-    - "//github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/docs"
+    - "//github.com/ebi-ait/hca-ebi-wrangler-central/tree/ncbi_cloud/docs"
+#   - "//github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/docs"
