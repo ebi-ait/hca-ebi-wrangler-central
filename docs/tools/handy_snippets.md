@@ -36,7 +36,7 @@ You need to have the
 ingest-graph-validator init
 ```
 
-* Load ('hydrate') an HCA metadata spreadsheet or a submission from Ingest. For details, see:
+* Load (`hydrate`) an HCA metadata spreadsheet or a submission from Ingest. For details, see:
 
 ```
 ingest-graph-validator hydrate --help
