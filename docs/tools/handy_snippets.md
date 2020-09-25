@@ -59,7 +59,7 @@ RETURN n.`project_core.project_short_name` AS `project short name`
 
 2.  Make a sub-graph that displays protocol links
 
-```
+```cypher
 // Inspect protocol links visually
 MATCH protocols=()-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:PROTOCOLS]->(:protocol)
 RETURN protocols
@@ -67,7 +67,7 @@ RETURN protocols
 
 3. Inspect the biomaterials:
 
-```
+```cypher
 // From donor_organism to biomaterials (down 2 levels). 
 MATCH p=(:donor_organism)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:biomaterial)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:biomaterial)
 RETURN p
@@ -75,7 +75,7 @@ RETURN p
 
 4. The following snippet is to visualise part of the experimental design in the metadata.It is useful for datasets with too many nodes and relationships to visualise at once.
 
-```
+```cypher
 // Partial experimental design.
 MATCH expdesign=(:biomaterial)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:biomaterial)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:sequence_file)
 RETURN expdesign
@@ -83,7 +83,7 @@ RETURN expdesign
 
 5. Experimental design graph
 
-```
+```cypher
 // Experimental design
 // related to biomaterials.
 // IMPORTANT: For optimal visual experience in the neo4j browser,
@@ -95,7 +95,7 @@ RETURN expdesign
 ```
 
 6. Experimental design of project
-```
+```cypher
 // Project experimental design
 // without protocols.
 // IMPORTANT: For optimal visual experience in the neo4j browser,
