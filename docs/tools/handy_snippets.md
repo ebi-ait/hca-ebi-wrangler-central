@@ -43,17 +43,14 @@ ingest-graph-validator hydrate --help
 
 * Go to <http://localhost:7474> in a browser to open the neo4j front-end.
 
-IMPORTANT
-{: .label .label-red } 
-
-For optimal visual experience in the Neo4j Browser, turn autocomplete off by going to the bottom of the settings menu and unticking `Connect result nodes`.
+* **IMPORTANT** For optimal visual experience in the Neo4j Browser, turn autocomplete off by going to the bottom of the settings menu and unticking `Connect result nodes`.
 
 Copy and paste the `cypher` snippets below one-by-one into the Neo4j Browser command line.
 Please, note that snippets 5. and 6. may crash your browser with some rich datasets with a large number of nodes or relationships. If that happens, just refresh the browser window, re-connect to the neo4j server and use snippets 1-5, or make a custom query for that dataset.
 
 1. Check if the desired project has been loaded:
 
-```
+```cypher
 // Check project short name.
 // Returns textual result.
 MATCH (n:project)
