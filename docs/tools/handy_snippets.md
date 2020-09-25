@@ -17,7 +17,7 @@ Handy snippets that are useful to wranglers that don't quite fit elsewhere
 
 ## cypher query snippets to help inspect metadata visually
 
-You can use [Neo4j Cypher](https://neo4j.com/docs/cypher-refcard/current/) queries in a web browser window together with the [HCA Ingest Service Graph Validation Suite](https://github.com/ebi-ait/ingest-graph-validator) to generate diagrams of experimental design or inspect HCA metadata.
+You can use [Neo4j Cypher](https://neo4j.com/developer/cypher/resources/) queries in a web browser window together with the [HCA Ingest Service Graph Validation Suite](https://github.com/ebi-ait/ingest-graph-validator) to generate diagrams of experimental design or inspect HCA metadata.
 
 - [Neo4j Cypher Refcard](https://neo4j.com/docs/cypher-refcard/current/) <https://neo4j.com/docs/cypher-refcard/current/>
 
@@ -44,10 +44,12 @@ ingest-graph-validator hydrate --help
 
 * Go to <http://localhost:7474> in a browser to open the neo4j front-end.
 
-* **IMPORTANT** For optimal visual experience in the Neo4j Browser, turn autocomplete off by going to the bottom of the settings menu and unticking `Connect result nodes`.
+* **IMPORTANT** For optimal visual experience in the [Neo4j Browser](https://neo4j.com/developer/neo4j-browser/), turn autocomplete off by going to the bottom of the settings menu and unticking `Connect result nodes`.
 
 Copy and paste the `cypher` snippets below one-by-one into the Neo4j Browser command line.
 Please, note that snippets 5. and 6. may crash your browser with some rich datasets with a large number of nodes or relationships. If that happens, just refresh the browser window, re-connect to the neo4j server and use snippets 1-5, or make a custom query for that dataset.
+You can download the results as a CSV from the Table, Text, and Code views or download the graph as an SVG or PNG from the Graph view by clicking the download icon in the upper right corner of the user interface. For further help, see the [Neo4j Browser User Interface Guide.](https://neo4j.com/developer/neo4j-browser/)
+
 
 1 Check if the desired project has been loaded:
 
