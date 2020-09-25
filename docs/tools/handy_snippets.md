@@ -45,6 +45,7 @@ ingest-graph-validator hydrate --help
 
 IMPORTANT
 {: .label .label-red } 
+
 For optimal visual experience in the Neo4j Browser, turn autocomplete off by going to the bottom of the settings menu and unticking `Connect result nodes`.
 
 Copy and paste the `cypher` snippets below one-by-one into the Neo4j Browser command line.
