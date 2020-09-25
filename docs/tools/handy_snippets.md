@@ -20,6 +20,7 @@ Handy snippets that are useful to wranglers that don't quite fit elsewhere
 You can use [Neo4j Cypher](https://neo4j.com/docs/cypher-refcard/current/) queries in a web browser window together with the [HCA Ingest Service Graph Validation Suite](https://github.com/ebi-ait/ingest-graph-validator) to generate diagrams of experimental design or inspect HCA metadata.
 
 - [Neo4j Cypher Refcard](https://neo4j.com/docs/cypher-refcard/current/) <https://neo4j.com/docs/cypher-refcard/current/>
+
 ### Pre-requisites and installation
 
 You need to have the
@@ -48,7 +49,7 @@ ingest-graph-validator hydrate --help
 Copy and paste the `cypher` snippets below one-by-one into the Neo4j Browser command line.
 Please, note that snippets 5. and 6. may crash your browser with some rich datasets with a large number of nodes or relationships. If that happens, just refresh the browser window, re-connect to the neo4j server and use snippets 1-5, or make a custom query for that dataset.
 
-1. Check if the desired project has been loaded:
+1 Check if the desired project has been loaded:
 
 ```cypher
 // Check project short name.
@@ -57,7 +58,7 @@ MATCH (n:project)
 RETURN n.`project_core.project_short_name` AS `project short name`
 ```
 
-2.  Make a sub-graph that displays protocol links
+2  Make a sub-graph that displays protocol links
 
 ```cypher
 // Inspect protocol links visually
@@ -65,7 +66,7 @@ MATCH protocols=()-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:PROTOCOLS]->(:prot
 RETURN protocols
 ```
 
-3. Inspect the biomaterials:
+3 Inspect the biomaterials:
 
 ```cypher
 // From donor_organism to biomaterials (down 2 levels). 
@@ -73,7 +74,7 @@ MATCH p=(:donor_organism)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_EXPER
 RETURN p
 ```
 
-4. The following snippet is to visualise part of the experimental design in the metadata.It is useful for datasets with too many nodes and relationships to visualise at once.
+4 The following snippet is to visualise part of the experimental design in the metadata.It is useful for datasets with too many nodes and relationships to visualise at once.
 
 ```cypher
 // Partial experimental design.
@@ -81,7 +82,7 @@ MATCH expdesign=(:biomaterial)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_
 RETURN expdesign
 ```
 
-5. Experimental design graph
+5 Experimental design graph
 
 ```cypher
 // Experimental design
@@ -94,7 +95,7 @@ MATCH expdesign=(:donor_organism)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUM
 RETURN expdesign
 ```
 
-6. Experimental design of project
+6 Experimental design of project
 ```cypher
 // Project experimental design
 // without protocols.
