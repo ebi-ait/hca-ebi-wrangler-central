@@ -74,7 +74,7 @@ MATCH p=(:donor_organism)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_EXPER
 RETURN p
 ```
 
-4. The following snippet is to visualise part of the experimental design in the metadata.It is useful for datasets with too many nodes and relationships to visualise at once..
+4. The following snippet is to visualise part of the experimental design in the metadata.It is useful for datasets with too many nodes and relationships to visualise at once.
 
 ```
 // Partial experimental design.
