@@ -230,7 +230,7 @@ Once the file_upload_info.json is in the folder, you have 2 options:
     ```
 1. **Run the job in parallel**: Please refer to the [next subsection](#run-parallel-jobs) to run the file archiver in parallel.
 
-## Run parallel jobs
+##### Run parallel jobs
 
 With only one file_upload_info.json, all jobs are run sequentially. In order to run parallel jobs, you need to use a script to divide the jobs and send each one of the jobs as a different job in the cluster. Assuming you are already logged in the cluster, and in the working directory, the steps are:
 
