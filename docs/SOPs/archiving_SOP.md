@@ -197,7 +197,7 @@ The “conversion” field can be deleted if no bam conversion is needed. It won
 
 ### Using the file archiver service
 
-Make sure that all commands using the File Archiver image is pointing to the latest version of it.
+Please make sure that all commands using the File Archiver image is pointing to the latest version of it.
 Check latest image version (prod released version will have the tag format `dYYYY-DD-MM.<increment_digit>`) in [quay.io](https://quay.io/repository/ebi-ait/ingest-file-archiver?tab=tags)
 
 #### Using EBI Cluster
