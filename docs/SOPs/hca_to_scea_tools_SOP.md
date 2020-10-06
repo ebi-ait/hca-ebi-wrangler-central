@@ -26,6 +26,7 @@ Other documents that Silvie shared with us can be found here: [https://drive.goo
 1. Submit completed HCA metadata spreadsheet to the hca-to-scea-tool which can be found in the following Github repository: [https://github.com/ebi-ait/hca-to-scea-tools](https://github.com/ebi-ait/hca-to-scea-tools). To do this, clone the repository to your local directory. Instructions on how to install and use the tool are documented in the README file. Once you have navigated to [http://127.0.0.1:5000](https://github.com/ebi-ait/hca-to-scea-tools/blob/master) in a browser as specified in the README, follow the next steps described here.
 
 2. You should see a webpage which looks like the following:
+
 ![Base webpage](/assets/images/scea_screenshots/base_web.png)
 
    2. Upload the spreadsheet file as indicated. Note that if your spreadsheet has multiple technologies that you will need to upload a separate spreadsheet per technology.
