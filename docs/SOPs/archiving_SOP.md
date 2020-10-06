@@ -197,6 +197,9 @@ The “conversion” field can be deleted if no bam conversion is needed. It won
 
 ### Using the file archiver service
 
+Make sure that all commands using the File Archiver image is pointing to the latest version of it.
+Check latest image version (prod released version will have the tag format `dYYYY-DD-MM.<increment_digit>`) in [quay.io](https://quay.io/repository/ebi-ait/ingest-file-archiver?tab=tags)
+
 #### Using EBI Cluster
 
 As a standard, we run bam conversion in the EBI cluster, as it may need a big chunk of memory and fail when ran in the EC2. Steps to use:
@@ -226,7 +229,7 @@ As a standard, we run bam conversion in the EBI cluster, as it may need a big ch
 Once the file_upload_info.json is in the folder, you have 2 options:
 1. **Run the job sequentually**: Running the singularity job with 64GB memory (Default is 1GB)
     ```
-    bsub -J <job_name> -M 64000 'singularity run -B /nfs/production/hca/<folder_name>:/data docker://quay.io/ebi-ait/ingest-file-archiver:d2020-07-09.1 -d=/data -f=/data/<file_name>.json -l=https://explore.api.aai.ebi.ac.uk/auth -u=<aap-username> -p=<aap-password> -a=<aws-key> -s="<aws-secret>"'
+    bsub -J <job_name> -M 64000 'singularity run -B /nfs/production/hca/<folder_name>:/data docker://quay.io/ebi-ait/ingest-file-archiver:d2020-30-09.1 -d=/data -f=/data/<file_name>.json -l=https://explore.api.aai.ebi.ac.uk/auth -u=<aap-username> -p=<aap-password> -a=<aws-key> -s="<aws-secret>"'
     ```
 1. **Run the job in parallel**: Please refer to the [next subsection](#run-parallel-jobs) to run the file archiver in parallel.
 
@@ -267,6 +270,8 @@ With only one file_upload_info.json, all jobs are run sequentially. In order to 
    python batch_file_archiver.py '<aap-user>' '<aap-password>' '<aws-key>' '<aws-key-secret>'  '/nfs/production/hca/<work-dir>' './FILE_UPLOAD_INFO_953b4f03-f5d3-4a03-ad48-6aa125bacf1f.json' <--dry_run>
    ```
 
+Note: Please make sure the `batch_file_archiver.py` is pointing to the latest version of the File Archiver. (See details [Using the file archiver service](### Using the file archiver service) on how to check latest version)
+If not please update the file in github to point to the new version.
 
 #### Using Wrangler EC2
 
@@ -304,7 +309,7 @@ If no BAM conversion is required you can use the wrangler EC2 as follows:
     --env AAP_URL=https://explore.api.aai.ebi.ac.uk/auth \
     --env AWS_ACCESS_KEY_ID=<aws_key> \
     --env AWS_SECRET_ACCESS_KEY=<aws_secret> \
-    quay.io/ebi-ait/ingest-file-archiver:d2020-07-09.1
+    quay.io/ebi-ait/ingest-file-archiver:d2020-30-09.1
     ```
 
 
@@ -353,7 +358,7 @@ Matching these locations in your commands is really important. In the following 
 *   <job_name> = laurenti_upload
 *   Using the live ingest environment
 *   Please note that /data is fixed, in theory you could change it, but please don’t.
-*   In theory you could also change the docker image you pull to use specific versions of file archiver but again, please don’t: `docker://quay.io/ebi-ait/ingest-file-archiver:d2020-07-09.1`
+*   In theory you could also change the docker image you pull to use specific versions of file archiver but again, please don’t: `docker://quay.io/ebi-ait/ingest-file-archiver:d2020-30-09.1`
 
 Download the the file upload info:
 
@@ -367,7 +372,7 @@ Trigger the File Transfer to DSP:
 
 
 ```
-bsub -J laurenti_upload -M 64000 'singularity run -B /nfs/production/hca/laurenti:/data docker://quay.io/ebi-ait/ingest-file-archiver:d2020-07-09.1 -d=/data -f=/data/upload_info.json -l=https://api.aai.ebi.ac.uk/auth -u=hca-ingest -p=<aap-password> -a=<aws-key> -s=<aws-secret>'
+bsub -J laurenti_upload -M 64000 'singularity run -B /nfs/production/hca/laurenti:/data docker://quay.io/ebi-ait/ingest-file-archiver:d2020-30-09.1 -d=/data -f=/data/upload_info.json -l=https://api.aai.ebi.ac.uk/auth -u=hca-ingest -p=<aap-password> -a=<aws-key> -s=<aws-secret>'
 ```
 
 
