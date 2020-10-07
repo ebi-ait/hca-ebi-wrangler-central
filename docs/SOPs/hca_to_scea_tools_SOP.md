@@ -71,7 +71,7 @@ Once the suitability has been assessed, please contact an SCEA curator via slack
 
 1. You should see a webpage which looks like the following:
 
-   ![Base webpage](/assets/images/scea_screenshots/base_web.png)
+   ![Base webpage](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/scea_screenshots/base_web.png)
 
    2. Upload the spreadsheet file as indicated. Note that if your spreadsheet has multiple technologies that you will need to upload a separate spreadsheet per technology.
 
