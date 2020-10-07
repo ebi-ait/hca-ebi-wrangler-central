@@ -70,7 +70,7 @@ Once the suitability has been assessed, please contact an SCEA curator via slack
 
 1. You should see a webpage which looks like the following:
 
-   ![Base webpage](/assets/images/scea_screenshots/base_web.png)
+   ![Base webpage](/https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/assets/images/scea_screenshots/base_web.png)
 
    2. Upload the spreadsheet file as indicated. Note that if your spreadsheet has multiple technologies that you will need to upload a separate spreadsheet per technology.
 
@@ -85,21 +85,21 @@ Once the suitability has been assessed, please contact an SCEA curator via slack
 
 3. You should now see a webpage like the following:
     
-   ![Protocol matching](/assets/images/scea_screenshots/protocol_matching.png)
+   ![Protocol matching](/https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/assets/images/scea_screenshots/protocol_matching.png)
    
    You can edit the text inside the protocol descriptions and merge the protocols into 1 by dropping and dragging. The idea is to keep duplication across protocols as minimal as possible. If there are no values in the protocol descriptions, they will be filled with `nan`. Please fill in a brief description.
 
 4. You should also see the following on the same webpage:
    
-   ![Prefilled values](/assets/images/scea_screenshots/pre_filled_values.png)
+   ![Prefilled values](/https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/assets/images/scea_screenshots/pre_filled_values.png)
     
    These are pre-filled values for the sequencing protocol that is specified in the HCA metadata spreadsheet. Currently, if ‘10X v2 sequencing’ is specified, these fields are pre-filled. You can then manually edit them. If another technology is specified, these fields are not pre-filled and you need to enter the information here manually. SCEA requires that datasets are split by technology, so you should only have 1 technology type in your HCA metadata file.
 
 5. Click `this looks alright`. An idf and sdrf file will be generated in a newly created folder inside the ‘spreadsheets’ folder in your local repository directory.
 
-## Section B: Refining the metadata outputs
+### Section B: Refining the metadata outputs
 
-### idf file
+#### idf file
 
 1. Any fields which need to be filled manually will be indicated in the file by <fill this>:
 
@@ -122,7 +122,7 @@ Once the suitability has been assessed, please contact an SCEA curator via slack
 
 An example screenshot to illustrate the above points:
 
-![Refining fields](hca-ebi-wrangler-central/assets/images/scea_screenshots/refining_fields.png)
+![Refining fields](https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/assets/images/scea_screenshots/refining_fields.png)
 
 2. You can further edit the list of Protocol Name, Protocol Type and Protocol Description in the idf file if you need to:
 *   Each Name, Type and Description must be tab-separated.
@@ -134,26 +134,26 @@ An example screenshot to illustrate the above points:
 *   If the experimental design consists of a treatment, a stimulus, or some other protocol which you believe is not reflected by HCA protocol names, you can add a new protocol Name, Type and Description in the idf file. You would need to then modify the number order of all protocol Names and the associated Type and Descriptions. The sdrf protocol REF fields would need to reflect these changes.
 
 
-### sdrf file
+#### sdrf file
 
 *   You will need to check that the number and name of the protocol REF ids in the idf file (e.g. P-HCADX-1,P-HCADX-2) matches correctly with the experiment rows in the sdrf files, based on the experimental design. The automatic conversion should be correct but this is a good check to do.
 *   You will need to fill cells consisting of <FILL THIS> or if no relevant information is available, you can leave these blank.
 *   Material Type is currently set to “whole organism” by default (hca-to-scea-tools script needs updating). Please change to “organism part” if the sample is an organ/tissue specimen or “cell” if the sample was an organoid or cell line culture.
-*   The last columns in the sdrf file should be Factor Value fields. They are not automatically generated. It is good to add these where you can identify a factor which may be useful to the user to reflect potential differential groups. These should be selected from the `Characteristic` fields. For example, you might choose to add `Factor Value[organism part]` or `Factor Value[disease]` if they are variable. You can also add additional Characteristic fields such as Characteristic[immunophenotype]` or `Characteristics[stimulus]`. These can then be used as a Factor Value field such as `Factor Value[stimulus]`.
+*   The last columns in the sdrf file should be Factor Value fields. They are not automatically generated. It is good to add these where you can identify a factor which may be useful to the user to reflect potential differential groups. These should be selected from the `Characteristic` fields. For example, you might choose to add `Factor Value[organism part]` or `Factor Value[disease]` if they are variable. You can also add additional Characteristic fields such as `Characteristic[immunophenotype]` or `Characteristics[stimulus]`. These can then be used as a Factor Value field such as `Factor Value[stimulus]`.
 *   Controlled vocabulary is applicable in certain sdrf fields: please see the shared documents from Silvie found here: [SCEA controlled vocabulary](https://drive.google.com/drive/folders/1GHaqpQsz4CY6_KkBTTXHJo69J4FXMNcw)
 *   Make sure you save the sdrf file as a tab-delimited .txt file: beware of excel changing your time unit ranges to a date format and of empty rows/lines at the bottom of the file. Empty rows/lines will cause errors in validation.
 *   Once this is all complete, go back to the idf file and fill these fields: ‘Experimental Factor Name’ and ‘Experimental Factor Type’ with a tab-separated list of the Factor values you had chosen to add in the sdrf file. See below screenshot as an example:
 
 
-![Refining SDRF](hca-ebi-wrangler-central/assets/images/scea_screenshots/sdrf_refining.png)
+![Refining SDRF](https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/assets/images/scea_screenshots/sdrf_refining.png)
 
 
 
-## Section C: Validation of idf and sdrf files**
+### Section C: Validation of idf and sdrf files**
 
 _There are 2 validation steps for SCEA: a python validator and perl validator. In Silvie’s words: “the perl script checks the mage-tab format in general (plus some curation checks etc) and the the python script mainly checks for single-cell expression atlas specific fields and requirements”._
 
-### Python Validator
+#### Python Validator
 
 A MAGE-TAB pre-validation module for running checks that guarantee the experiment can be processed for SCEA. You can clone the repository and run the script locally:
 
@@ -177,59 +177,49 @@ python atlas_validation.py path/to/test.idf.txt -sc -hca -v
 
 An example of a successful validation looks like this:
 
-![Validation](hca-ebi-wrangler-central/assets/images/scea_screenshots/validation.png)
+![Validation](https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/assets/images/scea_screenshots/validation.png)
 
 
-### Perl validator
+#### Perl validator
 
-*   Install Anaconda if you don’t have it already and the Anaconda directory to your path
-*   Configure conda by typing the following at the terminal:
+1.   Install Anaconda if you don’t have it already and the Anaconda directory to your path
+1.   Configure conda by typing the following at the terminal:
+     ```
+     conda config --add channels defaults
+     conda config --add channels bioconda
+     conda config --add channels conda-forge
+     ```
+1.   Install the perl atlas module in a new environment: 
+     ```
+     conda create -n perl-atlas-test -c ebi-gene-expression-group perl-atlas-modules
+     ```
+1.   Activate the environment:
+     ```
+     conda activate perl-atlas-test
+     ```
+1.   Download the validate_magetab.pl_ _perl script from here: [https://drive.google.com/drive/folders/1Ja2NKtHkDh2YIvUhNa1mpivL-UjCsmbR](https://drive.google.com/drive/folders/1Ja2NKtHkDh2YIvUhNa1mpivL-UjCsmbR))
+1.   Execute the script (with idf and sdrf files in the same directory)
+     ```
+     perl path-to/validate_magetab.pl -i <idf-file>
+     ```
+     (You can ignore ArrayExpress errors)
 
-    conda config --add channels defaults
+### Section D: SCEA file upload
 
+#### SDRF and IDF upload
 
-    conda config --add channels bioconda
+1.   Create a new branch in the Gitlab gene-expression-atlas HCAD repository directory: [https://gitlab.ebi.ac.uk/ebi-gene-expression/scxa-metadata/tree/master/HCAD](https://gitlab.ebi.ac.uk/ebi-gene-expression/scxa-metadata/tree/master/HCAD)
+1.   Upload your validated SCEA files to this branch.
+1.   Submit a merge request and select ‘requires approval’.
+1.   Your SCEA files will then be reviewed for merging to the Master directory.
 
-
-    conda config --add channels conda-forge
-
-*   Install the perl atlas module in a new environment: 
-
-    conda create -n perl-atlas-test -c ebi-gene-expression-group perl-atlas-modules
-
-
-
-*   Activate the environment:
-
-conda activate perl-atlas-test
-
-
-
-*   Download the validate_magetab.pl_ _perl script from here: [https://drive.google.com/drive/folders/1Ja2NKtHkDh2YIvUhNa1mpivL-UjCsmbR](https://drive.google.com/drive/folders/1Ja2NKtHkDh2YIvUhNa1mpivL-UjCsmbR))
-*   Execute the script (with idf and sdrf files in the same directory):
-
-perl path-to/validate_magetab.pl -i &lt;idf-file>
-
-
-
-*   You can ignore ArrayExpress errors
-
-## Section D: SCEA file upload
-
-### SDRF and IDF upload
-
-*   Create a new branch in the Gitlab gene-expression-atlas HCAD repository directory: [https://gitlab.ebi.ac.uk/ebi-gene-expression/scxa-metadata/tree/master/HCAD](https://gitlab.ebi.ac.uk/ebi-gene-expression/scxa-metadata/tree/master/HCAD)
-*   Upload your validated SCEA files to this branch.
-*   Submit a merge request and select ‘requires approval’.
-*   Your SCEA files will then be reviewed for merging to the Master directory.
-
-### Sequence file handing
+#### Sequence file handing
 
 [WIP]
 
-## Section E: Extra notes
+### Section E: Extra notes
 
-### Detailed column mapping
+#### Detailed column mapping
 
 This table shows the source of the columns generated in the MAGE-TAB file.
 
