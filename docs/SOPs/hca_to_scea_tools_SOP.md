@@ -223,6 +223,7 @@ An example of a successful validation looks like this:
 
 This table shows the source of the columns generated in the MAGE-TAB file.
 
+
 | Column in MAGE-TAB SDRF file              | Source                   | Description                                                               | Default      |
 |-------------------------------------------|--------------------------|---------------------------------------------------------------------------|--------------|
 |`Source Name`                              | Selectable from          | Any column ending with `biomaterial_id` or `biosamples_accession`         |              |
@@ -274,3 +275,4 @@ This table shows the source of the columns generated in the MAGE-TAB file.
 |`Comment[read1 file]`                      | Column                   | `sequence_file.file_core.file_name_read1`                                 |              |
 |`Comment[read2 file]`                      | Column                   | `sequence_file.file_core.file_name_read2`                                 |              |
 |`Comment[index1 file]`                     | Column                   | `sequence_file.file_core.file_name_index`                                 |              |
+
