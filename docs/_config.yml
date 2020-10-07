@@ -6,6 +6,4 @@ search_enabled: true
 aux_links:
   "Edit these Docs on GitHub":
     - "//github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/docs"
-markdown: redcarpet
-redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+markdown: kramdown
