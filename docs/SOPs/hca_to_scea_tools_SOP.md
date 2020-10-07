@@ -123,7 +123,7 @@ Once the suitability has been assessed, please contact an SCEA curator via slack
 
 An example screenshot to illustrate the above points:
 
-![refining fields](assets/images/scea_screenshots/refining_fields.png)
+![refining fields](/assets/images/scea_screenshots/refining_fields.png)
 
 2. You can further edit the list of Protocol Name, Protocol Type and Protocol Description in the idf file if you need to:
 *   Each Name, Type and Description must be tab-separated.
@@ -146,7 +146,7 @@ An example screenshot to illustrate the above points:
 *   Once this is all complete, go back to the idf file and fill these fields: ‘Experimental Factor Name’ and ‘Experimental Factor Type’ with a tab-separated list of the Factor values you had chosen to add in the sdrf file. See below screenshot as an example:
 
 
-![sdrf refining](assets/images/scea_screenshots/sdrf_refining.png)
+![sdrf refining](/assets/images/scea_screenshots/sdrf_refining.png)
 
 
 
@@ -178,7 +178,7 @@ python atlas_validation.py path/to/test.idf.txt -sc -hca -v
 
 An example of a successful validation looks like this:
 
-![validation](assets/images/scea_screenshots/validation.png)
+![validation](/assets/images/scea_screenshots/validation.png)
 
 #### Perl validator
 
