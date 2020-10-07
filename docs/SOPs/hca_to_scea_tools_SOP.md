@@ -146,7 +146,7 @@ An example screenshot to illustrate the above points:
 *   Once this is all complete, go back to the idf file and fill these fields: ‘Experimental Factor Name’ and ‘Experimental Factor Type’ with a tab-separated list of the Factor values you had chosen to add in the sdrf file. See below screenshot as an example:
 
 
-![Refining SDRF](assets/images/scea_screenshots/sdrf_refining.png)
+![](assets/images/scea_screenshots/sdrf_refining.png)
 
 
 
