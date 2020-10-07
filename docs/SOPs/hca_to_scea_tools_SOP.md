@@ -225,7 +225,7 @@ This table shows the source of the columns generated in the MAGE-TAB file.
 
 
 | Column in MAGE-TAB SDRF file              | Source                   | Description                                                               | Default      |
-|-------------------------------------------|--------------------------|---------------------------------------------------------------------------|--------------|
+|---|---|---|---|
 | `Source Name`                              | Selectable from          | Any column ending with `biomaterial_id` or `biosamples_accession`         |              |
 | `Characteristics[organism]`                | Column                   | `donor_organism.genus_species.ontology_label`                             |              |
 | `Characteristics[individual]`              | Column                   | `donor_organism.biomaterial_core.biomaterial_id`                          |              |
@@ -263,11 +263,11 @@ This table shows the source of the columns generated in the MAGE-TAB file.
 | `Comment[cDNA read offset]`                | Fill cells with value    | `0`                                                                       |              |
 | `Comment[cDNA read size]`                  | Fill cells with value    | `98`                                                                      |              |
 | `Comment[LIBRARY_STRAND]`                  | Column                   | `library_preparation_protocol.strand`                                     |              |
-| `Comment[LIBRARY\_LAYOUT]`                 | Fill cells with value    | `PAIRED`                                                                  |              |
-| `Comment[LIBRARY\_SOURCE]`                 | Fill cells with value    | `TRANSCRIPTOMIC SINGLE CELL`                                              |              |
-| `Comment[LIBRARY\_STRATEGY]`               | Fill cells with value    | `RNA-Seq`                                                                 |              |
-| `Comment[LIBRARY\_SELECTION]`              | Fill cells with value    | `cDNA`                                                                    |              |
-| `Protocol REF (second group of instances)  | Special protocol columns | Includes sequencing protocol                                              |              |
+| `Comment[LIBRARY_LAYOUT]`                 | Fill cells with value    | `PAIRED`                                                                  |              |
+| `Comment[LIBRARY_SOURCE]`                 | Fill cells with value    | `TRANSCRIPTOMIC SINGLE CELL`                                              |              |
+| `Comment[LIBRARY_STRATEGY]`               | Fill cells with value    | `RNA-Seq`                                                                 |              |
+| `Comment[LIBRARY_SELECTION]`              | Fill cells with value    | `cDNA`                                                                    |              |
+| `Protocol REF (second group of instances)`  | Special protocol columns | Includes sequencing protocol                                              |              |
 | `Assay Name`                               | Column                   | `specimen_from_organism.biomaterial_core.biomaterial_id`                  |              |
 | `Technology Type`                          | Fill cells with value    | `sequencing assay`                                                        |              |
 | `Scan Name`                                | Selectable from          | Any column ending with `biomaterial_id` or `biosamples_accession`         |              |
@@ -275,4 +275,3 @@ This table shows the source of the columns generated in the MAGE-TAB file.
 | `Comment[read1 file]`                      | Column                   | `sequence_file.file_core.file_name_read1`                                 |              |
 | `Comment[read2 file]`                      | Column                   | `sequence_file.file_core.file_name_read2`                                 |              |
 | `Comment[index1 file]`                     | Column                   | `sequence_file.file_core.file_name_index`                                 |              |
-
