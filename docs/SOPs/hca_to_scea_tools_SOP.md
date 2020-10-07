@@ -7,6 +7,7 @@ parent: SOPs
 
 # HCA to SCEA Guide
 {: .no_toc }
+
 _Please note: this is not a tool to generate a perfect set of SCEA idf and sdrf files automatically. It speeds up the process by part automation but manual curation is an important part of the process._
 
 ## Table of contents
@@ -70,7 +71,7 @@ Once the suitability has been assessed, please contact an SCEA curator via slack
 
 1. You should see a webpage which looks like the following:
 
-   ![Base webpage](//assets/images/scea_screenshots/base_web.png)
+   ![Base webpage](/assets/images/scea_screenshots/base_web.png)
 
    2. Upload the spreadsheet file as indicated. Note that if your spreadsheet has multiple technologies that you will need to upload a separate spreadsheet per technology.
 
@@ -85,13 +86,13 @@ Once the suitability has been assessed, please contact an SCEA curator via slack
 
 3. You should now see a webpage like the following:
     
-   ![Protocol matching](//assets/images/scea_screenshots/protocol_matching.png)
+   ![Protocol matching](/assets/images/scea_screenshots/protocol_matching.png)
    
    You can edit the text inside the protocol descriptions and merge the protocols into 1 by dropping and dragging. The idea is to keep duplication across protocols as minimal as possible. If there are no values in the protocol descriptions, they will be filled with `nan`. Please fill in a brief description.
 
 4. You should also see the following on the same webpage:
    
-   ![Prefilled values](//assets/images/scea_screenshots/pre_filled_values.png)
+   ![Prefilled values](/assets/images/scea_screenshots/pre_filled_values.png)
     
    These are pre-filled values for the sequencing protocol that is specified in the HCA metadata spreadsheet. Currently, if ‘10X v2 sequencing’ is specified, these fields are pre-filled. You can then manually edit them. If another technology is specified, these fields are not pre-filled and you need to enter the information here manually. SCEA requires that datasets are split by technology, so you should only have 1 technology type in your HCA metadata file.
 
@@ -122,7 +123,7 @@ Once the suitability has been assessed, please contact an SCEA curator via slack
 
 An example screenshot to illustrate the above points:
 
-![Refining fields](/assets/images/scea_screenshots/refining_fields.png)
+![Refining fields](assets/images/scea_screenshots/refining_fields.png)
 
 2. You can further edit the list of Protocol Name, Protocol Type and Protocol Description in the idf file if you need to:
 *   Each Name, Type and Description must be tab-separated.
@@ -145,7 +146,7 @@ An example screenshot to illustrate the above points:
 *   Once this is all complete, go back to the idf file and fill these fields: ‘Experimental Factor Name’ and ‘Experimental Factor Type’ with a tab-separated list of the Factor values you had chosen to add in the sdrf file. See below screenshot as an example:
 
 
-![Refining SDRF](/assets/images/scea_screenshots/sdrf_refining.png)
+![Refining SDRF](assets/images/scea_screenshots/sdrf_refining.png)
 
 
 
@@ -177,7 +178,7 @@ python atlas_validation.py path/to/test.idf.txt -sc -hca -v
 
 An example of a successful validation looks like this:
 
-![Validation](/assets/images/scea_screenshots/validation.png)
+<img src="assets/images/scea_screenshots/validation.png" class="img-responsive" alt=""> </div>
 
 
 #### Perl validator
