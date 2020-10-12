@@ -50,7 +50,7 @@ _Please note: this is not a tool to generate a perfect set of SCEA idf and sdrf 
 Please make sure that the dataset is ready for SCEA. Check their [`data suitability guidelines`](https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/inclusion_criteria.md) document thoroughly. All datasets must be split by:
 - Species
 - Technology 
-    - 10x: Only 3' accepted (Mixing chemistries is OK)
+    - 10x: Only 3' accepted (Mixing chemistries (i.e. 10x 3' versions) is OK)
     
 Currently this splitting operation has to be done by manually creating as many spreadsheets as technologies the project has. **Each spreadsheet will have a different accession number**.
 
@@ -96,13 +96,13 @@ Once the suitability has been assessed, please contact an SCEA curator via slack
     
    These are pre-filled values for the sequencing protocol that is specified in the HCA metadata spreadsheet. Currently, if ‘10X v2 sequencing’ is specified, these fields are pre-filled. You can then manually edit them. If another technology is specified, these fields are not pre-filled and you need to enter the information here manually. SCEA requires that datasets are split by technology, so you should only have 1 technology type in your HCA metadata file.
 
-5. Click `this looks alright`. An idf and sdrf file will be generated in a newly created folder inside the ‘spreadsheets’ folder in your local repository directory.
+5. Click `That looks all right`. An idf and sdrf file will be generated in a newly created folder inside the ‘spreadsheets’ folder in your local repository directory.
 
 ### Section B: Refining the metadata outputs
 
 #### idf file
 
-1. Any fields which need to be filled manually will be indicated in the file by <fill this>:
+1. Any fields which need to be filled manually will be indicated in the file by `<fill this>`:
 
    Some are straight-forward:
 
@@ -130,9 +130,9 @@ An example screenshot to illustrate the above points:
 *   The Name should be ordered by number.
 *   The Type and Description order must reflect the Name orderhttps://github.com/ebi-gene-expression-group/atlas-fastq-provider.
 *   Protocol Types have to be 1 of: ‘sample collection protocol’,’treatment protocol’,’enrichment protocol’,’nucleic acid library construction protocol’,’nucleic acid sequencing protocol’.
-*   SCEA dissociation protocols are labelled as “enrichment protocol”.
+*   HCA DCP dissociation protocols should be labelled enrichment protocols for SCEA.
 *   The Protocol Name is used in the sdrf file to detail which protocols are applied in which experiments. It is worth checking these are all correct in the sdrf.
-*   If the experimental design consists of a treatment, a stimulus, or some other protocol which you believe is not reflected by HCA protocol names, you can add a new protocol Name, Type and Description in the idf file. You would need to then modify the number order of all protocol Names and the associated Type and Descriptions. The sdrf protocol REF fields would need to reflect these changes.
+*   If the experimental design consists of a treatment, a stimulus, or some other protocol which you believe is not reflected by HCA protocol names, you can add a new protocol Name, Type and Description in the idf file. You would then need to modify the number order of all protocol Names and the associated Type and Descriptions. The sdrf protocol REF fields would need to reflect these changes.
 
 
 #### sdrf file
