@@ -15,6 +15,101 @@ Handy snippets that are useful to wranglers that don't quite fit elsewhere
 1. TOC
 {:toc}
 
+## cypher query snippets to help inspect metadata visually
+
+You can use [Neo4j Cypher](https://neo4j.com/developer/cypher/resources/) queries in a web browser window together with the [HCA Ingest Service Graph Validation Suite](https://github.com/ebi-ait/ingest-graph-validator) to generate diagrams of experimental design or inspect HCA metadata.
+
+- [Neo4j Cypher Refcard](https://neo4j.com/docs/cypher-refcard/current/) <https://neo4j.com/docs/cypher-refcard/current/>
+
+### Pre-requisites and installation
+
+You need to have the
+* [HCA Ingest Service Graph Validation Suite](https://github.com/ebi-ait/ingest-graph-validator) installed,
+* docker engine,
+* a web browser.
+
+### Usage
+
+* Start `docker` (if not already running), then start the `ingest-graph-validator` back-end:
+
+```
+ingest-graph-validator init
+```
+
+* Load (`hydrate`) an HCA metadata spreadsheet or a submission from Ingest. For details, see:
+
+```
+ingest-graph-validator hydrate --help
+```
+
+* Go to <http://localhost:7474> in a browser to open the neo4j front-end.
+
+* **IMPORTANT** For optimal visual experience in the [Neo4j Browser](https://neo4j.com/developer/neo4j-browser/), turn autocomplete off by going to the bottom of the settings menu and unticking `Connect result nodes`.
+
+Copy and paste the `cypher` snippets below one-by-one into the Neo4j Browser command line.
+Please, note that snippets 5. and 6. may crash your browser with some rich datasets with a large number of nodes or relationships. If that happens, just refresh the browser window, re-connect to the neo4j server and use snippets 1-5, or make a custom query for that dataset.
+You can download the results as a CSV from the Table, Text, and Code views or download the graph as an SVG or PNG from the Graph view by clicking the download icon in the upper right corner of the user interface. For further help, see the [Neo4j Browser User Interface Guide.](https://neo4j.com/developer/neo4j-browser/)
+
+
+1 Check if the desired project has been loaded:
+
+```cypher
+// Check project short name.
+// Returns textual result.
+MATCH (n:project)
+RETURN n.`project_core.project_short_name` AS `project short name`
+```
+
+2  Make a sub-graph that displays protocol links
+
+```cypher
+// Inspect protocol links visually
+MATCH protocols=()-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:PROTOCOLS]->(:protocol)
+RETURN protocols
+```
+
+3 Inspect the biomaterials:
+
+```cypher
+// From donor_organism to biomaterials (down 2 levels). 
+MATCH p=(:donor_organism)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:biomaterial)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:biomaterial)
+RETURN p
+```
+
+4 The following snippet is to visualise part of the experimental design in the metadata.It is useful for datasets with too many nodes and relationships to visualise at once.
+
+```cypher
+// Partial experimental design.
+MATCH expdesign=(:biomaterial)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:biomaterial)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:sequence_file)
+RETURN expdesign
+```
+
+5 Experimental design graph
+
+```cypher
+// Experimental design
+// related to biomaterials.
+// IMPORTANT: For optimal visual experience in the neo4j browser,
+//    turn autocomplete off by going to the
+//    bottom of the settings menu and unticking
+//    'Connect result nodes'.
+MATCH expdesign=(:donor_organism)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:biomaterial)-[:DUMMY_EXPERIMENTAL_DESIGN *2..8]-()
+RETURN expdesign
+```
+
+6 Experimental design of project
+```cypher
+// Project experimental design
+// without protocols.
+// IMPORTANT: For optimal visual experience in the neo4j browser,
+//    turn autocomplete off by going to the
+//    bottom of the settings menu and unticking
+//    'Connect result nodes'.
+MATCH p=(:project)<-[:PROJECTS]-(:donor_organism)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:process)-[:DUMMY_EXPERIMENTAL_DESIGN]->(:biomaterial)-[:DUMMY_EXPERIMENTAL_DESIGN *]-()
+RETURN p
+```
+
+
 ## Downloading 10x files from archives
 
 These instructions are for getting BAM files of primary sequence data from the ENA that represent 10X sequencing data and converting them to the original I1, R1, and R2 files using the 10X `bamtofastq` tool. Please note that this tool only works for 10X data, and even then only for data processed with CellRanger and LongRagner. See the [10X website](https://support.10xgenomics.com/docs/bamtofastq) for more information about what data can be converted with this tool.
@@ -50,15 +145,27 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
 ## Uploading files to an s3 bucket from the archives
 
 ### Pre-requisites and installation
+- `virtualenv`
+- [`aws`](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 - `wget`
-- Connect to the EC2, create a virtual environment and install the python requirements:
+- Connect to the EC2, create a virtual environment and install the python dependencies:
   ```
-  virtualenv <name_of_env>
+  virtualenv -p python3.7 <name_of_env>
   source <name_of_env>/bin/activate
   wget https://raw.githubusercontent.com/ebi-ait/hca-ebi-wrangler-central/master/src/requirements.txt
   pip3 install -r requirements.txt
   ```
-
+- Set up your default aws credentials:
+   - Go to `~/.aws/`
+   - `vim credentials`
+   - Copy this at the top of the file:
+   ```
+   [default]
+   aws_secret_access_key = <AWS_secret_key>
+   aws_access_key_id = <AWS_access_key>
+   ```
+   Replacing the keys with your wrangler access and secret keys
+   
 ### Usage
 
 1. Connect to the EC2
@@ -67,9 +174,13 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
    ```
    wget https://raw.githubusercontent.com/ebi-ait/hca-ebi-wrangler-central/master/src/move_data_from_insdc.py
    ```
+1. Activate your python>=3.6 virtual environment if not already active
+    ```
+    source <name_of_env>/bin/activate
+    ```
 1. Run the script:
    ```
-   python3 move_data_from_indsc.py -s <study/project accession> -o s3://hca-util-upload-area/<upload_area_id> -t <number_of_threads>
+   python3 move_data_from_insdc.py -s <study/project accession> -o s3://hca-util-upload-area/<upload_area_id> -t <number_of_threads>
    ```
 1. Enjoy while your data gets loaded into the s3 area!
 
@@ -77,6 +188,7 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
 
 - Right now, even with a good amount of threads (>= 5) it takes about 5 hours to move 1 TB of data. It is best practice to [set up a virtual screen](#use-terminal-sessions-in-ec2-tmux-screen) and leave it running.
 - The `output_path` (-o) argument can be pointed out to a local directory
+- Some GEO datasets do not have all their data available in a fastq format. For those datasets, a warning pointing to which runs the script failed to retrieve information from will be issued.
 
 
 ## Validating files on the ec2: fastq_info

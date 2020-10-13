@@ -6,9 +6,16 @@ Svensson's curated single cell database (http://www.nxn.se/single-cell-studies)
 The output is a formatted list that can be copied over to the dataset tracking sheet.
 
 Usage: python3 compare_tracker_with_nxn_sheet.py
+
+Last time updated:
+2020-10-01T12:06:42.226507Z
 """
 
+import os
+import re
 import requests as rq
+from datetime import datetime
+
 
 def select_unique_studies(valentines_sheet, tracking_sheet):
     valentine_dois = set([data[1] for data in valentines_sheet])
@@ -26,7 +33,7 @@ def select_unique_studies(valentines_sheet, tracking_sheet):
 
     unregistered_accessions = valentine_accessions - tracking_sheet_accessions
 
-    second_unregistered_table = [row for row in unregistered_table if row[11] in unregistered_accessions]
+    second_unregistered_table = [row for row in unregistered_table if row[11] in unregistered_accessions or not row[11]]
 
     valentine_titles = set([data[4].lower() for data in second_unregistered_table if data[4]])
     tracking_sheet_titles = set([track[14].lower() for track in tracking_sheet if track[14]])
@@ -41,7 +48,7 @@ def select_unique_studies(valentines_sheet, tracking_sheet):
 def filter_table(valentines_table):
     filtered_table = [row for row in valentines_table if row[8].lower() in ['human', 'human, mouse', 'mouse, human']]
     filtered_table = [row for row in filtered_table if
-                    row[10].lower() in ["chromium", "drop-seq", "dronc-seq", "smart-seq2", "smarter", "smarter (C1)"]]
+                      row[10].lower() in ["chromium", "drop-seq", "dronc-seq", "smart-seq2", "smarter", "smarter (C1)"]]
     filtered_table = [row for row in filtered_table if row[13].lower() == 'rna-seq']
     return filtered_table
 
@@ -50,27 +57,47 @@ def print_output(filtered_table):
     table_final = []
     for row in filtered_table:
         table_final.append(
-            [f"https://doi.org/{row[1]}", row[4], row[7], row[8], row[9], row[10], row[15], row[11], f"{row[14]} {row[16]}"])
+            [f"https://doi.org/{row[1]}", row[4], row[7], row[8], row[9],
+             row[10], row[15], row[11], f"{row[14]} {row[16]}"])
 
     tabu = '\t'
     for r in table_final:
-        print(tabu + r[7] + tabu * 12 + r[0] + tabu + r[1] + tabu * 5 + r[4] + tabu * 10 + r[3] + tabu + r[5] + tabu * 3 + r[
-            6] + tabu * 2 + r[2] + tabu * 4 + r[-1])
+        print(tabu + r[7] + tabu * 12 + r[0] + tabu + r[1] + tabu * 5 + r[4] + tabu * 10 +
+              r[3] + tabu + r[5] + tabu * 3 + r[6] + tabu * 2 + r[2] + tabu * 4 + r[-1])
+
+
+def update_timestamp():
+    script_path = os.path.realpath(__file__)
+    with open(script_path, 'r') as f:
+        script = f.read()
+
+    timestamp = datetime.now()
+    timestamp_str = timestamp.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+
+    script = re.sub('\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{6}Z', timestamp_str, script, count=1)
+
+    with open(script_path, 'w') as f:
+        f.write(script)
 
 
 def main():
-    valentines_database = rq.get('http://www.nxn.se/single-cell-studies/data.tsv', headers={'Cache-Control': 'no-cache'})
+    valentines_database = rq.get('http://www.nxn.se/single-cell-studies/data.tsv',
+                                 headers={'Cache-Control': 'no-cache'})
     valentines_database.encoding = 'utf-8'
     valentines_database = valentines_database.text.splitlines()
     valentines_database = [data.split("\t") for data in valentines_database][1:]
 
-    tracking_sheet = rq.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ26K0ZYREykq2kR2HgA3xGol3PfFuwYuqNBQCZgi4L7yqF2GZiNdXfQ19FtjxMvCk8IU6S_v6zih9z/pub?gid=0&single=true&output=tsv", headers={'Cache-Control': 'no-cache'}).text.splitlines()
+    tracking_sheet = rq.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ26K0ZYREykq2kR2HgA3xGol3PfFuwYu"
+                            "qNBQCZgi4L7yqF2GZiNdXfQ19FtjxMvCk8IU6S_v6zih9z/pub?gid=0&single=true&output=tsv",
+                            headers={'Cache-Control': 'no-cache'}).text.splitlines()
     tracking_sheet = [data.split("\t") for data in tracking_sheet][1:]
 
     entries_not_registered = select_unique_studies(valentines_database, tracking_sheet)
     filtered_table = filter_table(entries_not_registered)
 
     print_output(filtered_table)
+
+    update_timestamp()
 
 
 if __name__ == '__main__':

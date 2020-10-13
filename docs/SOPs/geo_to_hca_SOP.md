@@ -6,7 +6,13 @@ nav_exclude: false
 ---
 
 # GEO to HCA Guide
+{: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 ## Pre-requirements
 1. Clone the [Geo to HCA Repo](https://github.com/ebi-ait/geo_to_hca) to your computer
@@ -25,7 +31,7 @@ This tool was written to assist in the automatic conversion of geo metadata to a
 
 ## Usage
 
-The script is stored under the `apps` folder, under the name `geo_to_hca.py`. It takes as input a single GEO accession or a space-delimited list of GEO accessions and a template HCA metadata excel spreadsheet (Included in the repository under the `docs` folder). It returns a pre-filled HCA metadata spreadsheet for each accession given. Each spreadsheet can then be used as an intermediate file for completion by manual curation. Optionally an output log file can also be generated which lists the availability of an SRA study accession and fastq file names for each GEO accession given as input.
+The script is stored under the `apps` folder, under the name `geo_to_hca.py`. It takes as input a single GEO accession or a comma-delimited list of GEO accessions and a template HCA metadata excel spreadsheet (Included in the repository under the `docs` folder). It returns a pre-filled HCA metadata spreadsheet for each accession given. Each spreadsheet can then be used as an intermediate file for completion by manual curation. Optionally an output log file can also be generated which lists the availability of an SRA study accession and fastq file names for each GEO accession given as input.
 
 
 ```
@@ -36,13 +42,16 @@ usage: geo_to_hca.py [-h] [--accession ACCESSION]
                      [--output_dir OUTPUT_DIR] [--output_log OUTPUT_LOG]
 ```
 
-### How-to guide
+### SOP: Curating data from GEO
+
+#### Producing the metadata spreadsheet
+
 1. Go to the root of the repository and run the script with the accession wanted
     ```
     cd geo_to_hca
     python3 apps/geo_to_hca.py --accession <GEO_accession>
     ```
-   While running, it will input a log. Please refer to the [most common warnings](#warnings) section if you don't know what they mean.
+   While running, it will output a log. Please refer to the [most common warnings](#warnings) section if you don't know what they mean.
    
 1. If it can't find the article information in the GEO metadata, it will perform a quick search in europePMC. Just state "y" or "n" when prompted.
 1. It will output a small log like this:
@@ -51,6 +60,24 @@ usage: geo_to_hca.py [-h] [--accession ACCESSION]
 GSE149689                            no                 yes
 ```
 1. Once it's done, the spreadsheet will be saved under the folder `spreadsheets/` with the name: `<geo_accession>.xlsx`. Another folder can be specified with the `--output_dir` argument.
+
+#### Uploading the data to an s3 bucket
+
+1. Follow the guide provided in the [handy snippets documentation](../tools/handy_snippets.md#uploading-files-to-an-s3-bucket-from-the-archives)
+
+#### Checking the data uploaded matches the expected
+
+**Note**: There are many ways to check if data files are the same. These are just guidelines on a quick and easy way to look at it, but feel free to suggest other ways.
+
+1. Use the following command to extract the filenames of the uploaded files:
+   ```
+   aws s3 ls s3://hca-util-upload-area/<area_id>/ | awk '{printf("%s\n", $4)}' | sort
+   ```
+   And copy the resulting output.
+   
+1. Paste the filenames in a new excel book, and paste the filenames from the spreadsheet as well. Sort the ones in the spreadsheet using excel.
+
+1. Compare them by using the `=EXACT(text1,text2)` macro in excel (Expected output: TRUE)
 
 ## Arguments
 
@@ -114,10 +141,13 @@ This means that for the run selected, there was at least 1 fastq for which its f
 
 
 ### Errors
->When running the script, I get a weird xml.Etree error. All my inputs are valid so I don't understand what is happening
-
+```
+When running the script, I get a weird xml.Etree error. All my inputs are valid so I don't understand what is happening
+```
 Please make sure you are using the option --upgrade when installing the repo requirements. There is a bug in openpyxl 3.0.2+ where this happens quite often. Reverting back to 3.0.1 should fix this error.
 
->I have an error not addressed here. What should I do?
+```
+I have an error not addressed here. What should I do?
+```
 
 Please issue a ticket in the [issues section](https://github.com/ebi-ait/geo_to_hca/issues) of the geo_to_hca repository.
