@@ -2,7 +2,7 @@
 layout: default
 title: HCA to SCEA Guide
 parent: SOPs
-last_modified_date: 2020-09-29
+last_modified_date: 29/09/2020
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
 
