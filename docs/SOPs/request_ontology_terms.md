@@ -10,7 +10,9 @@ parent: SOPs
 Outline the process of **requesting ontology terms**, as well as document release dates for the wrangler team.
 
 ### Requesting new ontology terms
-Ontology requests should be issued as tickets on the [ontology repository](https://github.com/HumanCellAtlas/ontology). Please request them using the issue template provided in there and tag Zoe.
+Ontology requests should be issued as tickets on the relevant repo to that ontology, [see listing below](Ontology-Repos).
+
+[ontology repository](https://github.com/HumanCellAtlas/ontology). Please request them using the issue template provided in there and tag Zoe.
 
 [Request an ontology term](https://github.com/HumanCellAtlas/ontology/issues/new/choose){: .btn .btn-blue }
 
@@ -34,3 +36,18 @@ Once Zoe updates the HCAO it gets automatically released to the [EBI OLS](https:
 For any question, please contact @zoependlington. She is also available on the HCA `data-wrangling-int` slack channel. Please use tickets for complex ontology questions.
 
 Please take in account that she is only working 20% for the HCA, so be patient with your requests.
+
+### Ontology repos
+
+| Field type          | Ontology                       | github repo                                                  |
+|---------------------|--------------------------------|-----------------------------------------------------------------|
+| Anatomical location | Uber-anatomy ontology ([UBERON](https://www.ebi.ac.uk/ols/ontologies/uberon)) | [obophenotype/uberon](https://github.com/obophenotype/uberon) |
+| Cell types          | Cell ontology ([CL](https://www.ebi.ac.uk/ols/ontologies/cl))             | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology)                             |
+| Experimental factors & Developmental stage (mouse)| Experimental Factor Ontology ([EFO](https://www.ebi.ac.uk/ols/ontologies/efo))             | [EBISPOT/efo](https://github.com/EBISPOT/efo) |
+| Ethnicity           | Human Ancestry Ontology ([HANCESTRO](https://www.ebi.ac.uk/ols/ontologies/hancestro))             | [EBISPOT/ancestro](https://github.com/EBISPOT/ancestro)                                         |
+| Developmental stage (human) | Human Developmental Stages ([HSAPDV](https://www.ebi.ac.uk/ols/ontologies/hsapdv))             | [obophenotype/developmental-stage-ontologies](https://github.com/obophenotype/developmental-stage-ontologies)|
+| Diseases | Mondo Disease Ontology ([MONDO](https://www.ebi.ac.uk/ols/ontologies/mondo))             | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) |
+| File content | Bioinformatics operations, data types, formats, identifiers and topics ([EDAM](https://www.ebi.ac.uk/ols/ontologies/edam))             | [edamontology/edamontology](https://github.com/edamontology/edamontology)|
+| Chemicals & Molecules | Chemical Entities of Biological Interest ([CHEBI](https://www.ebi.ac.uk/ols/ontologies/chebi))      | [ebi-chebi/ChEBI](https://github.com/ebi-chebi/ChEBI)|
+| Imaging techniques | Biological Imaging Methods Ontology ([FBBI](https://www.ebi.ac.uk/ols/ontologies/fbbi))      | [CRBS/Biological_Imaging_Methods_Ontology](https://github.com/CRBS/Biological_Imaging_Methods_Ontology)|
+
