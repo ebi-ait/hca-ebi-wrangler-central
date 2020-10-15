@@ -26,7 +26,7 @@ If it is a Cell Ontology (CL) or UBERON request, please add [@paolaroncaglia](ht
 ### Release dates and plan of release
 The tickets added to the ontology repository, as posted above, are revised by @zoependlington after tagging. Depending on your request:
 
-- **New term request**: Terms should be requested by the 12th of each month*.
+- **New term request**: Terms should be requested by the 10th of each month*.
 - **Import of terms from other ontologies into HCAO**: Up until the 17th of each month.
 
 *New terms might not be available after each monthly release if requesting to an external database (Not EFO).
