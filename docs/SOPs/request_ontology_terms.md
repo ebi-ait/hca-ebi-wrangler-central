@@ -10,11 +10,18 @@ parent: SOPs
 Outline the process of **requesting ontology terms**, as well as document release dates for the wrangler team.
 
 ### Requesting new ontology terms
-Ontology requests should be issued as tickets on the relevant repo to that ontology, [see listing below](Ontology-Repos).
 
-[ontology repository](https://github.com/HumanCellAtlas/ontology). Please request them using the issue template provided in there and tag Zoe.
+Ontology requests should be issued as tickets on the relevant repo to that ontology, [see listing below](#ontology-repos).
 
-[Request an ontology term](https://github.com/HumanCellAtlas/ontology/issues/new/choose){: .btn .btn-blue }
+Please request them using the issue template if provided. 
+
+#### Edits to the Cell Ontology (CL) and UBERON
+
+If it is a Cell Ontology (CL) or UBERON request, please add [@paolaroncaglia](https://github.com/paolaroncaglia) as the assignee, add the `HCA/DCP` label and any other relevant labels such as the priority (if it is an urgent request).
+
+### Request an existing term be added to the HCAO
+
+[Request an HCAO edit](https://github.com/HumanCellAtlas/ontology/issues/new/choose){: .btn .btn-blue }
 
 ### Release dates and plan of release
 The tickets added to the ontology repository, as posted above, are revised by @zoependlington after tagging. Depending on your request:
