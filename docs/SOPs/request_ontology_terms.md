@@ -4,6 +4,11 @@ title: Request ontology terms
 parent: SOPs
 ---
 
+UNDER REVIEW
+{: .label .label-yellow }
+
+This process is currently under review as at 16/10/2020, please double check if anything is unclear.
+
 # Request Ontology terms SOP
 
 ## Objectives
