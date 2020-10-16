@@ -97,7 +97,7 @@ Once the suitability has been assessed, please contact an SCEA curator via slack
     
    These are pre-filled values for the sequencing protocol that is specified in the HCA metadata spreadsheet. Currently, if ‘10X v2 sequencing’ is specified, these fields are pre-filled. You can then manually edit them. If another technology is specified, these fields are not pre-filled and you need to enter the information here manually. SCEA requires that datasets are split by technology, so you should only have 1 technology type in your HCA metadata file.
 
-5. Click `this looks alright`. An idf and sdrf file will be generated in a newly created folder inside the ‘spreadsheets’ folder in your local repository directory.
+5. Click `this looks alright`. An idf and sdrf file will be generated in a newly created folder inside the `hca-scea-tools/hca2scea-backend/spreadsheets` folder in your local repository directory.
 
 ### Section B: Refining the metadata outputs
 
