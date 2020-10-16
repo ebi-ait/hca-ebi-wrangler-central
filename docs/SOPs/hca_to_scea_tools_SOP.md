@@ -2,7 +2,7 @@
 layout: default
 title: HCA to SCEA Guide
 parent: SOPs
-last_modified_date: 29/09/2020
+last_modified_date: 16/10/2020
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
 
@@ -61,7 +61,7 @@ Once the suitability has been assessed, please contact an SCEA curator via slack
 
 1. Run the tool
    ```
-   cd hca-to-scea-tools
+   cd hca2scea-backend
    npm start
    ```
 
