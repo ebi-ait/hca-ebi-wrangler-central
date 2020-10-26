@@ -1,5 +1,5 @@
 ---
-name: Dataset retraction
+name: Dataset Retraction
 about: Create a ticket to track the places where a dataset needs to be deleted from
 title: Retraction of dataset <shortname_of_project>
 labels: dataset, operations

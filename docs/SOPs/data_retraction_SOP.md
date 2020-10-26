@@ -25,7 +25,7 @@ This document will serve to capture the steps needed to do a full cleanup of a d
 <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 
 ## Before you start
-Please open a ticket with the template provided. Quick link to open the ticket [here]()
+Please open a ticket with the template named as `Dataset Retraction`.
 
 ## Internal
 Data and metadata that is stored within our immediate reach and deleting that data would not cause any consequence downstream.
