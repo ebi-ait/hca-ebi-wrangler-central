@@ -84,28 +84,6 @@ Once a submission is ready in ingest (`Archiving` status after hitting submit), 
    curl -X GET https://archiver.ingest.staging.archive.data.humancellatlas.org/archiveSubmissions/<dsp_submission_uuid>/blockers -H 'Api-Key: {archiver_api_key}' 
    ```
 
-```
-# 1. create dsp submission given an ingest submission uuid (async)
-curl -X POST https://archiver.ingest.staging.archive.data.humancellatlas.org/archiveSubmissions -H 'Content-Type: application/json' -H 'Api-Key: {archiver_api_key}' \
-
- -d '{"submission_uuid": "1a5742a3-ded7-47ba-9e47-51297de33fdd", "alias_prefix": "HCA"}'
-
-# 2. find the dsp submission by ingest submission uuid
-curl -X GET  -H 'Api-Key: {archiver_api_key}' https://archiver.ingest.archive.data.humancellatlas.org/latestArchiveSubmission/<ingest_submission_uuid>
-
-# dsp submission uuid should be in the JSON response
-
-# 3. find the archive entities by dsp uuid
-curl -X GET https://archiver.ingest.archive.data.humancellatlas.org/archiveSubmissions/<dsp_submission_uuid>/entities -H 'Api-Key: {archiver_api_key}' 
-
-# 4. check validation errors
-curl -X GET https://archiver.ingest.archive.data.humancellatlas.org/archiveSubmissions/<dsp_submission_uuid>/validationErrors -H 'Api-Key: {archiver_api_key}' 
-
-# 5. download the file upload plan (could do in EBI cluster)
-curl -X GET https://archiver.ingest.archive.data.humancellatlas.org/archiveSubmissions/<dsp_submission_uuid>/fileUploadPlan  -H 'Api-Key: {archiver_api_key}' > FILE_UPLOAD_INFO_<dsp_submission_uuid>.json
-
-```
-
 
 ### Notes
 - There is another way to run the archiver, through the CLI. This should be used as a last resort as it's getting deprecated. Please contact a dev to use the CLI instead of the web service.
@@ -115,6 +93,9 @@ curl -X GET https://archiver.ingest.archive.data.humancellatlas.org/archiveSubmi
 ## Step 2 of 3 - Archiving Files to DSP
 
 Once the metadata is in DSP, the next step is to upload the files.
+
+### Before you start
+Please contact a developer for the AAP username and password. These are unique per environment, so make sure to state if you are using the `prod` or `test` environment.
 
 ### File Upload Info
 
@@ -186,7 +167,7 @@ Free string but usually bundle manifest ID + “.bam”
 
 <**schema**>
 
-	Either 10xV2 or 10xV3
+Either 10xV2 or 10xV3. The toolset used for BAM conversion ([fastq2bam](https://github.com/nunofonseca/fastq_utils#fastq2bam---lossless-fastq-to-bam-convertor)) currently does not support some schemas, such as e.g. SS2.
 
 <**rx_fastq_filename**>
 
