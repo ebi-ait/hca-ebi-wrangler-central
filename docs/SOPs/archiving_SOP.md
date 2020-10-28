@@ -337,11 +337,11 @@ Matching these locations in your commands is really important. In the following 
 
 
 
-*   <folder_root> = /nfs/production/hca/
-*   <folder_name> = laurenti
-*   <file_name> = upload_info.json
-*   <dsp_submission_uuid> = 1234
-*   <job_name> = laurenti_upload
+*   `<folder_root>` = /nfs/production/hca/
+*   `<folder_name>` = laurenti
+*   `<file_name>` = upload_info.json
+*   `<dsp_submission_uuid>` = 1234
+*   `<job_name>` = laurenti_upload
 *   Using the live ingest environment
 *   Please note that /data is fixed, in theory you could change it, but please don’t.
 *   In theory you could also change the docker image you pull to use specific versions of file archiver but again, please don’t: `docker://quay.io/ebi-ait/ingest-file-archiver:d2020-30-09.1`
