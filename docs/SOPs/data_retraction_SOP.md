@@ -26,14 +26,47 @@ This document will serve to capture the steps needed to do a full cleanup of a d
 \[[Click here to edit](https://app.diagrams.net/#G1dfAwIrcfQhdoGMeXYq9sOeM55f_s0Tsx)]
 
 ## Before you start
-Please open a ticket with the template named as `Dataset Retraction` and tick through the boxes as you go through the process of retraction.
 
+### Needed permissions
+Please make sure you have the proper permissions or you are paired with someone who has. The needed permissions are:
+1. **Access to the EC2 instance**: Any wrangler/dev should have access.
+1. **Admin access to s3 buckets**: Any wrangler/dev should have access. If you don't have access, please set up your credentials by running `aws config` and providing with your wrangler/ingest s3 access key and secret access key.
+1. **Dev access to Ingest Core**: Every dev should have access.
+1. **Access to subs.team-2 AAP domain**: Please retrieve the ingest DSP user and password by using the following command:
+   ```
+   aws --region us-east-1 secretsmanager get-secret-value --secret-id ingest/dev/secrets --query SecretString --output text | jq -jr .archiver_api_key
+   ```
+   If you have admin access to s3 buckets you should be able to retrieve the username and password this way.
+
+### Set up gsutil to access staging area
+**If you already have gsutil set up, please skip this step**
+Any wrangler/dev with the s3 permissions set up should be able to retrieve the credentials. Please retrieve the credentials with this command:
+```
+
+```
+[Dev Input Here]
+
+And configure gsutil
+
+
+### Set up hca-util with wrangler credentials
+Please also make sure that you have the hca-util set up with the wrangler credentials:
+```
+hca-util configure
+```
+And input the wrangler or ingest credentials.
+
+### Open a ticket in GitHub
+
+Finally, please open a ticket with the template named as `Dataset Retraction` and tick through the boxes as you go through the process of retraction.
+
+### Write down accessions/UUIDs/GitHub issue:
 You will need to locate the following UUIDs:
 - DCP project UUID and project shortname: Locate the project in the UI and copy the project UUID and the shortname
 - DCP submission UUID: Locate the submission in the UI and copy the submission UUID
 - ENA/BioStudies study/project accession: Inside the Submission in the UI, locate the `accessions` tab and copy the study and project accessions
 - DSP submission UUID: Locate the DSP submission UUID following the instructions on point three of [this document's section](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/archiving_SOP.html#using-the-service)
-
+- GH issue: Please locate the github issue within the hca-ebi-wrangler-central repository and write down the url. Please note that it may be closed.
 
 ## Internal
 Data and metadata that is stored within our immediate reach and deleting that data would not cause any consequence downstream.
@@ -52,11 +85,11 @@ Currently, we store contributor data in the cloud **before** and **while** broke
     ```
     aws s3 rm -r <full_s3_path_to_area>
     ```
-    **Example**: `aws s3 rm -r s3://org-hca-data-archive-upload-prod/779ecf45-e930-459e-b87b-c89d3c4546c7/`
+    **Example**: aws s3 rm -r s3://org-hca-data-archive-upload-prod/<span style="color:red">779ecf45-e930-459e-b87b-c89d3c4546c7/</span>
     
-    <span style="color:red">**IMPORTANT NOTE**</span>: Please ensure the path you introduced points out to the specific area and not to the bucket, as you might risk deletion of all the upload areas otherwise. If you are unsure, please contact a dev and they will do it for you.
+    <span style="color:red">**IMPORTANT NOTE**</span>: Please ensure the path you introduced points out to the specific area and not to the bucket, as you might risk deletion of all the upload areas otherwise. The upload area is highlighted in red in the example.
     
-1. **EC2 instance**: If this data has been downloaded to the EC2 for some reason (e.g. validation), please make sure to remove it.
+1. **EC2 instance**: If this data has been downloaded to the EC2 for some reason (e.g. validation), please make sure to remove it. If the person tasked with the retraction is not the primary/secondary wrangler, the email later in the document will cover this.
 
 
 ### EBI Cluster
@@ -64,20 +97,25 @@ Currently, we store contributor data in the cloud **before** and **while** broke
 When archiving, if the data needed to be converted to bam files, it will be saved in the folder used for that purpose. To delete this data:
 ```
 ssh noah-login
-rm -r /nfs/production3/hca/<name_of_the_folder/
+rm -r /nfs/production/hca/<name_of_the_folder>/
 ```
+
+**Tips to find the folder**: It is usually best practice to set up the name with the shortname of the project, if you know this dataset was archived but there is no apparent folder, please contact the primary wrangler for this project. The primary wrangler's name can be found in the GitHub ticket.
 
 ### Staging area
 
 1. Run the script [here](https://github.com/ebi-ait/hca-ebi-dev-team/tree/master/scripts/map_ingest_uuid_to_staging_area) to get a mapping between the uuid of the entities in ingest and the file path in the staging area.
 1. Use that file as the input for the following commands:
    ```
-   cat <name_of_mapping_file> |  grep -E -o "gs:.*\.json" > file_paths.txt
+   cat <name_of_mapping_file> |  jq -r ' .[] | .[]' > file_paths.txt
    cat file_paths.txt | gsutil -m rm -I
-   ```
-   
+   ```   
    This will delete all the files in the staging area related to this dataset. Depending on how many there are, it may take up to an hour, so be patient. If, for any reason, it gets interrupted, it can be re-triggered with the same command, and it will just ignore the files that do not exist.
-   
+1. Check that files have been deleted by running step 1 again and checking that this command doesn't return anything:
+   ```
+   cat <name_of_new_mapping_file> | jq -r ' .[] | .[]' | grep "gs://"
+   ```
+
 
 ### Spreadsheet
 
@@ -86,9 +124,9 @@ The metadata spreadsheet can be in many different locations. Please make sure yo
 1. Google drive folder: Locate the project folder under `brokering` and delete it in google drive.
 1. Email
    1. Head to the [Wrangler team Google group](https://groups.google.com/a/data.humancellatlas.org/g/wrangler-team) and delete any email thread that may contain the spreadsheet.
-   1. Send an email to the <a href="mailto:wrangler-team@data.humancellatlas.org?subject=[URGENT]%20Dataset%20retraction&body=To%20whom%20it%20may%20concern%2C%0A%0AWe%20have%20been%20warned%20about%20the%20retraction%20of%20the%20dataset%20%22%3Cshortname_of_dataset%3E%22.%20%0A%0AI%20kindly%20ask%20everyone%20in%20this%20group%20to%20delete%20their%20own%20copy%20of%20the%20following%20emails%3A%0A%0A-%20%3Ctitle_of_email_thread%3E%0A%28more%20if%20necessary%29%0A%0AAnd%20any%20local%20copy%20they%20might%20have%20of%20the%20metadata%20spreadsheet%0A%0AMany%20thanks%20for%20your%20cooperation%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">wrangler team</a>
+   1. Send an email to the <a href="mailto:wrangler-team@data.humancellatlas.org?subject=[URGENT]%20Dataset%20retraction%20DATASET%20SHORTNAME&body=Hello%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20dataset%20%20%22%3Cshortname_of_dataset%3E%22.%20%0A%0APlease%20delete%20your%20own%20copies%20of%20the%20following%20emails%3A%0A%0A-%20%3Ctitle_of_email_thread%3E%0A%28more%20if%20necessary%29%0A%0APlease%20remove%20any%20local%20copies%20you%20may%20have%20of%20spreadsheets%20associated%20with%20%22%3Cshortname_of_dataset%3E%22%0A%0AIf%20you%20were%20involved%20in%20wrangling%20this%20dataset%2C%20please%20ensure%20no%20local%20copies%20of%20the%20data%2Fmetadata%20are%20left%20in%20the%20EC2%20instance%0A%0AMany%20thanks%20for%20your%20cooperation%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">wrangler team</a>
    1. Delete your own local copies of the thread in your mail apps.
-1. Please ask for a dev to delete the **copy of the spreadsheet associated with the submission** in the ingest database.
+1. [Dev input here] Please ask for a dev to delete the **copy of the spreadsheet associated with the submission** in the ingest database.
 
 ### Ingest
 
@@ -102,10 +140,12 @@ Metadata and data can be found in the ingest submission. If following the steps,
 - Ingest project/submission UUID
 - DSP submission UUID
 
-Once these have been retrieved, you can proceed to ask a dev to delete the submission and the project, where applicable.
+And please run the deletion of files in the staging area first. The files in the staging area can only be mapped crawling through the ingest API.
+
+[Dev input here] Once these have been retrieved, you can proceed to ask a dev to delete the submission and the project, where applicable.
 
 #### Metadata archiver
-The metadata that is archived through ingest's archiver is stored in the archiver endpoints. We currently don't have any standard way of deleting this metadata so please contact a dev with the DSP submission UUID to delete this metadata.
+[Dev input here] The metadata that is archived through ingest's archiver is stored in the archiver endpoints. We currently don't have any standard way of deleting this metadata so please contact a dev with the DSP submission UUID to delete this metadata.
 
 ## External
 Depending on the route the dataset took on the system, there might be data and metadata that needs to be retracted from sources external to the ingestion team.
@@ -113,20 +153,18 @@ Depending on the route the dataset took on the system, there might be data and m
 ### DCP2
 
 - **Pipelines team**
-
 - **Terra repository**
-
 - **Data browser**
 
-Please contact them following <a href="mailto:dcp@data.humancellatlas.org?subject=[URGENT]%20Dataset%20retraction&body=Dear%20all%2C%0A%0AWe%20have%20been%20warned%20about%20the%20following%20dataset%20being%20retracted%20from%20public%20access%3A%20%22%3Cshortname_of_dataset%22%2C%20with%20project%20UUID%20%22%3Cproject_uuid%3E%22.%0A%0APlease%20delete%20any%20copies%20of%20the%20data%20and%20metadata%20that%20you%20might%20have%20on%20your%20system.%0A%0ADon%27t%20hesitate%20contacting%20the%20wrangler%20team%20if%20you%20have%20any%20further%20questions.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">this email template</a>
+Please contact them following <a href="mailto:dcp@data.humancellatlas.org?subject=[URGENT]%20Dataset%20retraction%20DATASET%20SHORTNAME&body=Hello%2C%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20dataset%20%22%3Cshortname_of_dataset%22%2C%20with%20project%20UUID%20%22%3Cproject_uuid%3E%22.%0A%0APlease%20delete%20any%20copies%20of%20the%20data%20and%20metadata%20that%20you%20might%20have%20on%20your%20system.%0A%0APlease%20contact%20wrangler-team%40data.humancellatlas.org%20if%20you%20have%20any%20questions%20about%20this%20process.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">this email template</a>
 
 ### Archives
 With the following procedures on archiving, the dataset might be in many different places:
 
-- **ENA**: Please use the <a href="mailto:ena-helpdesk@ebi.ac.uk?subject=ENA%20Dataset%20retraction&body=To%20whom%20it%20may%20concern%2C%0A%0AWe%20have%20been%20warned%20about%20the%20following%20dataset%20being%20retracted%20from%20public%20access%3A%20%22%3CENA_study_accession%3E%22%0A%0AWe%20were%20responsible%20for%20brokering%20the%20dataset%20into%20the%20ENA%20database%2C%20so%20we%20are%20kindly%20asking%20if%20you%20could%20delete%20the%20data%20and%20metadata%20pertaining%20to%20this%20study%20from%20your%20end.%0A%0AWe%20have%20cc%27ed%20the%20original%20author%28s%29%20in%20this%20email.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">email template provided</a> to contact ENA helpdesk. When possible, please CC the contributor that asked for the retraction of the dataset.
-- **ArrayExpress**: Please use the <a href="mailto:arrayexpress@ebi.ac.uk?subject=AE%20Dataset%20retraction&body=To%20whom%20it%20may%20concern%2C%0A%0AWe%20have%20been%20warned%20about%20the%20following%20dataset%20being%20retracted%20from%20public%20access%3A%20%22%3CArraExpress_project_accession%3E%22%0A%0AWe%20were%20responsible%20for%20brokering%20the%20dataset%20into%20ArrayExpress%2C%20so%20we%20are%20kindly%20asking%20if%20you%20could%20delete%20the%20data%20and%20metadata%20pertaining%20to%20this%20study%20from%20your%20end.%0A%0AWe%20have%20cc%27ed%20the%20original%20author%28s%29%20in%20this%20email.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">email template provided</a> to contact AE directly. If this dataset has been included in SCEA, please also add a line for them to contact SCEA.
-- **BioSamples**: Please ask a dev to remove all the metadata from the BioSamples entities associated with this project following the steps listed in the [DSP section](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/data_retraction_SOP.html#dsp).
-- **BioStudies**: Usually the project-level metadata is not restricted, but there might be cases where the contributor may want to get everything wiped out from the public domain. In that case, please contact BioStudies Helpdesk with the <a href="mailto:biostudies@ebi.ac.uk?subject=BioStudies%20Dataset%20retraction&body=To%20whom%20it%20may%20concern%2C%0A%0AWe%20have%20been%20warned%20about%20the%20following%20dataset%20being%20retracted%20from%20public%20access%3A%20%22%3CBioStudies_project_accession%3E%22%0A%0AWe%20were%20responsible%20for%20brokering%20the%20dataset%20into%20BioStudies%2C%20so%20we%20are%20kindly%20asking%20if%20you%20could%20delete%20the%20metadata%20pertaining%20to%20these%20donors%2Fsamples%20on%20your%20end.%0A%0AWe%20have%20cc%27ed%20the%20original%20author%28s%29%20in%20this%20email.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">email template provided</a>
+- **ENA**: Please use the <a href="mailto:ena-helpdesk@ebi.ac.uk?subject=ENA%20Dataset%20retraction%20DATASET%ACCESSION&body=Hello%2C%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20dataset%20%22%3CENA_study_accession%3E%22%0A%0AWe%20were%20responsible%20for%20brokering%20the%20dataset%20into%20the%20ENA%20database%2C%20so%20please%20delete%20any%20copies%20of%20the%20data%20and%20metadata%20that%20you%20might%20have%20on%20your%20system.%0A%0APlease%20contact%20wrangler-team%40data.humancellatlas.org%20if%20you%20have%20any%20questions%20about%20this%20process.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">email template provided</a> to contact ENA helpdesk. 
+- **ArrayExpress**: Please use the <a href="mailto:arrayexpress@ebi.ac.uk?subject=AE%20Dataset%20retraction%20AE%20ACCESSION&body=Hello%2C%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20dataset%20%22%3CArraExpress_project_accession%3E%22%0A%0APlease%20delete%20any%20copies%20of%20the%20data%20and%20metadata%20that%20you%20might%20have%20on%20your%20system.%0A%0APlease%20contact%20wrangler-team%40data.humancellatlas.org%20if%20you%20have%20any%20questions%20about%20this%20process.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">email template provided</a> to contact AE directly. If this dataset has been included in SCEA, please also add a line for them to contact SCEA.
+- **BioSamples**: Please follow the DSP section to remove all the metadata from the BioSamples entities associated with this project following the steps listed in the [DSP section](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/data_retraction_SOP.html#dsp).
+- **BioStudies**: Please contact BioStudies Helpdesk with the <a href="mailto:biostudies@ebi.ac.uk?subject=BioStudies%20Dataset%20retraction%20BIOSTUDIES%20ACCESSION&body=Hello%2C%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20dataset%20%22%3CBioStudies_project_accession%3E%22%0A%0APlease%20delete%20any%20copies%20of%20the%20data%20and%20metadata%20that%20you%20might%20have%20on%20your%20system.%0A%0APlease%20contact%20wrangler-team%40data.humancellatlas.org%20if%20you%20have%20any%20questions%20about%20this%20process.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">email template provided</a>
 
 ### DSP
 While not completely internal, we have the ability to update the BioSamples submission within DSP.
@@ -138,9 +176,65 @@ The steps are:
    ```
    And update the release date for 100 years into the future.
 1. Update the submission.
-1. Ask DSP to delete the original submission from their records with this <a href="mailto:submission-help@ebi.ac.uk?subject=Dataset%20retraction&body=To%20whom%20it%20may%20concern%2C%0A%0AWe%20have%20been%20warned%20about%20the%20following%20dataset%20being%20retracted%20from%20public%20access%3A%20%22%3CDSP_submission_uuid%3E%22%0A%0AWe%20are%20kindly%20asking%20if%20you%20could%20delete%20the%20submission%20from%20your%20database.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">email template provided</a>
 
-[Script needed for points 1 and 2]
+1. Clone the [hca-to-dsp-tools](https://github.com/ebi-ait/hca-to-dsp-tools) repository and install requirements
+   ```
+   git clone https://github.com/ebi-ait/hca-to-dsp-tools.git
+   pip install -r requirements.txt
+   ```
+1. Set up your credentials in a txt file called `cred.txt` at the root of the repository. This file has to have the following structure:
+   ```
+   USER=<dsp_username>
+   PASSWORD=<dsp_password>
+   ROOT=https://submission.ebi.ac.uk/api/
+   ```
+   
+1. Open a python console on the root of the repository and run the following:
+   ```
+   import dsp_cli.DSP_submission as ds
+   dsp = ds.DspCLI()
+   dsp.select_submission()
+   ```
+   It will proceed to ask for what team do you want to use and what submission should be selected. The team is `subs.team-2` and the submission will use the ID you gathered before starting. Please keep this session opened as all the following steps will be carried out in this session.
+
+1. Once the submission is selected, retrieve the samples:
+   ```
+   samples = dsp.show_submittable_names('samples')
+   ```
+   It may take a while, depending on the number of samples. When you're asked if you want to print the names, input `n`
+
+1. Create a new submission and select it:
+   ```
+   dsp.create_submission()
+   dsp.select_submission()
+   ```
+   **Pro-tip**: Newly-created submissions are always listed last.
+
+1. Modify the metadata to delete all the information and set the release date for 100 years into the future:
+   ```
+   import datetime
+   hundred_years = (datetime.datetime.now() + datetime.timedelta(days=100*365)).date()
+   for sample in samples:
+       sample['attributes'] = {}
+       sample['description'] = "Unfortunately, this metadata can't be reached as it has been withdrawn from public domain."
+       sample['releaseDate'] = str(hundred_years)
+   ```
+
+1. Load that data in the new submission:
+   ```
+   for sample in samples:
+       dsp.create_submittable(sample, 'samples')
+   ```
+
+1. Finish the submission:
+   ```
+   dsp.finish_submission()
+   ```
+
+1. Close you python session.
+
+1. Ask DSP to delete the original submission from their records with this <a href="mailto:submission-help@ebi.ac.uk?subject=Submission%20retraction%20DSP%20SUBMISSION%20UUID&body=Hello%2C%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20submission%20%22%3CDSP_submission_uuid%3E%22%0A%0APlease%20delete%20any%20copies%20of%20the%20data%20and%20metadata%20that%20you%20might%20have%20on%20your%20system.%0A%0APlease%20contact%20wrangler-team%40data.humancellatlas.org%20if%20you%20have%20any%20questions%20about%20this%20process.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">email template provided</a>
+
 
 ## Other
 
@@ -148,19 +242,21 @@ The steps are:
 Please modify the templates with the dataset-specific details before sending it.
 
 #### Wrangler-team email
-Click on the following link to send the email: <a href="mailto:wrangler-team@data.humancellatlas.org?subject=[URGENT]%20Dataset%20retraction&body=To%20whom%20it%20may%20concern%2C%0A%0AWe%20have%20been%20warned%20about%20the%20retraction%20of%20the%20dataset%20%22%3Cshortname_of_dataset%3E%22.%20%0A%0AI%20kindly%20ask%20everyone%20in%20this%20group%20to%20delete%20their%20own%20copy%20of%20the%20following%20emails%3A%0A%0A-%20%3Ctitle_of_email_thread%3E%0A%28more%20if%20necessary%29%0A%0AAnd%20any%20local%20copy%20they%20might%20have%20of%20the%20metadata%20spreadsheet%0A%0AMany%20thanks%20for%20your%20cooperation%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">Email the wrangler team</a>
+Click on the following link to send the email: <a href="mailto:wrangler-team@data.humancellatlas.org?subject=[URGENT]%20Dataset%20retraction%20DATASET%20SHORTNAME&body=Hello%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20dataset%20%20%22%3Cshortname_of_dataset%3E%22.%20%0A%0APlease%20delete%20your%20own%20copies%20of%20the%20following%20emails%3A%0A%0A-%20%3Ctitle_of_email_thread%3E%0A%28more%20if%20necessary%29%0A%0APlease%20remove%20any%20local%20copies%20you%20may%20have%20of%20spreadsheets%20associated%20with%20%22%3Cshortname_of_dataset%3E%22%0A%0AIf%20you%20were%20involved%20in%20wrangling%20this%20dataset%2C%20please%20ensure%20no%20local%20copies%20of%20the%20data%2Fmetadata%20are%20left%20in%20the%20EC2%20instance%0A%0AMany%20thanks%20for%20your%20cooperation%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">Email the wrangler team</a>
 
 ```
-To whom it may concern,
+Hello
 
-We have been warned about the retraction of the dataset "<shortname_of_dataset>". 
+We have been asked to retract the dataset  "<shortname_of_dataset>". 
 
-I kindly ask everyone in this group to delete their own copy of the following emails:
+Please delete your own copies of the following emails:
 
 - <title_of_email_thread>
 (more if necessary)
 
-And any local copy they might have of the metadata spreadsheet
+Please remove any local copies you may have of spreadsheets associated with "<shortname_of_dataset>"
+
+If you were involved in wrangling this dataset, please ensure no local copies of the data/metadata are left in the EC2 instance
 
 Many thanks for your cooperation
 
@@ -170,15 +266,15 @@ Best regards,
 ```
 
 #### DCP team
-Click on the following link to send the email: <a href="mailto:dcp@data.humancellatlas.org?subject=[URGENT]%20Dataset%20retraction&body=Dear%20all%2C%0A%0AWe%20have%20been%20warned%20about%20the%20following%20dataset%20being%20retracted%20from%20public%20access%3A%20%22%3Cshortname_of_dataset%22%2C%20with%20project%20UUID%20%22%3Cproject_uuid%3E%22.%0A%0APlease%20delete%20any%20copies%20of%20the%20data%20and%20metadata%20that%20you%20might%20have%20on%20your%20system.%0A%0ADon%27t%20hesitate%20contacting%20the%20wrangler%20team%20if%20you%20have%20any%20further%20questions.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">Email the DCP</a>
+Click on the following link to send the email: <a href="mailto:dcp@data.humancellatlas.org?subject=[URGENT]%20Dataset%20retraction%20DATASET%20SHORTNAME&body=Hello%2C%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20dataset%20%22%3Cshortname_of_dataset%22%2C%20with%20project%20UUID%20%22%3Cproject_uuid%3E%22.%0A%0APlease%20delete%20any%20copies%20of%20the%20data%20and%20metadata%20that%20you%20might%20have%20on%20your%20system.%0A%0APlease%20contact%20wrangler-team%40data.humancellatlas.org%20if%20you%20have%20any%20questions%20about%20this%20process.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">Email the DCP</a>
 ```
-Dear all,
+Hello,
 
-We have been warned about the following dataset being retracted from public access: "<shortname_of_dataset", with project UUID "<project_uuid>".
+We have been asked to retract the dataset "<shortname_of_dataset", with project UUID "<project_uuid>".
 
 Please delete any copies of the data and metadata that you might have on your system.
 
-Don't hesitate contacting the wrangler team if you have any questions.
+Please contact wrangler-team@data.humancellatlas.org if you have any questions about this process.
 
 Best regards,
 
@@ -186,15 +282,15 @@ Best regards,
 ```
 
 ### ENA
-Click on the following link to send the email: <a href="mailto:ena-helpdesk@ebi.ac.uk?subject=ENA%20Dataset%20retraction&body=To%20whom%20it%20may%20concern%2C%0A%0AWe%20have%20been%20warned%20about%20the%20following%20dataset%20being%20retracted%20from%20public%20access%3A%20%22%3CENA_study_accession%3E%22%0A%0AWe%20were%20responsible%20for%20brokering%20the%20dataset%20into%20the%20ENA%20database%2C%20so%20we%20are%20kindly%20asking%20if%20you%20could%20delete%20the%20data%20and%20metadata%20pertaining%20to%20this%20study%20from%20your%20end.%0A%0AWe%20have%20cc%27ed%20the%20original%20author%28s%29%20in%20this%20email.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">Email ENA</a>
+Click on the following link to send the email: <a href="mailto:ena-helpdesk@ebi.ac.uk?subject=ENA%20Dataset%20retraction%20ENA%20ACCESSION&body=Hello%2C%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20dataset%20%22%3CENA_study_accession%3E%22%0A%0AWe%20were%20responsible%20for%20brokering%20the%20dataset%20into%20the%20ENA%20database%2C%20so%20please%20delete%20any%20copies%20of%20the%20data%20and%20metadata%20that%20you%20might%20have%20on%20your%20system.%0A%0APlease%20contact%20wrangler-team%40data.humancellatlas.org%20if%20you%20have%20any%20questions%20about%20this%20process.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">Email ENA</a>
 ```
-To whom it may concern,
+Hello,
 
-We have been warned about the following dataset being retracted from public access: "<ENA_study_accession>"
+We have been asked to retract the dataset "<ENA_study_accession>"
 
-We were responsible for brokering the dataset into the ENA database, so we are kindly asking if you could delete the data and metadata pertaining to this study from your end.
+We were responsible for brokering the dataset into the ENA database, so please delete any copies of the data and metadata that you might have on your system.
 
-We have cc'ed the original author(s) in this email.
+Please contact wrangler-team@data.humancellatlas.org if you have any questions about this process.
 
 Best regards,
 
@@ -202,16 +298,16 @@ Best regards,
 ```
 
 ### ArrayExpress
-Click on the following link to send the email: <a href="mailto:arrayexpress@ebi.ac.uk?subject=AE%20Dataset%20retraction&body=To%20whom%20it%20may%20concern%2C%0A%0AWe%20have%20been%20warned%20about%20the%20following%20dataset%20being%20retracted%20from%20public%20access%3A%20%22%3CArraExpress_project_accession%3E%22%0A%0AWe%20were%20responsible%20for%20brokering%20the%20dataset%20into%20ArrayExpress%2C%20so%20we%20are%20kindly%20asking%20if%20you%20could%20delete%20the%20data%20and%20metadata%20pertaining%20to%20this%20study%20from%20your%20end.%0A%0AWe%20have%20cc%27ed%20the%20original%20author%28s%29%20in%20this%20email.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">Email AE</a>
+Click on the following link to send the email: <a href="mailto:arrayexpress@ebi.ac.uk?subject=AE%20Dataset%20retraction%20AE%20ACCESSION&body=Hello%2C%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20dataset%20%22%3CArraExpress_project_accession%3E%22%0A%0APlease%20delete%20any%20copies%20of%20the%20data%20and%20metadata%20that%20you%20might%20have%20on%20your%20system.%0A%0APlease%20contact%20wrangler-team%40data.humancellatlas.org%20if%20you%20have%20any%20questions%20about%20this%20process.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">Email AE</a>
 
 ```
-To whom it may concern,
+Hello,
 
-We have been warned about the following dataset being retracted from public access: "<ArraExpress_project_accession>"
+We have been asked to retract the dataset "<ArraExpress_project_accession>"
 
-We were responsible for brokering the dataset into ArrayExpress, so we are kindly asking if you could delete the data and metadata pertaining to this study from your end.
+Please delete any copies of the data and metadata that you might have on your system.
 
-We have cc'ed the original author(s) in this email.
+Please contact wrangler-team@data.humancellatlas.org if you have any questions about this process.
 
 Best regards,
 
@@ -219,16 +315,16 @@ Best regards,
 ```
 
 ### BioStudies
-Click on the following link to send the email: <a href="mailto:biostudies@ebi.ac.uk?subject=BioStudies%20Dataset%20retraction&body=To%20whom%20it%20may%20concern%2C%0A%0AWe%20have%20been%20warned%20about%20the%20following%20dataset%20being%20retracted%20from%20public%20access%3A%20%22%3CBioStudies_project_accession%3E%22%0A%0AWe%20were%20responsible%20for%20brokering%20the%20dataset%20into%20BioStudies%2C%20so%20we%20are%20kindly%20asking%20if%20you%20could%20delete%20the%20metadata%20pertaining%20to%20these%20donors%2Fsamples%20on%20your%20end.%0A%0AWe%20have%20cc%27ed%20the%20original%20author%28s%29%20in%20this%20email.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">Email BioStudies</a>
+Click on the following link to send the email: <a href="mailto:biostudies@ebi.ac.uk?subject=BioStudies%20Dataset%20retraction%20BIOSTUDIES%20ACCESSION&body=Hello%2C%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20dataset%20%22%3CBioStudies_project_accession%3E%22%0A%0APlease%20delete%20any%20copies%20of%20the%20data%20and%20metadata%20that%20you%20might%20have%20on%20your%20system.%0A%0APlease%20contact%20wrangler-team%40data.humancellatlas.org%20if%20you%20have%20any%20questions%20about%20this%20process.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">Email BioStudies</a>
 
 ```
-To whom it may concern,
+Hello,
 
-We have been warned about the following dataset being retracted from public access: "<BioStudies_project_accession>"
+We have been asked to retract the dataset "<BioStudies_project_accession>"
 
-We were responsible for brokering the dataset into BioStudies, so we are kindly asking if you could delete the metadata pertaining to these donors/samples on your end.
+Please delete any copies of the data and metadata that you might have on your system.
 
-We have cc'ed the original author(s) in this email.
+Please contact wrangler-team@data.humancellatlas.org if you have any questions about this process.
 
 Best regards,
 
@@ -236,14 +332,16 @@ Best regards,
 ```
 
 ### DSP
-Click on the following link to send the email: <a href="mailto:submission-help@ebi.ac.uk?subject=Dataset%20retraction&body=To%20whom%20it%20may%20concern%2C%0A%0AWe%20have%20been%20warned%20about%20the%20following%20dataset%20being%20retracted%20from%20public%20access%3A%20%22%3CDSP_submission_uuid%3E%22%0A%0AWe%20are%20kindly%20asking%20if%20you%20could%20delete%20the%20submission%20from%20your%20database.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">Email DSP</a>
+Click on the following link to send the email: <a href="mailto:submission-help@ebi.ac.uk?subject=Submission%20retraction%20DSP%20SUBMISSION%20UUID&body=Hello%2C%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20submission%20%22%3CDSP_submission_uuid%3E%22%0A%0APlease%20delete%20any%20copies%20of%20the%20data%20and%20metadata%20that%20you%20might%20have%20on%20your%20system.%0A%0APlease%20contact%20wrangler-team%40data.humancellatlas.org%20if%20you%20have%20any%20questions%20about%20this%20process.%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">Email DSP</a>
 
 ```
-To whom it may concern,
+Hello,
 
-We have been warned about the following dataset being retracted from public access: "<DSP_submission_uuid>"
+We have been asked to retract the submission "<DSP_submission_uuid>"
 
-We are kindly asking if you could delete the submission from your database.
+Please delete any copies of the data and metadata that you might have on your system.
+
+Please contact wrangler-team@data.humancellatlas.org if you have any questions about this process.
 
 Best regards,
 
