@@ -114,6 +114,12 @@ Once the submission has been successfully archived, accessions should be communi
 
 Once the dataset is released in an HCA snapshot release, the contributor should be informed and provided with the link to their dataset on the HCA Data Browser.
 
+## Managed/controlled access data
+
+When talking to contributors about managed/controlled access data there are some important issues to note.
+
+The ethics helpdesk 
+
 ## Template emails
 These templates are considered a guide to provide a skeleton with the required information. The primary wrangler can choose to edit and customise to make it more personal or appropriate for the situation.
 
