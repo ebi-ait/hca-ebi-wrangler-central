@@ -40,14 +40,35 @@ Please make sure you have the proper permissions or you are paired with someone 
 
 ### Set up gsutil to access staging area
 **If you already have gsutil set up, please skip this step**
-Any wrangler/dev with the s3 permissions set up should be able to retrieve the credentials. Please retrieve the credentials with this command:
+
+Use the following command to install gsutil from the Python package index (PyPI):
+```
+pip install gsutil
 ```
 
+The service account credentials to access protected data in the staging area is saved in AWS Secrets. Any wrangler/dev with the S3 permissions set up should be able to retrieve the credentials. 
+
+Retrieve and save the private key (and the project_id):
 ```
-[Dev Input Here]
+aws --region us-east-1 secretsmanager get-secret-value --secret-id ingest/prod/secrets --query SecretString --output text | jq -jr .ingest_exporter_terra_svc_account > private_key
 
-And configure gsutil
+cat private_key | jq -jr .project_id
 
+```
+
+To configure gsutil, run
+```
+$ gsutil config -e
+...
+What is the full path to your private key file? /path/to/private_key
+...
+
+Would you like gsutil to change the file permissions for you? (y/N) y
+...
+
+What is your project-id? <project_id>
+
+```
 
 ### Set up hca-util with wrangler credentials
 Please also make sure that you have the hca-util set up with the wrangler credentials:
@@ -88,6 +109,22 @@ Currently, we store contributor data in the cloud **before** and **while** broke
     **Example**: aws s3 rm -r s3://org-hca-data-archive-upload-prod/<span style="color:red">779ecf45-e930-459e-b87b-c89d3c4546c7/</span>
     
     <span style="color:red">**IMPORTANT NOTE**</span>: Please ensure the path you introduced points out to the specific area and not to the bucket, as you might risk deletion of all the upload areas otherwise. The upload area is highlighted in red in the example.
+
+**Prabhat: THIS IS VERY RISKY**
+A better way to do this is to send a DELETE request to the Upload Service as following (for dev):
+
+```
+# retrieve Upload Service Api-Key (dev)
+aws --region us-east-1 secretsmanager get-secret-value --secret-id ingest/dev/secrets --query SecretString --output text | jq -jr .staging_api_key
+
+# delete an upload area (dev)
+curl -X DELETE "https://upload.dev.archive.data.humancellatlas.org/v1/area/<upload_area_uuid>" -H  "accept: application/json" -H  "Api-Key: <API-KEY>"
+```
+
+Also, should we not make sure to clean up data in upload areas in other pre-prod environments -- dev, and staging? Data often remains there and never gets cleaned up...
+
+
+
     
 1. **EC2 instance**: If this data has been downloaded to the EC2 for some reason (e.g. validation), please make sure to remove it. If the person tasked with the retraction is not the primary/secondary wrangler, the email later in the document will cover this.
 
@@ -126,7 +163,21 @@ The metadata spreadsheet can be in many different locations. Please make sure yo
    1. Head to the [Wrangler team Google group](https://groups.google.com/a/data.humancellatlas.org/g/wrangler-team) and delete any email thread that may contain the spreadsheet.
    1. Send an email to the <a href="mailto:wrangler-team@data.humancellatlas.org?subject=[URGENT]%20Dataset%20retraction%20DATASET%20SHORTNAME&body=Hello%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20dataset%20%20%22%3Cshortname_of_dataset%3E%22.%20%0A%0APlease%20delete%20your%20own%20copies%20of%20the%20following%20emails%3A%0A%0A-%20%3Ctitle_of_email_thread%3E%0A%28more%20if%20necessary%29%0A%0APlease%20remove%20any%20local%20copies%20you%20may%20have%20of%20spreadsheets%20associated%20with%20%22%3Cshortname_of_dataset%3E%22%0A%0AIf%20you%20were%20involved%20in%20wrangling%20this%20dataset%2C%20please%20ensure%20no%20local%20copies%20of%20the%20data%2Fmetadata%20are%20left%20in%20the%20EC2%20instance%0A%0AMany%20thanks%20for%20your%20cooperation%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">wrangler team</a>
    1. Delete your own local copies of the thread in your mail apps.
-1. [Dev input here] Please ask for a dev to delete the **copy of the spreadsheet associated with the submission** in the ingest database.
+1. Please ask for a dev to delete the **copy of the spreadsheet associated with the submission** in the ingest database.
+
+Instructions for dev to follow:
+
+The spreadsheets are saved in the ingest-broker pod under `/data/spreadsheets`.
+Log into the pod as follows and delete the required spreadsheet(s).
+```
+# switch to env (e.g. prod) context
+kubectx ingest-eks-<env>
+# get ingest-broker-pod name
+kubectl get pods | grep broker | awk '{print $1}'
+kubectl exec -it <ingest-broker-pod> -- /bin/sh 
+```
+
+Spreadsheets are backed up. Need to check backup expiration policy. Same as MongoDB backup.
 
 ### Ingest
 
@@ -143,6 +194,10 @@ Metadata and data can be found in the ingest submission. If following the steps,
 And please run the deletion of files in the staging area first. The files in the staging area can only be mapped crawling through the ingest API.
 
 [Dev input here] Once these have been retrieved, you can proceed to ask a dev to delete the submission and the project, where applicable.
+
+Instructions for dev to follow:
+
+In addition to the project and submission entities, other entities refering to the submission, for e.g. biomaterial, file, process and protocol, can be filtered using the `submissionEnvelope` property and then deleted.
 
 #### Metadata archiver
 [Dev input here] The metadata that is archived through ingest's archiver is stored in the archiver endpoints. We currently don't have any standard way of deleting this metadata so please contact a dev with the DSP submission UUID to delete this metadata.
