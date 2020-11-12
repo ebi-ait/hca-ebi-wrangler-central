@@ -2,7 +2,7 @@
 name: Contributor Project Tracker
 about: Create a ticket for tracking key events of an in-progress project from a contributor.
 title: ''
-labels: dataset, operations
+labels: dataset
 assignees: ''
 
 ---
@@ -24,9 +24,9 @@ Google Drive:
 - [ ] Receive project questionnaire
 - [ ] Assign the Primary Wrangler
 - [ ] Receive T&C form filled out by at least 1 representative of group/project
-- [ ] Send custom metadata template spreadsheet, how-to guide and directions for submitting data files
+- [ ] Send custom metadata template spreadsheet, how-to guide and directions for submitting data, matrix and cell annotation files.
 - [ ] Receive spreadsheet (to a sufficient standard to submit dataset) 
-- [ ] Receive data (to a sufficient standard to submit dataset)
+- [ ] Receive data, matrix and cell annotation files (to a sufficient standard to submit dataset)
 - [ ] Curate metadata spreadsheet with ontologies
 - [ ] Upload sheet to validate metadata
 - [ ] Run graph validator & Check linking
