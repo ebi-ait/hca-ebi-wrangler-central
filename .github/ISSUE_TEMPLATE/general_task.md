@@ -1,8 +1,8 @@
 ---
-name: New general task
-about: Create a ticket for a general wrangler task.
+name: New operations task
+about: Create a ticket for a general wrangler operations task.
 title: ''
-labels: task
+labels: operations
 assignees: ''
 
 ---
