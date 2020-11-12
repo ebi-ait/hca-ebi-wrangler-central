@@ -2,7 +2,7 @@
 name: Published Project Tracker
 about: Create a ticket for tracking key events of an in-progress project.
 title: ''
-labels: dataset, operations
+labels: dataset
 assignees: ''
 
 ---
