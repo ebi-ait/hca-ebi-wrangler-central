@@ -8,7 +8,7 @@ The output is a formatted list that can be copied over to the dataset tracking s
 Usage: python3 compare_tracker_with_nxn_sheet.py
 
 Last time updated:
-2020-11-12T17:33:25.291167Z
+2020-11-13T09:27:38.705853Z
 """
 
 import os
@@ -63,7 +63,7 @@ map = {
     "pub_title": "Title",
     "hca_pub": None,
     "pub_link": "==https://doi.org/{DOI}",
-    "pmid": "===setPmid({Title})",
+    "pmid": "===setPmid(''{Title}'')",
     "doi": "DOI",
     "scea_accession": None,
     "github_link": None,
@@ -201,7 +201,7 @@ def print_output(filtered_table, full_database, full_tracking_sheet):
                 valentines_index = find_header_index(full_database, value)
                 tracking_sheet_row[tracking_sheet_index] = row[valentines_index]
             else:
-                tracking_sheet_row[tracking_sheet_index] = eval_value(value, full_database, full_tracking_sheet, row)
+                tracking_sheet_row[tracking_sheet_index] = eval_value(value, full_database, row)
 
         table_final.append(tracking_sheet_row)
 
