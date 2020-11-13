@@ -8,7 +8,7 @@ The output is a formatted list that can be copied over to the dataset tracking s
 Usage: python3 compare_tracker_with_nxn_sheet.py
 
 Last time updated:
-2020-10-01T12:06:42.226507Z
+2020-11-12T17:33:25.291167Z
 """
 
 import os
@@ -17,53 +17,196 @@ import requests as rq
 from datetime import datetime
 
 
-def select_unique_studies(valentines_sheet, tracking_sheet):
-    valentine_dois = set([data[1] for data in valentines_sheet])
+class ChangedHeaders(Exception):
+    def __init__(self, header):
+        super().__init__(f"Headers changed, couldn't find {header}")
 
-    tracking_sheet_dois = set([track[13] for track in tracking_sheet if track[13]])
-    # Little data massage
+
+"""
+Map between Data Tracking sheet headers and the desired input. 
+Every value gets passed to eval_value(), which will return the desired formatted output.
+
+There are 3 main types of input:
+
+- None: No way of extracting this value. Returns empty string
+- Starts with "==": The value returned should be mapped to valentine's database and returned as a literal string. 
+                    e.g. "==https://doi.org/{DOI}" will return "https://doi.org/<value_of_DOI_in_row>"
+- Starts with "=": The value will be evaluated and the result of the evaluation will be returned as a string.
+                   e.g. "=set_organ('{Tissue}\t{Cell source}')" will call the function set_organ() with the row values
+                   of {Tissue} and {Cell source} and return the value of that function.
+                    
+
+
+"""
+map = {
+    "dcp_id" : None,
+    "project_short_name": None,
+    "data_accession": "Data location",
+    "contributor_involved": "==No",
+    "hca_status": "==acknowledged",
+    "date_added": "=str(datetime.today()).split(' ')[0]",
+    "access_permission": None,
+    "organism": "Organism",
+    "sample_type": "=set_tissue('{Tissue}')",
+    "health_status": None,
+    "phenotype": None,
+    "assay_type": "Technique",
+    "organ": "=set_organ('{Tissue}\t{Cell source}')",
+    "cell_count_estimate": "Reported cells total",
+    "living_eu_donors": None,
+    "nucleic_acid_source": None,
+    "data_available": "='yes' if '{Data location}' else 'no'",
+    "technical_benchmarking": None,
+    "broker_to_archives": None,
+    "broker_to_scea": None,
+    "primary_wrangler": None,
+    "pub_title": "Title",
+    "hca_pub": None,
+    "pub_link": "==https://doi.org/{DOI}",
+    "pmid": "===setPmid({Title})",
+    "doi": "DOI",
+    "scea_accession": None,
+    "github_link": None,
+    "ingest_project_uuid": None,
+    "comments": "=={Cell source} {Developmental stage}"
+}
+
+
+def set_tissue(value):
+    if not value:
+        return ""
+    tissue_source_list = []
+    for tissue in value.split(','):
+        if "culture" in tissue.lower():
+            tissue_source_list.append("Cell line")
+        elif "organoid" in tissue.lower():
+            tissue_source_list.append('Organoid')
+        else:
+            tissue_source_list.append('Primary')
+    tissue_source_list = list(set(tissue_source_list))
+    return ','.join(tissue_source_list)
+
+
+def set_organ(value):
+    if not value:
+        return ""
+    value = value.split('\t')
+    return value[0] if value[0] else value[1]
+
+
+def find_header_index(matrix: [[]], value: str, header_row_index: int = 0):
+    header_row = matrix[header_row_index]
+    index_value = header_row.index(value)
+    if index_value == -1:
+        raise ChangedHeaders(value)
+    return index_value
+
+def replace_all_values(value, valentines_database, row):
+    while value.find('{') != -1:
+        start_index = value.find('{')
+        end_index = value.find('}')
+        valentines_header_value = value[start_index + 1:end_index]
+        v_index = find_header_index(valentines_database, valentines_header_value)
+        value = value.replace("{" + valentines_header_value + "}", row[v_index])
+    return value
+
+def eval_value(value, valentines_database, row):
+    if value.startswith('=='):
+        value = value[2:]
+        return replace_all_values(value, valentines_database, row)
+    if value.startswith('='):
+        value = value[1:]
+        value = replace_all_values(value, valentines_database, row)
+        return eval(value)
+
+
+def select_unique_studies(valentines_sheet: [[]], tracking_sheet: [[]]):
+    """
+    Filter unique studies based on:
+        - DOI
+        - Accession
+        - Paper title
+    :param valentines_sheet: [[]]
+                             Matrix representing nxn's database
+    :param tracking_sheet: [[]]
+                           Matrix representing the Dataset Tracking Sheet
+    :return:
+    """
+    # Retrieve the indexes from the headers
+    v_doi_index = find_header_index(valentines_sheet, 'DOI')
+    t_doi_index = find_header_index(tracking_sheet, 'doi')
+    v_data_location_index = find_header_index(valentines_sheet, 'Data location')
+    t_data_location_index = find_header_index(tracking_sheet, 'data_accession')
+    v_title_index = find_header_index(valentines_sheet, 'Title')
+    t_title_index = find_header_index(tracking_sheet, 'pub_title')
+
+
+    # Retrieve DOIs and adjust them
+    valentine_dois = set([data[v_doi_index] for data in valentines_sheet])
+    tracking_sheet_dois = set([track[t_doi_index] for track in tracking_sheet if track[t_doi_index]])
     tracking_sheet_dois = {f"10.{doi.split('doi.org/10.')[-1]}" for doi in tracking_sheet_dois if "doi.org" in doi}
 
     unregistered_dois = valentine_dois - tracking_sheet_dois
 
-    unregistered_table = [row for row in valentines_sheet if row[1] in unregistered_dois]
+    # Translate unregistered dois into the table
+    unregistered_table = [row for row in valentines_sheet if row[v_doi_index] in unregistered_dois]
 
-    valentine_accessions = set([data[11] for data in unregistered_table if data[11]])
-    tracking_sheet_accessions = set([track[1] for track in tracking_sheet if track[1]])
+    # Retrieve accessions and repeat filtering
+    valentine_accessions = set([data[v_data_location_index] for data in unregistered_table if data[v_data_location_index]])
+    tracking_sheet_accessions = set([track[t_data_location_index] for track in tracking_sheet if track[t_data_location_index]])
 
     unregistered_accessions = valentine_accessions - tracking_sheet_accessions
 
-    second_unregistered_table = [row for row in unregistered_table if row[11] in unregistered_accessions or not row[11]]
+    second_unregistered_table = [row for row in unregistered_table if row[v_data_location_index] in unregistered_accessions or not row[v_data_location_index]]
 
-    valentine_titles = set([data[4].lower() for data in second_unregistered_table if data[4]])
-    tracking_sheet_titles = set([track[14].lower() for track in tracking_sheet if track[14]])
+    valentine_titles = set([data[v_title_index].lower() for data in second_unregistered_table if data[v_title_index]])
+    tracking_sheet_titles = set([track[t_title_index].lower() for track in tracking_sheet if track[t_title_index]])
 
     unregistered_titles = valentine_titles - tracking_sheet_titles
 
-    full_unregistered_table = [row for row in second_unregistered_table if row[4].lower() in unregistered_titles]
+    full_unregistered_table = [row for row in second_unregistered_table if row[v_title_index].lower() in unregistered_titles]
 
     return full_unregistered_table
 
 
-def filter_table(valentines_table):
-    filtered_table = [row for row in valentines_table if row[8].lower() in ['human', 'human, mouse', 'mouse, human']]
+def filter_table(valentines_table, full_database):
+    """
+    Filter the table based on organism/technology criteria
+    :param valentines_table:
+    :return:
+    """
+    organism_index = find_header_index(full_database, 'Organism')
+    technique_index = find_header_index(full_database, 'Technique')
+    measurement_index = find_header_index(full_database, 'Measurement')
+
+    filtered_table = [row for row in valentines_table if row[organism_index].lower() in ['human', 'human, mouse', 'mouse, human']]
     filtered_table = [row for row in filtered_table if
-                      row[10].lower() in ["chromium", "drop-seq", "dronc-seq", "smart-seq2", "smarter", "smarter (C1)"]]
-    filtered_table = [row for row in filtered_table if row[13].lower() == 'rna-seq']
+                      row[technique_index].lower() in ["chromium", "drop-seq", "dronc-seq", "smart-seq2", "smarter", "smarter (C1)"]]
+    filtered_table = [row for row in filtered_table if row[measurement_index].lower() == 'rna-seq']
     return filtered_table
 
 
-def print_output(filtered_table):
-    table_final = []
-    for row in filtered_table:
-        table_final.append(
-            [f"https://doi.org/{row[1]}", row[4], row[7], row[8], row[9],
-             row[10], row[15], row[11], f"{row[14]} {row[16]}"])
+def print_output(filtered_table, full_database, full_tracking_sheet):
+    t_header_length = len(full_tracking_sheet[0])
 
-    tabu = '\t'
+    table_final = []
+
+    for row in filtered_table:
+        tracking_sheet_row = [""] * t_header_length
+        for key, value in map.items():
+            if not value:
+                continue
+            tracking_sheet_index = find_header_index(full_tracking_sheet, key)
+            if not value.startswith("="):
+                valentines_index = find_header_index(full_database, value)
+                tracking_sheet_row[tracking_sheet_index] = row[valentines_index]
+            else:
+                tracking_sheet_row[tracking_sheet_index] = eval_value(value, full_database, full_tracking_sheet, row)
+
+        table_final.append(tracking_sheet_row)
+
     for r in table_final:
-        print(tabu + r[7] + tabu * 12 + r[0] + tabu + r[1] + tabu * 5 + r[4] + tabu * 10 +
-              r[3] + tabu + r[5] + tabu * 3 + r[6] + tabu * 2 + r[2] + tabu * 4 + r[-1])
+        print("\t".join(r))
 
 
 def update_timestamp():
@@ -81,21 +224,25 @@ def update_timestamp():
 
 
 def main():
+    # Get tsv from nxn's database and transform it into a matrix
     valentines_database = rq.get('http://www.nxn.se/single-cell-studies/data.tsv',
                                  headers={'Cache-Control': 'no-cache'})
-    valentines_database.encoding = 'utf-8'
+    valentines_database.encoding = 'utf-8'  # Avoid issues with special chars
     valentines_database = valentines_database.text.splitlines()
-    valentines_database = [data.split("\t") for data in valentines_database][1:]
+    valentines_database = [data.split("\t") for data in valentines_database]
 
+    # Get tracking sheet and transform it into a matrix
     tracking_sheet = rq.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ26K0ZYREykq2kR2HgA3xGol3PfFuwYu"
                             "qNBQCZgi4L7yqF2GZiNdXfQ19FtjxMvCk8IU6S_v6zih9z/pub?gid=0&single=true&output=tsv",
                             headers={'Cache-Control': 'no-cache'}).text.splitlines()
-    tracking_sheet = [data.split("\t") for data in tracking_sheet][1:]
+    tracking_sheet = [data.split("\t") for data in tracking_sheet]
 
+    # Compare and filter
     entries_not_registered = select_unique_studies(valentines_database, tracking_sheet)
-    filtered_table = filter_table(entries_not_registered)
+    filtered_table = filter_table(entries_not_registered, valentines_database)
 
-    print_output(filtered_table)
+    # Print output
+    print_output(filtered_table, valentines_database, tracking_sheet)
 
     update_timestamp()
 
