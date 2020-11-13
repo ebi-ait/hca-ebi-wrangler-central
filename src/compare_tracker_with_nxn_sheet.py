@@ -8,7 +8,7 @@ The output is a formatted list that can be copied over to the dataset tracking s
 Usage: python3 compare_tracker_with_nxn_sheet.py
 
 Last time updated:
-2020-11-13T09:27:38.705853Z
+2020-11-13T10:08:36.166251Z
 """
 
 import os
@@ -63,13 +63,24 @@ map = {
     "pub_title": "Title",
     "hca_pub": None,
     "pub_link": "==https://doi.org/{DOI}",
-    "pmid": "===setPmid(''{Title}'')",
+    "pmid": "=set_pmid('{Title}')",
     "doi": "DOI",
     "scea_accession": None,
     "github_link": None,
     "ingest_project_uuid": None,
     "comments": "=={Cell source} {Developmental stage}"
 }
+
+def set_pmid(title):
+    search_url = f"https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE%3A%22{title}%22&resultType=lite&cursorMark=*&pageSize=25&format=json"
+    response = rq.get(search_url)
+    response_json = response.json()
+    result_list = response_json['resultList']['result']
+    result_list = [result for result in result_list if result['pubType'] != 'preprint']
+    response_json['resultList']['result'] = result_list
+    response_json['hitCount'] = len(result_list)
+    return response_json['resultList']['result'][0]['pmid'] if response_json['hitCount'] == 1 else ""
+
 
 
 def set_tissue(value):
