@@ -8,7 +8,7 @@ The output is a formatted list that can be copied over to the dataset tracking s
 Usage: python3 compare_tracker_with_nxn_sheet.py
 
 Last time updated:
-2020-11-13T10:08:36.166251Z
+2020-11-16T16:39:58.788709Z
 """
 
 import os
@@ -46,7 +46,7 @@ map = {
     "hca_status": "==acknowledged",
     "date_added": "=str(datetime.today()).split(' ')[0]",
     "access_permission": None,
-    "organism": "Organism",
+    "organism": "=set_organism('{Organism}')",
     "sample_type": "=set_tissue('{Tissue}')",
     "health_status": None,
     "phenotype": None,
@@ -70,6 +70,10 @@ map = {
     "ingest_project_uuid": None,
     "comments": "=={Cell source} {Developmental stage}"
 }
+
+def set_organism(organisms):
+    organisms = sorted([organism.strip() for organism in organisms.split(',')])
+    return "&".join(organisms).lower()
 
 def set_pmid(title):
     search_url = f"https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE%3A%22{title}%22&resultType=lite&cursorMark=*&pageSize=25&format=json"
