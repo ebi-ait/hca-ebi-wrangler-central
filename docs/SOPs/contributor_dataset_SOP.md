@@ -87,8 +87,6 @@ These two sets of information need to be sent separately to minimise the chance 
 * **Contributor AWS Access keys** are not considered secure and can be sent in the main `wrangler-team` email thread, usually in the same email with the first spreadsheet and [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
 * **Upload area UUID** is a secure piece of information that should be shared in a separate email with only the contributor and primary wrangler 
 
-Here are the instructions to send the contributor: [how to upload their raw data (fastq)]() so they can start the process while we validate and review their metadata.
-
 To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: [https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#](https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#).
 
 ### Transferring a contributor's raw data to ingest UI: latest method (testing on-going)
