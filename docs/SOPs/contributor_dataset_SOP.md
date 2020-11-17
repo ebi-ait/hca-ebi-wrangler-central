@@ -80,9 +80,9 @@ Once you have a customised and potentially pre-filled spreadsheet it can be sent
 
 ## Raw data upload (fastq)
 
-In order for a contributor to upload their data, you will need to provide them with a data upload area UUID as well as a set of AWS access keys, which only administrators (wranglers & ingest-devs) have access to. When sending these to the contributor, please be cautious that you state the UUID and keys must not be shared outside of the person who performs the data upload. 
+In order for a contributor to upload their data, you will need to provide them with a data upload area UUID as well as a set of AWS access keys, which only administrators (wranglers & ingest-devs) have access to. You can send the upload keys in the main wrangler-team emails but when sending the UUID, you must only send it the contributor without wrangler-team in cc as this is the sensitive piece of information which could be misused if shared too broadly. 
 
-It is a good idea to create a data upload area and provide the credentials and instructions to the contributor in the same email as the first spreadsheet that is sent. Here are the instructions to send the contributor: [how to upload their raw data (fastq)](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) so they can start the process while we validate and review their metadata.
+It is a good idea to create a data upload area and provide the credentials and instructions to the contributor in the same email as the first spreadsheet that is sent *remember to send the UUID independently*. Here are the instructions to send the contributor: [how to upload their raw data (fastq)](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) so they can start the process while we validate and review their metadata.
 
 To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: [https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#](https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#).
 
