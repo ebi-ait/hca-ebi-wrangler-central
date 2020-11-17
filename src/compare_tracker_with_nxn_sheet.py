@@ -8,7 +8,7 @@ The output is a formatted list that can be copied over to the dataset tracking s
 Usage: python3 compare_tracker_with_nxn_sheet.py
 
 Last time updated:
-2020-11-16T16:39:58.788709Z
+2020-11-17T13:32:18.265245Z
 """
 
 import os
@@ -50,7 +50,7 @@ map = {
     "sample_type": "=set_tissue('{Tissue}')",
     "health_status": None,
     "phenotype": None,
-    "assay_type": "Technique",
+    "assay_type": "='{Technique}'.replace(' & ', ',')",
     "organ": "=set_organ('{Tissue}\t{Cell source}')",
     "cell_count_estimate": "Reported cells total",
     "living_eu_donors": None,
@@ -159,7 +159,7 @@ def select_unique_studies(valentines_sheet: [[]], tracking_sheet: [[]]):
     # Retrieve DOIs and adjust them
     valentine_dois = set([data[v_doi_index] for data in valentines_sheet])
     tracking_sheet_dois = set([track[t_doi_index] for track in tracking_sheet if track[t_doi_index]])
-    tracking_sheet_dois = {f"10.{doi.split('doi.org/10.')[-1]}" for doi in tracking_sheet_dois if "doi.org" in doi}
+    tracking_sheet_dois = {doi for doi in tracking_sheet_dois}
 
     unregistered_dois = valentine_dois - tracking_sheet_dois
 
@@ -196,7 +196,7 @@ def filter_table(valentines_table, full_database):
 
     filtered_table = [row for row in valentines_table if row[organism_index].lower() in ['human', 'human, mouse', 'mouse, human']]
     filtered_table = [row for row in filtered_table if
-                      row[technique_index].lower() in ["chromium", "drop-seq", "dronc-seq", "smart-seq2", "smarter", "smarter (C1)"]]
+                      any([tech.strip() in ["chromium", "drop-seq", "dronc-seq", "smart-seq2", "smarter", "smarter (C1)"] for tech in row[technique_index].lower().split("&")])]
     filtered_table = [row for row in filtered_table if row[measurement_index].lower() == 'rna-seq']
     return filtered_table
 
