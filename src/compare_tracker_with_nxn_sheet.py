@@ -42,7 +42,7 @@ map = {
     "dcp_id" : None,
     "project_short_name": None,
     "data_accession": "Data location",
-    "contributor_involved": "==No",
+    "contributor_involved": "==no",
     "hca_status": "==acknowledged",
     "date_added": "=str(datetime.today()).split(' ')[0]",
     "access_permission": None,
