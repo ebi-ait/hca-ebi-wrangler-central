@@ -99,11 +99,17 @@ def correct_filename_from_ena(run_accession, filename):
             sra_id = xmltodict.parse(search).get('eSearchResult', {}).get('IdList', {}).get('Id')
 
             run_info = xmltodict.parse(rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id={sra_id}').content)
-            run_files = run_info.get('EXPERIMENT_PACKAGE_SET').get('EXPERIMENT_PACKAGE').get('RUN_SET').get('RUN').get('SRAFiles').get('SRAFile')
+            run_files = run_info.get('EXPERIMENT_PACKAGE_SET').get('EXPERIMENT_PACKAGE').get('RUN_SET').get('RUN')
+            if isinstance(run_files, list):
+                run_provisional = []
+                for run in run_files:
+                    run_provisional.extend(run.get('SRAFiles').get('SRAFile'))
+            else:
+                run_files = run_info.get('SRAFiles').get('SRAFile')
             break
         except ExpatError as e:
             print(f"Got error {e}. This is probably due to NCBI receiving too many requests at once. Waiting 1 s...")
-            sleep(1)
+            sleep(3)
 
     # If only 1 option, will return orderedDict instead of list. Correcting here
     if isinstance(run_files, OrderedDict):
