@@ -104,6 +104,7 @@ def correct_filename_from_ena(run_accession, filename):
                 run_provisional = []
                 for run in run_files:
                     run_provisional.extend(run.get('SRAFiles').get('SRAFile'))
+                run_files = run_provisional
             else:
                 run_files = run_info.get('SRAFiles').get('SRAFile')
             break
