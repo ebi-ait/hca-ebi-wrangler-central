@@ -106,7 +106,7 @@ def correct_filename_from_ena(run_accession, filename):
                     run_provisional.extend(run.get('SRAFiles').get('SRAFile'))
                 run_files = run_provisional
             else:
-                run_files = run_info.get('SRAFiles').get('SRAFile')
+                run_files = run_files.get('SRAFiles').get('SRAFile')
             break
         except ExpatError as e:
             print(f"Got error {e}. This is probably due to NCBI receiving too many requests at once. Waiting 1 s...")
