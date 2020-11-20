@@ -80,9 +80,12 @@ Once you have a customised and potentially pre-filled spreadsheet it can be sent
 
 ## Raw data upload (fastq)
 
-In order for a contributor to upload their data, you will need to provide them with a data upload area UUID as well as a set of AWS access keys, which only administrators (wranglers & ingest-devs) have access to. When sending these to the contributor, please be cautious that you state the UUID and keys must not be shared outside of the person who performs the data upload. 
+In order for a contributor to upload their data, you will need to provide them with a data upload area UUID as well as a set of contributor AWS access keys. 
 
-It is a good idea to create a data upload area and provide the credentials and instructions to the contributor in the same email as the first spreadsheet that is sent. Here are the instructions to send the contributor: [how to upload their raw data (fastq)](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) so they can start the process while we validate and review their metadata.
+These two sets of information need to be sent separately to minimise the chance of them falling into the wrong hands and being misused.
+
+* **Contributor AWS Access keys** are not considered secure and can be sent in the main `wrangler-team` email thread, usually in the same email with the first spreadsheet and [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
+* **Upload area UUID** is a secure piece of information that should be shared in a separate email with only the contributor and primary wrangler 
 
 To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: [https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#](https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#).
 
