@@ -54,7 +54,6 @@ The script updates itself with a timestamp to keep track of when it was last run
 ```
 git checkout master
 git pull
-git add compare_tracker
 git add compare_tracker_with_nxn_sheet.py
 git commit -m "Updated tracker sheet."
 git push origin master
@@ -67,7 +66,7 @@ The following columns need to be curated:
 1. **health_status**: Need to indicate if normal, not normal or both, and if the 2 latest indicate the phenotype.
 1. **access_permission**: if accession is not from EGA/dbGAP,  usually “open”. Otherwise, “managed” or “mix”
 1. **living_eu_donors**: If mice, indicate `no,none`. If human, looking at the laboratory location should be enough to fill this.
-1. **nucleic_acid_source**: single cell, single nucleus, bulk
+1. **nucleic_acid_source**: Select one or more of: single cell, single nucleus, bulk
 1. **technical_benchmarking**: If the dataset is a benchmarking experiment, `yes`. Else, `no` 
 1. **broker_to_archives**: Usually `no`, as the data is being extracted from the archives
 1. **broker_to_scea**: Based on SCEA’s guidelines, provide with “yes” or “no”. If you have filled everything else, there should be enough information for you to choose one of the two.
