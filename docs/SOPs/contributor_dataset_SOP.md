@@ -110,61 +110,9 @@ These two sets of information need to be sent separately to minimise the chance 
 * **Contributor AWS Access keys** are not considered secure and can be sent in the main `wrangler-team` email thread, usually in the same email with the first spreadsheet and [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
 * **Upload area UUID** is a secure piece of information that should be shared in a separate email with only the contributor and primary wrangler 
 
-To see a full set of example emails sent between a contributor and an HCA wrangler from start to completion, please go to the following link: [https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#](https://docs.google.com/document/d/14TBLi4PRyTW10aNTRYtCHs8uLyzHqDizCGqXWQ0nFPE/edit#).
-
-### Transferring a contributor's raw data to ingest UI: latest method (testing on-going)
+### Transferring a contributor's raw data to ingest UI using `hca-util sync`
 
 In order to create the upload area, follow the instructions on [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util). These instructions will guide you to create an upload area for a contributor to upload their data, but also how to then transfer that data once uploaded to the ingest production s3 bucket using the same tool.
-
-### Transferring a contributor's raw data to ingest UI: old method
-
-Pre-Requisites:
-Access to the EBI Wrangler EC2
-
-If this command is executed on the wrangler EC2, the files will be transferred from s3 to s3 directly.
-
-Set up a virtual environment
-
-```bash
-virtualenv <name_of_env>
-source <name_of_env>/bin/activate
-```
-
-The DCP HCA CLI
-```bash
-python3 -m pip install hca
-```
-
-Use set_ingest_config.sh to configure the DCP CLI to point to EBI Ingest
-
-```
-wget https://raw.githubusercontent.com/ebi-ait/upload-service/master/set_ingest_config.sh
-source set_ingest_config.sh
-```
-
-Process:
-Get your submission's Upload Area Location
-Submission → Data → Upload Area Location → Copy
-Select Upload Location
-```bash
-hca upload select <Upload Area Location>
-```
-
-Upload files to ingest submission
-
-```bash
-hca upload files <(Local / S3 Bucket)> <file pattern>
-```
-
-Example:
-```bash
-hca upload select 
-  s3://org-hca-data-archive-upload-staging/68470f55-2e18-4957-94e3-4b297afe7c25/
-
-hca upload files s3://hca-util-upload-area/9296c147-72e7-4100-a19a-51bf01314a13/
-hca upload files dummy_fastq_file.fastq.gz
-```
-
 
 ## Curating metadata
 
@@ -189,9 +137,6 @@ If donors are from CBTM or HDBR we have direct routes of obtaining more detailed
 - `biomaterial_id`s should be either consistent with the publication or the tissue provider to allow identification of biomaterials with shared donors
 - Try to encourage the contributor to provide a meaningful identifier, not just a single digit
 
-
-
-
 ## Metadata Validation
 Once the spreadsheet is considered complete by the primary wrangler, there are two phases of metadata validation that can be completed.
 
@@ -207,11 +152,11 @@ To create a new submission from a spreadsheet, go to the `ALL SUBMISSIONS` tab t
 
 ## Secondary Review
 
-Once the spreadsheet has passed both phases of validation, the primary wrangler should ask another wrangler in the team to review the spreadsheet and suggest any required edits or updates.
+Once the spreadsheet has passed both phases of validation, the primary wrangler should ask another wrangler in the team to review the spreadsheet and suggest any required edits or updates. Once someone asks for secondary review, they should move the ticket to the `Secondary wrangling` pipeline on the tracking board.
 
 If any edits or updates are made, the existing submission in ingest will need to be deleted and the new spreadsheet uploaded in its place. 
 
-If any changes may have also affected the linking in the spreadsheet it should also be run through the ingest-graph-validator again by the primary wrangler.
+If any changes may have also affected the linking in the spreadsheet it should also be run through the ingest-graph-validator again.
 
 A detailed guide to performing secondary review [can be found here](secondary_review_SOP).
 
@@ -223,7 +168,7 @@ Once all the files have been validated the project will be ready for submission.
 They are happy with the final spreadsheet and curated ontologies
 The date they have identified for the data and metadata to be released publicly
 
-<i class="fas fa-exclamation-triangle"></i> **Warning**: Wranglers should not submit on Tuesday mornings until after the release to that environment is completed. Releases to Prod occur at 10am on the mid-sprint Tuesday. Releases to Staging occur 10am on the sprint demo Tuesday. Updates are posted in the `#hca` slack channel in the AIT workspace. See the [Ingest release SOP](https://github.com/HumanCellAtlas/ingest-central/wiki/Ingest-Release-SOP#release-schedule) for more details.
+<i class="fas fa-exclamation-triangle"></i> **Warning**: Wranglers should be aware of when prod releases are occurring and not upload/submit until after the release to that environment is completed. Releases do not currently follow a set schedule so stay tuned to updates posted in the `#hca` slack channel in the AIT workspace. See the [Ingest release SOP](https://github.com/HumanCellAtlas/ingest-central/wiki/Ingest-Release-SOP#release-schedule) for more details.
 
 Once you hit submit the project should go into ‘Archiving’ status. The precise process for identifying which of the paths the dataset will take after submission is currently being formalised by ingest. Until then the wrangler needs to inform the ingest team manually.
 
