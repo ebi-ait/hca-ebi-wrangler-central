@@ -23,9 +23,27 @@ This SOP document aims to describe the process of receiving new datasets from co
 There are some general project management tasks when working with new datasets to ensure all team members can track their status.
 
 New contributors will almost always contact us via the wranglers email list. When we work with them to get their projects submitted, the wranglers email list should be copied into all emails.
-1. Create a [project tracker ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=dataset&template=project_tracker.md&title= ) to track dataset progress should be created in the hca-ebi-wrangler-central repo 
-1. Add the dataset to the [dataset tracker sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0). While you are wrangling, please update the status and key information for the dataset in the relevant columns.
+1. Create a [project tracker ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=dataset&template=project_tracker.md&title= ) to track dataset progress should be created in the `hca-ebi-wrangler-central` repo 
+1. Add the dataset to the [dataset tracker sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0). 
 1. Create a new folder to store the dataset metadata in the [Brokering drive](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA) 
+
+### Tracking wrangling progress
+
+Wrangling progress is tracked primarily through movement of the `project tracker ticket` through the pipelines on the [Dataset wrangling status](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) Zenhub Board. 
+
+| Pipeline            | When                                   | Explanation                                                                                                                                 |
+|---------------------|----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| New Issues          | Auto-placed                            | This pipeline is where issues automatically end up but issues shouldn't stay here for long                                                  |
+| To be wrangled      | When created                           | Issues should be placed here when they are created but before a wrangler actively starts working on it                                      |
+| Wrangling           | When in progress                       | The primary wrangler moves the tracker ticket here when they have started working on it                                                     |
+| Secondary reviewing | When review starts                     | The secondary wrangler moves the tracker ticket here when they start reviewing                                                              |
+| Archiving           | When archiving process starts          | The primary wrangler moves the tracker ticket here when Archiving starts (if required)                                                      |
+| Exporting           | When ready to be exported              | The primary wrangler moves the tracker ticket here when it is ready to be exported                                                          |
+| AE/SCEA brokering   | When ready to be converted to MAGE-TAB | The primary wrangler moves the tracker ticket here when it is ready to be converted to MAGE-TAB to give to ArrayExpress of SCEA if suitable |
+| Needs update        | If project needs an update             | A wrangler moves the tracker ticket here if the project requires some kind of update                                                        |
+| Stalled             | If project becomes stuck               | If project spends more than 2 weeks with no progress, the ticket should be moved here and label applied to indicate reason                  |
+| Finished            | When finished                          | The primary wrangler moves the ticket here to indicate all work is complete. The ticket should be closed at the end of the sprint.          |
+
 
 ## Early contact with contributors
 
