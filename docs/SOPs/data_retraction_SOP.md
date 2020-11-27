@@ -192,14 +192,21 @@ Metadata and data can be found in the ingest submission. If following the steps,
 
 And please run the deletion of files in the staging area first. The files in the staging area can only be mapped crawling through the ingest API.
 
-[Dev input here] Once these have been retrieved, you can proceed to ask a dev to delete the submission and the project, where applicable.
+Once these have been retrieved, you can proceed to ask a dev to delete the submission and the project, where applicable.
 
 Instructions for dev to follow:
 
-In addition to the project and submission entities, other entities refering to the submission, for e.g. biomaterial, file, process and protocol, can be filtered using the `submissionEnvelope` property and then deleted.
+```
+# Force delete a submitted submission
+
+
+curl -X DELETE -H "Authorization: Bearer <TOKEN>" <INGEST_API_URL>/submissionEnvelopes/<ARCHIVE-SUBMISION-ID>?force=true
+
+```
+
 
 #### Metadata archiver
-[Dev input here] The metadata that is archived through ingest's archiver is stored in the archiver endpoints. We currently don't have any standard way of deleting this metadata so please contact a dev with the DSP submission UUID to delete this metadata.
+The metadata that is archived through ingest's archiver is stored in the archiver endpoints. We currently don't have any standard way of deleting this metadata so please contact a dev with the DSP submission UUID to delete this metadata.
 
 ```
 1. Check the _links.self.href from the json:
