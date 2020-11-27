@@ -140,19 +140,18 @@ rm -r /nfs/production/hca/<name_of_the_folder>/
 **Tips to find the folder**: It is usually best practice to set up the name with the shortname of the project, if you know this dataset was archived but there is no apparent folder, please contact the primary wrangler for this project. The primary wrangler's name can be found in the GitHub ticket.
 
 ### Staging area
+1. Find the directory of the project in the Terra staging area GCP bucket. The GCP buckets locations are configured in `<env>.yaml` files in [ingest-kube-deployment/apps](https://github.com/ebi-ait/ingest-kube-deployment/tree/master/apps)
 
-1. Run the script [here](https://github.com/ebi-ait/hca-ebi-dev-team/tree/master/scripts/map_ingest_uuid_to_staging_area) to get a mapping between the uuid of the entities in ingest and the file path in the staging area.
-1. Use that file as the input for the following commands:
+    ```
+    # Example project directory in dev:
+   
+    gs://broad-dsp-monster-hca-dev-ebi-staging/dev/<project-uuid> 
+    ```
+  
+2. Remove the project uuid subdirectory:
    ```
-   cat <name_of_mapping_file> |  jq -r ' .[] | .[]' > file_paths.txt
-   cat file_paths.txt | gsutil -m rm -I
+   gsutil -m rm gs://<bucket-parent-directory>/<project-uuid>
    ```   
-   This will delete all the files in the staging area related to this dataset. Depending on how many there are, it may take up to an hour, so be patient. If, for any reason, it gets interrupted, it can be re-triggered with the same command, and it will just ignore the files that do not exist.
-1. Check that files have been deleted by running step 1 again and checking that this command doesn't return anything:
-   ```
-   cat <name_of_new_mapping_file> | jq -r ' .[] | .[]' | grep "gs://"
-   ```
-
 
 ### Spreadsheet
 
@@ -201,6 +200,18 @@ In addition to the project and submission entities, other entities refering to t
 
 #### Metadata archiver
 [Dev input here] The metadata that is archived through ingest's archiver is stored in the archiver endpoints. We currently don't have any standard way of deleting this metadata so please contact a dev with the DSP submission UUID to delete this metadata.
+
+```
+1. Check the _links.self.href from the json:
+
+curl -X GET -H "Accept: application/hal+json" <INGEST_API_URL>/archiveSubmissions/search/findByDspUuid?dspUuid=<DSP-SUBMISSION-UUID>
+
+2. Send a delete request to delete the DSP metadata being tracked in Ingest DB
+
+curl -X DELETE -H "Authorization: Bearer <TOKEN>" <INGEST_API_URL>/archiveSubmissions/<ARCHIVE-SUBMISION-ID>
+
+```
+
 
 ## External
 Depending on the route the dataset took on the system, there might be data and metadata that needs to be retracted from sources external to the ingestion team.
