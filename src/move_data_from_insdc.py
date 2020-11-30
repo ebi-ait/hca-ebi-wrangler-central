@@ -33,6 +33,8 @@ def parse_args() -> argparse.Namespace:
                         help='path where files will be downloaded: can be local or s3')
     parser.add_argument('--threads', "-t", default=1, type=int,
                         help='Number of processes to simultaneously spam')
+    parser.add_argument('--allowed', "-a", type=str,
+                       help='Full path to plain text file with line separated list of files that should be transferred.')
 
     return parser.parse_args()
 
@@ -327,6 +329,18 @@ def main(args):
     ena_list, runs_not_available = retrieve_file_urls(args.study_accession)
     if not ena_list:
         print("Couldn't find any mean of downloading the proper fastq. Try with the sratoolkit")
+
+    if args.allowed is not None:
+        try:
+            with open(args.allowed, 'r') as f:
+                lines = f.read().splitlines()
+            filtered_ena_list = []
+            for line in lines:
+                filtered_ena_list.append(next((s for s in ena_list if line in s)))
+            ena_list = filtered_ena_list
+
+        except FileNotFoundError:
+            print("File not found, please provide full path.")
 
     output_args = [(ena, args.output_path) for ena in ena_list]
     try:
