@@ -41,34 +41,7 @@ Please make sure you have the proper permissions or you are paired with someone 
 ### Set up gsutil to access staging area
 **If you already have gsutil set up, please skip this step**
 
-Use the following command to install gsutil from the Python package index (PyPI):
-```
-pip install gsutil
-```
-
-The service account credentials to access protected data in the staging area is saved in AWS Secrets. Any wrangler/dev with the S3 permissions set up should be able to retrieve the credentials. 
-
-Retrieve and save the private key (and the project_id):
-```
-aws --region us-east-1 secretsmanager get-secret-value --secret-id ingest/prod/secrets --query SecretString --output text | jq -jr .ingest_exporter_terra_svc_account > private_key
-
-cat private_key | jq -jr .project_id
-
-```
-
-To configure gsutil, run
-```
-$ gsutil config -e
-...
-What is the full path to your private key file? /path/to/private_key
-...
-
-Would you like gsutil to change the file permissions for you? (y/N) y
-...
-
-What is your project-id? <project_id>
-
-```
+https://ebi-ait.github.io/hca-ebi-dev-team/admin_setup/Setting-up-access-to-Terra-staging-area.html
 
 ### Set up hca-util with wrangler credentials
 Please also make sure that you have the hca-util set up with the wrangler credentials:
