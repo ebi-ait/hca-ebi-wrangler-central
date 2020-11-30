@@ -36,6 +36,14 @@ def parse_args() -> argparse.Namespace:
 
     return parser.parse_args()
 
+def retrieve_from_ae(study_accession: str) -> list:
+    request_url = (f"https://www.ebi.ac.uk/arrayexpress/json/v3/experiments/{study_accession}/files")
+    request = rq.get(request_url)
+    file_list_dicts = request.json()['files']['experiment']['file']
+    files = [x['url'] for x in file_list_dicts]
+    not_available = None
+    return files, not_available
+
 
 def retrieve_from_ena(study_accession: str) -> list:
     field = "submitted_ftp" if "PRJEB" in study_accession else "fastq_ftp"
@@ -86,7 +94,12 @@ def retrieve_file_urls(study_accession: str) -> list:
     :returns files: list
                     List of all the ftp addresses for the files within the study/project.
     """
-    source = "ena" if "PRJEB" in study_accession else "sra"
+    if "PRJEB" in study_accession:
+        source = "ena"
+    elif "E-MTAB" in study_accession:
+        source = "ae"
+    else:
+        source = "sra"
 
     # Calling different functions depending on source
     return globals()[f'retrieve_from_{source}'](study_accession)
