@@ -176,8 +176,6 @@ kubectl get pods | grep broker | awk '{print $1}'
 kubectl exec -it <ingest-broker-pod> -- /bin/sh 
 ```
 
-Spreadsheets are backed up. Need to check backup expiration policy. Same as MongoDB backup.
-
 ### Ingest
 
 #### UI
