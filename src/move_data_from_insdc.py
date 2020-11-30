@@ -29,7 +29,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument('--study_accession', "-s", type=str,
                         help='Study accession in ENA')
-    parser.add_argument('--output_path', "-o", default='',
+    parser.add_argument('--output_path', "-o", default='.',
                         help='path where files will be downloaded: can be local or s3')
     parser.add_argument('--threads', "-t", default=1, type=int,
                         help='Number of processes to simultaneously spam')
