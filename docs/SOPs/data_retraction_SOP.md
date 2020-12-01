@@ -27,6 +27,8 @@ This document will serve to capture the steps needed to do a full cleanup of a d
 
 ## Before you start
 
+To follow all the steps, a developer working for the ingest team is needed. Most of the steps will only need wrangler credentials, but some steps have to be carried out by a developer. If a wrangler is responsible for this task, please contact and assign a dev to help with the specific steps.
+
 ### Needed permissions
 Please make sure you have the proper permissions or you are paired with someone who has. The needed permissions are:
 1. **Access to the EC2 instance**: Any wrangler/dev should have access.
@@ -36,7 +38,7 @@ Please make sure you have the proper permissions or you are paired with someone 
    ```
    aws --region us-east-1 secretsmanager get-secret-value --secret-id ingest/dev/secrets --query SecretString --output text | jq -jr .archiver_api_key
    ```
-   If you have admin access to s3 buckets you should be able to retrieve the username and password this way.
+   Only developers are able to access the secrets manager.
 
 ### Set up gsutil to access staging area
 **If you already have gsutil set up, please skip this step**
@@ -75,16 +77,7 @@ Currently, we store contributor data in the cloud **before** and **while** broke
     hca-util delete -d
     ```
     
-1. **Ingest upload area**: Go to the submission, locate the upload area and delete it
-    ```
-    aws s3 rm -r <full_s3_path_to_area>
-    ```
-    **Example**: aws s3 rm -r s3://org-hca-data-archive-upload-prod/<span style="color:red">779ecf45-e930-459e-b87b-c89d3c4546c7/</span>
-    
-    <span style="color:red">**IMPORTANT NOTE**</span>: Please ensure the path you introduced points out to the specific area and not to the bucket, as you might risk deletion of all the upload areas otherwise. The upload area is highlighted in red in the example.
-
-**Prabhat: THIS IS VERY RISKY**
-A better way to do this is to send a DELETE request to the Upload Service as following (for dev):
+1. **Ingest upload area**: This task can only be carried out by a developer. Send a DELETE request to the Upload Service as following
 
 ```
 # retrieve Upload Service Api-Key (dev)
@@ -94,9 +87,7 @@ aws --region us-east-1 secretsmanager get-secret-value --secret-id ingest/dev/se
 curl -X DELETE "https://upload.dev.archive.data.humancellatlas.org/v1/area/<upload_area_uuid>" -H  "accept: application/json" -H  "Api-Key: <API-KEY>"
 ```
 
-Also, should we not make sure to clean up data in upload areas in other pre-prod environments -- dev, and staging? Data often remains there and never gets cleaned up...
-
-
+Please, make sure that the submission was not tested in other environments. If in doubt, please ask the primary wrangler (Stated in the GH ticket/Dataset tracking sheet)
 
     
 1. **EC2 instance**: If this data has been downloaded to the EC2 for some reason (e.g. validation), please make sure to remove it. If the person tasked with the retraction is not the primary/secondary wrangler, the email later in the document will cover this.
