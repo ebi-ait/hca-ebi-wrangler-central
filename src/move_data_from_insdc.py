@@ -29,15 +29,26 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument('--study_accession', "-s", type=str,
                         help='Study accession in ENA')
-    parser.add_argument('--output_path', "-o", default='',
+    parser.add_argument('--output_path', "-o", default='.',
                         help='path where files will be downloaded: can be local or s3')
     parser.add_argument('--threads', "-t", default=1, type=int,
                         help='Number of processes to simultaneously spam')
+    parser.add_argument('--allowed', "-a", type=str,
+                        help='Full path to plain text file with line separated list of files that should be transferred.',)
 
     return parser.parse_args()
 
 
-def retrieve_from_ena(study_accession: str) -> list:
+def retrieve_from_ae(study_accession: str) -> (list, list):
+    request_url = f"https://www.ebi.ac.uk/arrayexpress/json/v3/experiments/{study_accession}/files"
+    request = rq.get(request_url)
+    file_list_dicts = request.json()['files']['experiment']['file']
+    files = [x['url'] for x in file_list_dicts if x['url'].endswith('fastq.gz')]
+    not_available = []
+    return files, not_available
+
+
+def retrieve_from_ena(study_accession: str) -> (list, list):
     field = "submitted_ftp" if "PRJEB" in study_accession else "fastq_ftp"
     request_url = (f"https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession={study_accession}"
                    f"&result=read_run&fields={field}")
@@ -51,7 +62,7 @@ def retrieve_from_ena(study_accession: str) -> list:
     return files, not_available
 
 
-def retrieve_from_sra(study_accession: str) -> list:
+def retrieve_from_sra(study_accession: str) -> (list, list):
     search = rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term={study_accession}&retmax=100000').content
     sra_ids = xmltodict.parse(search).get('eSearchResult', {}).get('IdList', {}).get('Id')
     file_urls = []
@@ -86,7 +97,12 @@ def retrieve_file_urls(study_accession: str) -> list:
     :returns files: list
                     List of all the ftp addresses for the files within the study/project.
     """
-    source = "ena" if "PRJEB" in study_accession else "sra"
+    if "PRJEB" in study_accession:
+        source = "ena"
+    elif "E-MTAB" in study_accession:
+        source = "ae"
+    else:
+        source = "sra"
 
     # Calling different functions depending on source
     return globals()[f'retrieve_from_{source}'](study_accession)
@@ -310,12 +326,39 @@ def transfer_file_to_s3(url: BytesIO, output_path: str, filename: str,
             print("Retrying...")
 
 
+def filter_by_allowed(allowed_list_path: str, file_list: list) -> list:
+    """
+    Filter the list of URLs by providing a newline-separated list of filenames.
+
+    :param allowed_list_path: str
+                              Path to the file containing the filenames
+    :param file_list: list
+                      list of files retrieved from the accession
+    :returns file_list: list
+                        filtered file list
+    """
+    if os.path.exists(allowed_list_path):
+        with open(allowed_list_path, 'r') as f:
+            lines = f.read().splitlines()
+        filtered_file_list = []
+        for line in lines:
+            filtered_file_list.append(next((s for s in file_list if line in s)))
+        file_list = filtered_file_list
+    else:
+        print("File not found, please provide full path.")
+
+    return file_list
+
+
 def main(args):
-    ena_list, runs_not_available = retrieve_file_urls(args.study_accession)
-    if not ena_list:
+    file_list, runs_not_available = retrieve_file_urls(args.study_accession)
+    if not file_list:
         print("Couldn't find any mean of downloading the proper fastq. Try with the sratoolkit")
 
-    output_args = [(ena, args.output_path) for ena in ena_list]
+    if args.allowed:
+        file_list = filter_by_allowed(args.allowed, file_list)
+
+    output_args = [(file, args.output_path) for file in file_list]
     try:
         with Pool(args.threads) as p:
             p.starmap(transfer_file, output_args)
