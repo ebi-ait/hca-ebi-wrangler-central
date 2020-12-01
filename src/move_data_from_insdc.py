@@ -43,7 +43,7 @@ def retrieve_from_ae(study_accession: str) -> (list, list):
     request_url = f"https://www.ebi.ac.uk/arrayexpress/json/v3/experiments/{study_accession}/files"
     request = rq.get(request_url)
     file_list_dicts = request.json()['files']['experiment']['file']
-    files = [x['url'] for x in file_list_dicts]
+    files = [x['url'] for x in file_list_dicts if x['url'].endswith('fastq.gz')]
     not_available = []
     return files, not_available
 
