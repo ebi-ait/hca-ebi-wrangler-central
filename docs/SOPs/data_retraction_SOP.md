@@ -168,7 +168,7 @@ curl -X DELETE -H "Authorization: Bearer <TOKEN>" <INGEST_API_URL>/submissionEnv
 
 
 #### Metadata archiver
-The metadata that is archived through ingest's archiver is stored in the archiver endpoints. We currently don't have any standard way of deleting this metadata so please contact a dev with the DSP submission UUID to delete this metadata.
+The metadata that is archived through ingest's archiver is stored in the archiver endpoints. A developer is needed for the following points:
 
 ```
 1. Check the _links.self.href from the json:
