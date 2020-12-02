@@ -6,15 +6,17 @@ Svensson's curated single cell database (http://www.nxn.se/single-cell-studies)
 The output is a formatted list that can be copied over to the dataset tracking sheet.
 Usage: python3 compare_tracker_with_nxn_sheet.py
 Last time updated:
-2020-12-01T18:14:27.279908Z
+2020-12-02T13:54:55.517253Z
 """
 
 import os
 import re
 import requests as rq
-import Levenshtein
-from Levenshtein import *
 from datetime import datetime
+
+import Levenshtein
+from string import punctuation
+
 
 
 class ChangedHeaders(Exception):
@@ -130,11 +132,10 @@ def eval_value(value, valentines_database, row):
         value = replace_all_values(value, valentines_database, row)
         return eval(value)
 
-def reformat_title(title: str):
-    characters_to_remove = [" ",".",",","-","_",":"]
-    for character in characters_to_remove:
-        title = title.replace(character,'').lower().strip()
-    return title
+
+def reformat_title(title: str) -> str:
+    return re.sub(f"[{punctuation}]", "", title).lower().strip()
+
 
 def get_distance_metric(title1: str,title2: str):
     max_len = max(len(title1),len(title2))
@@ -142,7 +143,7 @@ def get_distance_metric(title1: str,title2: str):
     return dist_metric
 
 
-def select_unique_studies(valentines_sheet: [[]], tracking_sheet: [[]]):
+def select_unique_studies(valentines_sheet: [[]], tracking_sheet: [[]]) -> [[]]:
     """
     Filter unique studies based on:
         - DOI (DOI; bioRxiv DOI): exact match to the publication or pre-print doi
@@ -156,8 +157,8 @@ def select_unique_studies(valentines_sheet: [[]], tracking_sheet: [[]]):
     :return:
     """
     # Retrieve the indexes from the headers
-    v_doi_index1 = find_header_index(valentines_sheet, 'DOI')
-    v_doi_index2 = find_header_index(valentines_sheet, 'bioRxiv DOI')
+    v_doi_index_pub = find_header_index(valentines_sheet, 'DOI')
+    v_doi_index_pre = find_header_index(valentines_sheet, 'bioRxiv DOI')
     t_doi_index1 = find_header_index(tracking_sheet, 'doi')
     t_doi_index2 = find_header_index(tracking_sheet, 'pub_link')
     v_data_location_index = find_header_index(valentines_sheet, 'Data location')
@@ -167,52 +168,33 @@ def select_unique_studies(valentines_sheet: [[]], tracking_sheet: [[]]):
 
 
     # Retrieve DOIs and adjust them
-    valentine_dois = {data[v_doi_index1]:data[v_doi_index2] for data in valentines_sheet}
-    del valentine_dois['DOI']
-    tracking_sheet_dois = [track[t_doi_index1] for track in tracking_sheet if track[t_doi_index1]]
-    tracking_sheet_pub_links = [track[t_doi_index2] for track in tracking_sheet if track[t_doi_index2]]
-    tracking_sheet_dois = tracking_sheet_dois + [i.split('doi.org/')[1] for i in tracking_sheet_pub_links if 'doi.org/' in i]
-    tracking_sheet_dois = [i for i in tracking_sheet_dois if i != 'doi' and i != 'pub_link']
-    tracking_sheet_dois = list(set(tracking_sheet_dois))
+    valentine_pub_dois = {data[v_doi_index_pub] for data in valentines_sheet[1:]}
+    valentine_pre_dois = {data[v_doi_index_pre] for data in valentines_sheet[1:]}
 
-    unregistered_dois = [key for key in valentine_dois.keys() if key not in tracking_sheet_dois and valentine_dois[key] not in tracking_sheet_dois]
+    tracking_sheet_pub_dois = {track[t_doi_index1] for track in tracking_sheet[1:] if track[t_doi_index1]}
+    tracking_sheet_pub_links = {track[t_doi_index2] for track in tracking_sheet[1:] if track[t_doi_index2]}
+    tracking_sheet_pre_dois = {url.split('doi.org/')[1] for url in tracking_sheet_pub_links if 'doi.org/' in url}
+
+    unregistered_dois = (valentine_pub_dois | valentine_pre_dois) - (tracking_sheet_pub_dois | tracking_sheet_pre_dois)
 
     # Translate unregistered dois into the table
-    unregistered_table = [row for row in valentines_sheet if row[v_doi_index1] in unregistered_dois]
+    unregistered_table = [row for row in valentines_sheet if row[v_doi_index_pub] in unregistered_dois or row[v_doi_index_pre] in unregistered_dois]
 
     # Retrieve accessions and repeat filtering
     valentine_accessions = set([data[v_data_location_index] for data in unregistered_table if data[v_data_location_index]])
-    tracking_sheet_accessions = [track[t_data_location_index] for track in tracking_sheet if track[t_data_location_index]]
+    tracking_sheet_accessions = set([track[t_data_location_index] for track in tracking_sheet[1:] if track[t_data_location_index]])
 
-
-    unregistered_accessions = []
-    for accession in list(valentine_accessions):
-        remove = False
-        for i in range(0,len(tracking_sheet_accessions)):
-            if accession in tracking_sheet_accessions[i]:
-                remove = True
-        if remove == False:
-            unregistered_accessions.append(accession)
-    unregistered_accessions = set(unregistered_accessions)
-
+    unregistered_accessions = valentine_accessions - tracking_sheet_accessions
 
     second_unregistered_table = [row for row in unregistered_table if row[v_data_location_index] in unregistered_accessions or not row[v_data_location_index]]
-
 
     valentine_titles = set([reformat_title(data[v_title_index]) for data in second_unregistered_table if data[v_title_index]])
     tracking_sheet_titles = set([reformat_title(track[t_title_index]) for track in tracking_sheet if track[t_title_index]])
 
-    unregistered_titles = []
-    for i in range(0,len(valentine_titles)):
-        remove = False
-        for title in tracking_sheet_titles:
-            if get_distance_metric(list(valentine_titles)[i],title) >= 97:
-                remove = True
-        if remove == False:
-            unregistered_titles.append(title.lower())
-    unregistered_titles = set(unregistered_titles)
+    unregistered_titles = valentine_titles - tracking_sheet_titles
+    unregistered_titles = {title for title in unregistered_titles if not any([get_distance_metric(title, tracking_title) for tracking_title in tracking_sheet_titles])}
 
-    full_unregistered_table = [row for row in second_unregistered_table if row[v_title_index].lower() in unregistered_titles]
+    full_unregistered_table = [row for row in second_unregistered_table if row[v_title_index] in unregistered_titles]
 
     return full_unregistered_table
 
@@ -288,8 +270,6 @@ def main():
 
     # Compare and filter
     entries_not_registered = select_unique_studies(valentines_database, tracking_sheet)
-    if entries_not_registered == []:
-        print("No new database entries found")
     filtered_table = filter_table(entries_not_registered, valentines_database)
 
     # Print output
