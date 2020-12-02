@@ -15,7 +15,6 @@ import requests as rq
 from datetime import datetime
 
 import Levenshtein
-from string import punctuation
 
 
 
@@ -134,7 +133,7 @@ def eval_value(value, valentines_database, row):
 
 
 def reformat_title(title: str) -> str:
-    return re.sub(f"[{punctuation}]", "", title).lower().strip()
+    return re.sub("\W", "", title).lower().strip()
 
 
 def get_distance_metric(title1: str,title2: str):
@@ -188,6 +187,7 @@ def select_unique_studies(valentines_sheet: [[]], tracking_sheet: [[]]) -> [[]]:
 
     second_unregistered_table = [row for row in unregistered_table if row[v_data_location_index] in unregistered_accessions or not row[v_data_location_index]]
 
+    # Retrieve titles, format them and repeat filtering with Levenshtein-based distances
     valentine_titles = set([reformat_title(data[v_title_index]) for data in second_unregistered_table if data[v_title_index]])
     tracking_sheet_titles = set([reformat_title(track[t_title_index]) for track in tracking_sheet if track[t_title_index]])
 
@@ -203,6 +203,7 @@ def filter_table(valentines_table, full_database):
     """
     Filter the table based on organism/technology criteria
     :param valentines_table:
+    :param full_database:
     :return:
     """
     organism_index = find_header_index(full_database, 'Organism')
