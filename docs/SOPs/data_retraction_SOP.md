@@ -52,9 +52,9 @@ hca-util configure
 ```
 And input the wrangler or ingest credentials.
 
-### Open a ticket in GitHub
+### Open an issue in GitHub
 
-Finally, please open a ticket with the template named as `Dataset Retraction` and tick through the boxes as you go through the process of retraction.
+Finally, please [open an issue](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=dataset%2C+operations&template=dataset_retraction.md&title=Retraction+of+dataset+%3Cshortname_of_project%3E) in the [wrangler repo](https://github.com/ebi-ait/hca-ebi-wrangler-central) with the template named as `Dataset Retraction` and tick through the boxes as you go through the process of retraction.
 
 ### Write down accessions/UUIDs/GitHub issue:
 You will need to locate the following UUIDs:
