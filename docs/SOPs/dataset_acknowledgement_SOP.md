@@ -46,7 +46,7 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 1. Go to the `src/` folder inside the `hca-ebi-wrangling` repository
 1. Run `python3 compare_tracker_with_nxn_sheet_version2.py | pbcopy`
    
-   This runs the script and copies the output to your clipboard. The updated version (version2) check for duplicates in comparison to the tracker sheet much more stringently. 
+   This runs the script and copies the output to your clipboard. The updated version (version2) more stringently checks for duplicates in comparison to the tracker.
 
 Once complete, paste the results into the leftmost cell under the latest dataset acknowledged. It’s already formatted with the tracker’s format, so it’s just a paste operation
 
