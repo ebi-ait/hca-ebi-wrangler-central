@@ -16,15 +16,41 @@ Outline the process of **requesting ontology terms**, as well as document releas
 
 ### Requesting new ontology terms
 
+The way to request an ontology term depends on the type of term and whether it already exists in another ontology. A decision tree to guide you on the method for requesting a term can be found here: [Ontology requests decision tree](#decision-tree).
+
+In general you should try to include as much information as possible when requesting a term. Specific cases are provided below.
+
+#### General guidance for all ontologies
+
+* Indicate your use case
+* Indicate the evidence for your term such as a publication or link to description
+* Label the ticket with `HCA` if possible
+* Indicate priority if urgent
+* Use the applicable issue template
+
+#### For Cell type (CL) and Anatomical (UBERON) terms
+
+As above [for all ontology terms](#general-guidance-for-all-ontology-terms) plus:
+* Check whether the term exists in [FMA](https://www.ebi.ac.uk/ols/ontologies/fma), if so, please include the FMA ID in the definition section of the issue template
+* Quote a publication or literature and evidence to support the term
+* tag [@paolaroncaglia](https://github.com/paolaroncaglia) in the ticket
+* Indicate any known taxon restrictions i.e. is the term only applicable to mammals? Quote literature if possible
+
+[Request UBERON term](https://github.com/obophenotype/uberon/issues/new?labels=new+term+request&template=a_adding_term.md) {: .btn .btn-blue }
+
+[Request CL term](https://github.com/obophenotype/cell-ontology/issues/new?assignees=nicolevasilevsky%2C+dosumis%2C+addiehl&labels=new+term+request&template=a_adding_term.md&title=%5BNTR%5D) {: .btn .btn-green }
+
 Ontology requests should be issued as tickets on the relevant repo to that ontology, [see listing below](#ontology-repos).
 
-Please request them using the issue template if provided. 
+#### For Experimental Factor (EFO) terms
 
-#### Edits to the Cell Ontology (CL) and UBERON
-
-If it is a Cell Ontology (CL) or UBERON request, please add [@paolaroncaglia](https://github.com/paolaroncaglia) as the assignee, add the `HCA/DCP` label and any other relevant labels such as the priority (if it is an urgent request).
+As above [for all ontology terms](#general-guidance-for-all-ontology-terms) plus:
+* Check whether the term exists in [BAO](https://www.ebi.ac.uk/ols/ontologies/bao), if so, please include the BAO ID in the definition section of the issue template
+* Include a link to the literature if possible
 
 ### Request an existing term be added to the HCAO
+
+If the term already exists in an ontology that can be imported into the HCAO, make a ticket directly in the HCAO repo.
 
 [Request an HCAO edit](https://github.com/HumanCellAtlas/ontology/issues/new/choose){: .btn .btn-blue }
 
