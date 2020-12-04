@@ -71,9 +71,14 @@ The following columns need to be curated:
 1. **broker_to_archives**: Usually `no`, as the data is being extracted from the archives
 1. **broker_to_scea**: Based on SCEA’s guidelines, provide with “yes” or “no”. If you have filled everything else, there should be enough information for you to choose one of the two.
 
-#### removing duplicate entries from the tracker sheet
+#### Removing duplicate entries from the tracker sheet
 
-As stated above, the **compare_tracker_with_nxn_sheet_version2.py** script stringently checks for duplicate entries before new entries are added to the tracker sheet. However, there is still a possibility for duplicates in the tracker sheet to appear. This is because entries in the nxn sheet do not necesserily consist of all possible accessions and publication links. Additional accessions,links or other information might get added manually to the tracker. An example would be if a dataset has both a GEO and ArrayExpress accession and has both a pre-print link and publication link, but they appear in separate rows. The **remove_duplicates.py** script should therefore be run after each time new entries are added to the tracker sheet. This script checks for all possible ways in which a dataset might appear on duplicate rows and outputs the duplicates rows as a .txt file.
+As stated above, the **compare_tracker_with_nxn_sheet_version2.py** script stringently checks for duplicate entries before new entries are added to the tracker sheet. However, there is still a possibility for duplicates in the tracker sheet to appear. This is because entries in the nxn sheet do not necesserily consist of all possible accessions and publication links. Additional accessions,links or other information might get added manually to the tracker. An example would be if a dataset has both a GEO and ArrayExpress accession and has both a pre-print link and publication link, but they appear in separate rows.
+
+The **remove_duplicates.py** script should therefore be run after each time new entries are added to the tracker sheet. This script checks for all possible ways in which a dataset might appear on duplicate rows and outputs the duplicates rows as a .txt file.
+
+1. Go to the `src/` folder inside the `hca-ebi-wrangling` repository
+1. Run `python3 remove_duplicates.py`
 
 #### ENA
 [WIP/Need Dev script to parse ENA API]
