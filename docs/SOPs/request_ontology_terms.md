@@ -10,6 +10,10 @@ UNDER REVIEW
 This process is currently under review as at 4/12/2020, please double check if anything is unclear.
 
 # Request Ontology terms SOP
+{: .no_toc }
+
+1. TOC
+{:toc}
 
 ## Objectives
 Outline the process of **requesting ontology terms**, as well as document release dates for the wrangler team.
@@ -28,6 +32,10 @@ In general you should try to include as much information as possible when reques
 * Indicate priority if urgent
 * Use the applicable issue template
 
+Ontology requests should be issued as tickets on the relevant repo to that ontology, [see listing below](#ontology-repos).
+
+If you aren't sure about what to do or have an ontology question, [create a ticket](https://github.com/HumanCellAtlas/ontology/issues) in the HCAO ontology repo.
+
 #### For Cell type (CL) and Anatomical (UBERON) terms
 
 As above [for all ontology terms](#general-guidance-for-all-ontology-terms) plus:
@@ -36,11 +44,9 @@ As above [for all ontology terms](#general-guidance-for-all-ontology-terms) plus
 * tag [@paolaroncaglia](https://github.com/paolaroncaglia) in the ticket
 * Indicate any known taxon restrictions i.e. is the term only applicable to mammals? Quote literature if possible
 
-[Request UBERON term](https://github.com/obophenotype/uberon/issues/new?labels=new+term+request&template=a_adding_term.md) {: .btn .btn-blue }
+[Request UBERON term](https://github.com/obophenotype/uberon/issues/new?labels=new+term+request&template=a_adding_term.md){: .btn .btn-blue }
 
-[Request CL term](https://github.com/obophenotype/cell-ontology/issues/new?assignees=nicolevasilevsky%2C+dosumis%2C+addiehl&labels=new+term+request&template=a_adding_term.md&title=%5BNTR%5D) {: .btn .btn-green }
-
-Ontology requests should be issued as tickets on the relevant repo to that ontology, [see listing below](#ontology-repos).
+[Request CL term](https://github.com/obophenotype/cell-ontology/issues/new?assignees=nicolevasilevsky%2C+dosumis%2C+addiehl&labels=new+term+request&template=a_adding_term.md&title=%5BNTR%5D){: .btn .btn-green }
 
 #### For Experimental Factor (EFO) terms
 
@@ -48,7 +54,7 @@ As above [for all ontology terms](#general-guidance-for-all-ontology-terms) plus
 * Check whether the term exists in [BAO](https://www.ebi.ac.uk/ols/ontologies/bao), if so, please include the BAO ID in the definition section of the issue template
 * Include a link to the literature if possible
 
-### Request an existing term be added to the HCAO
+### Requesting an existing term be added to the HCAO
 
 If the term already exists in an ontology that can be imported into the HCAO, make a ticket directly in the HCAO repo.
 
