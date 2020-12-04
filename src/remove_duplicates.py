@@ -1,10 +1,10 @@
 # coding=utf-8
 """
-Little script that compares the HCA dataset tracking sheet
-(https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0) with Valentine
-Svensson's curated single cell database (http://www.nxn.se/single-cell-studies)
-The output is a formatted list that can be copied over to the dataset tracking sheet.
-Usage: python3 compare_tracker_with_nxn_sheet.py
+Little script that identifies duplicates in the dataset tracking sheet
+(https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0)
+The output is a tab delimited .txt file consisting of the duplicate entries. This can be used to manually remove
+duplicate entries from the tracker sheet.
+Usage: python3 remove_duplicates.py
 Last time updated:
 2020-12-02T14:03:25.508764Z
 """
