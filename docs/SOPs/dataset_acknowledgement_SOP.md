@@ -44,7 +44,7 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 #### nxn.se single cell database
 
 1. Go to the `src/` folder inside the `hca-ebi-wrangling` repository
-1. Run `python3 compare_tracker_with_nxn_sheet**_version2**.py | pbcopy`
+1. Run `python3 compare_tracker_with_nxn_sheet_version2.py | pbcopy`
    
    This runs the script and copies the output to your clipboard. The updated version (version2) check for duplicates in comparison to the tracker sheet much more stringently. 
 
