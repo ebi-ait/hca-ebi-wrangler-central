@@ -44,9 +44,9 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 #### nxn.se single cell database
 
 1. Go to the `src/` folder inside the `hca-ebi-wrangling` repository
-1. Run `python3 compare_tracker_with_nxn_sheet.py | pbcopy`
+1. Run `python3 compare_tracker_with_nxn_sheet**_version2**.py | pbcopy`
    
-   This runs the script and copies the output to your clipboard. 
+   This runs the script and copies the output to your clipboard. The updated version (version2) check for duplicates in comparison to the tracker sheet much more stringently. 
 
 Once complete, paste the results into the leftmost cell under the latest dataset acknowledged. It’s already formatted with the tracker’s format, so it’s just a paste operation
 
@@ -54,7 +54,7 @@ The script updates itself with a timestamp to keep track of when it was last run
 ```
 git checkout master
 git pull
-git add compare_tracker_with_nxn_sheet.py
+git add compare_tracker_with_nxn_sheet_version2.py
 git commit -m "Updated tracker sheet."
 git push origin master
 ```
@@ -70,6 +70,10 @@ The following columns need to be curated:
 1. **technical_benchmarking**: If the dataset is a benchmarking experiment, `yes`. Else, `no` 
 1. **broker_to_archives**: Usually `no`, as the data is being extracted from the archives
 1. **broker_to_scea**: Based on SCEA’s guidelines, provide with “yes” or “no”. If you have filled everything else, there should be enough information for you to choose one of the two.
+
+#### removing duplicate entries from the tracker sheet
+
+As stated above, the **compare_tracker_with_nxn_sheet_version2.py** script stringently checks for duplicate entries before new entries are added to the tracker sheet. However, there is still a possibility for duplicates in the tracker sheet to appear. This is because entries in the nxn sheet do not necesserily consist of all possible accessions and publication links. Additional accessions,links or other information might get added manually to the tracker. An example would be if a dataset has both a GEO and ArrayExpress accession and has both a pre-print link and publication link, but they appear in separate rows. The **remove_duplicates.py** script should therefore be run after each time new entries are added to the tracker sheet. This script checks for all possible ways in which a dataset might appear on duplicate rows and outputs the duplicates rows as a .txt file.
 
 #### ENA
 [WIP/Need Dev script to parse ENA API]
