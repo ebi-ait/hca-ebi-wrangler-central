@@ -62,7 +62,7 @@ git push origin master
 New publications from the single cell database need an additional step of manual curation to ensure certain fields meet the requirements for prioritisation and suitability. 
 
 The following columns need to be curated:
-1. **technology**: 10x is usually abbreviated as “Chromium”, independently of the chemistry or end bias. A more specific term is needed.
+1. **assay_type**: 10x is usually abbreviated as “Chromium”, independently of the chemistry or end bias. A more specific term is needed.
 1. **health_status**: Need to indicate if normal, not normal or both, and if the 2 latest indicate the phenotype.
 1. **access_permission**: if accession is not from EGA/dbGAP,  usually “open”. Otherwise, “managed” or “mix”
 1. **living_eu_donors**: If mice, indicate `no,none`. If human, looking at the laboratory location should be enough to fill this.
