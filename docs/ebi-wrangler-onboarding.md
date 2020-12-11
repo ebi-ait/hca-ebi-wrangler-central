@@ -63,6 +63,7 @@ This is a living document we want to make it better with every person that joins
 
 ### First day
 - Send your github username to Laura so that you can get access to our git organisation
+- You will need to configure/add 2-factor authentication to your Github account. Information about how to do this can be found here: https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/configuring-two-factor-authentication
 - Set up your computer. Do ask any of the wrangler team if you encounter any issues.
 - Set up your favourite web browser. It will make more sense later, but the usual "go-to" for the wranglers is Google Chrome, as some of the tasks that you’re going to do require some plug-ins.
 - *For Mac Users:* Look at the “Managed Software Centre” app thoroughly. Install every app you think you will need, asking for help when necessary.
