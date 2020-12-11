@@ -27,6 +27,8 @@ This document will serve to capture the steps needed to do a full cleanup of a d
 
 ## Before you start
 
+To follow all the steps, a developer working for the ingest team is needed. Most of the steps will only need wrangler credentials, but some steps have to be carried out by a developer. If a wrangler is responsible for this task, please contact and assign a dev to help with the specific steps.
+
 ### Needed permissions
 Please make sure you have the proper permissions or you are paired with someone who has. The needed permissions are:
 1. **Access to the EC2 instance**: Any wrangler/dev should have access.
@@ -36,18 +38,12 @@ Please make sure you have the proper permissions or you are paired with someone 
    ```
    aws --region us-east-1 secretsmanager get-secret-value --secret-id ingest/dev/secrets --query SecretString --output text | jq -jr .archiver_api_key
    ```
-   If you have admin access to s3 buckets you should be able to retrieve the username and password this way.
+   Only developers are able to access the secrets manager.
 
 ### Set up gsutil to access staging area
 **If you already have gsutil set up, please skip this step**
-Any wrangler/dev with the s3 permissions set up should be able to retrieve the credentials. Please retrieve the credentials with this command:
-```
 
-```
-[Dev Input Here]
-
-And configure gsutil
-
+https://ebi-ait.github.io/hca-ebi-dev-team/admin_setup/Setting-up-access-to-Terra-staging-area.html
 
 ### Set up hca-util with wrangler credentials
 Please also make sure that you have the hca-util set up with the wrangler credentials:
@@ -56,9 +52,9 @@ hca-util configure
 ```
 And input the wrangler or ingest credentials.
 
-### Open a ticket in GitHub
+### Open an issue in GitHub
 
-Finally, please open a ticket with the template named as `Dataset Retraction` and tick through the boxes as you go through the process of retraction.
+Finally, please [open an issue](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=dataset%2C+operations&template=dataset_retraction.md&title=Retraction+of+dataset+%3Cshortname_of_project%3E) in the [wrangler repo](https://github.com/ebi-ait/hca-ebi-wrangler-central) with the template named as `Dataset Retraction` and tick through the boxes as you go through the process of retraction.
 
 ### Write down accessions/UUIDs/GitHub issue:
 You will need to locate the following UUIDs:
@@ -81,13 +77,18 @@ Currently, we store contributor data in the cloud **before** and **while** broke
     hca-util delete -d
     ```
     
-1. **Ingest upload area**: Go to the submission, locate the upload area and delete it
-    ```
-    aws s3 rm -r <full_s3_path_to_area>
-    ```
-    **Example**: aws s3 rm -r s3://org-hca-data-archive-upload-prod/<span style="color:red">779ecf45-e930-459e-b87b-c89d3c4546c7/</span>
-    
-    <span style="color:red">**IMPORTANT NOTE**</span>: Please ensure the path you introduced points out to the specific area and not to the bucket, as you might risk deletion of all the upload areas otherwise. The upload area is highlighted in red in the example.
+1. **Ingest upload area**: This task can only be carried out by a developer. Send a DELETE request to the Upload Service as following
+
+```
+# retrieve Upload Service Api-Key (dev)
+aws --region us-east-1 secretsmanager get-secret-value --secret-id ingest/dev/secrets --query SecretString --output text | jq -jr .staging_api_key
+
+# delete an upload area (dev)
+curl -X DELETE "https://upload.dev.archive.data.humancellatlas.org/v1/area/<upload_area_uuid>" -H  "accept: application/json" -H  "Api-Key: <API-KEY>"
+```
+
+Please, make sure that the submission was not tested in other environments. If in doubt, please ask the primary wrangler (Stated in the GH ticket/Dataset tracking sheet)
+
     
 1. **EC2 instance**: If this data has been downloaded to the EC2 for some reason (e.g. validation), please make sure to remove it. If the person tasked with the retraction is not the primary/secondary wrangler, the email later in the document will cover this.
 
@@ -103,19 +104,18 @@ rm -r /nfs/production/hca/<name_of_the_folder>/
 **Tips to find the folder**: It is usually best practice to set up the name with the shortname of the project, if you know this dataset was archived but there is no apparent folder, please contact the primary wrangler for this project. The primary wrangler's name can be found in the GitHub ticket.
 
 ### Staging area
+1. Find the directory of the project in the Terra staging area GCP bucket. The GCP buckets locations are configured in `<env>.yaml` files in [ingest-kube-deployment/apps](https://github.com/ebi-ait/ingest-kube-deployment/tree/master/apps)
 
-1. Run the script [here](https://github.com/ebi-ait/hca-ebi-dev-team/tree/master/scripts/map_ingest_uuid_to_staging_area) to get a mapping between the uuid of the entities in ingest and the file path in the staging area.
-1. Use that file as the input for the following commands:
+    ```
+    # Example project directory in dev:
+   
+    gs://broad-dsp-monster-hca-dev-ebi-staging/dev/<project-uuid> 
+    ```
+  
+2. Remove the project uuid subdirectory:
    ```
-   cat <name_of_mapping_file> |  jq -r ' .[] | .[]' > file_paths.txt
-   cat file_paths.txt | gsutil -m rm -I
+   gsutil -m rm gs://<bucket-parent-directory>/<project-uuid>
    ```   
-   This will delete all the files in the staging area related to this dataset. Depending on how many there are, it may take up to an hour, so be patient. If, for any reason, it gets interrupted, it can be re-triggered with the same command, and it will just ignore the files that do not exist.
-1. Check that files have been deleted by running step 1 again and checking that this command doesn't return anything:
-   ```
-   cat <name_of_new_mapping_file> | jq -r ' .[] | .[]' | grep "gs://"
-   ```
-
 
 ### Spreadsheet
 
@@ -126,7 +126,19 @@ The metadata spreadsheet can be in many different locations. Please make sure yo
    1. Head to the [Wrangler team Google group](https://groups.google.com/a/data.humancellatlas.org/g/wrangler-team) and delete any email thread that may contain the spreadsheet.
    1. Send an email to the <a href="mailto:wrangler-team@data.humancellatlas.org?subject=[URGENT]%20Dataset%20retraction%20DATASET%20SHORTNAME&body=Hello%0A%0AWe%20have%20been%20asked%20to%20retract%20the%20dataset%20%20%22%3Cshortname_of_dataset%3E%22.%20%0A%0APlease%20delete%20your%20own%20copies%20of%20the%20following%20emails%3A%0A%0A-%20%3Ctitle_of_email_thread%3E%0A%28more%20if%20necessary%29%0A%0APlease%20remove%20any%20local%20copies%20you%20may%20have%20of%20spreadsheets%20associated%20with%20%22%3Cshortname_of_dataset%3E%22%0A%0AIf%20you%20were%20involved%20in%20wrangling%20this%20dataset%2C%20please%20ensure%20no%20local%20copies%20of%20the%20data%2Fmetadata%20are%20left%20in%20the%20EC2%20instance%0A%0AMany%20thanks%20for%20your%20cooperation%0A%0ABest%20regards%2C%0A%0A%3CWrangler%20name%3E">wrangler team</a>
    1. Delete your own local copies of the thread in your mail apps.
-1. [Dev input here] Please ask for a dev to delete the **copy of the spreadsheet associated with the submission** in the ingest database.
+1. Please ask for a dev to delete the **copy of the spreadsheet associated with the submission** in the ingest database.
+
+Instructions for dev to follow:
+
+The spreadsheets are saved in the ingest-broker pod under `/data/spreadsheets`.
+Log into the pod as follows and delete the required spreadsheet(s).
+```
+# switch to env (e.g. prod) context
+kubectx ingest-eks-<env>
+# get ingest-broker-pod name
+kubectl get pods | grep broker | awk '{print $1}'
+kubectl exec -it <ingest-broker-pod> -- /bin/sh 
+```
 
 ### Ingest
 
@@ -142,10 +154,33 @@ Metadata and data can be found in the ingest submission. If following the steps,
 
 And please run the deletion of files in the staging area first. The files in the staging area can only be mapped crawling through the ingest API.
 
-[Dev input here] Once these have been retrieved, you can proceed to ask a dev to delete the submission and the project, where applicable.
+Once these have been retrieved, you can proceed to ask a dev to delete the submission and the project, where applicable.
+
+Instructions for dev to follow:
+
+```
+# Force delete a submitted submission
+
+
+curl -X DELETE -H "Authorization: Bearer <TOKEN>" <INGEST_API_URL>/submissionEnvelopes/<ARCHIVE-SUBMISION-ID>?force=true
+
+```
+
 
 #### Metadata archiver
-[Dev input here] The metadata that is archived through ingest's archiver is stored in the archiver endpoints. We currently don't have any standard way of deleting this metadata so please contact a dev with the DSP submission UUID to delete this metadata.
+The metadata that is archived through ingest's archiver is stored in the archiver endpoints. A developer is needed for the following points:
+
+```
+1. Check the _links.self.href from the json:
+
+curl -X GET -H "Accept: application/hal+json" <INGEST_API_URL>/archiveSubmissions/search/findByDspUuid?dspUuid=<DSP-SUBMISSION-UUID>
+
+2. Send a delete request to delete the DSP metadata being tracked in Ingest DB
+
+curl -X DELETE -H "Authorization: Bearer <TOKEN>" <INGEST_API_URL>/archiveSubmissions/<ARCHIVE-SUBMISION-ID>
+
+```
+
 
 ## External
 Depending on the route the dataset took on the system, there might be data and metadata that needs to be retracted from sources external to the ingestion team.
