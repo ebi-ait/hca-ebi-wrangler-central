@@ -7,24 +7,56 @@ parent: SOPs
 UNDER REVIEW
 {: .label .label-yellow }
 
-This process is currently under review as at 16/10/2020, please double check if anything is unclear.
+This process is currently under review as at 4/12/2020, please double check if anything is unclear.
 
 # Request Ontology terms SOP
+{: .no_toc }
+
+1. TOC
+{:toc}
 
 ## Objectives
 Outline the process of **requesting ontology terms**, as well as document release dates for the wrangler team.
 
 ### Requesting new ontology terms
 
+The way to request an ontology term depends on the type of term and whether it already exists in another ontology. A decision tree to guide you on the method for requesting a term can be found here: [Ontology requests decision tree](#decision-tree).
+
+In general you should try to include as much information as possible when requesting a term. Specific cases are provided below.
+
+#### General guidance for all ontologies
+
+* Indicate your use case
+* Indicate the evidence for your term such as a publication or link to description
+* Label the ticket with `HCA` if possible
+* Indicate priority if urgent
+* Use the applicable issue template
+
 Ontology requests should be issued as tickets on the relevant repo to that ontology, [see listing below](#ontology-repos).
 
-Please request them using the issue template if provided. 
+If you aren't sure about what to do or have an ontology question, [create a ticket](https://github.com/HumanCellAtlas/ontology/issues) in the HCAO ontology repo.
 
-#### Edits to the Cell Ontology (CL) and UBERON
+#### For Cell type (CL) and Anatomical (UBERON) terms
 
-If it is a Cell Ontology (CL) or UBERON request, please add [@paolaroncaglia](https://github.com/paolaroncaglia) as the assignee, add the `HCA/DCP` label and any other relevant labels such as the priority (if it is an urgent request).
+As above [for all ontology terms](#general-guidance-for-all-ontology-terms) plus:
+* Check whether the term exists in [FMA](https://www.ebi.ac.uk/ols/ontologies/fma), if so, please include the FMA ID in the definition section of the issue template
+* Quote a publication or literature and evidence to support the term
+* tag [@paolaroncaglia](https://github.com/paolaroncaglia) in the ticket
+* Indicate any known taxon restrictions i.e. is the term only applicable to mammals? Quote literature if possible
 
-### Request an existing term be added to the HCAO
+[Request UBERON term](https://github.com/obophenotype/uberon/issues/new?labels=new+term+request&template=a_adding_term.md){: .btn .btn-blue }
+
+[Request CL term](https://github.com/obophenotype/cell-ontology/issues/new?assignees=nicolevasilevsky%2C+dosumis%2C+addiehl&labels=new+term+request&template=a_adding_term.md&title=%5BNTR%5D){: .btn .btn-green }
+
+#### For Experimental Factor (EFO) terms
+
+As above [for all ontology terms](#general-guidance-for-all-ontology-terms) plus:
+* Check whether the term exists in [BAO](https://www.ebi.ac.uk/ols/ontologies/bao), if so, please include the BAO ID in the definition section of the issue template
+* Include a link to the literature if possible
+
+### Requesting an existing term be added to the HCAO
+
+If the term already exists in an ontology that can be imported into the HCAO, make a ticket directly in the HCAO repo.
 
 [Request an HCAO edit](https://github.com/HumanCellAtlas/ontology/issues/new/choose){: .btn .btn-blue }
 
@@ -63,3 +95,7 @@ Please take in account that she is only working 20% for the HCA, so be patient w
 | Chemicals & Molecules | Chemical Entities of Biological Interest ([CHEBI](https://www.ebi.ac.uk/ols/ontologies/chebi))      | [ebi-chebi/ChEBI](https://github.com/ebi-chebi/ChEBI)|
 | Imaging techniques | Biological Imaging Methods Ontology ([FBBI](https://www.ebi.ac.uk/ols/ontologies/fbbi))      | [CRBS/Biological_Imaging_Methods_Ontology](https://github.com/CRBS/Biological_Imaging_Methods_Ontology)|
 
+### Decision tree
+
+<div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2020-12-04T17:37:02.588Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36\&quot; etag=\&quot;H50wsLuLHWExEvALcQzu\&quot; version=\&quot;13.10.4\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;C5RBs43oDa-KdzZeNtuy\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>

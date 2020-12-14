@@ -43,7 +43,7 @@ map = {
     "project_short_name": None,
     "data_accession": "Data location",
     "contributor_involved": "==no",
-    "hca_status": "==acknowledged",
+    "hca_status": "==uncurated",
     "date_added": "=str(datetime.today()).split(' ')[0]",
     "access_permission": None,
     "organism": "=set_organism('{Organism}')",
