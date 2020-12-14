@@ -6,7 +6,7 @@ The output is a tab delimited .txt file consisting of the duplicate entries. Thi
 duplicate entries from the tracker sheet.
 Usage: python3 remove_duplicates.py
 Last time updated:
-2020-12-02T14:03:25.508764Z
+2020-12-14T10:08:46.801271Z
 """
 
 import os

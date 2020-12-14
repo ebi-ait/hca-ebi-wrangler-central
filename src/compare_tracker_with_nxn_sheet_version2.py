@@ -6,15 +6,16 @@ Svensson's curated single cell database (http://www.nxn.se/single-cell-studies)
 The output is a formatted list that can be copied over to the dataset tracking sheet.
 Usage: python3 compare_tracker_with_nxn_sheet.py
 Last time updated:
-2020-12-01T18:14:27.279908Z
+2020-12-14T10:05:05.468800Z
 """
 
 import os
 import re
-import requests as rq
-import Levenshtein
-from Levenshtein import *
 from datetime import datetime
+
+import Levenshtein
+import requests as rq
+from Levenshtein import *
 
 
 class ChangedHeaders(Exception):
