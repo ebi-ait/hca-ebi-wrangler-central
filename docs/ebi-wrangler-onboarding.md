@@ -120,10 +120,11 @@ Key meetings that wranglers are summarised in the table below:
 | Meeting                              | Day       | Time   | Frequency             | Notes                                |
 |--------------------------------------|-----------|--------|-----------------------|--------------------------------------|
 | Metadata community call              | Monday    | 4pm    | First monday Monthly  | Telecon                              |
-| Operations planning/review.          | Wednesday | 11am   | Weekly.               | |
-| Dev sprint kick off meeting          | Wednesday | 9.30am | Bi-weekly.            | At start of EBI sprint,only dev wrangler needs to attend |
+| Operations planning/review           | Wednesday | 11am   | Weekly                | |
+| Dev sprint kick off meeting          | Wednesday | 9.30am | Bi-weekly             | At start of EBI sprint,only dev wrangler needs to attend |
 | EBI-DCP Sprint Planning & Demo       | Tuesday   | 2pm    | Bi-weekly             | 1 hour, telecon, at end of a sprint  |
 | EBI DCP Sprint Retro                 | Tuesday   | 4pm    | Bi-weekly             | 1 hour, telecon                      |
+| User stories for next sprint         | Monday    | 10am   | Bi-weekly             | 1 hour, monday before end of EBI sprint |
 | DCP Sprint Demo                      | Tuesday   | 4pm    | Bi-weekly             | At end of DCP sprint (see DCP calendar)    |
 | AIT Team meetings                    | Thursday  | 3pm    | Bi-weekly             | In person, alternates between dev and general interest |
 
