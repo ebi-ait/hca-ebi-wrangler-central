@@ -28,7 +28,7 @@ In general you should try to include as much information as possible when reques
 
 * Indicate your use case
 * Indicate the evidence for your term such as a publication or link to description
-* Label the ticket with `HCA` if possible
+* tag [@paolaroncaglia](https://github.com/paolaroncaglia) in the ticket and label the ticket with `HCA` if possible
 * Indicate priority if urgent
 * Use the applicable issue template
 
@@ -69,8 +69,8 @@ The tickets added to the ontology repository, as posted above, are revised by @z
 *New terms might not be available after each monthly release if requesting to an external database (Not EFO).
 
 Release of databases:
-- EFO = ~16th of each month.
-- HCAO = ~18-19th of each month.
+- EFO = ~15-18th of each month.
+- HCAO = ~20th of each month.
 
 Once Zoe updates the HCAO it gets automatically released to the [EBI OLS](https://www.ebi.ac.uk/ols/ontologies/hcao). She will usually ping the ingest team to also release the ontology to our environments on:
 - [Staging](https://ontology.staging.archive.data.humancellatlas.org/index)
