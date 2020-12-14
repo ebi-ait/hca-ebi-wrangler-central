@@ -132,30 +132,40 @@ Key meetings that wranglers are summarised in the table below:
 Scientific meetings are held a few times a year and are a great opportunity to connect directly with researchers involved in the HCA. However, the tickets for these events are limited so Wranglers aren't guaranteed a spot. Project leads do their best to advocate for Wranglers attending so check on whether you are likely to attend the next one.
 
 ### Slack
+We use slack a lot. If you haven't already been invited to these two slack instances, please tell another member of the team or Claire/Laura and it can be easily sorted. There may also be otther slack instances that it is useful to join but you will be made aware of those as and when it is relevant.
 
-By this point you have probably already joined, but if not, join the `HumanCellAtlas` workspace. Since DCP2 was announced in April 2020, Slack is much less used than before. The main channels you should join and pay attention to are:
+HCA: https://join-hca-slack.data.humancellatlas.org/
+AIT: https://tsc.ebi.ac.uk/article/slack-getting-started
 
-- `ebi-wrangler-metadata`: Private channel for the ebi based wrangler and metadata team
-- `hca-metadata`: This is where general HCA metadata discussions happen.
-- `hca-metadata-int`: integrated with the metadata-schema github repo, used mainly for discussions about updates to the repo
+Most slack is through the AIT slack
 
-Feel free to browse other public channels within the workspace.
+Useful channels include:
 
-For AIT communication there is also an AIT workspace (embl-ebi-ait.slack.com) . Relevant channels to join in this workspace include:
-- `hca`
-- `hca-to-archives`
+#hca - this is where most of the general communication about HCA takes place as well as announcements, reminders of stand up etc
 
-Social channels within AIT include:
-- `games`, `social-events`, `tea-time` & `whatson`
+#hca-operations - channel for discussions of operations tasks and submitting datasets to the DCP
 
-There are also EBI-wide channels that will appear in your AIT workspace for institute-wide announcements
+#hca-development - channel for discussion about the current development work, sorting testing, answering questions etc
 
-For all the private channels, you will need to request access. Ask any of us to help you through!
+#hca-wrangler-metadata - this is where most of the discussion relating to wrangling and the the HCA metadata are discussed
 
-If you have a quick question and you or the wrangler you want to ask are unavailable at the moment, feel free to send them a message and they will answer whenever they are free/awake.
+#dcp-2 - This is a shared channel with the HCA slack. It is used for general announcements about the DCP or questions about the DCP, this is a good place to introduce yourself when you have logged in. 
 
-Take into account that you might need to join more/less channels than the ones listed here.
+In the HCA slack, the open channels you will find useful are - although much less chat happens on these channels now.
 
+#data-wrangling - general communication about wrangling and status of services associated with wrangling
+
+#hca-metadata - the channel where metadata meeting announcements are posted and metadata discussion happens
+
+#papers - Cell atlas relevant papers get posted here
+
+You will need to ask Claire to invite you to some private channels, these are different subsets of our team and collaborators to enable private communication.
+
+Data-wrangling-int
+Ebi-content-internal
+ebi-wrangler-metadata
+
+This is a current list of useful channels. Please always ask if a channel you are a member of is very quiet and you aren't sure if you are missing anything or if you aren't sure if there is a channel for a particular topic that you should join.
 
 ### SAP
 
