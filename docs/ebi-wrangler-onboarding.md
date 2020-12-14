@@ -63,7 +63,7 @@ This is a living document we want to make it better with every person that joins
 
 ### First day
 - Send your github username to Laura so that you can get access to our git organisation
-- You will need to configure/add 2-factor authentication to your Github account. Information about how to do this can be found here: https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/configuring-two-factor-authentication
+  - You will need to configure/add 2-factor authentication to your Github account. Information about how to do this can be [found here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/configuring-two-factor-authentication)
 - Set up your computer. Do ask any of the wrangler team if you encounter any issues.
 - Set up your favourite web browser. It will make more sense later, but the usual "go-to" for the wranglers is Google Chrome, as some of the tasks that you’re going to do require some plug-ins.
 - *For Mac Users:* Look at the “Managed Software Centre” app thoroughly. Install every app you think you will need, asking for help when necessary.
@@ -74,7 +74,7 @@ This is a living document we want to make it better with every person that joins
   - **[Bluejeans](https://www.bluejeans.com/downloads)**. You will use this for some teleconferences.
 - Make sure you have all the necessary cables/adaptors to set up your mac with your monitor, with an appropriate keyboard and mouse. 
 - Make sure you have access to:
-  - SAP
+  - [SAP](https://saperp.embl.de/nwbc)
   - [Confluence website](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Human+Cell+Atlas+Home)
   - E-mail
 - Since your e-mail was probably created some weeks before your actual starting day, you will probably have 100+ e-mails. Most of them won’t have any interest to you (Mostly the older ones) but try to at least read the title before archiving/deleting them (And try to not delete any important e-mail. They should be archived, as they might be useful to revisit in the future)
@@ -120,11 +120,11 @@ Key meetings that wranglers are summarised in the table below:
 | Meeting                              | Day       | Time   | Frequency             | Notes                                |
 |--------------------------------------|-----------|--------|-----------------------|--------------------------------------|
 | Metadata community call              | Monday    | 4pm    | First monday Monthly  | Telecon                              |
-| EBI wrangler Pre-sprint prioritisation & planning  | Monday    | 2pm    | Bi-weekly             | In-person                            |
-| EBI wrangler  | Tuesday   | 9.30am | Bi-weekly| In-person                            |
-| EBI-DCP Sprint Planning & Demo       | Tuesday   | 2pm    | Bi-weekly             | 2 hours, in-person                   |
-| DCP Sprint Demo                      | Tuesday   | 4pm    | Bi-weekly             | Teleconference                       |
-| Wrangler catch-up                    | Thursday  | 4pm    | Weekly                | Teleconference                       |
+| Operations planning/review.          | Wednesday | 11am   | Weekly.               | |
+| Dev sprint kick off meeting          | Wednesday | 9.30am | Bi-weekly.            | At start of EBI sprint,only dev wrangler needs to attend |
+| EBI-DCP Sprint Planning & Demo       | Tuesday   | 2pm    | Bi-weekly             | 1 hour, telecon, at end of a sprint  |
+| EBI DCP Sprint Retro                 | Tuesday   | 4pm    | Bi-weekly             | 1 hour, telecon                      |
+| DCP Sprint Demo                      | Tuesday   | 4pm    | Bi-weekly             | At end of DCP sprint (see DCP calendar)    |
 | AIT Team meetings                    | Thursday  | 3pm    | Bi-weekly             | In person, alternates between dev and general interest |
 
 #### HCA-wide Meetings
