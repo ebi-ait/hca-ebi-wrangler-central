@@ -177,6 +177,8 @@ The path after submission can go one of several ways:
 1. The project needs to go to DCP2 only
 1. The project needs to go to EBI archives only 
 
+ <i class="fas fa-exclamation-triangle"></i> **Warning** as at 15/12/2020 we are not currently following paths 1 & 2 because we can't currently export to DCP2, hopefully this will be resolved in early 20221
+
 Further documentation for this process can be found here: [Ingestion to Archives Instructions](https://docs.google.com/document/d/1S4fyCSqB3nLrCUssNMwSp6ff8tmeipMi_slnXW2Lrq4/edit?pli=1#heading=h.n3qy5yl0auvs)
 
 
