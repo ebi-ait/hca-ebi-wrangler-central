@@ -77,7 +77,7 @@ Once Zoe updates the HCAO it gets automatically released to the [EBI OLS](https:
 - [Production](https://ontology.archive.data.humancellatlas.org/index)
 
 ### Ontology-related questions
-For any question, please contact @zoependlington. She is also available on the HCA `data-wrangling-int` slack channel. Please use tickets for complex ontology questions.
+For any question, please contact @zoependlington or @paolaroncaglia. [Tickets in the HCAO repo](https://github.com/HumanCellAtlas/ontology/issues/new?assignees=paolaroncaglia%2C+zoependlington&labels=question&template=general_ontology_enquiry.md&title=%5BENQ%5D+) are preferred for complex ontology questions.
 
 Please take in account that she is only working 20% for the HCA, so be patient with your requests.
 
