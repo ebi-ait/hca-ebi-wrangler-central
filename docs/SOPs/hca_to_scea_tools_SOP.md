@@ -148,11 +148,7 @@ An example screenshot to illustrate the above points:
 
 ![sdrf refining](https://github.com/ebi-ait/hca-ebi-wrangler-central/raw/master/assets/images/scea_screenshots/sdrf_refining.png)
 
-
-
-
-
-#### Cell annotations
+#### Cell type annotations
 
 UNDER REVIEW
 {: .label .label-yellow }
@@ -161,7 +157,7 @@ Information about the cell type annotations can usually be found in the paper's 
 
 A detailed guide on how to curate ontologised cell types from the author provided cell types can be found here: https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/inferred_cell_type.md
 
-#### Incorporating into sdrf
+##### Incorporating into sdrf
 
 For Smart-seq 2 experiments (where there is one cell per row of the sdrf), the cell types should be incorporated directly into the sdrf file.
 
