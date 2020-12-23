@@ -20,11 +20,11 @@ UNDER REVIEW
 
 *Performer* -  The person who performs the AUDR process
 
-Things that can be done:
+Things that can be done: (?)
 * Fix an error in any existing field 
 * Enter information into any blank field in an existing entity
 
-Things that can’t be done:
+Things that can’t be done: (?)
 * Add any new entity
 * Edit/update fields in `file` entities
 * Delete anything from a submission
