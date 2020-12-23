@@ -36,7 +36,7 @@ Things that can’t be done:
 * Analysed datasets - Must be coordinated with the Matrix Service/DataOps. There are currently negotiations on how this will work. If a define schedule is decided this documentation will be updated.
 
 ## Procedure
-1. The identifier of the issue reopens the project tracker ticket for that project if it has been closed and moves it to the 'Needs Update' pipeline of the [`hca-dataset-wrangling-status`](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) board and makes a comment that contains the following information, (if not already specified in the ticket body)
+1. The identifier of the issue reopens the project tracker ticket for that project if it has been closed and moves it to the 'Needs Update' pipeline of the [`Dataset wrangling status`](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) Zenhub board and makes a comment that contains the following information, (if not already specified in the ticket body)
     1. project full name
     1. project short name 
     1. Project UUID
