@@ -157,6 +157,8 @@ An example screenshot to illustrate the above points:
 UNDER REVIEW
 {: .label .label-yellow }
 
+A detailed guide on how to curate cell types can be found here: https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/inferred_cell_type.md
+
 #### Incorporating into sdrf
 
 For Smart-seq 2 experiments (where there is one cell per row of the sdrf), the cell types should be incorporated directly into the sdrf file.
@@ -169,6 +171,7 @@ For experiments where one row of the sdrf file is equivalent to one cell, the au
 | Factor Value Ontology Term[inferred cell type - authors labels]  | The uri for the assigned ontology term from authors labels ?                        | eg. `http://purl.obolibrary.org/obo/CL_0000084` Is this generated automatically?  |
 | Factor Value[inferred cell type - ontology labels]               | The ontology label for the curated ontology term                                    | is this generated automatically? e.g. `macrophage`                                |
 | Factor Value Ontology Term[inferred cell type - ontology labels] | The uri for the curated ontology term                                               | e.g. `http://purl.obolibrary.org/obo/CL_0000084` is this generated automatically? |
+| Comment[submitted inferred cell type] | The exact cell type as submitted by the author | directly from supplemental materials. |
 
 
 ##### cells.txt file
