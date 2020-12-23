@@ -43,7 +43,6 @@ Things that can’t be done: (?)
     1. Original Submission date
     1. Original submission uuid?
     1. Most recent submission date and uuid if different from above
-    1. Link to the github wrangler project tracker ticket
     1. Primary wrangler name, (tag if not the identifier)
     1. Changes that need to be addressed. 
     1. Check if affects secondary analysis (fields used, explanation)
