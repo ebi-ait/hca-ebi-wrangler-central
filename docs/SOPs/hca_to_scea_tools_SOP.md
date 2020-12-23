@@ -155,7 +155,7 @@ UNDER REVIEW
 
 Information about the cell type annotations can usually be found in the paper's supplementary materials or by contacting the author directly. They can be in a variety of formats or embedded within matrix files.  
 
-A detailed guide on how to curate ontologised cell types from the author provided cell types can be found here: https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/inferred_cell_type.md
+A detailed guide on how to curate ontologised cell types from the author provided cell types can be found here: [SCEA curating cell types guide](https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/inferred_cell_type.md)
 
 ##### Incorporating into sdrf
 
