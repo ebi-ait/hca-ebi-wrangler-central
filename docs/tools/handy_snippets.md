@@ -169,7 +169,7 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
 ### Usage
 
 1. Connect to the EC2
-1. Create an upload area using the `hca-util` tool.
+1. Create an upload area using the [`hca-util`](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util) tool. 
 1. `wget` the `move_data_from_indsc.py` script to your root directory in EC2
    ```
    wget https://raw.githubusercontent.com/ebi-ait/hca-ebi-wrangler-central/master/src/move_data_from_insdc.py

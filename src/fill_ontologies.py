@@ -202,7 +202,7 @@ def parse_wb(file_name, wb, schema):
 
 def main(spreadsheet_name):
     wb = openpyxl.load_workbook(spreadsheet_name)
-    schema = SchemaTemplate('https://api.ingest.archive.data.humancellatlas.org/')
+    schema = SchemaTemplate(ingest_api_url="http://api.ingest.dev.archive.data.humancellatlas.org")
     parse_wb(spreadsheet_name, wb, schema)
 
 

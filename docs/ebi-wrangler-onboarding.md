@@ -63,6 +63,7 @@ This is a living document we want to make it better with every person that joins
 
 ### First day
 - Send your github username to Laura so that you can get access to our git organisation
+  - You will need to configure/add 2-factor authentication to your Github account. Information about how to do this can be [found here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/configuring-two-factor-authentication)
 - Set up your computer. Do ask any of the wrangler team if you encounter any issues.
 - Set up your favourite web browser. It will make more sense later, but the usual "go-to" for the wranglers is Google Chrome, as some of the tasks that you’re going to do require some plug-ins.
 - *For Mac Users:* Look at the “Managed Software Centre” app thoroughly. Install every app you think you will need, asking for help when necessary.
@@ -73,7 +74,7 @@ This is a living document we want to make it better with every person that joins
   - **[Bluejeans](https://www.bluejeans.com/downloads)**. You will use this for some teleconferences.
 - Make sure you have all the necessary cables/adaptors to set up your mac with your monitor, with an appropriate keyboard and mouse. 
 - Make sure you have access to:
-  - SAP
+  - [SAP](https://saperp.embl.de/nwbc)
   - [Confluence website](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Human+Cell+Atlas+Home)
   - E-mail
 - Since your e-mail was probably created some weeks before your actual starting day, you will probably have 100+ e-mails. Most of them won’t have any interest to you (Mostly the older ones) but try to at least read the title before archiving/deleting them (And try to not delete any important e-mail. They should be archived, as they might be useful to revisit in the future)
@@ -119,11 +120,12 @@ Key meetings that wranglers are summarised in the table below:
 | Meeting                              | Day       | Time   | Frequency             | Notes                                |
 |--------------------------------------|-----------|--------|-----------------------|--------------------------------------|
 | Metadata community call              | Monday    | 4pm    | First monday Monthly  | Telecon                              |
-| EBI wrangler Pre-sprint prioritisation & planning  | Monday    | 2pm    | Bi-weekly             | In-person                            |
-| EBI wrangler  | Tuesday   | 9.30am | Bi-weekly| In-person                            |
-| EBI-DCP Sprint Planning & Demo       | Tuesday   | 2pm    | Bi-weekly             | 2 hours, in-person                   |
-| DCP Sprint Demo                      | Tuesday   | 4pm    | Bi-weekly             | Teleconference                       |
-| Wrangler catch-up                    | Thursday  | 4pm    | Weekly                | Teleconference                       |
+| Operations planning/review           | Wednesday | 11am   | Weekly                | |
+| Dev sprint kick off meeting          | Wednesday | 9.30am | Bi-weekly             | At start of EBI sprint,only dev wrangler needs to attend |
+| EBI-DCP Sprint Planning & Demo       | Tuesday   | 2pm    | Bi-weekly             | 1 hour, telecon, at end of a sprint  |
+| EBI DCP Sprint Retro                 | Tuesday   | 4pm    | Bi-weekly             | 1 hour, telecon                      |
+| User stories for next sprint         | Monday    | 10am   | Bi-weekly             | 1 hour, monday before end of EBI sprint |
+| DCP Sprint Demo                      | Tuesday   | 4pm    | Bi-weekly             | At end of DCP sprint (see DCP calendar)    |
 | AIT Team meetings                    | Thursday  | 3pm    | Bi-weekly             | In person, alternates between dev and general interest |
 
 #### HCA-wide Meetings
@@ -131,30 +133,40 @@ Key meetings that wranglers are summarised in the table below:
 Scientific meetings are held a few times a year and are a great opportunity to connect directly with researchers involved in the HCA. However, the tickets for these events are limited so Wranglers aren't guaranteed a spot. Project leads do their best to advocate for Wranglers attending so check on whether you are likely to attend the next one.
 
 ### Slack
+We use slack a lot. If you haven't already been invited to these two slack instances, please tell another member of the team or Claire/Laura and it can be easily sorted. There may also be otther slack instances that it is useful to join but you will be made aware of those as and when it is relevant.
 
-By this point you have probably already joined, but if not, join the `HumanCellAtlas` workspace. Since DCP2 was announced in April 2020, Slack is much less used than before. The main channels you should join and pay attention to are:
+HCA: https://join-hca-slack.data.humancellatlas.org/
+AIT: https://tsc.ebi.ac.uk/article/slack-getting-started
 
-- `ebi-wrangler-metadata`: Private channel for the ebi based wrangler and metadata team
-- `hca-metadata`: This is where general HCA metadata discussions happen.
-- `hca-metadata-int`: integrated with the metadata-schema github repo, used mainly for discussions about updates to the repo
+Most slack is through the AIT slack
 
-Feel free to browse other public channels within the workspace.
+Useful channels include:
 
-For AIT communication there is also an AIT workspace (embl-ebi-ait.slack.com) . Relevant channels to join in this workspace include:
-- `hca`
-- `hca-to-archives`
+#hca - this is where most of the general communication about HCA takes place as well as announcements, reminders of stand up etc
 
-Social channels within AIT include:
-- `games`, `social-events`, `tea-time` & `whatson`
+#hca-operations - channel for discussions of operations tasks and submitting datasets to the DCP
 
-There are also EBI-wide channels that will appear in your AIT workspace for institute-wide announcements
+#hca-development - channel for discussion about the current development work, sorting testing, answering questions etc
 
-For all the private channels, you will need to request access. Ask any of us to help you through!
+#hca-wrangler-metadata - this is where most of the discussion relating to wrangling and the the HCA metadata are discussed
 
-If you have a quick question and you or the wrangler you want to ask are unavailable at the moment, feel free to send them a message and they will answer whenever they are free/awake.
+#dcp-2 - This is a shared channel with the HCA slack. It is used for general announcements about the DCP or questions about the DCP, this is a good place to introduce yourself when you have logged in. 
 
-Take into account that you might need to join more/less channels than the ones listed here.
+In the HCA slack, the open channels you will find useful are - although much less chat happens on these channels now.
 
+#data-wrangling - general communication about wrangling and status of services associated with wrangling
+
+#hca-metadata - the channel where metadata meeting announcements are posted and metadata discussion happens
+
+#papers - Cell atlas relevant papers get posted here
+
+You will need to ask Claire to invite you to some private channels, these are different subsets of our team and collaborators to enable private communication.
+
+Data-wrangling-int
+Ebi-content-internal
+ebi-wrangler-metadata
+
+This is a current list of useful channels. Please always ask if a channel you are a member of is very quiet and you aren't sure if you are missing anything or if you aren't sure if there is a channel for a particular topic that you should join.
 
 ### SAP
 
@@ -193,7 +205,7 @@ Your email should be checked throughout every working day. Part of your job as a
 
 #### Central HCA email lists
 
-Check your [google groups](https://groups.google.com/a/data.humancellatlas.org/forum/#!myforums) and ask Enrique to add you if you are not a member of any of the following groups:
+Check your [google groups](https://groups.google.com/a/data.humancellatlas.org/forum/#!myforums) and ask Laura to add you if you are not a member of any of the following groups:
 
  - DCP Metadata Team
  - DCP Ingest Team
