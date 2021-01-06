@@ -65,8 +65,8 @@ def get_iri(classes, iri={}):
 def get_ontology_schemas(key, schema_object=None):
     key = key.split(".")
     if not schema_object:
-        schema_object = SchemaTemplate()
-    schema_object.get_json_objs_from_metadata_schema_urls()
+        schema_object = SchemaTemplate(ingest_api_url='https://api.ingest.archive.data.humancellatlas.org/')
+    schema_object._get_json_objs_from_metadata_schema_urls()
     for schema in schema_object.json_schemas:
         if "name" not in schema:
             continue
@@ -202,7 +202,7 @@ def parse_wb(file_name, wb, schema):
 
 def main(spreadsheet_name):
     wb = openpyxl.load_workbook(spreadsheet_name)
-    schema = SchemaTemplate()
+    schema = SchemaTemplate('https://api.ingest.archive.data.humancellatlas.org/')
     parse_wb(spreadsheet_name, wb, schema)
 
 
