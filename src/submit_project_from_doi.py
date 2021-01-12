@@ -5,6 +5,7 @@ import re
 import argparse
 import sys
 import json
+import base64
 
 def define_parser():
     parser = argparse.ArgumentParser(description="Parser for the arguments")
@@ -36,54 +37,59 @@ def get_pub_info(article_doi):
 
 
 def construct_project_json(publication_info, project_schema_url):
-    project_core = {"project_short_name": "tba",
-                    "project_title": publication_info['title'],
-                    "project_description": publication_info['abstractText']}
-    contributors = []
-    for author in publication_info['authorList']['author']:
-        this_contributor = {
-            "name": author['firstName'].replace(" ", ",") + "," + author['lastName'],
-            "institution": author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation'].split(";")[0]
+    try:
+        project_core = {"project_short_name": "tba",
+                        "project_title": publication_info['title'],
+                        "project_description": publication_info['abstractText']}
+        contributors = []
+        for author in publication_info['authorList']['author']:
+            this_contributor = {}
+            this_contributor["name"] = author['firstName'].replace(" ", ",") + "," + author['lastName']
+            if 'authorAffiliationDetailsList' in author.keys():
+                this_contributor["institution"] = author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation'].split(";")[0]
+                email_regex = re.compile('[\w\.-]+@[\w\.-]+\.\w+')
+                if ("Electronic address:" in author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation']) or re.search(r'[\w\.-]+@[\w\.-]+\.\w+', author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation']):
+                    this_contributor['corresponding_contributor'] = True
+                    this_contributor['email'] = re.search(r'[\w\.-]+@[\w\.-]+\.\w+',
+                                                          author['authorAffiliationDetailsList']['authorAffiliation'][0]
+                                                          ['affiliation']).group()
+            if "authorId" in author.keys():
+                if author["authorId"]["type"] == "ORCID":
+                    this_contributor["orcid_id"] = author["authorId"]["value"]
+            contributors.append(this_contributor)
+
+        publications = []
+        publication = {
+            "authors": publication_info['authorString'].split(", "),
+            "title": publication_info['title'],
+            "doi": publication_info['doi'],
+            "pmid": int(publication_info['pmid']) if 'pmid' in publication_info.keys() else None,
+            "url": "https://doi.org/" + publication_info['doi']
         }
-        if "Electronic address:" in author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation']:
-            this_contributor['corresponding_contributor'] = True
-            this_contributor['email'] = re.search(r'[\w\.-]+@[\w\.-]+\.\w+',
-                                                  author['authorAffiliationDetailsList']['authorAffiliation'][0][
-                                                      'affiliation']).group()
-        if "authorId" in author.keys():
-            if author["authorId"]["type"] == "ORCID":
-                this_contributor["orcid_id"] = author["authorId"]["value"]
-        contributors.append(this_contributor)
+        publications.append(publication)
 
-    publications = []
-    publication = {
-        "authors": publication_info['authorString'].split(", "),
-        "title": publication_info['title'],
-        "doi": publication_info['doi'],
-        "pmid": int(publication_info['pmid']),
-        "url": "https://doi.org/" + publication_info['doi']
-    }
-    publications.append(publication)
+        content = {
+            "project_core": project_core,
+            "contributors": contributors,
+            "publications": publications,
+            "schema_type": "project",
+            "describedBy": project_schema_url
+        }
 
-    content = {
-        "project_core": project_core,
-        "contributors": contributors,
-        "publications": publications,
-        "schema_type": "project",
-        "describedBy": project_schema_url
-    }
+        project_dict = {"releaseDate": "2021-01-04T00:00:00.000Z",
+                        "content": content}
 
-    project_dict = {"releaseDate": "2021-01-04T00:00:00.000Z",
-                    "content": content}
-
-    return project_dict
+        return project_dict
+    except KeyError as e:
+        print("Could not parse publication info properly")
+        print(e)
 
 
 def main(environment, auth_token, doi):
     pub_info = get_pub_info(doi)
 
     if environment == "prod":
-        env = "."
+        env = ""
     elif environment == "staging":
         env = "staging."
     else:
@@ -96,21 +102,22 @@ def main(environment, auth_token, doi):
     project_json = construct_project_json(pub_info, latest_project_schema)
     submission_headers = {'Authorization': 'Bearer {}'.format(auth_token),
                           'Content-Type': 'application/json'}
+
     response = rq.post("{}/projects".format(ingest_api_url),
                        data=json.dumps(project_json),
                        headers=submission_headers)
     if response:
         print("Project with uuid '{}' successfully created in {}.".format(
             response.json()['uuid']['uuid'], environment))
-        print("View the created project here: https://{}.contribute.data.humancellatlas.org/projects/detail?uuid={}".format(
-            env.replace(".", ""), response.json()['uuid']['uuid']
+        print("View the created project here: https://{}contribute.data.humancellatlas.org/projects/detail?uuid={}".format(env, response.json()['uuid']['uuid']
         ))
-    response_json = response.json()
-
-    print(response)
+    else:
+        print("No project created, check if your token is still valid.")
 
 
 if __name__ == "__main__":
     parser = define_parser()
     args = parser.parse_args()
-    main(args.env, args.token, args.doi)
+    main(args.env,
+         args.token,
+         args.doi)
