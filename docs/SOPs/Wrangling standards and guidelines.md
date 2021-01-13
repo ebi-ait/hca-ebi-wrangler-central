@@ -63,6 +63,7 @@ Topics to re-assign:
 - Upload the spreadsheet to validate metadata in [staging](http://ui.ingest.staging.data.humancellatlas.org/)
 - Check linking 
 - Validate data files - [tools](https://github.com/HumanCellAtlas/hca-data-wrangling/blob/master/docs/wrangler_tool_survey.adoc)
+- Validate linking and relationships in the metadata spreadsheet - (https://github.com/ebi-ait/ingest-graph-validator)
 - Submit dataset to [staging](http://ui.ingest.staging.data.humancellatlas.org/)
 - If submitting check that the dataset correctly triggers or doesn't trigger secondary analysis - [dcp-diag](https://github.com/HumanCellAtlas/hca-data-wrangling/blob/master/docs/wrangler_tool_survey.adoc#diagnosing-submission-dcp-diag) or in the tracker once it works in staging
 - If submitting check that the data is correctly represented in the [Data Browser](http://dss.staging.data.humancellatlas.org) 
