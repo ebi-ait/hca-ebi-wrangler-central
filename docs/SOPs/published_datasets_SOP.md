@@ -5,7 +5,7 @@ parent: SOPs
 last_modified_date: 13/01/2020
 ---
 
-# Wrangling Contributor’s Datasets SOP
+# Wrangling Published Datasets SOP
 {: .no_toc }
 
 ## Background
