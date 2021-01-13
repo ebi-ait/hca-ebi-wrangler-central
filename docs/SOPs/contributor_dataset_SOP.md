@@ -2,6 +2,7 @@
 layout: default
 title: Contributor dataset SOP
 parent: SOPs
+last_modified_date: 13/01/2020
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
 # Wrangling Contributor’s Datasets SOP
@@ -41,7 +42,7 @@ Wrangling progress is tracked primarily through movement of the `project tracker
 | Wrangling           | When in progress                       | The primary wrangler moves the tracker ticket here when they have started working on it                                                     |
 | Secondary reviewing | When review starts                     | The secondary wrangler moves the tracker ticket here when they start reviewing                                                              |
 | Archiving           | When archiving process starts          | The primary wrangler moves the tracker ticket here when Archiving starts (if required)                                                      |
-| Exporting           | When ready to be exported              | The primary wrangler moves the tracker ticket here when it is ready to be exported                                                          |
+| Ready to export          | When ready to be exported              | The primary wrangler moves the tracker ticket here when all that is left is to hit submit                                                          |
 | AE/SCEA brokering   | When ready to be converted to MAGE-TAB | The primary wrangler moves the tracker ticket here when it is ready to be converted to MAGE-TAB to give to ArrayExpress of SCEA if suitable |
 | Needs update        | If project needs an update             | A wrangler moves the tracker ticket here if the project requires some kind of update                                                        |
 | Stalled             | If project becomes stuck               | If project spends more than 2 weeks with no progress, the ticket should be moved here and label applied to indicate reason                  |
@@ -110,9 +111,7 @@ These two sets of information need to be sent separately to minimise the chance 
 * **Contributor AWS Access keys** are not considered secure and can be sent in the main `wrangler-team` email thread, usually in the same email with the first spreadsheet and [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
 * **Upload area UUID** is a secure piece of information that should be shared in a separate email with only the contributor and primary wrangler 
 
-### Transferring a contributor's raw data to ingest UI using `hca-util sync`
-
-In order to create the upload area, follow the instructions on [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util). These instructions will guide you to create an upload area for a contributor to upload their data, but also how to then transfer that data once uploaded to the ingest production s3 bucket using the same tool.
+To get an Upload area UUID, you will need to create an upload area using the guide: [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
 
 ## Curating metadata
 
@@ -143,12 +142,14 @@ Once the spreadsheet is considered complete by the primary wrangler, there are t
 ### Experimental graph validation
 The ingest graph validator allows wranglers to visualise the experimental graph of the experiment and also performs some tests to check against our current graph assumptions. 
 
-Please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator).
+Please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator) to run the current graph validator tests.
 
 ### Spreadsheet and JSON schema validation
-The primary wrangler should also upload the spreadsheet to the [ingest production ui](https://ui.ingest.archive.data.humancellatlas.org/) to check the validity of the spreadsheet.
+The primary wrangler should also upload the spreadsheet to the [ingest production ui](https://contribute.data.humancellatlas.org/) to check the validity of the spreadsheet.
 
-To create a new submission from a spreadsheet, go to the `ALL SUBMISSIONS` tab then click the `Upload New Submission` button in the top right. If the metadata is valid, you can move on to uploading the fastq files data. If it is invalid, you will need to resolve any errors or problems and re-upload the metadata sheet again and repeat this process until it is valid.
+To create a new submission from a full spreadsheet, go to the `ALL SUBMISSIONS` tab then click the `Upload New Submission` button in the top right. If the metadata is valid, you can move on to uploading the fastq files data. If it is invalid, you will need to resolve any errors or problems and re-upload the metadata sheet again and repeat this process until it is valid.
+
+If attaching a submission to a project that already exists in ingest, go to the project page, click the 'edit project' button 
 
 ## Secondary Review
 
@@ -161,6 +162,10 @@ If any changes may have also affected the linking in the spreadsheet it should a
 A detailed guide to performing secondary review [can be found here](secondary_review_SOP).
 
 Once both the Primary and Secondary wrangler are happy with the submission and it is valid in ingest, the data files can be moved from the contributor bucket into the ingest upload area.
+
+## Transferring a contributor's raw data to ingest UI using `hca-util sync`
+
+Once the contributor has uploaded all the data that is specified for the project and you have a valid metadata submission in the UI, follow the [hca-util guide](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util#sync-data-to-the-ingest-s3-bucket) to sync their data to ingest. 
 
 ## Completing the submission
 
