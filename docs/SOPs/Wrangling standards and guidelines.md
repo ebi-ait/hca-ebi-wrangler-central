@@ -63,8 +63,8 @@ Topics to re-assign:
 - Upload the spreadsheet to validate metadata in [staging](http://ui.ingest.staging.data.humancellatlas.org/)
 - Validate linking and relationships in the metadata spreadsheet - (https://github.com/ebi-ait/ingest-graph-validator)
 - Upload metadata spreadsheet to [ingest production](http://contribute.data.humancellatlas.org/)
-- Sync fastq files from s3 upload area to ingest production project submission bucket - ([sync data from an upload area](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
-- Once fastq files have successfully been synced and are shown as valid in the project submission, you must delete the upload area if it was created for the transfer of data from the public archives. If it was created for a contributor, do not delete the upload area - ([delete upload area](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
+- Sync fastq files from s3 upload area to ingest production project submission bucket - ([sync data from an upload area](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util))
+- Once fastq files have successfully been synced and are shown as valid in the project submission, you must delete the upload area if it was created for the transfer of data from the public archives. If it was created for a contributor, do not delete the upload area - ([delete upload area](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util))
 - Get final approval of submission including metadata spreadsheet and data files from contributor via email
 - Submit dataset to [production](http://ui.ingest.data.humancellatlas.org/)
 - Monitor the status of submitted dataset in the [data tracker](https://tracker.data.humancellatlas.org/) notifying corresponding Release engineer for a relevant box in case of any problems. Release engineers for the week can be found in the #dcp-ops Slack channel. 
