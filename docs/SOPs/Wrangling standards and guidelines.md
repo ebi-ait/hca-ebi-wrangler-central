@@ -51,8 +51,8 @@ Topics to re-assign:
 - Keep track of the wrangling process in the Github Issue (date sending/receiving emails, data upload, metadata-schema Github issues creasted for this dataset)
 - Create custom metadata spreadsheet for the contributor and do prep-work of renaming the fields that are unclear (Biomaterial ID in Donor, Sprecimen, Cell suspension, etc)
 - Keep the most recent version of the spreadsheet in the corresponding Folder in the Google Drive/Brokering/[PROJECTS-IN PROGRESS](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA)
-- [Create upload area](https://github.com/HumanCellAtlas/hca-data-wrangling/blob/master/docs/SOP_docs/creating_using_upload_areas.md) for the contributor
-- Send the custom metadata spreadsheet to the contributor with the [quick guide](https://github.com/HumanCellAtlas/hca-data-wrangling/blob/master/docs/data_contributors_spreadsheet_quick_guide.pdf) and [instructions for data upload](https://github.com/HumanCellAtlas/dcp-cli/blob/mf-submitter-doc/docs/data_submission_guide.md)
+- [Create upload area](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util) for the contributor
+- Send the custom metadata spreadsheet to the contributor with the [quick guide](https://github.com/HumanCellAtlas/hca-data-wrangling/blob/master/docs/data_contributors_spreadsheet_quick_guide.pdf) and [instructions for data upload](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util)
 - Create Google sheet for the data contributor (if requested) in the Google Drive/Brokering/[PROJECTS-IN PROGRESS](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA)
 - Maintain communication with the data contributor and reply to any queries - cc all emails to wrangler-team@data.humancellatlas.org
 - Receive data from the contributor
@@ -61,12 +61,10 @@ Topics to re-assign:
 - Ask the Secondary Wrangler for an end-to-end review of the project
 - Ask the Expertise Wrangler to review specific tabs if needed
 - Upload the spreadsheet to validate metadata in [staging](http://ui.ingest.staging.data.humancellatlas.org/)
-- Check linking 
-- Validate data files - [tools](https://github.com/HumanCellAtlas/hca-data-wrangling/blob/master/docs/wrangler_tool_survey.adoc)
 - Validate linking and relationships in the metadata spreadsheet - (https://github.com/ebi-ait/ingest-graph-validator)
-- Submit dataset to [staging](http://ui.ingest.staging.data.humancellatlas.org/)
-- If submitting check that the dataset correctly triggers or doesn't trigger secondary analysis - [dcp-diag](https://github.com/HumanCellAtlas/hca-data-wrangling/blob/master/docs/wrangler_tool_survey.adoc#diagnosing-submission-dcp-diag) or in the tracker once it works in staging
-- If submitting check that the data is correctly represented in the [Data Browser](http://dss.staging.data.humancellatlas.org) 
+- Upload metadata spreadsheet to [ingest production](http://contribute.data.humancellatlas.org/)
+- Sync fastq files from s3 upload area to ingest production project submission bucket - ([sync data from an upload area](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
+- Once fastq files have successfully been synced and are shown as valid in the project submission, you must delete the upload area if it was created for the transfer of data from the public archives. If it was created for a contributor, do not delete the upload area - ([delete upload area](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
 - Get final approval of submission including metadata spreadsheet and data files from contributor via email
 - Submit dataset to [production](http://ui.ingest.data.humancellatlas.org/)
 - Monitor the status of submitted dataset in the [data tracker](https://tracker.data.humancellatlas.org/) notifying corresponding Release engineer for a relevant box in case of any problems. Release engineers for the week can be found in the #dcp-ops Slack channel. 
