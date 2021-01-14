@@ -44,26 +44,30 @@ def construct_project_json(publication_info, project_schema_url):
         contributors = []
         for author in publication_info['authorList']['author']:
             this_contributor = {}
-            this_contributor["name"] = author['firstName'].replace(" ", ",") + "," + author['lastName']
-            if 'authorAffiliationDetailsList' in author.keys():
-                this_contributor["laboratory"] = author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation'].split(";")[0]
-                email_regex = re.compile('[\w\.-]+@[\w\.-]+\.\w+')
-                # Extract email address and set as corresponding if email in string
-                if re.search(email_regex, author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation']):
-                    this_contributor['corresponding_contributor'] = True
-                    this_contributor['email'] = re.search(email_regex,
-                                                          author['authorAffiliationDetailsList']['authorAffiliation'][0]
-                                                          ['affiliation']).group()
-                    this_contributor["laboratory"] = re.sub(email_regex, "", this_contributor["laboratory"])
-                    this_contributor["laboratory"] = this_contributor["laboratory"].replace("Electronic address: .", "")
-                # Extract country from string
-                split_lab = re.split("[, .:]", this_contributor["laboratory"])
-                split_lab.reverse()
-                for part in split_lab:
-                    if rq.get("https://restcountries.eu/rest/v2/name/{}".format(part)):
-                        this_contributor["country"] = part
-                        break
-                # TODO: Extract Institution from string
+            if 'firstName' in author.keys():
+                this_contributor["name"] = author['firstName'].replace(" ", ",") + "," + author['lastName']
+                if 'authorAffiliationDetailsList' in author.keys():
+                    this_contributor["laboratory"] = author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation'].split(";")[0]
+                    email_regex = re.compile('[\w\.-]+@[\w\.-]+\.\w+')
+                    # Extract email address and set as corresponding if email in string
+                    if re.search(email_regex, author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation']):
+                        this_contributor['corresponding_contributor'] = True
+                        this_contributor['email'] = re.search(email_regex,
+                                                              author['authorAffiliationDetailsList']['authorAffiliation'][0]
+                                                              ['affiliation']).group()
+                        this_contributor["laboratory"] = re.sub(email_regex, "", this_contributor["laboratory"])
+                        this_contributor["laboratory"] = this_contributor["laboratory"].replace("Electronic address: .", "")
+                    # Extract country from string
+                    split_lab = re.split("[, .:]", this_contributor["laboratory"])
+                    split_lab.reverse()
+                    for part in split_lab:
+                        if rq.get("https://restcountries.eu/rest/v2/name/{}?fullText=true".format(part)):
+                            this_contributor["country"] = part
+                            break
+                    # TODO: Extract Institution from string
+            elif 'collectiveName' in author.keys():
+                this_contributor['name'] = author['collectiveName']
+                this_contributor['institution'] = 'not applicable'
 
             if "authorId" in author.keys():
                 if author["authorId"]["type"] == "ORCID":
@@ -123,6 +127,8 @@ def main(environment, auth_token, doi):
             response.json()['uuid']['uuid'], environment))
         print("View the created project here: https://{}contribute.data.humancellatlas.org/projects/detail?uuid={}".format(env, response.json()['uuid']['uuid']
         ))
+        with open("log.txt", "a") as log_file:
+            log_file.write(doi + "\t" + response.json()['uuid']['uuid'] + "\n")
     else:
         print("No project created, check if your token is still valid.")
 
