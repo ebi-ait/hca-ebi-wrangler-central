@@ -100,23 +100,22 @@ def construct_project_json(publication_info, project_schema_url):
         publications.append(publication)
 
         # get grant info
+        funders = []
         if 'grantsList' in publication_info.keys():
-            funders = []
             for grant in publication_info['grantsList']['grant']:
                 this_funder = {"grant_id": grant['grantId'],
                                "organization": grant['agency']}
                 funders.append(this_funder)
 
-
-
         content = {
             "project_core": project_core,
             "contributors": contributors,
             "publications": publications,
-            "funders": funders,
             "schema_type": "project",
             "describedBy": project_schema_url
         }
+        if len(funders) > 0:
+            content['funders'] = funders
 
         project_dict = {"releaseDate": "2021-01-04T00:00:00.000Z",
                         "content": content}
