@@ -39,15 +39,16 @@ def get_pub_info(article_doi):
 def construct_project_json(publication_info, project_schema_url):
     try:
         project_core = {"project_short_name": "tba",
-                        "project_title": publication_info['title'],
-                        "project_description": publication_info['abstractText']}
+                        "project_title": publication_info['title']}
+        if 'abstractText' in publication_info.keys():
+            project_core["project_description"] = publication_info['abstractText']
         contributors = []
         for author in publication_info['authorList']['author']:
             this_contributor = {}
             if 'firstName' in author.keys():
                 this_contributor["name"] = author['firstName'].replace(" ", ",") + "," + author['lastName']
                 if 'authorAffiliationDetailsList' in author.keys():
-                    this_contributor["laboratory"] = author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation'].split(";")[0]
+                    this_contributor['laboratory'] = ''
                     email_regex = re.compile('[\w\.-]+@[\w\.-]+\.\w+')
                     # Extract email address and set as corresponding if email in string
                     if re.search(email_regex, author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation']):
@@ -55,16 +56,29 @@ def construct_project_json(publication_info, project_schema_url):
                         this_contributor['email'] = re.search(email_regex,
                                                               author['authorAffiliationDetailsList']['authorAffiliation'][0]
                                                               ['affiliation']).group()
-                        this_contributor["laboratory"] = re.sub(email_regex, "", this_contributor["laboratory"])
-                        this_contributor["laboratory"] = this_contributor["laboratory"].replace("Electronic address: .", "")
-                    # Extract country from string
-                    split_lab = re.split("[, .:]", this_contributor["laboratory"])
-                    split_lab.reverse()
-                    for part in split_lab:
-                        if rq.get("https://restcountries.eu/rest/v2/name/{}?fullText=true".format(part)):
-                            this_contributor["country"] = part
+                    ror_affiliation_api_url = "https://api.ror.org/organizations?affiliation="
+                    affiliation_response = rq.get(ror_affiliation_api_url + author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation']).json()
+                    highest_match = affiliation_response['items'].pop(0)
+                    if highest_match['score'] == 1.0:
+                        this_contributor['institution'] = highest_match['organization']['name']
+                        this_contributor['country'] = highest_match['organization']['country']['country_name']
+                    for item in affiliation_response['items']:
+                        if item['score'] == 1.0 and this_contributor['institution'] is not item['organization']['name']:
+                            this_contributor['laboratory'] = this_contributor['laboratory'] + ' ' + item['organization']['name']
+                        else:
                             break
-                    # TODO: Extract Institution from string
+                    if this_contributor['laboratory'] == '' or not 'institution' in this_contributor.keys():
+                        this_contributor['laboratory'] = author['authorAffiliationDetailsList']['authorAffiliation'][0]['affiliation']
+
+                    # Extract country from string if org not found in ror
+                    if 'country' not in this_contributor.keys():
+                        split_lab = re.split("[, .:]", this_contributor["laboratory"])
+                        split_lab.reverse()
+                        for part in split_lab:
+                            if rq.get("https://restcountries.eu/rest/v2/name/{}?fullText=true".format(part)):
+                                this_contributor["country"] = part
+                                break
+
             elif 'collectiveName' in author.keys():
                 this_contributor['name'] = author['collectiveName']
                 this_contributor['institution'] = 'not applicable'
@@ -74,6 +88,7 @@ def construct_project_json(publication_info, project_schema_url):
                     this_contributor["orcid_id"] = author["authorId"]["value"]
             contributors.append(this_contributor)
 
+        # set publication info
         publications = []
         publication = {
             "authors": publication_info['authorString'].split(", "),
@@ -84,10 +99,21 @@ def construct_project_json(publication_info, project_schema_url):
         }
         publications.append(publication)
 
+        # get grant info
+        if 'grantsList' in publication_info.keys():
+            funders = []
+            for grant in publication_info['grantsList']['grant']:
+                this_funder = {"grant_id": grant['grantId'],
+                               "organization": grant['agency']}
+                funders.append(this_funder)
+
+
+
         content = {
             "project_core": project_core,
             "contributors": contributors,
             "publications": publications,
+            "funders": funders,
             "schema_type": "project",
             "describedBy": project_schema_url
         }
@@ -98,6 +124,7 @@ def construct_project_json(publication_info, project_schema_url):
         return project_dict
     except KeyError as e:
         print("Could not parse publication info properly")
+        print(e)
         sys.exit()
 
 
