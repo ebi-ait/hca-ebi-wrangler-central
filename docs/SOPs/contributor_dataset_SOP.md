@@ -50,6 +50,8 @@ Wrangling progress is tracked primarily through movement of the `project tracker
 
 [Labels](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels) are also applied to tickets to provide further information about the ticket. Definitions for each label and when they should be applied can be [found here](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels).
 
+**If you are wrangling a dataset from a published project, click [here](#for-published-datasets-only). If not, continue reading the following directions.** 
+
 
 ## Early contact with contributors
 
@@ -86,6 +88,21 @@ Set of Template emails:
 Currently the HCA DCP cannot accept datasets without full open consent for public release. We are currently working on a solution to help contributors make their data and metadata accessible via managed access. See [Contributor Communication SOP](contributor_communication_SOP) for further guidance on how to respond to these enquiries.
 
 ## Gathering data & metadata
+### For Published Datasets Only 
+
+With a published dataset, there is no requirement for the terms and conditions form or template emails to send to the contributor. First, start by getting some initial information about the dataset from reading the published paper, and checking if there is data that is publicly available. 
+
+Once you have an understanding of which biomaterials, protocols, and processes are used, it is time to generate a spreadsheet for the contributor to fill in. As below, the spreadsheet can be generated using the  [`schema-template-generator`](https://github.com/HumanCellAtlas/schema-template-generator)but as there is no contributor involved, do make the spreadsheet as comprehensive as you think is necessary. 
+
+Instead of the iterative process of the contributor filling in what they can, the wrangler reviewing, curating, and asking questions, there is only you (the wrangler) working with the spreadsheet. It is easy to get stuck, so don’t forget that you’re working as a team and get a second opinion if necessary! 
+
+After generating the spreadsheet, we move onto raw data upload. There is no contributor to upload their data manually, so we must take on that role and: 
+* Create an upload area
+* Upload files to the upload area. 
+
+There is a useful script for uploading files to an s3 bucket (See [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/handy_snippets.html#uploading-files-to-an-s3-bucket-from-the-archives)), which can speed up the process tremendously. Note that this step does not need to be completed now, and can wait until after the metadata spreadsheet has been gathered. 
+
+Then move onto the ‘curating metadata’ section. 
 
 ### Spreadsheet template generation
 
@@ -139,17 +156,17 @@ If donors are from CBTM or HDBR we have direct routes of obtaining more detailed
 ## Metadata Validation
 Once the spreadsheet is considered complete by the primary wrangler, there are two phases of metadata validation that can be completed.
 
-### Experimental graph validation
-The ingest graph validator allows wranglers to visualise the experimental graph of the experiment and also performs some tests to check against our current graph assumptions. 
-
-Please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator) to run the current graph validator tests.
-
 ### Spreadsheet and JSON schema validation
-The primary wrangler should also upload the spreadsheet to the [ingest production ui](https://contribute.data.humancellatlas.org/) to check the validity of the spreadsheet.
+The primary wrangler should upload the spreadsheet to the [ingest production ui](https://contribute.data.humancellatlas.org/) to check the validity of the spreadsheet.
 
 To create a new submission from a full spreadsheet, go to the `ALL SUBMISSIONS` tab then click the `Upload New Submission` button in the top right. If the metadata is valid, you can move on to uploading the fastq files data. If it is invalid, you will need to resolve any errors or problems and re-upload the metadata sheet again and repeat this process until it is valid.
 
 If attaching a submission to a project that already exists in ingest, go to the project page, click the 'edit project' button 
+
+### Experimental graph validation
+The ingest graph validator allows wranglers to visualise the experimental graph of the experiment and also performs some tests to check against our current graph assumptions. 
+
+Please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator) to run the current graph validator tests.
 
 ## Secondary Review
 
@@ -166,6 +183,8 @@ Once both the Primary and Secondary wrangler are happy with the submission and i
 ## Transferring a contributor's raw data to ingest UI using `hca-util sync`
 
 Once the contributor has uploaded all the data that is specified for the project and you have a valid metadata submission in the UI, follow the [hca-util guide](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util#sync-data-to-the-ingest-s3-bucket) to sync their data to ingest. 
+
+Alternatively, if working with a published dataset, once the wrangler has uploaded the raw data to the Hca-util upload area, follow the same guide as above to sync your data to ingest. 
 
 ## Completing the submission
 
