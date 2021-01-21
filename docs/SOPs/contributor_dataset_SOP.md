@@ -50,6 +50,7 @@ Wrangling progress is tracked primarily through movement of the `project tracker
 
 [Labels](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels) are also applied to tickets to provide further information about the ticket. Definitions for each label and when they should be applied can be [found here](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels).
 
+
 **If you are wrangling a dataset from a published project, click [here](#for-published-datasets-only). If not, continue reading the following directions.** 
 
 
@@ -88,11 +89,12 @@ Set of Template emails:
 Currently the HCA DCP cannot accept datasets without full open consent for public release. We are currently working on a solution to help contributors make their data and metadata accessible via managed access. See [Contributor Communication SOP](contributor_communication_SOP) for further guidance on how to respond to these enquiries.
 
 ## Gathering data & metadata
-### For Published Datasets Only 
+
+### For published datasets only 
 
 With a published dataset, there is no requirement for the terms and conditions form or template emails to send to the contributor. First, start by getting some initial information about the dataset from reading the published paper, and checking if there is data that is publicly available. 
 
-Once you have an understanding of which biomaterials, protocols, and processes are used, it is time to generate a spreadsheet for the contributor to fill in. As below, the spreadsheet can be generated using the  [`schema-template-generator`](https://github.com/HumanCellAtlas/schema-template-generator)but as there is no contributor involved, do make the spreadsheet as comprehensive as you think is necessary. 
+Once you have an understanding of which biomaterials, protocols, and processes are used, it is time to generate a metadata spreadsheet. As below, the spreadsheet can be generated using the  [`schema-template-generator`](https://github.com/HumanCellAtlas/schema-template-generator)but as there is no contributor involved, do make the spreadsheet as comprehensive as you think is necessary. 
 
 Instead of the iterative process of the contributor filling in what they can, the wrangler reviewing, curating, and asking questions, there is only you (the wrangler) working with the spreadsheet. It is easy to get stuck, so don’t forget that you’re working as a team and get a second opinion if necessary! 
 
@@ -100,9 +102,9 @@ After generating the spreadsheet, we move onto raw data upload. There is no cont
 * Create an upload area
 * Upload files to the upload area. 
 
-There is a useful script for uploading files to an s3 bucket (See [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/handy_snippets.html#uploading-files-to-an-s3-bucket-from-the-archives)), which can speed up the process tremendously. Note that this step does not need to be completed now, and can wait until after the metadata spreadsheet has been gathered. 
+There is a useful [script](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/handy_snippets.html#uploading-files-to-an-s3-bucket-from-the-archives) for uploading files to an s3 bucket, which can speed up the process tremendously. Note that this step does not need to be completed now, and can wait until after the metadata spreadsheet has been gathered. 
 
-Then move onto the ‘curating metadata’ section. 
+Then move onto the [‘curating metadata’](#curating-metadata) section. 
 
 ### Spreadsheet template generation
 
