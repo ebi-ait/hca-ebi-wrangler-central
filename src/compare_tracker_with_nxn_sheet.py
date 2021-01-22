@@ -11,7 +11,7 @@ duplicated entries
 
 Usage: python3 compare_tracker_with_nxn_sheet.py [-cd]
 Last time updated:
-2020-12-14T14:55:11.520002Z
+2021-01-22T12:35:53.343939Z
 """
 
 import argparse
@@ -192,9 +192,11 @@ def select_unique_studies(valentines_sheet: [[]], tracking_sheet: [[]]) -> [[]]:
 
     # Retrieve accessions and repeat filtering
     valentine_accessions = set([data[v_data_location_index] for data in unregistered_table if data[v_data_location_index]])
-    tracking_sheet_accessions = set([track[t_data_location_index] for track in tracking_sheet[1:] if track[t_data_location_index]])
+    tracking_sheet_accessions = [track[t_data_location_index] for track in tracking_sheet[1:] if track[t_data_location_index]]
+    tracking_sheet_accessions_edit = [track.split(',') for track in tracking_sheet_accessions if ',' in track]
+    tracking_sheet_accessions_edit.extend([track.split(';') for track in tracking_sheet_accessions if ';' in track])
+    tracking_sheet_accessions = set([item for sublist in tracking_sheet_accessions_edit for item in sublist])
 
-    #TODO WORK ON THIS
     unregistered_accessions = valentine_accessions - tracking_sheet_accessions
 
     second_unregistered_table = [row for row in unregistered_table if row[v_data_location_index] in unregistered_accessions or not row[v_data_location_index]]
@@ -320,7 +322,7 @@ def find_duplicates(tracking_sheet: pd.DataFrame):
     tracking_sheet['reformatted_pub_title'] = [reformat_title(i) for i in tracking_sheet['pub_title']]
 
     for i, j in itertools.combinations(range(length), 2):
-        if list(tracking_sheet['pmid'])[i].strip() in list(tracking_sheet['pmid'])[j].strip() and list(tracking_sheet['pmid'])[i].strip() != '':
+        if list(tracking_sheet['pmid'])[i].strip() in list(tracking_sheet['pmid'])[j].strip() and list(tracking_sheet['pmid'])[i].strip() != '' and list(tracking_sheet['pmid'])[i].strip() != '#NAME?' and list(tracking_sheet['pmid'])[i].strip() != 'Loading...':
             indices.append(i)
         if list(tracking_sheet['doi'])[i].strip() in list(tracking_sheet['doi'])[j].strip() and list(tracking_sheet['doi'])[i].strip() != '' and list(tracking_sheet['doi'])[i].strip() != '10.1038/NA':
             indices.append(i)
@@ -331,7 +333,7 @@ def find_duplicates(tracking_sheet: pd.DataFrame):
         accession1 = list(tracking_sheet['data_accession'])[i]
         accession2 = list(tracking_sheet['data_accession'])[j]
         if ',' not in accession1 and ';' not in accession1:
-            if accession1.strip() in accession2 and accession1.strip() != '':
+            if accession1.strip() in accession2 and accession1.strip() != '' and accession1.strip() != 'EGA' and accession1.strip() != 'ENA':
                 indices.append(i)
         else:
             if ',' in accession1:
@@ -341,7 +343,7 @@ def find_duplicates(tracking_sheet: pd.DataFrame):
             else:
                 accessions = accession1
             for accession in accessions:
-                if accession in accession2:
+                if accession in accession2 and accession != 'EGA' and accession != 'ENA':
                     indices.append(i)
 
     # look for approximate matches to the publication title
@@ -349,7 +351,7 @@ def find_duplicates(tracking_sheet: pd.DataFrame):
             if list(tracking_sheet['reformatted_pub_title'])[i] != '' and list(tracking_sheet['reformatted_pub_title'])[i] != 'unspecified':
                 dist_metric = get_distance_metric(list(tracking_sheet['reformatted_pub_title'])[i],list(tracking_sheet['reformatted_pub_title'])[j])
                 if dist_metric >= 97:
-                        indices.append(i)
+                    indices.append(i)
 
     indices = list(set(indices))
     if indices:
@@ -403,6 +405,8 @@ def main(c_flag, d_flag):
         if duplicate_entries.empty:
             print("No duplicate entries found")
             return
+        else:
+            print("Duplicate entries found: please find them in the output duplicate_entries.txt file")
         duplicate_entries = duplicate_entries[
                 ['data_accession', 'pub_title', 'reformatted_pub_title', 'pub_link', 'pmid', 'doi']]
         duplicate_entries.to_csv("duplicate_entries.txt", sep="\t")
