@@ -205,7 +205,9 @@ The path after submission can go one of several ways:
 
  <i class="fas fa-exclamation-triangle"></i> **Warning** as at 15/12/2020 we are not currently following paths 1 & 2 because we can't currently export to DCP2, hopefully this will be resolved in early 2021
 
-After the data has been successfully exported, we need to send an [email](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/233) to inform the data contributor of successful submission and send link to the submission.
+After the data has been successfully exported, we need to send an [email](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/233) to inform the data contributor of successful submission and send link to the submission. 
+Additionally, move all the corresponding documents to the [finished_projects](https://github.com/HumanCellAtlas/hca-data-wrangling/tree/master/projects/finished_projects) in hca-wrangling repo and to Google Drive/Brokering/[PROJECTS-FINISHED](https://drive.google.com/drive/folders/1FNRVqlhSwwTKoynIHhq5gsILGyRqd6F9)
+
 
 Further documentation for the archiving process can be found here: [Ingestion to Archives Instructions](https://docs.google.com/document/d/1S4fyCSqB3nLrCUssNMwSp6ff8tmeipMi_slnXW2Lrq4/edit?pli=1#heading=h.n3qy5yl0auvs)
 
