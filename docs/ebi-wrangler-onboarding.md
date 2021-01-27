@@ -222,6 +222,8 @@ The advantage of this system is that the history of the email address is all rea
 - [List of EBI mailing lists](https://listserver.ebi.ac.uk/mailman/listinfo), feel free to join whichever you find interesting
 - [List of Sanger mailing lists](https://lists.sanger.ac.uk/mailman/listinfo), feel free to join whichever you find interesting, popular ones to join are [for sale](https://lists.sanger.ac.uk/mailman/listinfo/for-sale) and [general chat](https://lists.sanger.ac.uk/mailman/listinfo/chat) also good for wranglers [Single Cell Genomics](https://lists.sanger.ac.uk/mailman/listinfo/singlecellgenomics)
 
+Additionally, make sure to send an email to ITSupport@ebi.ac.uk (cc'ing Laura) and ask to be added to the ait-hca email list. 
+
 ### VPN
 
 - In order to be able to use most of the EBI services when you’re off-site, you will have to set up a VPN connection. You’ll have to set a 2-FOA (Factor Of Authentication) to be able to connect. A useful guide to do so can be found [here](https://tsc.ebi.ac.uk/article/linotp-tokens-setup-connecting). The easiest way is with a Google Authenticator compliant app, of your preference between the ones listed on the webpage.
