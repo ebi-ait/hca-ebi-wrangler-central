@@ -382,7 +382,7 @@ Using `scp` or `rsync` lets you transfer files from one location to another. `rs
 1. Transfer set of fastq files from EC2 to the current directory of your local machine (from your local machine):
 ```
 cd target_directory
-rsync -r <username>@@tool.archive.data.humancellatlas.org:/path/to/file/*.fastq.gz ./
+rsync -r <username>@tool.archive.data.humancellatlas.org:/path/to/file/*.fastq.gz ./
 ```
 
 ## Extract all text to ontology mappings from one or more submissions in ingest
