@@ -37,8 +37,10 @@ For each file that is found, a row needs to be filled in the 'contributor_matric
 | genusSpecies                | the species in that file, usually Homo sapiens or Mus musculus                                                               |
 | developmentStage            | the developmental stage present in the matrix, if more than one species, need to specify which stage goes with which species |
 | organ                       | the organ present in the matrix, if multiple other fields, need to deconvolute                                               |
-| libraryConstructionApproach | the `library_preparation_method` used to generate the matrix/file, if multiple, need to unambiguously deconvolute            |
+| libraryConstructionApproach | the ontology label of the `library_preparation_method` used to generate the matrix/file, if multiple, need to unambiguously deconvolute            |
 | uploaded                    | Whether it has been uploaded into the google bucket for matrices                                                             |
+
+If there are multiple values in one cell, they need to be delimited with comma
 
 ## Uploading the files to the google bucket
 
