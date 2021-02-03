@@ -44,9 +44,9 @@ For each file that is found, a row needs to be filled in the 'contributor_matric
 
 Files need to be uploaded to the [google bucket](https://console.cloud.google.com/storage/browser/hca-prod-ebi-matrices)
 
-The way we did it last time was to create a folder for each project as <project_uuid>-<project_shortname>, then have all the files for that project inside that folder. Worth checking with UCSC if they want this to remain the same.
+The way we did it last time was to create a folder for each project as <project_uuid>-<project_shortname>, then have all the files for that project inside that folder. Worth checking with UCSC browser team if they want this to remain the same.
 
-Ensure you have access rights to the bucket before attempting to upload.
+If you can't access the bucket in the console link above, you need to request access from the UCSC browser team. Also check whether you have the option to upload/download/delete.
 
 ### Uploading through the console
 
