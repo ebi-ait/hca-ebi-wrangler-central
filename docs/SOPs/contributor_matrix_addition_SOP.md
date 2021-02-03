@@ -46,7 +46,7 @@ If there are multiple values in one cell, they need to be delimited with comma
 
 Files need to be uploaded to the [google bucket](https://console.cloud.google.com/storage/browser/hca-prod-ebi-matrices)
 
-The way we did it last time was to create a folder for each project as <project_uuid>-<project_shortname>, then have all the files for that project inside that folder. Worth checking with UCSC browser team if they want this to remain the same.
+The way we did it last time was to create a folder for each project as `<project_uuid>-<project_shortname>`, then have all the files for that project inside that folder. Worth checking with UCSC browser team if they want this to remain the same.
 
 If you can't access the bucket in the console link above, you need to request access from the UCSC browser team. Also check whether you have the option to upload/download/delete.
 
