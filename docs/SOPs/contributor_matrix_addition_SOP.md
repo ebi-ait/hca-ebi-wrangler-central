@@ -23,7 +23,7 @@ Where either the expression matrix or cell type annotations cannot be found, the
 
 ## Filling in metadata about the files
 
-For each file that is found, a row needs to be filled in the 'contributor_matrices_metadata_[MM]-[YYYY] for the appropriate release found in the [Contributor Matrices folder](https://drive.google.com/open?id=1FMjJwYamMyuCtNJoTiA30kM3vsL6Q8LD) in the Brokering folder.
+For each file that is found, a row needs to be filled in the `contributor_matrices_metadata_[MM]-[YYYY]` for the appropriate release found in the [Contributor Matrices folder](https://drive.google.com/open?id=1FMjJwYamMyuCtNJoTiA30kM3vsL6Q8LD) in the Brokering folder.
 
 | Field                       | Definition                                                                                                                   |
 |-----------------------------|------------------------------------------------------------------------------------------------------------------------------|
