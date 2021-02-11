@@ -44,6 +44,7 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 #### nxn.se single cell database
 
 1) Go to the `src/` folder inside your cloned version of the `hca-ebi-wrangler-central` repository
+
 2) Run `python3 compare_tracker_with_nxn_sheet.py -c | pbcopy`
    
    This runs the comparison part of the script and copies the output to your clipboard. Once complete, paste the results into the leftmost cell under the latest dataset acknowledged. It’s already formatted with the tracker’s format, so it’s just a paste operation
