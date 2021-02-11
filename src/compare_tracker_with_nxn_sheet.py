@@ -11,7 +11,7 @@ duplicated entries
 
 Usage: python3 compare_tracker_with_nxn_sheet.py [-cd]
 Last time updated:
-2021-01-22T12:35:53.343939Z
+2021-02-11T09:29:00.962945Z
 """
 
 import argparse
