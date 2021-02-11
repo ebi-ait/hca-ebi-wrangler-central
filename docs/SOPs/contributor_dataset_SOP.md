@@ -1,17 +1,17 @@
 ---
 layout: default
-title: Contributor dataset SOP
+title: Wrangling datasets SOP
 parent: SOPs
 last_modified_date: 13/01/2020
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
-# Wrangling Contributor’s Datasets SOP
+# Wrangling Datasets SOP
 {: .no_toc }
 
 ## Background
 {: .no_toc }
 
-This SOP document aims to describe the process of receiving new datasets from contributors and uploading their metadata and data to ingest for archiving in EBI archives and submission to DCP2.0. This SOP was last updated on 2020-06-11 and is subject to change as the AIT HCA team software evolves. It will be updated to reflect changes.
+This SOP document aims to describe the process of receiving new datasets from contributors and uploading their metadata and data to ingest for archiving in EBI archives and submission to DCP2.0. This SOP was last updated on 2021-01-25 and is subject to change as the AIT HCA team software evolves. It will be updated to reflect changes.
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -191,7 +191,7 @@ Alternatively, if working with a published dataset, once the wrangler has upload
 ## Completing the submission
 
 Once all the files have been validated the project will be ready for submission. Before hitting submit, the primary wrangler should email the contributor to confirm:
-They are happy with the final spreadsheet and curated ontologies
+They are happy with the final spreadsheet and curated ontologies, and 
 The date they have identified for the data and metadata to be released publicly
 
 <i class="fas fa-exclamation-triangle"></i> **Warning**: Wranglers should be aware of when prod releases are occurring and not upload/submit until after the release to that environment is completed. Releases do not currently follow a set schedule so stay tuned to updates posted in the `#hca` slack channel in the AIT workspace. See the [Ingest release SOP](https://github.com/HumanCellAtlas/ingest-central/wiki/Ingest-Release-SOP#release-schedule) for more details.
@@ -204,6 +204,10 @@ The path after submission can go one of several ways:
 1. The project needs to go to EBI archives only 
 
  <i class="fas fa-exclamation-triangle"></i> **Warning** as at 15/12/2020 we are not currently following paths 1 & 2 because we can't currently export to DCP2, hopefully this will be resolved in early 2021
+
+After the data has been successfully exported, we need to send an [email](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/233) to inform the data contributor of successful submission and send link to the submission. 
+Additionally, move all the corresponding documents to the [finished_projects](https://github.com/HumanCellAtlas/hca-data-wrangling/tree/master/projects/finished_projects) in hca-wrangling repo and to Google Drive/Brokering/[PROJECTS-FINISHED](https://drive.google.com/drive/folders/1FNRVqlhSwwTKoynIHhq5gsILGyRqd6F9)
+
 
 Further documentation for the archiving process can be found here: [Ingestion to Archives Instructions](https://docs.google.com/document/d/1S4fyCSqB3nLrCUssNMwSp6ff8tmeipMi_slnXW2Lrq4/edit?pli=1#heading=h.n3qy5yl0auvs)
 
