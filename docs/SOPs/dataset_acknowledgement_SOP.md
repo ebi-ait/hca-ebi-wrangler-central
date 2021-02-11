@@ -48,7 +48,7 @@ At any point before halfway through the sprint, the wrangler/person responsible 
    
    This runs the comparison part of the script and copies the output to your clipboard. Once complete, paste the results into the leftmost cell under the latest dataset acknowledged. It’s already formatted with the tracker’s format, so it’s just a paste operation
 
-3) Then Run `python3 compare_tracker_with_nxn_sheet.py -d`
+3) Then run `python3 compare_tracker_with_nxn_sheet.py -d`
 
    This runs the identifying duplication part of the script and outputs it in the `hca-ebi-wrangler-central/src/` folder as  duplicate_entries.txt. 
 
