@@ -105,7 +105,7 @@ When the dataset is not present, please fill in **at least** the following colum
 - **phenotype**: If the health status is not `normal`, indicate the phenotype here
 - **assay_type**: Indicate the technology used to generate the library preparations. If the technology is not listed, please add it to the dropdown
 - **organ**: Indicate, with ontology terms from UBERON when possible, the organ where the samples come from.
-- **living_eu_donors**: When human, indicate if they are living in EU. When other organism, indicate `no,none`
+- **living_eu_donors**: When human, indicate if they were living EU citizens when the samples were collected. When other organism, indicate `no,none`
 - **nucleic_acid_source**: Indicate if bulk, single cell or single nucleus
 - **data_available**: `yes` if the raw sequencing data is available
 - **technical_benchmarking**: Indicate if the dataset is a benchmarking experiment (e.g. how does tissue storage affect library preparation) 
