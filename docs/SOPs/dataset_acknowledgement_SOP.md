@@ -44,11 +44,17 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 #### nxn.se single cell database
 
 1. Go to the `src/` folder inside your cloned version of the `hca-ebi-wrangler-central` repository
-1. Run `python3 compare_tracker_with_nxn_sheet.py | pbcopy`
+1. Run `python3 compare_tracker_with_nxn_sheet.py -c | pbcopy`
    
-   This runs the script and copies the output to your clipboard. 
+   This runs the comparison part of the script and copies the output to your clipboard. 
 
 Once complete, paste the results into the leftmost cell under the latest dataset acknowledged. It’s already formatted with the tracker’s format, so it’s just a paste operation
+
+Then Run `python3 compare_tracker_with_nxn_sheet.py -d`
+
+   This runs the identifying duplication part of the script and outputs it in the `hca-ebi-wrangler-central/src/` folder as  duplicate_entries.txt. 
+
+Find any duplicates within the dataset tracker, and check to see why they were added / who added them. Useful fields to check include primary wrangler, accession, and publication name. If no useful information will be removed, then remove the duplicate.
 
 The script updates itself with a timestamp to keep track of when it was last run. After running, push the changes to the repo:
 ```
