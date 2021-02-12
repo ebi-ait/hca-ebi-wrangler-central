@@ -1,3 +1,4 @@
+biopython
 argparse
 boto3
 tqdm
@@ -9,3 +10,4 @@ openpyxl==3.0.1
 requests
 xmltodict
 python-Levenshtein
+fsspec

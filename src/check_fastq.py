@@ -1,82 +1,55 @@
-#!/usr/bin/env bash
 
-usage() { echo "Usage: $0 [-r <gzipped read file>] [-u UMI length] [-b cell barcode length] [-n number of reads to test]" 1>&2; }
+import smart_open
+import boto3
+import pandas as pd
+from Bio import SeqIO
+import argparse
+import os
 
-r=
-u=
-b=
-n=1000
+def main():
 
-while getopts ":r:u:b:n:" o; do
-    case "${o}" in
-        r)
-            r=${OPTARG}
-            ;;
-        u)
-            u=${OPTARG}
-            ;;
-        b)
-            b=${OPTARG}
-            ;;
-        n)
-            n=${OPTARG}
-            ;;
-        *)
-            usage
-            exit 0
-            ;;
-    esac
-done
-shift $((OPTIND-1))
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--uuids', help='.txt file with hca-util submission uuids (uuid only). 1 uuid per line')
+    parser.add_argument('--num_reads', default= 1000, help='number of reads to test')
 
-if [ -z "${r}" ] || [ -z "${u}" ] || [ -z "${b}" ] || [ -z "${n}" ]; then
-    usage
-    exit 1
-fi
+    args = parser.parse_args()
 
-if [ ! -e "$r" ]; then
-    echo "Read file $r does not exist" 1>&2
-    exit 1
-fi
+    # Check if path ends with / or not and retrieve bucket key
+    bucket_name = 'hca-util-upload-area'
 
-# Calculate lenths of first n reads
+    uuids = pd.read_csv(args.uuids,header=None)
+    uuids = list(uuids[0])
 
-echo "Checking $n reads"
+    for uuid in uuids:
 
-lengths=$(zcat $r | \
-    head -n $((4 * $n)) | \
-    sed -n '2~4p' | \
-    awk '{print length()}' | \
-    sort -r | uniq)
+        s3 = boto3.resource('s3')
+        my_bucket = s3.Bucket(bucket_name)
+        keys = ['s3://hca-util-upload-area/' + str(s3_object.key) for s3_object in my_bucket.objects.all()]
+        filenames = [key for key in keys if uuid in key]
+        filenames = filenames[1:]
 
-# Find number of unque lengths
+        my_dict = {}
+        for filename in filenames:
+            my_dict[filename] = {}
+            with smart_open.open(filename) as f:
+                count = 0
+                len_seqs = []
+                records = SeqIO.parse(f, 'fastq')
+                for record in records:
+                    if count < args.num_reads:
+                        len_seqs.append(len(str(record.seq)))
+                        count += 1
+                    else:
+                        break
+                len_uniq = list(set(len_seqs))
+                for uniq in len_uniq:
+                    num = len_seqs.count(uniq)
+                    my_dict[filename].update({uniq: num})
 
-nLengths=$(echo -e "$lengths" | wc -l)
-if [ "$nLengths" == 1 ]; then
-    qualifier='all'
-else
-    qualifier='some'
-fi
+        data = pd.DataFrame.from_dict(my_dict, orient='index')
+        out_file = uuid + "_read_lengths.txt"
+        data.to_csv(out_file,sep="\t")
+        print("Done processing uuid: %s" % (uuid))
 
-# Find longest read
-
-longest=$(echo -e "$lengths" | head -n 1)
-
-# Reads should be at least the UMI + CB length
-
-targetLength=$(($u + $b))
-
-# Print warnings for fishy things, die for big issues
-
-if [ "$nLengths" -gt 1 ]; then
-    echo "WARNING: UMI/ barcode reads are of variable length" 1>&2
-fi
-
-if [ "$longest" -gt "$targetLength" ]; then
-    echo "WARNING: $qualifier UMI/ barcode reads in $r are longer than UMI + cell barcode (=$targetLength), max length: $longest. This happens with sequencer run-on, but make sure you're sure of the barcode configuration" 1>&2
-elif [ "$longest" -lt "$targetLength" ]; then
-    echo "[ERROR} No reads in $r meet UMI + cell barcode length threshold of $targetLength (max length: $longest), these reads cannot pass to droplet quantification." 1>&2
-    exit 1
-else
-    echo "[SUCCESS: $qualifier reads in $r match UMI/ cell barcode length threshold of $targetLength (max length: $longest)"
-fi
+if __name__ == "__main__":
+    main()
