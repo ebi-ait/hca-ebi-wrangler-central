@@ -34,7 +34,7 @@ Google Drive:
 - [ ] Ask the Secondary Wrangler for an end-to-end review of the project. Ask the Expertise Wrangler to review specific tabs if needed
 - [ ] Get final approval of submission from the contributor including release date, metadata spreadsheet and data files 
 - [ ] Submit to production and inform ingest-devs the project is ready for archiving
-- [ ] Email UX to inform that they're ready to send survey
+- [ ] Convert project data to SCEA format following the SCEA conversion SOP if appropriate
 
 **Please track the below as well as the key events:**
 1. Track date first spreadsheet received and final spreadsheet sent by editing ticket to include

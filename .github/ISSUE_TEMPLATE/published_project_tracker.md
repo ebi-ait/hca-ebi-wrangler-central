@@ -34,3 +34,4 @@ Accessioned data:
 - [ ] Transfer files to ingest to validate data files
 - [ ] Ask the Secondary Wrangler for an end-to-end review of the project. Ask the Expertise Wrangler to review specific tabs if needed
 - [ ] Submit dataset to Production 
+- [ ] Convert project data to SCEA format following the SCEA conversion SOP if appropriate
