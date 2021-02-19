@@ -27,7 +27,7 @@ def main():
         keys = ['s3://hca-util-upload-area/' + str(s3_object.key) for s3_object in my_bucket.objects.all()]
         filenames = [key for key in keys if uuid in key]
         filenames = filenames[1:]
-	filenames = [file for file in filenames if '.fastq.gz' in file]
+        filenames = [file for file in filenames if '.fastq.gz' in file]
 
         my_dict = {}
         for filename in filenames:
