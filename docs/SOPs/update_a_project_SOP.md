@@ -60,7 +60,21 @@ Things that can’t be done: (?)
 
 ### Using the UI
 
-Small changes can be fixed in the UI. Project metadata can only be updated in the UI (true?)
+Project metadata and other metadata entities can be changed via the UI. 
+
+Updating Project Metadata
+To edit Project Metadata, use the 'Edit Project' button on the Project tab for the specific project. After finishing making the specific changes and saving, the latest submission should move from an 'Exported' state back to a 'Valid' state, which allows for re-exporting the submission with the updated project metadata. 
+
+If the latest submission does not move to a 'Valid' state, then the workaround is to make an edit to the metadata in the submission (see below). This will move the submission from the 'Exported' state to the 'Valid' state and allow reexporting the submission with updated metadata. 
+
+If there are no necessary metadata updates to make in the submission, the workaround is to make an edit to the metadata in the submission, and then edit the submission once again to change the metadata to its original state. The metadata is therefore unchanged, but the submission will now be in the 'Valid' state, allowing export of updated metadata. 
+
+
+Updating metadata entities in a submission
+To edit metadata entities in a submission, select the desired submission. There is an 'edit' button for each row of metadata in the submission, and selecting this 'edit' button will allow one to make changes to the submission metadata. 
+
+After saving the changes, the submission state should move from 'Exported' back to 'Valid'. You can then 'Submit' the submission once more, taking care to uncheck the option to delete the upload area, unless you are certain this is the final update. This will export the submission to the downstream components. See the 'Exporting SOP' for more details. 
+
 
 ## Updating the project in the Archives
 
