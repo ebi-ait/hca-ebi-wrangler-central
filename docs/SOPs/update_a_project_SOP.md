@@ -18,15 +18,15 @@ UNDER REVIEW
 
 *Identifier* - The person who identifies the error that needs to be corrected
 
-*Performer* -  The person who performs the AUDR process
+*Performer* -  The person who performs the update process
 
-Things that can be done: (?)
+Things that can be done: 
 * Fix an error in any existing field 
 * Enter information into any blank field in an existing entity
+* Add new metadata entities and sequence files 
 
 Things that can’t be done: (?)
-* Add any new entity
-* Edit/update fields in `file` entities
+* Change the 'DescribedBy' field
 * Delete anything from a submission
 
 ### When can I update a project?
@@ -50,7 +50,7 @@ Things that can’t be done: (?)
 1. If the person performing the update is not the primary wrangler, the performer should check-in with the primary wrangler to ensure there are no other outstanding changes that need to be made. If primary wrangler no longer works for the DCP or does not respond after 1 full business day, the performer can proceed.
 
 ## Updating the project in ingest and DCP
-
+Note that Adding Metadata Entities and Sequence Files can only be done using a spreadsheet, and requires a new submission. 
 
 ### Using a spreadsheet
 
@@ -72,6 +72,19 @@ If there are no necessary metadata updates to make in the submission, the workar
 To edit metadata entities in a submission, select the desired submission. There is an 'edit' button for each row of metadata in the submission, and selecting this 'edit' button will allow one to make changes to the submission metadata. 
 
 After saving the changes, the submission state should move from 'Exported' back to 'Valid'. You can then 'Submit' the submission once more, taking care to uncheck the option to delete the upload area, unless you are certain this is the final update. This will export the submission to the downstream components. See the 'Exporting SOP' for more details. 
+
+## Adding new entities to the Project
+We now have the ability to add new metadata entities and sequence files to the project. This can only be done by creating a new spreadsheet and making additional submissions. 
+
+The spreadsheet only requires the tabs which contain the entities which are new, and only requires the new rows. For example, adding a new cell suspension linked to an already existing specimen_from_organism only requires the cell suspension tab and information. 
+
+New entities can be linked to existing entities in previous submissions using the specific uuids for each existing entity. These uuids can be obtained from downloading the metadata spreadsheet for that submission. 
+
+For example, in the previous example, linking cell suspension to an already existing specimen_from_organism, instead of the 'Input specimen_from_organism' column in the spreadsheet, we would create a new 'specimen_from_organism uuid' column, with the programmatic name (Row 4 of spreadsheet) of 'specimen_from_organism.uuid' and input the uuid of the specimen_from_organism in that cell. 
+
+Once the spreadsheet is completed, then create a new submission to the project using the spreadsheet. 
+
+If there are any sequence files that are part of this addition, then those sequence files should be synced to the submission upload area for the new submission. 
 
 
 ## Updating the project in the Archives
