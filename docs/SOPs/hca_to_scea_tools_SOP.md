@@ -24,6 +24,14 @@ _Please note: this is not a tool to generate a perfect set of SCEA idf and sdrf 
 
 [Modify this diagram here](https://app.diagrams.net/?src=about#G1bP1jg52KXeVmd6HGmXxXRjfT2uEZtPDr)
 
+## Before you start conversion, please check the below to see if your dataset is valid
+
+- The dataset must be split into 2 (or more) projects with separate E-HCAD ids if 2 (or more) technologies are used (including 10X versions). You can link 2 projects by including a 'Comment[RelatedExperiment]' in the idf file (see examples in dir: examples).
+
+- The dataset must be split into 2 (or more) projects with separate E-HCAD ids if 2 (or more) species are included (e.g. human, mouse). You can link 2 projects by including a 'Comment[RelatedExperiment]' in the idf file (see examples in dir: examples).
+
+- If a full path to the raw data is not available in fastq format, you can alternatively provide the full path to bam files or an SRA object. But you should save these in separate directories and let Anja or Nancy know, as they have not yet implemented a pipeline to grab and process them.
+
 ## Pre-requisites
 
 ### Python3
