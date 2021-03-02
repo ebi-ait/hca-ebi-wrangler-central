@@ -196,7 +196,18 @@ If attaching a submission to a project that already exists in the ingest ui:
 Please note:
 * When uploading a spreadsheet to an existing project, no project metadata is uploaded or updated, any updates to project metadata including contributors, publications and funders must be edited directly in the UI
 * Once a project has been created in the UI, it is best practice to retain the project's unique identifier throughout the submission and validation process, so please only delete the project if there are serious issues with project level metadata that cannot be fixed easily in the UI
-* There should never be duplicate projects in the production ui, if you do need to reupload an entire project, please delete the existing project before re-uploading a spreadsheet.
+* There should never be duplicate projects in the production ui, if you do need to reupload an entire project, please delete the existing project before re-uploading a spreadsheet. To delete a project in the ui:
+1. If the project has no submissions:
+    1. go to the project page in the ui
+    1. Scroll to the bottom of the page and click the trash icon next to the 'Edit Project' button
+1. If the project has an unsubmitted submission:
+    1. go to the project's page in the ui
+    1. go to the '3. Upload' tab
+    1. click the trash symbol next to the submission
+    1. go to the '1. Project' tab
+    1. scroll down and click the trash icon next to the 'Edit Project' button
+
+If any issues are encountered when trying to upload, update or delete projects or submissions in the ui, please post the issue and project uuid in the #dcp-ops channel and tag @ingest-devs
 
 ### Experimental graph validation
 The ingest graph validator allows wranglers to visualise the experimental graph of the experiment and also performs some tests to check against our current graph assumptions. 
