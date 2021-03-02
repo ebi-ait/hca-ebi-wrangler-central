@@ -161,9 +161,42 @@ Once the spreadsheet is considered complete by the primary wrangler, there are t
 ### Spreadsheet and JSON schema validation
 The primary wrangler should upload the spreadsheet to the [ingest production ui](https://contribute.data.humancellatlas.org/) to check the validity of the spreadsheet.
 
-To create a new submission from a full spreadsheet, go to the `ALL SUBMISSIONS` tab then click the `Upload New Submission` button in the top right. If the metadata is valid, you can move on to uploading the fastq files data. If it is invalid, you will need to resolve any errors or problems and re-upload the metadata sheet again and repeat this process until it is valid.
+This can be done in one of two ways
 
-If attaching a submission to a project that already exists in ingest, go to the project page, click the 'edit project' button 
+#### Full spreadsheet with project metadata
+
+To create a new project from a full spreadsheet:
+1. go to the `ALL SUBMISSIONS` tab then click the `Upload New Submission` button in the top right. 
+    1. If all the metadata is valid, you can move on to uploading the fastq files data. 
+    1. If any metadata is invalid,  you will need to resolve any errors or problems. This can be done directly in the UI or by uploading a new spreadsheet to the existing project. To upload a fixed spreadsheet to the project:
+        1. Fix the errors in the spreadhseet and return to the existing project in the ui
+        1. Click the '3. Upload' tab to view the submissions
+        1. Delete the submission with errors by clicking the trash icon next to the submission
+        1. Go to the '3. Upload' tab and click the 'Submit to Project' button to upload the fixed spreadsheet. If the button doesn't appear try refreshing the page.
+        1. repeat these steps until you have a project with valid metadata
+        1. proceed to upload the required files
+
+#### Pre-registered project that already exists in ingest
+
+If attaching a submission to a project that already exists in the ingest ui: 
+1. Go to the project page
+1. Click the 'edit project' button 
+1. Go to the '3. Upload' tab and click the 'Submit to Project' button to upload the spreadsheet
+    1. If any metadata is invalid,  you will need to resolve any errors or problems. This can be done directly in the UI or by uploading a new spreadsheet to the existing project. To upload a fixed spreadsheet to the project:
+        1. Fix the errors in the spreadhseet and return to the existing project in the ui
+        1. Click the '3. Upload' tab to view the submissions
+        1. Delete the submission with errors by clicking the trash icon next to the submission
+        1. Go to the '3. Upload' tab and click the 'Submit to Project' button to upload the fixed spreadsheet. If the button doesn't appear try refreshing the page.
+        1. repeat these steps until you have a project with valid metadata
+        1. proceed to upload the required files
+    1. To edit directly in the ui, click the pencil symbol to open the editing form
+        1. change any fields that need to be edited
+        1. click save  
+
+Please note:
+* When uploading a spreadsheet to an existing project, no project metadata is uploaded or updated, any updates to project metadata including contributors, publications and funders must be edited directly in the UI
+* Once a project has been created in the UI, it is best practice to retain the project's unique identifier throughout the submission and validation process, so please only delete the project if there are serious issues with project level metadata that cannot be fixed easily in the UI
+* There should never be duplicate projects in the production ui, if you do need to reupload an entire project, please delete the existing project before re-uploading a spreadsheet.
 
 ### Experimental graph validation
 The ingest graph validator allows wranglers to visualise the experimental graph of the experiment and also performs some tests to check against our current graph assumptions. 
