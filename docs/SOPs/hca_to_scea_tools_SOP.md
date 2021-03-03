@@ -65,7 +65,21 @@ Currently this splitting operation has to be done by manually creating as many s
 
 Once the suitability has been assessed, please contact an SCEA curator via slack (#hca_to_scea chanel) and ask them to confirm the SCEA suitability/assess priority for this dataset in the [data tracking sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0)
 
+Once confirmed the dataset is suitable, assign a SCEA E-HCAD-## number by looking at the [dataset tracking sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0&fvid=1330324479) and entering the next available sequential number in the `scea_accession` column. Note this accession as you will need it throughout the conversion process.
+
 ### Running the converter
+
+#### On the wrangler EC2
+
+1. login to the wrangler EC2
+1. `cd /data/tools/hca-to-scea-tools/hca2scea-backend`
+1. `source venv/bin/activate`
+1. `python script.py -h`
+
+Access the ui by running the following on your local machine:
+`ssh -L5000:localhost:5000 <WRANGLER_USERNAME@tool.archive.data.humancellatlas.org>`
+
+#### On your local machine
 
 1. Run the tool
    ```
