@@ -32,15 +32,6 @@ _Please note: this is not a tool to generate a perfect set of SCEA idf and sdrf 
 
 - If a full path to the raw data is not available in fastq format, you can alternatively provide the full path to bam files or an SRA object. But you should save these in separate directories and let Anja or Nancy know, as they have not yet implemented a pipeline to grab and process them.
 
-## Pre-requisites
-
-### Python3
-- Install from [Python's webpage](https://www.python.org/downloads/)
-
-### HCA-to-SCEA-tools
-
-
-
 ## How-to
 
 ### Before proceeding with the submission to SCEA
@@ -60,13 +51,13 @@ Once confirmed the dataset is suitable, assign a SCEA E-HCAD-## number by lookin
 
 #### On the wrangler EC2
 
-If you want to run the tool from the command line:
-1. login to the wrangler EC2
-1. `cd /data/tools/hca-to-scea-tools/hca2scea-backend`
-1. `source venv/bin/activate`
-1. Use `python script.py -h` to see the available options
+1. To run the tool from the command line:
+    1. login to the wrangler EC2
+    1. `cd /data/tools/hca-to-scea-tools/hca2scea-backend`
+    1. `source venv/bin/activate`. 
+    1. Use `python script.py -h` to see the available options
 
-Access the ui by running the following on your local machine:
+2. To access the browser based ui run the following command on your local machine's terminal:
 ```
 ssh -L5000:localhost:5000 <WRANGLER_USERNAME@tool.archive.data.humancellatlas.org>
 ```
@@ -77,7 +68,9 @@ This is accessing the tool that is running on the EC2 via your local machine.
 
 #### On your local machine
 
-First you will need to install the tool on your local machine by following the steps below:
+You will need python3 installed, if you don't have it, install from [Python's webpage](https://www.python.org/downloads/)
+
+To install the tool on your local machine:
 
 1. Clone the repository
    ```
@@ -103,6 +96,7 @@ Then once installed:
    ```
    http://127.0.0.1:5000/
    ```
+### Converting using the UI
 
 1. You should see a webpage which looks like the following:
 
