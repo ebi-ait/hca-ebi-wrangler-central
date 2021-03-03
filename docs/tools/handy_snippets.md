@@ -390,6 +390,34 @@ rsync -r <username>@tool.archive.data.humancellatlas.org:/path/to/file/*.fastq.g
 rsync /localmachine/path/to/file <username>@tool.archive.data.humancellatlas.org:/EC2/path/to/file
 ```
 
+## Transfer files between local and EC2: Cyberduck
+
+### Install Cyberduck
+
+EBI mac users can download from the Managed Software Centre, or else see: [Cyberduck](https://cyberduck.io/download/).
+
+Currently only for Windows and Mac users.
+
+### Configure connection to the EC2
+
+1. Open the Cyberduck application and got to `File > Open connection`
+1. Choose `SFTP (SSH File Transfer Protocol)` and fill in the server, username and password information as follows:
+    1. Server: tool.archive.data.humancellatlas.org
+    1. Username: your EC2 username
+    1. Password: your EC2 password
+    1. SSH Private Key: path to your private key, the default will probably work unless you configured this differently  
+1. Click `Connect`
+
+You should then be able to browse files on the EC2. 
+
+To *download* a file from the EC2, simply double click it and it should get downloaded to your default download location (usually Downloads folder).
+
+To *upload* a file to the EC2, navigate to the folder where you want the file uploaded, go to `File>Upload...` and choose the file. you may be prommpted for your Username, Password and private key location, enter these and confirm and you file should get uploaded to that location.
+
+To store the information you configured, click `Bookmark>New bookmark`. The next time you open the program you should be able to double click the bookmark in order to connect.
+
+[reference](http://www.brianhoshi.com/blog/how-to-ftp-into-your-ec2-instance-with-cyberduck/)
+
 ## Extract all text to ontology mappings from one or more submissions in ingest
 
 TODO: Check if this will work for current ingest or how to modify to make it work
