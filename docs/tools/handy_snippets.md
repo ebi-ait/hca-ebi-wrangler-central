@@ -414,7 +414,7 @@ You should then be able to browse files on the EC2.
 
 To **download** a file from the EC2, simply double click it and it should get downloaded to your default download location (usually Downloads folder).
 
-To **upload** a file to the EC2, navigate to the folder where you want the file uploaded, go to the top menu `File > Upload...` and choose the file. you may be prommpted for your Username, Password and private key location, enter these and confirm and you file should get uploaded to that location.
+To **upload** a file to the EC2, navigate to the folder where you want the file uploaded, go to the top menu `File > Upload...` and choose the file. you may be prompted for your Username, Password and private key location, enter these and confirm and you file should get uploaded to that location.
 
 To store the information you configured, go to the top menu option `Bookmark > New bookmark`. The next time you open the program you should be able to double click the bookmark in order to connect without having to enter the above information again.
 
