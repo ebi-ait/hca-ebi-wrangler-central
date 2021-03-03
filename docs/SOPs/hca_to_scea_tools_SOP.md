@@ -39,18 +39,7 @@ _Please note: this is not a tool to generate a perfect set of SCEA idf and sdrf 
 
 ### HCA-to-SCEA-tools
 
-1. Clone the repository
-   ```
-   git clone https://github.com/ebi-ait/hca-to-scea-tools.git
-   cd hca-to-scea-tools/
-   ```
-1. Make sure you have installed [npm](https://www.npmjs.com/), [pip](https://pypi.org/project/pip/) and the pip package [virtualenv](https://virtualenv.pypa.io/en/latest/)
 
-1. Install the application by running
-   ```
-   cd hca2scea-backend
-   ./install.sh
-   ```
 
 ## How-to
 
@@ -71,15 +60,38 @@ Once confirmed the dataset is suitable, assign a SCEA E-HCAD-## number by lookin
 
 #### On the wrangler EC2
 
+If you want to run the tool from the command line:
 1. login to the wrangler EC2
 1. `cd /data/tools/hca-to-scea-tools/hca2scea-backend`
 1. `source venv/bin/activate`
-1. `python script.py -h`
+1. Use `python script.py -h` to see the available options
 
 Access the ui by running the following on your local machine:
-`ssh -L5000:localhost:5000 <WRANGLER_USERNAME@tool.archive.data.humancellatlas.org>`
+```
+ssh -L5000:localhost:5000 <WRANGLER_USERNAME@tool.archive.data.humancellatlas.org>
+```
+Then point your browser at: [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+
+This is accessing the tool that is running on the EC2 via your local machine. 
+
 
 #### On your local machine
+
+First you will need to install the tool on your local machine by following the steps below:
+
+1. Clone the repository
+   ```
+   git clone https://github.com/ebi-ait/hca-to-scea-tools.git
+   cd hca-to-scea-tools/
+   ```
+1. Make sure you have installed [npm](https://www.npmjs.com/), [pip](https://pypi.org/project/pip/) and the pip package [virtualenv](https://virtualenv.pypa.io/en/latest/)
+
+1. Install the application by running
+   ```
+   cd hca2scea-backend
+   ./install.sh
+   ```
+Then once installed:
 
 1. Run the tool
    ```
