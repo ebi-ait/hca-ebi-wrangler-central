@@ -33,7 +33,7 @@ Things that can’t be done: (?)
 
 * Non-analysed datasets - No restrictions
 
-* Analysed datasets - Must be coordinated with the Matrix Service/DataOps. There are currently negotiations on how this will work. If a define schedule is decided this documentation will be updated.
+* Analysed datasets - OPEN QUESTION: Should be coordinated with the Matrix Service/DataOps?
 
 ## Procedure
 1. The identifier of the issue reopens the project tracker ticket for that project if it has been closed and moves it to the 'Needs Update' pipeline of the [`Dataset wrangling status`](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) Zenhub board and makes a comment that contains the following information, (if not already specified in the ticket body)
@@ -49,19 +49,12 @@ Things that can’t be done: (?)
 
 1. If the person performing the update is not the primary wrangler, the performer should check-in with the primary wrangler to ensure there are no other outstanding changes that need to be made. If primary wrangler no longer works for the DCP or does not respond after 1 full business day, the performer can proceed.
 
-## Updating the project in ingest and DCP
+1. If the project is already in the 'Needs Update' piepeline, then assign yourself to the project and follow the steps below to make the necessary changes. Refer to the primary wrangler to ensure there are no other outstanding changes that need to be made.
+
+## Updating a project in ingest and DCP
 Note that Adding Metadata Entities and Sequence Files can only be done using a spreadsheet, and requires a new submission. 
 
-### Using a spreadsheet
-
-1. If the performer has the ability to download a spreadsheet from the ingest UI with the appropriate UUIDs, the performer can follow the [ingest guide here](https://github.com/HumanCellAtlas/ingest-central/wiki/Updating-Metadata-through-Spreadsheets)
-1. If the project that requires AUDR was ingested before ingest started storing spreadsheets (~June 2019) then the performer will need to manually retrieve uuids for every entity in the spreadsheet using the ingest API and save them in the spreadsheet with the appropriate column names, e.g. `cell_suspension.uuid`, `donor_organism.uuid` (do we have a script for this?)
-1. Once completed, go to the submission view, click  `Download spreadsheet` button to download a copy of the updated spreadsheet that has been updated with metadata UUIDs. Save this copy on Google Drive in the Projects folder with a name containing AUDR and date. You will need this spreadsheet for all subsequent updates. This is a temporary measure.
-
-### Using the UI
-Project metadata and other metadata entities can be changed via the UI. 
-
-#### Updating Project Metadata
+### Updating Project Metadata (UI Only) 
 To edit Project Metadata, use the 'Edit Project' button on the Project tab for the specific project. After finishing making the specific changes and saving, the latest submission should move from an 'Exported' state back to a 'Valid' state, which allows for re-exporting the submission with the updated project metadata. 
 
 If the latest submission does not move to a 'Valid' state, then the workaround is to make an edit to the metadata in the submission (see below). This will move the submission from the 'Exported' state to the 'Valid' state and allow reexporting the submission with updated metadata. 
@@ -73,7 +66,7 @@ To edit metadata entities in a submission, select the desired submission. There 
 
 After saving the changes, the submission state should move from 'Exported' back to 'Valid'. You can then 'Submit' the submission once more, taking care to uncheck the option to delete the upload area, unless you are certain this is the final update. This will export the submission to the downstream components. See the 'Exporting SOP' for more details. 
 
-## Adding new entities to the Project
+### Adding New Entities (Using Spreadsheet Only) 
 We now have the ability to add new metadata entities and sequence files to the project. This can only be done by creating a new spreadsheet and making additional submissions. 
 
 The spreadsheet only requires the tabs which contain the entities which are new, and only requires the new rows. For example, adding a new cell suspension linked to an already existing specimen_from_organism only requires the cell suspension tab and information. 
@@ -85,6 +78,13 @@ For example, in the previous example, linking cell suspension to an already exis
 Once the spreadsheet is completed, then create a new submission to the project using the spreadsheet. 
 
 If there are any sequence files that are part of this addition, then those sequence files should be synced to the submission upload area for the new submission. 
+
+
+Not functional: 
+1. If the performer has the ability to download a spreadsheet from the ingest UI with the appropriate UUIDs, the performer can follow the [ingest guide here](https://github.com/HumanCellAtlas/ingest-central/wiki/Updating-Metadata-through-Spreadsheets)
+1. If the project that requires AUDR was ingested before ingest started storing spreadsheets (~June 2019) then the performer will need to manually retrieve uuids for every entity in the spreadsheet using the ingest API and save them in the spreadsheet with the appropriate column names, e.g. `cell_suspension.uuid`, `donor_organism.uuid` (do we have a script for this?)
+1. Once completed, go to the submission view, click  `Download spreadsheet` button to download a copy of the updated spreadsheet that has been updated with metadata UUIDs. Save this copy on Google Drive in the Projects folder with a name containing AUDR and date. You will need this spreadsheet for all subsequent updates. This is a temporary measure.
+
 
 
 ## Updating the project in the Archives
