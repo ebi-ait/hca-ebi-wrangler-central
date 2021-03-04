@@ -32,7 +32,6 @@ Things that can’t be done: (?)
 ### When can I update a project?
 
 * Non-analysed datasets - No restrictions
-
 * Analysed datasets - OPEN QUESTION: Should be coordinated with the Matrix Service/DataOps?
 
 ## Procedure
@@ -59,9 +58,9 @@ To edit Project Metadata, use the 'Edit Project' button on the Project tab for t
 
 If the latest submission does not move to a 'Valid' state, then the workaround is to make an edit to the metadata in the submission (see below). This will move the submission from the 'Exported' state to the 'Valid' state and allow reexporting the submission with updated metadata. 
 
-If there are no necessary metadata updates to make in the submission, the workaround is to make an edit to the metadata in the submission, and then edit the submission once again to change the metadata to its original state. The metadata is therefore unchanged, but the submission will now be in the 'Valid' state, allowing export of updated metadata. 
+If there are no necessary metadata updates to make in the submission, the workaround is to make an edit to the metadata in the submission, and then edit the submission once again to change the metadata to its original state. The metadata is therefore unchanged, but the submission will now be in the 'Valid' state, allowing export of updated metadata. See 'here'
 
-#### Updating metadata entities in a submission
+### Updating metadata entities in a submission
 To edit metadata entities in a submission, select the desired submission. There is an 'edit' button for each row of metadata in the submission, and selecting this 'edit' button will allow one to make changes to the submission metadata. 
 
 After saving the changes, the submission state should move from 'Exported' back to 'Valid'. You can then 'Submit' the submission once more, taking care to uncheck the option to delete the upload area, unless you are certain this is the final update. This will export the submission to the downstream components. See the 'Exporting SOP' for more details. 
@@ -73,11 +72,14 @@ The spreadsheet only requires the tabs which contain the entities which are new,
 
 New entities can be linked to existing entities in previous submissions using the specific uuids for each existing entity. These uuids can be obtained from downloading the metadata spreadsheet for that submission. 
 
-For example, in the previous example, linking cell suspension to an already existing specimen_from_organism, instead of the 'Input specimen_from_organism' column in the spreadsheet, we would create a new 'specimen_from_organism uuid' column, with the programmatic name (Row 4 of spreadsheet) of 'specimen_from_organism.uuid' and input the uuid of the specimen_from_organism in that cell. 
+In the previous example, if I wanted to link a new cell suspension to an already existing specimen_from_organism, instead of the 'Input specimen_from_organism ID' column in the spreadsheet, we would create a new 'specimen_from_organism uuid' column, with the programmatic name (Row 4 of spreadsheet) of 'specimen_from_organism.uuid' and input the uuid of the specimen_from_organism in that cell. 
 
-Once the spreadsheet is completed, then create a new submission to the project using the spreadsheet. 
+Once the spreadsheet is completed, then create a new submission to the project using the spreadsheet. If there are any sequence files that are part of this addition, then those sequence files should be synced to the submission upload area for the new submission. 
 
-If there are any sequence files that are part of this addition, then those sequence files should be synced to the submission upload area for the new submission. 
+Now you will be able to export the submission to the downstream components. See 'here'. 
+
+## Exporting a submission to downstream components
+There is a fantastic SOP here. 
 
 
 Not functional: 
