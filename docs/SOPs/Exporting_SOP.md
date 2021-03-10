@@ -5,7 +5,7 @@ parent: SOPs
 last_modified_date: 13/01/2020
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
-# Wrangling Datasets SOP
+# Exporting Datasets SOP
 {: .no_toc }
 
 ## Background
