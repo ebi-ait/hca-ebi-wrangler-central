@@ -2,6 +2,7 @@
 layout: default
 title: Wrangling datasets SOP
 parent: SOPs
+has_children: true
 last_modified_date: 13/01/2020
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
