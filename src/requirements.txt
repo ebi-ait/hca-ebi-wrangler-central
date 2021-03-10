@@ -9,5 +9,4 @@ pandas
 openpyxl==3.0.1
 requests
 xmltodict
-python-Levenshtein
 fsspec
