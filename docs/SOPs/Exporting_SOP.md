@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Exporting SOP
-parent: SOPs
+parent: dataset_wrangling_SOP
 last_modified_date: 13/01/2020
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
