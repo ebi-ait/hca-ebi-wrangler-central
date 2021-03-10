@@ -24,7 +24,7 @@ This describes the process for exporting completed projects or updated projects 
 * *Current mechanism*: wrangler checks status in the UI, will change from exporting to exported. (This will take ~1-4 hours for most projects)
 * If export is “stuck” in exporting for more than 4 hours, Notify the ingest operations developer via the dcp-ops slack channel notifying (@hca-ingest-dev) and providing the project UUID so they can review the logs and work out what has happened. They will work with the wrangler to resolve this and re-export if necessary.
 3. The Broad data import team are notified of successful export 
-* *Current mechanism*: The submitting wrangler submits the [request for import form] <https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/viewform> and notifies the import team by messaging @monster-ops in the #dcp-ops Slack channel.
+* *Current mechanism*: The submitting wrangler submits the [request for import form]<https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/viewform> and notifies the import team by messaging @monster-ops in the #dcp-ops Slack channel.
 4. The submitting wrangler is notified that import and snapshot has been successful or if there are issues for EBI to investigate
 * *Current mechanism*: Broad data import team will notify via slack in the dcp-ops channel slack, notifying @Hannes and @Trevor Heathorn when import and snapshot has been successful or if issues are found and pass on to the browser team.
 5. UCSC Browser team will notify submitting wrangler and Broad team when indexed and in the browser or if issues are encountered.
