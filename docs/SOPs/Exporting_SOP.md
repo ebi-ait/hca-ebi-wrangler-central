@@ -14,13 +14,8 @@ last_modified_date: 13/01/2020
 
 This SOP aims to describe exporting.
 
-## Table of contents
-{: .no_toc .text-delta }
 
 This describes the process for exporting completed projects or updated projects to the DCP
-
-## Table of contents
-{: .no_toc .text-delta }
 
 
 1. As soon as a dataset is ready for export the wrangler should hit the submit button in the UI to trigger export and note the project UUID.
