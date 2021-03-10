@@ -63,7 +63,7 @@ If there are no necessary metadata updates to make in the submission, the workar
 ### Updating metadata entities in a submission
 To edit metadata entities in a submission, select the desired submission. There is an 'edit' button for each row of metadata in the submission, and selecting this 'edit' button will allow one to make changes to the submission metadata. 
 
-After saving the changes, the submission state should move from 'Exported' back to 'Valid'. You can then 'Submit' the submission once more, taking care to uncheck the option to delete the upload area, unless you are certain this is the final update. This will export the submission to the downstream components. See the 'Exporting SOP' for more details. 
+After saving the changes, the submission state should move from 'Exported' back to 'Valid'. You can then 'Submit' the submission once more, taking care to uncheck the option to delete the upload area, unless you are certain this is the final update. This will export the submission to the downstream components. See the '[Exporting SOP](https://docs.google.com/document/d/1nxqG-WBnjz-bpZafwfupAeIDzUmnPr7W5bbNnOn2Yz4/edit)' for more details. 
 
 ### Adding New Entities (Using Spreadsheet Only) 
 We now have the ability to add new metadata entities and sequence files to the project. This can only be done by creating a new spreadsheet and making additional submissions. 
@@ -76,10 +76,10 @@ In the previous example, if I wanted to link a new cell suspension to an already
 
 Once the spreadsheet is completed, then create a new submission to the project using the spreadsheet. If there are any sequence files that are part of this addition, then those sequence files should be synced to the submission upload area for the new submission. 
 
-Now you will be able to export the submission to the downstream components. See 'here'. 
+Now you will be able to export the submission to the downstream components. See '[here](https://docs.google.com/document/d/1nxqG-WBnjz-bpZafwfupAeIDzUmnPr7W5bbNnOn2Yz4/edit)'. 
 
 ## Exporting a submission to downstream components
-There is a fantastic SOP here. 
+There is a fantastic SOP [here](https://docs.google.com/document/d/1nxqG-WBnjz-bpZafwfupAeIDzUmnPr7W5bbNnOn2Yz4/edit). 
 
 
 Not functional: 
