@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Exporting SOP
-parent: dataset_wrangling_SOP
+parent: Wrangling datasets SOP
 grand_parent: SOPs
 last_modified_date: 13/01/2020
 ---
