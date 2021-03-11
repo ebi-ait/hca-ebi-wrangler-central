@@ -35,8 +35,8 @@ This describes the process for exporting completed projects or updated projects 
 
 This is likely to evolve as we go, so please note issues with completing this process so we can improve it.
 
-## notes
+## Notes
 {: .no_toc }
 
-EBI will export on demand, and notify the Broad will batch import once prior to the monthly release. 
-Responsibility for who deletes the contents of the staging area is still being decided.
+* EBI will export on demand, and notify the Broad will batch import once prior to the monthly release. 
+* Responsibility for who deletes the contents of the staging area is still being decided.
