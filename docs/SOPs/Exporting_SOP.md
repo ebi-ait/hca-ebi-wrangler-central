@@ -27,9 +27,9 @@ This describes the process for exporting completed projects or updated projects 
 * *`Current mechanism`*: Broad data import team will notify via slack in the dcp-ops channel slack, notifying @Hannes and @Trevor Heathorn when import and snapshot has been successful or if issues are found and pass on to the browser team.
 5. UCSC Browser team will notify submitting wrangler and Broad team when indexed and in the browser or if issues are encountered.
 * *`Current mechanism`*: Via slack in the dcp-ops channel notifying (who?) when a dataset is in the browser or if there was any issue with indexing.
-6. When a dataset is available in the browser, the wrangler will do a final check that everything looks ok and notify @here on the data-ops channel. 
+6. When a project is available in the browser, the wrangler will do a final check that everything looks ok and notify @here on the data-ops channel. 
 7. If issues occur at any point then corrections are made as updates and then re-exported. 
-* *`Current mechanism`*: In order to re-export, the wrangler will notify the ingest developer on operations to reset the dataset state from exported to valid.
+* *`Current mechanism`*: In order to re-export, the wrangler will notify the ingest developer on operations to reset the project state from exported to valid.
 * The ingest developer should also delete any contents of the project staging area in the staging bucket from the failed export. 
 8. Wrangler will trigger export by hitting submit and following steps 2-7
 
