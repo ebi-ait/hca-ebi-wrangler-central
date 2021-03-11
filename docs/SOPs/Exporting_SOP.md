@@ -12,8 +12,6 @@ last_modified_date: 13/01/2020
 ## Steps
 {: .no_toc }
 
-This SOP aims to describe exporting.
-
 
 This describes the process for exporting completed projects or updated projects to the DCP
 
