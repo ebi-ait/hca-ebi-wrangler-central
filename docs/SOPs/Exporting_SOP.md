@@ -9,7 +9,7 @@ last_modified_date: 13/01/2020
 # Exporting Datasets SOP
 {: .no_toc }
 
-## Background
+## Steps
 {: .no_toc }
 
 This SOP aims to describe exporting.
@@ -36,3 +36,9 @@ This describes the process for exporting completed projects or updated projects 
 8. Wrangler will trigger export by hitting submit and following steps 2-7
 
 This is likely to evolve as we go, so please note issues with completing this process so we can improve it.
+
+## notes
+{: .no_toc }
+
+EBI will export on demand, and notify the Broad will batch import once prior to the monthly release. 
+Responsibility for who deletes the contents of the staging area is still being decided.
