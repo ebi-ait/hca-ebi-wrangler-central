@@ -23,14 +23,14 @@ This describes the process for exporting completed projects or updated projects 
 * If export is “stuck” in exporting for more than 4 hours, Notify the ingest operations developer via the dcp-ops slack channel notifying (@hca-ingest-dev) and providing the project UUID so they can review the logs and work out what has happened. They will work with the wrangler to resolve this and re-export if necessary.
 3. The Broad data import team are notified of successful export 
 * *`Current mechanism`*: The submitting wrangler submits the [request for import form](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/viewform) and notifies the import team by messaging @monster-ops in the #dcp-ops Slack channel.
-..* Form Details for DCP data releases
+* Form Details for DCP data releases
 *Google storage cloud path* `gs://broad-dsp-monster-hca-prod-ebi-storage/prod/UUID`
 *Environment* `Prod`
 *Catalog* `DCP2`
 *Dataset ID*  `hca_prod_20201120_dcp2`
 *Create a snapshot?* `Yes`
 
-..* Form Details for DCP testing
+* Form Details for DCP testing
 *Google storage cloud path* `gs://broad-dsp-monster-hca-dev-ebi-staging/staging/UUID`
 *Environment* likely to be `dev`
 *Catalog* likely to be `DCP2`
