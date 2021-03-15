@@ -65,6 +65,11 @@ To edit metadata entities in a submission, select the desired submission. There 
 
 After saving the changes, the submission state should move from 'Exported' back to 'Valid'. You can then 'Submit' the submission once more, taking care to uncheck the option to delete the upload area, unless you are certain this is the final update. This will export the submission to the downstream components. See the '[Exporting SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Exporting_SOP.html)' for more details. 
 
+### Updating / Adding links between metadata entities
+We are also now able to remove or create links between metadata entities. This can be done from the Process Tab of a submission. Expand the specific process that needs to be edited, and there are three columns: Inputs, Protocols, and Outputs. 
+
+From this screen, we can remove or add new inputs, new protocols, and new outputs to be linked to this specific process. There is a search field for searching through entities, but this currently searches through all entities in the entire environment (not restricted to this project). One workaround to find the specific entity may be to rename the entity in the Ingest-UI, allowing it to be found easier. 
+
 ### Adding New Entities (Using Spreadsheet Only) 
 We now have the ability to add new metadata entities and sequence files to the project. This can only be done by creating a new spreadsheet and making additional submissions. 
 
