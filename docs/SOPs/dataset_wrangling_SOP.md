@@ -266,7 +266,7 @@ Further documentation for the archiving process can be found here: [Ingestion to
 
 After the project has been Archived, if the `Submit to the Human Cell Atlas...` checkbox was also ticked, the project should proceed to `Exporting` status and the following steps should be followed from step 2 onwards.
 
-### Exporting the submission to DCP2
+### Exporting the submission to DCP
 
 1. As soon as a dataset is ready for export, the wrangler should hit the submit button in the UI with the `Submit to the Human Cell Atlas...` checkbox ticked to trigger export and note the project UUID.
     1. *`Current mechanism`*: Wrangler retrieves the project UUID from the URL when viewing the project in the ingest browser.
@@ -274,7 +274,7 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
     1. *`Current mechanism`*: wrangler checks status in the UI, will change from exporting to exported. (This will take ~1-4 hours for most projects)
     2. If export is “stuck” in exporting for more than 4 hours, Notify the ingest operations developer via the dcp-ops slack channel notifying (@hca-ingest-dev) and providing the project UUID so they can review the logs and work out what has happened. They will work with the wrangler to resolve this and re-export if necessary.
 3. The wrangling team is notified of export
-    1.  *Current mechanism*: The submitting wrangler changes the status in the [Dataset Tracking Sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0) to `exported`
+    1.  *Current mechanism*: The submitting wrangler changes the status in the [Dataset Tracking Sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0) to `exported` and adds the project uuid to the `ingest_project_uuid` field
     2.  *Current mechanism*: The submitting wrangler moves the dataset wrangling ticket either to the `AE/SCEA backlog` (if being brokered to SCEA) or to the `Finished` pipeline
 4. The Broad data import team are notified of successful export 
     1. *`Current mechanism`*: The submitting wrangler submits the [request for import form](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/viewform) (see [values below](#import-form-details-for-dcp-data-releases)) and notifies the import team by messaging @monster-ops in the #dcp-ops Slack channel. 
