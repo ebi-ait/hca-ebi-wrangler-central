@@ -288,7 +288,7 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
 * The ingest developer should also delete any contents of the project staging area in the staging bucket from the failed export. 
 * Wrangler will trigger export by hitting submit and following steps 2-7 until the project is available and looks ok
 9. When the project is available in the browser, the wrangler will [email](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/233) the contributor or contacts from the publication to inform them of the URL where the project is available on the Data Browser 
-10 The wrangler proceeds with brokering to SCEA or marks the project as `Finished` by updating the `hca_status` in the Dataset Tracking sheet
+10. The wrangler proceeds with brokering to SCEA or marks the project as `Finished` by updating the `hca_status` in the Dataset Tracking sheet
 
 #### Import Form Details for DCP data releases
  
