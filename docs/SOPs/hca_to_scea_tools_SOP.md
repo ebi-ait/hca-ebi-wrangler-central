@@ -67,7 +67,7 @@ Once you know how many parts your HCA dataset will be split into, assign SCEA E-
 
 ### Running the converter
 
-Login to the wrangler EC2 and follow the steps on the hca-to-scea tools repo [README](https://github.com/ebi-ait/hca-to-scea-tools#setting-the-environment-on-ec2)
+Login to the wrangler EC2 and follow the steps on the `hca-to-scea tools` repo [README](https://github.com/ebi-ait/hca-to-scea-tools#setting-the-environment-on-ec2)
 
 _While not recommended, if you would like to install locally, see [Installing on your local machine](installing-on-your-local-machine)_
 
