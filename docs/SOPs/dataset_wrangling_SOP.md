@@ -268,17 +268,17 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
 
 ### Exporting the submission to DCP2
 
-1. As soon as a dataset is ready for export, the wrangler should hit the submit button in the UI with the `Submit to the Human Cell Atlas...` checkbox ticked to trigger export and note the project UUID.
+1 As soon as a dataset is ready for export, the wrangler should hit the submit button in the UI with the `Submit to the Human Cell Atlas...` checkbox ticked to trigger export and note the project UUID.
     1. *`Current mechanism`*: Wrangler retrieves the project UUID from the URL when viewing the project in the ingest browser.
-2. The submitting wrangler checks export is complete.
+2 The submitting wrangler checks export is complete.
     1. *`Current mechanism`*: wrangler checks status in the UI, will change from exporting to exported. (This will take ~1-4 hours for most projects)
     * If export is “stuck” in exporting for more than 4 hours, Notify the ingest operations developer via the dcp-ops slack channel notifying (@hca-ingest-dev) and providing the project UUID so they can review the logs and work out what has happened. They will work with the wrangler to resolve this and re-export if necessary.
-3. The wrangling team is notified of export
+3 The wrangling team is notified of export
     1.  *Current mechanism*: The submitting wrangler changes the status in the [Dataset Tracking Sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0) to `exported`
     2.  *Current mechanism*: The submitting wrangler moves the dataset wrangling ticket either to the `AE/SCEA backlog` (if being brokered to SCEA) or to the `Finished` pipeline
-4. The Broad data import team are notified of successful export 
+4 The Broad data import team are notified of successful export 
     1. *`Current mechanism`*: The submitting wrangler submits the [request for import form](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/viewform) and notifies the import team by messaging @monster-ops in the #dcp-ops Slack channel. 
-        1. *Import Form Details for DCP data releases*
+> *Import Form Details for DCP data releases*
  
 > **Google storage cloud path** `gs://broad-dsp-monster-hca-prod-ebi-storage/prod/UUID`
 >
@@ -304,17 +304,17 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
 > 
 > **Additional Info** Most likely this will be useful to fill in for testing. 
 
-5. The submitting wrangler is notified that import and snapshot has been successful or if there are issues for EBI to investigate
+5 The submitting wrangler is notified that import and snapshot has been successful or if there are issues for EBI to investigate
 * *`Current mechanism`*: Broad data import team will notify via slack in the dcp-ops channel slack, notifying @Hannes and @Trevor Heathorn when import and snapshot has been successful or if issues are found and pass on to the browser team.
-6. UCSC Browser team will notify submitting wrangler and Broad team when indexed and in the browser or if issues are encountered.
+6 UCSC Browser team will notify submitting wrangler and Broad team when indexed and in the browser or if issues are encountered.
 * *`Current mechanism`*: Via slack in the dcp-ops channel notifying (who?) when a dataset is in the browser or if there was any issue with indexing.
-7. When a project is available in the browser, a wrangler will do a final check that everything looks ok and notify @here on the data-ops channel. 
-8. If issues occur at any point then corrections are made as updates and then re-exported. 
+7 When a project is available in the browser, a wrangler will do a final check that everything looks ok and notify @here on the data-ops channel. 
+8 If issues occur at any point then corrections are made as updates and then re-exported. 
 * *`Current mechanism`*: In order to re-export, the wrangler will notify the ingest developer on operations to reset the project state from exported to valid.
 * The ingest developer should also delete any contents of the project staging area in the staging bucket from the failed export. 
 * Wrangler will trigger export by hitting submit and following steps 2-7 until the project is available and looks ok
-9. When the project is available in the browser, the wrangler will [email](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/233) the contributor or contacts from the publication to inform them of the URL where the project is available on the Data Browser 
-10. The wrangler proceeds with brokering to SCEA or marks the project as `Finished` by updating the `hca_status` in the Dataset Tracking sheet
+9 When the project is available in the browser, the wrangler will [email](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/233) the contributor or contacts from the publication to inform them of the URL where the project is available on the Data Browser 
+10 The wrangler proceeds with brokering to SCEA or marks the project as `Finished` by updating the `hca_status` in the Dataset Tracking sheet
 
 Notes
 {: label label-blue }
