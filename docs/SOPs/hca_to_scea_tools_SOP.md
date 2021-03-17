@@ -65,14 +65,9 @@ Once you know how many parts your HCA dataset will be split into, assign SCEA E-
 
 ### Running the converter
 
-1. login to the wrangler EC2
-1. `cd /data/tools/hca-to-scea-tools/hca2scea-backend`
-1. `source venv/bin/activate`. 
-1. Use `python script.py -h` to see the available options
+Login to the wrangler EC2 and follow the steps on the hca-to-scea tools repo [README](https://github.com/ebi-ait/hca-to-scea-tools#setting-the-environment-on-ec2)
 
-TODO: Add further instructions about the command line options
-
-_While not recommends, if you would like to install locally, see [Installing on your local machine](installing-on-your-local-machine)_
+_While not recommended, if you would like to install locally, see [Installing on your local machine](installing-on-your-local-machine)_
 
 ### Section B: Refining the metadata outputs
 
