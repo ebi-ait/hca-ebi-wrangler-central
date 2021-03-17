@@ -24,7 +24,9 @@ _Please note: this is not a tool to generate a perfect set of SCEA idf and sdrf 
 
 [Modify this diagram here](https://app.diagrams.net/?src=about#G1bP1jg52KXeVmd6HGmXxXRjfT2uEZtPDr)
 
-## Checking suitability for SCEA
+## Before you begin
+
+### Checking suitability for SCEA
 
 First, check their [`data suitability guidelines`](https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/inclusion_criteria.md) document thoroughly.
 
@@ -38,14 +40,14 @@ First, check their [`data suitability guidelines`](https://github.com/ebi-gene-e
 
 Once you think that the dataset is suitable or if you have any doubts, double-check with the SCEA team on the AIT slack channel `#hca-to-scea`
 
-## Checking fastq files
+### Checking fastq files
 
 When given the go ahead on suitability, check the fastq files are available and contain reads with the expected read length and layout for that technology
 - A tool for checking exists here:
 - If the reads cannot be processed by the SCEA pipelines, the dataset cannot be submitted to SCEA
 - If a full path to the raw data is not available in fastq format, you can alternatively provide the full path to bam files or an SRA object. But you should save these in separate directories and let Anja or Nancy know, as they have not yet implemented a pipeline to grab and process them.
 
-## Converting HCA spreadsheets to SCEA MAGE-TAB
+## Section A: Converting HCA spreadsheets to SCEA MAGE-TAB
 
 ### Splitting HCA Projects
 
