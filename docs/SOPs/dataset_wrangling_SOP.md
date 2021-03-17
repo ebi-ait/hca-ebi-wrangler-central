@@ -3,7 +3,7 @@ layout: default
 title: Wrangling datasets SOP
 parent: SOPs
 has_children: true
-last_modified_date: 13/01/2020
+last_modified_date: 17/03/2020
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
 # Wrangling Datasets SOP
@@ -205,6 +205,7 @@ Please note:
 * When uploading a spreadsheet to an existing project, no project metadata is uploaded or updated, any updates to project metadata including contributors, publications and funders must be edited directly in the UI
 * Once a project has been created in the UI, it is best practice to retain the project's unique identifier throughout the submission and validation process, so please only delete the project if there are serious issues with project level metadata that cannot be fixed easily in the UI
 * There should never be duplicate projects in the production ui, if you do need to reupload an entire project, please delete the existing project before re-uploading a spreadsheet. To delete a project in the ui:
+
 1. If the project has no submissions:
     1. go to the project page in the ui
     1. Scroll to the bottom of the page and click the trash icon next to the 'Edit Project' button
@@ -232,7 +233,7 @@ If any changes may have also affected the linking in the spreadsheet it should a
 
 A detailed guide to performing secondary review [can be found here](secondary_review_SOP).
 
-Once both the Primary and Secondary wrangler are happy with the submission and it is valid in ingest, the data files can be moved from the contributor bucket into the ingest upload area.
+Once both the Primary and Secondary wrangler are happy with the submission and it is valid in ingest, move the dataset tracker ticket to the `Ready to Export` pipeline of the [Dataset wrangling board](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) and change the `hca_status` to 'ready to export' in the [Dataset Tracking Sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0). The data files can now be moved from the contributor bucket into the ingest upload area.
 
 ## Transferring a contributor's raw data to ingest UI using `hca-util sync`
 
@@ -242,26 +243,85 @@ Alternatively, if working with a published dataset, once the wrangler has upload
 
 ## Completing the submission
 
-Once all the files have been validated the project will be ready for submission. Before hitting submit, the primary wrangler should email the contributor to confirm:
-They are happy with the final spreadsheet and curated ontologies, and 
-The date they have identified for the data and metadata to be released publicly
+Once all the files have been validated the project will be ready for submission. 
 
-<i class="fas fa-exclamation-triangle"></i> **Warning**: Wranglers should be aware of when prod releases are occurring and not upload/submit until after the release to that environment is completed. Releases do not currently follow a set schedule so stay tuned to updates posted in the `#hca` slack channel in the AIT workspace. See the [Ingest release SOP](https://github.com/HumanCellAtlas/ingest-central/wiki/Ingest-Release-SOP#release-schedule) for more details.
-
-Once you hit submit the project should go into ‘Archiving’ status. The precise process for identifying which of the paths the dataset will take after submission is currently being formalised by ingest. Until then the wrangler needs to inform the ingest team manually.
+If wrangling the project with direct input from a contributor, the primary wrangler should email the contributor to confirm:
+- They are happy with the final spreadsheet and curated ontologies, and 
+- The date they have identified for the data and metadata to be released publicly
 
 The path after submission can go one of several ways:
-1. the project needs to go to DCP2 and EBI Archives
-1. The project needs to go to DCP2 only
-1. The project needs to go to EBI archives only 
+1. the project needs to go to DCP and EBI Archives -> Tick both the `Submit to the EMBL-EBI public archives` an `Submit to the Human Cell Atlas` checkboxes
+1. The project needs to go to DCP only -> Tick only `Submit to the Human Cell Atlas` checkbox
+1. The project needs to go to EBI archives only (if it can't currently be exported to DCP) -> tick only `Submit to the EMBL-EBI public archives` checkbox
 
- <i class="fas fa-exclamation-triangle"></i> **Warning** as at 15/12/2020 we are not currently following paths 1 & 2 because we can't currently export to DCP2, hopefully this will be resolved in early 2021
+Always untick the `Delete the upload area and data files after successful submission.` checkbox.
 
-After the data has been successfully exported, we need to send an [email](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/233) to inform the data contributor of successful submission and send link to the submission. 
-Additionally, move all the corresponding documents to the [finished_projects](https://github.com/HumanCellAtlas/hca-data-wrangling/tree/master/projects/finished_projects) in hca-wrangling repo and to Google Drive/Brokering/[PROJECTS-FINISHED](https://drive.google.com/drive/folders/1FNRVqlhSwwTKoynIHhq5gsILGyRqd6F9)
+### Archiving the submission
 
+If the submission needs to be archived, ensure you have the `Submit to the EMBL-EBI public archives and get accessions...` check box ticked. If not, proceed to [exporting the submission to DCP2](#exporting-the-submission-to-dcp2)
+
+The project should go into `Archiving` status, at this point you need to inform the developer on operations who will assist with the Archiving process, which is currently semi-manual.
 
 Further documentation for the archiving process can be found here: [Ingestion to Archives Instructions](https://docs.google.com/document/d/1S4fyCSqB3nLrCUssNMwSp6ff8tmeipMi_slnXW2Lrq4/edit?pli=1#heading=h.n3qy5yl0auvs)
 
+After the project has been Archived, if the `Submit to the Human Cell Atlas...` checkbox was also ticked, the project should proceed to `Exporting` status and the following steps should be followed from step 2 onwards.
+
+### Exporting the submission to DCP2
+
+1. As soon as a dataset is ready for export, the wrangler should hit the submit button in the UI with the `Submit to the Human Cell Atlas...` checkbox ticked to trigger export and note the project UUID.
+    1. *`Current mechanism`*: Wrangler retrieves the project UUID from the URL when viewing the project in the ingest browser.
+2. The submitting wrangler checks export is complete.
+    1. *`Current mechanism`*: wrangler checks status in the UI, will change from exporting to exported. (This will take ~1-4 hours for most projects)
+    * If export is “stuck” in exporting for more than 4 hours, Notify the ingest operations developer via the dcp-ops slack channel notifying (@hca-ingest-dev) and providing the project UUID so they can review the logs and work out what has happened. They will work with the wrangler to resolve this and re-export if necessary.
+3. The wrangling team is notified of export
+    1.  *Current mechanism*: The submitting wrangler changes the status in the [Dataset Tracking Sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0) to `exported`
+    2.  *Current mechanism*: The submitting wrangler moves the dataset wrangling ticket either to the `AE/SCEA backlog` (if being brokered to SCEA) or to the `Finished` pipeline
+4. The Broad data import team are notified of successful export 
+    1. *`Current mechanism`*: The submitting wrangler submits the [request for import form](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/viewform) and notifies the import team by messaging @monster-ops in the #dcp-ops Slack channel. 
+
+> Import Form Details for DCP data releases
+> 
+>*Google storage cloud path `gs://broad-dsp-monster-hca-prod-ebi-storage/prod/UUID`
+>
+>*Environment `Prod`
+>
+>*Catalog `DCP2`
+>
+>*Dataset ID  `hca_prod_20201120_dcp2`
+>
+>*Create a snapshot? `Yes`
 
 
+>Import Form Details for DCP testing
+>*Google storage cloud path `gs://broad-dsp-monster-hca-dev-ebi-staging/staging/UUID`*
+>*Environment* likely to be `dev`
+>*Catalog* likely to be `DCP2`
+>*Dataset ID* will need to discuss with Broad
+>*Create a snapshot?* likely to be`Yes`
+
+5. The submitting wrangler is notified that import and snapshot has been successful or if there are issues for EBI to investigate
+* *`Current mechanism`*: Broad data import team will notify via slack in the dcp-ops channel slack, notifying @Hannes and @Trevor Heathorn when import and snapshot has been successful or if issues are found and pass on to the browser team.
+6. UCSC Browser team will notify submitting wrangler and Broad team when indexed and in the browser or if issues are encountered.
+* *`Current mechanism`*: Via slack in the dcp-ops channel notifying (who?) when a dataset is in the browser or if there was any issue with indexing.
+7. When a project is available in the browser, a wrangler will do a final check that everything looks ok and notify @here on the data-ops channel. 
+8. If issues occur at any point then corrections are made as updates and then re-exported. 
+* *`Current mechanism`*: In order to re-export, the wrangler will notify the ingest developer on operations to reset the project state from exported to valid.
+* The ingest developer should also delete any contents of the project staging area in the staging bucket from the failed export. 
+* Wrangler will trigger export by hitting submit and following steps 2-7 until the project is available and looks ok
+9. When the project is available in the browser, the wrangler will [email](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/233) the contributor or contacts from the publication to inform them of the URL where the project is available on the Data Browser 
+10. The wrangler proceeds with brokering to SCEA or marks the project as `Finished` by updating the `hca_status` in the Dataset Tracking sheet
+
+Notes
+{: label label-blue }
+
+* EBI will export on demand, and notify the Broad will batch import once prior to the monthly release. 
+* Responsibility for who deletes the contents of the staging area is still being decided.
+* This is likely to evolve as we go, so please note issues with completing this process so we can improve it.
+
+<i class="fas fa-exclamation-triangle"></i> **Warning**: Wranglers should be aware of when prod releases are occurring and not upload/submit until after the release to that environment is completed. Releases do not currently follow a set schedule so stay tuned to updates posted in the `#hca` slack channel in the AIT workspace. See the [Ingest release SOP](https://github.com/HumanCellAtlas/ingest-central/wiki/Ingest-Release-SOP#release-schedule) for more details.
+
+Additionally, move all the corresponding documents to the [finished_projects](https://github.com/HumanCellAtlas/hca-data-wrangling/tree/master/projects/finished_projects) in hca-wrangling repo and to Google Drive/Brokering/[PROJECTS-FINISHED](https://drive.google.com/drive/folders/1FNRVqlhSwwTKoynIHhq5gsILGyRqd6F9)
+
+## Brokering to SCEA
+
+**WIP** Will link to other documentation
