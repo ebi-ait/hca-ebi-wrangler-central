@@ -65,8 +65,16 @@ def retrieve_from_ena(study_accession: str) -> (list, list):
 
 
 def retrieve_from_sra(study_accession: str) -> (list, list):
-    search = rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term={study_accession}&retmax=100000').content
-    sra_ids = xmltodict.parse(search).get('eSearchResult', {}).get('IdList', {}).get('Id')
+    ncbi_request_url = f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term={study_accession}&retmax=100000'
+    search_result_xml = rq.get(ncbi_request_url).content
+    search_result = xmltodict.parse(search_result_xml).get('eSearchResult', {})
+    id_list = search_result.get('IdList', {})
+
+    if not id_list:
+        raise Exception(f'There is no result found for the study accession {study_accession}, url: {ncbi_request_url}')
+
+    sra_ids = id_list.get('Id')
+
     file_urls = []
     run_info = xmltodict.parse(
                                rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id={",".join(sra_ids)}').text)
