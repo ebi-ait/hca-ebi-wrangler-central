@@ -290,8 +290,8 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
 >
 > **Create a snapshot?** Tick the box
         
-        1. *Import Form Details for DCP testing*
-       
+> *Import Form Details for DCP testing*
+>     
 > **Google storage cloud path** `gs://broad-dsp-monster-hca-dev-ebi-staging/staging/UUID` 
 > 
 > **Environment** likely to be `dev`
