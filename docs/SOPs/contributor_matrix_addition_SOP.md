@@ -44,7 +44,7 @@ For each file that is found, a row needs to be filled in the [`contributor_matri
 | organ                       | the organ present in the matrix, if multiple other fields, need to deconvolute                                               |
 | libraryConstructionApproach | the ontology label of the `library_preparation_method` used to generate the matrix/file, if multiple, need to unambiguously deconvolute            |
 | uploaded                    | Whether it has been uploaded into the google bucket for matrices                                                             |
-| date_imported.              | the date the file was imported by UCSC (filled in by UCSC when import is performed)|
+| date_imported              | the date the file was imported by UCSC (filled in by UCSC when import is performed)|
 
 If there are multiple values in one cell, they need to be delimited with comma
 
