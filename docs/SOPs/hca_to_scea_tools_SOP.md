@@ -24,108 +24,55 @@ _Please note: this is not a tool to generate a perfect set of SCEA idf and sdrf 
 
 [Modify this diagram here](https://app.diagrams.net/?src=about#G1bP1jg52KXeVmd6HGmXxXRjfT2uEZtPDr)
 
-## Before you start conversion, please check the below to see if your dataset is valid
+## Checking suitability for SCEA
 
-- The dataset must be split into 2 (or more) projects with separate E-HCAD ids if 2 (or more) technologies are used (including 10X versions). You can link 2 projects by including a 'Comment[RelatedExperiment]' in the idf file (see examples in dir: examples).
+First, check their [`data suitability guidelines`](https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/inclusion_criteria.md) document thoroughly.
 
-- The dataset must be split into 2 (or more) projects with separate E-HCAD ids if 2 (or more) species are included (e.g. human, mouse). You can link 2 projects by including a 'Comment[RelatedExperiment]' in the idf file (see examples in dir: examples).
+- The dataset must have used an SCEA supported technology (as at 2021-03-04)
+    - Smart-seq2
+    - Smart-like
+    - Drop-seq
+    - Seq-Well
+    - 10xV2 (3 prime and 5 prime)
+    - 10xV3 (3 prime)
 
+Once you think that the dataset is suitable or if you have any doubts, double-check with the SCEA team on the AIT slack channel `#hca-to-scea`
+
+## Checking fastq files
+
+When given the go ahead on suitability, check the fastq files are available and contain reads with the expected read length and layout for that technology
+- A tool for checking exists here:
+- If the reads cannot be processed by the SCEA pipelines, the dataset cannot be submitted to SCEA
 - If a full path to the raw data is not available in fastq format, you can alternatively provide the full path to bam files or an SRA object. But you should save these in separate directories and let Anja or Nancy know, as they have not yet implemented a pipeline to grab and process them.
 
-## How-to
+## Converting HCA spreadsheets to SCEA MAGE-TAB
 
-### Before proceeding with the submission to SCEA
+### Splitting HCA Projects
 
-Please make sure that the dataset is ready for SCEA. Check their [`data suitability guidelines`](https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/inclusion_criteria.md) document thoroughly. All datasets must be split by:
+Unlike HCA Datasets, SCEA Experiments need to be split based on the different pipelines required to process them.
+
+Therefore, all HCA datasets must be split by:
 - Species
 - Technology 
-    - 10x: Only 3' accepted (Mixing chemistries is OK)
+    - Except 10X v2 and v3 can be combined  
+- Depending on the project, it may make sense to split by organ 
+
+Any split datasets should be linked by including a 'Comment[RelatedExperiment]' in the idf file (see examples in dir: examples).
     
 Currently this splitting operation has to be done by manually creating as many spreadsheets as technologies the project has. **Each spreadsheet will have a different accession number**.
 
-Once the suitability has been assessed, please contact an SCEA curator via slack (#hca_to_scea chanel) and ask them to confirm the SCEA suitability/assess priority for this dataset in the [data tracking sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0)
-
-Once confirmed the dataset is suitable, assign a SCEA E-HCAD-## number by looking at the [dataset tracking sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0&fvid=1330324479) and entering the next available sequential number in the `scea_accession` column. Note this accession as you will need it throughout the conversion process.
+Once you know how many parts your HCA dataset will be split into, assign SCEA E-HCAD-## accession/s by looking at the [dataset tracking sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0&fvid=1330324479) and entering the next available sequential number in the `scea_accession` column. Note accession/s as you will need it throughout the conversion process.
 
 ### Running the converter
 
-#### On the wrangler EC2
+1. login to the wrangler EC2
+1. `cd /data/tools/hca-to-scea-tools/hca2scea-backend`
+1. `source venv/bin/activate`. 
+1. Use `python script.py -h` to see the available options
 
-1. To run the tool from the command line:
-    1. login to the wrangler EC2
-    1. `cd /data/tools/hca-to-scea-tools/hca2scea-backend`
-    1. `source venv/bin/activate`. 
-    1. Use `python script.py -h` to see the available options
+TODO: Add further instructions about the command line options
 
-2. To access the browser based ui run the following command on your local machine's terminal:
-```
-ssh -L5000:localhost:5000 <WRANGLER_USERNAME@tool.archive.data.humancellatlas.org>
-```
-Then point your browser at: [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
-
-This is accessing the tool that is running on the EC2 via your local machine. 
-
-
-#### On your local machine
-
-You will need python3 installed, if you don't have it, install from [Python's webpage](https://www.python.org/downloads/)
-
-To install the tool on your local machine:
-
-1. Clone the repository
-   ```
-   git clone https://github.com/ebi-ait/hca-to-scea-tools.git
-   cd hca-to-scea-tools/
-   ```
-1. Make sure you have installed [npm](https://www.npmjs.com/), [pip](https://pypi.org/project/pip/) and the pip package [virtualenv](https://virtualenv.pypa.io/en/latest/)
-
-1. Install the application by running
-   ```
-   cd hca2scea-backend
-   ./install.sh
-   ```
-Then once installed:
-
-1. Run the tool
-   ```
-   cd hca2scea-backend
-   npm start
-   ```
-
-1. Go to the following URI
-   ```
-   http://127.0.0.1:5000/
-   ```
-### Converting using the UI
-
-1. You should see a webpage which looks like the following:
-
-   ![Base webpage](https://github.com/ebi-ait/hca-ebi-wrangler-central/raw/master/assets/images/scea_screenshots/base_web.png)
-
-   2. Upload the spreadsheet file as indicated. Note that if your spreadsheet has multiple technologies that you will need to upload a separate spreadsheet per technology.
-
-   2. Enter an accession id number in the ‘E-HCAD-” box. The E-HCAD accession series is specifically for HCA metadata which has been converted to SCEA standard. The next number should be chosen based on the latest dataset uploaded in [SCEA's gitlab](https://gitlab.ebi.ac.uk/ebi-gene-expression/scxa-metadata/-/tree/master/HCAD).
-
-   2. Enter the curator’s initials (1 wrangler per box). There is an option to click the “-” button to remove the 2nd box. Default values are AD and JFG.
-
-   2. Once you are happy with this, click on ‘process!’.
-
-   2. A new step will appear: “Force a Project UUID”. You can either enter a uuid or click “Fill in project details manually”. **For now, always click `Fill in project details manually`**. This will ensure the correct information is added to the idf and sdrf files.
-
-
-3. You should now see a webpage like the following:
-    
-   ![protocol matching](https://github.com/ebi-ait/hca-ebi-wrangler-central/raw/master/assets/images/scea_screenshots/protocol_matching.png)
-   
-   You can edit the text inside the protocol descriptions and merge the protocols into 1 by dropping and dragging. The idea is to keep duplication across protocols as minimal as possible. If there are no values in the protocol descriptions, they will be filled with `nan`. Please fill in a brief description.
-
-4. You should also see the following on the same webpage:
-   
-   ![pre filled values](https://github.com/ebi-ait/hca-ebi-wrangler-central/raw/master/assets/images/scea_screenshots/pre_filled_values.png)
-    
-   These are pre-filled values for the sequencing protocol that is specified in the HCA metadata spreadsheet. Currently, if ‘10X v2 sequencing’ is specified, these fields are pre-filled. You can then manually edit them. If another technology is specified, these fields are not pre-filled and you need to enter the information here manually. SCEA requires that datasets are split by technology, so you should only have 1 technology type in your HCA metadata file.
-
-5. Click `this looks alright`. An idf and sdrf file will be generated in a newly created folder inside the `hca-scea-tools/hca2scea-backend/spreadsheets` folder in your local repository directory.
+_While not recommends, if you would like to install locally, see [Installing on your local machine](installing-on-your-local-machine)_
 
 ### Section B: Refining the metadata outputs
 
@@ -342,3 +289,83 @@ This table shows the source of the columns generated in the MAGE-TAB file.
 | `Comment[read1 file]`                      | Column                   | `sequence_file.file_core.file_name_read1`                                 |              |
 | `Comment[read2 file]`                      | Column                   | `sequence_file.file_core.file_name_read2`                                 |              |
 | `Comment[index1 file]`                     | Column                   | `sequence_file.file_core.file_name_index`                                 |              |
+
+### Appendix
+
+#### Installing on your local machine
+
+You will need python3 installed, if you don't have it, install from [Python's webpage](https://www.python.org/downloads/)
+
+To install the tool on your local machine:
+
+1. Clone the repository
+   ```
+   git clone https://github.com/ebi-ait/hca-to-scea-tools.git
+   cd hca-to-scea-tools/
+   ```
+1. Make sure you have installed [npm](https://www.npmjs.com/), [pip](https://pypi.org/project/pip/) and the pip package [virtualenv](https://virtualenv.pypa.io/en/latest/)
+
+1. Install the application by running
+   ```
+   cd hca2scea-backend
+   ./install.sh
+   ```
+Then once installed:
+
+1. Run the tool
+   ```
+   cd hca2scea-backend
+   npm start
+   ```
+
+1. Go to the following URI
+   ```
+   http://127.0.0.1:5000/
+   ```
+
+#### Running the browser-based version from ec2
+
+**Note - The browser-based version is currently not fully featured and is not recommended
+**
+
+2. To access the browser based ui run the following command on your local machine's terminal:
+```
+ssh -L5000:localhost:5000 <WRANGLER_USERNAME@tool.archive.data.humancellatlas.org>
+```
+Then point your browser at: [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+
+This is accessing the tool that is running on the EC2 via your local machine. 
+
+#### Converting using the UI 
+ 
+ Not recommended
+ {:label:}
+
+1. You should see a webpage which looks like the following:
+
+   ![Base webpage](https://github.com/ebi-ait/hca-ebi-wrangler-central/raw/master/assets/images/scea_screenshots/base_web.png)
+
+   2. Upload the spreadsheet file as indicated. Note that if your spreadsheet has multiple technologies that you will need to upload a separate spreadsheet per technology.
+
+   2. Enter an accession id number in the ‘E-HCAD-” box. The E-HCAD accession series is specifically for HCA metadata which has been converted to SCEA standard. The next number should be chosen based on the latest dataset uploaded in [SCEA's gitlab](https://gitlab.ebi.ac.uk/ebi-gene-expression/scxa-metadata/-/tree/master/HCAD).
+
+   2. Enter the curator’s initials (1 wrangler per box). There is an option to click the “-” button to remove the 2nd box. Default values are AD and JFG.
+
+   2. Once you are happy with this, click on ‘process!’.
+
+   2. A new step will appear: “Force a Project UUID”. You can either enter a uuid or click “Fill in project details manually”. **For now, always click `Fill in project details manually`**. This will ensure the correct information is added to the idf and sdrf files.
+
+
+3. You should now see a webpage like the following:
+    
+   ![protocol matching](https://github.com/ebi-ait/hca-ebi-wrangler-central/raw/master/assets/images/scea_screenshots/protocol_matching.png)
+   
+   You can edit the text inside the protocol descriptions and merge the protocols into 1 by dropping and dragging. The idea is to keep duplication across protocols as minimal as possible. If there are no values in the protocol descriptions, they will be filled with `nan`. Please fill in a brief description.
+
+4. You should also see the following on the same webpage:
+   
+   ![pre filled values](https://github.com/ebi-ait/hca-ebi-wrangler-central/raw/master/assets/images/scea_screenshots/pre_filled_values.png)
+    
+   These are pre-filled values for the sequencing protocol that is specified in the HCA metadata spreadsheet. Currently, if ‘10X v2 sequencing’ is specified, these fields are pre-filled. You can then manually edit them. If another technology is specified, these fields are not pre-filled and you need to enter the information here manually. SCEA requires that datasets are split by technology, so you should only have 1 technology type in your HCA metadata file.
+
+5. Click `this looks alright`. An idf and sdrf file will be generated in a newly created folder inside the `hca-scea-tools/hca2scea-backend/spreadsheets` folder in your local repository directory.
