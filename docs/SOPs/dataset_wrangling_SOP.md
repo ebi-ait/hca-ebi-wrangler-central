@@ -279,8 +279,8 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
 4. The Broad data import team are notified of successful export 
     1. *`Current mechanism`*: The submitting wrangler submits the [request for import form](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/viewform) and notifies the import team by messaging @monster-ops in the #dcp-ops Slack channel. 
 
-> **Import Form Details for DCP data releases**
-> 
+        1.*Import Form Details for DCP data releases*
+ 
 > **Google storage cloud path** `gs://broad-dsp-monster-hca-prod-ebi-storage/prod/UUID`
 >
 > **Environment** `Prod`
@@ -291,8 +291,7 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
 >
 > **Create a snapshot?** Tick the box\
 
-
-> **Import Form Details for DCP testing**
+        1. **Import Form Details for DCP testing**
 >
 > **Google storage cloud path** `gs://broad-dsp-monster-hca-dev-ebi-staging/staging/UUID` 
 > 
