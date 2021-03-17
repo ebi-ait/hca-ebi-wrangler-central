@@ -250,7 +250,7 @@ If wrangling the project with direct input from a contributor, the primary wrang
 - The date they have identified for the data and metadata to be released publicly
 
 The path after submission can go one of several ways:
-1. the project needs to go to DCP and EBI Archives -> Tick both the `Submit to the EMBL-EBI public archives` an `Submit to the Human Cell Atlas` checkboxes
+1. the project needs to go to DCP and EBI Archives -> Tick both the `Submit to the EMBL-EBI public archives` and `Submit to the Human Cell Atlas` checkboxes
 1. The project needs to go to DCP only -> Tick only `Submit to the Human Cell Atlas` checkbox
 1. The project needs to go to EBI archives only (if it can't currently be exported to DCP) -> tick only `Submit to the EMBL-EBI public archives` checkbox
 
@@ -279,25 +279,32 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
 4. The Broad data import team are notified of successful export 
     1. *`Current mechanism`*: The submitting wrangler submits the [request for import form](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/viewform) and notifies the import team by messaging @monster-ops in the #dcp-ops Slack channel. 
 
-> Import Form Details for DCP data releases
+#### Import Form Details for DCP data releases
 > 
->*Google storage cloud path `gs://broad-dsp-monster-hca-prod-ebi-storage/prod/UUID`
+> **Google storage cloud path** `gs://broad-dsp-monster-hca-prod-ebi-storage/prod/UUID`
 >
->*Environment `Prod`
+> **Environment** `Prod`
 >
->*Catalog `DCP2`
+> **Catalog** `DCP2`
 >
->*Dataset ID  `hca_prod_20201120_dcp2`
+> **Dataset ID**  `hca_prod_20201120_dcp2`
 >
->*Create a snapshot? `Yes`
+> **Create a snapshot?** Tick the box
 
 
->Import Form Details for DCP testing
->*Google storage cloud path `gs://broad-dsp-monster-hca-dev-ebi-staging/staging/UUID`*
->*Environment* likely to be `dev`
->*Catalog* likely to be `DCP2`
->*Dataset ID* will need to discuss with Broad
->*Create a snapshot?* likely to be`Yes`
+#### Import Form Details for DCP testing
+>
+> **Google storage cloud path** `gs://broad-dsp-monster-hca-dev-ebi-staging/staging/UUID` 
+> 
+> **Environment** likely to be `dev`
+> 
+> **Catalog** likely to be `DCP2`
+> 
+> **Dataset ID** Check with Broad import team
+> 
+> **Create a snapshot?** likely to be `Yes`, check with Broad import team
+> 
+> **Additional Info** Most likely this will be useful to fill in for testing. 
 
 5. The submitting wrangler is notified that import and snapshot has been successful or if there are issues for EBI to investigate
 * *`Current mechanism`*: Broad data import team will notify via slack in the dcp-ops channel slack, notifying @Hannes and @Trevor Heathorn when import and snapshot has been successful or if issues are found and pass on to the browser team.
