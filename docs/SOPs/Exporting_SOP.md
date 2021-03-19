@@ -16,7 +16,7 @@ last_modified_date: 13/01/2020
 This describes the process for exporting completed projects or updated projects to the DCP
 
 
-1. As soon as a dataset is ready for export the wrangler should hit the submit button in the UI to trigger export and note the project UUID.
+1. As soon as a dataset is ready for export the wrangler should hit the submit button in the UI to trigger export and note the project UUID (make sure the submit to archive box is unticked).
 * *`Current mechanism`*: Wrangler retrieves the project UUID from the URL when viewing the project in the ingest browser.
 2. The submitting wrangler checks export is complete.
 * *`Current mechanism`*: wrangler checks status in the UI, will change from exporting to exported. (This will take ~1-4 hours for most projects)
