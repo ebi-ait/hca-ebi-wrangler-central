@@ -3,7 +3,7 @@ layout: default
 title: Wrangling datasets SOP
 parent: SOPs
 has_children: true
-last_modified_date: 17/03/2020
+last_modified_date: 22/03/2020
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
 # Wrangling Datasets SOP
@@ -12,7 +12,7 @@ last_modified_date: 17/03/2020
 ## Background
 {: .no_toc }
 
-This SOP document aims to describe the process of receiving new datasets from contributors and uploading their metadata and data to ingest for archiving in EBI archives and submission to DCP2.0. This SOP was last updated on 2021-01-25 and is subject to change as the AIT HCA team software evolves. It will be updated to reflect changes.
+This SOP document aims to describe the process of receiving new datasets from contributors and uploading their metadata and data to ingest for archiving in EBI archives and submission to DCP2.0.
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -301,22 +301,18 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
   
 #### Import Form Details for DCP testing
   
-**Google storage cloud path** `gs://broad-dsp-monster-hca-dev-ebi-staging/staging/UUID` 
-
-**Environment** likely to be `dev`
-
-**Catalog** likely to be `DCP2`
-
-**Dataset ID** Check with Broad import team
-
-**Create a snapshot?** likely to be `Yes`, check with Broad import team
-
-**Additional Info** Most likely this will be useful to fill in for testing. 
+| Field                     | Explanation                                                       |
+|---------------------------|-------------------------------------------------------------------|
+| Email address             | So you can be contacted if any issues with import                 |
+| Release #                 | `Test export`                                                     |
+| Google storage cloud path | `gs://broad-dsp-monster-hca-prod-ebi-storage/staging/[PROJECT_UUID]` |
+| Additional info           | Fill in any special instructions such as details like the environment, catalog and dataset ID. If not sure ask import team on slack  |
 
 Notes
 {: label label-blue }
 
-* EBI will export on demand, and notify the Broad will batch import once prior to the monthly release. 
+* UCSC & EBI will export on demand, and notify the Broad
+* Broad will batch import once prior to the monthly release
 * Responsibility for who deletes the contents of the staging area is still being decided.
 * This is likely to evolve as we go, so please note issues with completing this process so we can improve it.
 
