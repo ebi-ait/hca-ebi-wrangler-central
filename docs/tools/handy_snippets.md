@@ -121,7 +121,7 @@ These instructions are for getting BAM files of primary sequence data from the E
 
 If you don't have `wget` installed on the machine where you want to download the files (it is on the EC2 already), you can find instructions how to install it with Homebrew for Mac [here](https://www.cyberciti.biz/faq/howto-install-wget-om-mac-os-x-mountain-lion-mavericks-snow-leopard/).
 
-To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.com/docs/bamtofastq) and click "Download bamtofastq 1.1.2" to download the executable file to your local machine. There is no need to compile the tool. Simply move or copy the file to the machine where you want to use it (e.g. your home directory on the EC2), making sure to put it somewhere on your `$PATH` if you want to be able to call it from any folder.
+To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.com/docs/bamtofastq) and click "Download bamtofastq [VERSION_NUMBER]" to download the executable file to your local machine. There is no need to compile the tool. Simply move or copy the file to the machine where you want to use it (e.g. your home directory on the EC2) and run the command `chmod 700 bamtofastq-<VERSION_NUMBER>`, making sure to put it somewhere on your `$PATH` if you want to be able to call it from any folder.
 
 ### Usage
 
