@@ -233,17 +233,15 @@ A detailed guide to performing secondary review [can be found here](secondary_re
 
 Once both the Primary and Secondary wrangler are happy with the submission and it is valid in ingest, move the dataset tracker ticket to the `Ready to Export` pipeline of the [Dataset wrangling board](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) and change the `hca_status` to 'ready to export' in the [Dataset Tracking Sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0). The data files can now be moved from the contributor bucket into the ingest upload area.
 
-## Transferring a contributor's raw data to ingest UI using `hca-util sync`
+## Transferring data from `hca-util` upload area to ingest upload area
 
-Once the contributor has uploaded all the data that is specified for the project and you have a valid metadata submission in the UI, follow the [hca-util guide](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util#sync-data-to-the-ingest-s3-bucket) to sync their data to ingest. 
-
-Alternatively, if working with a published dataset, once the wrangler has uploaded the raw data to the Hca-util upload area, follow the same guide as above to sync your data to ingest. 
+Once the contributor has uploaded all the data that is specified for the project or you have transferred the raw data files from the archive into an `hca-util` upload area and you have a valid metadata submission in the ingest UI, follow the [hca-util guide](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util#sync-data-to-the-ingest-s3-bucket) to sync the data to the `Upload Area Location` that is specified on the submission at the bottom of the `Data` tab. 
 
 ## Completing the submission
 
 Once all the files have been validated the project will be ready for submission. 
 
-If wrangling the project with direct input from a contributor, the primary wrangler should email the contributor to confirm:
+If wrangling the project with direct input from a contributor, the primary wrangler should [email the contributor](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/contributor_communication_SOP.html#final-confirmation-before-submission) to confirm:
 - They are happy with the final spreadsheet and curated ontologies, and 
 - The date they have identified for the data and metadata to be released publicly
 
