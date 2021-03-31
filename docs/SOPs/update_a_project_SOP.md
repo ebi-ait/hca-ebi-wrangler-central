@@ -66,6 +66,10 @@ To edit metadata entities in a submission, select the desired submission. There 
 After saving the changes, the submission state should move from 'Exported' back to 'Valid'. You can then 'Submit' the submission once more, taking care to uncheck the option to delete the upload area, unless you are certain this is the final update. This will export the submission to the downstream components. See the '[Exporting SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Exporting_SOP.html)' for more details. 
 
 ### Updating / Adding links between metadata entities
+
+NOT CURRENTLY SUPPORTED DOWNSTREAM OF INGEST
+{: .label .label-yellow }
+
 We are also now able to remove or create links between metadata entities. This can be done from the Process Tab of a submission. Expand the specific process that needs to be edited, and there are three columns: Inputs, Protocols, and Outputs. 
 
 From this screen, we can remove or add new inputs, new protocols, and new outputs to be linked to this specific process. There is a search field for searching through entities, but this currently searches through all entities in the entire environment (not restricted to this project). One workaround to find the specific entity may be to rename the entity in the Ingest-UI, allowing it to be found easier. 
@@ -86,6 +90,7 @@ Now you will be able to export the submission to the downstream components. See 
 ## Exporting a submission to downstream components
 There is a fantastic SOP [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Exporting_SOP.html). 
 
+When filling in the import request form for export of an update submission, please specify in the comments section that it is an update so that the import team is aware.
 
 Not functional: 
 1. If the performer has the ability to download a spreadsheet from the ingest UI with the appropriate UUIDs, the performer can follow the [ingest guide here](https://github.com/HumanCellAtlas/ingest-central/wiki/Updating-Metadata-through-Spreadsheets)
