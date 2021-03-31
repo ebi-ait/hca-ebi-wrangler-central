@@ -293,7 +293,7 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
 | Email address             | So you can be contacted if any issues with import                 |
 | Release #                 | The integer number of the ~monthly release cutoff                 |
 | Google storage cloud path | `gs://broad-dsp-monster-hca-prod-ebi-storage/prod/[PROJECT_UUID]` |
-| Additional info           | Optional field, leave any comments if desired                     |
+| Additional info           | If exporting an update to an existing project, please flag here it is an update and whether it is metadata only or files have been updated.|
   
 #### Import Form Details for DCP testing
   
