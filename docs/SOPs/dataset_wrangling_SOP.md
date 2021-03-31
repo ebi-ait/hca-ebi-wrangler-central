@@ -122,9 +122,12 @@ Once you have a customised and potentially pre-filled spreadsheet it can be sent
 
 ## Raw Data Upload (fastq)
 
-In order for a contributor to upload their data, you will need to:
+### AWS User for Contributors
 
-- provide them with a data upload area UUID
+In order for a contributor to upload their data, they would need their own AWS user that is assigned to the hca-contirbutor group. A dev would need to create the user for them using the commands listed below.
+
+### Data upload Procedure
+
 - create an AWS user for them
   
 ```shell
@@ -135,6 +138,7 @@ aws iam add-user-to-group --group hca-contributor --user-name alice
 aws iam create-access-key --user-name alice 
 ```
 - provide them a set of contributor AWS access keys. 
+- provide them with a data upload area UUID
 
 These two sets of information need to be sent separately to minimise the chance of them falling into the wrong hands and being misused.
 
