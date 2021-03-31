@@ -88,9 +88,9 @@ Once the spreadsheet is completed, then create a new submission to the project u
 Now you will be able to export the submission to the downstream components. See '[here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Exporting_SOP.html)'. 
 
 ## Exporting a submission to downstream components
-There is a fantastic SOP [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Exporting_SOP.html). 
+There is a fantastic SOP [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_wrangling_SOP.html#exporting-the-submission-to-dcp). 
 
-When filling in the import request form for export of an update submission, please specify in the comments section that it is an update so that the import team is aware.
+When filling in the import request form for export of an update submission, please specify in the 'Additional info' section that it is an update so that the import team is aware.
 
 Not functional: 
 1. If the performer has the ability to download a spreadsheet from the ingest UI with the appropriate UUIDs, the performer can follow the [ingest guide here](https://github.com/HumanCellAtlas/ingest-central/wiki/Updating-Metadata-through-Spreadsheets)
