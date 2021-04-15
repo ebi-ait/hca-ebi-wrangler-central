@@ -11,7 +11,7 @@ duplicated entries
 
 Usage: python3 compare_tracker_with_nxn_sheet.py [-cd]
 Last time updated:
-2021-02-11T09:29:00.962945Z
+2021-04-15T10:12:23.320116Z
 """
 
 import argparse
@@ -209,7 +209,7 @@ def select_unique_studies(valentines_sheet: [[]], tracking_sheet: [[]]) -> [[]]:
     unregistered_titles = {title for title in unregistered_titles if not any([get_distance_metric(title, tracking_title)
                                                                               >= 97 for tracking_title in tracking_sheet_titles])}
 
-    full_unregistered_table = [row for row in second_unregistered_table if row[v_title_index] in unregistered_titles]
+    full_unregistered_table = [row for row in second_unregistered_table if reformat_title(row[v_title_index]) in unregistered_titles]
 
     return full_unregistered_table
 
