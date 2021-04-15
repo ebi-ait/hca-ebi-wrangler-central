@@ -109,7 +109,6 @@ MATCH p=(:project)<-[:PROJECTS]-(:donor_organism)-[:DUMMY_EXPERIMENTAL_DESIGN]->
 RETURN p
 ```
 
-
 ## Downloading 10x files from archives
 
 These instructions are for getting BAM files of primary sequence data from the ENA that represent 10X sequencing data and converting them to the original I1, R1, and R2 files using the 10X `bamtofastq` tool. Please note that this tool only works for 10X data, and even then only for data processed with CellRanger and LongRagner. See the [10X website](https://support.10xgenomics.com/docs/bamtofastq) for more information about what data can be converted with this tool.
@@ -121,7 +120,7 @@ These instructions are for getting BAM files of primary sequence data from the E
 
 If you don't have `wget` installed on the machine where you want to download the files (it is on the EC2 already), you can find instructions how to install it with Homebrew for Mac [here](https://www.cyberciti.biz/faq/howto-install-wget-om-mac-os-x-mountain-lion-mavericks-snow-leopard/).
 
-To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.com/docs/bamtofastq) and click "Download bamtofastq 1.1.2" to download the executable file to your local machine. There is no need to compile the tool. Simply move or copy the file to the machine where you want to use it (e.g. your home directory on the EC2), making sure to put it somewhere on your `$PATH` if you want to be able to call it from any folder.
+To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.com/docs/bamtofastq) and click "Download bamtofastq [VERSION_NUMBER]" to download the executable file to your local machine. There is no need to compile the tool. Simply move or copy the file to the machine where you want to use it (e.g. your home directory on the EC2) and run the command `chmod 700 bamtofastq-<VERSION_NUMBER>`, making sure to put it somewhere on your `$PATH` if you want to be able to call it from any folder.
 
 ### Usage
 
@@ -129,17 +128,55 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
 1. From the "Study" view showing all the experiments, copy the ftp URL to the "BAM File 1" for the run you want from the "Submitted files (FTP)" column. **Pro-tip: right-click "BAM File 1" and select "Copy link address" to get the URL**.
 1. From wherever you want to temporarily store the files (e.g. EC2, another server), use `wget` to download the BAM file.
 
-	wget <paste ftp URL>
+```
+wget <paste ftp URL>
+```
 
 1. After the BAM file has been downloaded, convert to fastq files using the `bamtofastq` tool.
-
-	bamtofastq <downloaded_bam>.bam <name of a folder to put fastqs in>
+```
+bamtofastq <downloaded_bam>.bam <name of a folder to put fastqs in>
+```
 
 1. By default, fastq files are generated with a max of 50M reads per file. If there are more reads, the files will be split across multiple sets of fastqs. It is recommended to avoid this (it means you'll have to concatenate them later) by using the `--reads-per-fastq` parameter. Below, the max reads per file is set to 500M: 
-
-	bamtofastq --reads-per-fastq=500000000 <downloaded_bam>.bam <name of a folder to put fastqs in>
-
+```
+bamtofastq --reads-per-fastq=500000000 <downloaded_bam>.bam <name of a folder to put fastqs in>
+```
 1. Bask in the joy of being able to get R1, R2, AND I1 files from BAMs
+
+
+## Downloading and converting SRA objects from SRA
+
+Sometimes when converting published datasets from GEO, there are only single fastq files available for download when there should be two (R1/R2) or three files (I1/R1/R2) per run depending on the type of sequencing.
+
+### Prerequisites
+- `virtualenv`
+- `python3`
+- `sratoolkit` 
+    - [Download and install (Ubuntu version if on EC2)](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit#the-installation-processes-for-mac-os-x-and-the-two-linux-distributions-are-roughly-identical)
+
+### To download all sra objects from a project with pysradb
+
+[pysradb](https://saket-choudhary.me/pysradb/) is a convenient way to `prefetch` all runs from a given project accession. Example usage to download all runs from an SRP accession
+
+1. Activate your desired virtualenv
+1. Install pysradb with `pip install pysradb`
+1.
+
+```
+pysradb download -y -t 3 --out-dir ./pysradb_downloads -p SRP063852
+```
+
+This command saves sra object files in a folder structure of `SRP`/`SRX`/`SRR`.
+
+To convert each SRR sra object to separate fastqs, we need to use the [`fastq-dump`](https://ncbi.github.io/sra-tools/fastq-dump.html) command in the sratoolkit
+
+```
+fastq-dump --split-files <path to file/accession>
+```
+
+You can use a bash for loop to iterate over all the runs that were downloaded.
+
+It may be possible to also use [`fasterq-dump`](https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump), but we haven't tried this yet. Feel free to try it and expand this snippet.
 
 
 ## Uploading files to an s3 bucket from the archives
@@ -182,7 +219,7 @@ To "install" `bamtofastq`, go to [10X’s website](https://support.10xgenomics.c
    ```
    python3 move_data_from_insdc.py -s <study/project accession> -o s3://hca-util-upload-area/<upload_area_id> -t <number_of_threads>
    ```
-1. Enjoy while your data gets loaded into the s3 area!
+1. Enjoy while your data gets loaded into the s3 area! If you are running into some errors, the default database accession is the SRA, so try the corresponding SRA accession as an input to the script.
 
 ### Notes
 
@@ -218,7 +255,7 @@ aws s3 sync <s3 bucket URI> /data/<data-folder>/
 Include only certain files using `--exclude` and `--include`:
 
 ```
-aws s3 sync <s3 bucket URI> /data/<data-folder>/ --exclude "*" --includ "SRR43*.fastq.gz"
+aws s3 sync <s3 bucket URI> /data/<data-folder>/ --exclude "*" --include "SRR43*.fastq.gz"
 ```
 
 Run `fastq_info` for a particular file:
@@ -389,6 +426,38 @@ rsync -r <username>@tool.archive.data.humancellatlas.org:/path/to/file/*.fastq.g
 ```
 rsync /localmachine/path/to/file <username>@tool.archive.data.humancellatlas.org:/EC2/path/to/file
 ```
+
+## Transfer files between local and EC2: Cyberduck
+
+### Install Cyberduck
+
+EBI mac users can download from the Managed Software Centre, or else see: [Cyberduck](https://cyberduck.io/download/).
+
+Currently only for Windows and Mac users.
+
+### Configure connection to the EC2
+
+1. Open the Cyberduck application and go to top menu option `File > Open connection`
+1. Choose `SFTP (SSH File Transfer Protocol)` and fill in the server, username and password information as follows:
+    1. Server: tool.archive.data.humancellatlas.org
+    1. Username: your EC2 username
+    1. Password: your EC2 password
+    1. SSH Private Key: path to your private key, the default will probably work unless you configured this differently  
+1. Click `Connect`
+
+### Browse, download, upload
+
+You should then be able to browse files on the EC2. 
+
+To **download** a file from the EC2, simply double click it and it should get downloaded to your default download location (usually Downloads folder).
+
+To **upload** a file to the EC2, navigate to the folder where you want the file uploaded, go to the top menu `File > Upload...` and choose the file. you may be prompted for your Username, Password and private key location, enter these and confirm and you file should get uploaded to that location.
+
+To store the information you configured, go to the top menu option `Bookmark > New bookmark`. The next time you open the program you should be able to double click the bookmark in order to connect without having to enter the above information again.
+
+This program can also be used for syncing files to ftp sites, such as for ArrayExpress submissions.
+
+[reference](http://www.brianhoshi.com/blog/how-to-ftp-into-your-ec2-instance-with-cyberduck/)
 
 ## Extract all text to ontology mappings from one or more submissions in ingest
 

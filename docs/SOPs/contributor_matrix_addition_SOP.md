@@ -27,10 +27,11 @@ Where either the expression matrix or cell type annotations cannot be found, the
 
 ## Filling in metadata about the files
 
-For each file that is found, a row needs to be filled in the `contributor_matrices_metadata_[MM]-[YYYY]` for the appropriate release found in the [Contributor Matrices folder](https://drive.google.com/open?id=1FMjJwYamMyuCtNJoTiA30kM3vsL6Q8LD) in the Brokering folder.
+For each file that is found, a row needs to be filled in the [`contributor_matrices_metadata`](https://docs.google.com/spreadsheets/d/1m9tXswoNAEYJDVlCKqc9L6p0c7hbOwddkQxdqxXydqY/edit#gid=0) found in the [Contributor Matrices folder](https://drive.google.com/open?id=1FMjJwYamMyuCtNJoTiA30kM3vsL6Q8LD) in the Brokering folder.
 
 | Field                       | Definition                                                                                                                   |
 |-----------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| date_added                  | the date the row was added to the sheet in YYYY-MM-DD format.                                                                |
 | project_uuid                | the uuid of the project                                                                                                      |
 | project_shortname           | the shortname of the project                                                                                                 |
 | gex matrix                  | Y/N whether the file is a count matrix                                                                                       |
@@ -43,6 +44,7 @@ For each file that is found, a row needs to be filled in the `contributor_matric
 | organ                       | the organ present in the matrix, if multiple other fields, need to deconvolute                                               |
 | libraryConstructionApproach | the ontology label of the `library_preparation_method` used to generate the matrix/file, if multiple, need to unambiguously deconvolute            |
 | uploaded                    | Whether it has been uploaded into the google bucket for matrices                                                             |
+| date_imported               | the date the file was imported by UCSC in YYYY-MM-DD format (filled in by UCSC when import is performed)                     |
 
 If there are multiple values in one cell, they need to be delimited with comma
 
@@ -50,7 +52,7 @@ If there are multiple values in one cell, they need to be delimited with comma
 
 Files need to be uploaded to the [google bucket](https://console.cloud.google.com/storage/browser/hca-prod-ebi-matrices)
 
-The way we did it last time was to create a folder for each project as `[project_uuid]-[project_shortname]`, then have all the files for that project inside that folder. Worth checking with UCSC browser team if they want this to remain the same.
+Files from the same project are put into a folder `[project_uuid]-[project_shortname]`
 
 If you can't access the bucket in the console link above, you need to request access from the UCSC browser team. Also check whether you have the option to upload/download/delete.
 

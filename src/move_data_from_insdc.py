@@ -33,6 +33,8 @@ def parse_args() -> argparse.Namespace:
                         help='path where files will be downloaded: can be local or s3')
     parser.add_argument('--threads', "-t", default=1, type=int,
                         help='Number of processes to simultaneously spam')
+    parser.add_argument('--database', "-db", default='sra', type=str,
+                        choices=['sra','ena'],help='Which database to use: sra or ena')
     parser.add_argument('--allowed', "-a", type=str,
                         help='Full path to plain text file with line separated list of files that should be transferred.',)
 
@@ -63,8 +65,16 @@ def retrieve_from_ena(study_accession: str) -> (list, list):
 
 
 def retrieve_from_sra(study_accession: str) -> (list, list):
-    search = rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term={study_accession}&retmax=100000').content
-    sra_ids = xmltodict.parse(search).get('eSearchResult', {}).get('IdList', {}).get('Id')
+    ncbi_request_url = f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term={study_accession}&retmax=100000'
+    search_result_xml = rq.get(ncbi_request_url).content
+    search_result = xmltodict.parse(search_result_xml).get('eSearchResult', {})
+    id_list = search_result.get('IdList', {})
+
+    if not id_list:
+        raise Exception(f'There is no result found for the study accession {study_accession}, url: {ncbi_request_url}')
+
+    sra_ids = id_list.get('Id')
+
     file_urls = []
     run_info = xmltodict.parse(
                                rq.get(f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id={",".join(sra_ids)}').text)
@@ -88,7 +98,7 @@ def retrieve_from_sra(study_accession: str) -> (list, list):
     return (file_urls, []) if file_urls else retrieve_from_ena(study_accession)
 
 
-def retrieve_file_urls(study_accession: str) -> list:
+def retrieve_file_urls(study_accession: str, database: str) -> list:
     """
     Given an ENA/GEO study or project accession, retrieve and return a list of all the ftp addresses for the files.
 
@@ -97,7 +107,7 @@ def retrieve_file_urls(study_accession: str) -> list:
     :returns files: list
                     List of all the ftp addresses for the files within the study/project.
     """
-    if "PRJEB" in study_accession:
+    if "PRJEB" in study_accession or "ERP" in study_accession or database == "ena":
         source = "ena"
     elif "E-MTAB" in study_accession:
         source = "ae"
@@ -351,7 +361,7 @@ def filter_by_allowed(allowed_list_path: str, file_list: list) -> list:
 
 
 def main(args):
-    file_list, runs_not_available = retrieve_file_urls(args.study_accession)
+    file_list, runs_not_available = retrieve_file_urls(args.study_accession,args.database)
     if not file_list:
         print("Couldn't find any mean of downloading the proper fastq. Try with the sratoolkit")
 
