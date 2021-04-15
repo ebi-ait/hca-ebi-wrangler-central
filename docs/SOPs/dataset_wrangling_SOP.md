@@ -327,6 +327,7 @@ Notes
 * Broad will batch import once prior to the monthly release
 * Responsibility for who deletes the contents of the staging area is still being decided.
 * This is likely to evolve as we go, so please note issues with completing this process so we can improve it.
+* [See this sheet](https://docs.google.com/spreadsheets/d/1xApi-qay1H9ef2JQAmPNXH63Xy-0cNYBN4wBaq-YC3U/edit?usp=sharing) for a rolling list of projects where a an import request form has been filled out.
 
 <i class="fas fa-exclamation-triangle"></i> **Warning**: Wranglers should be aware of when prod releases are occurring and not upload/submit until after the release to that environment is completed. Releases do not currently follow a set schedule so stay tuned to updates posted in the `#hca` slack channel in the AIT workspace. See the [Ingest release SOP](https://github.com/HumanCellAtlas/ingest-central/wiki/Ingest-Release-SOP#release-schedule) for more details.
 
