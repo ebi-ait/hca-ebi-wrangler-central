@@ -140,26 +140,47 @@ def search_zooma(term, key, json_schemas):
         print("No Zooma curations found, continuing to OLS search.")
         return None
 
-    for annotation in zooma_response:
-        if annotation['provenance']['evidence'] == 'ZOOMA_INFERRED_FROM_CURATED' and \
-                (annotation['confidence'] == 'HIGH' or annotation['confidence'] == 'GOOD'):
-            ols_response = re.get('http://www.ebi.ac.uk/ols/api/terms/findByIdAndIsDefiningOntology?iri={}'.format(annotation['semanticTags'][0])).json()
+    for annotation in response_json:
+        if annotation['provenance']['evidence'] == 'ZOOMA_INFERRED_FROM_CURATED':
+            ols_response = re.get('http://www.ebi.ac.uk/ols/api/terms/findByIdAndIsDefiningOntology?iri={}'.format(annotation['semanticTags'][0]))
             zooma_annotation = {}
-            zooma_annotation['label'] = ols_response['_embedded']['terms'][0]['label']
-            zooma_annotation['obo_id'] = ols_response['_embedded']['terms'][0]['obo_id']
-            zooma_annotation['confidence'] = annotation['confidence']
-            annotation_list.append(zooma_annotation)
+            try:
+                ols_json = ols_response.json()
+                zooma_annotation['label'] = ols_json['_embedded']['terms'][0]['label']
+                zooma_annotation['obo_id'] = ols_json['_embedded']['terms'][0]['obo_id']
+                zooma_annotation['confidence'] = annotation['confidence']
+                zooma_annotation['source'] = annotation['derivedFrom']['provenance']['source']['name']
+                annotation_list.append(zooma_annotation)
+            except KeyError as e:
+                print(e)
+                print("couldn't retrieve term by defining")
+                print('http://www.ebi.ac.uk/ols/api/terms/findByIdAndIsDefiningOntology?iri={}'.format(annotation['semanticTags'][0]))
+                return None
     i = 1
-    for ann in annotation_list:
-        print("{}. {} - {} with confidence level: {}\n".format(str(i), ann['obo_id'], ann['label'], ann['confidence']))
-        i += 1
-    answer = input("Found matches above from zooma, please enter number of the preferred term as an integer.\nIf no appropriate match enter 'n'\n")
-    try:
-        return annotation_list[int(answer)]
-    except ValueError as e:
-        "No appropriate annotation found, trying normal OLS search"
+    if len(annotation_list) > 0:
+        for ann in annotation_list:
+            if term.lower() == ann['label'].lower():
+                print("Found exact match {} - {} for text input {}.".format(ann['obo_id'], ann['label'], term))
+                return ann
+            elif len(annotation_list) == 1 and ann['confidence'] == 'HIGH' and ann['source'] == 'HCA':
+                print("Found HIGH confidence HCA single match, using {} - {} for text input {}.".format(ann['obo_id'],
+                                                                                                        ann['label'],
+                                                                                                        term))
+                return ann
+            if i == 1:
+                print("\nFound the matches below using ZOOMA for text input '{}':\n".format(term))
+            print("{}. {} - {} with confidence level: '{}' from source '{}'".format(str(i), ann['obo_id'],
+                                                                                      ann['label'], ann['confidence'],
+                                                                                      ann['source']))
+            i += 1
+        answer = input("Please enter the number of the preferred term as an integer.\nIf no appropriate match enter 'n' to search the OLS\n")
+        try:
+            return annotation_list[int(answer)-1]
+        except ValueError as e:
+            "No appropriate annotation found, trying normal OLS search"
+            return None
+    else:
         return None
-
 
 
 def select_term(ontologies_list, term, key, json_schemas, known_iri={}, multi_flag = False):
@@ -229,27 +250,24 @@ def parse_wb(file_name, wb, schema, api):
                     if api == "zooma":
                         zooma_annotation = search_zooma(cell.value, sheet["{}4".format(get_column_letter(cell.column))].value, schema)
                         if zooma_annotation:
-                            sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value = \
-                            zooma_annotation["obo_id"]
-                            sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = \
-                            zooma_annotation["label"]
-                        else:
-                            api = "ols"
-
-                    elif api == "ols":
-                        ontologies_list, known_iri = search_child_term(cell.value, sheet[
-                            "{}4".format(get_column_letter(cell.column))].value, schema)
-                        # Select the correct ontology from the list and write it to excel
-                        if ontologies_list:
-                            ontology, known_iri = select_term(ontologies_list, cell.value, sheet["{}4".format(get_column_letter(cell.column))].value, schema, known_iri)
+                            sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value = zooma_annotation["obo_id"]
+                            sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = zooma_annotation["label"]
                             known_terms.append(cell.value)
-                            if isinstance(ontology, list):
-                                ontologies = {}
-                                ontologies["obo_id"] = "||".join([ontology_element["obo_id"] for ontology_element in ontology if "obo_id" in ontology_element])
-                                ontologies["label"] = "||".join([ontology_label["label"] for ontology_label in ontology if "obo_id" in ontology_label])
-                                ontology = ontologies
+                            known_ontologies[cell.value] = zooma_annotation
+                        else:
+                            ontologies_list, known_iri = search_child_term(cell.value, sheet[
+                                "{}4".format(get_column_letter(cell.column))].value, schema)
+                            # Select the correct ontology from the list and write it to excel
+                            if ontologies_list:
+                                ontology, known_iri = select_term(ontologies_list, cell.value, sheet["{}4".format(get_column_letter(cell.column))].value, schema, known_iri)
+                                known_terms.append(cell.value)
+                                if isinstance(ontology, list):
+                                    ontologies = {}
+                                    ontologies["obo_id"] = "||".join([ontology_element["obo_id"] for ontology_element in ontology if "obo_id" in ontology_element])
+                                    ontologies["label"] = "||".join([ontology_label["label"] for ontology_label in ontology if "obo_id" in ontology_label])
+                                    ontology = ontologies
+                            known_ontologies[cell.value] = ontology
 
-                    known_ontologies[cell.value] = ontology
                     sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value = \
                     known_ontologies[cell.value]["obo_id"]
                     sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = \
