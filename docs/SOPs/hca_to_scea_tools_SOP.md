@@ -24,133 +24,17 @@ _Please note: this is not a tool to generate a perfect set of SCEA idf and sdrf 
 
 [Modify this diagram here](https://app.diagrams.net/?src=about#G1bP1jg52KXeVmd6HGmXxXRjfT2uEZtPDr)
 
-## Before you begin
-
 ### Checking suitability for SCEA
 
-Please refer to the `hca-to-scea tools` repo [README](https://github.com/ebi-ait/hca-to-scea-tools#setting-the-environment-on-ec2) for information on dataset suitability for SCEA.
-
-As part of this suitability criteria, there are also guidelines on how HCA datasets should be split into separate SCEA projects, if needed.
-
-You can also check the SCEA team's [`data suitability guidelines`](https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/inclusion_criteria.md) document more thoroughly.
-
-Once you think that the dataset is suitable or if you have any doubts, double-check with the SCEA team on the AIT slack channel `#hca-to-scea`
+Please refer to the `hca-to-scea tools` repo [README](https://github.com/ebi-ait/hca-to-scea-tools#setting-the-environment-on-ec2) for information on dataset suitability for SCEA. As part of this suitability criteria, there are also guidelines on how HCA datasets should be split into separate SCEA projects, if needed. You can also check the SCEA team's [`data suitability guidelines`](https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/inclusion_criteria.md) document more thoroughly. Once you think that the dataset is suitable or if you have any doubts, double-check with the SCEA team on the AIT slack channel `#hca-to-scea`
 
 ## Converting HCA spreadsheets to SCEA MAGE-TAB
 
-Login to the wrangler EC2 and follow the guide to running the hca-to-scea tool in the `hca-to-scea tools` repo [README](https://github.com/ebi-ait/hca-to-scea-tools#setting-the-environment-on-ec2)
+Please refer to the `hca-to-scea tools` repo [README](https://github.com/ebi-ait/hca-to-scea-tools#setting-the-environment-on-ec2) for information on running the tool on the wrangler EC2 and on refining the tool outputs (idf and sdrf files).
 
-_While not recommended, if you would like to install locally, see [Installing on your local machine](installing-on-your-local-machine)_
+## Validation of idf and sdrf files
 
-## Refining the metadata outputs
-
-Please follow the guide to post-processing curation of the output MAGE-TAB files, an idf file and an sdrf file, in the `hca-to-scea tools` repo [README](https://github.com/ebi-ait/hca-to-scea-tools#setting-the-environment-on-ec2)
-
-## Incorporating cell type annotations
-
-UNDER REVIEW
-{: .label .label-yellow }
-
-Information about the cell type annotations can usually be found in the paper's supplementary materials or by contacting the author directly. They can be in a variety of formats or embedded within matrix files.  
-
-A detailed guide on how to curate ontologised cell types from the author provided cell types can be found here: [SCEA curating cell types guide](https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/inferred_cell_type.md)
-
-### Incorporating into sdrf
-
-For Smart-seq 2 experiments (where there is one cell per row of the sdrf), the cell types should be incorporated directly into the sdrf file.
-
-For experiments where one row of the sdrf file is equivalent to one cell, the authors' cell type annotations should be incorporated into the sdrf file. The following columns need to be added to the sdrf file
-
-| Column name                                                      | description                                                                         | how to make                                                                       |
-|------------------------------------------------------------------|-------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| Factor Value[inferred cell type - authors labels]                | Reformatted author provided text that is displayed as an option in the SCEA browser | Usually derived from authors supplementary files                                  |
-| Factor Value Ontology Term[inferred cell type - authors labels]  | The uri for the assigned ontology term from authors labels ?                        | eg. `http://purl.obolibrary.org/obo/CL_0000084` Is this generated automatically?  |
-| Factor Value[inferred cell type - ontology labels]               | The ontology label for the curated ontology term                                    | is this generated automatically? e.g. `macrophage`                                |
-| Factor Value Ontology Term[inferred cell type - ontology labels] | The uri for the curated ontology term                                               | e.g. `http://purl.obolibrary.org/obo/CL_0000084` is this generated automatically? |
-| Comment[submitted inferred cell type] | The exact cell type as submitted by the author | directly from supplemental materials. |
-
-
-### cells.txt file
-
-For droplet type experiments (where there >1 cells for a single row in the sdrf), a `cells.txt` file needs to be created to match author assigned cell types to the outputs generated by the SCEA.
-
-The `cells.txt` file is not generated by the process above, it needs to be manually/semi automatically created by the wrangler. The format of the file is a tab-delimited text file saved as `E-HCAD-XX.cells.txt`. The following columns need to be included:
-
-| Column name                          | description                                                                         | how to make                                                             |
-|--------------------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| cell ID                              | A unique identifier for each cell in the experiment                                 | `Comment[RUN]-barcode`, e.g.`4834STDY7002875_S1_L001-AAAGCAATCCATGAGT`. If there are technical replicates run ID should be replaced with the value in the technical replicate group column    |
-| Comment[RUN]                         | The run identifier, must match with the AssayName in the sdrf file                  | `Comment[RUN]`                                                          |
-| barcode                              | The oligonucleotide identifier                                                      | Usually derived from authors supplementary files eg. `AAAGCAATCCATGAGT` |
-| Comment[AUTHOR IDENTITY]             | The exact text that the author used to describe the cell type                       | Usually derived from authors supplementary files                        |
-| inferred cell type - author labels   | Reformatted author provided text that is displayed as an option in the SCEA browser | Derived by formatting `Comment[AUTHOR IDENTITY]`                        |
-| inferred cell type - ontology labels | The closest ontologised cell type that is available, needs to be found in EFO       | manually curated (?) Zooma (?)                                          |
-
-[SCEA documentation about the cells.txt file](https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/single_cell_curation_guide.md#cell-level-metadata-for-droplet-based-experiments) (scroll to bottom of page)
-
-## Section D: Validation of idf and sdrf files**
-
-_There are 2 validation steps for SCEA: a python validator and perl validator. In Silvie’s words: “the perl script checks the mage-tab format in general (plus some curation checks etc) and the the python script mainly checks for single-cell expression atlas specific fields and requirements”._
-
-### Python Validator
-
-Please note: there is a ticket to get the validation tools installed on EC2. This should be available soon, as of 17/03/2021. For now, please install and run locally, following the instructions below.
-
-A MAGE-TAB pre-validation module for running checks that guarantee the experiment can be processed for SCEA. You can clone the repository and run the script locally:
-
-[Atlas metadata validator](https://github.com/ebi-gene-expression-group/atlas-metadata-validator)
-
-To run, from the directory:
-```
-python atlas_validation.py path/to/test.idf.txt
-```
-<span style="text-decoration:underline;">Useful HCA-specific and single-cell specific command:</span>
-
-```
-python atlas_validation.py path/to/test.idf.txt -sc -hca -v
-```
-
-*   The SDRF file is expected in the same directory as the IDF file. If this is not the case, the location of the SDRF and other data files can be specified with -d PATH_TO_DATA option.
-*   The script guesses the experiment type (sequencing, microarray or single-cell) from the MAGE-TAB. If this was unsuccessful the experiment type can be set by specifying the respective argument -seq, -ma or -sc.
-*   The data file and URI checks may take a long time. Hence there is an option to skip these checks with -x.
-*   Verbose logging can be activated with -v.
-*   Special validation rules for HCA-imported experiments can be invoked with -hca option. The validator will otherwise guess if the experiment is an HCA import based on the HCAD accession code in the ExpressionAtlasAccession field.
-
-An example of a successful validation looks like this:
-
-![validation](https://github.com/ebi-ait/hca-ebi-wrangler-central/raw/master/assets/images/scea_screenshots/validation.png)
-
-### Perl validator
-
-1.   Install Anaconda if you don’t have it already and the Anaconda directory to your path
-1.   Configure conda by typing the following at the terminal:
-     ```
-     conda config --add channels defaults
-     conda config --add channels bioconda
-     conda config --add channels conda-forge
-     ```
-1.   Install the perl atlas module in a new environment: 
-     ```
-     conda create -n perl-atlas-test -c ebi-gene-expression-group perl-atlas-modules
-     ```
-1.   Activate the environment:
-     ```
-     conda activate perl-atlas-test
-     ```
-1.   Download the validate_magetab.pl_ _perl script from here: [https://drive.google.com/drive/folders/1Ja2NKtHkDh2YIvUhNa1mpivL-UjCsmbR](https://drive.google.com/drive/folders/1Ja2NKtHkDh2YIvUhNa1mpivL-UjCsmbR))
-1.   Execute the script (with idf and sdrf files in the same directory)
-     ```
-     perl path-to/validate_magetab.pl -i <idf-file>
-     ```
-     (You can ignore ArrayExpress errors)
-
-## SCEA file upload
-
-### SDRF and IDF upload (and cells.txt if present)
-
-1.   Create a new branch in the Gitlab gene-expression-atlas HCAD repository directory: [https://gitlab.ebi.ac.uk/ebi-gene-expression/scxa-metadata/tree/master/HCAD](https://gitlab.ebi.ac.uk/ebi-gene-expression/scxa-metadata/tree/master/HCAD)
-1.   Upload your validated SCEA files to this branch.
-1.   Submit a merge request and select ‘requires approval’.
-1.   Your SCEA files will then be reviewed for merging to the Master directory.
+Please refer to the `hca-to-scea tools` repo [README](https://github.com/ebi-ait/hca-to-scea-tools#setting-the-environment-on-ec2) for information on validation of the idf and sdrf files.
 
 ## Appendix
 
