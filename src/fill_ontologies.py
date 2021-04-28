@@ -3,7 +3,7 @@
 """
 Requirements
 
-hca-ingest==0.6.8
+hca-ingest==0.6.11
 xlrd>=1.0.0
 pandas
 openpyxl
@@ -15,7 +15,8 @@ Instructions of use and main algorithm
     a. Load the workbook with openpyxl tools. Name will be the arg passed as argv[1]
     b. Load a SchemaTemplate object (Takes a while, but necessary)
     c. Parse each cell of the workbook below row 5
-    d. When an ontology property is found (Row 4.endswith("text"), load the schema from the full qualified key to apply DB restrictions
+    d. When an ontology property is found (Row 4.endswith("text"), load the schema from the full qualified key to apply
+    DB restrictions
     e. Query the OLS/HCAO with database restrictions
     f. Return ontologies that match the search and ask the user which one is correct.
     g. Save spreadsheet with the same name + _ontologies
@@ -30,13 +31,16 @@ Instructions of use and main algorithm
     ```
     The script takes some time to get started (It's loading a SchemaTemplate object). After approx 30 secs/1 min, it
     will begin the search, with the following possible outputs:
-    - `Found exact match for term 'x' (Ontology: 'y')`: The program has found an ontology that matches perfectly the spreadsheet value
-    - `Ontology with label 'x' ('y') has been found (<spreadsheet text value>). Is this the term that you were looking for? [Y/n/m/multi]:
+    - `Found exact match for term 'x' (Ontology: 'y')`: The program has found an ontology that matches perfectly the
+    spreadsheet value
+    - `Ontology with label 'x' ('y') has been found (<spreadsheet text value>). Is this the term that you were looking
+    for? [Y/n/m/multi]:
         - Input 'Y', 'y', 'yes', 'Yes', '': The tool will fill the spreadsheet with that ontology.
         - Input 'm': You'll be prompted to introduce the term that you want to look for
         - Input 'multi': You'll be prompted to introduce the terms, one by one, and then introduce break.
         - Any other input: Next term in the list of ontologies found for the term
-    - No ontology was found for this term. Please input it manually: Input the term that you want to search. Can also type "none".
+    - No ontology was found for this term. Please input it manually: Input the term that you want to search. Can also
+    type "none".
 """
 
 import requests as re
@@ -44,10 +48,13 @@ import argparse
 import openpyxl
 from ingest.template.schema_template import SchemaTemplate
 from openpyxl.utils import get_column_letter
+import pickle
 
 def define_parser():
     parser = argparse.ArgumentParser(description="Parser for the arguments")
     parser.add_argument("--spreadsheet", "-s", action="store", dest="wb_name", type=str, help="Input spreadsheet name")
+    parser.add_argument("--api", "-a", action="store", dest="api", type=str, default="ols", choices=["ols", "zooma"],
+                        help="What api to use for searching, one of 'ols' or 'zooma'")
     return parser
 
 
@@ -62,12 +69,10 @@ def get_iri(classes, iri={}):
             iri[ontology_name] = "/".join(response["_embedded"]["terms"][0]["iri"].split("/")[:-1])
     return iri
 
-def get_ontology_schemas(key, schema_object=None):
+
+def get_ontology_schemas(key, json_schemas):
     key = key.split(".")
-    if not schema_object:
-        schema_object = SchemaTemplate(ingest_api_url='https://api.ingest.archive.data.humancellatlas.org/')
-    schema_object._get_json_objs_from_metadata_schema_urls()
-    for schema in schema_object.json_schemas:
+    for schema in json_schemas:
         if "name" not in schema:
             continue
         elif key[0] == schema["name"]:
@@ -85,8 +90,8 @@ def get_ontology_schemas(key, schema_object=None):
             return schema
 
 
-def search_child_term(term, key, schema, iri = {}):
-    search_schema = get_ontology_schemas(key, schema)
+def search_child_term(term, key, json_schemas, iri={}):
+    search_schema = get_ontology_schemas(key, json_schemas)
     search_ontologies = search_schema["properties"]["ontology"]["graph_restriction"]["ontologies"]
     classes = search_schema["properties"]["ontology"]["graph_restriction"]["classes"]
 
@@ -94,6 +99,7 @@ def search_child_term(term, key, schema, iri = {}):
     ontology_response = []
 
     include_self = search_schema["properties"]["ontology"]["graph_restriction"]["include_self"]
+
     request_query = "https://ontology.archive.data.humancellatlas.org/api/search?q=" if "hcao" in ontologies else \
                     "http://www.ebi.ac.uk/ols/api/search?q="
     if include_self:
@@ -113,11 +119,50 @@ def search_child_term(term, key, schema, iri = {}):
         term = input("Term '{}' was not found (Property = {}).\nPlease input it manually:".format(term, key))
         if "none" in term.lower():
             return [{"obo_id": "", "label": ""}], iri
-        return search_child_term(term, key, schema, iri)
+        return search_child_term(term, key, json_schemas, iri)
     return ontology_response, iri
 
 
-def select_term(ontologies_list, term, key, schema, known_iri={}, multi_flag = False):
+def search_zooma(term, key, json_schemas):
+    search_schema = get_ontology_schemas(key, json_schemas)
+    search_ontologies = search_schema["properties"]["ontology"]["graph_restriction"]["ontologies"]
+    classes = search_schema["properties"]["ontology"]["graph_restriction"]["classes"]
+
+    ontologies = ",".join([ontology.split(":")[1] for ontology in search_ontologies]).lower()
+
+    include_self = search_schema["properties"]["ontology"]["graph_restriction"]["include_self"]
+    query = "http://snarf.ebi.ac.uk:8580/spot/zooma/v2/api/services/annotate?filter=preferred:[hca]&ontologies:[{}]&propertyValue={}".format(ontologies, term)
+    zooma_response = re.get(query)
+    if zooma_response:
+        response_json = zooma_response.json()
+        annotation_list = []
+    else:
+        print("No Zooma curations found, continuing to OLS search.")
+        return None
+
+    for annotation in zooma_response:
+        if annotation['provenance']['evidence'] == 'ZOOMA_INFERRED_FROM_CURATED' and \
+                (annotation['confidence'] == 'HIGH' or annotation['confidence'] == 'GOOD'):
+            ols_response = re.get('http://www.ebi.ac.uk/ols/api/terms/findByIdAndIsDefiningOntology?iri={}'.format(annotation['semanticTags'][0])).json()
+            zooma_annotation = {}
+            zooma_annotation['label'] = ols_response['_embedded']['terms'][0]['label']
+            zooma_annotation['obo_id'] = ols_response['_embedded']['terms'][0]['obo_id']
+            zooma_annotation['confidence'] = annotation['confidence']
+            annotation_list.append(zooma_annotation)
+    i = 1
+    for ann in annotation_list:
+        print("{}. {} - {} with confidence level: {}\n".format(str(i), ann['obo_id'], ann['label'], ann['confidence']))
+        i += 1
+    answer = input("Found matches above from zooma, please enter number of the preferred term as an integer.\nIf no appropriate match enter 'n'\n")
+    try:
+        return annotation_list[int(answer)]
+    except ValueError as e:
+        "No appropriate annotation found, trying normal OLS search"
+        return None
+
+
+
+def select_term(ontologies_list, term, key, json_schemas, known_iri={}, multi_flag = False):
     if ontologies_list and ontologies_list[0]["label"].lower() == term.lower():
         print("Found exact match for term {} (Ontology: {})".format(term, ontologies_list[0]["obo_id"]))
         return ontologies_list[0], known_iri
@@ -125,8 +170,8 @@ def select_term(ontologies_list, term, key, schema, known_iri={}, multi_flag = F
         if not ontologies_list:
             term = input("No ontologies were found for the term (Cell value = {}, Key = {}). Please input it manually: "
                          .format(term, key))
-            ontologies_list, known_iri = search_child_term(term, key, schema, known_iri)
-            return select_term(ontologies_list, term, key, schema, known_iri)
+            ontologies_list, known_iri = search_child_term(term, key, json_schemas, known_iri)
+            return select_term(ontologies_list, term, key, json_schemas, known_iri)
         for ontology in ontologies_list:
             if "obo_id" not in ontology.keys():
                 continue
@@ -135,8 +180,8 @@ def select_term(ontologies_list, term, key, schema, known_iri={}, multi_flag = F
                 return ontology, known_iri
             elif answer.lower() == 'm':
                 term = input("Please input the term manually: ")
-                ontologies_list, known_iri = search_child_term(term, key, schema, known_iri)
-                return select_term(ontologies_list, term, key, schema, known_iri)
+                ontologies_list, known_iri = search_child_term(term, key, json_schemas, known_iri)
+                return select_term(ontologies_list, term, key, json_schemas, known_iri)
             elif answer.lower() == 'none':
                 ontologies_list = {"obo_id": "", "label": ""}
                 return ontologies_list, known_iri
@@ -151,18 +196,18 @@ def select_term(ontologies_list, term, key, schema, known_iri={}, multi_flag = F
                     terms_to_search.append(term)
                     n += 1
                 for term in terms_to_search:
-                    ontologies_list, known_iri = search_child_term(term, key, schema, known_iri)
+                    ontologies_list, known_iri = search_child_term(term, key, json_schemas, known_iri)
                     # TODO: extend only ontologies, not known iri
-                    multi_ontology.extend(select_term(ontologies_list, term, key, schema, known_iri, multi_flag=True))
+                    multi_ontology.extend(select_term(ontologies_list, term, key, json_schemas, known_iri, multi_flag=True))
                 return multi_ontology, known_iri
 
         else:
             term = input("No more ontologies were found for the term (Cell value = {}, Key = {}). Please input it manually: ".format(term, key))
-            ontologies_list, known_iri = search_child_term(term, key, schema, known_iri)
-            return select_term(ontologies_list, term, key, schema, known_iri)
+            ontologies_list, known_iri = search_child_term(term, key, json_schemas, known_iri)
+            return select_term(ontologies_list, term, key, json_schemas, known_iri)
 
 
-def parse_wb(file_name, wb, schema):
+def parse_wb(file_name, wb, schema, api):
     known_terms = []
     known_ontologies = {}
     # Really ugly nested fors to parse for each cell in the WorkBook
@@ -180,33 +225,53 @@ def parse_wb(file_name, wb, schema):
                         sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = known_ontologies[cell.value]["label"]
                         continue
                     # Search for the ontologies that match the ontology restriction of their schema
-                    ontologies_list, known_iri = search_child_term(cell.value, sheet["{}4".format(get_column_letter(cell.column))].value, schema)
-                    # Select the correct ontology from the list and write it to excel
-                    if ontologies_list:
-                        ontology, known_iri = select_term(ontologies_list, cell.value, sheet["{}4".format(get_column_letter(cell.column))].value, schema, known_iri)
-                        known_terms.append(cell.value)
-                        if isinstance(ontology, list):
-                            ontologies = {}
-                            ontologies["obo_id"] = "||".join([ontology_element["obo_id"] for ontology_element in ontology if "obo_id" in ontology_element])
-                            ontologies["label"] = "||".join([ontology_label["label"] for ontology_label in ontology if "obo_id" in ontology_label])
-                            ontology = ontologies
 
-                        known_ontologies[cell.value] = ontology
-                        sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value = \
-                        known_ontologies[cell.value]["obo_id"]
-                        sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = \
-                        known_ontologies[cell.value]["label"]
+                    if api == "zooma":
+                        zooma_annotation = search_zooma(cell.value, sheet["{}4".format(get_column_letter(cell.column))].value, schema)
+                        if zooma_annotation:
+                            sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value = \
+                            zooma_annotation["obo_id"]
+                            sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = \
+                            zooma_annotation["label"]
+                        else:
+                            api = "ols"
+
+                    elif api == "ols":
+                        ontologies_list, known_iri = search_child_term(cell.value, sheet[
+                            "{}4".format(get_column_letter(cell.column))].value, schema)
+                        # Select the correct ontology from the list and write it to excel
+                        if ontologies_list:
+                            ontology, known_iri = select_term(ontologies_list, cell.value, sheet["{}4".format(get_column_letter(cell.column))].value, schema, known_iri)
+                            known_terms.append(cell.value)
+                            if isinstance(ontology, list):
+                                ontologies = {}
+                                ontologies["obo_id"] = "||".join([ontology_element["obo_id"] for ontology_element in ontology if "obo_id" in ontology_element])
+                                ontologies["label"] = "||".join([ontology_label["label"] for ontology_label in ontology if "obo_id" in ontology_label])
+                                ontology = ontologies
+
+                    known_ontologies[cell.value] = ontology
+                    sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value = \
+                    known_ontologies[cell.value]["obo_id"]
+                    sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = \
+                    known_ontologies[cell.value]["label"]
 
     wb.save("".join(file_name.split(".")[:-1]) + "_ontologies.xlsx")
 
 
-def main(spreadsheet_name):
-    wb = openpyxl.load_workbook(spreadsheet_name)
-    schema = SchemaTemplate(ingest_api_url="http://api.ingest.dev.archive.data.humancellatlas.org")
-    parse_wb(spreadsheet_name, wb, schema)
+def main(args):
+    wb = openpyxl.load_workbook(args.wb_name)
+    try:
+        with open('pickled_schemas.pkl', 'rb') as input:
+            json_schemas = pickle.load(input)
+    except FileNotFoundError:
+        schema = SchemaTemplate(ingest_api_url="http://api.ingest.staging.archive.data.humancellatlas.org")
+        with open('pickled_schemas.pkl', 'wb') as output:
+            pickle.dump(schema.json_schemas, output)
+        json_schemas = schema.json_schemas
+    parse_wb(args.wb_name, wb, json_schemas, args.api)
 
 
 if __name__ == "__main__":
     parser = define_parser()
     args = parser.parse_args()
-    main(args.wb_name)
+    main(args)
