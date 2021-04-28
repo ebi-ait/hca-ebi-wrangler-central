@@ -7,13 +7,10 @@ last_modified_date: 23/12/2020
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
 
 # HCA to SCEA Guide
-{: .no_toc }
 
 _Please note: this is not a tool to generate a perfect set of SCEA idf and sdrf files automatically. It speeds up the process by part automation but manual curation is an important part of the process._
 
-[Modify this diagram here](https://app.diagrams.net/?src=about#G1bP1jg52KXeVmd6HGmXxXRjfT2uEZtPDr)
-
-### Checking suitability for SCEA
+## Checking suitability for SCEA
 
 Please refer to the `hca-to-scea tools` repo [README](https://github.com/ebi-ait/hca-to-scea-tools#setting-the-environment-on-ec2) for information on dataset suitability for SCEA. As part of this suitability criteria, there are also guidelines on how HCA datasets should be split into separate SCEA projects, if needed. You can also check the SCEA team's [`data suitability guidelines`](https://github.com/ebi-gene-expression-group/expression-atlas-curation-guide/blob/master/pages/inclusion_criteria.md) document more thoroughly. Once you think that the dataset is suitable or if you have any doubts, double-check with the SCEA team on the AIT slack channel `#hca-to-scea`
 
@@ -24,6 +21,10 @@ Please refer to the `hca-to-scea tools` repo [README](https://github.com/ebi-ait
 ## Validation of idf and sdrf files
 
 Please refer to the `hca-to-scea tools` repo [README](https://github.com/ebi-ait/hca-to-scea-tools#setting-the-environment-on-ec2) for information on validation of the idf and sdrf files.
+
+## Handing over files to SCEA team
+
+Please refer to the `hca-to-scea tools` repo [README](https://github.com/ebi-ait/hca-to-scea-tools#setting-the-environment-on-ec2) for information on file handover to the SCEA team.
 
 ## Appendix
 
