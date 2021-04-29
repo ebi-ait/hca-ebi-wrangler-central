@@ -3,6 +3,7 @@
 """
 Requirements
 
+python>=3.5
 hca-ingest==0.6.11
 xlrd>=1.0.0
 pandas
@@ -105,28 +106,32 @@ def get_ontology_schemas(key, json_schemas):
         print("Could not find key: {} in schemas. Try updating your pickle by deleting pickled_schemas.pkl".format(key))
 
 
-def search_child_term(term, key, json_schemas, iri={}):
+def get_schema_info(key, json_schemas):
     search_schema = get_ontology_schemas(key, json_schemas)
     search_ontologies = search_schema["properties"]["ontology"]["graph_restriction"]["ontologies"]
     classes = search_schema["properties"]["ontology"]["graph_restriction"]["classes"]
-
     ontologies = ",".join([ontology.split(":")[1] for ontology in search_ontologies]).lower()
-    ontology_response = []
-
     include_self = search_schema["properties"]["ontology"]["graph_restriction"]["include_self"]
+    schema_info = {"classes": classes,
+                   "ontologies": ontologies,
+                   "include_self": include_self}
+    return schema_info
 
-    request_query = "https://ontology.archive.data.humancellatlas.org/api/search?q=" if "hcao" in ontologies else \
+
+def search_child_term(term, schema_info, iri={}):
+    ontology_response = []
+    request_query = "https://ontology.archive.data.humancellatlas.org/api/search?q=" if "hcao" in schema_info['ontologies'] else \
                     "http://www.ebi.ac.uk/ols/api/search?q="
-    if include_self:
-        for ontology_class in classes:
+    if schema_info['include_self']:
+        for ontology_class in schema_info['classes']:
             request = rq.get("http://www.ebi.ac.uk/ols/api/terms?id={}".format(ontology_class))
             response = request.json()
             if response["_embedded"]["terms"][0]["label"] == term:
                 return {response["_embedded"]["terms"][0]["obo_id"]: response["_embedded"]["terms"][0]}, iri
 
-    iri = get_iri(classes, iri)
-    iri_query = ",".join([iri[ontology_class.split(":")[0]] + "/" + ontology_class.replace(":", "_") for ontology_class in classes])
-    request = request_query + "{}&ontology={}&allChildrenOf={}".format(term, ontologies, iri_query)
+    iri = get_iri(schema_info['classes'], iri)
+    iri_query = ",".join([iri[ontology_class.split(":")[0]] + "/" + ontology_class.replace(":", "_") for ontology_class in schema_info['classes']])
+    request = request_query + "{}&ontology={}&allChildrenOf={}".format(term, schema_info['ontologies'], iri_query)
     response = rq.get(request).json()
     if response["response"]["numFound"] != 0:
         ontology_response.extend(response["response"]["docs"])
@@ -140,15 +145,10 @@ def search_child_term(term, key, json_schemas, iri={}):
     return ontology_dict, iri
 
 
-def search_zooma(term, key, json_schemas, multi_flag=False):
-    search_schema = get_ontology_schemas(key, json_schemas)
-    search_ontologies = search_schema["properties"]["ontology"]["graph_restriction"]["ontologies"]
-    classes = search_schema["properties"]["ontology"]["graph_restriction"]["classes"]
+def search_zooma(term, schema_info):
 
-    ontologies = ",".join([ontology.split(":")[1] for ontology in search_ontologies]).lower()
-
-    include_self = search_schema["properties"]["ontology"]["graph_restriction"]["include_self"]
-    query = "http://snarf.ebi.ac.uk:8580/spot/zooma/v2/api/services/annotate?filter=preferred:[hca]&ontologies:[{}]&propertyValue={}".format(ontologies, term)
+    # TODO: Update to production instance of zooma
+    query = "http://snarf.ebi.ac.uk:8580/spot/zooma/v2/api/services/annotate?filter=preferred:[hca]&ontologies:[{}]&propertyValue={}".format(schema_info['ontologies'], term)
     zooma_response = rq.get(query)
     if zooma_response:
         response_json = zooma_response.json()
@@ -176,7 +176,7 @@ def search_zooma(term, key, json_schemas, multi_flag=False):
     return annotation_dict
 
 
-def select_term(ontologies_dict, term, key, json_schemas, zooma, known_iri={}, multi_flag=False):
+def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, multi_flag=False):
     first_key = next(iter(ontologies_dict))
     # If there is a high confidence match from HCA, use it
     if "confidence" in ontologies_dict[first_key].keys() and ontologies_dict[first_key]["confidence"] == "HIGH" and \
@@ -191,17 +191,17 @@ def select_term(ontologies_dict, term, key, json_schemas, zooma, known_iri={}, m
         if not ontologies_dict or len(ontologies_dict) == 0:
             term = input("No ontologies were found for the term (Cell value = {}, Key = {}). Please input it manually: "
                          .format(term, key))
-            ontologies_dict, known_iri = search_child_term(term, key, json_schemas, known_iri)
-            return select_term(ontologies_dict, term, key, json_schemas, zooma, known_iri)
+            ontologies_dict, known_iri = search_child_term(term, schema_info)
+            return select_term(ontologies_dict, term, key, schema_info, zooma, known_iri)
         # If multiple terms present, search each term
         if re.search("\|\|", term) and not multi_flag:
             print("Multiple terms detected for term: {} in field {}.".format(term, key))
             multi_ontology = []
             terms_to_search = term.split("||")
             for each_term in terms_to_search:
-                each_ontologies_dict, known_iri = search_child_term(each_term, key, json_schemas, known_iri)
+                each_ontologies_dict, known_iri = search_child_term(each_term, schema_info)
                 if zooma:
-                    zooma_ann_dict = search_zooma(each_term, key, json_schemas)
+                    zooma_ann_dict = search_zooma(each_term, schema_info)
                     if each_ontologies_dict and zooma_ann_dict:
                         each_ontologies_dict = {**each_ontologies_dict, **zooma_ann_dict}
                     elif not each_ontologies_dict and zooma_ann_dict:
@@ -209,9 +209,9 @@ def select_term(ontologies_dict, term, key, json_schemas, zooma, known_iri={}, m
                     elif not each_ontologies_dict and not zooma_ann_dict:
                         manual_term = input(
                             "Term '{}' was not found (Property = {}).\nPlease input it manually:".format(each_term, key))
-                        each_ontologies_dict, known_iri = search_child_term(manual_term, key, json_schemas)
+                        each_ontologies_dict, known_iri = search_child_term(manual_term, schema_info)
                 # TODO: extend only ontologies, not known iri
-                multi_ontology.extend(select_term(each_ontologies_dict, each_term, key, json_schemas, zooma, known_iri,
+                multi_ontology.extend(select_term(each_ontologies_dict, each_term, key, schema_info, zooma, known_iri,
                                                   multi_flag=True))
             return multi_ontology, known_iri
         print("{} matches found for your search term '{}' for field {}.".format(len(ontologies_dict), term, key))
@@ -228,8 +228,8 @@ def select_term(ontologies_dict, term, key, json_schemas, zooma, known_iri={}, m
         answer = input("Enter the appropriate number or 'm' for manual input or 'none' to skip this term\n")
         if answer.lower() == 'm':
             term = input("Please input the term manually: ")
-            ontologies_dict, known_iri = search_child_term(term, key, json_schemas, known_iri)
-            return select_term(ontologies_dict, term, key, json_schemas, zooma, known_iri)
+            ontologies_dict, known_iri = search_child_term(term, schema_info)
+            return select_term(ontologies_dict, term, key, schema_info, zooma, known_iri)
         elif answer.lower() == 'none' or answer.lower() == 'skip':
             blank_annotation = {"obo_id": "",
                                 "label": ""}
@@ -264,19 +264,20 @@ def parse_wb(file_path, wb, schema, zooma, keep):
                         continue
                     # Search for the ontologies that match the ontology restriction of their schema
                     programmatic_key = sheet["{}4".format(get_column_letter(cell.column))].value
-                    ontologies_dict, known_iri = search_child_term(cell.value, programmatic_key, schema)
+                    schema_info = get_schema_info(programmatic_key, schema)
+                    ontologies_dict, known_iri = search_child_term(cell.value, schema_info)
                     if zooma:
-                        zooma_ann_dict = search_zooma(cell.value, programmatic_key, schema)
+                        zooma_ann_dict = search_zooma(cell.value, schema_info)
                         if ontologies_dict and zooma_ann_dict:
                             ontologies_dict = {**ontologies_dict, **zooma_ann_dict}
                         elif not ontologies_dict and zooma_ann_dict:
                             ontologies_dict = zooma_ann_dict
                         elif not ontologies_dict and not zooma_ann_dict:
                             term = input("Term '{}' was not found (Property = {}).\nPlease input it manually:".format(cell.value, programmatic_key))
-                            ontologies_dict, known_iri = search_child_term(term, programmatic_key, schema)
+                            ontologies_dict, known_iri = search_child_term(term, schema_info)
 
                     if ontologies_dict:
-                        ontology, known_iri = select_term(ontologies_dict, cell.value, programmatic_key, schema, zooma, known_iri)
+                        ontology, known_iri = select_term(ontologies_dict, cell.value, programmatic_key, schema_info, zooma, known_iri)
                         known_terms.append(cell.value)
 
                         if isinstance(ontology, list):
@@ -301,8 +302,8 @@ def parse_wb(file_path, wb, schema, zooma, keep):
 def main(args):
     wb = openpyxl.load_workbook(args.wb_path)
     try:
-        with open('pickled_schemas.pkl', 'rb') as input:
-            json_schemas = pickle.load(input)
+        with open('pickled_schemas.pkl', 'rb') as pickled_schemas:
+            json_schemas = pickle.load(pickled_schemas)
     except FileNotFoundError:
         schema = SchemaTemplate(ingest_api_url="http://api.ingest.staging.archive.data.humancellatlas.org")
         with open('pickled_schemas.pkl', 'wb') as output:
