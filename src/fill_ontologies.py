@@ -170,29 +170,43 @@ def search_zooma(term, key, json_schemas, multi_flag=False):
     return annotation_dict
 
 
-def select_term(ontologies_dict, term, key, json_schemas, known_iri={}, multi_flag=False):
+def select_term(ontologies_dict, term, key, json_schemas, zooma, known_iri={}, multi_flag=False):
     first_key = next(iter(ontologies_dict))
-    if ontologies_dict and ontologies_dict[first_key]["label"].lower() == term.lower():
-        print("Found exact match for term {} (Ontology: {})".format(term, ontologies_dict[first_key]["obo_id"]))
-        return ontologies_dict[first_key], known_iri
-    elif "confidence" in ontologies_dict[first_key].keys() and ontologies_dict[first_key]["confidence"] == "HIGH" and \
+    # If there is a high confidence match from HCA, use it
+    if "confidence" in ontologies_dict[first_key].keys() and ontologies_dict[first_key]["confidence"] == "HIGH" and \
             ontologies_dict[first_key]["source"] == "HCA":
         print("Found high confidence, HCA match for term {} (Ontology: {})".format(term, ontologies_dict[first_key]["obo_id"]))
+        return ontologies_dict[first_key], known_iri
+    # If there is an exact string match, use it
+    elif ontologies_dict and ontologies_dict[first_key]["label"].lower() == term.lower():
+        print("Found exact match for term {} (Ontology: {})".format(term, ontologies_dict[first_key]["obo_id"]))
         return ontologies_dict[first_key], known_iri
     else:
         if not ontologies_dict or len(ontologies_dict) == 0:
             term = input("No ontologies were found for the term (Cell value = {}, Key = {}). Please input it manually: "
                          .format(term, key))
             ontologies_dict, known_iri = search_child_term(term, key, json_schemas, known_iri)
-            return select_term(ontologies_dict, term, key, json_schemas, known_iri)
+            return select_term(ontologies_dict, term, key, json_schemas, zooma, known_iri)
+        # If multiple terms present, search each term
         if re.search("\|\|", term) and not multi_flag:
             print("Multiple terms detected for term: {} in field {}.".format(term, key))
             multi_ontology = []
             terms_to_search = term.split("||")
             for each_term in terms_to_search:
-                ontologies_dict, known_iri = search_child_term(each_term, key, json_schemas, known_iri)
+                each_ontologies_dict, known_iri = search_child_term(each_term, key, json_schemas, known_iri)
+                if zooma:
+                    zooma_ann_dict = search_zooma(each_term, key, json_schemas)
+                    if each_ontologies_dict and zooma_ann_dict:
+                        each_ontologies_dict = {**each_ontologies_dict, **zooma_ann_dict}
+                    elif not each_ontologies_dict and zooma_ann_dict:
+                        each_ontologies_dict = zooma_ann_dict
+                    elif not each_ontologies_dict and not zooma_ann_dict:
+                        manual_term = input(
+                            "Term '{}' was not found (Property = {}).\nPlease input it manually:".format(each_term, key))
+                        each_ontologies_dict, known_iri = search_child_term(manual_term, key, json_schemas)
                 # TODO: extend only ontologies, not known iri
-                multi_ontology.extend(select_term(ontologies_dict, each_term, key, json_schemas, known_iri, multi_flag=True))
+                multi_ontology.extend(select_term(each_ontologies_dict, each_term, key, json_schemas, zooma, known_iri,
+                                                  multi_flag=True))
             return multi_ontology, known_iri
         print("{} matches found for your search term '{}' for field {}.".format(len(ontologies_dict), term, key))
         i = 1
@@ -209,7 +223,7 @@ def select_term(ontologies_dict, term, key, json_schemas, known_iri={}, multi_fl
         if answer.lower() == 'm':
             term = input("Please input the term manually: ")
             ontologies_dict, known_iri = search_child_term(term, key, json_schemas, known_iri)
-            return select_term(ontologies_dict, term, key, json_schemas, known_iri)
+            return select_term(ontologies_dict, term, key, json_schemas, zooma, known_iri)
         elif answer.lower() == 'none' or answer.lower() == 'skip':
             blank_annotation = {"obo_id": "",
                                 "label": ""}
@@ -255,7 +269,7 @@ def parse_wb(file_path, wb, schema, zooma, keep):
                             ontologies_dict, known_iri = search_child_term(term, programmatic_key, schema)
 
                     if ontologies_dict:
-                        ontology, known_iri = select_term(ontologies_dict, cell.value, programmatic_key, schema, known_iri)
+                        ontology, known_iri = select_term(ontologies_dict, cell.value, programmatic_key, schema, zooma, known_iri)
                         known_terms.append(cell.value)
 
                         if isinstance(ontology, list):
