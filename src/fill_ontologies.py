@@ -13,13 +13,16 @@ Instructions of use and main algorithm
 1. Algorithm
 
     a. Load the workbook with openpyxl tools. Name will be the arg passed as argv[1]
-    b. Load a SchemaTemplate object (Takes a while, but necessary)
+    b. Try to load pickled schemas, if not present at pickled_schemas.pkl,
+        Load a SchemaTemplate object and save schemas to picked_schemas.pkl (Takes a while, but necessary)
     c. Parse each cell of the workbook below row 5
     d. When an ontology property is found (Row 4.endswith("text"), load the schema from the full qualified key to apply
     DB restrictions
     e. Query the OLS/HCAO with database restrictions
-    f. Return ontologies that match the search and ask the user which one is correct.
-    g. Save spreadsheet with the same name + _ontologies
+    f. If ZOOMA option enabled, query the ZOOMA API for any available curation
+    g. If `--keep` option specified, no existing ontologies will be overwritten.
+    h. Return ontologies that match the search and ask the user which one is correct.
+    i. Save spreadsheet with the same name + _ontologies
 
 1. Instruction of use
 
@@ -27,20 +30,23 @@ Instructions of use and main algorithm
 
     ```
     cd src/
-    python3 fill_ontologies.py -s <path_to_spreadsheet>
+    python3 fill_ontologies.py -s <path_to_spreadsheet> [OPTIONS -z -k]
     ```
     The script takes some time to get started (It's loading a SchemaTemplate object). After approx 30 secs/1 min, it
     will begin the search, with the following possible outputs:
     - `Found exact match for term 'x' (Ontology: 'y')`: The program has found an ontology that matches perfectly the
     spreadsheet value
-    - `Ontology with label 'x' ('y') has been found (<spreadsheet text value>). Is this the term that you were looking
-    for? [Y/n/m/multi]:
-        - Input 'Y', 'y', 'yes', 'Yes', '': The tool will fill the spreadsheet with that ontology.
+    - `Found high confidence, HCA match for term 'x' (Ontology: y)`
+    - `x matches found for your search term 'y' for field <spreadsheet text value>.`
+        - Numbered list of matches in format (ZOOMA info show with option -z):
+            - n. ontology_label - ontology_id. ZOOMA: confidence: (HIGH/GOOD/MEDIUM/LOW), source: <SOURCE>.
+            - Enter the appropriate number or 'm' for manual input or 'none' to skip this term
+        - Input n: The tool will fill the spreadsheet with that ontology.
         - Input 'm': You'll be prompted to introduce the term that you want to look for
-        - Input 'multi': You'll be prompted to introduce the terms, one by one, and then introduce break.
-        - Any other input: Next term in the list of ontologies found for the term
-    - No ontology was found for this term. Please input it manually: Input the term that you want to search. Can also
-    type "none".
+        - Input 'none': The ontology cells will be filled with empty strings
+    - If array delimiter `||` is detected in the cell, each term is autmatically ysearched and the returned curations
+      are concatenated in the spreadsheet.
+    - No ontology was found for this term. Please input it manually: Input the term that you want to search.
 """
 
 import requests as rq
@@ -178,7 +184,7 @@ def select_term(ontologies_dict, term, key, json_schemas, zooma, known_iri={}, m
         print("Found high confidence, HCA match for term {} (Ontology: {})".format(term, ontologies_dict[first_key]["obo_id"]))
         return ontologies_dict[first_key], known_iri
     # If there is an exact string match, use it
-    elif ontologies_dict and ontologies_dict[first_key]["label"].lower() == term.lower():
+    elif ontologies_dict and ontologies_dict[first_key]["label"].lower() == term.lower() and not zooma:
         print("Found exact match for term {} (Ontology: {})".format(term, ontologies_dict[first_key]["obo_id"]))
         return ontologies_dict[first_key], known_iri
     else:
@@ -243,10 +249,11 @@ def parse_wb(file_path, wb, schema, zooma, keep):
             if list(row)[0].row < 5:
                 continue
             for cell in row:
-                # If "X"4 cell exists, ends with value text and there is a value in the current cell:
+                # If there is already a value in the cell next to the .text cell, and keep enabled, skip curation
                 if sheet["{}4".format(get_column_letter(cell.column))].value.endswith(".text") and cell.value and keep:
                     if sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value:
                         continue
+                # If "X"4 cell exists, ends with value text and there is a value in the current cell:
                 if sheet["{}4".format(get_column_letter(cell.column))].value and \
                         sheet["{}4".format(get_column_letter(cell.column))].value.endswith(".text") and \
                         cell.value:
