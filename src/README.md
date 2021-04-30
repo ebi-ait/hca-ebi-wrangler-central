@@ -17,6 +17,7 @@ Instructions of use and main algorithm
     1. Parse each cell of the workbook below row 5
     1. When an ontology property is found (Row 4.endswith("text"), load the schema from the full qualified key to apply DB restrictions
     1. Query the OLS/HCAO with database restrictions
+    1. If array delimiter `||` is detected in the cell, each term is automatically searched and the returned curations are concatenated in the spreadsheet.
     1. If ZOOMA `--zooma`/`-z` option enabled, query the ZOOMA API for any available curation
     1. If `--keep`/`-k` option specified, no existing ontologies will be overwritten.
     1. Return ontologies that match the search and ask the user which one is correct.

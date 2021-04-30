@@ -20,10 +20,12 @@ Instructions of use and main algorithm
     d. When an ontology property is found (Row 4.endswith("text"), load the schema from the full qualified key to apply
     DB restrictions
     e. Query the OLS/HCAO with database restrictions
-    f. If ZOOMA option enabled, query the ZOOMA API for any available curation
-    g. If `--keep` option specified, no existing ontologies will be overwritten.
-    h. Return ontologies that match the search and ask the user which one is correct.
-    i. Save spreadsheet with the same name + _ontologies
+    f. If array delimiter `||` is detected in the cell, each term is automatically searched and the returned curations
+      are concatenated in the spreadsheet.
+    g. If ZOOMA option enabled, query the ZOOMA API for any available curation
+    h. If `--keep` option specified, no existing ontologies will be overwritten.
+    i. Return ontologies that match the search and ask the user which one is correct.
+    j. Save spreadsheet with the same name + _ontologies
 
 1. Instruction of use
 
@@ -45,8 +47,6 @@ Instructions of use and main algorithm
         - Input n: The tool will fill the spreadsheet with that ontology.
         - Input 'm': You'll be prompted to introduce the term that you want to look for
         - Input 'none': The ontology cells will be filled with empty strings
-    - If array delimiter `||` is detected in the cell, each term is automatically searched and the returned curations
-      are concatenated in the spreadsheet.
     - No ontology was found for this term. Please input it manually: Input the term that you want to search.
 """
 
