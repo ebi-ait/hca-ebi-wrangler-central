@@ -34,7 +34,7 @@ The script takes some time to get started (If it's loading a SchemaTemplate obje
 - `Found high confidence, HCA match for term 'x' (Ontology: y)`
 - `x matches found for your search term 'y' for field <spreadsheet text value>.`
    - Numbered list of matches in format (ZOOMA info show with option -z):
-      - n. ontology_label - ontology_id. ZOOMA: confidence: (HIGH/GOOD/MEDIUM/LOW), source: <SOURCE>.
+      - n. ontology_label - ontology_id. ZOOMA: confidence: (`HIGH`/`GOOD`/`MEDIUM`/`LOW`), source: `<SOURCE>`.
       - Enter the appropriate number or 'm' for manual input or 'none' to skip this term
    - Input n - The tool will fill the spreadsheet with that ontology.
    - Input 'm' - You'll be prompted to introduce the term that you want to look for
