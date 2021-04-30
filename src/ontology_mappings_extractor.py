@@ -1,4 +1,4 @@
-import requests
+
 
 """
 Script to extract all existing ontology annotations in HCA Ingest for a given set of submissions.
@@ -19,59 +19,71 @@ Updated by Marion Shadbolt in April 2021.
 """
 
 import argparse
-
-all_mappings = {}
-
-# hard-coded prod ingest API URL - change if you need a different environment
-INGEST_API_URL = 'http://api.ingest.archive.data.humancellatlas.org/submissionEnvelopes/'
-
+import requests
+import pandas as pd
+import sys
 
 def define_parser():
     parser = argparse.ArgumentParser(description="Parser for the arguments")
-    parser.add_argument("--subs_txt", "-st", action="store", dest="sub_path", type=str,
-                        help="Path to a text file with submission envelope mongo ids, e.g. 5cdbdd7dd96dad0008592f28.")
-    parser.add_argument("--submission", "-s", action="store", dest="sub_list", type=str,
-                       help="Single or comma-delimited list of mongo submission envelope ids, e.g. 5cdbdd7dd96dad0008592f28.")
+    parser.add_argument("--file", "-f", action="store", dest="file_path", type=str,
+                        help="Path to a text file with project uuids.")
+    parser.add_argument("--project_uuid", "-p", action="store", dest="uuid_list", type=str,
+                       help="Single or comma-delimited list of project uuids.")
+    parser.add_argument("--unique", "-u", action="store_true", dest="unique",
+                        help="If specified, collapse duplicate curations per project.")
+    parser.add_argument("--api", "-a", action="store", dest="ingest_api_url",
+                        default="http://api.ingest.archive.data.humancellatlas.org/",
+                        help="URL of the api to search, default is current prod api.")
     return parser
 
 
-def extract_mappings(envelope_id, file):
-    # get the submission envelope json
-    jsonRaw = requests.get(INGEST_API_URL + envelope_id).json()
+def extract_mappings(uuid, api):
 
-    # get the project links, then pull in the project json and extract the project name
-    projects_link = jsonRaw['_links']['projects']['href']
-    project_json = requests.get(projects_link).json()
-    project_content = project_json['_embedded']['projects'][0]['content']
+    project_json = requests.get("{}projects/search/findByUuid?uuid={}".format(api, uuid)).json()
+    project_content = project_json['content']
     project_name = project_content['project_core']['project_short_name']
 
-    # process all the biomaterials
-    biomaterials_link = jsonRaw['_links']['biomaterials']['href']
-    process_json(biomaterials_link, 'biomaterials', file, project_name)
+    submissions_link = project_json['_links']['submissionEnvelopes']['href']
+    submissions_json = requests.get(submissions_link).json()
+    for submission in submissions_json['_embedded']['submissionEnvelopes']:
+        biomaterials_link = submission['_links']['biomaterials']['href']
+        biomaterials_mapping_list = process_json(biomaterials_link, 'biomaterials', file, project_name)
+        biomaterials_df = pd.DataFrame(biomaterials_mapping_list,
+                                   columns=['STUDY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG'])
 
-    # process all the protocols
-    protocols_link = jsonRaw['_links']['protocols']['href']
-    process_json(protocols_link, 'protocols', file, project_name)
+        protocols_link = submission['_links']['protocols']['href']
+        protocols_mapping_list = process_json(protocols_link, 'protocols', file, project_name)
+        protocols_df = pd.DataFrame(protocols_mapping_list,
+                                    columns=['STUDY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG'])
 
-# TO DO: process, file and analysis aren't currently processed - add in files once format/type are routinely ontologised!
+        files_link = submission['_links']['files']['href']
+        files_mapping_list = process_json(files_link, 'files', file, project_name)
+        files_df = pd.DataFrame(files_mapping_list,
+                                columns=['STUDY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG'])
+
+    # TODO: Process Analysis entities
+
+    dataframe = pd.concat([biomaterials_df, protocols_df, files_df], ignore_index=True)
+
+    return dataframe
 
 
-def process_json(link, type, file, project_name):
+def process_json(link, schema_type, file, project_name):
     done = False
+    mapping_list = []
     while not done:
         entries = requests.get(link).json()
-
-        for entry in entries['_embedded'][type]:
-            read_properties(entry['content'], file, project_name)
-
+        for entry in entries['_embedded'][schema_type]:
+            mapping_list.extend(read_properties(entry['content'], file, project_name))
         if 'next' in entries['_links']:
             link = entries['_links']['next']['href']
         else:
             done = True
+    return mapping_list
 
 
 # this function recursively reads through an entire json doc to find all the instances of ontology mappings
-def read_properties(data, file, project_name, root=None):
+def read_properties(data, file, project_name, property_list=[], root=None):
     for k, v in data.items():
         if isinstance(v, dict):
             if "ontology" in v:
@@ -81,9 +93,9 @@ def read_properties(data, file, project_name, root=None):
                 # WARNING: Comment the next line out if you don't want constant feedback on the running of the script!
                 # print(project_name + "\t" + k + "\t" + text + "\t" + ontology)
                 file.write(project_name + "\t" + k + "\t" + text + "\t" + ontology + "\n")
-
+                property_list.append([project_name, k, text, ontology])
             else:
-                read_properties(v, file, project_name, k)
+                read_properties(v, file, project_name, property_list, k)
 
         elif isinstance(v, list):
             for index, e in enumerate(v):
@@ -94,30 +106,35 @@ def read_properties(data, file, project_name, root=None):
 
                         # print(project_name + "\t" + k + "\t" + text + "\t" + ontology)
                         file.write(project_name + "\t" + k + "\t" + text + "\t" + ontology + "\n")
-
+                        property_list.append([project_name, k, text, ontology])
                     else:
-                        read_properties(e, file, project_name, k)
+                        read_properties(e, file, project_name, property_list, k)
+    return property_list
 
 
-def main(submission_ids):
-    file = open("all_mappings.txt", "w")
-    file.write("STUDY\tPROPERTY_TYPE\tPROPERTY_VALUE\tSEMANTIC_TAG\n")
+def main(project_uuids, unique, api):
+    all_mappings = pd.DataFrame(columns=['STUDY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG'])
 
-    for eid in submission_ids:
-        print("Processing " + eid)
-        extract_mappings(eid, file)
-    file.close()
+    for uuid in project_uuids:
+        print("Processing " + uuid)
+        project_df = extract_mappings(uuid, api)
+        if unique:
+            project_df = project_df.drop_duplicates()
+        all_mappings = pd.concat([all_mappings, project_df], ignore_index=True)
+    all_mappings.to_csv("all_mappings.tsv", sep="\t", index=False)
+    print("Saved output to all_mappings.tsv")
+    sys.exit(0)
 
 
 if __name__ == "__main__":
     parser = define_parser()
     args = parser.parse_args()
-    if args.sub_list:
-        id_list = args.sub_list.split(",")
-    elif args.sub_path:
+    if args.uuid_list:
+        id_list = args.uuid_list.split(",")
+    elif args.file_path:
         id_list = []
-        with open(args.sub_path, "r") as input_file:
+        with open(args.file_path, "r") as input_file:
             for line in input_file:
                 stripped = line.strip()
                 id_list.append(stripped)
-    main(id_list)
+    main(id_list, args.unique, args.ingest_api_url)
