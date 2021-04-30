@@ -45,7 +45,7 @@ Instructions of use and main algorithm
         - Input n: The tool will fill the spreadsheet with that ontology.
         - Input 'm': You'll be prompted to introduce the term that you want to look for
         - Input 'none': The ontology cells will be filled with empty strings
-    - If array delimiter `||` is detected in the cell, each term is autmatically ysearched and the returned curations
+    - If array delimiter `||` is detected in the cell, each term is automatically searched and the returned curations
       are concatenated in the spreadsheet.
     - No ontology was found for this term. Please input it manually: Input the term that you want to search.
 """
