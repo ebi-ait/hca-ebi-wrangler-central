@@ -9,27 +9,30 @@ assignees: ''
 
 <!--Set Primary Wrangler as assignee and set project when issue is created. Title should contain an accession-->
 
-**Primary Wrangler:**
+### Project short name:
 
-**Secondary Wrangler:**
+### Primary Wrangler:
+
+### Secondary Wrangler:
 
 <!--Link to associated files-->
-**Associated files:**
 
-Google Drive:
+### Associated files
 
-**Published study links**
+* Google Drive:
 
-Paper:
+### Published study links
 
-Accessioned data:
+* Paper:
+
+* Accessioned data:
 
 
-**Key Events**
+### Key Events
 
-- [ ] convert published metadata to HCA spreadsheet
-- [ ] manually curate dataset to meet HCA metadata standard
-- [ ] collect any matrix and cell-type annotation files
+- [ ] Convert published metadata to HCA spreadsheet
+- [ ] Manually curate dataset to meet HCA metadata standard
+- [ ] Collect any matrix and cell-type annotation files
 - [ ] Upload sheet to validate metadata
 - [ ] Check linking using ingest graph validator
 - [ ] Transfer raw files to ingest to validate data files

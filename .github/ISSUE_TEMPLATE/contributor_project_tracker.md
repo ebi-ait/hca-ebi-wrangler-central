@@ -9,16 +9,19 @@ assignees: ''
 
 <!--Set Primary Wrangler as assignee and set project when issue is created-->
 
-**Primary Wrangler:**
+### Project short name:
 
-**Secondary Wrangler:**
+### Primary Wrangler:
+
+### Secondary Wrangler:
 
 <!--Link to associated files-->
-**Associated files:**
 
-Google Drive:
+### Associated files:
 
-**Key Events**
+* Google Drive:
+
+### Key Events
 
 - [ ] Send initial instructions about contributing, including questionnaire and T&Cs
 - [ ] Receive project questionnaire
@@ -36,7 +39,7 @@ Google Drive:
 - [ ] Submit to production and inform ingest-devs the project is ready for archiving
 - [ ] Convert project data to SCEA format following the SCEA conversion SOP if appropriate
 
-**Please track the below as well as the key events:**
+### Please track the below as well as the key events:
 1. Track date first spreadsheet received and final spreadsheet sent by editing ticket to include
 date next to event.
 1. Track spreadsheet iterations by placing asterisks next to receive spreadsheet event.
