@@ -229,7 +229,7 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
             else:
                 print("{}. {} - {}".format(i, info["label"], info["obo_id"]))
             i += 1
-        answer = input("Enter the appropriate number or 'm' for manual input or 'none' to skip this term\n")
+        answer = input("Enter the appropriate number or 'm' for manual input or 'none' to skip this term, or 'q' to save progess and stop program.\n")
         if answer.lower() == 'm':
             term = input("Please input the term manually: ")
             ontologies_dict, known_iri = search_child_term(term, schema_info)
@@ -238,7 +238,7 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
             blank_annotation = {"obo_id": "",
                                 "label": ""}
             return blank_annotation, known_iri
-        elif answer.lower() == 'exit':
+        elif answer.lower() == 'exit' or answer.lower() == "q":
             raise KeyboardInterrupt
         else:
             dict_index_key = list(ontologies_dict.keys())[int(answer)-1]
@@ -283,14 +283,14 @@ def parse_wb(file_path, wb, schema, zooma, keep):
                         ontologies_dict, known_iri = search_child_term(cell.value, schema_info)  # Search OLS
                         if zooma:
                             zooma_ann_dict = search_zooma(cell.value, schema_info)  # Search ZOOMA
-                            if ontologies_dict and zooma_ann_dict:
+                            if ontologies_dict and zooma_ann_dict:  # Combine OLS and ZOOMA ontologies
                                 ontologies_dict = {**ontologies_dict, **zooma_ann_dict}
                             elif not ontologies_dict and zooma_ann_dict:
                                 ontologies_dict = zooma_ann_dict
                             elif not ontologies_dict and not zooma_ann_dict:
                                 term = input("Term '{}' was not found (Property = {}).\nPlease input it manually:".format(cell.value, programmatic_key))
                                 ontologies_dict, known_iri = search_child_term(term, schema_info)
-                        if ontologies_dict:
+                        if ontologies_dict:  # Select term from found ontologies
                             ontology, known_iri = select_term(ontologies_dict, cell.value, programmatic_key,
                                                               schema_info, zooma, known_iri)
                             known_terms.append(cell.value)
