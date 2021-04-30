@@ -20,7 +20,8 @@ Instructions of use and main algorithm
     1. If ZOOMA `--zooma`/`-z` option enabled, query the ZOOMA API for any available curation
     1. If `--keep`/`-k` option specified, no existing ontologies will be overwritten.
     1. Return ontologies that match the search and ask the user which one is correct.
-    1. Save spreadsheet with the same name + _ontologies
+    1. Save spreadsheet with the same name + `_ontologies`
+    1. If interrupted with `ctrl+c` during running, in progress workbook is saved with spreadsheet name + `_partial_ontologies`
 
 1. Instruction of use
 

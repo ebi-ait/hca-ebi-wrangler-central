@@ -172,7 +172,7 @@ def search_zooma(term, schema_info):
                 annotation_dict[zooma_dict['obo_id']] = zooma_dict
             except KeyError as e:
                 if e == "_embedded":
-                    print("Failed to retrieve information from zooma.")
+                    print("Failed to retrieve ontology information.")
                     return None
     return annotation_dict
 
@@ -235,68 +235,77 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
             blank_annotation = {"obo_id": "",
                                 "label": ""}
             return blank_annotation, known_iri
+        elif answer.lower() == 'exit':
+            raise KeyboardInterrupt
         else:
             dict_index_key = list(ontologies_dict.keys())[int(answer)-1]
             return ontologies_dict[dict_index_key], known_iri
+
+
+def save_workbook(path, workbook, suffix="_ontologies"):
+    split_path = os.path.split(path)
+    wb_name = split_path[-1]
+    wb_dir = split_path[0]
+    output_name = "".join(wb_name.split(".")[:-1]) + suffix + ".xlsx"
+    workbook.save(os.path.join(wb_dir, output_name))
+    print("Saved output to {}.".format(os.path.join(wb_dir, output_name)))
 
 
 def parse_wb(file_path, wb, schema, zooma, keep):
     known_terms = []
     known_ontologies = {}
     # Really ugly nested fors to parse for each cell in the WorkBook
-    for sheet in wb:
-        for row in sheet.rows:
-            # Don't check rows below number 5
-            if list(row)[0].row < 5:
-                continue
-            for cell in row:
-                # If there is already a value in the cell next to the .text cell, and keep enabled, skip curation
-                if sheet["{}4".format(get_column_letter(cell.column))].value.endswith(".text") and cell.value and keep:
-                    if sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value:
-                        continue
-                # If "X"4 cell exists, ends with value text and there is a value in the current cell:
-                if sheet["{}4".format(get_column_letter(cell.column))].value and \
-                        sheet["{}4".format(get_column_letter(cell.column))].value.endswith(".text") and \
-                        cell.value:
-                    # If we already know the term, fill and skip to go faster
-                    if cell.value in known_terms:
-                        sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value = known_ontologies[cell.value]["obo_id"]
-                        sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = known_ontologies[cell.value]["label"]
-                        continue
-                    # Search for the ontologies that match the ontology restriction of their schema
-                    programmatic_key = sheet["{}4".format(get_column_letter(cell.column))].value
-                    schema_info = get_schema_info(programmatic_key, schema)
-                    ontologies_dict, known_iri = search_child_term(cell.value, schema_info)
-                    if zooma:
-                        zooma_ann_dict = search_zooma(cell.value, schema_info)
-                        if ontologies_dict and zooma_ann_dict:
-                            ontologies_dict = {**ontologies_dict, **zooma_ann_dict}
-                        elif not ontologies_dict and zooma_ann_dict:
-                            ontologies_dict = zooma_ann_dict
-                        elif not ontologies_dict and not zooma_ann_dict:
-                            term = input("Term '{}' was not found (Property = {}).\nPlease input it manually:".format(cell.value, programmatic_key))
-                            ontologies_dict, known_iri = search_child_term(term, schema_info)
+    try:
+        for sheet in wb:
+            for row in sheet.rows:
+                # Don't check rows below number 5
+                if list(row)[0].row < 5:
+                    continue
+                for cell in row:
+                    # If there is already a value in the cell next to the .text cell, and keep enabled, skip curation
+                    if sheet["{}4".format(get_column_letter(cell.column))].value.endswith(".text") and cell.value and keep:
+                        if sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value:
+                            continue
+                    # If "X"4 cell exists, ends with value text and there is a value in the current cell:
+                    if sheet["{}4".format(get_column_letter(cell.column))].value and \
+                            sheet["{}4".format(get_column_letter(cell.column))].value.endswith(".text") and \
+                            cell.value:
+                        # If we already know the term, fill and skip to go faster
+                        if cell.value in known_terms:
+                            sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value = known_ontologies[cell.value]["obo_id"]
+                            sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = known_ontologies[cell.value]["label"]
+                            continue
+                        # Search for the ontologies that match the ontology restriction of their schema
+                        programmatic_key = sheet["{}4".format(get_column_letter(cell.column))].value
+                        schema_info = get_schema_info(programmatic_key, schema)
+                        ontologies_dict, known_iri = search_child_term(cell.value, schema_info)
+                        if zooma:
+                            zooma_ann_dict = search_zooma(cell.value, schema_info)
+                            if ontologies_dict and zooma_ann_dict:
+                                ontologies_dict = {**ontologies_dict, **zooma_ann_dict}
+                            elif not ontologies_dict and zooma_ann_dict:
+                                ontologies_dict = zooma_ann_dict
+                            elif not ontologies_dict and not zooma_ann_dict:
+                                term = input("Term '{}' was not found (Property = {}).\nPlease input it manually:".format(cell.value, programmatic_key))
+                                ontologies_dict, known_iri = search_child_term(term, schema_info)
 
-                    if ontologies_dict:
-                        ontology, known_iri = select_term(ontologies_dict, cell.value, programmatic_key, schema_info, zooma, known_iri)
-                        known_terms.append(cell.value)
+                        if ontologies_dict:
+                            ontology, known_iri = select_term(ontologies_dict, cell.value, programmatic_key, schema_info, zooma, known_iri)
+                            known_terms.append(cell.value)
 
-                        if isinstance(ontology, list):
-                            ontologies = {}
-                            ontologies["obo_id"] = "||".join([ontology_element["obo_id"] for ontology_element in ontology if "obo_id" in ontology_element])
-                            ontologies["label"] = "||".join([ontology_label["label"] for ontology_label in ontology if "obo_id" in ontology_label])
-                            ontology = ontologies
+                            if isinstance(ontology, list):
+                                ontologies = {}
+                                ontologies["obo_id"] = "||".join([ontology_element["obo_id"] for ontology_element in ontology if "obo_id" in ontology_element])
+                                ontologies["label"] = "||".join([ontology_label["label"] for ontology_label in ontology if "obo_id" in ontology_label])
+                                ontology = ontologies
 
-                        known_ontologies[cell.value] = ontology
-                        sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value = known_ontologies[cell.value]["obo_id"]
-                        sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = known_ontologies[cell.value]["label"]
+                            known_ontologies[cell.value] = ontology
+                            sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value = known_ontologies[cell.value]["obo_id"]
+                            sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = known_ontologies[cell.value]["label"]
+        save_workbook(file_path, wb)
 
-    split_path = os.path.split(file_path)
-    wb_name = split_path[-1]
-    wb_dir = split_path[0]
-    output_name = "".join(wb_name.split(".")[:-1]) + "_ontologies.xlsx"
-    wb.save(os.path.join(wb_dir, output_name))
-    print("Saved output to {}.".format(os.path.join(wb_dir, output_name)))
+    except KeyboardInterrupt:
+        save_workbook(file_path, wb, "_partial_ontologies")
     sys.exit(0)
 
 
