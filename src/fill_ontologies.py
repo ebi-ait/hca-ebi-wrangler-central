@@ -60,6 +60,7 @@ import re
 import os
 import sys
 
+
 def define_parser():
     parser = argparse.ArgumentParser(description="Parser for the arguments")
     parser.add_argument("--spreadsheet", "-s", action="store", dest="wb_path", type=str, help="Input spreadsheet name")
@@ -71,6 +72,7 @@ def define_parser():
 
 
 def get_iri(classes, iri={}):
+    # Get an iri from given classes
     for ontology_class in classes:
         ontology_name = ontology_class.split(":")[0]
         if ontology_name in iri:
@@ -83,6 +85,7 @@ def get_iri(classes, iri={}):
 
 
 def get_ontology_schemas(key, json_schemas):
+    # Get ontology graph restrictions from a given key
     key = key.split(".")
     try:
         for schema in json_schemas:
@@ -108,6 +111,7 @@ def get_ontology_schemas(key, json_schemas):
 
 
 def get_schema_info(key, json_schemas):
+    # Get schema info from a given key
     search_schema = get_ontology_schemas(key, json_schemas)
     search_ontologies = search_schema["properties"]["ontology"]["graph_restriction"]["ontologies"]
     classes = search_schema["properties"]["ontology"]["graph_restriction"]["classes"]
@@ -120,6 +124,7 @@ def get_schema_info(key, json_schemas):
 
 
 def search_child_term(term, schema_info, iri={}):
+    # Search OLS for ontologies based on string matching in ontologies determined by schema graph restriction
     ontology_response = []
     request_query = "https://ontology.archive.data.humancellatlas.org/api/search?q=" if "hcao" in schema_info['ontologies'] else \
                     "http://www.ebi.ac.uk/ols/api/search?q="
@@ -137,17 +142,15 @@ def search_child_term(term, schema_info, iri={}):
     if response["response"]["numFound"] != 0:
         ontology_response.extend(response["response"]["docs"])
     else:
-        # term = input("Term '{}' was not found (Property = {}).\nPlease input it manually:".format(term, key))
         if "none" in term.lower():
             return [{"obo_id": "", "label": ""}], iri
         return None, iri
-        # return search_child_term(term, key, json_schemas, iri)
     ontology_dict = {ontology['obo_id']: ontology for ontology in ontology_response}
     return ontology_dict, iri
 
 
 def search_zooma(term, schema_info):
-
+    # Search ZOOMA datasource for curated ontologies
     # TODO: Update to production instance of zooma
     query = "http://snarf.ebi.ac.uk:8580/spot/zooma/v2/api/services/annotate?filter=preferred:[hca]&ontologies:[{}]&propertyValue={}".format(schema_info['ontologies'], term)
     zooma_response = rq.get(query)
@@ -243,6 +246,7 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
 
 
 def save_workbook(path, workbook, suffix="_ontologies"):
+    # Save workbook with adjusted name to same location as input path.
     split_path = os.path.split(path)
     wb_name = split_path[-1]
     wb_dir = split_path[0]
@@ -252,35 +256,33 @@ def save_workbook(path, workbook, suffix="_ontologies"):
 
 
 def parse_wb(file_path, wb, schema, zooma, keep):
+    # Parses through workbook with nested for loops to iterate each tab, each row, then each column
+    # When `.text` field found, search for ontologies, prompt user to select correct ontology.
+    # Save workbook when finished or interrupted.
     known_terms = []
     known_ontologies = {}
-    # Really ugly nested fors to parse for each cell in the WorkBook
     try:
         for sheet in wb:
             for row in sheet.rows:
-                # Don't check rows below number 5
                 if list(row)[0].row < 5:
                     continue
                 for cell in row:
-                    # If there is already a value in the cell next to the .text cell, and keep enabled, skip curation
-                    if sheet["{}4".format(get_column_letter(cell.column))].value.endswith(".text") and cell.value and keep:
+                    if sheet["{}4".format(get_column_letter(cell.column))].value.endswith(".text") and cell.value \
+                            and keep:  # If there is already an ontology curation, and keep enabled, skip curation
                         if sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value:
                             continue
-                    # If "X"4 cell exists, ends with value text and there is a value in the current cell:
                     if sheet["{}4".format(get_column_letter(cell.column))].value and \
                             sheet["{}4".format(get_column_letter(cell.column))].value.endswith(".text") and \
-                            cell.value:
-                        # If we already know the term, fill and skip to go faster
-                        if cell.value in known_terms:
+                            cell.value:  # If there is a filled `.text` cell attempt curation:
+                        if cell.value in known_terms:  # If we already curated the term, use existing
                             sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value = known_ontologies[cell.value]["obo_id"]
                             sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = known_ontologies[cell.value]["label"]
                             continue
-                        # Search for the ontologies that match the ontology restriction of their schema
                         programmatic_key = sheet["{}4".format(get_column_letter(cell.column))].value
                         schema_info = get_schema_info(programmatic_key, schema)
-                        ontologies_dict, known_iri = search_child_term(cell.value, schema_info)
+                        ontologies_dict, known_iri = search_child_term(cell.value, schema_info)  # Search OLS
                         if zooma:
-                            zooma_ann_dict = search_zooma(cell.value, schema_info)
+                            zooma_ann_dict = search_zooma(cell.value, schema_info)  # Search ZOOMA
                             if ontologies_dict and zooma_ann_dict:
                                 ontologies_dict = {**ontologies_dict, **zooma_ann_dict}
                             elif not ontologies_dict and zooma_ann_dict:
@@ -288,17 +290,15 @@ def parse_wb(file_path, wb, schema, zooma, keep):
                             elif not ontologies_dict and not zooma_ann_dict:
                                 term = input("Term '{}' was not found (Property = {}).\nPlease input it manually:".format(cell.value, programmatic_key))
                                 ontologies_dict, known_iri = search_child_term(term, schema_info)
-
                         if ontologies_dict:
-                            ontology, known_iri = select_term(ontologies_dict, cell.value, programmatic_key, schema_info, zooma, known_iri)
+                            ontology, known_iri = select_term(ontologies_dict, cell.value, programmatic_key,
+                                                              schema_info, zooma, known_iri)
                             known_terms.append(cell.value)
-
-                            if isinstance(ontology, list):
+                            if isinstance(ontology, list):  # If multi ontology returned, concatenate values
                                 ontologies = {}
                                 ontologies["obo_id"] = "||".join([ontology_element["obo_id"] for ontology_element in ontology if "obo_id" in ontology_element])
                                 ontologies["label"] = "||".join([ontology_label["label"] for ontology_label in ontology if "obo_id" in ontology_label])
                                 ontology = ontologies
-
                             known_ontologies[cell.value] = ontology
                             sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value = known_ontologies[cell.value]["obo_id"]
                             sheet["{}{}".format(get_column_letter(cell.column + 2), cell.row)].value = known_ontologies[cell.value]["label"]
