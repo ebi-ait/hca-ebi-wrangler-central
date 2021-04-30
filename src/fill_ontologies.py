@@ -229,7 +229,7 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
             else:
                 print("{}. {} - {}".format(i, info["label"], info["obo_id"]))
             i += 1
-        answer = input("Enter the appropriate number or 'm' for manual input or 'none' to skip this term, or 'q' to save progess and stop program.\n")
+        answer = input("Enter the appropriate number, 'm' for manual input, 'none' to skip this term, 'q' to save progess and stop program.\n")
         if answer.lower() == 'm':
             term = input("Please input the term manually: ")
             ontologies_dict, known_iri = search_child_term(term, schema_info)
