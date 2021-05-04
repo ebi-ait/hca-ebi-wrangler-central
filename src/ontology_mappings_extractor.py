@@ -22,6 +22,7 @@ import argparse
 import requests
 import pandas as pd
 import sys
+from datetime import date
 
 def define_parser():
     parser = argparse.ArgumentParser(description="Parser for the arguments")
@@ -37,40 +38,26 @@ def define_parser():
     return parser
 
 
-def extract_mappings(uuid, api, unique):
-    column_names = ['STUDY', 'BIOENTITY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG']
+def extract_mappings(uuid, api, unique, date_str):
     project_json = requests.get("{}projects/search/findByUuid?uuid={}".format(api, uuid)).json()
     project_content = project_json['content']
     project_name = project_content['project_core']['project_short_name']
     project_mapping_list = read_properties(project_content, 'project', project_name)
-    project_df = pd.DataFrame(project_mapping_list, columns=column_names)
-    if unique:
-        project_df = project_df.drop_duplicates()
-    project_df.to_csv("all_mappings.tsv", sep="\t", index=False)
-
+    save_df(project_mapping_list, unique, date_str, write_mode='w', head=True)
     submissions_link = project_json['_links']['submissionEnvelopes']['href']
     submissions_json = requests.get(submissions_link).json()
     for submission in submissions_json['_embedded']['submissionEnvelopes']:
         biomaterials_link = submission['_links']['biomaterials']['href']
         biomaterials_mapping_list = process_json(biomaterials_link, 'biomaterials', project_name)
-        biomaterials_df = pd.DataFrame(biomaterials_mapping_list, columns=column_names)
-        if unique:
-            biomaterials_df = biomaterials_df.drop_duplicates()
-        biomaterials_df.to_csv("all_mappings.tsv", sep="\t", index=False, header=False, mode="a")
+        save_df(biomaterials_mapping_list, unique, date_str)
 
         protocols_link = submission['_links']['protocols']['href']
         protocols_mapping_list = process_json(protocols_link, 'protocols', project_name)
-        protocols_df = pd.DataFrame(protocols_mapping_list, columns=column_names)
-        if unique:
-            protocols_df = protocols_df.drop_duplicates()
-        protocols_df.to_csv("all_mappings.tsv", sep="\t", index=False, header=False, mode="a")
+        save_df(protocols_mapping_list, unique, date_str)
 
         files_link = submission['_links']['files']['href']
         files_mapping_list = process_json(files_link, 'files', project_name)
-        files_df = pd.DataFrame(files_mapping_list, columns=column_names)
-        if unique:
-            files_df = biomaterials_df.drop_duplicates()
-        files_df.to_csv("all_mappings.tsv", sep="\t", index=False, header=False, mode="a")
+        save_df(files_mapping_list, unique, date_str)
 
     # TODO: Process Analysis entities
 
@@ -113,11 +100,39 @@ def read_properties(data, bioentity, project_name, property_list=[], root=None):
     return property_list
 
 
+def save_df(mapping_list, unique, today_str, write_mode='a', head=False):
+    column_names = ['STUDY', 'BIOENTITY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG']
+    property_df = pd.DataFrame(mapping_list, columns=column_names)
+    if unique:
+        property_df.drop_duplicates(inplace=True)
+    property_df.to_csv("{}_all_mappings.tsv".format(today_str), sep="\t", index=False, mode=write_mode, header=head)
+
+
+def get_full_iri(obo_id):
+    obo_term = obo_id.replace(":", "_")
+    ols_response = requests.get('http://www.ebi.ac.uk/ols/api/terms?id={}'.format(obo_term))
+    ols_json = ols_response.json()
+    # if "_embedded" not in ols_json.keys():
+    #     ols_response = requests.get('http://www.ebi.ac.uk/ols/api/terms?iri={}'.format(obo_term))
+    #     ols_json = ols_response.json()
+    return ols_json['_embedded']['terms'][0]['iri']
+
+
 def main(project_uuids, unique, api):
+    today = date.today()
+    today_str = today.strftime("%Y-%m-%d")
     for uuid in project_uuids:
         print("Processing " + uuid)
-        extract_mappings(uuid, api, unique)
-    print("Saved output to all_mappings.tsv")
+        extract_mappings(uuid, api, unique, today_str)
+    print("Getting full iris")
+    with open("{}_all_mappings.tsv".format(today_str)) as mappings_file:
+        property_df = pd.read_csv(mappings_file, sep="\t")
+        obo_ids = list(set(property_df['SEMANTIC_TAG']))
+        print("Found {} obo_ids to search and replace.".format(len(obo_ids)))
+        obo_dict = {obo_id: get_full_iri(obo_id) for obo_id in obo_ids}
+        property_df["SEMANTIC_TAG"].replace(obo_dict, inplace=True)
+        property_df.to_csv("{}_all_mappings.tsv".format(today_str), sep="\t", index=False)
+    print("Saved output to {}_all_mappings.tsv".format(today_str))
     sys.exit(0)
 
 
