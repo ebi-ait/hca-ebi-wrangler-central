@@ -47,17 +47,17 @@ def extract_mappings(uuid, api):
     submissions_json = requests.get(submissions_link).json()
     for submission in submissions_json['_embedded']['submissionEnvelopes']:
         biomaterials_link = submission['_links']['biomaterials']['href']
-        biomaterials_mapping_list = process_json(biomaterials_link, 'biomaterials', file, project_name)
+        biomaterials_mapping_list = process_json(biomaterials_link, 'biomaterials', project_name)
         biomaterials_df = pd.DataFrame(biomaterials_mapping_list,
                                    columns=['STUDY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG'])
 
         protocols_link = submission['_links']['protocols']['href']
-        protocols_mapping_list = process_json(protocols_link, 'protocols', file, project_name)
+        protocols_mapping_list = process_json(protocols_link, 'protocols', project_name)
         protocols_df = pd.DataFrame(protocols_mapping_list,
                                     columns=['STUDY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG'])
 
         files_link = submission['_links']['files']['href']
-        files_mapping_list = process_json(files_link, 'files', file, project_name)
+        files_mapping_list = process_json(files_link, 'files', project_name)
         files_df = pd.DataFrame(files_mapping_list,
                                 columns=['STUDY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG'])
 
@@ -68,7 +68,7 @@ def extract_mappings(uuid, api):
     return dataframe
 
 
-def process_json(link, schema_type, file, project_name):
+def process_json(link, schema_type, project_name):
     done = False
     mapping_list = []
     while not done:
@@ -83,19 +83,15 @@ def process_json(link, schema_type, file, project_name):
 
 
 # this function recursively reads through an entire json doc to find all the instances of ontology mappings
-def read_properties(data, file, project_name, property_list=[], root=None):
+def read_properties(data, project_name, property_list=[], root=None):
     for k, v in data.items():
         if isinstance(v, dict):
             if "ontology" in v:
                 ontology = v['ontology'].strip()
                 text = v['text'].strip()
-
-                # WARNING: Comment the next line out if you don't want constant feedback on the running of the script!
-                # print(project_name + "\t" + k + "\t" + text + "\t" + ontology)
-                file.write(project_name + "\t" + k + "\t" + text + "\t" + ontology + "\n")
                 property_list.append([project_name, k, text, ontology])
             else:
-                read_properties(v, file, project_name, property_list, k)
+                read_properties(v, project_name, property_list, k)
 
         elif isinstance(v, list):
             for index, e in enumerate(v):
@@ -103,12 +99,9 @@ def read_properties(data, file, project_name, property_list=[], root=None):
                     if "ontology" in e.keys():
                         ontology = e['ontology'].strip()
                         text = e['text'].strip()
-
-                        # print(project_name + "\t" + k + "\t" + text + "\t" + ontology)
-                        file.write(project_name + "\t" + k + "\t" + text + "\t" + ontology + "\n")
                         property_list.append([project_name, k, text, ontology])
                     else:
-                        read_properties(e, file, project_name, property_list, k)
+                        read_properties(e, project_name, property_list, k)
     return property_list
 
 
@@ -129,12 +122,19 @@ def main(project_uuids, unique, api):
 if __name__ == "__main__":
     parser = define_parser()
     args = parser.parse_args()
+    if not args.uuid_list and args.file_path:
+        print("Either -p or -f must be specified.")
+        sys.exit()
     if args.uuid_list:
-        id_list = args.uuid_list.split(",")
-    elif args.file_path:
-        id_list = []
+        uuid_list = args.uuid_list.split(",")
+    if args.file_path:
+        file_id_list = []
         with open(args.file_path, "r") as input_file:
             for line in input_file:
                 stripped = line.strip()
-                id_list.append(stripped)
+                file_id_list.append(stripped)
+    if args.uuid_list and args.file_path:
+        id_list = list(set(uuid_list.append(file_id_list)))
+    else:
+        id_list = uuid_list if uuid_list else file_id_list
     main(id_list, args.unique, args.ingest_api_url)
