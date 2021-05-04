@@ -37,7 +37,7 @@ To install the tool on your local machine:
    ```
    git clone https://github.com/ebi-ait/hca-to-scea-tools.git
    cd hca-to-scea-tools/
-
+   ```
 1. Install the application by running
    ```
    cd hca2scea-backend
