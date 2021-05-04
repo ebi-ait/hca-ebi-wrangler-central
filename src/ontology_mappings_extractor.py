@@ -37,35 +37,42 @@ def define_parser():
     return parser
 
 
-def extract_mappings(uuid, api):
-
+def extract_mappings(uuid, api, unique):
+    column_names = ['STUDY', 'BIOENTITY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG']
     project_json = requests.get("{}projects/search/findByUuid?uuid={}".format(api, uuid)).json()
     project_content = project_json['content']
     project_name = project_content['project_core']['project_short_name']
+    project_mapping_list = read_properties(project_content, 'project', project_name)
+    project_df = pd.DataFrame(project_mapping_list, columns=column_names)
+    if unique:
+        project_df = project_df.drop_duplicates()
+    project_df.to_csv("all_mappings.tsv", sep="\t", index=False)
 
     submissions_link = project_json['_links']['submissionEnvelopes']['href']
     submissions_json = requests.get(submissions_link).json()
     for submission in submissions_json['_embedded']['submissionEnvelopes']:
         biomaterials_link = submission['_links']['biomaterials']['href']
         biomaterials_mapping_list = process_json(biomaterials_link, 'biomaterials', project_name)
-        biomaterials_df = pd.DataFrame(biomaterials_mapping_list,
-                                   columns=['STUDY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG'])
+        biomaterials_df = pd.DataFrame(biomaterials_mapping_list, columns=column_names)
+        if unique:
+            biomaterials_df = biomaterials_df.drop_duplicates()
+        biomaterials_df.to_csv("all_mappings.tsv", sep="\t", index=False, header=False, mode="a")
 
         protocols_link = submission['_links']['protocols']['href']
         protocols_mapping_list = process_json(protocols_link, 'protocols', project_name)
-        protocols_df = pd.DataFrame(protocols_mapping_list,
-                                    columns=['STUDY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG'])
+        protocols_df = pd.DataFrame(protocols_mapping_list, columns=column_names)
+        if unique:
+            protocols_df = protocols_df.drop_duplicates()
+        protocols_df.to_csv("all_mappings.tsv", sep="\t", index=False, header=False, mode="a")
 
         files_link = submission['_links']['files']['href']
         files_mapping_list = process_json(files_link, 'files', project_name)
-        files_df = pd.DataFrame(files_mapping_list,
-                                columns=['STUDY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG'])
+        files_df = pd.DataFrame(files_mapping_list, columns=column_names)
+        if unique:
+            files_df = biomaterials_df.drop_duplicates()
+        files_df.to_csv("all_mappings.tsv", sep="\t", index=False, header=False, mode="a")
 
     # TODO: Process Analysis entities
-
-    dataframe = pd.concat([biomaterials_df, protocols_df, files_df], ignore_index=True)
-
-    return dataframe
 
 
 def process_json(link, schema_type, project_name):
@@ -74,7 +81,8 @@ def process_json(link, schema_type, project_name):
     while not done:
         entries = requests.get(link).json()
         for entry in entries['_embedded'][schema_type]:
-            mapping_list.extend(read_properties(entry['content'], file, project_name))
+            bioentity = entry['content']['describedBy'].split('/')[-1]
+            mapping_list.extend(read_properties(entry['content'], bioentity, project_name))
         if 'next' in entries['_links']:
             link = entries['_links']['next']['href']
         else:
@@ -83,15 +91,15 @@ def process_json(link, schema_type, project_name):
 
 
 # this function recursively reads through an entire json doc to find all the instances of ontology mappings
-def read_properties(data, project_name, property_list=[], root=None):
+def read_properties(data, bioentity, project_name, property_list=[], root=None):
     for k, v in data.items():
         if isinstance(v, dict):
             if "ontology" in v:
                 ontology = v['ontology'].strip()
                 text = v['text'].strip()
-                property_list.append([project_name, k, text, ontology])
+                property_list.append([project_name, bioentity, k, text, ontology])
             else:
-                read_properties(v, project_name, property_list, k)
+                read_properties(v, bioentity, project_name, property_list, k)
 
         elif isinstance(v, list):
             for index, e in enumerate(v):
@@ -99,22 +107,16 @@ def read_properties(data, project_name, property_list=[], root=None):
                     if "ontology" in e.keys():
                         ontology = e['ontology'].strip()
                         text = e['text'].strip()
-                        property_list.append([project_name, k, text, ontology])
+                        property_list.append([project_name, bioentity, k, text, ontology])
                     else:
-                        read_properties(e, project_name, property_list, k)
+                        read_properties(e, bioentity, project_name, property_list, k)
     return property_list
 
 
 def main(project_uuids, unique, api):
-    all_mappings = pd.DataFrame(columns=['STUDY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG'])
-
     for uuid in project_uuids:
         print("Processing " + uuid)
-        project_df = extract_mappings(uuid, api)
-        if unique:
-            project_df = project_df.drop_duplicates()
-        all_mappings = pd.concat([all_mappings, project_df], ignore_index=True)
-    all_mappings.to_csv("all_mappings.tsv", sep="\t", index=False)
+        extract_mappings(uuid, api, unique)
     print("Saved output to all_mappings.tsv")
     sys.exit(0)
 
