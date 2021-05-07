@@ -1,0 +1,970 @@
+STUDY	BIOENTITY	PROPERTY_TYPE	PROPERTY_VALUE	SEMANTIC_TAG
+1M Immune Cells	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+1M Immune Cells	donor_organism	ethnicity	African-american	http://purl.obolibrary.org/obo/HANCESTRO_0568
+1M Immune Cells	donor_organism	ethnicity	Asian	http://purl.obolibrary.org/obo/HANCESTRO_0008
+1M Immune Cells	donor_organism	ethnicity	Caucasian	http://purl.obolibrary.org/obo/HANCESTRO_0005
+1M Immune Cells	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+1M Immune Cells	donor_organism	height_unit	centimeter	http://purl.obolibrary.org/obo/UO_0000015
+1M Immune Cells	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+1M Immune Cells	sequencing_protocol	instrument_manufacturer_model	Illumina Hiseq X 10	http://www.ebi.ac.uk/efo/EFO_0008567
+1M Immune Cells	library_preparation_protocol	library_construction_method	10X v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009310
+1M Immune Cells	library_preparation_protocol	method	10x v2	http://www.ebi.ac.uk/efo/EFO_0009310
+1M Immune Cells	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+1M Immune Cells	specimen_from_organism	organ	blood	http://purl.obolibrary.org/obo/UBERON_0000178
+1M Immune Cells	specimen_from_organism	organ	immune system	http://purl.obolibrary.org/obo/UBERON_0002405
+1M Immune Cells	specimen_from_organism	organ_parts	bone marrow	http://purl.obolibrary.org/obo/UBERON_0002371
+1M Immune Cells	specimen_from_organism	organ_parts	umbilical cord blood	http://purl.obolibrary.org/obo/UBERON_0012168
+1M Immune Cells	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+1M Immune Cells	cell_suspension	selected_cell_types	bone marrow hematopoietic cell	http://purl.obolibrary.org/obo/CL_1001610
+1M Immune Cells	cell_suspension	selected_cell_types	umbilical cord blood cell	http://purl.obolibrary.org/obo/CL_2000095
+1M Immune Cells	donor_organism	weight_unit	kilogram	http://purl.obolibrary.org/obo/UO_0000009
+1M Neurons	donor_organism	development_stage	mouse embryo stage	http://www.ebi.ac.uk/efo/EFO_0005857
+1M Neurons	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+1M Neurons	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+1M Neurons	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+1M Neurons	library_preparation_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+1M Neurons	library_preparation_protocol	library_construction_method	10x_v2	http://www.ebi.ac.uk/efo/EFO_0009310
+1M Neurons	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+1M Neurons	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+1M Neurons	specimen_from_organism	organ	Brain	http://purl.obolibrary.org/obo/UBERON_0000955
+1M Neurons	specimen_from_organism	organism_age_unit	day	http://purl.obolibrary.org/obo/UO_0000033
+1M Neurons	cell_suspension	selected_cell_types	neuron	http://purl.obolibrary.org/obo/CL_0000540
+1M Neurons	specimen_from_organism	storage_time_unit	day	http://purl.obolibrary.org/obo/UO_0000033
+Adult_Nonmobilised_PB	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+Adult_Nonmobilised_PB	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Adult_Nonmobilised_PB	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Adult_Nonmobilised_PB	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Adult_Nonmobilised_PB	sequencing_protocol	instrument_manufacturer_model	Illumina NovaSeq 6000	http://www.ebi.ac.uk/efo/EFO_0008637
+Adult_Nonmobilised_PB	library_preparation_protocol	library_construction_method	10X 3' v3 sequencing	http://www.ebi.ac.uk/efo/EFO_0009922
+Adult_Nonmobilised_PB	collection_protocol	method	apheresis	http://www.ebi.ac.uk/efo/EFO_0009121
+Adult_Nonmobilised_PB	collection_protocol	method	blood draw	http://www.ebi.ac.uk/efo/EFO_0009121
+Adult_Nonmobilised_PB	dissociation_protocol	method	density gradient separation	http://www.ebi.ac.uk/efo/EFO_0009112
+Adult_Nonmobilised_PB	enrichment_protocol	method	fluorescence activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+Adult_Nonmobilised_PB	enrichment_protocol	method	magnetic selection	http://www.ebi.ac.uk/efo/EFO_0009109
+Adult_Nonmobilised_PB	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Adult_Nonmobilised_PB	specimen_from_organism	organ	peripheral blood	http://purl.obolibrary.org/obo/UBERON_0000178
+Adult_Nonmobilised_PB	specimen_from_organism	organism_age_unit	years	http://purl.obolibrary.org/obo/UO_0000036
+Adult_Nonmobilised_PB	cell_suspension	selected_cell_types	peripheral blood hematopoietic stem cell	http://purl.obolibrary.org/obo/CL_0002246
+Adult_Nonmobilised_PB	cell_suspension	selected_cell_types	progenitor cell	http://purl.obolibrary.org/obo/CL_0000837
+Adult_Nonmobilised_PB	specimen_from_organism	storage_time_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+AdultHemOrgans	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+AdultHemOrgans	donor_organism	diseases	history of asthma	http://purl.obolibrary.org/obo/MONDO:0004979
+AdultHemOrgans	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+AdultHemOrgans	donor_organism	ethnicity	white	http://purl.obolibrary.org/obo/HANCESTRO_0005
+AdultHemOrgans	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+AdultHemOrgans	donor_organism	height_unit	cm	http://purl.obolibrary.org/obo/UO_0000015
+AdultHemOrgans	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+AdultHemOrgans	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+AdultHemOrgans	library_preparation_protocol	library_construction_method	10X 3' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+AdultHemOrgans	collection_protocol	method	blood draw	http://www.ebi.ac.uk/efo/EFO_0009121
+AdultHemOrgans	collection_protocol	method	bone marrow aspirate	http://www.ebi.ac.uk/efo/EFO_0009292
+AdultHemOrgans	collection_protocol	method	collecting specimen from organ postmortem	http://www.ebi.ac.uk/efo/EFO_0009627
+AdultHemOrgans	dissociation_protocol	method	mechanical dissociation	http://www.ebi.ac.uk/efo/EFO_0009129
+AdultHemOrgans	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+AdultHemOrgans	specimen_from_organism	organ	bone marrow	http://purl.obolibrary.org/obo/UBERON_0002371
+AdultHemOrgans	specimen_from_organism	organ	peripheral blood	http://purl.obolibrary.org/obo/UBERON_0000178
+AdultHemOrgans	specimen_from_organism	organ	spleen	http://purl.obolibrary.org/obo/UBERON_0002106
+AdultHemOrgans	donor_organism	organism_age_unit	years	http://purl.obolibrary.org/obo/UO_0000036
+AdultHemOrgans	cell_suspension	selected_cell_types	bone marrow hematopoietic stem and progenitor cells	http://purl.obolibrary.org/obo/CL_1001610
+AdultHemOrgans	cell_suspension	selected_cell_types	peripheral blood hematopoietic stem and progenitor cells	http://purl.obolibrary.org/obo/CL_0000037
+AdultHemOrgans	cell_suspension	selected_cell_types	spleen hematopoietic stem and progenitor cells	http://purl.obolibrary.org/obo/CL_0000837
+AdultHemOrgans	specimen_from_organism	storage_time_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+AdultHemOrgans	donor_organism	weight_unit	kg	http://purl.obolibrary.org/obo/UO_0000009
+BM_PC	library_preparation_protocol	cdna_library_amplification_method	PCR	http://purl.obolibrary.org/obo/OBI_0000415
+BM_PC	cell_suspension	cell_size_unit	micrometer	http://purl.obolibrary.org/obo/UO_0000017
+BM_PC	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+BM_PC	donor_organism	diseases	isolated hip osteoarthritis	http://purl.obolibrary.org/obo/MONDO_0006629
+BM_PC	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+BM_PC	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+BM_PC	sequencing_protocol	instrument_manufacturer_model	Illumina NextSeq500	http://www.ebi.ac.uk/efo/EFO_0009173
+BM_PC	library_preparation_protocol	library_construction_method	MARS-seq	http://www.ebi.ac.uk/efo/EFO_0008796
+BM_PC	library_preparation_protocol	library_preamplification_method	In vitro transcription	http://www.ebi.ac.uk/efo/EFO_0009013
+BM_PC	dissociation_protocol	method	Ficoll-Hypaque method	http://www.ebi.ac.uk/efo/EFO_0009110
+BM_PC	enrichment_protocol	method	magnetic affinity cell sorting	http://www.ebi.ac.uk/efo/EFO_0009109
+BM_PC	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+BM_PC	specimen_from_organism	organ	bone	http://purl.obolibrary.org/obo/UBERON_0001474
+BM_PC	specimen_from_organism	organ_parts	bone marrow	http://purl.obolibrary.org/obo/UBERON_0002371
+BM_PC	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+BM_PC	cell_suspension	selected_cell_types	Plasma cells	http://purl.obolibrary.org/obo/CL_0000786
+CD4+ cytotoxic T lymphocytes	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+CD4+ cytotoxic T lymphocytes	donor_organism	diseases	asymptomatic dengue	http://purl.obolibrary.org/obo/MONDO_0000259
+CD4+ cytotoxic T lymphocytes	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+CD4+ cytotoxic T lymphocytes	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+CD4+ cytotoxic T lymphocytes	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+CD4+ cytotoxic T lymphocytes	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+CD4+ cytotoxic T lymphocytes	library_preparation_protocol	library_construction_method	Smart-seq2	http://www.ebi.ac.uk/efo/EFO_0008931
+CD4+ cytotoxic T lymphocytes	library_preparation_protocol	library_preamplification_method	PCR	http://purl.obolibrary.org/obo/OBI_0000415
+CD4+ cytotoxic T lymphocytes	collection_protocol	method	blood draw	http://www.ebi.ac.uk/efo/EFO_0009121
+CD4+ cytotoxic T lymphocytes	dissociation_protocol	method	Ficoll-Hypaque method	http://www.ebi.ac.uk/efo/EFO_0009110
+CD4+ cytotoxic T lymphocytes	enrichment_protocol	method	fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+CD4+ cytotoxic T lymphocytes	library_preparation_protocol	method	full length single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008441
+CD4+ cytotoxic T lymphocytes	collection_protocol	method	leukapheresis	http://www.ebi.ac.uk/efo/EFO_0009126
+CD4+ cytotoxic T lymphocytes	specimen_from_organism	organ	blood	http://purl.obolibrary.org/obo/UBERON_0000178
+CD4+ cytotoxic T lymphocytes	specimen_from_organism	organ_parts	peripheral blood mononuclear cell	http://purl.obolibrary.org/obo/CL_2000001
+CD4+ cytotoxic T lymphocytes	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+CD4+ cytotoxic T lymphocytes	cell_suspension	selected_cell_types	DENV antigen specific TEM	http://purl.obolibrary.org/obo/CL_0000625
+CD4+ cytotoxic T lymphocytes	cell_suspension	selected_cell_types	DENV antigen specific TEMRA	http://purl.obolibrary.org/obo/CL_0001062
+CD4+ cytotoxic T lymphocytes	cell_suspension	selected_cell_types	IL7R high TEMRA	http://purl.obolibrary.org/obo/CL_0001062
+CD4+ cytotoxic T lymphocytes	cell_suspension	selected_cell_types	IL7R low TEMRA	http://purl.obolibrary.org/obo/CL_0001062
+CD4+ cytotoxic T lymphocytes	cell_suspension	selected_cell_types	TCM	http://purl.obolibrary.org/obo/CL_0000625
+CD4+ cytotoxic T lymphocytes	cell_suspension	selected_cell_types	TEM	http://purl.obolibrary.org/obo/CL_0000625
+CD4+ cytotoxic T lymphocytes	cell_suspension	selected_cell_types	TEMRA	http://purl.obolibrary.org/obo/CL_0001062
+ColonImmune10XSS2VDJ	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+ColonImmune10XSS2VDJ	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+ColonImmune10XSS2VDJ	donor_organism	ethnicity	mixed race; south american	http://purl.obolibrary.org/obo/HANCESTRO_0014
+ColonImmune10XSS2VDJ	donor_organism	ethnicity	white	http://purl.obolibrary.org/obo/HANCESTRO_0005
+ColonImmune10XSS2VDJ	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+ColonImmune10XSS2VDJ	donor_organism	height_unit	cm	http://purl.obolibrary.org/obo/UO_0000015
+ColonImmune10XSS2VDJ	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+ColonImmune10XSS2VDJ	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+ColonImmune10XSS2VDJ	sequencing_protocol	instrument_manufacturer_model	Novaseq	http://www.ebi.ac.uk/efo/EFO_0008637
+ColonImmune10XSS2VDJ	library_preparation_protocol	library_construction_method	10X 3' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+ColonImmune10XSS2VDJ	library_preparation_protocol	library_construction_method	10X 5' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009900
+ColonImmune10XSS2VDJ	library_preparation_protocol	library_construction_method	10X Ig enrichment	http://www.ebi.ac.uk/efo/EFO_0010715
+ColonImmune10XSS2VDJ	library_preparation_protocol	library_construction_method	10X TCR enrichment	http://www.ebi.ac.uk/efo/EFO_0010714
+ColonImmune10XSS2VDJ	library_preparation_protocol	library_construction_method	Smart-seq2	http://www.ebi.ac.uk/efo/EFO_0008931
+ColonImmune10XSS2VDJ	collection_protocol	method	collecting specimen from organ postmortem	http://www.ebi.ac.uk/efo/EFO_0009627
+ColonImmune10XSS2VDJ	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+ColonImmune10XSS2VDJ	enrichment_protocol	method	FACs	http://www.ebi.ac.uk/efo/EFO_0009108
+ColonImmune10XSS2VDJ	enrichment_protocol	method	FACS	http://www.ebi.ac.uk/efo/EFO_0009108
+ColonImmune10XSS2VDJ	dissociation_protocol	method	Ficoll	http://www.ebi.ac.uk/efo/EFO_0009110
+ColonImmune10XSS2VDJ	sequencing_protocol	method	full length single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008441
+ColonImmune10XSS2VDJ	enrichment_protocol	method	Miltenyi MACS	http://www.ebi.ac.uk/efo/EFO_0009109
+ColonImmune10XSS2VDJ	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+ColonImmune10XSS2VDJ	specimen_from_organism	organ	immune organ	http://purl.obolibrary.org/obo/UBERON_0005057
+ColonImmune10XSS2VDJ	specimen_from_organism	organ	large intestine	http://purl.obolibrary.org/obo/UBERON_0000059
+ColonImmune10XSS2VDJ	specimen_from_organism	organ_parts	Caecum	http://purl.obolibrary.org/obo/UBERON_0001153
+ColonImmune10XSS2VDJ	specimen_from_organism	organ_parts	Mesenteric lymph node	http://purl.obolibrary.org/obo/UBERON_0002509
+ColonImmune10XSS2VDJ	specimen_from_organism	organ_parts	Sigmoid colon	http://purl.obolibrary.org/obo/UBERON_0001159
+ColonImmune10XSS2VDJ	specimen_from_organism	organ_parts	Transverse colon	http://purl.obolibrary.org/obo/UBERON_0001157
+ColonImmune10XSS2VDJ	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+ColonImmune10XSS2VDJ	cell_suspension	selected_cell_types	cd45pos immune cell	http://purl.obolibrary.org/obo/CL_0000738
+ColonImmune10XSS2VDJ	cell_suspension	selected_cell_types	cd4pos alpha-beta T cell	http://purl.obolibrary.org/obo/CL_0000789
+ColonImmune10XSS2VDJ	cell_suspension	selected_cell_types	T cell	http://purl.obolibrary.org/obo/CL_0000084
+ColonImmune10XSS2VDJ	donor_organism	weight_unit	kg	http://purl.obolibrary.org/obo/UO_0000009
+DevelopingCardiacSystem	donor_organism	development_stage	Theiler Stage 24	http://www.ebi.ac.uk/efo/EFO_0002586
+DevelopingCardiacSystem	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+DevelopingCardiacSystem	specimen_from_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+DevelopingCardiacSystem	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+DevelopingCardiacSystem	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+DevelopingCardiacSystem	library_preparation_protocol	library_construction_method	10X v2 3' sequencing	http://www.ebi.ac.uk/efo/EFO_0009310
+DevelopingCardiacSystem	library_preparation_protocol	library_construction_method	10X v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009310
+DevelopingCardiacSystem	dissociation_protocol	method	enzymatic digestion	http://www.ebi.ac.uk/efo/EFO_0009128
+DevelopingCardiacSystem	collection_protocol	method	microdissection	http://www.ebi.ac.uk/efo/EFO_0003856
+DevelopingCardiacSystem	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+DevelopingCardiacSystem	specimen_from_organism	organ	Heart	http://purl.obolibrary.org/obo/UBERON_0000948
+DevelopingCardiacSystem	specimen_from_organism	organ_parts	atrioventricular bundle	http://purl.obolibrary.org/obo/UBERON_0002353
+DevelopingCardiacSystem	specimen_from_organism	organ_parts	atrioventricular node	http://purl.obolibrary.org/obo/UBERON_0002352
+DevelopingCardiacSystem	specimen_from_organism	organ_parts	AVN/His region crux of heart	http://purl.obolibrary.org/obo/UBERON_0002352
+DevelopingCardiacSystem	specimen_from_organism	organ_parts	BB/PF region luminal side of left ventricle	http://purl.obolibrary.org/obo/UBERON_0002084
+DevelopingCardiacSystem	specimen_from_organism	organ_parts	BB/PF region luminal side of right ventricle	http://purl.obolibrary.org/obo/UBERON_0002080
+DevelopingCardiacSystem	specimen_from_organism	organ_parts	heart left ventricle	http://purl.obolibrary.org/obo/UBERON_0002084
+DevelopingCardiacSystem	specimen_from_organism	organ_parts	heart right ventricle	http://purl.obolibrary.org/obo/UBERON_0002080
+DevelopingCardiacSystem	specimen_from_organism	organ_parts	left branch of atrioventricular bundle	http://purl.obolibrary.org/obo/UBERON_0005986
+DevelopingCardiacSystem	specimen_from_organism	organ_parts	right branch of atrioventricular bundle	http://purl.obolibrary.org/obo/UBERON_0005987
+DevelopingCardiacSystem	specimen_from_organism	organ_parts	SAN region superior vena cava/right atrial junction	http://purl.obolibrary.org/obo/UBERON_0002351
+DevelopingCardiacSystem	specimen_from_organism	organ_parts	sinoatrial node	http://purl.obolibrary.org/obo/UBERON_0002351
+DevelopingCardiacSystem	specimen_from_organism	organism_age_unit	day	http://purl.obolibrary.org/obo/UO_0000033
+DevelopingCardiacSystem	donor_organism	strain	CD1	http://www.ebi.ac.uk/efo/EFO_0005180
+Diabetic Nephropathy snRNA-seq	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	Acoustic neuroma	http://purl.obolibrary.org/obo/MONDO_0001569
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	adrenal mass	http://purl.obolibrary.org/obo/MONDO_0003924
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	AKI (5 months prior)	http://purl.obolibrary.org/obo/MONDO_0006637
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	anxiety	http://purl.obolibrary.org/obo/MONDO_0005618
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	arthritis	http://purl.obolibrary.org/obo/MONDO_0005578
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	benign prostatic hyperplasia	http://purl.obolibrary.org/obo/MONDO_0010811
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	depression	http://purl.obolibrary.org/obo/MONDO_0002050
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	diverticulitis	http://purl.obolibrary.org/obo/MONDO_0004235
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	dyslipidemia	http://purl.obolibrary.org/obo/MONDO_0015905
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	GERD	http://purl.obolibrary.org/obo/MONDO_0007186
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	hemochromatosis	http://purl.obolibrary.org/obo/MONDO_0006507
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	hiatal hernia	http://purl.obolibrary.org/obo/MONDO_0007721
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	hx VRE infection	http://purl.obolibrary.org/obo/MONDO_0005121
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	hyperlipidemia	http://purl.obolibrary.org/obo/MONDO_0021187
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	Hypertension	http://purl.obolibrary.org/obo/MONDO_0001134
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	IBS	http://purl.obolibrary.org/obo/MONDO_0005052
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	lyme disease	http://purl.obolibrary.org/obo/MONDO_0019632
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	NASH	http://purl.obolibrary.org/obo/MONDO_0013209
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	OSA	http://purl.obolibrary.org/obo/MONDO_0007147
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	PAF	http://purl.obolibrary.org/obo/MONDO_0018608
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	pleural effusion	http://purl.obolibrary.org/obo/HP:0002202
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	prostate cancer	http://purl.obolibrary.org/obo/MONDO_0008315
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	Renal mass	http://purl.obolibrary.org/obo/MONDO_0002367
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	right renal mass	http://purl.obolibrary.org/obo/MONDO_0002367
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	SVT	http://purl.obolibrary.org/obo/MONDO_0005477
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	type 2 diabetes	http://purl.obolibrary.org/obo/MONDO_0005148
+Diabetic Nephropathy snRNA-seq	donor_organism	diseases	type 2 diabetes mellitus	http://purl.obolibrary.org/obo/MONDO_0005148
+Diabetic Nephropathy snRNA-seq	donor_organism	ethnicity	Hispanic or Latin American	http://purl.obolibrary.org/obo/HANCESTRO_0014
+Diabetic Nephropathy snRNA-seq	donor_organism	ethnicity	Non-Hispanic White	http://purl.obolibrary.org/obo/HANCESTRO_0005
+Diabetic Nephropathy snRNA-seq	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Diabetic Nephropathy snRNA-seq	specimen_from_organism	genus_species	Homo Sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Diabetic Nephropathy snRNA-seq	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+Diabetic Nephropathy snRNA-seq	library_preparation_protocol	library_construction_method	10X 5' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009900
+Diabetic Nephropathy snRNA-seq	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+Diabetic Nephropathy snRNA-seq	collection_protocol	method	section	http://www.ebi.ac.uk/efo/EFO_0009744
+Diabetic Nephropathy snRNA-seq	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Diabetic Nephropathy snRNA-seq	specimen_from_organism	organ	kidney	http://purl.obolibrary.org/obo/UBERON_0002113
+Diabetic Nephropathy snRNA-seq	cell_suspension	selected_cell_types	endothelial cells	http://purl.obolibrary.org/obo/CL_0000115
+Diabetic Nephropathy snRNA-seq	cell_suspension	selected_cell_types	epithelial cells	http://purl.obolibrary.org/obo/CL_0000066
+Diabetic Nephropathy snRNA-seq	cell_suspension	selected_cell_types	fibroblasts	http://purl.obolibrary.org/obo/CL_0000057
+Diabetic Nephropathy snRNA-seq	cell_suspension	selected_cell_types	monocytes	http://purl.obolibrary.org/obo/CL_0000576
+Diabetic Nephropathy snRNA-seq	cell_suspension	selected_cell_types	myofibroblasts	http://purl.obolibrary.org/obo/CL_0000186
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	cell_suspension	cell_size_unit	micrometer	http://purl.obolibrary.org/obo/UO_0000017
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	cell_line	cell_type	cardiomyocyte	http://purl.obolibrary.org/obo/CL_0000746
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	cell_line	cell_type	induced pluripotent stem cell	http://purl.obolibrary.org/obo/CL_0002248
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	cell_line	cell_type	lymphocyte of B lineage	http://purl.obolibrary.org/obo/CL_0000945
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	donor_organism	ethnicity	YORUBA	http://purl.obolibrary.org/obo/HANCESTRO_0575
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	sequencing_protocol	instrument_manufacturer_model	Illumina NextSeq 500	http://www.ebi.ac.uk/efo/EFO_0009173
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	library_preparation_protocol	library_construction_method	DroNc-seq	http://www.ebi.ac.uk/efo/EFO_0008720
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	library_preparation_protocol	library_construction_method	Drop-seq	http://www.ebi.ac.uk/efo/EFO_0008722
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	dissociation_protocol	method	mechanical dissociation	http://www.ebi.ac.uk/efo/EFO_0009129
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	cell_line	model_organ	blood	http://purl.obolibrary.org/obo/UBERON_0000178
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	cell_line	model_organ	heart	http://purl.obolibrary.org/obo/UBERON_0000948
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	cell_line	model_organ	stem cell	http://purl.obolibrary.org/obo/CL_0000034
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	specimen_from_organism	organ	blood	http://purl.obolibrary.org/obo/UBERON_0000178
+Drop-seq, DroNc-seq, Fluidigm C1 Comparison	specimen_from_organism	organ_parts	venous blood	http://purl.obolibrary.org/obo/UBERON_0013756
+Fetal/Maternal Interface	donor_organism	development_stage	10th week post-fertilization human stage	http://purl.obolibrary.org/obo/HsapDv_0000047
+Fetal/Maternal Interface	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+Fetal/Maternal Interface	donor_organism	development_stage	embryo at Carnegie stage 14	http://purl.obolibrary.org/obo/HsapDv_0000021
+Fetal/Maternal Interface	donor_organism	development_stage	embryo at Carnegie stage 18	http://purl.obolibrary.org/obo/HsapDv_0000025
+Fetal/Maternal Interface	donor_organism	development_stage	embryo at Carnegie stage 22	http://purl.obolibrary.org/obo/HsapDv_0000029
+Fetal/Maternal Interface	donor_organism	development_stage	embryo at Carnegie stage 23	http://purl.obolibrary.org/obo/HsapDv_0000030
+Fetal/Maternal Interface	donor_organism	diseases	Edwards syndrome	http://purl.obolibrary.org/obo/MONDO_0010336
+Fetal/Maternal Interface	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Fetal/Maternal Interface	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Fetal/Maternal Interface	donor_organism	gestational_age_unit	weeks	http://purl.obolibrary.org/obo/UO_0000034
+Fetal/Maternal Interface	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Fetal/Maternal Interface	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2000	http://www.ebi.ac.uk/efo/EFO_0004203
+Fetal/Maternal Interface	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+Fetal/Maternal Interface	library_preparation_protocol	library_construction_method	Chromium 3' Single Cell v2	http://www.ebi.ac.uk/efo/EFO_0009899
+Fetal/Maternal Interface	library_preparation_protocol	library_construction_method	Smart-seq2	http://www.ebi.ac.uk/efo/EFO_0008931
+Fetal/Maternal Interface	collection_protocol	method	blood draw	http://www.ebi.ac.uk/efo/EFO_0009121
+Fetal/Maternal Interface	enrichment_protocol	method	cell size selection	http://www.ebi.ac.uk/efo/EFO_0009337
+Fetal/Maternal Interface	dissociation_protocol	method	enzymatic (collagenase V)	http://www.ebi.ac.uk/efo/EFO_0009128
+Fetal/Maternal Interface	dissociation_protocol	method	enzymatic (trypsin/collagenase V)	http://www.ebi.ac.uk/efo/EFO_0009128
+Fetal/Maternal Interface	dissociation_protocol	method	Ficoll-Hypaque gradient	http://www.ebi.ac.uk/efo/EFO_0009110
+Fetal/Maternal Interface	enrichment_protocol	method	fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+Fetal/Maternal Interface	sequencing_protocol	method	full length single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008441
+Fetal/Maternal Interface	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Fetal/Maternal Interface	specimen_from_organism	organ	blood	http://purl.obolibrary.org/obo/UBERON_0000178
+Fetal/Maternal Interface	specimen_from_organism	organ	decidua	http://purl.obolibrary.org/obo/UBERON_0002450
+Fetal/Maternal Interface	specimen_from_organism	organ	placenta	http://purl.obolibrary.org/obo/UBERON_0001987
+Fetal/Maternal Interface	cell_suspension	selected_cell_types	CD45+	http://purl.obolibrary.org/obo/CL_0000738
+Fetal/Maternal Interface	cell_suspension	selected_cell_types	myeloid cell	http://purl.obolibrary.org/obo/CL_0000763
+Fetal/Maternal Interface	cell_suspension	selected_cell_types	NK cell	http://purl.obolibrary.org/obo/CL_0000623
+Fetal/Maternal Interface	cell_suspension	selected_cell_types	PB	http://purl.obolibrary.org/obo/CL_2000001
+Fetal/Maternal Interface	cell_suspension	selected_cell_types	T cell	http://purl.obolibrary.org/obo/CL_0000084
+Healthy and type 2 diabetes pancreas	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+Healthy and type 2 diabetes pancreas	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Healthy and type 2 diabetes pancreas	donor_organism	diseases	type II diabetes mellitus	http://purl.obolibrary.org/obo/MONDO_0005148
+Healthy and type 2 diabetes pancreas	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Healthy and type 2 diabetes pancreas	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Healthy and type 2 diabetes pancreas	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2000	http://www.ebi.ac.uk/efo/EFO_0004203
+Healthy and type 2 diabetes pancreas	library_preparation_protocol	library_construction_method	Smart-seq2	http://www.ebi.ac.uk/efo/EFO_0008931
+Healthy and type 2 diabetes pancreas	enrichment_protocol	method	fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+Healthy and type 2 diabetes pancreas	sequencing_protocol	method	full length single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008441
+Healthy and type 2 diabetes pancreas	specimen_from_organism	organ	pancreas	http://purl.obolibrary.org/obo/UBERON_0001264
+Healthy and type 2 diabetes pancreas	specimen_from_organism	organ_parts	islet of Langerhans	http://purl.obolibrary.org/obo/UBERON_0000006
+Healthy and type 2 diabetes pancreas	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+HealthyAndCirrhoticLiver	donor_organism	development_stage	adult	http://www.ebi.ac.uk/efo/EFO_0001272
+HealthyAndCirrhoticLiver	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+HealthyAndCirrhoticLiver	donor_organism	diseases	alcohol-related liver disease	http://purl.obolibrary.org/obo/MONDO_0021104
+HealthyAndCirrhoticLiver	donor_organism	diseases	Hereditary Haemochromatosis	http://purl.obolibrary.org/obo/MONDO_0006507
+HealthyAndCirrhoticLiver	donor_organism	diseases	liver cirrhosis	http://purl.obolibrary.org/obo/MONDO_0005155
+HealthyAndCirrhoticLiver	donor_organism	diseases	non-alcoholic fatty liver disease	http://purl.obolibrary.org/obo/MONDO_0013209
+HealthyAndCirrhoticLiver	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+HealthyAndCirrhoticLiver	donor_organism	diseases	primary biliary cholangitis	http://purl.obolibrary.org/obo/MONDO_0005388
+HealthyAndCirrhoticLiver	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+HealthyAndCirrhoticLiver	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+HealthyAndCirrhoticLiver	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+HealthyAndCirrhoticLiver	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+HealthyAndCirrhoticLiver	library_preparation_protocol	library_construction_method	10X 3' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+HealthyAndCirrhoticLiver	enrichment_protocol	method	antibody staining; fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+HealthyAndCirrhoticLiver	collection_protocol	method	blood draw	http://www.ebi.ac.uk/efo/EFO_0009121
+HealthyAndCirrhoticLiver	collection_protocol	method	collecting specimen from organ postmortem	http://www.ebi.ac.uk/efo/EFO_0009627
+HealthyAndCirrhoticLiver	dissociation_protocol	method	enzymatic digestion; mechanical dissociation; size selection	http://www.ebi.ac.uk/efo/EFO_0009128
+HealthyAndCirrhoticLiver	collection_protocol	method	liver surgery biopsy	http://www.ebi.ac.uk/efo/EFO_0009120
+HealthyAndCirrhoticLiver	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+HealthyAndCirrhoticLiver	specimen_from_organism	organ	Blood	http://purl.obolibrary.org/obo/UBERON_0000178
+HealthyAndCirrhoticLiver	specimen_from_organism	organ	Liver	http://purl.obolibrary.org/obo/UBERON_0002107
+HealthyAndCirrhoticLiver	donor_organism	organism_age_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+HealthyAndCirrhoticLiver	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+HealthyAndCirrhoticLiver	cell_suspension	selected_cell_types	Leukocytes	http://purl.obolibrary.org/obo/CL_0000738
+HealthyAndCirrhoticLiver	cell_suspension	selected_cell_types	Mononuclear Phagocyte	http://purl.obolibrary.org/obo/CL_0000234
+HealthyAndCirrhoticLiver	cell_suspension	selected_cell_types	PBMC	http://purl.obolibrary.org/obo/CL_2000001
+HealthyAndCirrhoticLiver	specimen_from_organism	storage_time_unit	minute	http://purl.obolibrary.org/obo/UO_0000031
+HealthyAndCirrhoticLiver	donor_organism	strain	C57BL/6JCrl	http://www.ebi.ac.uk/efo/EFO_0005181
+HPSI human cerebral organoids	donor_organism	age_unit	day	http://purl.obolibrary.org/obo/UO_0000033
+HPSI human cerebral organoids	cell_line	cell_type	pluripotent stem cell	http://purl.obolibrary.org/obo/CL_0002248
+HPSI human cerebral organoids	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+HPSI human cerebral organoids	donor_organism	disease	normal	http://purl.obolibrary.org/obo/PATO_0000461
+HPSI human cerebral organoids	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+HPSI human cerebral organoids	donor_organism	ethnicity	European, White, British	http://purl.obolibrary.org/obo/HANCESTRO_0462
+HPSI human cerebral organoids	donor_organism	ethnicity	White - other, Ad Mixed American	http://purl.obolibrary.org/obo/HANCESTRO_0005
+HPSI human cerebral organoids	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+HPSI human cerebral organoids	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+HPSI human cerebral organoids	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+HPSI human cerebral organoids	library_preparation_protocol	library_construction_method	Chromium 3' Single Cell v2	http://www.ebi.ac.uk/efo/EFO_0009899
+HPSI human cerebral organoids	dissociation_protocol	method	Papain-based enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+HPSI human cerebral organoids	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+HPSI human cerebral organoids	organoid	model_organ	Brain	http://purl.obolibrary.org/obo/UBERON_0000955
+HPSI human cerebral organoids	organoid	model_organ	stem cell	http://purl.obolibrary.org/obo/CL_0000034
+HPSI human cerebral organoids	specimen_from_organism	organ	skin of body	http://purl.obolibrary.org/obo/UBERON_0002097
+HPSI human cerebral organoids	specimen_from_organism	organ_parts	skin epidermis	http://purl.obolibrary.org/obo/UBERON_0001003
+HPSI human cerebral organoids	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+HPSI human cerebral organoids	cell_suspension	selected_cell_types	neural cell	http://purl.obolibrary.org/obo/CL_0002319
+Human kidney allograft biopsy	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+Human kidney allograft biopsy	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Human kidney allograft biopsy	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Human kidney allograft biopsy	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+Human kidney allograft biopsy	sequencing_protocol	instrument_manufacturer_model	Illumina NextSeq 500	http://www.ebi.ac.uk/efo/EFO_0009173
+Human kidney allograft biopsy	library_preparation_protocol	library_construction_method	High-throughput single-cell labeling with indexing droplets	http://www.ebi.ac.uk/efo/EFO_0008780
+Human kidney allograft biopsy	dissociation_protocol	method	density gradient centrifugation	http://www.ebi.ac.uk/efo/EFO_0009112
+Human kidney allograft biopsy	collection_protocol	method	percutaneous kidney biopsy	http://www.ebi.ac.uk/efo/EFO_0009293
+Human kidney allograft biopsy	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Human kidney allograft biopsy	specimen_from_organism	organ	Kidney	http://purl.obolibrary.org/obo/UBERON_0002113
+Human kidney allograft biopsy	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+HumanAdiposeTissue	donor_organism	development_stage	adult	http://www.ebi.ac.uk/efo/EFO_0001272
+HumanAdiposeTissue	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+HumanAdiposeTissue	donor_organism	development_stage	infant	http://www.ebi.ac.uk/efo/EFO_0001355
+HumanAdiposeTissue	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+HumanAdiposeTissue	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+HumanAdiposeTissue	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+HumanAdiposeTissue	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+HumanAdiposeTissue	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+HumanAdiposeTissue	library_preparation_protocol	library_construction_method	10X 3' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+HumanAdiposeTissue	enrichment_protocol	method	cell size selection	http://www.ebi.ac.uk/efo/EFO_0009337
+HumanAdiposeTissue	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+HumanAdiposeTissue	enrichment_protocol	method	fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+HumanAdiposeTissue	collection_protocol	method	surgical resection	http://www.ebi.ac.uk/efo/EFO_0009744
+HumanAdiposeTissue	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+HumanAdiposeTissue	specimen_from_organism	organ	adipose tissue	http://purl.obolibrary.org/obo/UBERON_0001013
+HumanAdiposeTissue	specimen_from_organism	organ_parts	axillary fat pad	http://purl.obolibrary.org/obo/UBERON_0015477
+HumanAdiposeTissue	specimen_from_organism	organ_parts	inguinal fat pad	http://purl.obolibrary.org/obo/UBERON_0010410
+HumanAdiposeTissue	specimen_from_organism	organ_parts	subcutaneous abdominal adipose tissue	http://purl.obolibrary.org/obo/UBERON_0014455
+HumanAdiposeTissue	specimen_from_organism	organ_parts	white adipose tissue	http://purl.obolibrary.org/obo/UBERON_0001347
+HumanAdiposeTissue	donor_organism	organism_age_unit	day	http://purl.obolibrary.org/obo/UO_0000033
+HumanAdiposeTissue	donor_organism	organism_age_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+HumanAdiposeTissue	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+HumanAdiposeTissue	cell_suspension	selected_cell_types	subcutaneous fat cell	http://purl.obolibrary.org/obo/CL_0002521
+HumanAdiposeTissue	donor_organism	strain	129S6	http://www.ebi.ac.uk/efo/EFO_0000598
+HumanAdiposeTissue	donor_organism	strain	C57BL/6J	http://www.ebi.ac.uk/efo/EFO_0000606
+HumanAdultKidneyLiaoMo	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+HumanAdultKidneyLiaoMo	donor_organism	diseases	Clear renal cell carcinoma	http://purl.obolibrary.org/obo/MONDO_0005005
+HumanAdultKidneyLiaoMo	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+HumanAdultKidneyLiaoMo	donor_organism	diseases	Papillary urothelial carcinoma of the renal pelvis	http://purl.obolibrary.org/obo/MONDO_0003716
+HumanAdultKidneyLiaoMo	donor_organism	ethnicity	Chinese	http://purl.obolibrary.org/obo/HANCESTRO_0021
+HumanAdultKidneyLiaoMo	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+HumanAdultKidneyLiaoMo	donor_organism	height_unit	cm	http://purl.obolibrary.org/obo/UO_0000015
+HumanAdultKidneyLiaoMo	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+HumanAdultKidneyLiaoMo	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq X Ten	http://www.ebi.ac.uk/efo/EFO_0008567
+HumanAdultKidneyLiaoMo	library_preparation_protocol	library_construction_method	10X v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009310
+HumanAdultKidneyLiaoMo	collection_protocol	method	biopsy	http://www.ebi.ac.uk/efo/EFO_0009120
+HumanAdultKidneyLiaoMo	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+HumanAdultKidneyLiaoMo	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+HumanAdultKidneyLiaoMo	specimen_from_organism	organ	kidney	http://purl.obolibrary.org/obo/UBERON_0002113
+HumanAdultKidneyLiaoMo	specimen_from_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+HumanAdultKidneyLiaoMo	specimen_from_organism	storage_time_unit	minute	http://purl.obolibrary.org/obo/UO_0000031
+HumanAdultKidneyLiaoMo	donor_organism	weight_unit	kg	http://purl.obolibrary.org/obo/UO_0000009
+HumanBrainSubstantiaNigra	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+HumanBrainSubstantiaNigra	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+HumanBrainSubstantiaNigra	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+HumanBrainSubstantiaNigra	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+HumanBrainSubstantiaNigra	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+HumanBrainSubstantiaNigra	library_preparation_protocol	library_construction_method	10x 3' v3 sequencing	http://www.ebi.ac.uk/efo/EFO_0009922
+HumanBrainSubstantiaNigra	collection_protocol	method	dissection	http://www.ebi.ac.uk/efo/EFO_0003856
+HumanBrainSubstantiaNigra	library_preparation_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+HumanBrainSubstantiaNigra	specimen_from_organism	organ	brain	http://purl.obolibrary.org/obo/UBERON_0000955
+HumanBrainSubstantiaNigra	specimen_from_organism	organ_parts	Cortex	http://purl.obolibrary.org/obo/UBERON_0001851
+HumanBrainSubstantiaNigra	specimen_from_organism	organ_parts	Substania nigra	http://purl.obolibrary.org/obo/UBERON_0002038
+HumanBrainSubstantiaNigra	specimen_from_organism	organ_parts	Substantia nigra	http://purl.obolibrary.org/obo/UBERON_0002038
+HumanBrainSubstantiaNigra	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+HumanColonicMesenchymeIBD	donor_organism	development_stage	adult	http://www.ebi.ac.uk/efo/EFO_0001272
+HumanColonicMesenchymeIBD	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+HumanColonicMesenchymeIBD	donor_organism	diseases	DSS-induced Colitis	http://purl.obolibrary.org/obo/MONDO_0005292
+HumanColonicMesenchymeIBD	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+HumanColonicMesenchymeIBD	donor_organism	diseases	Ulcerative Colitis	http://purl.obolibrary.org/obo/MONDO_0005101
+HumanColonicMesenchymeIBD	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+HumanColonicMesenchymeIBD	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+HumanColonicMesenchymeIBD	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+HumanColonicMesenchymeIBD	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+HumanColonicMesenchymeIBD	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+HumanColonicMesenchymeIBD	library_preparation_protocol	library_construction_method	10X 3' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+HumanColonicMesenchymeIBD	library_preparation_protocol	library_construction_method	Smart-Seq	http://www.ebi.ac.uk/efo/EFO_0008930
+HumanColonicMesenchymeIBD	collection_protocol	method	biopsy	http://www.ebi.ac.uk/efo/EFO_0009120
+HumanColonicMesenchymeIBD	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+HumanColonicMesenchymeIBD	dissociation_protocol	method	enzymatic dissociation (Collagenase VIII)	http://www.ebi.ac.uk/efo/EFO_0009128
+HumanColonicMesenchymeIBD	sequencing_protocol	method	full length single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008441
+HumanColonicMesenchymeIBD	enrichment_protocol	method	MACS	http://www.ebi.ac.uk/efo/EFO_0009109
+HumanColonicMesenchymeIBD	dissociation_protocol	method	mechanical dissociation	http://www.ebi.ac.uk/efo/EFO_0009129
+HumanColonicMesenchymeIBD	collection_protocol	method	organ extraction	http://www.ebi.ac.uk/efo/EFO_0009124
+HumanColonicMesenchymeIBD	enrichment_protocol	method	size selection	http://www.ebi.ac.uk/efo/EFO_0009337
+HumanColonicMesenchymeIBD	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+HumanColonicMesenchymeIBD	specimen_from_organism	organ	colon	http://purl.obolibrary.org/obo/UBERON_0001155
+HumanColonicMesenchymeIBD	specimen_from_organism	organ_parts	lamina propria of mucosa of colon	http://purl.obolibrary.org/obo/UBERON_0007177
+HumanColonicMesenchymeIBD	donor_organism	organism_age_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+HumanColonicMesenchymeIBD	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+HumanColonicMesenchymeIBD	cell_suspension	selected_cell_types	stromal cell	http://purl.obolibrary.org/obo/CL_0000499
+HumanColonicMesenchymeIBD	donor_organism	strain	C57BL/6J	http://www.ebi.ac.uk/efo/EFO_0000606
+HumanFirstTrimesterPlacentaDecidua	donor_organism	development_stage	embryonic human stage	http://purl.obolibrary.org/obo/HsapDv_0000002
+HumanFirstTrimesterPlacentaDecidua	donor_organism	development_stage	fetal stage	http://purl.obolibrary.org/obo/HsapDv_0000037
+HumanFirstTrimesterPlacentaDecidua	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+HumanFirstTrimesterPlacentaDecidua	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+HumanFirstTrimesterPlacentaDecidua	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+HumanFirstTrimesterPlacentaDecidua	donor_organism	gestational_age_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+HumanFirstTrimesterPlacentaDecidua	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+HumanFirstTrimesterPlacentaDecidua	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+HumanFirstTrimesterPlacentaDecidua	sequencing_protocol	instrument_manufacturer_model	Illumina NextSeq 500	http://www.ebi.ac.uk/efo/EFO_0009173
+HumanFirstTrimesterPlacentaDecidua	library_preparation_protocol	library_construction_method	10X 3' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+HumanFirstTrimesterPlacentaDecidua	library_preparation_protocol	library_construction_method	Drop-Seq	http://www.ebi.ac.uk/efo/EFO_0008722
+HumanFirstTrimesterPlacentaDecidua	collection_protocol	method	dissection	http://www.ebi.ac.uk/efo/EFO_0003856
+HumanFirstTrimesterPlacentaDecidua	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+HumanFirstTrimesterPlacentaDecidua	dissociation_protocol	method	mechanical dissociation	http://www.ebi.ac.uk/efo/EFO_0009129
+HumanFirstTrimesterPlacentaDecidua	enrichment_protocol	method	size selection	http://www.ebi.ac.uk/efo/EFO_0009337
+HumanFirstTrimesterPlacentaDecidua	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+HumanFirstTrimesterPlacentaDecidua	specimen_from_organism	organ	chorion membrane	http://purl.obolibrary.org/obo/UBERON_0001987
+HumanFirstTrimesterPlacentaDecidua	specimen_from_organism	organ	Decidua	http://purl.obolibrary.org/obo/UBERON_0001987
+HumanFirstTrimesterPlacentaDecidua	specimen_from_organism	organ_parts	chorionic villus	http://purl.obolibrary.org/obo/UBERON_0007106
+HumanFirstTrimesterPlacentaDecidua	specimen_from_organism	organ_parts	decidua	http://purl.obolibrary.org/obo/UBERON_0002450
+HumanHematopoieticProfiling	cell_line	cell_type	CD34-positive, CD38-negative hematopoietic stem cell	http://purl.obolibrary.org/obo/CL_0001024
+HumanHematopoieticProfiling	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+HumanHematopoieticProfiling	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+HumanHematopoieticProfiling	donor_organism	ethnicity	African American	http://purl.obolibrary.org/obo/HANCESTRO_0568
+HumanHematopoieticProfiling	donor_organism	ethnicity	European	http://purl.obolibrary.org/obo/HANCESTRO_0005
+HumanHematopoieticProfiling	donor_organism	ethnicity	Hispanic	http://purl.obolibrary.org/obo/HANCESTRO_0014
+HumanHematopoieticProfiling	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+HumanHematopoieticProfiling	donor_organism	height_unit	meter	http://purl.obolibrary.org/obo/UO_0000008
+HumanHematopoieticProfiling	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+HumanHematopoieticProfiling	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+HumanHematopoieticProfiling	library_preparation_protocol	library_construction_method	10X 3' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+HumanHematopoieticProfiling	collection_protocol	method	bone marrow aspiration	http://www.ebi.ac.uk/efo/EFO_0009292
+HumanHematopoieticProfiling	enrichment_protocol	method	fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+HumanHematopoieticProfiling	sequencing_protocol	method	tag-based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+HumanHematopoieticProfiling	cell_line/organoid	model_organ	bone marrow	http://purl.obolibrary.org/obo/UBERON_0002371
+HumanHematopoieticProfiling	specimen_from_organism	organ	bone marrow	http://purl.obolibrary.org/obo/UBERON_0002371
+HumanHematopoieticProfiling	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+HumanHematopoieticProfiling	cell_suspension	selected_cell_types	CD34-positive, CD38-negative hematopoietic stem cell	http://purl.obolibrary.org/obo/CL_0001024
+HumanHematopoieticProfiling	donor_organism	weight_unit	kilogram	http://purl.obolibrary.org/obo/UO_0000009
+HumanLiverImmuneCells_GSE125188	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+HumanLiverImmuneCells_GSE125188	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+HumanLiverImmuneCells_GSE125188	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+HumanLiverImmuneCells_GSE125188	sequencing_protocol	instrument_manufacturer_model	HiSeq X Ten	http://www.ebi.ac.uk/efo/EFO_0008567
+HumanLiverImmuneCells_GSE125188	library_preparation_protocol	library_construction_method	Single Cell 3' Reagent Kit v2	http://www.ebi.ac.uk/efo/EFO_0009899
+HumanLiverImmuneCells_GSE125188	collection_protocol	method	blood draw	http://www.ebi.ac.uk/efo/EFO_0009121
+HumanLiverImmuneCells_GSE125188	collection_protocol	method	collecting specimen from organ postmortem	http://www.ebi.ac.uk/efo/EFO_0009627
+HumanLiverImmuneCells_GSE125188	dissociation_protocol	method	density gradient centrifugation	http://www.ebi.ac.uk/efo/EFO_0009112
+HumanLiverImmuneCells_GSE125188	enrichment_protocol	method	magentic affinity sorting	http://www.ebi.ac.uk/efo/EFO_0009109
+HumanLiverImmuneCells_GSE125188	dissociation_protocol	method	mechanical dissociation	http://www.ebi.ac.uk/efo/EFO_0009129
+HumanLiverImmuneCells_GSE125188	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+HumanLiverImmuneCells_GSE125188	specimen_from_organism	organ	blood	http://purl.obolibrary.org/obo/UBERON_0000178
+HumanLiverImmuneCells_GSE125188	specimen_from_organism	organ	liver	http://purl.obolibrary.org/obo/UBERON_0002107
+HumanLiverImmuneCells_GSE125188	specimen_from_organism	organ	spleen	http://purl.obolibrary.org/obo/UBERON_0002106
+HumanLiverImmuneCells_GSE125188	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+HumanLiverImmuneCells_GSE125188	donor_organism	organism_age_unit	yeay	http://purl.obolibrary.org/obo/UO_0000036
+HumanLiverImmuneCells_GSE125188	cell_suspension	selected_cell_types	leukocyte	http://purl.obolibrary.org/obo/CL_0000738
+HumanMousePancreas	library_preparation_protocol	cdna_library_amplification_method	PCR	http://purl.obolibrary.org/obo/OBI_0000415
+HumanMousePancreas	donor_organism	development_stage	adolescent	http://purl.obolibrary.org/obo/HsapDv_0000086
+HumanMousePancreas	donor_organism	development_stage	adult	http://www.ebi.ac.uk/efo/EFO_0001272
+HumanMousePancreas	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+HumanMousePancreas	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+HumanMousePancreas	donor_organism	diseases	type 2 diabetes mellitus	http://purl.obolibrary.org/obo/MONDO_0005148
+HumanMousePancreas	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+HumanMousePancreas	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+HumanMousePancreas	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+HumanMousePancreas	sequencing_protocol	instrument_manufacturer_model	Illumina Hiseq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+HumanMousePancreas	library_preparation_protocol	library_construction_method	inDrop	http://www.ebi.ac.uk/efo/EFO_0008780
+HumanMousePancreas	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+HumanMousePancreas	dissociation_protocol	method	Histopaque gradient centrifugation	http://www.ebi.ac.uk/efo/EFO_0009112
+HumanMousePancreas	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+HumanMousePancreas	specimen_from_organism	organ	pancreas	http://purl.obolibrary.org/obo/UBERON_0001264
+HumanMousePancreas	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+HumanMousePancreas	cell_suspension	selected_cell_types	pancreatic PP cell	http://purl.obolibrary.org/obo/CL_0002275
+HumanMousePancreas	donor_organism	strain	C57BL/6	http://www.ebi.ac.uk/efo/EFO_0004472
+HumanMousePancreas	donor_organism	strain	ICR	http://www.ebi.ac.uk/efo/EFO_0009917
+HumanTissueTcellActivation	donor_organism	development_stage	Adult	http://www.ebi.ac.uk/efo/EFO_0001272
+HumanTissueTcellActivation	donor_organism	diseases	hypertension	http://purl.obolibrary.org/obo/MONDO_0005044
+HumanTissueTcellActivation	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+HumanTissueTcellActivation	donor_organism	ethnicity	Hispanic/Latino	http://purl.obolibrary.org/obo/HANCESTRO_0014
+HumanTissueTcellActivation	donor_organism	ethnicity	White: Not specified/Unknown	http://purl.obolibrary.org/obo/HANCESTRO_0005
+HumanTissueTcellActivation	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+HumanTissueTcellActivation	donor_organism	genus_species	Homo Sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+HumanTissueTcellActivation	donor_organism	height_unit	cm	http://purl.obolibrary.org/obo/UO_0000015
+HumanTissueTcellActivation	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+HumanTissueTcellActivation	library_preparation_protocol	library_construction_method	10X v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009310
+HumanTissueTcellActivation	dissociation_protocol	method	density gradient centrifugation	http://www.ebi.ac.uk/efo/EFO_0009129
+HumanTissueTcellActivation	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+HumanTissueTcellActivation	enrichment_protocol	method	magnetic negative selection	http://www.ebi.ac.uk/efo/EFO_0009109
+HumanTissueTcellActivation	dissociation_protocol	method	mechanical dissociation	http://www.ebi.ac.uk/efo/EFO_0009129
+HumanTissueTcellActivation	collection_protocol	method	surgical resection	http://www.ebi.ac.uk/efo/EFO_0009744
+HumanTissueTcellActivation	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+HumanTissueTcellActivation	specimen_from_organism	organ	blood	http://purl.obolibrary.org/obo/UBERON_0000178
+HumanTissueTcellActivation	specimen_from_organism	organ	hematopoietic tissue	http://purl.obolibrary.org/obo/UBERON_0002390
+HumanTissueTcellActivation	specimen_from_organism	organ	lung	http://purl.obolibrary.org/obo/UBERON_0002048
+HumanTissueTcellActivation	specimen_from_organism	organ	lung lymph node	http://purl.obolibrary.org/obo/UBERON_0002524
+HumanTissueTcellActivation	specimen_from_organism	organ_parts	bone marrow	http://purl.obolibrary.org/obo/UBERON_0002371
+HumanTissueTcellActivation	specimen_from_organism	organ_parts	hilum	http://purl.obolibrary.org/obo/UBERON_0002524
+HumanTissueTcellActivation	specimen_from_organism	organ_parts	left lateral basal segment	http://purl.obolibrary.org/obo/FMA_7379
+HumanTissueTcellActivation	specimen_from_organism	organ_parts	peripheral	http://purl.obolibrary.org/obo/UBERON_0013756
+HumanTissueTcellActivation	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+HumanTissueTcellActivation	cell_suspension	selected_cell_types	CD3+ T cells (negative selection)	http://purl.obolibrary.org/obo/CL_0000084
+HumanTissueTcellActivation	donor_organism	weight_unit	kg	http://purl.obolibrary.org/obo/UO_0000009
+Kidney biopsy scRNA-seq	cell_suspension	cell_size_unit	millimeter	http://purl.obolibrary.org/obo/UO_0000016
+Kidney biopsy scRNA-seq	donor_organism	diseases	ESRD	http://purl.obolibrary.org/obo/MONDO_0004375
+Kidney biopsy scRNA-seq	donor_organism	diseases	hemolytic uremic syndrome	http://purl.obolibrary.org/obo/MONDO_0001549
+Kidney biopsy scRNA-seq	donor_organism	ethnicity	European	http://purl.obolibrary.org/obo/HANCESTRO_0005
+Kidney biopsy scRNA-seq	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Kidney biopsy scRNA-seq	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+Kidney biopsy scRNA-seq	sequencing_protocol	instrument_manufacturer_model	Illumina NextSeq 500	http://www.ebi.ac.uk/efo/EFO_0009173
+Kidney biopsy scRNA-seq	library_preparation_protocol	library_construction_method	High-throughput single-cell labeling with indexing droplets	http://www.ebi.ac.uk/efo/EFO_0008780
+Kidney biopsy scRNA-seq	dissociation_protocol	method	enzymatic dissociation using DNAse1 and Liberase	http://www.ebi.ac.uk/efo/EFO_0009128
+Kidney biopsy scRNA-seq	collection_protocol	method	percutaneous kidney biopsy	http://www.ebi.ac.uk/efo/EFO_0009293
+Kidney biopsy scRNA-seq	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Kidney biopsy scRNA-seq	specimen_from_organism	organ	kidney	http://purl.obolibrary.org/obo/UBERON_0002113
+Kidney biopsy scRNA-seq	specimen_from_organism	organ_parts	cortex of kidney	http://purl.obolibrary.org/obo/UBERON_0001225
+Kidney biopsy scRNA-seq	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+Kidney biopsy scRNA-seq	cell_suspension	selected_cell_types	endothelial cells	http://purl.obolibrary.org/obo/CL_0000115
+Kidney biopsy scRNA-seq	cell_suspension	selected_cell_types	epithelial cells	http://purl.obolibrary.org/obo/CL_0000066
+Kidney biopsy scRNA-seq	cell_suspension	selected_cell_types	fibroblasts	http://purl.obolibrary.org/obo/CL_0000057
+Kidney biopsy scRNA-seq	cell_suspension	selected_cell_types	monocytes	http://purl.obolibrary.org/obo/CL_0000576
+Kidney biopsy scRNA-seq	cell_suspension	selected_cell_types	myofibroblasts	http://purl.obolibrary.org/obo/CL_0000186
+KidneySingleCellAtlas	donor_organism	development_stage	10th week post-fertilization human stage	http://purl.obolibrary.org/obo/HsapDv_0000047
+KidneySingleCellAtlas	donor_organism	development_stage	13th week post-fertilization human stage	http://purl.obolibrary.org/obo/HsapDv_0000050
+KidneySingleCellAtlas	donor_organism	development_stage	14th week post-fertilization human stage	http://purl.obolibrary.org/obo/HsapDv_0000051
+KidneySingleCellAtlas	donor_organism	development_stage	17th week post-fertilization human stage	http://purl.obolibrary.org/obo/HsapDv_0000054
+KidneySingleCellAtlas	donor_organism	development_stage	9th week post-fertilization human stage	http://purl.obolibrary.org/obo/HsapDv_0000046
+KidneySingleCellAtlas	donor_organism	development_stage	Adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+KidneySingleCellAtlas	donor_organism	development_stage	Carnegie stage 22	http://purl.obolibrary.org/obo/HsapDv_0000029
+KidneySingleCellAtlas	donor_organism	diseases	Cardiac arrest	http://purl.obolibrary.org/obo/MONDO_0000745
+KidneySingleCellAtlas	donor_organism	diseases	Ischaemic stroke	http://purl.obolibrary.org/obo/MONDO_0005098
+KidneySingleCellAtlas	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+KidneySingleCellAtlas	donor_organism	diseases	Normal	http://purl.obolibrary.org/obo/PATO_0000461
+KidneySingleCellAtlas	donor_organism	diseases	possible posterior reversible encephalopathy syndrome	http://purl.obolibrary.org/obo/MONDO_0017291
+KidneySingleCellAtlas	donor_organism	diseases	traumatic subarachnoid haemorrhage	http://purl.obolibrary.org/obo/MONDO_0019543
+KidneySingleCellAtlas	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+KidneySingleCellAtlas	donor_organism	gestational_age_unit	day	http://purl.obolibrary.org/obo/UO_0000033
+KidneySingleCellAtlas	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+KidneySingleCellAtlas	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+KidneySingleCellAtlas	library_preparation_protocol	library_construction_method	10X 3' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+KidneySingleCellAtlas	collection_protocol	method	Collection of tissue	http://www.ebi.ac.uk/efo/EFO_0009744
+KidneySingleCellAtlas	dissociation_protocol	method	Enzymatic and mechanical dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+KidneySingleCellAtlas	enrichment_protocol	method	Live cell and cell subset  enrichment	http://www.ebi.ac.uk/efo/EFO_0009112
+KidneySingleCellAtlas	enrichment_protocol	method	Live cell and cell subset enrichment	http://www.ebi.ac.uk/efo/EFO_0009108
+KidneySingleCellAtlas	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+KidneySingleCellAtlas	specimen_from_organism	organ	Fetal Kidney	http://purl.obolibrary.org/obo/UBERON_0002113
+KidneySingleCellAtlas	specimen_from_organism	organ	Mature kidney	http://purl.obolibrary.org/obo/UBERON_0002113
+KidneySingleCellAtlas	specimen_from_organism	organ_parts	Cortex	http://purl.obolibrary.org/obo/UBERON_0001225
+KidneySingleCellAtlas	specimen_from_organism	organ_parts	Medulla	http://purl.obolibrary.org/obo/UBERON_0000362
+KidneySingleCellAtlas	specimen_from_organism	organ_parts	Pelvis	http://purl.obolibrary.org/obo/UBERON_0001224
+KidneySingleCellAtlas	specimen_from_organism	organ_parts	Ureter	http://purl.obolibrary.org/obo/UBERON_0000056
+KidneySingleCellAtlas	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+KidneySingleCellAtlas	cell_suspension	selected_cell_types	kidney cell	http://purl.obolibrary.org/obo/CL_1000497
+Lung_Fibroblasts	donor_organism	development_stage	adult	http://www.ebi.ac.uk/efo/EFO_0001272
+Lung_Fibroblasts	donor_organism	diseases	fibrosis	http://purl.obolibrary.org/obo/MONDO_0002771
+Lung_Fibroblasts	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Lung_Fibroblasts	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+Lung_Fibroblasts	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Lung_Fibroblasts	sequencing_protocol	instrument_manufacturer_model	NextSeq 500	http://www.ebi.ac.uk/efo/EFO_0009173
+Lung_Fibroblasts	library_preparation_protocol	library_construction_method	10X v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009310
+Lung_Fibroblasts	collection_protocol	method	dissection	http://www.ebi.ac.uk/efo/EFO_0003856
+Lung_Fibroblasts	dissociation_protocol	method	enzymatic digestion	http://www.ebi.ac.uk/efo/EFO_0009128
+Lung_Fibroblasts	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Lung_Fibroblasts	specimen_from_organism	organ	Lung	http://purl.obolibrary.org/obo/UBERON_0002048
+Lung_Fibroblasts	donor_organism	organism_age_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+Lung_Fibroblasts	donor_organism	strain	C57BL/6	http://www.ebi.ac.uk/efo/EFO_0005181
+Mouse Endoderm Project	donor_organism	development_stage	early adult stage	http://www.ebi.ac.uk/efo/EFO_0001272
+Mouse Endoderm Project	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Mouse Endoderm Project	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+Mouse Endoderm Project	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Mouse Endoderm Project	sequencing_protocol	instrument_manufacturer_model	Illumina Novaseq 6000	http://www.ebi.ac.uk/efo/EFO_0008637
+Mouse Endoderm Project	library_preparation_protocol	library_construction_method	10X v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009310
+Mouse Endoderm Project	collection_protocol	method	dissection	http://www.ebi.ac.uk/efo/EFO_0003856
+Mouse Endoderm Project	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+Mouse Endoderm Project	enrichment_protocol	method	fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+Mouse Endoderm Project	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Mouse Endoderm Project	specimen_from_organism	organ	endoderm	http://purl.obolibrary.org/obo/UBERON_0000925
+Mouse Endoderm Project	specimen_from_organism	organ	gut tube	http://purl.obolibrary.org/obo/UBERON_0007026
+Mouse Endoderm Project	specimen_from_organism	organ	whole embryos	http://purl.obolibrary.org/obo/UBERON_0000922
+Mouse Endoderm Project	specimen_from_organism	organ_parts	definitive endoderm	http://purl.obolibrary.org/obo/UBERON_0005439
+Mouse Endoderm Project	specimen_from_organism	organ_parts	parietal endoderm	http://purl.obolibrary.org/obo/UBERON_0008800
+Mouse Endoderm Project	specimen_from_organism	organ_parts	visceral endoderm	http://purl.obolibrary.org/obo/UBERON_0004877
+Mouse Endoderm Project	specimen_from_organism	organ_parts	yolk sac endoderm	http://purl.obolibrary.org/obo/UBERON_0003257
+Mouse Endoderm Project	donor_organism	organism_age_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+Mouse Endoderm Project	cell_suspension	selected_cell_types	endodermal cell	http://purl.obolibrary.org/obo/CL_0000223
+Mouse Endoderm Project	donor_organism	strain	Afp - GFP mouse	http://www.ebi.ac.uk/efo/EFO_0010081
+Mouse Melanoma	donor_organism	development_stage	adult	http://www.ebi.ac.uk/efo/EFO_0001272
+Mouse Melanoma	donor_organism	diseases	subcutaneous melanoma	http://purl.obolibrary.org/obo/MONDO_0005105
+Mouse Melanoma	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+Mouse Melanoma	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Mouse Melanoma	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+Mouse Melanoma	library_preparation_protocol	library_construction_method	Smart-seq2	http://www.ebi.ac.uk/efo/EFO_0008931
+Mouse Melanoma	enrichment_protocol	method	fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+Mouse Melanoma	sequencing_protocol	method	full length single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008441
+Mouse Melanoma	dissociation_protocol	method	mechanical dissociation	http://www.ebi.ac.uk/efo/EFO_0009129
+Mouse Melanoma	specimen_from_organism	organ	lymph node	http://purl.obolibrary.org/obo/UBERON_0000029
+Mouse Melanoma	specimen_from_organism	organ	skin	http://purl.obolibrary.org/obo/UBERON_0002097
+Mouse Melanoma	donor_organism	organism_age_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+Mouse Melanoma	cell_suspension	selected_cell_types	B Cell	http://purl.obolibrary.org/obo/CL_0000236
+Mouse Melanoma	cell_suspension	selected_cell_types	CD4+ T cell	http://purl.obolibrary.org/obo/CL_0000624
+Mouse Melanoma	cell_suspension	selected_cell_types	CD8+ T cell	http://purl.obolibrary.org/obo/CL_0000625
+Mouse Melanoma	cell_suspension	selected_cell_types	ILCs	http://purl.obolibrary.org/obo/CL_0001065
+Mouse Melanoma	donor_organism	strain	C57BL/6	http://www.ebi.ac.uk/efo/EFO_0004472
+Mouse Melanoma	donor_organism	unit	day	http://purl.obolibrary.org/obo/UO_0000033
+MouseGastrulationAtlas	donor_organism	development_stage	early adult stage	http://www.ebi.ac.uk/efo/EFO_0001272
+MouseGastrulationAtlas	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+MouseGastrulationAtlas	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+MouseGastrulationAtlas	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+MouseGastrulationAtlas	library_preparation_protocol	library_construction_method	10X 3' v1 sequencing	http://www.ebi.ac.uk/efo/EFO_0009901
+MouseGastrulationAtlas	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+MouseGastrulationAtlas	collection_protocol	method	organ extraction	http://www.ebi.ac.uk/efo/EFO_0009124
+MouseGastrulationAtlas	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+MouseGastrulationAtlas	specimen_from_organism	organ	embryo	http://purl.obolibrary.org/obo/UBERON_0000922
+MouseGastrulationAtlas	donor_organism	organism_age_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+MouseGastrulationAtlas	donor_organism	strain	C57BL/6	http://www.ebi.ac.uk/efo/EFO_0004472
+MouseLungMyofibroblasts	donor_organism	development_stage	mouse postnatal	http://www.ebi.ac.uk/efo/EFO_0004390
+MouseLungMyofibroblasts	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+MouseLungMyofibroblasts	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+MouseLungMyofibroblasts	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+MouseLungMyofibroblasts	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+MouseLungMyofibroblasts	library_preparation_protocol	library_construction_method	10X v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009310
+MouseLungMyofibroblasts	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+MouseLungMyofibroblasts	enrichment_protocol	method	fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+MouseLungMyofibroblasts	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+MouseLungMyofibroblasts	specimen_from_organism	organ	lung	http://purl.obolibrary.org/obo/UBERON_0002048
+MouseLungMyofibroblasts	donor_organism	organism_age_unit	day	http://purl.obolibrary.org/obo/UO_0000033
+MouseLungMyofibroblasts	cell_suspension	selected_cell_types	PDGFRa-GFP+ lung myofibroblast cells	http://purl.obolibrary.org/obo/CL_0000186
+Multiplexed scRNA-seq with barcoded antibodies	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+Multiplexed scRNA-seq with barcoded antibodies	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Multiplexed scRNA-seq with barcoded antibodies	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Multiplexed scRNA-seq with barcoded antibodies	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Multiplexed scRNA-seq with barcoded antibodies	sequencing_protocol	instrument_manufacturer_model	Illumina Hiseq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+Multiplexed scRNA-seq with barcoded antibodies	library_preparation_protocol	library_construction_method	CITE-seq	http://www.ebi.ac.uk/efo/EFO_0009294
+Multiplexed scRNA-seq with barcoded antibodies	library_preparation_protocol	method	10x_v2	http://www.ebi.ac.uk/efo/EFO_0009310
+Multiplexed scRNA-seq with barcoded antibodies	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Multiplexed scRNA-seq with barcoded antibodies	specimen_from_organism	organ	blood	http://purl.obolibrary.org/obo/UBERON_0000178
+Multiplexed scRNA-seq with barcoded antibodies	cell_suspension	selected_cell_types	peripheral blood mononuclear cells	http://purl.obolibrary.org/obo/CL_2000001
+nktpbmcZhou	library_preparation_protocol	cdna_library_amplification_method	PCR	http://purl.obolibrary.org/obo/OBI_0000415
+nktpbmcZhou	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+nktpbmcZhou	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+nktpbmcZhou	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+nktpbmcZhou	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+nktpbmcZhou	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+nktpbmcZhou	library_preparation_protocol	library_construction_method	10x 3' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+nktpbmcZhou	collection_protocol	method	blood draw	http://www.ebi.ac.uk/efo/EFO_0009121
+nktpbmcZhou	dissociation_protocol	method	Ficoll-Hypaque method	http://www.ebi.ac.uk/efo/EFO_0009110
+nktpbmcZhou	enrichment_protocol	method	fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+nktpbmcZhou	enrichment_protocol	method	magnetic affinity cell sorting	http://www.ebi.ac.uk/efo/EFO_0009109
+nktpbmcZhou	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+nktpbmcZhou	specimen_from_organism	organ	blood	http://purl.obolibrary.org/obo/UBERON_0000178
+nktpbmcZhou	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+nktpbmcZhou	cell_suspension	selected_cell_types	natural killer cell	http://purl.obolibrary.org/obo/CL_0000623
+Oligodendrocyte_MS	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+Oligodendrocyte_MS	donor_organism	diseases	Bronchopneumonia	http://purl.obolibrary.org/obo/MONDO_0005682
+Oligodendrocyte_MS	donor_organism	diseases	Carcinoma of the tongue	http://purl.obolibrary.org/obo/MONDO_0000500
+Oligodendrocyte_MS	donor_organism	diseases	Cardiac failure	http://purl.obolibrary.org/obo/MONDO_0005252
+Oligodendrocyte_MS	donor_organism	diseases	Intestinal obstruction	http://purl.obolibrary.org/obo/MONDO_0004565
+Oligodendrocyte_MS	donor_organism	diseases	MS	http://purl.obolibrary.org/obo/MONDO_0005301
+Oligodendrocyte_MS	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Oligodendrocyte_MS	donor_organism	diseases	Ovarian cancer	http://purl.obolibrary.org/obo/MONDO_0008170
+Oligodendrocyte_MS	donor_organism	diseases	Rheumatoid arthritis	http://purl.obolibrary.org/obo/MONDO_0008383
+Oligodendrocyte_MS	donor_organism	diseases	sepsis	http://purl.obolibrary.org/obo/MONDO_0005229
+Oligodendrocyte_MS	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Oligodendrocyte_MS	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Oligodendrocyte_MS	sequencing_protocol	instrument_manufacturer_model	HiSeq3000	http://www.ebi.ac.uk/efo/EFO_0008564
+Oligodendrocyte_MS	library_preparation_protocol	library_construction_method	10X 3' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+Oligodendrocyte_MS	collection_protocol	method	cadaver dissection	http://www.ebi.ac.uk/efo/EFO_0009807
+Oligodendrocyte_MS	dissociation_protocol	method	mechanical dissociation	http://www.ebi.ac.uk/efo/EFO_0009129
+Oligodendrocyte_MS	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Oligodendrocyte_MS	specimen_from_organism	organ	brain	http://purl.obolibrary.org/obo/UBERON_0000955
+Oligodendrocyte_MS	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+Pitx2DevelopingHeart	donor_organism	development_stage	Theiler stage 17	http://www.ebi.ac.uk/efo/EFO_0002583
+Pitx2DevelopingHeart	donor_organism	development_stage	Theiler stage 21	http://www.ebi.ac.uk/efo/EFO_0002584
+Pitx2DevelopingHeart	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Pitx2DevelopingHeart	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+Pitx2DevelopingHeart	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10091
+Pitx2DevelopingHeart	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Pitx2DevelopingHeart	sequencing_protocol	instrument_manufacturer_model	NextSeq 500	http://www.ebi.ac.uk/efo/EFO_0009173
+Pitx2DevelopingHeart	library_preparation_protocol	library_construction_method	10X v2 3' sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+Pitx2DevelopingHeart	collection_protocol	method	dissection	http://www.ebi.ac.uk/efo/EFO_0003856
+Pitx2DevelopingHeart	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+Pitx2DevelopingHeart	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Pitx2DevelopingHeart	specimen_from_organism	organ	heart	http://purl.obolibrary.org/obo/UBERON_0000948
+Pitx2DevelopingHeart	donor_organism	organism_age_unit	day	http://purl.obolibrary.org/obo/UO_0000033
+Pitx2DevelopingHeart	donor_organism	organism_age_unit	day	http://purl.obolibrary.org/obo/UO_0000034
+prefrontal_cortex_dev	donor_organism	development_stage	10th post-conception week	http://purl.obolibrary.org/obo/HsapDv_0000047
+prefrontal_cortex_dev	donor_organism	development_stage	12th post-conception week	http://purl.obolibrary.org/obo/HsapDv_0000049
+prefrontal_cortex_dev	donor_organism	development_stage	13th post-conception week	http://purl.obolibrary.org/obo/HsapDv_0000050
+prefrontal_cortex_dev	donor_organism	development_stage	16th post-conception week	http://purl.obolibrary.org/obo/HsapDv_0000053
+prefrontal_cortex_dev	donor_organism	development_stage	19th post-conception week	http://purl.obolibrary.org/obo/HsapDv_0000056
+prefrontal_cortex_dev	donor_organism	development_stage	23rd post-conception week	http://purl.obolibrary.org/obo/HsapDv_0000060
+prefrontal_cortex_dev	donor_organism	development_stage	26th post-conception week	http://purl.obolibrary.org/obo/HsapDv_0000063
+prefrontal_cortex_dev	donor_organism	development_stage	9th post-conception week	http://purl.obolibrary.org/obo/HsapDv_0000046
+prefrontal_cortex_dev	donor_organism	development_stage	Carnegie stage 23	http://purl.obolibrary.org/obo/HsapDv_0000030
+prefrontal_cortex_dev	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+prefrontal_cortex_dev	donor_organism	ethnicity	Chinese	http://purl.obolibrary.org/obo/HANCESTRO_0021
+prefrontal_cortex_dev	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+prefrontal_cortex_dev	donor_organism	gestational_age_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+prefrontal_cortex_dev	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+prefrontal_cortex_dev	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+prefrontal_cortex_dev	library_preparation_protocol	library_construction_method	Smart-Seq2	http://www.ebi.ac.uk/efo/EFO_0008931
+prefrontal_cortex_dev	collection_protocol	method	collecting specimen from organ postmortem	http://www.ebi.ac.uk/efo/EFO_0009627
+prefrontal_cortex_dev	dissociation_protocol	method	enzymatic digestion	http://www.ebi.ac.uk/efo/EFO_0009128
+prefrontal_cortex_dev	sequencing_protocol	method	full length single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008441
+prefrontal_cortex_dev	specimen_from_organism	organ	brain	http://purl.obolibrary.org/obo/UBERON_0000955
+prefrontal_cortex_dev	specimen_from_organism	organ_parts	prefrontal cortex	http://purl.obolibrary.org/obo/UBERON_0000451
+prefrontal_cortex_dev	cell_suspension	selected_cell_types	neuronal cell	http://purl.obolibrary.org/obo/CL_0002319
+Reprogrammed_Dendritic_Cells	cell_line	cell_type	dendritic cell	http://purl.obolibrary.org/obo/CL_0000451
+Reprogrammed_Dendritic_Cells	donor_organism	development_stage	6.5 week-old human embryo	http://purl.obolibrary.org/obo/HsapDv_0000025
+Reprogrammed_Dendritic_Cells	donor_organism	disease	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Reprogrammed_Dendritic_Cells	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Reprogrammed_Dendritic_Cells	donor_organism	diseases	Normal	http://purl.obolibrary.org/obo/PATO_0000461
+Reprogrammed_Dendritic_Cells	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Reprogrammed_Dendritic_Cells	donor_organism	gestational_age_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+Reprogrammed_Dendritic_Cells	library_preparation_protocol	input_nucleic_acid_molecule	mRNA	http://purl.obolibrary.org/obo/CHEBI_33699
+Reprogrammed_Dendritic_Cells	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Reprogrammed_Dendritic_Cells	sequencing_protocol	instrument_manufacturer_model	Illumina NextSeq 500	http://www.ebi.ac.uk/efo/EFO_0009173
+Reprogrammed_Dendritic_Cells	library_preparation_protocol	library_construction_method	10X 3' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+Reprogrammed_Dendritic_Cells	library_preparation_protocol	library_construction_method	10X v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009310
+Reprogrammed_Dendritic_Cells	collection_protocol	method	Dissection	http://www.ebi.ac.uk/efo/EFO_0003856
+Reprogrammed_Dendritic_Cells	dissociation_protocol	method	Enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+Reprogrammed_Dendritic_Cells	enrichment_protocol	method	FACS sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+Reprogrammed_Dendritic_Cells	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Reprogrammed_Dendritic_Cells	cell_line/organoid	model_organ	immune system	http://purl.obolibrary.org/obo/UBERON_0002405
+Reprogrammed_Dendritic_Cells	specimen_from_organism	organ	embryo	http://purl.obolibrary.org/obo/UBERON_0000922
+Reprogrammed_Dendritic_Cells	specimen_from_organism	organ	skin of body	http://purl.obolibrary.org/obo/UBERON_0002097
+Reprogrammed_Dendritic_Cells	specimen_from_organism	organ_parts	skin epidermis	http://purl.obolibrary.org/obo/UBERON_0001003
+Reprogrammed_Dendritic_Cells	cell_suspension	selected_cell_types	Human Embryonic fibroblast	http://purl.obolibrary.org/obo/CL_2000042
+Reprogrammed_Dendritic_Cells	cell_suspension	selected_cell_types	Reprogrammed dendritic cell	http://purl.obolibrary.org/obo/CL_0000451
+scFetalPaedIBDGut	donor_organism	age_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+scFetalPaedIBDGut	donor_organism	development_stage	10th week post-fertilization human stage	http://purl.obolibrary.org/obo/HsapDv_0000047
+scFetalPaedIBDGut	donor_organism	development_stage	9th week post-fertilization human stage	http://purl.obolibrary.org/obo/HsapDv_0000046
+scFetalPaedIBDGut	donor_organism	development_stage	adolescent stage	http://purl.obolibrary.org/obo/HsapDv_0000086
+scFetalPaedIBDGut	donor_organism	development_stage	child stage	http://purl.obolibrary.org/obo/HsapDv_0000081
+scFetalPaedIBDGut	donor_organism	development_stage	embryonic human stage	http://purl.obolibrary.org/obo/HsapDv_0000002
+scFetalPaedIBDGut	donor_organism	diseases	Crohn Disease	http://purl.obolibrary.org/obo/MONDO_0005011
+scFetalPaedIBDGut	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+scFetalPaedIBDGut	donor_organism	diseases	Normal control	http://purl.obolibrary.org/obo/PATO_0000461
+scFetalPaedIBDGut	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+scFetalPaedIBDGut	donor_organism	gestational_age_unit	week	http://purl.obolibrary.org/obo/UO_0000034
+scFetalPaedIBDGut	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+scFetalPaedIBDGut	sequencing_protocol	instrument_manufacturer_model	Illumina Hi-seq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+scFetalPaedIBDGut	library_preparation_protocol	library_construction_method	10x v2 3 prime	http://www.ebi.ac.uk/efo/EFO_0009899
+scFetalPaedIBDGut	collection_protocol	method	biopsy	http://www.ebi.ac.uk/efo/EFO_0009120
+scFetalPaedIBDGut	collection_protocol	method	dissection	http://www.ebi.ac.uk/efo/EFO_0003856
+scFetalPaedIBDGut	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+scFetalPaedIBDGut	enrichment_protocol	method	MACS	http://www.ebi.ac.uk/efo/EFO_0009109
+scFetalPaedIBDGut	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+scFetalPaedIBDGut	cell_line/organoid	model_organ	small intestine	http://purl.obolibrary.org/obo/UBERON_0002108
+scFetalPaedIBDGut	cell_line/organoid	model_organ_part	ileum	http://purl.obolibrary.org/obo/UBERON_0002116
+scFetalPaedIBDGut	specimen_from_organism	organ	large intestine	http://purl.obolibrary.org/obo/UBERON_0000059
+scFetalPaedIBDGut	specimen_from_organism	organ	small intestine	http://purl.obolibrary.org/obo/UBERON_0002108
+scFetalPaedIBDGut	specimen_from_organism	organ_parts	colon	http://purl.obolibrary.org/obo/UBERON_0001155
+scFetalPaedIBDGut	specimen_from_organism	organ_parts	duodenum	http://purl.obolibrary.org/obo/UBERON_0002114
+scFetalPaedIBDGut	specimen_from_organism	organ_parts	ileum	http://purl.obolibrary.org/obo/UBERON_0002116
+scFetalPaedIBDGut	specimen_from_organism	organ_parts	jejenum	http://purl.obolibrary.org/obo/UBERON_0002115
+scFetalPaedIBDGut	specimen_from_organism	organ_parts	terminal ileum	http://purl.obolibrary.org/obo/UBERON_0002116
+scFetalPaedIBDGut	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+scFetalPaedIBDGut	cell_suspension	selected_cell_types	epithelial cell	http://purl.obolibrary.org/obo/CL_0000066
+scHumanPancreas	donor_organism	development_stage	1-month-old human stage	http://purl.obolibrary.org/obo/HsapDv_0000174
+scHumanPancreas	donor_organism	development_stage	5-year-old human stage	http://purl.obolibrary.org/obo/HsapDv_0000099
+scHumanPancreas	donor_organism	development_stage	6-year-old human stage	http://purl.obolibrary.org/obo/HsapDv_0000100
+scHumanPancreas	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+scHumanPancreas	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+scHumanPancreas	donor_organism	ethnicity	African American/Afro-Caribbean	http://purl.obolibrary.org/obo/HANCESTRO_0016
+scHumanPancreas	donor_organism	ethnicity	Asian	http://purl.obolibrary.org/obo/HANCESTRO_0008
+scHumanPancreas	donor_organism	ethnicity	European	http://purl.obolibrary.org/obo/HANCESTRO_0005
+scHumanPancreas	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+scHumanPancreas	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+scHumanPancreas	sequencing_protocol	instrument_manufacturer_model	Illumina NextSeq 500	http://www.ebi.ac.uk/efo/EFO_0009173
+scHumanPancreas	library_preparation_protocol	library_construction_method	Smart-seq2	http://www.ebi.ac.uk/efo/EFO_0008931
+scHumanPancreas	collection_protocol	method	collecting specimen from organ postmortem	http://www.ebi.ac.uk/efo/EFO_0009627
+scHumanPancreas	enrichment_protocol	method	FACS	http://www.ebi.ac.uk/efo/EFO_0009108
+scHumanPancreas	enrichment_protocol	method	fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+scHumanPancreas	sequencing_protocol	method	full length single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008441
+scHumanPancreas	specimen_from_organism	organ	pancreas	http://purl.obolibrary.org/obo/UBERON_0001264
+scHumanPancreas	specimen_from_organism	organ_parts	islet of Langerhans	http://purl.obolibrary.org/obo/UBERON_0000006
+scHumanPancreas	donor_organism	organism_age_unit	month	http://purl.obolibrary.org/obo/UO_0000035
+scHumanPancreas	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+scRNAseqSystemicComparison	library_preparation_protocol	cdna_library_amplification_method	in vitro transcription	http://www.ebi.ac.uk/efo/EFO_0009013
+scRNAseqSystemicComparison	library_preparation_protocol	cdna_library_amplification_method	PCR	http://purl.obolibrary.org/obo/OBI_0000415
+scRNAseqSystemicComparison	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+scRNAseqSystemicComparison	donor_organism	development_stage	juvenile stage	http://purl.obolibrary.org/obo/UBERON_0034919
+scRNAseqSystemicComparison	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+scRNAseqSystemicComparison	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+scRNAseqSystemicComparison	donor_organism	genus_species	Mus musculus	http://purl.obolibrary.org/obo/NCBITaxon_10090
+scRNAseqSystemicComparison	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+scRNAseqSystemicComparison	library_preparation_protocol	library_construction_method	10x Chromium (v2)	http://www.ebi.ac.uk/efo/EFO_0009310
+scRNAseqSystemicComparison	library_preparation_protocol	library_construction_method	10x Chromium (v3)	http://www.ebi.ac.uk/efo/EFO_0009898
+scRNAseqSystemicComparison	library_preparation_protocol	library_construction_method	DroNc-seq	http://www.ebi.ac.uk/efo/EFO_0008720
+scRNAseqSystemicComparison	library_preparation_protocol	library_construction_method	Drop-seq	http://www.ebi.ac.uk/efo/EFO_0008722
+scRNAseqSystemicComparison	library_preparation_protocol	library_construction_method	inDrop	http://www.ebi.ac.uk/efo/EFO_0008780
+scRNAseqSystemicComparison	library_preparation_protocol	library_construction_method	Smart-seq2	http://www.ebi.ac.uk/efo/EFO_0008931
+scRNAseqSystemicComparison	collection_protocol	method	blood draw	http://www.ebi.ac.uk/efo/EFO_0009121
+scRNAseqSystemicComparison	dissociation_protocol	method	density gradient centrifugation	http://www.ebi.ac.uk/efo/EFO_0009112
+scRNAseqSystemicComparison	collection_protocol	method	dissection	http://www.ebi.ac.uk/efo/EFO_0003856
+scRNAseqSystemicComparison	enrichment_protocol	method	FACS	http://www.ebi.ac.uk/efo/EFO_0009108
+scRNAseqSystemicComparison	dissociation_protocol	method	Ficoll-Paque density gradient centrifugation	http://www.ebi.ac.uk/efo/EFO_0009110
+scRNAseqSystemicComparison	sequencing_protocol	method	full length	http://www.ebi.ac.uk/efo/EFO_0008441
+scRNAseqSystemicComparison	dissociation_protocol	method	mechanical dissociation	http://www.ebi.ac.uk/efo/EFO_0009129
+scRNAseqSystemicComparison	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+scRNAseqSystemicComparison	specimen_from_organism	organ	blood	http://purl.obolibrary.org/obo/UBERON_0000178
+scRNAseqSystemicComparison	specimen_from_organism	organ	brain	http://purl.obolibrary.org/obo/UBERON_0000955
+scRNAseqSystemicComparison	specimen_from_organism	organ_parts	cortex	http://purl.obolibrary.org/obo/UBERON_0001851
+scRNAseqSystemicComparison	specimen_from_organism	organ_parts	venous blood	http://purl.obolibrary.org/obo/UBERON_0013756
+scRNAseqSystemicComparison	donor_organism	organism_age_unit	month	http://purl.obolibrary.org/obo/UO_0000035
+scRNAseqSystemicComparison	cell_suspension	selected_cell_types	mononuclear cell	http://purl.obolibrary.org/obo/CL_0000842
+scRNAseqSystemicComparison	donor_organism	strain	C57BL/6	http://www.ebi.ac.uk/efo/EFO_0004472
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	cell_line	cell_type	embryonic stem cell	http://purl.obolibrary.org/obo/CL_0002322
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	cell_line	cell_type	interneuron	http://purl.obolibrary.org/obo/CL_0000099
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	donor_organism	development_stage	human embryonic stage	http://purl.obolibrary.org/obo/HsapDv_0000002
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	donor_organism	disease	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	library_preparation_protocol	library_construction_method	Smart-seq2	http://www.ebi.ac.uk/efo/EFO_0008931
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	enrichment_protocol	method	fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	sequencing_protocol	method	full length single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008441
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	cell_line/organoid	model_organ	brain	http://purl.obolibrary.org/obo/UBERON_0000955
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	cell_line/organoid	model_organ	stem cell	http://purl.obolibrary.org/obo/CL_0000034
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	specimen_from_organism	organ	embryo	http://purl.obolibrary.org/obo/UBERON_0000922
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	specimen_from_organism	organ_parts	blastocyst	http://purl.obolibrary.org/obo/UBERON_0000358
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	cell_suspension	selected_cell_types	inhibitory interneurons	http://purl.obolibrary.org/obo/CL_0000498
+Single cell RNAseq characterization of cell types produced over time in an in vitro model of human inhibitory interneuron differentiation.	donor_organism	unit	day	http://purl.obolibrary.org/obo/UO_0000033
+Single cell transcriptome analysis of human pancreas	donor_organism	development_stage	1-month-old human stage	http://purl.obolibrary.org/obo/HsapDv_0000174
+Single cell transcriptome analysis of human pancreas	donor_organism	development_stage	5-year-old human stage	http://purl.obolibrary.org/obo/HsapDv_0000099
+Single cell transcriptome analysis of human pancreas	donor_organism	development_stage	6-year-old human stage	http://purl.obolibrary.org/obo/HsapDv_0000100
+Single cell transcriptome analysis of human pancreas	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+Single cell transcriptome analysis of human pancreas	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000088
+Single cell transcriptome analysis of human pancreas	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000089
+Single cell transcriptome analysis of human pancreas	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000090
+Single cell transcriptome analysis of human pancreas	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000091
+Single cell transcriptome analysis of human pancreas	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Single cell transcriptome analysis of human pancreas	donor_organism	ethnicity	African American/Afro-Caribbean	http://purl.obolibrary.org/obo/HANCESTRO_0016
+Single cell transcriptome analysis of human pancreas	donor_organism	ethnicity	Asian	http://purl.obolibrary.org/obo/HANCESTRO_0008
+Single cell transcriptome analysis of human pancreas	donor_organism	ethnicity	European	http://purl.obolibrary.org/obo/HANCESTRO_0005
+Single cell transcriptome analysis of human pancreas	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Single cell transcriptome analysis of human pancreas	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Single cell transcriptome analysis of human pancreas	sequencing_protocol	instrument_manufacturer_model	Illumina NextSeq 500	http://www.ebi.ac.uk/efo/EFO_0009173
+Single cell transcriptome analysis of human pancreas	library_preparation_protocol	library_construction_method	Smart-seq2	http://www.ebi.ac.uk/efo/EFO_0008931
+Single cell transcriptome analysis of human pancreas	enrichment_protocol	method	FACS	http://www.ebi.ac.uk/efo/EFO_0009108
+Single cell transcriptome analysis of human pancreas	enrichment_protocol	method	fluorescence-activated cell sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+Single cell transcriptome analysis of human pancreas	sequencing_protocol	method	full length single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008441
+Single cell transcriptome analysis of human pancreas	specimen_from_organism	organ	pancreas	http://purl.obolibrary.org/obo/UBERON_0001264
+Single cell transcriptome analysis of human pancreas	specimen_from_organism	organ_parts	islet of Langerhans	http://purl.obolibrary.org/obo/UBERON_0000006
+Single cell transcriptome analysis of human pancreas	donor_organism	organism_age_unit	month	http://purl.obolibrary.org/obo/UO_0000035
+Single cell transcriptome analysis of human pancreas	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+SingleCellLiverLandscape	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+SingleCellLiverLandscape	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+SingleCellLiverLandscape	donor_organism	diseases	Normal	http://purl.obolibrary.org/obo/PATO_0000461
+SingleCellLiverLandscape	donor_organism	ethnicity	Black	http://purl.obolibrary.org/obo/HANCESTRO_0016
+SingleCellLiverLandscape	donor_organism	ethnicity	White	http://purl.obolibrary.org/obo/HANCESTRO_0005
+SingleCellLiverLandscape	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+SingleCellLiverLandscape	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+SingleCellLiverLandscape	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+SingleCellLiverLandscape	library_preparation_protocol	library_construction_method	10x v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009310
+SingleCellLiverLandscape	sequencing_protocol	method	3' end single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+SingleCellLiverLandscape	enrichment_protocol	method	cell size selection	http://www.ebi.ac.uk/efo/EFO_0009337
+SingleCellLiverLandscape	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+SingleCellLiverLandscape	collection_protocol	method	surgical resection	http://www.ebi.ac.uk/efo/EFO_0009744
+SingleCellLiverLandscape	specimen_from_organism	organ	liver	http://purl.obolibrary.org/obo/UBERON_0002107
+SingleCellLiverLandscape	specimen_from_organism	organ_parts	caudate lobe	http://purl.obolibrary.org/obo/UBERON_0001117
+SingleCellLiverLandscape	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+Singlecellsequencingoflungcarcinoma	donor_organism	development_stage	human adult stage	http://purl.obolibrary.org/obo/HsapDv_0000087
+Singlecellsequencingoflungcarcinoma	donor_organism	diseases	lung carcinoma	http://purl.obolibrary.org/obo/MONDO_0005138
+Singlecellsequencingoflungcarcinoma	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+Singlecellsequencingoflungcarcinoma	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+Singlecellsequencingoflungcarcinoma	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+Singlecellsequencingoflungcarcinoma	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+Singlecellsequencingoflungcarcinoma	library_preparation_protocol	library_construction_method	10X v1 sequencing	http://www.ebi.ac.uk/efo/EFO_0009897
+Singlecellsequencingoflungcarcinoma	library_preparation_protocol	library_construction_method	10X v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009310
+Singlecellsequencingoflungcarcinoma	collection_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+Singlecellsequencingoflungcarcinoma	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+Singlecellsequencingoflungcarcinoma	specimen_from_organism	organ	lung	http://purl.obolibrary.org/obo/UBERON_0002048
+Singlecellsequencingoflungcarcinoma	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+snRNA-seq_for_human_retina	library_preparation_protocol	cdna_library_amplification_method	PCR	http://purl.obolibrary.org/obo/OBI_0000415
+snRNA-seq_for_human_retina	donor_organism	development_stage	human adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+snRNA-seq_for_human_retina	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+snRNA-seq_for_human_retina	donor_organism	ethnicity	Caucasian	http://purl.obolibrary.org/obo/HANCESTRO_0005
+snRNA-seq_for_human_retina	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+snRNA-seq_for_human_retina	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+snRNA-seq_for_human_retina	sequencing_protocol	instrument_manufacturer_model	Illumina Novaseq 6000	http://www.ebi.ac.uk/efo/EFO_0008637
+snRNA-seq_for_human_retina	library_preparation_protocol	library_construction_method	10X 3' v3 sequencing	http://www.ebi.ac.uk/efo/EFO_0009922
+snRNA-seq_for_human_retina	library_preparation_protocol	library_preamplification_method	reverse transcription PCR	http://purl.obolibrary.org/obo/OBI_0000552
+snRNA-seq_for_human_retina	enrichment_protocol	method	antibody enrichment with FACS sorting	http://www.ebi.ac.uk/efo/EFO_0009108
+snRNA-seq_for_human_retina	collection_protocol	method	dissection	http://www.ebi.ac.uk/efo/EFO_0003856
+snRNA-seq_for_human_retina	dissociation_protocol	method	sample dissociation	http://www.ebi.ac.uk/efo/EFO_0009091
+snRNA-seq_for_human_retina	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+snRNA-seq_for_human_retina	specimen_from_organism	organ	eye	http://purl.obolibrary.org/obo/UBERON_0000970
+snRNA-seq_for_human_retina	specimen_from_organism	organ_parts	fovea centralis	http://purl.obolibrary.org/obo/UBERON_0001786
+snRNA-seq_for_human_retina	specimen_from_organism	organ_parts	retina	http://purl.obolibrary.org/obo/UBERON_0000966
+snRNA-seq_for_human_retina	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+snRNA-seq_for_human_retina	cell_suspension	selected_cell_types	NeuN-positive-nuclei in peripheral retina	http://purl.obolibrary.org/obo/CL_0000540
+SS2 1 Cell Integration Test	cell_suspension	cell_size_unit	micrometer	http://purl.obolibrary.org/obo/UO_0000017
+SS2 1 Cell Integration Test	donor_organism	development_stage	adult	http://www.ebi.ac.uk/efo/EFO_0001272
+SS2 1 Cell Integration Test	donor_organism	diseases	H syndrome	http://purl.obolibrary.org/obo/MONDO_0011273
+SS2 1 Cell Integration Test	donor_organism	ethnicity	African American/Afro-Caribbean	NA
+SS2 1 Cell Integration Test	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+SS2 1 Cell Integration Test	donor_organism	gestational_age_unit	days	http://purl.obolibrary.org/obo/UO_0000033
+SS2 1 Cell Integration Test	donor_organism	height_unit	centimeter	http://purl.obolibrary.org/obo/UO_0000015
+SS2 1 Cell Integration Test	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+SS2 1 Cell Integration Test	sequencing_protocol	instrument_manufacturer_model	Illumina NextSeq 500	http://www.ebi.ac.uk/efo/EFO_0009173
+SS2 1 Cell Integration Test	library_preparation_protocol	library_construction_method	Smart-seq2	http://www.ebi.ac.uk/efo/EFO_0008931
+SS2 1 Cell Integration Test	specimen_from_organism	organ	kidney	http://purl.obolibrary.org/obo/UBERON_0002113
+SS2 1 Cell Integration Test	specimen_from_organism	organ_parts	tongue taste bud	http://purl.obolibrary.org/obo/UBERON_0014451
+SS2 1 Cell Integration Test	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+SS2 1 Cell Integration Test	cell_suspension	selected_cell_types	arcuate artery endothelial cell	http://purl.obolibrary.org/obo/CL_1001213
+SS2 1 Cell Integration Test	specimen_from_organism	storage_time_unit	days	http://purl.obolibrary.org/obo/UO_0000033
+SS2 1 Cell Integration Test	donor_organism	weight_unit	kg	http://purl.obolibrary.org/obo/UO_0000009
+TissueStability	donor_organism	development_stage	adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+TissueStability	donor_organism	diseases	normal	http://purl.obolibrary.org/obo/PATO_0000461
+TissueStability	donor_organism	genus_species	Homo sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+TissueStability	donor_organism	height_unit	meter	http://purl.obolibrary.org/obo/UO_0000008
+TissueStability	library_preparation_protocol	input_nucleic_acid_molecule	genomic DNA	http://www.ebi.ac.uk/efo/EFO_0008479
+TissueStability	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+TissueStability	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 4000	http://www.ebi.ac.uk/efo/EFO_0008563
+TissueStability	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeqX	http://www.ebi.ac.uk/efo/EFO_0008567
+TissueStability	library_preparation_protocol	library_construction_method	10X 3' v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009899
+TissueStability	library_preparation_protocol	library_construction_method	Bulk RNA	http://www.ebi.ac.uk/efo/EFO_0004187
+TissueStability	library_preparation_protocol	library_construction_method	WGS	http://www.ebi.ac.uk/efo/EFO_0010172
+TissueStability	library_preparation_protocol	method	Bulk RNA	http://www.ebi.ac.uk/efo/EFO_0009653
+TissueStability	collection_protocol	method	collecting specimen from organ postmortem	http://www.ebi.ac.uk/efo/EFO_0009627
+TissueStability	dissociation_protocol	method	enzymatic	http://www.ebi.ac.uk/efo/EFO_0009128
+TissueStability	enrichment_protocol	method	magnetic affinity cell sorting	http://www.ebi.ac.uk/efo/EFO_0009109
+TissueStability	dissociation_protocol	method	mechanical	http://www.ebi.ac.uk/efo/EFO_0009129
+TissueStability	sequencing_protocol	method	tag based single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+TissueStability	library_preparation_protocol	method	Whole genome sequencing	http://www.ebi.ac.uk/efo/EFO_0003744
+TissueStability	specimen_from_organism	organ	lung	http://purl.obolibrary.org/obo/UBERON_0002048
+TissueStability	specimen_from_organism	organ	oesophagus	http://purl.obolibrary.org/obo/UBERON_0001043
+TissueStability	specimen_from_organism	organ	spleen	http://purl.obolibrary.org/obo/UBERON_0002106
+TissueStability	specimen_from_organism	organ_parts	lower left lobe	http://purl.obolibrary.org/obo/UBERON_0008953
+TissueStability	specimen_from_organism	organ_parts	lower right lobe	http://purl.obolibrary.org/obo/UBERON_0002171
+TissueStability	specimen_from_organism	organ_parts	mucosa including epithelium	http://purl.obolibrary.org/obo/UBERON_0002469
+TissueStability	specimen_from_organism	organ_parts	mucosa including epithelium; end of oesophagus closest to stomach	http://purl.obolibrary.org/obo/UBERON_0002469
+TissueStability	specimen_from_organism	organ_parts	parenchyma	http://purl.obolibrary.org/obo/UBERON_0008946
+TissueStability	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
+TissueStability	cell_suspension	selected_cell_types	epithelial cell of esophagus	http://purl.obolibrary.org/obo/CL_0002252
+TissueStability	cell_suspension	selected_cell_types	spleen immune cells	http://purl.obolibrary.org/obo/CL_2000074
+TissueStability	donor_organism	weight_unit	kilogram	http://purl.obolibrary.org/obo/UO_0000009
+WongAdultRetina	library_preparation_protocol	cdna_library_amplification_method	PCR	http://purl.obolibrary.org/obo/OBI_0000415
+WongAdultRetina	donor_organism	development_stage	Adult	http://purl.obolibrary.org/obo/HsapDv_0000087
+WongAdultRetina	donor_organism	diseases	Cataract on left eye, right eye has normal ocular history	http://purl.obolibrary.org/obo/MONDO_0005129
+WongAdultRetina	donor_organism	diseases	Normal	http://purl.obolibrary.org/obo/PATO_0000461
+WongAdultRetina	donor_organism	diseases	normal ocular history	http://purl.obolibrary.org/obo/PATO_0000461
+WongAdultRetina	donor_organism	genus_species	Homo Sapiens	http://purl.obolibrary.org/obo/NCBITaxon_9606
+WongAdultRetina	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	http://purl.obolibrary.org/obo/OBI_0000869
+WongAdultRetina	sequencing_protocol	instrument_manufacturer_model	Illumina HiSeq 2500	http://www.ebi.ac.uk/efo/EFO_0008565
+WongAdultRetina	library_preparation_protocol	library_construction_method	10X v2 sequencing	http://www.ebi.ac.uk/efo/EFO_0009310
+WongAdultRetina	sequencing_protocol	method	3' single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008440
+WongAdultRetina	enrichment_protocol	method	cell size selection	http://www.ebi.ac.uk/efo/EFO_0009337
+WongAdultRetina	collection_protocol	method	collecting specimen from organ postmortem	http://www.ebi.ac.uk/efo/EFO_0009627
+WongAdultRetina	dissociation_protocol	method	enzymatic dissociation	http://www.ebi.ac.uk/efo/EFO_0009128
+WongAdultRetina	specimen_from_organism	organ	left eye	http://purl.obolibrary.org/obo/UBERON_0000970
+WongAdultRetina	specimen_from_organism	organ	right eye	http://purl.obolibrary.org/obo/UBERON_0000970
+WongAdultRetina	specimen_from_organism	organ_parts	Neural retina	http://purl.obolibrary.org/obo/UBERON_0003902
+WongAdultRetina	donor_organism	organism_age_unit	year	http://purl.obolibrary.org/obo/UO_0000036
