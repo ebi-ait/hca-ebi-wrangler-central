@@ -22,7 +22,9 @@ import argparse
 import requests
 import pandas as pd
 import sys
-from datetime import date
+from datetime import datetime
+import re
+
 
 def define_parser():
     parser = argparse.ArgumentParser(description="Parser for the arguments")
@@ -35,30 +37,34 @@ def define_parser():
     parser.add_argument("--api", "-a", action="store", dest="ingest_api_url",
                         default="http://api.ingest.archive.data.humancellatlas.org/",
                         help="URL of the api to search, default is current prod api.")
+    parser.add_argument("--iri_replace", "-i", action="store", dest="iri_replace",
+                        help="Path to a file where there are obo ids in column named 'SEMANTIC_TAG' and replace these "
+                             "with full iris. All other arguments ignored.")
     return parser
 
 
-def extract_mappings(uuid, api, unique, date_str):
+def extract_mappings(uuid, api, unique, file_string):
     project_json = requests.get("{}projects/search/findByUuid?uuid={}".format(api, uuid)).json()
     project_content = project_json['content']
     project_name = project_content['project_core']['project_short_name']
-    project_mapping_list = read_properties(project_content, 'project', project_name)
-    save_df(project_mapping_list, unique, date_str, write_mode='w', head=True)
+    if re.search("Integration Test", project_name):
+        return
+    project_mapping_list = read_properties(project_content, 'project', project_name, property_list=[])
+    save_df(project_mapping_list, unique, file_string)
     submissions_link = project_json['_links']['submissionEnvelopes']['href']
     submissions_json = requests.get(submissions_link).json()
     for submission in submissions_json['_embedded']['submissionEnvelopes']:
         biomaterials_link = submission['_links']['biomaterials']['href']
         biomaterials_mapping_list = process_json(biomaterials_link, 'biomaterials', project_name)
-        save_df(biomaterials_mapping_list, unique, date_str)
+        save_df(biomaterials_mapping_list, unique, file_string)
 
         protocols_link = submission['_links']['protocols']['href']
         protocols_mapping_list = process_json(protocols_link, 'protocols', project_name)
-        save_df(protocols_mapping_list, unique, date_str)
+        save_df(protocols_mapping_list, unique, file_string)
 
         files_link = submission['_links']['files']['href']
         files_mapping_list = process_json(files_link, 'files', project_name)
-        save_df(files_mapping_list, unique, date_str)
-
+        save_df(files_mapping_list, unique, file_string)
     # TODO: Process Analysis entities
 
 
@@ -67,12 +73,16 @@ def process_json(link, schema_type, project_name):
     mapping_list = []
     while not done:
         entries = requests.get(link).json()
-        for entry in entries['_embedded'][schema_type]:
-            bioentity = entry['content']['describedBy'].split('/')[-1]
-            mapping_list.extend(read_properties(entry['content'], bioentity, project_name))
-        if 'next' in entries['_links']:
-            link = entries['_links']['next']['href']
-        else:
+        try:
+            for entry in entries['_embedded'][schema_type]:
+                bioentity = entry['content']['describedBy'].split('/')[-1]
+                mapping_list.extend(read_properties(entry['content'], bioentity, project_name, property_list=[]))
+            if 'next' in entries['_links']:
+                link = entries['_links']['next']['href']
+            else:
+                done = True
+        except KeyError:
+            print("Error retrieving metadata from {}. Probably no submission metadata. Skipping...".format(link))
             done = True
     return mapping_list
 
@@ -100,58 +110,78 @@ def read_properties(data, bioentity, project_name, property_list=[], root=None):
     return property_list
 
 
-def save_df(mapping_list, unique, today_str, write_mode='a', head=False):
+def save_df(type_mapping_list, unique, file_string, write_mode='a', head=False):
     column_names = ['STUDY', 'BIOENTITY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG']
-    property_df = pd.DataFrame(mapping_list, columns=column_names)
+    property_df = pd.DataFrame(type_mapping_list, columns=column_names)
     if unique:
-        property_df.drop_duplicates(inplace=True)
-    property_df.to_csv("{}_all_mappings.tsv".format(today_str), sep="\t", index=False, mode=write_mode, header=head)
+        property_df = property_df.drop_duplicates()
+    property_df.to_csv(file_string, sep="\t", index=False, mode=write_mode, header=head)
 
 
 def get_full_iri(obo_id):
-    obo_term = obo_id.replace(":", "_")
-    ols_response = requests.get('http://www.ebi.ac.uk/ols/api/terms?id={}'.format(obo_term))
-    ols_json = ols_response.json()
-    # if "_embedded" not in ols_json.keys():
-    #     ols_response = requests.get('http://www.ebi.ac.uk/ols/api/terms?iri={}'.format(obo_term))
-    #     ols_json = ols_response.json()
-    return ols_json['_embedded']['terms'][0]['iri']
+    try:
+        ols_response = requests.get('http://www.ebi.ac.uk/ols/api/terms?obo_id={}'.format(obo_id))
+        ols_json = ols_response.json()
+        return ols_json['_embedded']['terms'][0]['iri']
+    except KeyError:
+        print('http://www.ebi.ac.uk/ols/api/terms?id={}'.format(obo_id))
+        print("Could not find {}.".format(obo_id))
+        return obo_id
 
 
-def main(project_uuids, unique, api):
-    today = date.today()
-    today_str = today.strftime("%Y-%m-%d")
+def replace_obo_ids(property_df):
+    obo_ids = list(set(property_df['SEMANTIC_TAG']))
+    print("Found {} obo_ids to search and replace.".format(len(obo_ids)))
+    obo_dict = {obo_id: get_full_iri(obo_id) for obo_id in obo_ids}
+    property_df["SEMANTIC_TAG"].replace(obo_dict, inplace=True)
+    return property_df
+
+
+def main(project_uuids, unique, api, iri_replace):
+    if iri_replace:
+        print("Getting full iris")
+        mappings_df = pd.read_csv(iri_replace, sep="\t")
+        mappings_df = replace_obo_ids(mappings_df)
+        mappings_df.to_csv(iri_replace, sep="\t", index=False)
+        print("Saved output to {}".format(iri_replace))
+        sys.exit(0)
+    today = datetime.now()
+    today_str = today.strftime("%Y-%m-%d_%H-%M")
+    file_name = "outputs/{}_property_mappings.tsv".format(today_str)
+    pd.DataFrame(columns=['STUDY', 'BIOENTITY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG']).to_csv(file_name, sep="\t", index=False)
+    total_projects = len(project_uuids)
+    print("Found {} project uuids to process.".format(total_projects))
+    print("Saving results to {}.".format(file_name))
+    i = 1
     for uuid in project_uuids:
-        print("Processing " + uuid)
-        extract_mappings(uuid, api, unique, today_str)
+        print("Processing {}, project {} of {}.".format(uuid, i, total_projects))
+        extract_mappings(uuid, api, unique, file_name)
+        i += 1
     print("Getting full iris")
-    with open("{}_all_mappings.tsv".format(today_str)) as mappings_file:
+    with open(file_name) as mappings_file:
         property_df = pd.read_csv(mappings_file, sep="\t")
-        obo_ids = list(set(property_df['SEMANTIC_TAG']))
-        print("Found {} obo_ids to search and replace.".format(len(obo_ids)))
-        obo_dict = {obo_id: get_full_iri(obo_id) for obo_id in obo_ids}
-        property_df["SEMANTIC_TAG"].replace(obo_dict, inplace=True)
-        property_df.to_csv("{}_all_mappings.tsv".format(today_str), sep="\t", index=False)
-    print("Saved output to {}_all_mappings.tsv".format(today_str))
+        property_df = replace_obo_ids(property_df)
+        property_df.to_csv(file_name, sep="\t", index=False)
+    print("Saved output to {}".format(file_name))
     sys.exit(0)
 
 
 if __name__ == "__main__":
     parser = define_parser()
     args = parser.parse_args()
-    if not args.uuid_list and args.file_path:
-        print("Either -p or -f must be specified.")
+    if not args.uuid_list and not args.file_path and not args.iri_replace:
+        print("Either -p or -f or -i must be specified.")
         sys.exit()
     if args.uuid_list:
         uuid_list = args.uuid_list.split(",")
     if args.file_path:
-        file_id_list = []
-        with open(args.file_path, "r") as input_file:
-            for line in input_file:
-                stripped = line.strip()
-                file_id_list.append(stripped)
+        file_id_list = pd.read_csv(args.file_path, sep="\t", header=None)[0].to_list()
     if args.uuid_list and args.file_path:
         id_list = list(set(uuid_list.append(file_id_list)))
+    elif args.file_path:
+        id_list = file_id_list
+    elif args.uuid_list:
+        id_list = uuid_list
     else:
-        id_list = uuid_list if uuid_list else file_id_list
-    main(id_list, args.unique, args.ingest_api_url)
+        id_list = []
+    main(id_list, args.unique, args.ingest_api_url, args.iri_replace)
