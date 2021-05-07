@@ -267,7 +267,7 @@ def parse_wb(file_path, wb, schema, zooma, keep):
                 if list(row)[0].row < 5:
                     continue
                 for cell in row:
-                    if sheet["{}4".format(get_column_letter(cell.column))].value.endswith(".text") and cell.value \
+                    if cell.value and sheet["{}4".format(get_column_letter(cell.column))].value.endswith(".text") \
                             and keep:  # If there is already an ontology curation, and keep enabled, skip curation
                         if sheet["{}{}".format(get_column_letter(cell.column + 1), cell.row)].value:
                             continue
