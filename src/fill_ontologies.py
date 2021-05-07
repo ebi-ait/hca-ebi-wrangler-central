@@ -311,12 +311,15 @@ def parse_wb(file_path, wb, schema, zooma, keep):
 
 def main(args):
     wb = openpyxl.load_workbook(args.wb_path)
+    script_path = os.path.realpath(__file__)
+    script_dir = os.path.split(script_path)[0]
+    pickled_schema_path = os.path.join(script_dir, 'pickled_schemas.pkl')
     try:
-        with open('pickled_schemas.pkl', 'rb') as pickled_schemas:
+        with open(pickled_schema_path, 'rb') as pickled_schemas:
             json_schemas = pickle.load(pickled_schemas)
     except FileNotFoundError:
         schema = SchemaTemplate(ingest_api_url="http://api.ingest.staging.archive.data.humancellatlas.org")
-        with open('pickled_schemas.pkl', 'wb') as output:
+        with open(pickled_schema_path, 'wb') as output:
             pickle.dump(schema.json_schemas, output)
         json_schemas = schema.json_schemas
     parse_wb(args.wb_path, wb, json_schemas, args.zooma, args.keep)
