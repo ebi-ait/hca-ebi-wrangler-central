@@ -43,6 +43,12 @@ The script takes some time to get started (If it's loading a SchemaTemplate obje
 - If array delimiter `||` is detected in the cell `Multiple terms detected for term: x||y||z in field <spreadsheet text value>` and search proceeds as above.
 - `No ontology was found for this term. Please input it manually`: Type an alternate text description to search.
     
+#### Ideas for future development
+- ensure zooma matches are a child term before automatically matching (not sure if necessary)
+- enable ability to specify confidence level
+- review datasource
+- enable searching by field, can search with tab between field type and text field to narrow search
+
 ### move_data_from_insdc.py
 
 ### MVP_timestamps_desciptor_fix.ipynb
