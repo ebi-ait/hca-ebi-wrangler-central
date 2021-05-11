@@ -27,7 +27,23 @@ Where either the expression matrix or cell type annotations cannot be found, the
 
 ## Filling in metadata about the files
 
+For each expression matrix or cell type annotation file that is found, a row needs to be filled in the metadata spreadsheet, in the ‘Analysis file’ tab. Analysis files can be linked to sequence files or biomaterial entities via processes; This is done in the spreadsheet in the same way that other entities are linked. Information related to the analysis protocol is captured in the Analysis_protocol entity (See the Analysis protocol tab) linked to the process
+
+The best practice is to link the analysis files to sequence file entities, if possible. Alternatively, you can also link the analysis files to cell suspension entities. This is currently done by adding the ‘Input Cell Suspension ID’ column to the ‘Analysis File’ tab and adding the linked cell suspensions to the cell.
+
+The gene expression matrix and cell annotations files should be added to the S3 bucket in the ingest-area together with raw data files, for instructions on how to use hca-util to do this, see ['here'](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util)
+
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/Cgms_screenshot.png?raw=true)
+
+
+
+
+
+
+The following process here is outdated, but kept for recording: 
 For each file that is found, a row needs to be filled in the [`contributor_matrices_metadata`](https://docs.google.com/spreadsheets/d/1m9tXswoNAEYJDVlCKqc9L6p0c7hbOwddkQxdqxXydqY/edit#gid=0) found in the [Contributor Matrices folder](https://drive.google.com/open?id=1FMjJwYamMyuCtNJoTiA30kM3vsL6Q8LD) in the Brokering folder.
+
+
 
 | Field                       | Definition                                                                                                                   |
 |-----------------------------|------------------------------------------------------------------------------------------------------------------------------|
