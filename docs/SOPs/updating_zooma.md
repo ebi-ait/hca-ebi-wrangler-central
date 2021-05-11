@@ -56,12 +56,35 @@ python3 harvest_ontologies.py -f uuid_file.txt
 To view some summarised tables of curations from the Data source run:
 
 ```
-
+python3 generate_ontology_curation_reports.py
 ```
 
-As part of running the harvest_ontologies.py script, two reports will be generated. One provides summary information about the new mappings that were harvested in this iteration of the script. The other provides information about the entire ZOOMA data source.
+This script creates a web app with interactive tables that can be filtered and searched to help with detecting ontology curation errors.
 
-Reviewing this report can help with detecting ontology curation errors before they are made a part of the ZOOMA data source.
+The tables generated are:
+##### Summarised table of curations from most recent harvest per project
+
+This table summarises the count of ontology curations per ontology term per project for the most recent ontology harvest, then sorts them in descending order by curation count. 
+
+The idea being that if there are many curations for a single ontology term, that there may have been an error. These terms may also indicate that more specific terms need to be added to the underlying ontology to better capture the specified text.
+
+##### Summarised table of curations from most recent harvest
+
+This table summarises the count of ontology curations per ontology term across all projects that were imported in the latest harvest.
+
+##### Summarised table of curations from full ZOOMA file
+
+The same summary as above but for all curations in the zooma file, rather than the most recent harvest.
+
+##### Full table of curations from most recent harvest
+
+Non-summarised view of the most recent run of the harvest script. (Same as opening the `src/outputs/YYYY-mm-dd_HH_MM_property_mappings.tsv` in excel)
+
+##### Full table of curations from full ZOOMA data source
+
+Non-summarised view of the full ZOOMA data source. (Same as opening the `src/outputs/current_zooma_import.txt` in excel)
+
+Reviewing the tables in this report can help with detecting ontology curation errors before they are made a part of the ZOOMA data source.
 
 #### Push to github
 

@@ -16,7 +16,7 @@ Improvement suggestion: read all mappings into a dictionary first, then save/pri
 Warning - this script takes a while (10s of mins to a couple of hours!) to run for large submissions or if you give it many in one go!
 
 Copied from HumanCellAtlas/data-wrangling 30/04/2021. Original Author Dani Welter
-Updated by Marion Shadbolt in April/May 2021.
+Updated/refactored by Marion Shadbolt in April/May 2021.
 """
 
 import argparse
@@ -45,6 +45,18 @@ def define_parser():
 
 
 def extract_mappings(uuid, api, unique, file_string):
+    """
+    Method to iterate over project metadata as well as the entities in all submissions in a project and save progress to
+    file.
+    :param uuid: project uuid
+    :type uuid: string
+    :param api: string of ingest api to search
+    :type api: string
+    :param unique: Toggle to collapse duplicate curations
+    :type unique: bool
+    :param file_string: Path to file to save extracted mappings
+    :type file_string: str
+    """
     project_json = requests.get("{}projects/search/findByUuid?uuid={}".format(api, uuid)).json()
     project_content = project_json['content']
     project_name = project_content['project_core']['project_short_name']
@@ -70,6 +82,17 @@ def extract_mappings(uuid, api, unique, file_string):
 
 
 def process_json(link, schema_type, project_name):
+    """
+    Iterate through all pages of entities for a particular schema type in a particular submission.
+    :param link: Link to the submission entities to request
+    :type link: string
+    :param schema_type: which type to return, one of biomaterials, files, protocols
+    :type schema_type: string
+    :param project_name: The short name of the projects
+    :type project_name: string
+    :return:
+    :rtype:
+    """
     done = False
     mapping_list = []
     while not done:
@@ -90,6 +113,21 @@ def process_json(link, schema_type, project_name):
 
 # this function recursively reads through an entire json doc to find all the instances of ontology mappings
 def read_properties(data, bioentity, project_name, property_list=[], root=None):
+    """
+    Recursively read through all properties of each json entity and retrieve ontology curations.
+    :param data: Content from api request
+    :type data: dict
+    :param bioentity: The schema type of the content, fills the 'BIOENTITY' field in output
+    :type bioentity: string
+    :param project_name: The shortname of the project, fills the 'STUDY' field in output
+    :type project_name: string
+    :param property_list: The list of properties and curations in a dictionary for each property
+    :type property_list: list of dicts
+    :param root:
+    :type root:
+    :return: property_list - the list of property curations
+    :rtype: list of dicts
+    """
     for k, v in data.items():
         if isinstance(v, dict):
             if "ontology" in v:
@@ -114,6 +152,19 @@ def read_properties(data, bioentity, project_name, property_list=[], root=None):
 
 
 def save_df(type_mapping_list, unique, file_string, write_mode='a', head=False):
+    """
+    Save curation dataframe to file.
+    :param type_mapping_list: The list of property curations
+    :type type_mapping_list: list of dicts
+    :param unique: Whether to collapse unique curations
+    :type unique: bool
+    :param file_string: The path to where to save the curations
+    :type file_string: string
+    :param write_mode: The write mode to use, append by default
+    :type write_mode: string
+    :param head: Whether to print the header of the dataframe
+    :type head: bool
+    """
     column_names = ['STUDY', 'BIOENTITY', 'PROPERTY_TYPE', 'PROPERTY_VALUE', 'SEMANTIC_TAG']
     property_df = pd.DataFrame(type_mapping_list, columns=column_names)
     if unique:
@@ -122,6 +173,13 @@ def save_df(type_mapping_list, unique, file_string, write_mode='a', head=False):
 
 
 def get_full_iri(obo_id):
+    """
+    Given an ontology id of the form X:01234, look up the full iri using the ebi ols
+    :param obo_id: ontology identifier, e.g. HsapDv:0000087
+    :type obo_id: string
+    :return: full iri for the term, e.g. http://purl.obolibrary.org/obo/HsapDv_0000087
+    :rtype: string
+    """
     try:
         ols_response = requests.get('http://www.ebi.ac.uk/ols/api/terms?obo_id={}'.format(obo_id))
         ols_json = ols_response.json()
@@ -133,6 +191,14 @@ def get_full_iri(obo_id):
 
 
 def replace_obo_ids(property_df):
+    """
+    Given a pandas DataFrame with the column 'SEMANTIC_TAG' filled with ontology ids of the form X:01234, replace those
+    ontology ids with the full iris
+    :param property_df: A pandas dataframe with column 'SEMANTIC_TAG' filled with obo_ids
+    :type property_df: DataFrame
+    :return: The updated DataFrame
+    :rtype: DataFrame
+    """
     obo_ids = list(set(property_df['SEMANTIC_TAG']))
     print("Found {} obo_ids to search and replace.".format(len(obo_ids)))
     obo_dict = {obo_id: get_full_iri(obo_id) for obo_id in obo_ids}
@@ -141,6 +207,17 @@ def replace_obo_ids(property_df):
 
 
 def main(project_uuids, unique, api, iri_replace):
+    """
+    The main method of the program that calls other methods and iterates over the specified project uuids.
+    :param project_uuids: A list of project uuids from which to retrieve ontology curations
+    :type project_uuids: list of strings
+    :param unique: Toggle to indicate whether to collapse duplicate curations within a project
+    :type unique: bool
+    :param api: The ingest api to search
+    :type api: string
+    :param iri_replace: Toggle to indicate whether to replace obo ids with full iris
+    :type iri_replace: bool
+    """
     if iri_replace:
         print("Getting full iris")
         mappings_df = pd.read_csv(iri_replace, sep="\t")

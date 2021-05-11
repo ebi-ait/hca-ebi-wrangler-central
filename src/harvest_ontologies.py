@@ -2,9 +2,8 @@
 
 """
 This is a wrapper script to get a list of uuids to process for the ontology_mappings_extractor.
-It queries ingest for appropriate projects after a given date and appends new data to the 'current_zooma_import' file.
-It also provides a summary of the current curations for terms to check for any obvious errors.
-It also creates a PR against master for the new file (?)
+It queries ingest for appropriate projects after a given date and appends new data to the
+'outputs/current_zooma_import.txt' file.
 """
 
 import requests as rq
@@ -24,9 +23,11 @@ def define_parser():
                         help="Enter date in from YYYY-MM-DD for the last time the data was updated.")
     parser.add_argument("--ingest-token", "-t", action="store", dest="ingest_token", type=str,
                         help="Enter token from ingest in order to access protected endpoints."),
-    parser.add_argument("--not_ontologies", "-n", action="store_true", dest="dont_get_ontologies",
+    parser.add_argument("--not_ontologies", "-no", action="store_true", dest="dont_get_ontologies",
                         help="If specified, the program retrieves candidate projects but doesn't go on to retrieve "
                              "ontologies.")
+    parser.add_argument("--not-zooma", "-nz", action="store_true", dest="dont_update_zooma",
+                        help="If specified, don't update the data source, just harvest the ontologies and exit.")
     parser.add_argument("--uuid_file", "-f", action="store", dest="uuid_file",
                         help="Run with a text file of uuids rather than searching ingest.")
     return parser
@@ -34,17 +35,19 @@ def define_parser():
 
 def search_ingest(token, last_update):
     """
-    Searches ingest for projects submitted after a certain date that have at least one submission and have a 'complete'
-    or 'exported' status.
+    Searches ingest for projects submitted after a certain date that have at least one submission and have a 'Complete'
+    or 'Exported' status. Uses the sorted by date endpoint and exits once a project is encountered before the update_date.
     :param token: auth token for ingest api
+    :type token: string
     :param last_update: The last time this script was run
-    :return: 2D list of project uuids and project shortnames
-    :rtype: list
+    :type last_update: datetime
+    :return: dictionary where uuid is the key and shortname is the value
+    :rtype: dict
     """
-    ingest_api = "http://api.ingest.archive.data.humancellatlas.org/projects"
+    ingest_api = "http://api.ingest.archive.data.humancellatlas.org/projects?sort=updateDate,desc"
     auth_headers = {'Authorization': 'Bearer {}'.format(token), 'Content-Type': 'application/json'}
     done = False
-    project_uuid_list = []
+    project_uuid_dict = {}
     i = 0
     while not done:
         i += 1
@@ -54,15 +57,22 @@ def search_ingest(token, last_update):
             total_pages = all_projects['page']['totalPages']
             print("Processing page {} of {}".format(i, total_pages), end="\r")
             for project in all_projects['_embedded']['projects']:
-                if datetime.strptime(project['submissionDate'], '%Y-%m-%dT%H:%M:%S.%fZ') > last_update:
+                project_update_date_str = project['updateDate'][0:10]
+                project_update_date = datetime.strptime(project_update_date_str, '%Y-%m-%d')
+                if project_update_date >= last_update:
                     sub_env_response = rq.get(project['_links']['submissionEnvelopes']['href'])
                     sub_env_json = sub_env_response.json()
                     if sub_env_json['page']['totalElements'] > 0:
                         for sub_env in sub_env_json['_embedded']['submissionEnvelopes']:
-                            if datetime.strptime(sub_env['submissionDate'], '%Y-%m-%dT%H:%M:%S.%fZ') > last_update:
+                            sub_env_update_date_str = sub_env['updateDate'][0:10]
+                            sub_env_update_date = datetime.strptime(sub_env_update_date_str, '%Y-%m-%d')
+                            if sub_env_update_date >= last_update:
                                 if sub_env['submissionState'] in ['Exported', 'Complete']:
-                                    project_uuid_list.append([project['uuid']['uuid'], project['content']['project_core']['project_short_name']])
+                                    project_uuid_dict[project['uuid']['uuid']] = project['content']['project_core']['project_short_name']
                                     break
+                else:
+                    done = True
+                    break
             if 'next' in all_projects['_links']:
                 ingest_api = all_projects['_links']['next']['href']
             else:
@@ -71,21 +81,41 @@ def search_ingest(token, last_update):
             print(ingest_api)
             print("Error retrieving information from the API. Try refreshing token.")
             sys.exit(0)
-    return project_uuid_list
+    return project_uuid_dict
 
 
-def get_ontology_mappings(file_name):
+def get_ontology_mappings(file_name, script_dir):
     """
     Wrapper function to run ontology_mappings_extractor.py on the uuids file generated by this script.
     :param file_name: path to a tab-delimited text file with uuids in first column
+    :type file_name: string
+    :param script_dir: path to the directory where the script is located
+    :type script_dir: string
     """
-    os.system("python3 ontology_mappings_extractor.py -f {} -u".format(file_name))
+    os.system("python3 {}/ontology_mappings_extractor.py -f {} -u".format(script_dir, file_name))
 
 
-def main(last_update, token, dont_get_ontologies, uuid_file):
+def main(last_update, token, dont_get_ontologies, uuid_file, dont_update_zooma):
+    """
+
+    :param last_update: Ontologies will be harvested from ingest for any completed/exported submission after this date
+    :type last_update: string
+    :param token: Authentication token from ingest ui
+    :type token: string
+    :param dont_get_ontologies: Toggle to indicate whether to harvest ontologies
+    :type dont_get_ontologies: bool
+    :param uuid_file: Path to file with a list of project uuids
+    :type uuid_file: string
+    :param dont_update_zooma: Toggle to indicate whether to update the zooma datasource with the result of the harvest
+    :type dont_update_zooma: bool
+    :return:
+    :rtype:
+    """
     start_time = time.time()
+    script_path = os.path.realpath(__file__)
+    script_dir = os.path.split(script_path)[0]
     if uuid_file:
-        get_ontology_mappings(uuid_file)
+        get_ontology_mappings(uuid_file, script_dir)
     else:
         try:
             last_update_date = datetime.strptime(last_update, '%Y-%m-%d')
@@ -96,24 +126,27 @@ def main(last_update, token, dont_get_ontologies, uuid_file):
         project_uuids = search_ingest(token, last_update_date)
         print("Found {} projects submitted after {}.".format(len(project_uuids), last_update_date))
         today_str = datetime.today().strftime('%Y-%m-%d')
-        output_file_name = 'outputs/{}_project_uuids.txt'.format(today_str)
+        output_file_name = '{}/outputs/{}_project_uuids.txt'.format(script_dir, today_str)
         with open(output_file_name, 'w') as output_file:
-            tabbed_projects = ["\t".join(x) for x in project_uuids]
-            output_file.write("\n".join(tabbed_projects))
-        print("Wrote project uuids to {}.".format(output_file_name))
+            for uuid, short_name in project_uuids.items():
+                output_file.write("\t".join([uuid, short_name]) + "\n")
+        print("Wrote project uuids to {}/{}.".format(script_dir, output_file_name))
         if not dont_get_ontologies:
-            get_ontology_mappings(output_file_name)
-    mapping_files = glob.glob('outputs/*_property_mappings.tsv')
-    new_zooma = pd.read_csv(max(mapping_files, key=os.path.getctime), sep="\t")
-    old_zooma = pd.read_csv('outputs/current_zooma_import.txt', sep="\t")
-    updated_zooma = pd.concat([old_zooma, new_zooma]).drop_duplicates()
-    updated_zooma.to_csv('outputs/current_zooma_import.txt', sep="\t", index=False)
-    print("Updated the zooma file at 'outputs/current_zooma_import.txt'.")
-    execution_time = time.time() - start_time
-    print("This took {} minutes.".format(str(round(execution_time/60, 2))))
+            get_ontology_mappings(output_file_name, script_dir)
+    if not dont_update_zooma:
+        mapping_files = glob.glob(script_dir + '/outputs/*_property_mappings.tsv')
+        new_zooma = pd.read_csv(max(mapping_files, key=os.path.getctime), sep="\t")
+        old_zooma = pd.read_csv(script_dir + 'outputs/current_zooma_import.txt', sep="\t")
+        updated_zooma = pd.concat([old_zooma, new_zooma]).drop_duplicates()
+        updated_zooma.to_csv(script_dir + 'outputs/current_zooma_import.txt', sep="\t", index=False)
+        print("Updated the zooma file at '{}/outputs/current_zooma_import.txt'.".format(script_dir))
+        execution_time = time.time() - start_time
+        print("This took {} minutes.".format(str(round(execution_time/60, 2))))
+    else:
+        sys.exit()
 
 
 if __name__ == "__main__":
     parser = define_parser()
     args = parser.parse_args()
-    main(args.last_updated, args.ingest_token, args.dont_get_ontologies, args.uuid_file)
+    main(args.last_updated, args.ingest_token, args.dont_get_ontologies, args.uuid_file, args.dont_update_zooma)
