@@ -1,21 +1,22 @@
 
 
 """
-Script to extract all existing ontology annotations in HCA Ingest for a given set of submissions.
+Script to extract all existing ontology annotations in HCA Ingest for a given set of projects.
 
-The script takes a list of submission envelope IDs and extracts the corresponding ontology annotations from the ingest API (prod). The envelope IDs are currently hard-coded but this could easily be updated.
+The script takes a list of project UUIDs and extracts the corresponding ontology annotations from the ingest API (prod).
+
+Project UUIDs can be specified as a comma delimited list or as a text file.
 
 You can run the script in your favourite IDE (eg Pycharm) or via the command line using `python3 ontology_mappings_extractor.py`
 
-The script generates a file called all_mappings.txt, which contains every single free-text to ontology term mapping in every biomaterial or protocol in every submission requested. To get a list of unique mappings by project, run the following prompt in the command lines:
-`sort all_mappings.txt | uniq > all_mappings_unique.txt`
+The script generates a file called YYYY-mm-dd_HH-MM_property_mappings.tsv, which contains every single free-text to ontology term mapping in every biomaterial or protocol in every submission requested. To get a list of unique mappings by project, use the -u flag
 
 Improvement suggestion: read all mappings into a dictionary first, then save/print only unique ones. 
 
 Warning - this script takes a while (10s of mins to a couple of hours!) to run for large submissions or if you give it many in one go!
 
 Copied from HumanCellAtlas/data-wrangling 30/04/2021. Original Author Dani Welter
-Updated by Marion Shadbolt in April 2021.
+Updated by Marion Shadbolt in April/May 2021.
 """
 
 import argparse
@@ -93,8 +94,9 @@ def read_properties(data, bioentity, project_name, property_list=[], root=None):
         if isinstance(v, dict):
             if "ontology" in v:
                 ontology = v['ontology'].strip()
-                text = v['text'].strip()
-                property_list.append([project_name, bioentity, k, text, ontology])
+                if ontology != "":
+                    text = v['text'].strip()
+                    property_list.append([project_name, bioentity, k, text, ontology])
             else:
                 read_properties(v, bioentity, project_name, property_list, k)
 
@@ -103,8 +105,9 @@ def read_properties(data, bioentity, project_name, property_list=[], root=None):
                 if isinstance(e, dict):
                     if "ontology" in e.keys():
                         ontology = e['ontology'].strip()
-                        text = e['text'].strip()
-                        property_list.append([project_name, bioentity, k, text, ontology])
+                        if ontology != "":
+                            text = e['text'].strip()
+                            property_list.append([project_name, bioentity, k, text, ontology])
                     else:
                         read_properties(e, bioentity, project_name, property_list, k)
     return property_list
@@ -126,7 +129,7 @@ def get_full_iri(obo_id):
     except KeyError:
         print('http://www.ebi.ac.uk/ols/api/terms?id={}'.format(obo_id))
         print("Could not find {}.".format(obo_id))
-        return obo_id
+        return None
 
 
 def replace_obo_ids(property_df):
@@ -161,6 +164,7 @@ def main(project_uuids, unique, api, iri_replace):
     with open(file_name) as mappings_file:
         property_df = pd.read_csv(mappings_file, sep="\t")
         property_df = replace_obo_ids(property_df)
+        property_df = property_df.dropna()
         property_df.to_csv(file_name, sep="\t", index=False)
     print("Saved output to {}".format(file_name))
     sys.exit(0)

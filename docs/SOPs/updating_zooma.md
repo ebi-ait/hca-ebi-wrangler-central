@@ -28,13 +28,14 @@ cd /path/to/repo/hca-ebi-wrangler-central/src
     1. Right click anywhere on page and select 'Inspect'
     1. In the inspect console, click 'Network'
     1. Click one of the lines that begins projects? 
-    1. Scroll until you see the `Authorization: Bearer` in the Request headers and copy the large string of numbers, letters and symbols
+    1. Scroll until you see the `Authorization: Bearer` in the Request headers and copy the large string of numbers, letters and symbols `ey....`
 1. Run the `harvest_ontologies.py` script with entering the date when it was last run and a 
+
 ```
-python3 harvest_ontologies.py -u YYYY-MM-DD -i AUTH_TOKEN
+python3 harvest_ontologies.py -d YYYY-MM-DD -t AUTH_TOKEN
 ```
 
-The script first searches all projects in ingest and saves found projects into a file called `outputs/YYYY-MM-DD_project_uuids.txt`. 
+The script first searches all projects in ingest that were submitted after the given date that have either `Exported` or `Completed` status, and saves project uuids into a file called `outputs/YYYY-MM-DD_project_uuids.txt`. 
 
 It then uses the list of project uuids to search all ontology curations in these projects and saves them to a file called `YYYY-MM-DD_HH-mm_property_mappings.tsv`. 
 
@@ -51,6 +52,12 @@ python3 harvest_ontologies.py -f uuid_file.txt
 ```
 
 #### Review the Ontologies reports
+
+To view some summarised tables of curations from the Data source run:
+
+```
+
+```
 
 As part of running the harvest_ontologies.py script, two reports will be generated. One provides summary information about the new mappings that were harvested in this iteration of the script. The other provides information about the entire ZOOMA data source.
 
