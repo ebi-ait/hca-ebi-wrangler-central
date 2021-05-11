@@ -193,9 +193,14 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
                 file_size = int(streamable.headers['Content-length'])
                 break
             except URLError as e:
-                print(str(e))
+                print(e.reason)
                 print("Retrying...")
                 retries = retries + 1
+
+                if "421 There are too many connected users, please try later." in e.reason:
+                    print("Waiting for 5 seconds...")
+                    sleep(5)
+
                 if retries >= 10:
                     raise IOError(f"Retried the maximum amount of times to get stream from {path}.")
 
