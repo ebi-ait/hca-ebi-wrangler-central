@@ -120,7 +120,7 @@ After the spreadsheet is generated some manual steps can help contributors under
 
 Once you have a customised and potentially pre-filled spreadsheet it can be sent to the contributor along with the contributor spreadsheet guide. It is generally an iterative process of the contributor filling in what they can, the wrangler reviewing, curating and asking questions before further curation until the metadata is complete. 
 
-## Raw Data Upload (fastq)
+## Raw Data (fastq) and Processed Data Upload  
 
 ### AWS User for Contributors
 
@@ -169,6 +169,27 @@ If donors are from CBTM or HDBR we have direct routes of obtaining more detailed
 - The `organ_part` or `model_organ_part` should be the most specific organ part available
 - `biomaterial_id`s should be either consistent with the publication or the tissue provider to allow identification of biomaterials with shared donors
 - Try to encourage the contributor to provide a meaningful identifier, not just a single digit
+
+## Contributor Matrix and cell types SOP 
+For each project, wranglers should endeavour to find an expression matrix and if not embedded within that matrix, a listing of cell type annotations. These are generally linked from a publication, present as a supplementary file on the publication, GEO or ArrayExpress submission.
+
+The preferred formats for matrix files are:
+* `loom`
+* `h5ad`
+* RObj?
+
+Where either the expression matrix or cell type annotations cannot be found, the primary wrangler should write an email to the contributor/author asking for them to provide the appropriate files in the preferred format. If the contributors cannot provide in the preferred format, we will take whatever is available. It is important to be able to link the cell type annotations to the cell suspensions and/or cell barcodes provided in the metadata.
+
+### Filling in metadata about the files
+
+For each expression matrix or cell type annotation file that is found, a row needs to be filled in the metadata spreadsheet, in the ‘Analysis file’ tab. Analysis files can be linked to sequence files or biomaterial entities via processes; This is done in the spreadsheet in the same way that other entities are linked. Information related to the analysis protocol is captured in the Analysis_protocol entity (See the Analysis protocol tab) linked to the process
+
+The best practice is to link the analysis files to sequence file entities, if possible. Alternatively, you can also link the analysis files to cell suspension entities. This is currently done by adding the ‘Input Cell Suspension ID’ column to the ‘Analysis File’ tab and adding the linked cell suspensions to the cell.
+
+The gene expression matrix and cell annotations files should be added to the S3 bucket in the ingest-area together with raw data files, for instructions on how to use hca-util to do this, see ['here'](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util)
+
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/Cgms_screenshot.png?raw=true)
+
 
 ## Metadata Validation
 Once the spreadsheet is considered complete by the primary wrangler, there are two phases of metadata validation that can be completed.
