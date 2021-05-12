@@ -183,11 +183,12 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
                      Source of the file. Currently accepted: ftp, s3, local.
     """
     if "ftp" in path:
-        retries = 0
+        MAX_RETRIES = 10
         source = "ftp"
         if not path.startswith("ftp://"):
             path = f"ftp://{path}"
-        while True:
+
+        for attempt in range(0, MAX_RETRIES):
             try:
                 streamable = urlopen(path)
                 file_size = int(streamable.headers['Content-length'])
@@ -195,14 +196,12 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
             except URLError as e:
                 print(e.reason)
                 print("Retrying...")
-                retries = retries + 1
 
                 if "421 There are too many connected users, please try later." in e.reason:
                     print("Waiting for 5 seconds...")
                     sleep(5)
-
-                if retries >= 10:
-                    raise IOError(f"Retried the maximum amount of times to get stream from {path}.")
+        else:
+            raise IOError(f"Retried the maximum amount of times to get stream from {path}.")
 
 
     elif "s3" in path:
