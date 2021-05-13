@@ -4,27 +4,53 @@ title: Dataset Suitability
 parent: SOPs
 ---
 
-# Dataset Suitability Assessment SOP
+# HCA Dataset Eligibility criteria 
 
 ## Purpose of this document
-As wranglers, our current method of tracking new, in-progress (wrangling) and complete datasets is by indicating their priority and status and other key information about the dataset in a tracker sheet. When new datasets are added to the sheet, we need to assess whether they are suitable for HCA. There are specific suitability criteria that we use to decide whether a dataset is suitable or not. It is important that this information is available so that time is not wasted on wrangling datasets that are not suitable for HCA and/or cannot be ingested in our system. The purpose of this document is to list the specific criteria we use to assess dataset suitability and our general approach to implement these. Any feedback on this process is very welcome and should be added to this document; please make it clear that it is feedback. In the longer term we are aiming for a software focused solution to this task.
+As wranglers, our current method of tracking new, in-progress (wrangling) and complete datasets is by indicating their priority and status and other key information about the dataset in a tracker sheet. When new datasets are added to the sheet, we need to assess whether they are eligible for HCA. There are specific eligibility criteria that we use to decide whether a dataset is eligible or not. It is important that this information is available so that time is not wasted on wrangling datasets that are not eligible for HCA and/or cannot be ingested in our system. The purpose of this document is to list the specific criteria we use to assess dataset eligibility and our general approach to implement these. Any feedback on this process is very welcome and should be added to this document; please make it clear that it is feedback. In the longer term we are aiming for a software focused solution to this task.
 
 [Link to dataset tracking sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0){: .btn }
 
+### HCA Eligibility
+
+We consider three main categories of data to be eligible for the Human Cell Atlas.
+
+**Directly contributed data**. 
+To be eligible for this category, datasets must:
+- Be contributed to the Human Cell Atlas Data Coordination Platform(1) by the data owner, with support of DCP data wranglers
+- Have either a pre-print publication referencing data that meets the criteria for published data, or else a supporting justification as to why it should be included in the HCA
+
+**Data from official Human Cell Atlas publications**. 
+To be eligible for this category, datasets must:
+- Support a publication that has been reviewed by the HCA publication committee and added to the official HCA publications list (2)
+
+**Published Data**. 
+To be eligible for this category, datasets must:
+- Be referenced in a peer-reviewed journal or be available as pre-print
+- Contain at least some samples derived from healthy human donors. 
+- Be derived from a recognised single cell technology
+
+(1)  https://contribute.data.humancellatlas.org/
+(2)  https://www.humancellatlas.org/publications/
+
+This criteria means a huge number of datasets are eligible and there needs to be a prioritisation approch in order to understand order datasets should be wrangled. See [HCA dataset triage SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_triage_SOP.html)
+
+
 ### Note
+
 It is easiest/most productive to apply this to a list of datasets that have already been prioritised by the species, health status and sample type. Previously, I grouped all ‘unassessed’ datasets by species, health status and sample type, labelled their priority, ordered them by priority, and then assessed the suitability of the set of highest priority datasets.
 
 ## Assess data availability
 
-Check the type of consent: if the data is open, this is suitable. If the data is managed access, unavailable or cannot be found, the dataset is unsuitable.
+Check the type of consent: if the data is open, this is suitable. If the data is managed access, has living European donors, unavailable or cannot be found, the dataset can now be included if there are publically sharable contributor generated matrices. If there is no sharable data the dataset should be down prioritised or possibly considered inelibible.
 
-Check that the sequence data is available (similar to the above). If the sequence data is fully available in fastq format, this is suitable. If the sequence data cannot be found or is not in fastq format, then the dataset is unsuitable.
+Check that the sequence data is available (similar to the above). If the sequence data is fully available in fastq format, this is suitable. If the sequence data cannot be found or is not in fastq format, then the dataset can now be included if there are publically sharable contributor generated matrices. If there is no sharable data the dataset should be down prioritised or possibly considered inelibible.
 
 Check that the sequence data is available in a valid format: i.e. fastq format and both Read1 and Read2 are available.
 
 ## Assess Technology
 
-Is the technology supported by our defined HCA metadata schema? If we can’t capture the information appropriately, then the dataset is unsuitable. If the technology data type cannot be supported by our processing pipelines, the dataset is suitable but becomes a lower priority and is indicated by the HCA priority column (see [HCA dataset triage SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_triage_SOP.html)).
+Is the technology supported by our defined HCA metadata schema? If we can’t capture the information appropriately, then the dataset is blocked until the schema chnages can be made to support the technology, but does not make it ineligible. (see [HCA dataset triage SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_triage_SOP.html)).
 
 ## Other
 
