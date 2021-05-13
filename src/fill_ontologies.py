@@ -306,7 +306,6 @@ def parse_wb(file_path, wb, schema, zooma, keep):
 
     except KeyboardInterrupt:
         save_workbook(file_path, wb, "_partial_ontologies")
-    sys.exit(0)
 
 
 def main(args):
