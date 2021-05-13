@@ -133,3 +133,36 @@ Reviewing the tables in this report can help with detecting ontology curation er
 Once you have reviewed the ontologies and are happy for the ontology curations to be added to our ZOOMA datasouce, push the changes to master.
 
 Each Sunday, ZOOMA will automatically be rebuilt with the `current_zooma_import.txt` file. 
+
+### Outline of script algorithm
+
+Attempt at english words to describe scripts. Also see docstrings.
+
+#### harvest_ontologise.py
+
+`search_ingest` method
+If `update date` specified:
+- search ingest using the sorted projects endpoint
+Iterate over each project in ingest
+If a project has an `update_date` before the specified date:
+  get the submissions envelopes for the project
+  For each submission envelope
+    If the submission envelope was updated before the `update_date`:
+      If the submission has status 'Exported' or 'Complete'
+        add the project to the list and save to a file of uuids
+When you get to a project past the `update_date`, stop searching
+
+`get_ontology_mappings`
+wrapper around the `ontology_mappings_extractor.py` script, uses a file of uuids to extract the ontology mappings.
+
+Once ontology mappings have been extracted, concatenate the most recent `_property_mappings.tsv` file to the `current_zooma_import.txt` file.
+
+#### ontology_mappings_extractor.py
+
+Given a list of project uuids
+For each project uuid:
+    For each submission in the project:
+        For each biomaterial, protocol and file entity:
+            For each field:
+                If its an ontology field:
+                    Save the field, text and ontology information to file
