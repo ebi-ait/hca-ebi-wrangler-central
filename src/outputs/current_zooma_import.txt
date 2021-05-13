@@ -2544,3 +2544,640 @@ Tabula Muris	library_preparation_protocol	input_nucleic_acid_molecule	polyA RNA	
 Tabula Muris	library_preparation_protocol	library_construction_method	Smart-seq2	http://www.ebi.ac.uk/efo/EFO_0008931
 Tabula Muris	sequencing_protocol	instrument_manufacturer_model	Illumina NovaSeq 6000	http://www.ebi.ac.uk/efo/EFO_0008637
 Tabula Muris	sequencing_protocol	method	full length single cell RNA sequencing	http://www.ebi.ac.uk/efo/EFO_0008441
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	B cell T cell doublet	http://purl.obolibrary.org/obo/CL_0000542
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	CD14+ monocyte type 1	http://purl.obolibrary.org/obo/CL_0001054
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	CD14+ monocyte type 2	http://purl.obolibrary.org/obo/CL_0001054
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	CD14+ Monocytes 1	http://purl.obolibrary.org/obo/CL_0001054
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	CD14+ Monocytes 2	http://purl.obolibrary.org/obo/CL_0001054
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	CD16+ monocyte	http://purl.obolibrary.org/obo/CL_0002397
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	CD16+ Monocytes	http://purl.obolibrary.org/obo/CL_0002397
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	CD4+ naive T cell	http://purl.obolibrary.org/obo/CL_0000895
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	CD4+ Naive T cells	http://purl.obolibrary.org/obo/CL_0000895
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	CD4+ T cell	http://purl.obolibrary.org/obo/CL_0000624
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	CD4+ T cells	http://purl.obolibrary.org/obo/CL_0000624
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	CD8+ Naive T cells	http://purl.obolibrary.org/obo/CL_0000625
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	cDCs	http://purl.obolibrary.org/obo/CL_0000990
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	conventional dendritic cell	http://purl.obolibrary.org/obo/CL_0000990
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Cytototix T cells 2	http://purl.obolibrary.org/obo/CL_0000910
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	cytotoxic T cell type 1	http://purl.obolibrary.org/obo/CL_0000910
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	cytotoxic T cell type 2	http://purl.obolibrary.org/obo/CL_0000910
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Cytotoxic T cells 1	http://purl.obolibrary.org/obo/CL_0000910
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	dendritic cell 	http://purl.obolibrary.org/obo/CL_0000451
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Dendritic cells	http://purl.obolibrary.org/obo/CL_0000451
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	erythroid cell	http://purl.obolibrary.org/obo/CL_0000232
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	erythroid cell type 1	http://purl.obolibrary.org/obo/CL_0000232
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	erythroid cell type 2	http://purl.obolibrary.org/obo/CL_0000232
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Erythroid cells	http://purl.obolibrary.org/obo/CL_0000232
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Erythroid cells 1	http://purl.obolibrary.org/obo/CL_0000232
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Erythroid cells 2	http://purl.obolibrary.org/obo/CL_0000232
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	hematopoietic stem cell	http://purl.obolibrary.org/obo/CL_1001610
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	HSCs	http://purl.obolibrary.org/obo/CL_1001610
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	megakaryocyte	http://purl.obolibrary.org/obo/CL_0000556
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Megakaryocytes	http://purl.obolibrary.org/obo/CL_0000556
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	memory B cell	http://purl.obolibrary.org/obo/CL_0000787
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Memory B cells	http://purl.obolibrary.org/obo/CL_0000787
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	mesenchymal stem cell	http://purl.obolibrary.org/obo/CL_0002540
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	MSCs	http://purl.obolibrary.org/obo/CL_0002540
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	naive B cell	http://purl.obolibrary.org/obo/CL_0000788
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Naive B cells	http://purl.obolibrary.org/obo/CL_0000788
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	naive CD8+ T cell	http://purl.obolibrary.org/obo/CL_0000625
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	naive T cell type 1	http://purl.obolibrary.org/obo/CL_0000898
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	naive T cell type 2	http://purl.obolibrary.org/obo/CL_0000898
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	naive T cell type 3	http://purl.obolibrary.org/obo/CL_0000898
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Naive T cells 1	http://purl.obolibrary.org/obo/CL_0000898
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Naive T cells 2	http://purl.obolibrary.org/obo/CL_0000898
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Naive T cells 3	http://purl.obolibrary.org/obo/CL_0000898
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Naive T helper cells 1	http://purl.obolibrary.org/obo/CL_0000545
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Naive T helper cells 2	http://purl.obolibrary.org/obo/CL_0000546
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	naive T-helper cell type 1	http://purl.obolibrary.org/obo/CL_0000545
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	naive T-helper cell type 2	http://purl.obolibrary.org/obo/CL_0000546
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	natural killer cell	http://purl.obolibrary.org/obo/CL_0000623
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	natural killer cell type 1	http://purl.obolibrary.org/obo/CL_0000623
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	natural killer cell type 2	http://purl.obolibrary.org/obo/CL_0000623
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	NK cells	http://purl.obolibrary.org/obo/CL_0000623
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	NK cells 1	http://purl.obolibrary.org/obo/CL_0000623
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	NK cells 2	http://purl.obolibrary.org/obo/CL_0000623
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	pDCs	http://purl.obolibrary.org/obo/CL_0000784
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	plasma cell	http://purl.obolibrary.org/obo/CL_0000786
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Plasma cells	http://purl.obolibrary.org/obo/CL_0000786
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	plasmacytoid dendritic cell	http://purl.obolibrary.org/obo/CL_0000784
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Pre B cells	http://purl.obolibrary.org/obo/CL_0000817
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	precursor B cell	http://purl.obolibrary.org/obo/CL_0000817
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	Pro B cells	http://purl.obolibrary.org/obo/CL_0000826
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	pro-B cell	http://purl.obolibrary.org/obo/CL_0000826
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	T helper cells	http://purl.obolibrary.org/obo/CL_0000912
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	T helper cells including Tregs population	http://purl.obolibrary.org/obo/CL_0000912
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	T helper cells including Tregs population	http://purl.obolibrary.org/obo/CL_0000815
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	T-helper cell	http://purl.obolibrary.org/obo/CL_0000912
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	T-helper cell including regulatory T cell	http://purl.obolibrary.org/obo/CL_0000912
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	T-helper cell including regulatory T cell	http://purl.obolibrary.org/obo/CL_0000815
+CensusOfImmuneCells-HCACellTypeHarmonization	single_cell	cell_type	T/B cell doubles	http://purl.obolibrary.org/obo/CL_0000542Ê
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	CD16- natural killer cell	http://purl.obolibrary.org/obo/CL_0000938
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	CD16-negative natural killer cell (NK CD16-)	http://purl.obolibrary.org/obo/CL_0000938
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	CD16-positive natural killer cell (NK CD16+)	http://purl.obolibrary.org/obo/CL_0000939
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	CD16+ natural killer cell	http://purl.obolibrary.org/obo/CL_0000939
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	conventional dendritic cell	http://purl.obolibrary.org/obo/CL_0000990
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	conventional dendritic cell (DC1)	http://purl.obolibrary.org/obo/CL_0000990
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual macrophage (dM1)	http://purl.obolibrary.org/obo/CL_0000235
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual macrophage (dM2)	http://purl.obolibrary.org/obo/CL_0000235
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual macrophage type 1	http://purl.obolibrary.org/obo/CL_0000235
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual macrophage type 2	http://purl.obolibrary.org/obo/CL_0000235
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual natural killer cell (dNK1)	http://purl.obolibrary.org/obo/CL_0002343
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual natural killer cell (dNK2)	http://purl.obolibrary.org/obo/CL_0002343
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual natural killer cell (dNK3)	http://purl.obolibrary.org/obo/CL_0002343
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual natural killer cell type 1	http://purl.obolibrary.org/obo/CL_0002343
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual natural killer cell type 2	http://purl.obolibrary.org/obo/CL_0002343
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual natural killer cell type 3	http://purl.obolibrary.org/obo/CL_0002343
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual perivascular cell (dP1)	http://purl.obolibrary.org/obo/CL_0008033
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual perivascular cell (dP2)	http://purl.obolibrary.org/obo/CL_0008033
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual perivascular cell type 1	http://purl.obolibrary.org/obo/CL_0008033
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual perivascular cell type 2	http://purl.obolibrary.org/obo/CL_0008033
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual stromal cell (dS1)	http://purl.obolibrary.org/obo/CL_2000002
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual stromal cell (dS2)	http://purl.obolibrary.org/obo/CL_2000002
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual stromal cell (dS3)	http://purl.obolibrary.org/obo/CL_2000002
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual stromal cell type 1	http://purl.obolibrary.org/obo/CL_2000002
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual stromal cell type 2	http://purl.obolibrary.org/obo/CL_2000002
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	decidual stromal cell type 3	http://purl.obolibrary.org/obo/CL_2000002
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	fetal endothelial cell	http://purl.obolibrary.org/obo/CL_0000115
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	fetal endothelial cell (Endo f)	http://purl.obolibrary.org/obo/CL_0000115
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	fetal fibroblast (fFB1)	http://purl.obolibrary.org/obo/CL_0000057
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	fetal fibroblast (fFB2)	http://purl.obolibrary.org/obo/CL_0000057
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	fetal fibroblast type 1	http://purl.obolibrary.org/obo/CL_0000057
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	fetal fibroblast type 2	http://purl.obolibrary.org/obo/CL_0000057
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	glandular epithelial cell (Epi1)	http://purl.obolibrary.org/obo/CL_0000150
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	glandular epithelial cell (Epi2)	http://purl.obolibrary.org/obo/CL_0000150
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	glandular epithelial cell type 1	http://purl.obolibrary.org/obo/CL_0000150
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	glandular epithelial cell type 2	http://purl.obolibrary.org/obo/CL_0000150
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	granulocyte	http://purl.obolibrary.org/obo/CL_0000094
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	Hofbauer cell 	http://purl.obolibrary.org/obo/CL_3000001
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	Hofbauer cell (HB)	http://purl.obolibrary.org/obo/CL_3000001
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	innate lymphoid cell	http://purl.obolibrary.org/obo/CL_0001065
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	innate lymphoid cell (ILC3)	http://purl.obolibrary.org/obo/CL_0001065
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	lymphatic endothelial cell	http://purl.obolibrary.org/obo/CL_0000115
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	lymphatic endothelial cell (Endo l)	http://purl.obolibrary.org/obo/CL_0000115
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	maternal endothelial cell	http://purl.obolibrary.org/obo/CL_0000115
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	maternal endothelial cell (Endo m)	http://purl.obolibrary.org/obo/CL_0000115
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	monocyte	http://purl.obolibrary.org/obo/CL_0000576
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	placental extravillous trophoblast cell	http://purl.obolibrary.org/obo/CL_0008036
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	placental extravillous trophoblast cell (EVT)	http://purl.obolibrary.org/obo/CL_0008036
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	plasma cell	http://purl.obolibrary.org/obo/CL_0000786
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	plasmacytoid dendritic cell	http://purl.obolibrary.org/obo/CL_0000784
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	plasmacytoid dendritic cell (DC2)	http://purl.obolibrary.org/obo/CL_0000784
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	proliferating decidual natural killer cell	http://purl.obolibrary.org/obo/CL_0002343
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	proliferating decidual natural killer cell (dNK p)	http://purl.obolibrary.org/obo/CL_0002343
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	syncytiotrophoblast cell 	http://purl.obolibrary.org/obo/CL_0000525
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	syncytiotrophoblast cell (SCT)	http://purl.obolibrary.org/obo/CL_0000525
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	T cell	http://purl.obolibrary.org/obo/CL_0000084
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	villous cytotrophoblast (VCT)	http://purl.obolibrary.org/obo/CL_2000060
+Fetal/Maternal Interface-HCACellTypeHarmonization	single_cell	cell_type	villous cytotrophoblast cell	http://purl.obolibrary.org/obo/CL_2000060
+Fetal/Maternal Interface10x-HCACellTypeHarmonization	single_cell	cell_type	decidual macrophage	http://purl.obolibrary.org/obo/CL_0000235
+Fetal/Maternal Interface10x-HCACellTypeHarmonization	single_cell	cell_type	decidual macrophage (dM3)	http://purl.obolibrary.org/obo/CL_0000235
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	cortical excitatory neuron	http://purl.obolibrary.org/obo/CL_0008030
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	cortical excitatory neuron	http://purl.obolibrary.org/obo/CL_0002609
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	Cortical excitatory neurons	http://purl.obolibrary.org/obo/CL_0008030
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	Cortical excitatory neurons	http://purl.obolibrary.org/obo/CL_0002609
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	cortical intermediate progenitor	http://purl.obolibrary.org/obo/CL_0011020
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	cortical intermediate progenitor	http://purl.obolibrary.org/obo/UBERON_0014940
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	Cortical IPs	http://purl.obolibrary.org/obo/CL_0011020
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	Cortical IPs	http://purl.obolibrary.org/obo/UBERON_0014940
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	cortical neural progenitor cell	http://purl.obolibrary.org/obo/CL_0011020
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	cortical neural progenitor cell	http://purl.obolibrary.org/obo/UBERON_0000956
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	Cortical NPCs	http://purl.obolibrary.org/obo/CL_0011020
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	Cortical NPCs	http://purl.obolibrary.org/obo/UBERON_0000956
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	diencephalon excitatory neuron	http://purl.obolibrary.org/obo/CL_0008030
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	diencephalon excitatory neuron	http://purl.obolibrary.org/obo/UBERON_0006222
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	Diencephalon excitatory neurons	http://purl.obolibrary.org/obo/CL_0008030
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	Diencephalon excitatory neurons	http://purl.obolibrary.org/obo/UBERON_0006222
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	diencephalon inhibitory neuron	http://purl.obolibrary.org/obo/CL_0008029
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	diencephalon inhibitory neuron	http://purl.obolibrary.org/obo/UBERON_0006222
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	Diencephalon inhibitory neurons (CR cells)	http://purl.obolibrary.org/obo/CL_0008029
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	Diencephalon inhibitory neurons (CR cells)	http://purl.obolibrary.org/obo/UBERON_0006222
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	GE neural progenitor cell	http://purl.obolibrary.org/obo/CL_0011020
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	GE neural progenitor cell	http://purl.obolibrary.org/obo/UBERON_0004023
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	GE NPCs	http://purl.obolibrary.org/obo/CL_0011020
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	GE NPCs	http://purl.obolibrary.org/obo/UBERON_0004023
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	Glycolysis	http://purl.obolibrary.org/obo/GO_0061621
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	glycolysis state	http://purl.obolibrary.org/obo/GO_0061621
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	LGE inhibitory neuron	http://purl.obolibrary.org/obo/CL_0008029
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	LGE inhibitory neuron	http://purl.obolibrary.org/obo/UBERON_0004025
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	LGE inhibitory neurons	http://purl.obolibrary.org/obo/CL_0008029
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	LGE inhibitory neurons	http://purl.obolibrary.org/obo/UBERON_0004025
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	mesen/rhombencephalon excitatory neuron	http://purl.obolibrary.org/obo/CL_0008030
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	mesen/rhombencephalon excitatory neuron	http://purl.obolibrary.org/obo/UBERON_0009616
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	mesen/rhombencephalon excitatory neuron	http://purl.obolibrary.org/obo/UBERON_0007277
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	Mesen/rhombencephalon excitatory neurons	http://purl.obolibrary.org/obo/CL_0008030
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	Mesen/rhombencephalon excitatory neurons	http://purl.obolibrary.org/obo/UBERON_0009616
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	Mesen/rhombencephalon excitatory neurons	http://purl.obolibrary.org/obo/UBERON_0007277
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	mesen/rhombencephalon inhibitory neuron	http://purl.obolibrary.org/obo/CL_0008029
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	mesen/rhombencephalon inhibitory neuron	http://purl.obolibrary.org/obo/UBERON_0009616
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	mesen/rhombencephalon inhibitory neuron	http://purl.obolibrary.org/obo/UBERON_0007277
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	Mesen/rhombencephalon inhibitory neurons	http://purl.obolibrary.org/obo/CL_0008029
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	Mesen/rhombencephalon inhibitory neurons	http://purl.obolibrary.org/obo/UBERON_0009616
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	Mesen/rhombencephalon inhibitory neurons	http://purl.obolibrary.org/obo/UBERON_0007277
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	MGE/CGE inhibitory neurons	http://purl.obolibrary.org/obo/CL_0008029
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	MGE/CGE inhibitory neurons	http://purl.obolibrary.org/obo/UBERON_0004024
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	organ_part	MGE/CGE inhibitory neurons	http://purl.obolibrary.org/obo/UBERON_0004026
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	non-telencephalon neural progenitor cell	http://purl.obolibrary.org/obo/CL_0011020
+HPSI human cerebral organoids-HCACellTypeHarmonization	single_cell	cell_type	Non-telencephalon NPCs	http://purl.obolibrary.org/obo/CL_0011020
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	common lymphoid progenitor	http://purl.obolibrary.org/obo/CL_0000051
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	Common lymphoid progenitors	http://purl.obolibrary.org/obo/CL_0000051
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	Dendritic cell progenitors	http://purl.obolibrary.org/obo/CL_0001029
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	dendtritic progenitor	http://purl.obolibrary.org/obo/CL_0001029
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	erythroid progenitor	http://purl.obolibrary.org/obo/CL_0000038
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	Erythroid progenitors	http://purl.obolibrary.org/obo/CL_0000038
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	hematopoietic multipotent progenitor	http://purl.obolibrary.org/obo/CL_0000837
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	Hematopoietic multipotent progenitors	http://purl.obolibrary.org/obo/CL_0000837
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	hematopoietic stem cell	http://purl.obolibrary.org/obo/CL_0000037
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	Hematopoietic stem cells	http://purl.obolibrary.org/obo/CL_0000037
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	megakaryocyte progenitor	http://purl.obolibrary.org/obo/CL_0000556
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	Megakaryocyte progenitors	http://purl.obolibrary.org/obo/CL_0000556
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	monocyte progenitor	http://purl.obolibrary.org/obo/CL_0000557
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	Monocyte progenitors	http://purl.obolibrary.org/obo/CL_0000557
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	myeloid progenitor	http://purl.obolibrary.org/obo/CL_0000049
+Human Hematopoietic Profiling-HCACellTypeHarmonization	single_cell	cell_type	Myeloid progenitors	http://purl.obolibrary.org/obo/CL_0000049
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Endothelial 1	http://purl.obolibrary.org/obo/CL_0000115
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Endothelial 2	http://purl.obolibrary.org/obo/CL_0000115
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	endothelial cell	http://purl.obolibrary.org/obo/CL_0000115
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	endothelial cell type 2	http://purl.obolibrary.org/obo/CL_0000115
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Glial	http://purl.obolibrary.org/obo/CL_0000125
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	glial cell	http://purl.obolibrary.org/obo/CL_0000125
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	myofibroblast	http://purl.obolibrary.org/obo/CL_0000186
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Myofibroblasts	http://purl.obolibrary.org/obo/CL_0000186
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	pericyte	http://purl.obolibrary.org/obo/CL_0000669
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Pericyte 1	http://purl.obolibrary.org/obo/CL_0000669
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Pericyte 2	http://purl.obolibrary.org/obo/CL_0000669
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	pericyte type 1	http://purl.obolibrary.org/obo/CL_0000669
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	pericyte type 2	http://purl.obolibrary.org/obo/CL_0000669
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Pericytes	http://purl.obolibrary.org/obo/CL_0000669
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	plasma cell	http://purl.obolibrary.org/obo/CL_0000786
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Plasma Cells	http://purl.obolibrary.org/obo/CL_0000786
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Smooth Muscle	http://purl.obolibrary.org/obo/CL_1000280
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	smooth muscle cell	http://purl.obolibrary.org/obo/CL_1000280
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Stromal 1	http://purl.obolibrary.org/obo/CL_0000499
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Stromal 2a	http://purl.obolibrary.org/obo/CL_0000499
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Stromal 2b	http://purl.obolibrary.org/obo/CL_0000499
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Stromal 3	http://purl.obolibrary.org/obo/CL_0000499
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	Stromal 4	http://purl.obolibrary.org/obo/CL_0000499
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	stromal cel type 2b	http://purl.obolibrary.org/obo/CL_0000499
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	stromal cell	http://purl.obolibrary.org/obo/CL_0000499
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	stromal cell type 2a	http://purl.obolibrary.org/obo/CL_0000499
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	stromal cell type 3	http://purl.obolibrary.org/obo/CL_0000499
+HumanColonicMesenchymeIBD-HCACellTypeHarmonization	single_cell	cell_type	stromal cell type 4	http://purl.obolibrary.org/obo/CL_0000499
+HumanTissueTcellActivation-HCACellTypeHarmonization	single_cell	cell_type	activated CD4+ T cell	http://purl.obolibrary.org/obo/CL_0001043
+HumanTissueTcellActivation-HCACellTypeHarmonization	single_cell	cell_type	activated CD8+ T cell	http://purl.obolibrary.org/obo/CL_0001049
+HumanTissueTcellActivation-HCACellTypeHarmonization	single_cell	cell_type	resting CD4+ T cell	http://purl.obolibrary.org/obo/CL_0000624
+HumanTissueTcellActivation-HCACellTypeHarmonization	single_cell	cell_type	resting CD8+ T cell	http://purl.obolibrary.org/obo/CL_0000625
+HumanTissueTcellActivation-HCACellTypeHarmonization	single_cell	cell_type	T cell act CD4	http://purl.obolibrary.org/obo/CL_0001043
+HumanTissueTcellActivation-HCACellTypeHarmonization	single_cell	cell_type	T cell act CD8	http://purl.obolibrary.org/obo/CL_0001049
+HumanTissueTcellActivation-HCACellTypeHarmonization	single_cell	cell_type	T cell act unassigned	http://purl.obolibrary.org/obo/CL_0000084
+HumanTissueTcellActivation-HCACellTypeHarmonization	single_cell	cell_type	T cell rest CD4	http://purl.obolibrary.org/obo/CL_0000624
+HumanTissueTcellActivation-HCACellTypeHarmonization	single_cell	cell_type	T cell rest CD8	http://purl.obolibrary.org/obo/CL_0000625
+HumanTissueTcellActivation-HCACellTypeHarmonization	single_cell	cell_type	T cell rest unassigned	http://purl.obolibrary.org/obo/CL_0000084
+HumanTissueTcellActivation-HCACellTypeHarmonization	single_cell	cell_type	unassigned activated T call	http://purl.obolibrary.org/obo/CL_0000084
+HumanTissueTcellActivation-HCACellTypeHarmonization	single_cell	cell_type	unassigned resting T cell	http://purl.obolibrary.org/obo/CL_0000084
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	cortical interneuron	http://purl.obolibrary.org/obo/CL_0008031
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	intermediate MGE progenitors	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	intermediate MGE progenitors	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	intermediate progenitor	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	ip.100.DLL1	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	ip.125.DLL1	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	ipMGE.24.DLL1	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	ipMGE.24.DLL1	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	IpMGE.54.OLIG1	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	IpMGE.54.OLIG1	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	ipMGE.54.ST18	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	ipMGE.54.ST18	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	LGE neuron	http://purl.obolibrary.org/obo/CL_0000540
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	LGE neuron	http://purl.obolibrary.org/obo/UBERON_0004025
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	MGE neuron	http://purl.obolibrary.org/obo/CL_0000540
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	MGE neuron	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	MGE progenitor	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	MGE progenitor	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nCTX.100.CORT	http://purl.obolibrary.org/obo/CL_0008031
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nCTX.100.DLX5	http://purl.obolibrary.org/obo/CL_0008031
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nCTX.100.SST	http://purl.obolibrary.org/obo/CL_0008031
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nCTX.100.SST.CRABP1	http://purl.obolibrary.org/obo/CL_0008031
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nCTX.125.CORT	http://purl.obolibrary.org/obo/CL_0008031
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nCTX.125.SST	http://purl.obolibrary.org/obo/CL_0008031
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nCTX.54.CORT	http://purl.obolibrary.org/obo/CL_0008031
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nCTX.54.CORT.NEFL	http://purl.obolibrary.org/obo/CL_0008031
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nCTX.54.GRIA2	http://purl.obolibrary.org/obo/CL_0008031
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nCTX.54.SST	http://purl.obolibrary.org/obo/CL_0000540
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	nCTX.54.SST	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nLGE.24.CFC1	http://purl.obolibrary.org/obo/CL_0000540
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	nLGE.24.CFC2	http://purl.obolibrary.org/obo/UBERON_0004025
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nLGE.24.SP8	http://purl.obolibrary.org/obo/CL_0000540
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	nLGE.24.SP9	http://purl.obolibrary.org/obo/UBERON_0004025
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nMGE.100.CFC1	http://purl.obolibrary.org/obo/CL_0000540
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	nMGE.100.CFC2	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nMGE.125.NEFL	http://purl.obolibrary.org/obo/CL_0000540
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	nMGE.125.NEFL	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nMGE.24.LHX8	http://purl.obolibrary.org/obo/CL_0000540
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nMGE.24.LHX8.GRIA2	http://purl.obolibrary.org/obo/CL_0000540
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	nMGE.24.LHX8.GRIA3	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	nMGE.24.LHX9	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nMGE.54.CFC1	http://purl.obolibrary.org/obo/CL_0000540
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	nMGE.54.CFC2	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	nMGE.54.GAD1	http://purl.obolibrary.org/obo/CL_0000540
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	nMGE.54.GAD2	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	oligodendrocyte precursor	http://purl.obolibrary.org/obo/CL_0002453
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	oMGE.100.PDGFRA	http://purl.obolibrary.org/obo/CL_0002453
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	oMGE.125.PDGFRA	http://purl.obolibrary.org/obo/CL_0002453
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	p.100.ATF3	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	p.100.CTGF	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	p.125.ATF3	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pMGE.100.AQP4	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pMGE.100.AQP4	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pMGE.100.FRZB	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pMGE.100.FRZB	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pMGE.125.AQP4	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pMGE.125.AQP4	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pMGE.125.CYP1B1	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pMGE.125.CYP1B1	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pMGE.125.FRZB	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pMGE.125.FRZB	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pMGE.24.NKX2-1	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pMGE.24.NKX2-1	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pMGE.54.CRABP2	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pMGE.54.CRABP2	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pMGE.54.SPARCL1	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pMGE.54.SPARCL1	http://purl.obolibrary.org/obo/UBERON_0004024
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	progenitor	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pTEL.100.CRH	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pTEL.100.CRH	http://purl.obolibrary.org/obo/UBERON_0014371
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pTEL.100.OLIG1	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pTEL.100.OLIG1	http://purl.obolibrary.org/obo/UBERON_0014371
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pTEL.24.ANXA1	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pTEL.24.ANXA1	http://purl.obolibrary.org/obo/UBERON_0014371
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pTEL.24.PAX6	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pTEL.24.PAX6	http://purl.obolibrary.org/obo/UBERON_0014371
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	pTEL.54.PAX6	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	pTEL.54.PAX6	http://purl.obolibrary.org/obo/UBERON_0014371
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	cell_type	telencephalic progenitors	http://purl.obolibrary.org/obo/CL_0011020
+InVitroInterneuronDifferentiation-HCACellTypeHarmonization	single_cell	organ_part	telencephalic progenitors	http://purl.obolibrary.org/obo/UBERON_0014371
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	B cell	http://purl.obolibrary.org/obo/CL_0000236
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	CD4 T cell	http://purl.obolibrary.org/obo/CL_0000624
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	CD4+ T cell	http://purl.obolibrary.org/obo/CL_0000624
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	CD8 T cell	http://purl.obolibrary.org/obo/CL_0000625
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	CD8+ T cell	http://purl.obolibrary.org/obo/CL_0000625
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	epithelial cell of proximal tubule	http://purl.obolibrary.org/obo/CL_0002306
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	Fibroblast	http://purl.obolibrary.org/obo/CL_0000057
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	glomerular visceral epithelial cell	http://purl.obolibrary.org/obo/CL_0000653
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	natural killer cell	http://purl.obolibrary.org/obo/CL_0000623
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	Neutrophil	http://purl.obolibrary.org/obo/CL_0000775
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	NK cell	http://purl.obolibrary.org/obo/CL_0000623
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	Podocyte	http://purl.obolibrary.org/obo/CL_0000653
+KidneySingleCellAtlas-HCACellTypeHarmonization	single_cell	cell_type	Proximal tubule	http://purl.obolibrary.org/obo/CL_0002306
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Ascending vasa recta endothelium	http://purl.obolibrary.org/obo/CL_1001131
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	ascending vasa recta endothelium 	http://purl.obolibrary.org/obo/CL_1001131
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Connecting tubule	http://purl.obolibrary.org/obo/CL_1000768
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Descending vasa recta endothelium	http://purl.obolibrary.org/obo/CL_1001285
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Distinct proximal tubule 1	http://purl.obolibrary.org/obo/CL_0002306
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Distinct proximal tubule 2	http://purl.obolibrary.org/obo/CL_0002306
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	endothelial cell of peritubular capillary type 1	http://purl.obolibrary.org/obo/CL_1001033
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	endothelial cell of peritubular capillary type 2	http://purl.obolibrary.org/obo/CL_1001033
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	epithelial cell of proximal tubule type 1	http://purl.obolibrary.org/obo/CL_0002306
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	epithelial cell of proximal tubule type 2	http://purl.obolibrary.org/obo/CL_0002306
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	epithelial progenitor	http://purl.obolibrary.org/obo/CL_0000034
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Epithelial progenitor cell	http://purl.obolibrary.org/obo/CL_0000034
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	glomerular endothelial cell	http://purl.obolibrary.org/obo/CL_0002188
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Glomerular endothelium	http://purl.obolibrary.org/obo/CL_0002188
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Indistinct intercalated cell	http://purl.obolibrary.org/obo/CL_0005010
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	intercalated cell	http://purl.obolibrary.org/obo/CL_0005010
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	intercalated cell type A	http://purl.obolibrary.org/obo/CL_0005011
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	intercalated cell type B	http://purl.obolibrary.org/obo/CL_0002201
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	kidney connecting tubule epithelial cell	http://purl.obolibrary.org/obo/CL_1000768
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	kidney loop of Henle thick ascending limb epithelial cell	http://purl.obolibrary.org/obo/CL_1001106
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Mast cell	http://purl.obolibrary.org/obo/CL_0000097
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	MNP-a/classical monocyte derived	http://purl.obolibrary.org/obo/CL_0000113
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	MNP-a/classical monocyte derived	http://purl.obolibrary.org/obo/CL_0000860
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	MNP-b/non-classical monocyte derived	http://purl.obolibrary.org/obo/CL_0000113
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	MNP-b/non-classical monocyte derived	http://purl.obolibrary.org/obo/CL_0000875
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	MNP-c/dendritic cell	http://purl.obolibrary.org/obo/CL_0000990
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	MNP-d/Tissue macrophage	http://purl.obolibrary.org/obo/CL_0000113
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	MNP-d/Tissue macrophage	http://purl.obolibrary.org/obo/CL_0000864
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	mononuclear phagocyte type A/classical monocyte derived	http://purl.obolibrary.org/obo/CL_0000113
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	mononuclear phagocyte type A/classical monocyte derived	http://purl.obolibrary.org/obo/CL_0000860
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	mononuclear phagocyte type B/non-classical monocyte derived	http://purl.obolibrary.org/obo/CL_0000113
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	mononuclear phagocyte type B/non-classical monocyte derived	http://purl.obolibrary.org/obo/CL_0000875
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	mononuclear phagocyte type C/dendritic cell	http://purl.obolibrary.org/obo/CL_0000990
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	mononuclear phagocyte type D/tissue macrophage	http://purl.obolibrary.org/obo/CL_0000113
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	mononuclear phagocyte type D/tissue macrophage	http://purl.obolibrary.org/obo/CL_0000864
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Myofibroblast	http://purl.obolibrary.org/obo/CL_1000691
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	natural killer T cell	http://purl.obolibrary.org/obo/CL_0000814
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	NKT cell	http://purl.obolibrary.org/obo/CL_0000814
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	pelvic epithelial cell	http://purl.obolibrary.org/obo/CL_0000066
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	organ_part	pelvic epithelial cell	http://purl.obolibrary.org/obo/UBERON_0001224
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Pelvic epithelium	http://purl.obolibrary.org/obo/CL_0000066
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	organ_part	Pelvic epithelium	http://purl.obolibrary.org/obo/UBERON_0001224
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Peritubular capillary endothelium 1	http://purl.obolibrary.org/obo/CL_1001033
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Peritubular capillary endothelium 2	http://purl.obolibrary.org/obo/CL_1001033
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Plasmacytoid dendritic cell	http://purl.obolibrary.org/obo/CL_0000784
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Principal cell	http://purl.obolibrary.org/obo/CL_0005009
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Proliferating Proximal Tubule	http://purl.obolibrary.org/obo/CL_0002306
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	prolifirating epithelial cell of proximal tubule	http://purl.obolibrary.org/obo/CL_0002306
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Thick ascending limb of Loop of Henle	http://purl.obolibrary.org/obo/CL_1001106
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	transitional urothelial cell	http://purl.obolibrary.org/obo/CL_0000731
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Transitional urothelium	http://purl.obolibrary.org/obo/CL_0000731
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Type A intercalated cell	http://purl.obolibrary.org/obo/CL_0005011
+KidneySingleCellAtlasAdult-HCACellTypeHarmonization	single_cell	cell_type	Type B intercalated cell	http://purl.obolibrary.org/obo/CL_0002201
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	organ_part	Cap mesenchyme	http://purl.obolibrary.org/obo/UBERON_0005107
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	organ_part	cap mesenchyme cell	http://purl.obolibrary.org/obo/UBERON_0005107
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	cDC1	http://purl.obolibrary.org/obo/CL_0000990
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	organ_part	CNT/PC - proximal UB	http://purl.obolibrary.org/obo/UBERON_0005310
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	CNT/PC - proximal UB	http://purl.obolibrary.org/obo/CL_0005009
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	organ_part	CNT/PC - proximal UB	http://purl.obolibrary.org/obo/UBERON_0000084
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	organ_part	connecting nephron tubules/principal cells - proximal ureteric bud	http://purl.obolibrary.org/obo/UBERON_0005310
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	connecting nephron tubules/principal cells - proximal ureteric bud	http://purl.obolibrary.org/obo/CL_0005009
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	organ_part	connecting nephron tubules/principal cells - proximal ureteric bud	http://purl.obolibrary.org/obo/UBERON_0000084
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	conventional dendritic cell type 1	http://purl.obolibrary.org/obo/CL_0000990
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Distal renal vesicle	http://purl.obolibrary.org/obo/CL_0002522
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	distal renal vesicle cell	http://purl.obolibrary.org/obo/CL_0002522
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	organ_part	Distal S shaped body	http://purl.obolibrary.org/obo/UBERON_0004199
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	organ_part	distal S shaped body cell	http://purl.obolibrary.org/obo/UBERON_0004199
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	endothelial cell	http://purl.obolibrary.org/obo/CL_0000115
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Endothelium	http://purl.obolibrary.org/obo/CL_0000115
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Erythroid	http://purl.obolibrary.org/obo/CL_0000232
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	erythroid cell	http://purl.obolibrary.org/obo/CL_0000232
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Fibroblast 1	http://purl.obolibrary.org/obo/CL_0000057
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Fibroblast 2	http://purl.obolibrary.org/obo/CL_0000057
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	fibroblast type 1	http://purl.obolibrary.org/obo/CL_0000057
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	fibroblast type 2	http://purl.obolibrary.org/obo/CL_0000057
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Innate like lymphocyte	http://purl.obolibrary.org/obo/CL_0001065
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	innate lymphocyte-like cell	http://purl.obolibrary.org/obo/CL_0001065
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	kidney loop of Henle epithelial cell	http://purl.obolibrary.org/obo/CL_1000909
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Loop of Henle	http://purl.obolibrary.org/obo/CL_1000909
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Macrophage 1	http://purl.obolibrary.org/obo/CL_0000235
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Macrophage 2	http://purl.obolibrary.org/obo/CL_0000235
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	macrophage type 1	http://purl.obolibrary.org/obo/CL_0000235
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	macrophage type 2	http://purl.obolibrary.org/obo/CL_0000235
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	mast cell	http://purl.obolibrary.org/obo/CL_0000097
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Mast cells	http://purl.obolibrary.org/obo/CL_0000097
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Medial S shaped body	http://purl.obolibrary.org/obo/UBERON_0004199
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	medial S shaped body cell	http://purl.obolibrary.org/obo/UBERON_0004199
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Megakaryocyte	http://purl.obolibrary.org/obo/CL_0000556
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Myofibroblast 1	http://purl.obolibrary.org/obo/CL_1000691
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Myofibroblast 2	http://purl.obolibrary.org/obo/CL_1000691
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	myofibroblast cell type 1	http://purl.obolibrary.org/obo/CL_1000691
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	myofibroblast type 2	http://purl.obolibrary.org/obo/CL_1000691
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Neuron	http://purl.obolibrary.org/obo/CL_0000540
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Pelvic epithelium - distal UB	http://purl.obolibrary.org/obo/CL_0000066
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	organ_part	Pelvic epithelium - distal UB	http://purl.obolibrary.org/obo/UBERON_0000084
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	pelvic epithelium cell - distal ureteric bud	http://purl.obolibrary.org/obo/CL_0000066
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	organ_part	pelvic epithelium cell - distal ureteric bud	http://purl.obolibrary.org/obo/UBERON_0000084
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proliferating B cell	http://purl.obolibrary.org/obo/CL_0000236
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proliferating cap mesenchyme	http://purl.obolibrary.org/obo/UBERON_0010536
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	proliferating cap mesenchyme cell	http://purl.obolibrary.org/obo/UBERON_0010536
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proliferating cDC2	http://purl.obolibrary.org/obo/CL_0000990
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	proliferating conventional dendritic cell type 2	http://purl.obolibrary.org/obo/CL_0000990
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proliferating distal renal vesicle	http://purl.obolibrary.org/obo/UBERON_0004209
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	proliferating distal renal vesicle cell	http://purl.obolibrary.org/obo/UBERON_0004209
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proliferating fibroblast	http://purl.obolibrary.org/obo/CL_0000057
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proliferating macrophage	http://purl.obolibrary.org/obo/CL_0000235
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proliferating monocyte	http://purl.obolibrary.org/obo/CL_0000576
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proliferating myofibroblast	http://purl.obolibrary.org/obo/CL_1000691
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	proliferating natural killer cell	http://purl.obolibrary.org/obo/CL_0000623
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proliferating NK cell	http://purl.obolibrary.org/obo/CL_0000623
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proliferating stroma progenitor	http://purl.obolibrary.org/obo/CL_0000499
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	prolifirating B cell	http://purl.obolibrary.org/obo/CL_0000236
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	prolifirating macrophage	http://purl.obolibrary.org/obo/CL_0000235
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	prolifirating stroma progenitor	http://purl.obolibrary.org/obo/CL_0000499
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proximal renal vesicle	http://purl.obolibrary.org/obo/CL_0002522
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	proximal renal vesicle cell	http://purl.obolibrary.org/obo/CL_0002522
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proximal S shaped body	http://purl.obolibrary.org/obo/UBERON_0004199
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	proximal S shaped body cell	http://purl.obolibrary.org/obo/UBERON_0004199
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Proximal UB	http://purl.obolibrary.org/obo/UBERON_0000084
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	proximal ureteric bud cell	http://purl.obolibrary.org/obo/UBERON_0000084
+KidneySingleCellAtlasFetal-HCACellTypeHarmonization	single_cell	cell_type	Stroma progenitor	http://purl.obolibrary.org/obo/CL_0000499
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	cDC1+iDC9	http://purl.obolibrary.org/obo/CL_0000990
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	cDC1+iDC9	http://purl.obolibrary.org/obo/CL_0000451
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	cDC2	http://purl.obolibrary.org/obo/CL_0000990
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	conventional dendritic cell type 1/induced day 9 dendritic cell	http://purl.obolibrary.org/obo/CL_0000990
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	conventional dendritic cell type 1/induced day 9 dendritic cell	http://purl.obolibrary.org/obo/CL_0000451
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	conventional dendritic cell type 2	http://purl.obolibrary.org/obo/CL_0000990
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	HEF	http://purl.obolibrary.org/obo/CL_2000042
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	HEF+iDC3	http://purl.obolibrary.org/obo/CL_2000042
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	HEF+iDC3	http://purl.obolibrary.org/obo/CL_0000451
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	human embryonic fibroblast	http://purl.obolibrary.org/obo/CL_2000042
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	human embryonic fibroblast/induced day type 3 dendritic cell	http://purl.obolibrary.org/obo/CL_2000042
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	human embryonic fibroblast/induced day type 3 dendritic cell	http://purl.obolibrary.org/obo/CL_0000451
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	iDC9	http://purl.obolibrary.org/obo/CL_0000451
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	induced day 9 dendritic cell	http://purl.obolibrary.org/obo/CL_0000451
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	pDC	http://purl.obolibrary.org/obo/CL_0000784
+Reprogrammed_Dendritic_Cells-HCACellTypeHarmonization	single_cell	cell_type	plasmacytoid dendritic cell	http://purl.obolibrary.org/obo/CL_0000784
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	ab T cells	http://purl.obolibrary.org/obo/CL_0000789
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	alpha-beta T cell	http://purl.obolibrary.org/obo/CL_0000789
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	central venous liver sinusoidal endothelial cell	http://purl.obolibrary.org/obo/CL_1000398
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	Central venous LSECs	http://purl.obolibrary.org/obo/CL_1000398
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	cholangiocyte	http://purl.obolibrary.org/obo/CL_1000488
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	Cholangiocytes	http://purl.obolibrary.org/obo/CL_1000488
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	gamma-delta T cell	http://purl.obolibrary.org/obo/CL_0000798
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	gd T cells	http://purl.obolibrary.org/obo/CL_0000798
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	hepatic stellate cell	http://purl.obolibrary.org/obo/CL_0000632
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	Hepatic Stellate Cells	http://purl.obolibrary.org/obo/CL_0000632
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	hepatocyte	http://purl.obolibrary.org/obo/CL_0000182
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	Hepatocytes	http://purl.obolibrary.org/obo/CL_0000182
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	inflammatory macrophage	http://purl.obolibrary.org/obo/CL_0000863
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	Inflammatory Macrophages	http://purl.obolibrary.org/obo/CL_0000863
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	mature B cell	http://purl.obolibrary.org/obo/CL_0000785
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	Mature B cells	http://purl.obolibrary.org/obo/CL_0000785
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	natural killer cell	http://purl.obolibrary.org/obo/CL_0000623
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	NK-like cells	http://purl.obolibrary.org/obo/CL_0000623
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	non-inflammatory macrophage	http://purl.obolibrary.org/obo/CL_0000091
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	Non-inflammatory Macrophages	http://purl.obolibrary.org/obo/CL_0000091
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	periportal liver sinusoidal endothelial cell	http://purl.obolibrary.org/obo/CL_1000398
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	Periportal LSECs	http://purl.obolibrary.org/obo/CL_1000398
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	portal liver sinusoidal endothelial cell	http://purl.obolibrary.org/obo/CL_1000398
+SingleCellLiverLandscape-HCACellTypeHarmonization	single_cell	cell_type	Portal LSECs	http://purl.obolibrary.org/obo/CL_1000398
+SingleCellTranscriptomeHumanPancreas-HCACellTypeHarmonization	single_cell	cell_type	acinar cell	http://purl.obolibrary.org/obo/CL_0000622
+SingleCellTranscriptomeHumanPancreas-HCACellTypeHarmonization	single_cell	cell_type	mesenchymal cell	http://purl.obolibrary.org/obo/CL_0008019
+SingleCellTranscriptomeHumanPancreas-HCACellTypeHarmonization	single_cell	cell_type	pancreatic A cell	http://purl.obolibrary.org/obo/CL_0000171
+SingleCellTranscriptomeHumanPancreas-HCACellTypeHarmonization	single_cell	cell_type	pancreatic D cell	http://purl.obolibrary.org/obo/CL_0000173
+SingleCellTranscriptomeHumanPancreas-HCACellTypeHarmonization	single_cell	cell_type	pancreatic ductal cell	http://purl.obolibrary.org/obo/CL_0002079
+SingleCellTranscriptomeHumanPancreas-HCACellTypeHarmonization	single_cell	cell_type	type B pancreatic cell	http://purl.obolibrary.org/obo/CL_0000169
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	activated dendritic cell	http://purl.obolibrary.org/obo/CL_0000451
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	Blood vessel	http://purl.obolibrary.org/obo/CL_0000071
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	blood vessel cell	http://purl.obolibrary.org/obo/CL_0000071
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	CD4+ T cell	http://purl.obolibrary.org/obo/CL_0000624
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	DC 1	http://purl.obolibrary.org/obo/CL_0000990
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	DC 2	http://purl.obolibrary.org/obo/CL_0000451
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	DC activated	http://purl.obolibrary.org/obo/CL_0000451
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	DC plasmacytoid	http://purl.obolibrary.org/obo/CL_0000784
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	dendritic cell type 1	http://purl.obolibrary.org/obo/CL_0000990
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	dendritic cell type 2	http://purl.obolibrary.org/obo/CL_0000451
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	Lymph vessel	http://purl.obolibrary.org/obo/UBERON_0001473
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	lymph vessel cell	http://purl.obolibrary.org/obo/UBERON_0001473
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	Monocyte	http://purl.obolibrary.org/obo/CL_0000576
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	plasmacytoid dendritic cell	http://purl.obolibrary.org/obo/CL_0000784
+TissueSensitivity-HCACellTypeHarmonization	single_cell	cell_type	T CD4	http://purl.obolibrary.org/obo/CL_0000624
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	alveolar epithelial cell type 1	http://purl.obolibrary.org/obo/CL_0000322
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	alveolar epithelial cell type 2	http://purl.obolibrary.org/obo/CL_0000322
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	Alveolar Type1	http://purl.obolibrary.org/obo/CL_0000322
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	Alveolar Type2	http://purl.obolibrary.org/obo/CL_0000322
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	B cell	http://purl.obolibrary.org/obo/CL_0000236
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	B cells	http://purl.obolibrary.org/obo/CL_0000236
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	CD8+ cytotoxic T cell	http://purl.obolibrary.org/obo/CL_0000794
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	Ciliated	http://purl.obolibrary.org/obo/CL_1000271
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	ciliated cell	http://purl.obolibrary.org/obo/CL_1000271
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	DC/Monocyte Dividing	http://purl.obolibrary.org/obo/CL_0000451
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	DC/Monocyte Dividing	http://purl.obolibrary.org/obo/CL_0000576
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	dendritic cell/dividing monocyte	http://purl.obolibrary.org/obo/CL_0000451
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	dendritic cell/dividing monocyte	http://purl.obolibrary.org/obo/CL_0000576
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	dividing macrophage	http://purl.obolibrary.org/obo/CL_0000235
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	dividing natural killer cell	http://purl.obolibrary.org/obo/CL_0000623
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	dividing T cell	http://purl.obolibrary.org/obo/CL_0000084
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	Macrophage Dividing	http://purl.obolibrary.org/obo/CL_0000235
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	Macrophage MARCOneg	http://purl.obolibrary.org/obo/CL_0000235
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	Macrophage MARCOpos	http://purl.obolibrary.org/obo/CL_0000235
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	MARCOneg macrophage	http://purl.obolibrary.org/obo/CL_0000235
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	MARCOpos macrophage	http://purl.obolibrary.org/obo/CL_0000235
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	mast cell	http://purl.obolibrary.org/obo/CL_0000097
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	Mast cells	http://purl.obolibrary.org/obo/CL_0000097
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	muscle cell	http://purl.obolibrary.org/obo/CL_0000187
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	Muscle cells	http://purl.obolibrary.org/obo/CL_0000187
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	natural killer cell	http://purl.obolibrary.org/obo/CL_0000623
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	NK	http://purl.obolibrary.org/obo/CL_0000623
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	NK Dividing	http://purl.obolibrary.org/obo/CL_0000623
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	plasma cell	http://purl.obolibrary.org/obo/CL_0000786
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	Plasma cells	http://purl.obolibrary.org/obo/CL_0000786
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	regulatory T cell	http://purl.obolibrary.org/obo/CL_0000815
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	T CD8 CytT	http://purl.obolibrary.org/obo/CL_0000794
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	T cells Dividing	http://purl.obolibrary.org/obo/CL_0000084
+TissueSensitivityLung-HCACellTypeHarmonization	single_cell	cell_type	T regulatory	http://purl.obolibrary.org/obo/CL_0000815
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	basal epithelial cell	http://purl.obolibrary.org/obo/CL_1000447Ê
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	B CD27neg	http://purl.obolibrary.org/obo/CL_0000816
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	B CD27pos	http://purl.obolibrary.org/obo/CL_0000236
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	CD27- B cell	http://purl.obolibrary.org/obo/CL_0000816
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	CD27+ B cell	http://purl.obolibrary.org/obo/CL_0000236
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	CD8+ T cell	http://purl.obolibrary.org/obo/CL_0000625
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	dendritic cell	http://purl.obolibrary.org/obo/CL_0000451
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Dendritic Cells	http://purl.obolibrary.org/obo/CL_0000451
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	dividing epithelial cell 	http://purl.obolibrary.org/obo/UBERON_0001976
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Epi basal	http://purl.obolibrary.org/obo/CL_1000447Ê
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Epi dividing	http://purl.obolibrary.org/obo/UBERON_0001976
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Epi stratified	http://purl.obolibrary.org/obo/UBERON_0001976
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Epi suprabasal	http://purl.obolibrary.org/obo/UBERON_0001976
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Epi upper	http://purl.obolibrary.org/obo/UBERON_0001976
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Glands duct	http://purl.obolibrary.org/obo/UBERON_0011148
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Glands duct	http://purl.obolibrary.org/obo/CL_0000319
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Glands mucous	http://purl.obolibrary.org/obo/UBERON_0008989
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Mast cell	http://purl.obolibrary.org/obo/CL_0000097
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Mono/macro	http://purl.obolibrary.org/obo/CL_0000576
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Mono/macro	http://purl.obolibrary.org/obo/CL_0000235
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	monocyte/macrophage	http://purl.obolibrary.org/obo/CL_0000576
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	monocyte/macrophage	http://purl.obolibrary.org/obo/CL_0000235
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	natural killer cell/CD8+ cytotoxic T cell	http://purl.obolibrary.org/obo/CL_0000623
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	natural killer cell/CD8+ cytotoxic T cell	http://purl.obolibrary.org/obo/CL_0000794
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	NK/T CD8 Cytotoxic	http://purl.obolibrary.org/obo/CL_0000623
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	NK/T CD8 Cytotoxic	http://purl.obolibrary.org/obo/CL_0000794
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	stratified epithelial cell	http://purl.obolibrary.org/obo/UBERON_0001976
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	Stroma	http://purl.obolibrary.org/obo/CL_0000499
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	stromal cell	http://purl.obolibrary.org/obo/CL_0000499
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	submucosal gland duct cell	http://purl.obolibrary.org/obo/UBERON_0008989
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	submucosal gland mucous cell	http://purl.obolibrary.org/obo/UBERON_0011148
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	submucosal gland mucous cell	http://purl.obolibrary.org/obo/CL_0000319
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	suprabasal epithelial cell 	http://purl.obolibrary.org/obo/UBERON_0001976
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	T CD8	http://purl.obolibrary.org/obo/CL_0000625
+TissueSensitivityOesophagus-HCACellTypeHarmonization	single_cell	cell_type	upper epithelial cell 	http://purl.obolibrary.org/obo/UBERON_0001976
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	activated CD8+ T cell	http://purl.obolibrary.org/obo/CL_0000906
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	B follicular	http://purl.obolibrary.org/obo/CL_0000843
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	B Hypermutation	http://purl.obolibrary.org/obo/CL_0000236Ê
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	B mantle	http://purl.obolibrary.org/obo/CL_0000236
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	B T doublet	http://purl.obolibrary.org/obo/CL_0000542Ê
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	B/T doublet	http://purl.obolibrary.org/obo/CL_0000542Ê
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	CD160+ natural killer cell	http://purl.obolibrary.org/obo/CL_0000623
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	CD34 progenitor	http://purl.obolibrary.org/obo/CL_0000037
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	CD34+ progenitor 	http://purl.obolibrary.org/obo/CL_0000037
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	CD4+ T cell	http://purl.obolibrary.org/obo/CL_0000624
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	cytotoxic CD8+ T cell	http://purl.obolibrary.org/obo/CL_0000625
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	dividing natural killer cell	http://purl.obolibrary.org/obo/CL_0000623
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	dividing T cell	http://purl.obolibrary.org/obo/CL_0000084
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	FCGR3A+ natural killer cell	http://purl.obolibrary.org/obo/CL_0000623
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	follicular B cell 	http://purl.obolibrary.org/obo/CL_0000843
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	follicular helper CD4+ T cell	http://purl.obolibrary.org/obo/CL_0002038
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	gamma-delta CD8+ T cell	http://purl.obolibrary.org/obo/CL_0000802
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	hypermutation B cell	http://purl.obolibrary.org/obo/CL_0000236Ê
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	ILC	http://purl.obolibrary.org/obo/CL_0001065
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	innate lymphoid cells	http://purl.obolibrary.org/obo/CL_0001065
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	Macrophage	http://purl.obolibrary.org/obo/CL_0000235
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	MAIT-like CD8+ T cell	http://purl.obolibrary.org/obo/CL_0000625
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	mantle B cell	http://purl.obolibrary.org/obo/CL_0000236
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	naâ€¢ve CD4+ T cell	http://purl.obolibrary.org/obo/CL_0000895
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	NK CD160pos	http://purl.obolibrary.org/obo/CL_0000623
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	NK dividing	http://purl.obolibrary.org/obo/CL_0000623
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	NK FCGR3Apos	http://purl.obolibrary.org/obo/CL_0000623
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	Plasma IgG	http://purl.obolibrary.org/obo/CL_0000985
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	plasma IgG expressing cell	http://purl.obolibrary.org/obo/CL_0000985
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	Plasma IgM	http://purl.obolibrary.org/obo/CL_0000986
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	plasma IgM expressing cell	http://purl.obolibrary.org/obo/CL_0000986
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	Plasmablast	http://purl.obolibrary.org/obo/CL_0000980
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	Platelet	http://purl.obolibrary.org/obo/CL_0000233
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	regulatory CD4+ T cell	http://purl.obolibrary.org/obo/CL_0000792
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	T CD4 conv	http://purl.obolibrary.org/obo/CL_0000624
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	T CD4 fh	http://purl.obolibrary.org/obo/CL_0002038
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	T CD4 naive	http://purl.obolibrary.org/obo/CL_0000895
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	T CD4 reg	http://purl.obolibrary.org/obo/CL_0000792
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	T CD8 activated	http://purl.obolibrary.org/obo/CL_0000906
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	T CD8 CTL	http://purl.obolibrary.org/obo/CL_0000625
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	T CD8 gd	http://purl.obolibrary.org/obo/CL_0000802
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	T CD8 MAIT	http://purl.obolibrary.org/obo/CL_0000625
+TissueSensitivitySpleen-HCACellTypeHarmonization	single_cell	cell_type	T cell dividing	http://purl.obolibrary.org/obo/CL_0000084
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	amacrine cell	http://purl.obolibrary.org/obo/CL_0000561
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	microglial cell	http://purl.obolibrary.org/obo/CL_0000129
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	Muller cell	http://purl.obolibrary.org/obo/CL_0011107
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal bipolar neuron A	http://purl.obolibrary.org/obo/CL_0000748
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal bipolar neuron B	http://purl.obolibrary.org/obo/CL_0000748
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal bipolar neuron C	http://purl.obolibrary.org/obo/CL_0000748
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal bipolar neuron D	http://purl.obolibrary.org/obo/CL_0000748
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal bipolar neuron type A	http://purl.obolibrary.org/obo/CL_0000748
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal bipolar neuron type B	http://purl.obolibrary.org/obo/CL_0000748
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal bipolar neuron type C	http://purl.obolibrary.org/obo/CL_0000748
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal bipolar neuron type D	http://purl.obolibrary.org/obo/CL_0000748
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal cone cell	http://purl.obolibrary.org/obo/CL_0000573
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal ganglion cell	http://purl.obolibrary.org/obo/CL_0000740
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal rod cell A	http://purl.obolibrary.org/obo/CL_0000604
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal rod cell B	http://purl.obolibrary.org/obo/CL_0000604
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal rod cell C	http://purl.obolibrary.org/obo/CL_0000604
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal rod cell type A	http://purl.obolibrary.org/obo/CL_0000604
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal rod cell type B	http://purl.obolibrary.org/obo/CL_0000604
+WongAdultRetina-HCACellTypeHarmonization	single_cell	cell_type	retinal rod cell type C	http://purl.obolibrary.org/obo/CL_0000604
