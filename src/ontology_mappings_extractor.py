@@ -39,8 +39,8 @@ def define_parser():
                         default="http://api.ingest.archive.data.humancellatlas.org/",
                         help="URL of the api to search, default is current prod api.")
     parser.add_argument("--iri_replace", "-i", action="store", dest="iri_replace",
-                        help="Path to a file where there are obo ids in column named 'SEMANTIC_TAG' and replace these "
-                             "with full iris. All other arguments ignored.")
+                        help="Path to a file where there are obo ids like EFO:000001 in column named 'SEMANTIC_TAG' "
+                             "and replace these with full iris. All other arguments ignored.")
     return parser
 
 
@@ -181,6 +181,7 @@ def get_full_iri(obo_id):
     :rtype: string
     """
     try:
+        obo_id = obo_id.strip()
         ols_response = requests.get('http://www.ebi.ac.uk/ols/api/terms?obo_id={}'.format(obo_id))
         ols_json = ols_response.json()
         return ols_json['_embedded']['terms'][0]['iri']
@@ -188,6 +189,9 @@ def get_full_iri(obo_id):
         print('http://www.ebi.ac.uk/ols/api/terms?id={}'.format(obo_id))
         print("Could not find {}.".format(obo_id))
         return None
+    except ConnectionError as e:
+        print(e)
+        print("Something went wrong while trying to fetch from api.")
 
 
 def replace_obo_ids(property_df):
