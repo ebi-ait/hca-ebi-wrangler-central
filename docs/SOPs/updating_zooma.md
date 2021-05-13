@@ -38,6 +38,8 @@ Current challenges in this approach include:
 - if incorrect ontology curations exist in ingest, they may leak into our data source and perpetuate automated incorrect curations
 - if a particular entity gets updated, does the old entity still exist and we end up with both the old and new curation?
 
+For any help with ZOOMA data source stuff, please reach out to the SPOT team, specifically Henriette Harmes or James McLaughlin.
+
 ## How to run the scripts
 
 ### Prerequisites
