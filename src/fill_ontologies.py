@@ -76,9 +76,7 @@ def get_iri(classes, iri={}):
     # Get an iri from given classes
     for ontology_class in classes:
         ontology_name = ontology_class.split(":")[0]
-        if ontology_name in iri:
-            continue
-        else:
+        if ontology_name not in iri:
             request = rq.get("https://www.ebi.ac.uk/ols/api/terms?id={}".format(ontology_class))
             response = request.json()
             iri[ontology_name] = "/".join(response["_embedded"]["terms"][0]["iri"].split("/")[:-1])
