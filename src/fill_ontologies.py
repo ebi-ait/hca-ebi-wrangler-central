@@ -106,9 +106,8 @@ def get_ontology_schemas(key, json_schemas):
                     key.pop(0)
                 return schema
     except KeyError as e:
-        print(e)
-        print("Could not find key: {} in schemas. Try updating your pickle by deleting pickled_schemas.pkl".format(key))
-        sys.exit(0)
+        message = "{}\nCould not find key: {} in schemas. Try updating your pickle by deleting pickled_schemas.pkl".format(e, key)
+        raise KeyError(message)
 
 
 def get_schema_info(key, json_schemas):
