@@ -90,8 +90,8 @@ def process_json(link, schema_type, project_name):
     :type schema_type: string
     :param project_name: The short name of the projects
     :type project_name: string
-    :return:
-    :rtype:
+    :return mapping_list: List of curation mappings
+    :rtype mapping_list: list
     """
     done = False
     mapping_list = []

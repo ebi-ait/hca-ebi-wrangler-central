@@ -36,6 +36,15 @@ def summarise_by_project_curation(pd_df):
     return grouped_df
 
 
+def summarise_by_text(pd_df):
+    grouped_df = pd_df.groupby(['PROPERTY_VALUE'], as_index=False)
+    grouped_df = grouped_df.agg({'SEMANTIC_TAG': lambda x: '\n'.join(list(set(x))),
+                                 'STUDY': lambda x: '\n'.join(list(set(x)))})
+    grouped_df['curation_count'] = grouped_df['SEMANTIC_TAG'].apply(lambda x: x.count("\n") + 1)
+    grouped_df = grouped_df.sort_values(by=["curation_count"], ascending=False, ignore_index=True)
+    return grouped_df
+
+
 def make_dash_table(pd_df, id_string, dash_table):
     this_table = dash_table.DataTable(
         id='{}-datatable'.format(id_string),
@@ -77,18 +86,24 @@ os.environ['MPLCONFIGDIR'] = tempfile.mkdtemp()
 mapping_files = glob.glob('outputs/*_property_mappings.tsv')
 recent_zooma_df = pd.read_csv(max(mapping_files, key=os.path.getctime), sep="\t")
 summarised_recent = summarise_by_curation(recent_zooma_df)
+summarised_text_recent = summarise_by_text(recent_zooma_df)
 summarised_recent_per_project = summarise_by_project_curation(recent_zooma_df)
 full_zooma_df = pd.read_csv("outputs/current_zooma_import.txt", sep="\t", index_col=False)
 summarised_full = summarise_by_curation(full_zooma_df)
+summarised_text_full = summarise_by_text(full_zooma_df)
 
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.H3(children="Summarised table of curations from most recent harvest per project"),
     make_dash_table(summarised_recent_per_project, "summarised-recent-per-project", dash_table),
+    html.H3(children="Summarised table of text from most recent harvest per project"),
+    make_dash_table(summarised_text_recent, "summarised-text-recent", dash_table),
     html.H3(children="Summarised table of curations from most recent harvest"),
     make_dash_table(summarised_recent, "summarised-recent", dash_table),
-    html.H3(children="Summarised table of curations from full ZOOMA file"),
+    html.H3(children="Summarised table of text curations from full ZOOMA file"),
+    make_dash_table(summarised_text_full, "summarised-text-full", dash_table),
+    html.H3(children="Full table of curations from most recent harvest"),
     make_dash_table(summarised_full, "summarised-full", dash_table),
     html.H3(children="Full table of curations from most recent harvest"),
     make_dash_table(recent_zooma_df, "recent-curations", dash_table),
