@@ -50,15 +50,16 @@ Instructions of use and main algorithm
     - No ontology was found for this term. Please input it manually: Input the term that you want to search.
 """
 
+import os
+import pickle
 import requests as rq
+import re
+
 import argparse
 import openpyxl
-from ingest.template.schema_template import SchemaTemplate
 from openpyxl.utils import get_column_letter
-import pickle
-import re
-import os
-import sys
+
+from ingest.template.schema_template import SchemaTemplate
 
 
 def define_parser():
