@@ -138,7 +138,7 @@ def main(last_update, token, dont_get_ontologies, uuid_file, dont_update_zooma):
         new_zooma = pd.read_csv(max(mapping_files, key=os.path.getctime), sep="\t")
         old_zooma = pd.read_csv(script_dir + '/outputs/current_zooma_import.txt', sep="\t")
         updated_zooma = pd.concat([old_zooma, new_zooma]).drop_duplicates()
-        updated_zooma.to_csv(script_dir + 'outputs/current_zooma_import.txt', sep="\t", index=False)
+        updated_zooma.to_csv(script_dir + '/outputs/current_zooma_import.txt', sep="\t", index=False)
         print("Updated the zooma file at '{}/outputs/current_zooma_import.txt'.".format(script_dir))
         execution_time = time.time() - start_time
         print("This took {} minutes.".format(str(round(execution_time/60, 2))))
