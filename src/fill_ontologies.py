@@ -316,9 +316,9 @@ def main(args):
             json_schemas = pickle.load(pickled_schemas)
     except FileNotFoundError:
         schema = SchemaTemplate(ingest_api_url="http://api.ingest.staging.archive.data.humancellatlas.org")
-        with open(pickled_schema_path, 'wb') as output:
-            pickle.dump(schema.json_schemas, output)
         json_schemas = schema.json_schemas
+        with open(pickled_schema_path, 'wb') as output:
+            pickle.dump(json_schemas, output)
     parse_wb(args.wb_path, wb, json_schemas, args.zooma, args.keep)
 
 
