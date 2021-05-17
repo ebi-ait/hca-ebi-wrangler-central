@@ -2,7 +2,7 @@
 layout: default
 title: Wrangling datasets SOP
 parent: SOPs
-has_children: true
+has_children: false
 last_modified_date: 22/03/2020
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
@@ -330,7 +330,8 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
 | Email address             | So you can be contacted if any issues with import                 |
 | Release #                 | The integer number of the ~monthly release cutoff                 |
 | Google storage cloud path | `gs://broad-dsp-monster-hca-prod-ebi-storage/prod/[PROJECT_UUID]` |
-| Additional info           | If exporting an update to an existing project, please flag here it is an update and whether it is metadata only or files have been updated.|
+| Is this new data, updated data or analysis results? | Choose the appropriate response, 'Brand new data' for a new, never been exported project, or 'An update to data that is already in production' if it is an update. |
+| Additional info           | Any other notes you want to communicate to the import team. |
   
 #### Import Form Details for DCP testing
   
@@ -356,4 +357,4 @@ Additionally, move all the corresponding documents to the [finished_projects](ht
 
 ## Brokering to SCEA
 
-**WIP** Will link to other documentation
+See documentation on the [hca-to-scea repo](https://github.com/ebi-ait/hca-to-scea-tools)
