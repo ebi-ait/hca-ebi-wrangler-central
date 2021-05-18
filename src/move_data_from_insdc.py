@@ -157,8 +157,11 @@ def correct_filename_from_ena(run_accession, filename):
     else:
         return filename
 
-    # Search in the options
-    real_filename = next(real_name for real_name in filenames if f"R{read_index}" in real_name)
+    # Search in the options. If there are no results (Empty iterator), return filename.
+    try:
+        real_filename = next(real_name for real_name in filenames if f"R{read_index}" in real_name)
+    except StopIteration:
+        return filename
 
     # Correct the ".1" at the end
     real_filename = real_filename.split('.1')[0] if real_filename.endswith('.1') else real_filename
