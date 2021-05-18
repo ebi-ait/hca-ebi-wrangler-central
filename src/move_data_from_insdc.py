@@ -161,6 +161,8 @@ def correct_filename_from_ena(run_accession, filename):
     try:
         real_filename = next(real_name for real_name in filenames if f"R{read_index}" in real_name)
     except StopIteration:
+        pass
+    finally:
         return filename
 
     # Correct the ".1" at the end
