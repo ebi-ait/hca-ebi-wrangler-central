@@ -8,19 +8,17 @@ parent: SOPs
 
 ### Dataset Prioritisation
 
-1. **Directly contributed data**
-
+1. **Directly contributed data** 
   - From co-funded collaborators (e.g. WSSS or MRC or HCA:Organoid, Seed Networks), then
   - First come first serve
  
-1. **Data from official Human Cell Atlas publications**
-
+2. **Data from official Human Cell Atlas publications**
   - Newest first, oldest last
   - Published Data on primary tissues
   - Poorly represented donor sample locations first (i.e. US, European donors will be actively down-prioritised). Once data from all possible locations is captured, then
   - Organs with least coverage first, organs with most coverage last
  
-1. **All other eligible Published Data**, 
+3. **All other eligible Published Data**, 
 
  scored by a combination of:
 
