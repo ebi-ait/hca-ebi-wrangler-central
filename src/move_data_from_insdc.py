@@ -10,6 +10,7 @@ from urllib.request import urlopen
 from urllib.request import OpenerDirector
 from urllib.parse import quote_plus
 from urllib.parse import unquote_plus
+from urllib.error import URLError
 from multiprocessing import Pool
 from io import BytesIO
 from xml.parsers.expat import ExpatError
@@ -182,11 +183,26 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
                      Source of the file. Currently accepted: ftp, s3, local.
     """
     if "ftp" in path:
+        MAX_RETRIES = 10
+        source = "ftp"
         if not path.startswith("ftp://"):
             path = f"ftp://{path}"
-        streamable = urlopen(path)
-        file_size = int(streamable.headers['Content-length'])
-        source = "ftp"
+
+        for attempt in range(0, MAX_RETRIES):
+            try:
+                streamable = urlopen(path)
+                file_size = int(streamable.headers['Content-length'])
+                break
+            except URLError as e:
+                print(e.reason)
+                print("Retrying...")
+
+                if "421 There are too many connected users, please try later." in e.reason:
+                    print("Waiting for 5 seconds...")
+                    sleep(5)
+        else:
+            raise IOError(f"Retried the maximum amount of times to get stream from {path}.")
+
 
     elif "s3" in path:
         streamable = path
@@ -247,7 +263,8 @@ def transfer_file(path: str, output: str) -> None:
     file_stream, file_size, filename, source = define_source_parameters(path)
     with op(file_stream, 'rb', ignore_ext=True) as f:
         globals()[f'transfer_file_to_{define_destination_parameters(output)}'](f, output, filename, file_size)
-
+        if source == "ftp":
+            file_stream.close()
 
 def transfer_file_to_local(origin: any([str, BytesIO]), destination: str, filename: str = '',
                            file_size: int = None) -> None:
@@ -361,7 +378,7 @@ def filter_by_allowed(allowed_list_path: str, file_list: list) -> list:
 
 
 def main(args):
-    file_list, runs_not_available = retrieve_file_urls(args.study_accession,args.database)
+    file_list, runs_not_available = retrieve_file_urls(args.study_accession, args.database)
     if not file_list:
         print("Couldn't find any mean of downloading the proper fastq. Try with the sratoolkit")
 
