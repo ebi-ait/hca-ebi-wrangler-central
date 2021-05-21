@@ -36,7 +36,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--database', "-db", default='sra', type=str,
                         choices=['sra','ena'],help='Which database to use: sra or ena')
     parser.add_argument('--allowed', "-a", type=str,
-                        help='Full path to plain text file with line separated list of files that should be transferred.',)
+                        help='Full path to plain text file with line separated list of files that should be transferred.')
+    parser.add_argument("--respect-filenames", "-r", default=False, action='store_true', dest='respect_filename',
+                        help="Try to correct filenames based on cross-database metadata")
 
     return parser.parse_args()
 
@@ -161,9 +163,10 @@ def correct_filename_from_ena(run_accession, filename):
     try:
         real_filename = next(real_name for real_name in filenames if f"R{read_index}" in real_name)
     except StopIteration:
+        real_filename = ""
         pass
     finally:
-        return filename
+        real_filename = filename if not real_filename else real_filename
 
     # Correct the ".1" at the end
     real_filename = real_filename.split('.1')[0] if real_filename.endswith('.1') else real_filename
@@ -171,12 +174,14 @@ def correct_filename_from_ena(run_accession, filename):
     return real_filename
 
 
-def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str, str):
+def define_source_parameters(path: str, respect_filename: bool) -> (any([OpenerDirector, str]), int, str, str):
     """
     Finds and returns the source file parameters given a path.
 
     :param path: str
                  string that contains the path to the file (Currently accepted: ftp, s3, local)
+    :param respect_filename: bool
+                             If true, don't try to correct the filename
     :returns streamable: any([OpenerDirector, str])
                          Entity that can be passed to smart_open to stream the file
     :returns file_size: int
@@ -219,7 +224,7 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
     if filename.endswith('.1'):
         filename = filename.strip('.1')
 
-    if 'SRR' in filename:
+    if 'SRR' in filename and not respect_filename:
         filename = correct_filename_from_ena(path.split('/')[-2], filename)
 
     return streamable, file_size, filename, source
@@ -240,7 +245,7 @@ def define_destination_parameters(output: str) -> str:
         return "local"
 
 
-def transfer_file(path: str, output: str) -> None:
+def transfer_file(path: str, output: str, respect_filename: bool) -> None:
     """
     General function to transfer the files. Takes a file path and an output folder.
 
@@ -248,8 +253,10 @@ def transfer_file(path: str, output: str) -> None:
                  Path to the file to be transferred. Accepts s3, ftp and local, but needs to be a full path for remote.
     :param output: str
                    Path to the directory where the file will be transferred. Needs to be a full path for remote.
+    :param respect_filename: bool
+                   If true, respect filenames from original database.
     """
-    file_stream, file_size, filename, source = define_source_parameters(path)
+    file_stream, file_size, filename, source = define_source_parameters(path, respect_filename)
     with op(file_stream, 'rb', ignore_ext=True) as f:
         globals()[f'transfer_file_to_{define_destination_parameters(output)}'](f, output, filename, file_size)
 
@@ -373,7 +380,7 @@ def main(args):
     if args.allowed:
         file_list = filter_by_allowed(args.allowed, file_list)
 
-    output_args = [(file, args.output_path) for file in file_list]
+    output_args = [(file, args.output_path, args.respect_filename) for file in file_list]
     try:
         with Pool(args.threads) as p:
             p.starmap(transfer_file, output_args)
