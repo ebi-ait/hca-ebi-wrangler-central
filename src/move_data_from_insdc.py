@@ -206,10 +206,8 @@ def define_source_parameters(path: str, respect_filename: bool) -> (any([OpenerD
             except URLError as e:
                 print(e.reason)
                 print("Retrying...")
-
-                if "421 There are too many connected users, please try later." in e.reason:
-                    print("Waiting for 5 seconds...")
-                    sleep(5)
+                print("Waiting for 5 seconds...")
+                sleep(5)
         else:
             raise IOError(f"Retried the maximum amount of times to get stream from {path}.")
 
