@@ -124,10 +124,11 @@ Once you have a customised and potentially pre-filled spreadsheet it can be sent
 
 ### AWS User for Contributors
 
-In order for a contributor to upload their data, they would need their own AWS user that is assigned to the hca-contirbutor group. A dev would need to create the user for them using the commands listed below.
+In order for a contributor to upload their data, they would need their own AWS user that is assigned to the hca-contirbutor group. 
+A request for an account should be files as [a new ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=operations&template=new-contributor-account.md&title=contributor+account+for%3A+%3Ccontributor-name%3E) for the ingest team. The board is monitored regularly so the new ticket would be picked up within the day.
 
 ### Data upload Procedure
-
+These commands can be run by team members with "develoepr" role.
 - create an AWS user for them
   
 ```shell
