@@ -14,7 +14,7 @@ Please create an account a contributor.
 * email: _contributor email address_
 
 Request Details:
-* Requested by: _requestor name, email_
+* Requested by: _requestor name, email, slack user link_
 * [slack link]()
 * request email details:
 > quote request email here

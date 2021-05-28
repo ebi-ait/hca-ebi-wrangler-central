@@ -126,7 +126,7 @@ Once you have a customised and potentially pre-filled spreadsheet it can be sent
 
 In order for a contributor to upload their data, they would need their own AWS user that is assigned to the hca-contirbutor group.
 
-_**This is done by a developer.**_
+_**This is done by a team member with a developer role.**_
 
 1. create an AWS user for them using the name part of their email address
   
