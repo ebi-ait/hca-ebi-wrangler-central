@@ -130,7 +130,9 @@ A request for an account should be files as [a new ticket](https://github.com/eb
 
 _**This is done by a team member with a developer role.**_
 
-1. create an AWS user for them using the name part of their email address
+1. Create an AWS user
+   
+   Use the name part of the email address for the account name.
   
 ```shell
 # to add user walter.white@example.com as a contributor
