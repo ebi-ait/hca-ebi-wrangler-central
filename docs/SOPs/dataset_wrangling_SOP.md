@@ -155,7 +155,7 @@ Once installed, downloading the files locally is easy by following the instructi
 1. Open a virtual session (The next step will take some time, so it's better to leave it running under a virtual session)
 1. `cd` to your `/data/` folder and run the following command:
    ```
-   cat <name_of_report_file> | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} {}
+   cat <name_of_report_file> | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} {}"
    ```
    This command will read the report, isolate the file names and start downloading them. A couple of useful tips:
    * You can pass the argument -P to parallelize xargs. This will run several downloads in parallel
