@@ -155,7 +155,7 @@ Once installed, downloading the files locally is easy by following the instructi
 1. Open a virtual session (The next step will take some time, so it's better to leave it running under a virtual session)
 1. `cd` to your `/data/` folder and run the following command:
    ```
-   cat <name_of_report_file> | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} {}"
+   cat <name_of_report_file> | jq '.[].fastq_ftp' | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} \$( echo {} | cut -d\"/\" -f6 )"
    ```
    This command will read the report, isolate the file names and start downloading them. A couple of useful tips:
    * You can pass the argument -P to parallelize xargs. This will run several downloads in parallel
@@ -171,7 +171,7 @@ In order for a contributor to upload their data, they would need their own AWS u
 A request for an account should be files as [a new ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=operations&template=new-contributor-account.md&title=contributor+account+for%3A+%3Ccontributor-name%3E) for the ingest team. The board is monitored regularly so the new ticket would be picked up within the day.
 
 ### Data upload Procedure
-These commands can be run by team members with "develoepr" role.
+These commands can be run by team members with "developer" role.
 - create an AWS user for them
   
 ```shell
