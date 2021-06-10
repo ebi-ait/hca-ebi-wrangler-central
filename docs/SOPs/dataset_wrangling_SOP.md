@@ -148,7 +148,7 @@ aws iam create-access-key --user-name walter.white
 
 _**This is done by a wrangler.**_ 
 
-1. They got the created newly created AWS account access key from a developer (previous step). 
+1. Obtain the access key from a developer ([previous step](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/dataset_wrangling_SOP.md#aws-user-for-contributors))
 2. Create an upload area using the guide: [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
 3. Get the UUID from the created upload area
 4. These two sets of information need to be sent separately to the contributor to minimise the chance of them falling into the wrong hands and being misused.
