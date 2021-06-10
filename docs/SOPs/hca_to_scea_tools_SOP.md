@@ -36,7 +36,7 @@ Please refer to the `hca-to-scea tools` repo [README](https://github.com/ebi-ait
    git clone https://github.com/ebi-gene-expression-group/atlas-metadata-validator /data/tools/scea-python-atlas-validator
    ```
 2. Go to the created folder: `cd /data/tools/scea-python-atlas-validator`
-3. We need to change the group ownership to the wranglers group: `sudo chgrp wranglers /data/tools/scea-python-atlas-validator -R`
+3. Change the group ownership to the wranglers group: `sudo chgrp wranglers /data/tools/scea-python-atlas-validator -R`
 4. Create a virtual environment: `virtualenv -p python3.7 venv`
 5. Activate it: `source venv/bin/activate`
 
