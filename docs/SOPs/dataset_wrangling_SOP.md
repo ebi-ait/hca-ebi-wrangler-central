@@ -181,15 +181,16 @@ aws iam add-user-to-group --group hca-contributor --user-name alice
 # generate secrets 
 aws iam create-access-key --user-name alice 
 ```
-- provide them a set of contributor AWS access keys. 
-- provide them with a data upload area UUID
+- provide them a set of **contributor AWS access keys**. 
+- provide them with a data **upload area UUID** (listed as upload area identifier in the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util))
+  - To get an Upload area UUID, you will need to create an upload area using the guide: [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
 
-These two sets of information need to be sent separately to minimise the chance of them falling into the wrong hands and being misused.
+These two sets of information must be sent securely so that they do not get into the wrong hands. Send them with one of the following methods:
 
-* **Contributor AWS Access keys** are not considered secure and can be sent in the main `wrangler-team` email thread, usually in the same email with the first spreadsheet and [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
-* **Upload area UUID** is a secure piece of information that should be shared in a separate email with only the contributor and primary wrangler 
+1. If the contributor has a google account, create a google doc containing the information and share it to their email. Ensure no one else has access to the document. **Do not** share it via a link.
+2. Email the contributor a password protected folder containing the information and share the password for it via another means such as Slack, live call, or a different email (not preferred)
 
-To get an Upload area UUID, you will need to create an upload area using the guide: [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
+Ensure you also send the contributor the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
 
 ## Curating metadata
 
