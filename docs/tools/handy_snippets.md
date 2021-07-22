@@ -255,7 +255,7 @@ aws s3 sync <s3 bucket URI> /data/<data-folder>/
 Include only certain files using `--exclude` and `--include`:
 
 ```
-aws s3 sync <s3 bucket URI> /data/<data-folder>/ --exclude "*" --includ "SRR43*.fastq.gz"
+aws s3 sync <s3 bucket URI> /data/<data-folder>/ --exclude "*" --include "SRR43*.fastq.gz"
 ```
 
 Run `fastq_info` for a particular file:
