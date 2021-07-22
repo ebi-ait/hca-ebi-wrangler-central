@@ -10,11 +10,19 @@ UNDER REVIEW
 
 *Process is under review until full update process is established and tested.*
 
+Note that Adding Metadata Entities and Sequence Files can only be done using a spreadsheet, and requires a new submission.
+{: .label .label-yellow }
+
+
+# How to Update a Project
+
+* Add new metadata entities and sequence files
+
 # How to Update a Project
 
 ## Definitions:
 
-*Update* - Any edit to a project, could include editing a typo, adding/deleting metadata or data, changing how entities are linked
+*Update* - Any edit to a project, could include editing a typo, adding/overwriting metadata or data, changing how entities are linked
 
 *Identifier* - The person who identifies the error that needs to be corrected
 
@@ -23,16 +31,12 @@ UNDER REVIEW
 Things that can be done: 
 * Fix an error in any existing field 
 * Enter information into any blank field in an existing entity
-* Add new metadata entities and sequence files 
+* schema??
 
-Things that can’t be done: (?)
+Things that can’t be done:
 * Change the 'DescribedBy' field
 * Delete anything from a submission
-
-### When can I update a project?
-
-* Non-analysed datasets - No restrictions
-* Analysed datasets - OPEN QUESTION: Should be coordinated with the Matrix Service/DataOps?
+* DCP1 Project Changes
 
 ## Procedure
 1. The identifier of the issue reopens the project tracker ticket for that project if it has been closed and moves it to the 'Needs Update' pipeline of the [`Dataset wrangling status`](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) Zenhub board and makes a comment that contains the following information, (if not already specified in the ticket body)
@@ -51,9 +55,8 @@ Things that can’t be done: (?)
 1. If the project is already in the 'Needs Update' piepeline, then assign yourself to the project and follow the steps below to make the necessary changes. Refer to the primary wrangler to ensure there are no other outstanding changes that need to be made.
 
 ## Updating a project in ingest and DCP
-Note that Adding Metadata Entities and Sequence Files can only be done using a spreadsheet, and requires a new submission. 
 
-### Updating Project Metadata (UI Only) 
+### Updating Project Metadata (via th UI) 
 To edit Project Metadata, use the 'Edit Project' button on the Project tab for the specific project. After finishing making the specific changes and saving, the latest submission should move from an 'Exported' state back to a 'Valid' state, which allows for re-exporting the submission with the updated project metadata. 
 
 If the latest submission does not move to a 'Valid' state, then the workaround is to make an edit to the metadata in the submission (see below). This will move the submission from the 'Exported' state to the 'Valid' state and allow reexporting the submission with updated metadata. 
@@ -64,6 +67,14 @@ If there are no necessary metadata updates to make in the submission, the workar
 To edit metadata entities in a submission, select the desired submission. There is an 'edit' button for each row of metadata in the submission, and selecting this 'edit' button will allow one to make changes to the submission metadata. 
 
 After saving the changes, the submission state should move from 'Exported' back to 'Valid'. You can then 'Submit' the submission once more, taking care to uncheck the option to delete the upload area, unless you are certain this is the final update. This will export the submission to the downstream components. See the '[Exporting SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Exporting_SOP.html)' for more details. 
+
+
+### Updating Project Metadata (via a spreadsheet)
+
+To edit Project Metadata via a spreadsheet,...
+
+### Updating metadata entities in a submission (via a spreadsheet)
+
 
 ### Updating / Adding links between metadata entities
 We are also now able to remove or create links between metadata entities. This can be done from the Process Tab of a submission. Expand the specific process that needs to be edited, and there are three columns: Inputs, Protocols, and Outputs. 
