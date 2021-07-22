@@ -14,7 +14,7 @@ Note that Adding Metadata Entities and Sequence Files can only be done using a s
 {: .label .label-yellow }
 
 
-# How to Update a Project
+# How to Create a Project
 
 * Add new metadata entities and sequence files
 
