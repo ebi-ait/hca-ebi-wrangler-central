@@ -159,6 +159,10 @@ Once installed, downloading the files locally is easy by following the instructi
    ```
    This command will read the report, isolate the file names and start downloading them. A couple of useful tips:
    * You can pass the argument -P to parallelize xargs. This will run several downloads in parallel
+   Example:
+   ```
+   cat <name_of_report_file> | jq '.[].fastq_ftp' | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} -P [enter parallelisation number] sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} \$( echo {} | cut -d\"/\" -f6 )"
+   ```
    * The last `{}` is the local path where the files will be downloaded. If you want to create a specific folder for the files, you can create the folder and append it to the argument (e.g. `my_cool_fastq/{}`)
    
 Once downloaded locally, the data files need to be uploaded to an hca-util area. You can follow the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) for contributors.
