@@ -180,7 +180,7 @@ These commands can be run by team members with "developer" role.
   
 ```shell
 # to add user as a contributor, as convention we user the email prefix up to the '@'
-echo "Enter contributor accounr name:"
+echo "Enter contributor account name:"
 read ACCOUNT
 aws iam create-user --user-name %ACCOUNT% --tags Key=project,Value=hca Key=owner,Value=tburdett Key=service,Value=ait
 aws iam add-user-to-group --group hca-contributor --user-name %ACCOUNT%
