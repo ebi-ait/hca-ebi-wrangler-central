@@ -176,14 +176,20 @@ A request for an account should be files as [a new ticket](https://github.com/eb
 
 ### Data upload Procedure
 These commands can be run by team members with "developer" role.
-- create an AWS user for them
+- create an AWS user for the contributor
   
 ```shell
-# to add user alice as a contributor
-aws iam create-user --user-name alice --tags Key=project,Value=hca Key=owner,Value=tburdett Key=service,Value=ait
-aws iam add-user-to-group --group hca-contributor --user-name alice
+# to add user as a contributor, as convention we user the email prefix up to the '@'
+echo "Enter contributor accounr name:"
+read ACCOUNT
+aws iam create-user --user-name %ACCOUNT% --tags Key=project,Value=hca Key=owner,Value=tburdett Key=service,Value=ait
+aws iam add-user-to-group --group hca-contributor --user-name %ACCOUNT%
 # generate secrets 
-aws iam create-access-key --user-name alice 
+aws iam create-access-key --user-name %ACCOUNT% > %ACCOUNT%.txt
+# create a password protected zip file
+zip -e %ACCOUNT%.zip %ACCOUNT%.txt
+rm -f %ACCOUNT%.txt
+
 ```
 - provide them a set of **contributor AWS access keys**. 
 - provide them with a data **upload area UUID** (listed as upload area identifier in the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util))
