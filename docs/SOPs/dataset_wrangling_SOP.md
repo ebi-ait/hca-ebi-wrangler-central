@@ -185,7 +185,7 @@ read ACCOUNT
 aws iam create-user --user-name $ACCOUNT --tags Key=project,Value=hca Key=owner,Value=tburdett Key=service,Value=ait
 aws iam add-user-to-group --group hca-contributor --user-name %ACCOUNT%
 # generate secrets 
-aws iam create-access-key --user-name %ACCOUNT% > %ACCOUNT%.txt
+aws iam create-access-key --user-name $ACCOUNT > $ACCOUNT.txt
 # create a password protected zip file
 zip -e %ACCOUNT%.zip %ACCOUNT%.txt
 rm -f %ACCOUNT%.txt
