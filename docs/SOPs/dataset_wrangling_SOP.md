@@ -183,7 +183,7 @@ These commands can be run by team members with "developer" role.
 echo "Enter contributor account name:"
 read ACCOUNT
 aws iam create-user --user-name $ACCOUNT --tags Key=project,Value=hca Key=owner,Value=tburdett Key=service,Value=ait
-aws iam add-user-to-group --group hca-contributor --user-name %ACCOUNT%
+aws iam add-user-to-group --group hca-contributor --user-name $ACCOUNT
 # generate secrets 
 aws iam create-access-key --user-name $ACCOUNT > $ACCOUNT.txt
 # create a password protected zip file
