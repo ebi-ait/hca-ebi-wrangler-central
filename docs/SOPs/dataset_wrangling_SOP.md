@@ -187,7 +187,7 @@ aws iam add-user-to-group --group hca-contributor --user-name %ACCOUNT%
 # generate secrets 
 aws iam create-access-key --user-name $ACCOUNT > $ACCOUNT.txt
 # create a password protected zip file
-zip -e %ACCOUNT%.zip %ACCOUNT%.txt
+zip -e ${ACCOUNT}.zip ${ACCOUNT}.txt
 rm -f %ACCOUNT%.txt
 
 ```
