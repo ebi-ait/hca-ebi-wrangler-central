@@ -55,7 +55,7 @@ def retrieve_from_ae(study_accession: str) -> (list, list):
 
 def retrieve_from_ena(study_accession: str) -> (list, list):
     field = "submitted_ftp" if "PRJEB" in study_accession else "fastq_ftp"
-    request_url = (f"https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession={study_accession}"
+    request_url = (f"https://www.ebi.ac.uk/ena/portal/api/filereport?accession={study_accession}"
                    f"&result=read_run&fields={field}")
     request = rq.get(request_url)
     lines = request.text.splitlines()[1:]
