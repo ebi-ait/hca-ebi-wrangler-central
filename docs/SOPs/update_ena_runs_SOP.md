@@ -40,8 +40,7 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
     }
     ```
 
-2. Clear the sequencing run accessions in file metadata 
-   The following should not be in the file metadata json:
+2. Clear the sequencing run accessions in file metadata. The following should not be in the file metadata json:
     ```json
     "insdc_run_accessions": [
       "ERR6449905"
@@ -60,17 +59,22 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
 5. Checksum all the files.
     ``` 
     $ cd to directory where you've downloaded the files 
-    $ md5sum * > <insert-filename>.txt
+    $ md5sum * > <md5-filename>.txt
     ```
 6. Upload the files to Webin FTP upload area (could be in parallel with checksumming)
    ```
-   lftp webin2.ebi.ac.uk -u <webin-user>
-   # input webin-password
+   $ cd <directory where you downloaded the files>
+   $ lftp webin2.ebi.ac.uk -u <webin-user>
+   $ > # input webin-password
+   $ mkdir parent-dir
+   $ cd parent-dir
+   $ mput *
    ```   
    Please refer to [ENA documentation](https://ena-docs.readthedocs.io/en/latest/update/metadata/programmatic-read.html) for more details
 7. Run the submitter script. The `receipt.xml` and `report.json` file should be available after running the script.
+   The `receipt.xml` will contain the ENA REST API response. The `report.json` will contain some report on which files were updated with the run accessions from ENA response.
    ```json
-   python submit_10x_fastq_files.py <submission-uuid> <md5-file> <token> [--ftp_dir <dir-name>]
+   python submit_10x_fastq_files.py <submission-uuid> <md5-filename> <jwt-token-from-ingest-ui> [--ftp_dir <parent-dir>]
    ```
 8. Verify that the new runs were submitted. They should be visible in the Webin Portal but it may take 48 hours before they become available in the ENA browser
 
