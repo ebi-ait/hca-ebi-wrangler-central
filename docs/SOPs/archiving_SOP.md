@@ -22,10 +22,10 @@ parent: SOPs
 
 ## Submit for Archiving
 
-1. Once the data files are uploaded the submission should be listed as **Valid.**
-2. On the Submit Tab, click the Submit Button.
-3. The submission will be marked as **Processing** as it maps the experimental graph.
-4. One finished the submission with be marked as: **Archiving**
+1. Once the data files are uploaded, the submission should be listed as **Valid.**
+2. On the _Submit_ tab, click the Submit Button.
+3. The submission will be marked as **Processing** as it maps the experimental graph
+4. Once finished, the submission with be marked as: **Archiving**
     1. **Please now poke your #hca-operations buddies to continue the process below by Archiving the Metadata to DSP.**
 
 
@@ -175,7 +175,7 @@ Filename of the fastq file
 
 <**complete_s3_xxxx_url**>
 
-URL where the archiver can find the file. Has to be an s3 (e.g. s3://mock-upload-area-preffix/abcd-abcd-abcd-abcd/filename.fastq.gz) and you should be able to download files with the credentials that you provide later.
+URL where the archiver can find the file. Has to be an s3 (e.g. s3://mock-upload-area-prefix/abcd-abcd-abcd-abcd/filename.fastq.gz) and you should be able to download files with the credentials that you provide later.
 
 
 The “conversion” field can be deleted if no bam conversion is needed. It won't be generated unless conversion is needed.
@@ -194,7 +194,7 @@ As a standard, we run bam conversion in the EBI cluster, as it may need a big ch
 
 1. Login to cluster
    ```
-   ssh noah-login
+   ssh ebi-cli.ebi.ac.uk
    ```
 
 1. Move to the folder you want to run the jobs from and create the folder if necessary
@@ -247,7 +247,6 @@ With only one file_upload_info.json, all jobs are run sequentially. In order to 
    pip install -r requirements.txt
    ```
 
-
 1. Download the file upload plan if you haven't already
 
 1. Run the python script to batch file archiver jobs. You could do a dry run first and see the bsub job commands to run. Remove the --dry_run flag if you think the bsub commands are correct.
@@ -257,13 +256,11 @@ With only one file_upload_info.json, all jobs are run sequentially. In order to 
    ```
 
 Note: Please make sure the `batch_file_archiver.py` is pointing to the latest version of the File Archiver. (See details [Using the file archiver service](### Using the file archiver service) on how to check latest version)
-If not please update the file in github to point to the new version.
+If not please update this file in GitHub to point it to use the new version.
 
 #### Using Wrangler EC2
 
-If no BAM conversion is required you can use the wrangler EC2 as follows:
-
-
+If no BAM conversion is required, you can use the wrangler EC2 as follows:
 
 1. Send info file to EC2 home directory
 
@@ -370,9 +367,3 @@ Once the files are uploaded and validated, to finish the submission, just run th
 ```
 curl -X POST https://archiver.ingest.staging.archive.data.humancellatlas.org/archiveSubmissions/<dsp_submission_uuid>/complete -H 'Api-Key: {archiver_api_key}' 
 ```
-
-## Triggering re-archival of submissions
-
-
-To trigger the re-archival of submissions, please refer to the proper section in the [Ingestion to archives](https://docs.google.com/document/d/1S4fyCSqB3nLrCUssNMwSp6ff8tmeipMi_slnXW2Lrq4/edit?pli=1#heading=h.wzojhbhfywqr) document
-
