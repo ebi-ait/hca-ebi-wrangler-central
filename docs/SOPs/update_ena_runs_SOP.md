@@ -18,7 +18,12 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
 ```
 2. Install gsutil/awscli in your environment in the EBI cluster
 3. Get webin [credentials](https://console.aws.amazon.com/secretsmanager/home?region=us-east-1#!/secret?name=ingest%2Fwebin-creds). (Only an ingest developer has access to this atm)
-
+4. Clone the ingest-archiver repository. The scripts that will be used is in `ena` directory of that repo.
+   ```
+   git clone https://github.com/ebi-ait/ingest-archiver.git
+   pip install -r requirements.txt
+   ```
+5. JWT Token from the Ingest-UI 
 ## Steps
 
 1. Get the list of sequencing runs to be suppressed. This can be downloaded as TSV/JSON from the ENA Browser. 
@@ -36,15 +41,16 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
     ```
 
 2. Clear the sequencing run accessions in file metadata 
+   The following should not be in the file metadata json:
     ```json
     "insdc_run_accessions": [
       "ERR6449905"
     ]
     ```
-
-    Use script from the [ingest-archiver](https://github.com/ebi-ait/ingest-archiver.git) repo:
+   
+   Update script to have a jwt token from the Ingest UI then run the following: 
     ```bash
-    ena/clear_run_accession_from_files.py
+       python clear_run_accession_from_files.py <submission-uuid>
     ```
 
 4. Download all files from Ingest / Terra upload area to any directory inside `/nfs/production/hca/` in the EBI cluster.
@@ -62,7 +68,7 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
    # input webin-password
    ```   
    Please refer to [ENA documentation](https://ena-docs.readthedocs.io/en/latest/update/metadata/programmatic-read.html) for more details
-7. Run the submitter script. The receipt.xml and report.json file should be available after running the script.
+7. Run the submitter script. The `receipt.xml` and `report.json` file should be available after running the script.
    ```json
    python submit_10x_fastq_files.py <submission-uuid> <md5-file> <token> [--ftp_dir <dir-name>]
    ```
