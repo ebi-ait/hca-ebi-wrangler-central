@@ -13,9 +13,9 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
 
 ## Requirements
 1. Gain access to the EBI cluster
- ```
+   ```
    ssh ebi-cli.ebi.ac.uk
-```
+   ```
 2. Install gsutil/awscli in your environment in the EBI cluster
 3. Get webin [credentials](https://console.aws.amazon.com/secretsmanager/home?region=us-east-1#!/secret?name=ingest%2Fwebin-creds). (Only an ingest developer has access to this atm)
 4. Clone the ingest-archiver repository. The scripts that will be used is in `ena` directory of that repo.
@@ -33,23 +33,22 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
    any of the assay processes has no accession. The assay processes in the submission should have the following
    property:
 
-    ```json
-    
+    ```
     "insdc_experiment": {
       "insdc_experiment_accession": "ERX4319109"
     }
     ```
 
 2. Clear the sequencing run accessions in file metadata. The following should not be in the file metadata json:
-    ```json
+    ```
     "insdc_run_accessions": [
       "ERR6449905"
     ]
     ```
    
    Update script to have a jwt token from the Ingest UI then run the following: 
-    ```bash
-       python clear_run_accession_from_files.py <submission-uuid>
+    ```
+    python clear_run_accession_from_files.py <submission-uuid>
     ```
 
 4. Download all files from Ingest / Terra upload area to any directory inside `/nfs/production/hca/` in the EBI cluster.
