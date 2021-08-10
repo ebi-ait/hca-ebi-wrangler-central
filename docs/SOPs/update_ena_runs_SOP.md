@@ -78,3 +78,12 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
    ```
 8. Verify that the new runs were submitted. They should be visible in the Webin Portal but it may take 48 hours before they become available in the ENA browser
 
+9. File a ticket via [ENA helpdesk](https://www.ebi.ac.uk/ena/browser/support) to suppress the old sequencing runs.
+   Guide on answering the form questions:
+   ```
+   Submitter: Broker
+   Query is related to: Suppression
+   I work on: Humans
+   Organisms classification: Not applicable
+   The work is: Other/not sure (Raw sequencing reads)
+   ```
