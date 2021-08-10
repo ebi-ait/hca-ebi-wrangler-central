@@ -1,7 +1,8 @@
 ---
-layout: default title: Archiving SOP parent: SOPs
+layout: default
+title: Update ENA runs SOP
+parent: SOPs
 ---
-
 ## Table of contents
 
 {: .no_toc .text-delta }
