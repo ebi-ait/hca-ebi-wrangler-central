@@ -279,3 +279,4 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > [Developer name]
 >
 > On behalf of the HCA DCP Data Wrangling Team
+> View all HCA projects in the [HCA Project Catalogue](https://www.ebi.ac.uk/humancellatlas/project-catalogue)
