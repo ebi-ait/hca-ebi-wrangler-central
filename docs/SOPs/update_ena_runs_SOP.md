@@ -16,14 +16,25 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
    ```
    ssh ebi-cli.ebi.ac.uk
    ```
-2. Install gsutil/awscli in your environment in the EBI cluster
-3. Get webin [credentials](https://console.aws.amazon.com/secretsmanager/home?region=us-east-1#!/secret?name=ingest%2Fwebin-creds). (Only an ingest developer has access to this atm)
+2. Install `gsutil` in your environment in the EBI cluster and log in using your EMBL-EBI google account.
+   You could follow instructions from https://cloud.google.com/storage/docs/gsutil_install to install `gs_util`. 
+   See more details [here](https://ebi-ait.github.io/hca-ebi-dev-team/admin_setup/Setting-up-access-to-Terra-staging-area.html#using-your-google-account) about setting up your access to Terra staging area.
+3. Get DSP's Webin [credentials](https://console.aws.amazon.com/secretsmanager/home?region=us-east-1#!/secret?name=ingest%2Fwebin-creds). (Only an ingest developer has access to this atm)
 4. Clone the ingest-archiver repository. The scripts that will be used is in `ena` directory of that repo.
    ```
    git clone https://github.com/ebi-ait/ingest-archiver.git
    pip install -r requirements.txt
    ```
-5. JWT Token from the Ingest-UI 
+5. Get your JWT Token from Ingest UI.
+   1. Log in in Ingest UI https://contribute.data.humancellatlas.org/login using the account which has the WRANGLER role.
+   1. In Chrome, right click and select _Inspect_ to open the developer console. Select the Network tab.
+   1. Refresh the page, `https://contribute.data.humancellatlas.org/home`
+   1. Check the _Authorization_ in headers of the request to `https://api.ingest.archive.data.humancellatlas.org/auth/account`
+   1. Copy the token after _Bearer_ prefix: 
+      ```
+      Authorization: Bearer <copy the very long string of random characters>
+      ```
+   1. That token has 1 hr validity. The token will be needed in the submitter script later.
 ## Steps
 
 1. Get the list of sequencing runs to be suppressed. This can be downloaded as TSV/JSON from the ENA Browser. 
