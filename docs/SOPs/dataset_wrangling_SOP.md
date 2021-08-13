@@ -163,7 +163,7 @@ Once installed, downloading the files locally is easy by following the instructi
    ```
    cat <name_of_report_file> | jq '.[].fastq_ftp' | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} -P [enter parallelisation number] sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} \$( echo {} | awk -F/ '{print $6}' )"
    ```
-   * The last `{}` is the local path where the files will be downloaded. If you want to create a specific folder for the files, you can create the folder and append it to the argument (e.g. `my_cool_fastq/{}`)
+   * The last `{}` is the filename that will be used for download. If you want to create a specific folder for the files, you can create the folder and append it to the argument, following the next example (where `\"my_cool_fastq/\"` would be the name of the folder)
    Example:
    ```
    cat <name_of_report_file> | jq '.[].fastq_ftp' | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} \$( echo {} | awk -F/ '{print \"my_cool_fastq/\" $6}' )"
