@@ -58,10 +58,7 @@ Please refer to the `hca-to-scea tools` repo [README](https://github.com/ebi-ait
    ```
    conda activate perl-atlas-test
    ```
-5. Download the validate_magetab.pl_ _perl script from here:
-   ```
-   https://drive.google.com/drive/u/1/folders/1C78AcbQiLarIV_4HPEhK6SU0Xr-bbOwA
-   ```
+5. Use the validate_magetab.pl_ _perl script from scripts/validate_magetab in this repo.
 
 
 ### Installing on your local machine
