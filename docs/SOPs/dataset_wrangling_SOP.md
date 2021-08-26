@@ -97,12 +97,6 @@ Once you have an understanding of which biomaterials, protocols, and processes a
 
 Instead of the iterative process of the contributor filling in what they can, the wrangler reviewing, curating, and asking questions, there is only you (the wrangler) working with the spreadsheet. It is easy to get stuck, so don’t forget that you’re working as a team and get a second opinion if necessary! 
 
-After generating the spreadsheet, we move onto raw data upload. There is no contributor to upload their data manually, so we must take on that role and: 
-* Create an upload area
-* Upload files to the upload area. 
-
-There is a useful [script](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/handy_snippets.html#uploading-files-to-an-s3-bucket-from-the-archives) for uploading files to an s3 bucket, which can speed up the process tremendously. Note that this step does not need to be completed now, and can wait until after the metadata spreadsheet has been gathered. 
-
 Then move onto the [‘curating metadata’](#curating-metadata) section. 
 
 ### Spreadsheet template generation
@@ -120,10 +114,69 @@ After the spreadsheet is generated some manual steps can help contributors under
 
 Once you have a customised and potentially pre-filled spreadsheet it can be sent to the contributor along with the contributor spreadsheet guide. It is generally an iterative process of the contributor filling in what they can, the wrangler reviewing, curating and asking questions before further curation until the metadata is complete. 
 
+
+### Raw Data (fastq) download
+
+After generating the spreadsheet, we move onto raw data upload. There is no contributor to upload their data manually, so we must take on that role and: 
+* Create an upload area
+* Upload files to the upload area. 
+
+Note that this step does not need to be completed now, and can wait until after the metadata spreadsheet has been gathered. 
+
+Once the upload area has been created, there are several ways to upload the files from ENA/SRA (Sorted from easiest/fastest to most manual/slow):
+
+**Python script in hca-ebi-wrangler-central repository**
+
+There is a useful [script](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/handy_snippets.html#uploading-files-to-an-s3-bucket-from-the-archives) for uploading files to an s3 bucket, which can speed up the process tremendously.
+However, this script may fail the request to get the files sometimes if ENA's servers are overloaded.
+
+**NCBI/SRA cold storage**
+
+NCBI provides, for most of the new datasets, amazon s3 storage for fastq files. Applying for the data is free and the data is transferred in about 2 to 3 working days. For more information, follow the [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/NCBI_SRA_cold_storage_how_to.html)
+
+**Aspera**
+
+If the other 2 options don't work, ENA offers an option to download their data files through Aspera, which is usually faster than accessing the files through each link.
+
+To install:
+1. Download aspera on your home directory on EC2 using the following command:
+   ```
+   wget https://ak-delivery04-mul.dhe.ibm.com/sar/CMA/OSA/08q6g/0/ibm-aspera-cli-3.9.6.1467.159c5b1-linux-64-release.sh
+   ```
+1. Run the file to install aspera:
+   ```
+   sh ibm-aspera-cli-3.9.6.1467.159c5b1-linux-64-release.sh
+   ```
+1. After installing, export the path to your .bashrc file by running `vim .bashrc` and copying this `export` statement to the end of the file: `export PATH=~/.aspera/cli/bin:$PATH`. The next time you log into the EC2, you will be able to run the commands without any additional step.
+   
+Once installed, downloading the files locally is easy by following the instructions on [ENA's ReadTheDocs page](https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html#using-aspera). Alternatively, you can follow these steps if you need to download a full dataset:
+1. Locate the project page (e.g. https://www.ebi.ac.uk/ena/browser/view/PRJEB40448)
+1. Download the Json report at the bottom of the page and upload it to your own `/data/` folder in the EC2
+1. Open a virtual session (The next step will take some time, so it's better to leave it running under a virtual session)
+1. `cd` to your `/data/` folder and run the following command:
+   ```
+   cat <name_of_report_file> | jq '.[].fastq_ftp' | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} \$( echo {} | awk -F/ '{print $6}' )"
+   ```
+   This command will read the report, isolate the file names and start downloading them. A couple of useful tips:
+   * You can pass the argument -P to parallelize xargs. This will run several downloads in parallel
+   Example:
+   ```
+   cat <name_of_report_file> | jq '.[].fastq_ftp' | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} -P [enter parallelisation number] sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} \$( echo {} | awk -F/ '{print $6}' )"
+   ```
+   * The last `{}` is the filename that will be used for download. If you want to create a specific folder for the files, you can create the folder and append it to the argument, following the next example (where `\"my_cool_fastq/\"` would be the name of the folder)
+   Example:
+   ```
+   cat <name_of_report_file> | jq '.[].fastq_ftp' | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} \$( echo {} | awk -F/ '{print \"my_cool_fastq/\" $6}' )"
+   ```
+   
+Once downloaded locally, the data files need to be uploaded to an hca-util area. You can follow the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) for contributors.
+
 ## Raw Data (fastq) and Processed Data Upload  
 
 ### AWS User for Contributors
 
+In order for a contributor to upload their data, they would need their own AWS user that is assigned to the hca-contributor group. 
+A request for an account should be files as [a new ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=operations&template=new-contributor-account.md&title=contributor+account+for%3A+%3Ccontributor-name%3E) for the ingest team. The board is monitored regularly so the new ticket would be picked up within the day.
 In order for a contributor to upload their data, they would need their own AWS user that is assigned to the hca-contributor group.
 
 A request for an account should be filed as [a new ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=operations&template=new-contributor-account.md&title=contributor+account+for%3A+%3Ccontributor-name%3E) for the ingest team. The board is monitored regularly so the new ticket would be picked up within the day.
