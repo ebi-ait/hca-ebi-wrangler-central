@@ -177,33 +177,37 @@ Once downloaded locally, the data files need to be uploaded to an hca-util area.
 
 In order for a contributor to upload their data, they would need their own AWS user that is assigned to the hca-contributor group. 
 A request for an account should be files as [a new ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=operations&template=new-contributor-account.md&title=contributor+account+for%3A+%3Ccontributor-name%3E) for the ingest team. The board is monitored regularly so the new ticket would be picked up within the day.
+In order for a contributor to upload their data, they would need their own AWS user that is assigned to the hca-contributor group.
 
-### Data upload Procedure
-These commands can be run by team members with "developer" role.
-- create an AWS user for the contributor
+A request for an account should be filed as [a new ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=operations&template=new-contributor-account.md&title=contributor+account+for%3A+%3Ccontributor-name%3E) for the ingest team. The board is monitored regularly so the new ticket would be picked up within the day.
+
+_**This is done by a team member with a developer role.**_
+
+1. Create an AWS user
+   
+   Use the name part of the email address for the account name.
   
 ```shell
-# to add user as a contributor, as convention we user the email prefix up to the '@'
-echo "Enter contributor account name:"
-read ACCOUNT
-aws iam create-user --user-name $ACCOUNT --tags Key=project,Value=hca Key=owner,Value=tburdett Key=service,Value=ait
-aws iam add-user-to-group --group hca-contributor --user-name $ACCOUNT
+# to add user walter.white@example.com as a contributor
+aws iam create-user --user-name walter.white --tags Key=project,Value=hca Key=owner,Value=tburdett Key=service,Value=ait
+aws iam add-user-to-group --group hca-contributor --user-name walter.white
 # generate secrets 
-aws iam create-access-key --user-name $ACCOUNT > $ACCOUNT.txt
-# create a password protected zip file
-zip -e ${ACCOUNT}.zip ${ACCOUNT}.txt
-rm -f %ACCOUNT%.txt
-
+aws iam create-access-key --user-name walter.white 
 ```
-- provide them a set of **contributor AWS access keys**. 
-- provide them with a data **upload area UUID** (listed as upload area identifier in the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util))
-  - To get an Upload area UUID, you will need to create an upload area using the guide: [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
 
-These two sets of information must be sent securely so that they do not get into the wrong hands. Send them with the following methods:
+2. The developer need to send the generated access key in an email to the person (usually a wrangler) who requested the account for the contributor.  
 
-1. Email the contributor a password protected folder containing the information and share the password for it in the email. The email template can be found in the [contributor communication SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/docs/SOPs/contributor_communication_SOP.md#contributor-credentials-and-upload-area)
+### Data upload Procedure
 
-Ensure you also send the contributor the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
+_**This is done by a wrangler.**_ 
+
+1. Obtain the access key from a developer ([previous step](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/dataset_wrangling_SOP.md#aws-user-for-contributors))
+2. Create an upload area using the guide: [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
+3. Get the UUID from the created upload area
+Send these two sets of information separately to the contributor to minimise the chance of them falling into the wrong hands and being misused.
+
+* **Contributor AWS Access keys** are not considered secure and can be sent in the main `wrangler-team` email thread, usually in the same email with the first spreadsheet and [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
+* **Upload area UUID** is a secure piece of information that should be shared in a separate email with only the contributor and primary wrangler 
 
 ## Curating metadata
 

@@ -27,6 +27,40 @@ Please refer to the `hca-to-scea tools` repo [README](https://github.com/ebi-ait
 
 ## Appendix
 
+### Installing validators for SCEA tools onto Wranglers' EC2 instance
+
+- ### Expression Atlas metadata validator (Python app)
+
+1. Clone the gitlab repository from https://github.com/ebi-gene-expression-group/atlas-metadata-validator
+   ```
+   git clone https://github.com/ebi-gene-expression-group/atlas-metadata-validator /data/tools/scea-python-atlas-validator
+   ```
+2. Go to the created folder: `cd /data/tools/scea-python-atlas-validator`
+3. Change the group ownership to the wranglers group: `sudo chgrp wranglers /data/tools/scea-python-atlas-validator -R`
+4. Create a virtual environment: `virtualenv -p python3.7 venv`
+5. Activate it: `source venv/bin/activate`
+
+- ### MAGE-TAB validator (Perl script)
+
+1. Install Anaconda for multi-user. Follow the instructions here: https://docs.anaconda.com/anaconda/install/multi-user/#multi-user-anaconda-installation-on-linux
+   (For the user group use the **_wranglers_** user group.)
+2. Configure conda by typing the following at the terminal:
+   ```
+   conda config --add channels defaults
+   conda config --add channels bioconda
+   conda config --add channels conda-forge
+   ```
+3. Install the perl atlas module in a new environment:
+   ```
+   conda create -n perl-atlas-test -c ebi-gene-expression-group perl-atlas-modules
+   ```
+4. Activate the environment:
+   ```
+   conda activate perl-atlas-test
+   ```
+5. Use the validate_magetab.pl_ _perl script from scripts/validate_magetab in this repo.
+
+
 ### Installing on your local machine
 
 You will need python3 installed, if you don't have it, install from [Python's webpage](https://www.python.org/downloads/)
