@@ -166,11 +166,9 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
 > 
-> Currently we cannot handle managed access data directly. If you have public sample metadata that you would like to link to a managed access EGA submission, we can facilitate brokering your metadata to the BioSamples Database at EMBL-EBI, linking it to your EGA dataset and making processed data and open metadata available in ArrayExpress.
+> Currently we cannot handle raw sequencing data for projects that require controlled access. However, we can help you get your processed data (Gene count matrices, annotation files, etc) and publicly available metadata into the DCP data portal.
 > 
-> Our processes for handling managed access data are currently under development and we would really value your input - would you be happy to be  part of a pilot we are aiming to run? If so, we can further explain the process and next steps. Would you be available any of the following times:
-> 
-> [suggest appropriate times based on schedule]
+> Please confirm if that option is ok with you, and we will proceed to share with you the next steps in metadata assembly and data upload.
 > 
 > Best regards,
 > 
