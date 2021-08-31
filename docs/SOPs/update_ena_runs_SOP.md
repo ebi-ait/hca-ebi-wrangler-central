@@ -20,7 +20,7 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
    You could follow instructions from https://cloud.google.com/storage/docs/gsutil_install to install `gs_util`. 
    See more details [here](https://ebi-ait.github.io/hca-ebi-dev-team/admin_setup/Setting-up-access-to-Terra-staging-area.html#using-your-google-account) about setting up your access to Terra staging area.
 3. Get DSP's Webin [credentials](https://console.aws.amazon.com/secretsmanager/home?region=us-east-1#!/secret?name=ingest%2Fwebin-creds). (Only an ingest developer has access to this atm)
-4. Clone the ingest-archiver repository. The scripts that will be used is in `ena` directory of that repo.
+4. Clone the [ingest-archiver](https://github.com/ebi-ait/ingest-archiver) repository. The scripts that will be used is in `ena` directory of that repo.
    ```
    git clone https://github.com/ebi-ait/ingest-archiver.git
    pip install -r requirements.txt
@@ -57,12 +57,13 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
     ]
     ```
    
-   Update script to have a jwt token from the Ingest UI then run the following: 
+   Update clear_run_accession_from_files.py to have a jwt token from the Ingest UI then run the following: 
     ```
     python clear_run_accession_from_files.py <submission-uuid>
     ```
 
 4. Download all files from Ingest / Terra upload area to any directory inside `/nfs/production/hca/` in the EBI cluster.
+   [gsutil](https://cloud.google.com/storage/docs/downloading-objects) can be used for downloading the files
    The files may also be in the hca-util upload area but we should make sure they're valid. Using Ingest/Terra upload area means the files have already been validated before.
    Please prefer downloading the Terra upload area as downloading from Ingest upload area will incur cost to our AWS account.
 
@@ -80,7 +81,7 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
    $ mput *
    ```   
    Please refer to [ENA documentation](https://ena-docs.readthedocs.io/en/latest/update/metadata/programmatic-read.html) for more details
-7. Run the submitter script. The `receipt.xml` and `report.json` file should be available after running the script.
+7. Run the submit_10x_fastq_files.py script. The `receipt.xml` and `report.json` file should be available after running the script.
    The `receipt.xml` will contain the ENA REST API response. The `report.json` will contain some report on which files were updated with the run accessions from ENA response.
    ```json
    python submit_10x_fastq_files.py <submission-uuid> <md5-filename> <jwt-token-from-ingest-ui> [--ftp_dir <parent-dir>]
