@@ -68,8 +68,7 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
 
 5. Checksum all the files.
     ``` 
-    $ cd to directory where you've downloaded the files 
-    $ md5sum * > <md5-filename>.txt
+    gsutil hash -hm gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project_uuid>/data/* | grep -A1 "hex" | awk -F"/" '{printf $4 $1}' | awk -F"--" '{for (i=1;i<NF;i++)print $i}' | awk -F":" '{print $1 $3}' > <md-filename>.txt
     ```
 6. Upload the files to Webin FTP upload area (could be in parallel with checksumming)
    ```
