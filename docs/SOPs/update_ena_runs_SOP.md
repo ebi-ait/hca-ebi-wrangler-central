@@ -83,7 +83,7 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
    Please refer to [ENA documentation](https://ena-docs.readthedocs.io/en/latest/update/metadata/programmatic-read.html) for more details
 7. Run the submit_10x_fastq_files.py script. The `receipt.xml` and `report.json` file should be available after running the script.
    The `receipt.xml` will contain the ENA REST API response. The `report.json` will contain some report on which files were updated with the run accessions from ENA response.
-   ```json
+   ```bash
    python submit_10x_fastq_files.py <submission-uuid> <md5-filename> <jwt-token-from-ingest-ui> [--ftp_dir <parent-dir>]
    ```
 8. Verify that the new runs were submitted. They should be visible in the Webin Portal but it may take 48 hours before they become available in the ENA browser
