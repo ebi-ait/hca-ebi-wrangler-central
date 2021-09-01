@@ -29,7 +29,7 @@ parent: SOPs
 1. Once the data files are uploaded, the submission should be listed as **Valid.**
 2. On the _Submit_ tab, click the Submit Button.
 3. The submission will be marked as **Processing** as it maps the experimental graph
-4. Once finished, the submission with be marked as: **Archiving**
+4. Once finished, the submission will be marked as: **Archiving**
     1. **Please now poke your #hca-operations buddies to continue the process below by Archiving the Metadata to DSP.**
 
 
