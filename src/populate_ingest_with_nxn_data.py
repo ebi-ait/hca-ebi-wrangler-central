@@ -6,8 +6,6 @@ import re
 INGEST_URL = "https://api.ingest.archive.data.humancellatlas.org/projects/"
 NXN_URL = "http://www.nxn.se/single-cell-studies/data.tsv"
 
-nxn_data_header_map ={}
-
 def load_ingest_data():
     # get ingest data as json
     ingest_data = requests.get(INGEST_URL,
@@ -34,7 +32,8 @@ def get_distance_metric(title1: str,title2: str):
     return dist_metric
 
 # try to refactor later
-def get_new_nxn_data(ingest_data, nxn_data):
+def get_new_nxn_data(ingest_data, nxn_data, nxn_data_header_map):
+
     nxn_pub_doi_index = nxn_data_header_map['DOI']
     nxn_pre_doi_index = nxn_data_header_map['bioRxiv DOI']
     nxn_data_location_index = nxn_data_header_map['Data location']
@@ -82,7 +81,7 @@ def get_new_nxn_data(ingest_data, nxn_data):
 
     return new_data
 
-def filter_nxn_data(new_nxn_data, nxn_data):
+def filter_nxn_data(new_nxn_data, nxn_data_header_map):
     """
     Filter the table based on organism/technology criteria
     :param valentines_table:
@@ -112,8 +111,8 @@ def main():
     nxn_data_header_map = get_nxn_data_header_mapping(nxn_data[0])
 
     print("comparing and fetching new nxn data")
-    new_data = get_new_nxn_data(ingest_data, nxn_data)
-    new_data = filter_nxn_data(new_data, nxn_data)
+    new_data = get_new_nxn_data(ingest_data, nxn_data, nxn_data_header_map)
+    new_data = filter_nxn_data(new_data, nxn_data_header_map)
     print(f"found {len(new_data)} new entries in nxn data")
 
     print("populating ingest with the new entries from nxn data")
