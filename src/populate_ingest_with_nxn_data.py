@@ -34,17 +34,11 @@ def get_distance_metric(title1: str,title2: str):
     return dist_metric
 
 # try to refactor later
-# def find_header_index(matrix: [[]], value: str, header_row_index: int = 0):
-#     header_row = matrix[header_row_index]
-#     index_value = header_row.index(value)
-#     return index_value
-
-# try to refactor later
 def get_new_nxn_data(ingest_data, nxn_data):
-    nxn_pub_doi_index = find_header_index(nxn_data, 'DOI')
-    nxn_pre_doi_index = find_header_index(nxn_data, 'bioRxiv DOI')
-    nxn_data_location_index = find_header_index(nxn_data, 'Data location')
-    nxn_title_index = find_header_index(nxn_data, 'Title')
+    nxn_pub_doi_index = nxn_data_header_map['DOI']
+    nxn_pre_doi_index = nxn_data_header_map['bioRxiv DOI']
+    nxn_data_location_index = nxn_data_header_map['Data location']
+    nxn_title_index = nxn_data_header_map['Title']
 
     # Get sets of pre-publication and published doi, from nxn data
     nxn_pub_doi = {data[nxn_pub_doi_index] for data in nxn_data[1:]}
@@ -95,9 +89,9 @@ def filter_nxn_data(new_nxn_data, nxn_data):
     :param full_database:
     :return:
     """
-    organism_index = find_header_index(nxn_data, 'Organism')
-    technique_index = find_header_index(nxn_data, 'Technique')
-    measurement_index = find_header_index(nxn_data, 'Measurement')
+    organism_index = nxn_data_header_map['Organism']
+    technique_index = nxn_data_header_map['Technique']
+    measurement_index = nxn_data_header_map['Measurement']
 
     filtered_table = [row for row in new_nxn_data if row[organism_index].lower() in ['human', 'human, mouse', 'mouse, human']]
     filtered_table = [row for row in filtered_table if
