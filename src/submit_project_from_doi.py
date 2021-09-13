@@ -1,4 +1,3 @@
-
 from ingest.api.ingestapi import IngestApi
 import requests as rq
 import re
@@ -23,10 +22,10 @@ def get_pub_info(article_doi):
         europmc_api = "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=doi:"
         headers = {"Accept": "application/json"}
         request_url = europmc_api + article_doi + "&resultType=core&cursorMark=*&pageSize=25&format=json"
-        print("searching EuroPMC using this url: {}".format(request_url))
+        print("searching EuropePMC using this url: {}".format(request_url))
         response = rq.get(request_url, headers=headers)
         result = response.json()['resultList']['result'][0]
-        print("Publication with title '{}' found in EuroPMC".format(result['title']))
+        print("Publication with title '{}' found in EuropePMC".format(result['title']))
         return result
     except IndexError:
         print("doi not found, check doi")
@@ -126,6 +125,10 @@ def construct_project_json(publication_info, project_schema_url):
         print(e)
         sys.exit()
 
+def get_ingest_schema(ingest_api):
+    return ingest_api.get_schemas(high_level_entity="type",
+                                                   domain_entity="project",
+                                                   concrete_entity="project")[0]['_links']['json-schema']['href']
 
 def main(environment, auth_token, doi):
     pub_info = get_pub_info(doi)
@@ -138,9 +141,7 @@ def main(environment, auth_token, doi):
         env = "dev."
     ingest_api_url = "http://api.ingest.{}archive.data.humancellatlas.org".format(env)
     ingest_api = IngestApi(ingest_api_url)
-    latest_project_schema = ingest_api.get_schemas(high_level_entity="type",
-                                                   domain_entity="project",
-                                                   concrete_entity="project")[0]['_links']['json-schema']['href']
+    latest_project_schema = get_ingest_schema(ingest_api)
     project_json = construct_project_json(pub_info, latest_project_schema)
     submission_headers = {'Authorization': 'Bearer {}'.format(auth_token),
                           'Content-Type': 'application/json'}

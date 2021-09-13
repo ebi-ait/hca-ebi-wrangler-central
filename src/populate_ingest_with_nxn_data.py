@@ -2,13 +2,37 @@ import itertools
 import Levenshtein
 import requests
 import re
+import json
+import submit_project_from_doi
+from ingest.api.ingestapi import IngestApi
 
-INGEST_URL = "https://api.ingest.archive.data.humancellatlas.org/projects/"
+#  to do
+# add checks to code
+# clean up code
+# set up logging
+# make env configurable
+
+# INGEST_URL = "https://api.ingest.archive.data.humancellatlas.org/"
+INGEST_URL = "http://localhost:8080/"
+# INGEST_PROJECT_URL = "https://api.ingest.archive.data.humancellatlas.org/projects/"
+INGEST_PROJECT_URL = "http://localhost:8080/projects"
 NXN_URL = "http://www.nxn.se/single-cell-studies/data.tsv"
+EUROPE_PMC_URL = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
+
+#  taken from https://github.com/ebi-ait/hca-ebi-dev-team/blob/f441b517e4e06ca989f3b1866cbdd1bdb10434f2/scripts/project-catalogue/convert/tracker.py#L7
+ACCESSION_PATTERNS = {
+    "insdc_project_accessions": "^[D|E|S]RP[0-9]+$",
+    "ega_accessions": "EGA[DS][0-9]{11}",
+    "dbgap_accessions": "phs[0-9]{6}(\\.v[0-9])?(\\.p[0-9])?",
+    "geo_series_accessions": "^GSE.*$",
+    "array_express_accessions": "^E-....-.*$",
+    "insdc_study_accessions": "^PRJ[E|N|D][a-zA-Z][0-9]+$",
+    "biostudies_accessions": "^S-[A-Z]{4}[0-9]+$"
+}
 
 def load_ingest_data():
     # get ingest data as json
-    ingest_data = requests.get(INGEST_URL,
+    ingest_data = requests.get(INGEST_PROJECT_URL,
                                params={"page": 0, "size": 1000}).json()["_embedded"]["projects"]
     ingest_data = [data.get("content") for data in ingest_data]
     return ingest_data
@@ -88,11 +112,11 @@ def filter_nxn_data(new_nxn_data, nxn_data_header_map):
     :param full_database:
     :return:
     """
-    organism_index = nxn_data_header_map['Organism']
-    technique_index = nxn_data_header_map['Technique']
-    measurement_index = nxn_data_header_map['Measurement']
+    organism_index = nxn_data_header_map["Organism"]
+    technique_index = nxn_data_header_map["Technique"]
+    measurement_index = nxn_data_header_map["Measurement"]
 
-    filtered_table = [row for row in new_nxn_data if row[organism_index].lower() in ['human', 'human, mouse', 'mouse, human']]
+    filtered_table = [row for row in new_nxn_data if row[organism_index].lower() in ["human", "human, mouse", "mouse, human"]]
     filtered_table = [row for row in filtered_table if
                       any([tech.strip() in ["chromium", "drop-seq", "dronc-seq", "smart-seq2", "smarter", "smarter (C1)"] for tech in row[technique_index].lower().split("&")])]
     filtered_table = [row for row in filtered_table if row[measurement_index].lower() == 'rna-seq']
@@ -100,6 +124,72 @@ def filter_nxn_data(new_nxn_data, nxn_data_header_map):
 
 def get_nxn_data_header_mapping(nxn_data_header):
     return {k: v for v, k in enumerate(nxn_data_header)}
+
+# adapted/taken from: https://github.com/ebi-ait/hca-ebi-dev-team/blob/f441b517e4e06ca989f3b1866cbdd1bdb10434f2/scripts/project-catalogue/convert/tracker.py#L63
+def get_accessions(data_accessions: str) -> dict:
+    accessions = {}
+    for accession in data_accessions.split(','):
+        accession = accession.strip()
+        for key, pattern in ACCESSION_PATTERNS.items():
+            regex = re.compile(pattern)
+            if regex.match(accession):
+                accessions.setdefault(key, []).append(accession)
+    return accessions
+
+def populate_ingest_with_nxn_data(nxn_data, nxn_data_header_map):
+    for data in nxn_data:
+        create_ingest_project(data, nxn_data_header_map)
+        break
+
+def create_ingest_project(nxn_data, nxn_data_header_map):
+    # hca_status, DOI (to complete: publication_title and project description), cell count, species, accessions -->
+
+    #  ask: how do we split accessions (Data location)? --> comma separated string  --> done
+
+    # other compulsory UI fields are:
+    # Organism the samples were generated from / identifyingOrganisms: [] --> done
+    # What organs were used in your experiment? / organ: {}  --> leaving for now
+    # Do the data require controlled access? / dataAccess: {} --> done
+    # What library preparation and/or imaging technique/s did you use to generate the data? / technology : {} --> leaving for now
+    # Date for release of the data for this project / releaseDate  --> ask
+
+    # stuff in the project json structure:
+    # publicationsInfo -- ?? --> we need to be running a periodic script for this --> added here
+    # isInCatalogue --> set to true
+    # "cataloguedDate"  --> gets set in ingest service
+    # "dcpVersion" ?? --> don't need to populate, as per Alegria
+    #  firstDcpVersion ?? --> don't need to populate, as per Alegria
+    # latest_project_schema = ingest_api.get_schemas(high_level_entity="type",
+    #                                                domain_entity="project",
+    #                                                concrete_entity="project")[0]['_links']['json-schema']['href']
+    #  need try block for this
+    publications_info = submit_project_from_doi.get_pub_info("10.1016/j.cell.2017.09.004")
+    # publications_info = submit_project_from_doi.get_pub_info(nxn_data[nxn_data_header_map["DOI"]])
+    ingest_api = IngestApi(INGEST_URL)
+    ingest_schema = submit_project_from_doi.get_ingest_schema(ingest_api)
+    ingest_project_json = submit_project_from_doi.construct_project_json(publications_info, ingest_schema)
+    # decide what to fix releaseDate as
+    ingest_project_json["releaseDate"] = None
+    ingest_project_json["cellCount"] = nxn_data[nxn_data_header_map["Reported cells total"]]
+    ingest_project_json["identifyingOrganisms"] = [organism.strip() for organism in nxn_data[nxn_data_header_map["Organism"]].split(',')]
+    ingest_project_json["dataAccess"] = None
+    ingest_project_json["isInCatalogue"] = True
+    # setting accessions:
+    ingest_project_json["content"].update(get_accessions(nxn_data[nxn_data_header_map['Data location']]))
+    # setting publicationsInfo, so that this works with Project Catalogue
+    publicationInfo = {k: ingest_project_json["content"]["publications"][0][k]
+                       for k in set(ingest_project_json["content"]["publications"][0].keys()) - {"pmid"}}
+    publicationInfo["journalTitle"] = nxn_data[nxn_data_header_map["Journal"]]
+    ingest_project_json["publicationsInfo"] = [publicationInfo]
+    print(ingest_project_json)
+    auth_token = "eyJraWQiOiJyc2ExIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJkN2I1OGNjZmRiYjFmNWVhNjFlMjU5ZmQ1N2M2YjhiZDg2OTc2MDk2QGVsaXhpci1ldXJvcGUub3JnIiwiYXpwIjoiZTIwNDFjMmQtOTQ0OS00NDY4LTg1NmUtZTg0NzExY2ViZDIxIiwic2NvcGUiOiJlbWFpbCBvcGVuaWQgcHJvZmlsZSIsImlzcyI6Imh0dHBzOlwvXC9sb2dpbi5lbGl4aXItY3plY2gub3JnXC9vaWRjXC8iLCJleHAiOjE2MzE1MTg4ODEsImlhdCI6MTYzMTUxNTI4MSwianRpIjoiMzQ0YjQxN2QtMjYxNi00Y2JlLWE1NTctNmExYzU2MjY4NDg3In0.V0CNfCLsr477DTwm2mW5r9wMA101VfRjmxgAVEQsQjIE3xAgWJlbJfWsGUpaNDhGJQDhlH06m8sHLdW3BLf-ojAu6JZo8SRmRx6j6Tm3kz_ifi25cGqVoufbunHBx8UpUpe54OyT_dCM22Y9aUP-OSi0av8qiL2SU_11i2wvpR12u-LUxI6DHUDUohMZBxDVtjnZEmUUg7sPwAkJw4caPWZ8FlBfbIhYzV5muxaVYOn84qms5hRtLv22MgWlVJ_PsArwQxDO5Gv9brk8w_ZDRlGH5oD4BreYu6jT13_5qT1IZoiY70d6sTap1WqWylGEqzEK-RvwixEK_JF7alyqMQ"
+    submission_headers = {'Authorization': 'Bearer {}'.format(auth_token),
+                          'Content-Type': 'application/json'}
+
+    response = requests.post(INGEST_PROJECT_URL,
+                       data=json.dumps(ingest_project_json),
+                       headers=submission_headers)
+    print(response.json()['uuid']['uuid'])
 
 def main():
     print("loading ingest data")
@@ -113,11 +203,11 @@ def main():
     print("comparing and fetching new nxn data")
     new_data = get_new_nxn_data(ingest_data, nxn_data, nxn_data_header_map)
     new_data = filter_nxn_data(new_data, nxn_data_header_map)
+
     print(f"found {len(new_data)} new entries in nxn data")
 
     print("populating ingest with the new entries from nxn data")
-
-
+    populate_ingest_with_nxn_data(new_data, nxn_data_header_map)
 
 if __name__ == '__main__':
     main()
