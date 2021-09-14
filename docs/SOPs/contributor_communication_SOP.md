@@ -212,15 +212,7 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > 
 > 2 Upload your data to our cloud space
 > 
-> To upload your raw data files to our cloud space you will need to follow the instructions here: [How to upload data to an hca upload area with hca-util] (https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) 
-> 
-> The credentials you will need are:
-> 
-> Unique upload area identifier: <upload area uuid>
-> 
-> AWS Access key: <contributor access key> 
-> 
-> AWS Secret key: <contributor secret key>
+> The credentials you will need will be sent separately by a developer in our team.
 > 
 > Please treat these credentials securely and do not share them with anyone outside of those performing the file upload.
 > 
@@ -261,3 +253,28 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > 
 > On behalf of the HCA DCP Data Wrangling Team
 
+
+### Contributor credentials and upload area
+
+> Dear [name of contributor assigned in the ticket],
+>
+> Attached at the end of the email you will find a zip file with the credentials you need to upload your data.
+> 
+> Your upload area ID is: [Generated upload area UUID]
+>
+> The password to open the zip file is: [password]
+>
+> Once decompressed, you will find the credentials you need within the JSON file:
+>
+> AWS Access key: AccessKeyId field
+>
+> Aws Secret Access Key: SecretAccessKey field
+>
+> To upload your raw data files to our cloud space you will need to follow the instructions here: [How to upload data to an hca upload area with hca-util](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) 
+> 
+> Many thanks for your contribution to the Human Cell Atlas
+>
+> [Developer name]
+>
+> On behalf of the HCA DCP Data Wrangling Team
+> View all HCA projects in the [HCA Project Catalogue](https://www.ebi.ac.uk/humancellatlas/project-catalogue)
