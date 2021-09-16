@@ -34,48 +34,39 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 #### Requirements
 
 - Python3
-- Clone the `hca-ebi-wrangler-central` repo if you haven’t already and install the requirements:
+- Clone the `hca-ebi-dev-team` repo if you haven’t already and install the requirements:
    ```
-   git clone https://github.com/ebi-ait/hca-ebi-wrangler-central.git
-   cd hca-ebi-wrangler-central/src/
+   git clone https://github.com/ebi-ait/hca-ebi-dev-team.git
+   cd scripts/populate-ingest/
    pip install -r requirements.txt
    ```
 
 #### nxn.se single cell database
 
-1) Go to the `src/` folder inside your cloned version of the `hca-ebi-wrangler-central` repository
+1) Go to the `scripts/populate-ingest/` folder inside your cloned version of the `hca-ebi-dev-team` repository
 
-2) Run `python3 compare_tracker_with_nxn_sheet.py -c | pbcopy`
+2) Run `populate_ingest_from_nxn.py -tp token_path.txt`
+    
+   The script runs against production environment, in dry-run mode by default
    
-   This runs the comparison part of the script and copies the output to your clipboard. Once complete, paste the results into the leftmost cell under the latest dataset acknowledged. It’s already formatted with the tracker’s format, so it’s just a paste operation
-
-3) Then run `python3 compare_tracker_with_nxn_sheet.py -d`
-
-   This runs the identifying duplication part of the script and outputs it in the `hca-ebi-wrangler-central/src/` folder as  duplicate_entries.txt. 
-
-Find any duplicates within the dataset tracker, and check to see why they were added / who added them. Useful fields to check include primary wrangler, accession, and publication name. If no useful information will be removed, then remove the duplicate.
-
-The script updates itself with a timestamp to keep track of when it was last run. After running, push the changes to the repo:
-```
-git checkout master
-git pull
-git add compare_tracker_with_nxn_sheet.py
-git commit -m "Updated tracker sheet."
-git push origin master
-```
-
-New publications from the single cell database need an additional step of manual curation to ensure certain fields meet the requirements for prioritisation and suitability. 
-
-The following columns need to be curated:
-1. **assay_type**: 10x is usually abbreviated as “Chromium”, independently of the chemistry or end bias. A more specific term is needed.
-1. **health_status**: Need to indicate if normal, not normal or both, and if the 2 latest indicate the phenotype.
-1. **access_permission**: if accession is not from EGA/dbGAP,  usually “open”. Otherwise, “managed” or “mix”
-1. **living_eu_donors**: If mice, indicate `no,none`. If human, looking at the laboratory location should be enough to fill this.
-1. **nucleic_acid_source**: Select one or more of: single cell, single nucleus, bulk
-1. **technical_benchmarking**: If the dataset is a benchmarking experiment, `yes`. Else, `no` 
-1. **broker_to_archives**: Usually `no`, as the data is being extracted from the archives
-1. **broker_to_scea**: Based on SCEA’s guidelines, provide with “yes” or “no”. If you have filled everything else, there should be enough information for you to choose one of the two.
-
+   The `-tp` parameter is for the txt file path with the authentication token.
+   
+   To run against another environment, use the `-u` / `--url` parameter, e.g. against the dev env
+   `populate_ingest_from_nxn.py -tp token.txt -u https://dev.contribute.data.humancellatlas.org`
+   
+   To run in write mode, and write to ingest, use the `w` flag, e.g.
+   `populate_ingest_from_nxn.py -tp token_path.txt -w`
+   
+   This script compares data between ingest and the nxn.se database, using `doi`, `accessions` and `title`
+   and populates ingest with the new entries from nxn.se database.
+   
+   Currently, the script is able to populate the project title, description, publication, funders, contributors,
+   accessions, cell count and species.
+   The technology, organ, and data access fields have to be manually curated and entered.
+   
+   The logs can be found at `scripts/populate-ingest/nxn_db.log`
+   The uuids of the projects created in ingest can be found at `scripts/populate-ingest/added_uuids.txt`.
+   
 #### ENA
 [WIP/Need Dev script to parse ENA API]
 
