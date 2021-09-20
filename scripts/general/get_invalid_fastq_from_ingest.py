@@ -1,6 +1,5 @@
 import requests as rq
 import os
-import sys
 import glob
 import shutil
 import argparse
