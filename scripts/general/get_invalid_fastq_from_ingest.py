@@ -4,12 +4,17 @@ import sys
 import glob
 import shutil
 import argparse
+import re
 
+def submission_uuid_is_valid(uuid):
+    if not re.match("^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", uuid):
+        raise argparse.ArgumentTypeError
+    return uuid
 
 if __name__ == '__main__':
     # Parse arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument('-s', '--submission-uuid', help='Submission UUID', required=True, type=str)
+    parser.add_argument('-s', '--submission-uuid', help='Submission UUID', required=True, type=submission_uuid_is_valid)
     args = parser.parse_args()
     
     # List the names of the fastq files that are invalid given a submission uuid.
