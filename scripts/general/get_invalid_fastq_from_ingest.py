@@ -1,4 +1,11 @@
 import requests as rq
+import os
+import sys
+import glob
+import shutil
+
+# List the names of the fastq files that are invalid given a submission uuid.
+
 uuid = '20f37aaf-caa1-40e6-9123-be6ce8feb2d6'
 url = "https://api.ingest.archive.data.humancellatlas.org/submissionEnvelopes/search/findByUuidUuid?uuid="
 submission = rq.get(f"{url}{uuid}").json()
@@ -12,3 +19,20 @@ files = [file for file in files if file.get('validationErrors')]
 filenames_list = [file['fileName'] for file in files]
 with open('report_files.txt', 'w') as f:
     f.write('\n'.join(filenames_list))
+
+    
+# Move invalid fastq files into a new 'filtered' folder to enable new download of files which were invalid into the current directory.
+# The invalid files in the 'filtered' folder can then be optionally deleted.
+
+os.mkdir('filtered')
+
+with open('report_files.txt') as f:
+    mylist = f.read().splitlines()
+
+fastq = glob.glob("*.fastq.gz")
+
+for line in mylist:
+        if str(line) in fastq:
+                shutil.move(line, os.path.join('filtered',line))
+        else:
+                continue
