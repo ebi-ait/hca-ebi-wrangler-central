@@ -47,12 +47,13 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 
 2) Run `populate_ingest_from_nxn.py -tp token_path.txt`
     
-   The script runs against production environment, in dry-run mode by default
+   The script runs against local host, in dry-run mode by default
    
    The `-tp` parameter is for the txt file path with the authentication token.
    
-   To run against another environment, use the `-u` / `--url` parameter, e.g. against the dev env
-   `populate_ingest_from_nxn.py -tp token.txt -u https://dev.contribute.data.humancellatlas.org`
+   To run against another environment, specify the value of the environment variable `INGEST_API_URL`, 
+   for e.g. against the dev env:
+   `export INGEST_API_URL=https://dev.contribute.data.humancellatlas.org` 
    
    To run in write mode, and write to ingest, use the `w` flag, e.g.
    `populate_ingest_from_nxn.py -tp token_path.txt -w`
