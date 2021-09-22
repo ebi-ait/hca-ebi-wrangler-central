@@ -17,8 +17,8 @@ parent: SOPs
 ## Purpose of this SOP
 
 This document describes the process of prioritising schema updates. It focuses on the early stages of schema updates:
-Discovery and prioritisation of next updates
-Responsibilities
+- Discovery and prioritisation of next updates
+- Responsibilities
 This document will not cover the steps required to make an actual schema change. Those steps are covered in the following documents:
 - [DCP2 specs - Changing the metadata schema](https://github.com/HumanCellAtlas/dcp2/blob/main/docs/dcp2_system_design.rst#1changing-the-hca-metadata-schema): This document describes the procedure to follow when creating a PR to change the schema
 - [Metadata Schema repository - commiters](https://github.com/HumanCellAtlas/metadata-schema/blob/master/docs/committers.md) : This document describes how to create a schema update PR.
