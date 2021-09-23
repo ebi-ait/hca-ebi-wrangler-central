@@ -42,11 +42,13 @@ It is easiest/most productive to apply this to a list of datasets that have alre
 
 ## Assess data availability
 
-Check the type of consent: if the data is open, this is suitable. If the data is managed access, has living European donors, unavailable or cannot be found, the dataset can now be included if there are publically sharable contributor generated matrices. If there is no sharable data the dataset should be down prioritised or possibly considered inelibible.
+Check the type of consent: if the data is open, this is suitable. If the data is managed access, has living European donors, unavailable or cannot be found, the dataset can now be included if there are publically sharable contributor generated matrices. If there is no sharable data the dataset should be down prioritised or possibly considered ineligible.
 
-Check that the sequence data is available (similar to the above). If the sequence data is fully available in fastq format, this is suitable. If the sequence data cannot be found or is not in fastq format, then the dataset can now be included if there are publically sharable contributor generated matrices. If there is no sharable data the dataset should be down prioritised or possibly considered inelibible.
+Check that the sequence data is available (similar to the above). If the sequence data is fully available in fastq format, this is suitable. If the sequence data cannot be found or is not in fastq format, then the dataset can still be included if there are publically sharable contributor generated matrices. If there is no sharable data in the form of fastq files or a gene expression matrix, the dataset should be down prioritised or possibly considered ineligible.
 
 Check that the sequence data is available in a valid format: i.e. fastq format and both Read1 and Read2 are available.
+
+Check if the data requires demultiplexing. If the experimental design involves multiple samples which are pooled before library preparation, the resulting fastq files should be demultiplexed by the sample barcode before uploaded to ingest. If the samples are not able to be be demultiplexed, for example, if samples are not barcoded before being pooled, then the raw fastq file data is not suitable. However, a gene expression matrix can still be uploaded in this case.
 
 ## Assess Technology
 
