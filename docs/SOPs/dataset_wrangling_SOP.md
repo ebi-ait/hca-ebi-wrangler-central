@@ -209,7 +209,7 @@ Send these two sets of information separately to the contributor to minimise the
 * **Contributor AWS Access keys** are not considered secure and can be sent in the main `wrangler-team` email thread, usually in the same email with the first spreadsheet and [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
 * **Upload area UUID** is a secure piece of information that should be shared in a separate email with only the contributor and primary wrangler 
 
-_**working with multiplexed data.**_ 
+_**Working with multiplexed data**_ 
 
 If the dataset is multiplexed, for example, if distinct samples have been pooled before library preparation and sequencing, then the fastq data must be demultiplexed by the sample barcode before being uploaded to ingest. The pipelines team works on the assumption that there is 1 input sample per run and it is up to us to demultiplex multiplexed data.
 
