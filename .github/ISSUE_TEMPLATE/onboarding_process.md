@@ -14,11 +14,11 @@ Begin with a introductory tasks and introduction. This could be something like:
 -->
 Welcome to the HCA DCP! We are pleased to introduce you to the data wrangling team. Before beginning to work by yourself, you'll be asked to complete a set of tasks and meetings. These will guide you through both the general and specifics of your role, and it will help us make sure you understand how we work in the team. Your introductory tasks are:
 
-- [ ] Read the Onboarding doc.
-- [ ] Convert this issue into an epic.
-- [ ] Create an issue for each task and link it to this epic.
-- [ ] Clone all the basic repos to your computer (look at the introductory document (On hold) for more information)
-- [ ] Locate all the metadata schemas and documents regarding SOPs. 
+- [ ] Read the [onboarding document](https://ebi-ait.github.io/hca-ebi-wrangler-central/ebi-wrangler-onboarding.html).
+- [ ] Move this ticket from "to do" to "in progress" Pipeline in ZenHub.
+- [ ] Create an issue for each [general task](#general-tasks) and link it to this epic.
+- [ ] Clone all the basic repos to your computer (look at the [onboarding document](https://ebi-ait.github.io/hca-ebi-wrangler-central/ebi-wrangler-onboarding.html) for more information)
+- [ ] Locate all the documents regarding SOPs. You don't need to read them for now, but make sure to know where they are (Via notes, bookmarking, etc)
 
 <!--For the wrangler: Feel free to add more tasks if necessary.-->
 
@@ -28,11 +28,8 @@ Welcome to the HCA DCP! We are pleased to introduce you to the data wrangling te
 <!-- Now, the general wrangling tasks should go here. The tasks suggested below can be considered  as the most general and "applicable" to all new wranglers -->
 
 These are more wrangling-specific tasks. They will provide you with the basic knowledge necessary to perform your future tasks in the team. These include:
-1. Review the DCP-wide [onboarding material](https://github.com/HumanCellAtlas/wiki/wiki/Engineering-Onboarding).
 1. Watch HCA Metadata Standard 101 [video](https://drive.google.com/open?id=12hGA3_ARTKl-W0JxMKm8fHqvx31L3Ohf) ([slides](https://drive.google.com/open?id=1CJZfFpVFPolYPf30NSNn3A4CPVHmbfbaHUKlzCqBz_c)).
-1. Familiarise yourself with the projects and Standard Operating Procedures (SOPs) inside the hca-wrangling repo.
-1. Familiarise yourself with the graph structure and the model that is being used.
-1. Get familiarised with the [spreadsheet generator](https://github.com/HumanCellAtlas/schema-template-generator).
+1. Familiarise yourself with the projects and Standard Operating Procedures (SOPs) inside the [hca-ebi-wrangler-central repository](https://github.com/ebi-ait/hca-ebi-wrangler-central/)
 1. Read up on FAIR Data Principles
     - [The FAIR Guiding Principles for scientific data management and stewardship (Wilkinson 2016)](https://www.nature.com/articles/sdata201618)
     - [A design framework and exemplar metrics for FAIRness (Wilkinson 2018)](https://www.nature.com/articles/sdata2018118)
@@ -61,15 +58,15 @@ These meetings will help you understand some aspects of the work here, as well a
 <!-- Onboard meetings should be listed here. A suggestion on the order and the meetings is below. -->
 1. Introduction to agile: The manifesto and basic concepts. Project Manager (PM), Product Owner (PO), sprint, standup, tickets and story points.
 1. Computational environments: DCP's Github workflow, recommended software (PyCharm, sublime, google sync, notes, postman).
-1. Developmental environments: General release cycles and release coordination.
+1. Developmental environments: Development, Staging, Production.
 1. Metadata repository 1: Entities structure: core, type and module. Graphs as a tool to represent a project.
 1. Metadata repository 2: Introduction to JSON, schema evolution and versioning.
 1. Technologies: 10x, SMART-Seq2, Imaging transcriptomics, CITE-Seq, ATAC-Seq <,whatever technology we have implemented.>
 1. Wrangling repository: Tools, vignettes, tickets, MarkDown documents and processes.
 1. Spreadsheet generator: The spreadsheets and the contributor form. General tour and how to generate one.
 1. Linked knowledge: Quick introduction to ontologies.
-1. Boxes: DCP and organization.
-1. Ingest box: Overview of ingest infrastructure.
+1. Components: DCP and organization.
+1. Ingest component: Overview of ingest infrastructure.
 
 <!--
 But it is as flexible as the wrangling team wants. Maybe not all the meetings can be done, depends on the actual people in the team. 
