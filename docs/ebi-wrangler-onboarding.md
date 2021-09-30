@@ -20,7 +20,7 @@ Welcome to the EBI HCA data wrangling & metadata team! Here, you will find some 
     + [E-mail](#e-mail)
     + [VPN](#vpn)
     + [Github](#github)
-    + [Useful Bookmarks] (#useful-bookmarks)
+    + [Useful Bookmarks](#useful-bookmarks)
     + [Browser plug-ins](#browser-plug-ins)
     + [Miscellanea](#miscellanea)
 
