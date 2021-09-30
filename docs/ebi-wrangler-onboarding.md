@@ -20,6 +20,7 @@ Welcome to the EBI HCA data wrangling & metadata team! Here, you will find some 
     + [E-mail](#e-mail)
     + [VPN](#vpn)
     + [Github](#github)
+    + [Useful Bookmarks] (#useful-bookmarks)
     + [Browser plug-ins](#browser-plug-ins)
     + [Miscellanea](#miscellanea)
 
@@ -269,6 +270,25 @@ Repositories you will mainly use:
 
 - [`HumanCellAtlas/dcp-community`](https://github.com/HumanCellAtlas/dcp-community): This is where a lot of the documentation for how the DCP works as a whole lives - most is now out of date. 
   - **Charters**: It would be useful to read through the [Metadata Schema](https://github.com/HumanCellAtlas/dcp-community/blob/master/charters/MetadataSchema/charter.md) and [Ingestion Service](https://github.com/HumanCellAtlas/dcp-community/blob/master/charters/IngestionService/charter.md) charters as Data Wrangling forms part of both of these. 
+
+### Useful Bookmarks 
+#### General 
+- [`Timesheet Guidance`](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Timesheet+Guidance) 
+- [`Holiday Requests, working from home and sick leave`](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Holiday+requests%2C+working+from+home+and+sick+leave) 
+- [`Weekly Activity Reports`](https://www.ebi.ac.uk/seqdb/confluence/pages/viewpage.action?spaceKey=HCA&title=Weekly+Activity+Reports) 
+- [`Operations Planning Notes`](https://docs.google.com/document/d/1O2nCBtnFY-AWh_1_s188xLTyvaZpwbUUp3Pvs_aV_jc/edit#heading=h.usaswk9ioim4) 
+
+#### Wrangling
+- [`Dataset Wrangling Zenhub Board`](https://app.zenhub.com/workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) 
+- [`HCA Wrangling Datasets SOP`](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_wrangling_SOP.html) 
+- [`Dataset Brokering Folder`](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA) 
+- [`Single Cell Genomics Library Structure`](https://teichlab.github.io/scg_lib_structs/) 
+- [`Assay Cheat Sheet`](https://docs.google.com/spreadsheets/d/1H9i1BK-VOXtMgGVv8LJZZZ9rbTG4XCQTBRxErdqMvWk/edit#gid=0) 
+- [`Using hca-util`](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util) 
+- [`HCA Import Request for Production Releases`](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/viewform?gxids=7628) 
+- [`Ontology Lookup Service`](https://ontology.archive.data.humancellatlas.org/index) 
+
+
 
 ### Browser plug-ins
 
