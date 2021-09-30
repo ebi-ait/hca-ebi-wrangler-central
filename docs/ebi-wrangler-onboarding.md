@@ -32,7 +32,7 @@ The [EBI Intranet](https://tsc.ebi.ac.uk/) is a great resource and the search fu
 
 ### EBI Human Cell Atlas team processes and procedures
 
-Our main source for general info about our processes at the EBI branch of the HCA is the [confluence website](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Human+Cell+Atlas+Home), take all information found here with a grain of salt because much of it is outdated. You will need editing privileges to the wiki in order to fill out your [Weekly Activity Report](https://www.ebi.ac.uk/seqdb/confluence/pages/viewpage.action?spaceKey=HCA&title=Weekly+Activity+Reports) so if you don't see an `edit` button at the top right of the page then ask @oihane to give you the appropriate access. It is a good idea to have a brief look over the various pages that exist on confluence as you will most likely need to refer back to them later.
+Our main source for general info about our processes at the EBI branch of the HCA is the [confluence website](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Human+Cell+Atlas+Home), take all information found here with a grain of salt because much of it is outdated. You will need editing privileges to the wiki in order to fill out your [Weekly Activity Report](https://www.ebi.ac.uk/seqdb/confluence/pages/viewpage.action?spaceKey=HCA&title=Weekly+Activity+Reports) so if you don't see an `edit` button at the top right of the page then ask Oihane to give you the appropriate access. It is a good idea to have a brief look over the various pages that exist on confluence as you will most likely need to refer back to them later.
 
 In particular take note of the following pages:
 - [Holiday request and sick leave procedure](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Holiday+requests%2C+working+from+home+and+sick+leave)
@@ -102,9 +102,8 @@ This is a living document we want to make it better with every person that joins
 
 ### Calendar
 You can either set it up on your favourite calendar app or use google calendar. Most of the wranglers use google calendar, but it’s your decision to make. Thunderbird has a nifty Google Calendar extension which might be of interest. Once set up, you will notice that the events represented inside have different colours which are customisable by you. The Calendars that you should have access to are:
-- [**HCA google calendar**](https://calendar.google.com/calendar?cid=ZWJpLmFjLnVrXzhzbm5la2c1b3Yxcm81ZW5vYXY2M3ZmbDZjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This is where anyone working on the HCA at EBI records events that may affect the EBI team (need to check this), they may or may not be relevant to wranglers. This calendar is managed by Oihane
+- [**HCA google calendar**](https://calendar.google.com/calendar?cid=ZWJpLmFjLnVrXzhzbm5la2c1b3Yxcm81ZW5vYXY2M3ZmbDZjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This is where anyone working on the HCA at EBI records events that may affect the EBI team, they may or may not be relevant to wranglers. This calendar is managed by Oihane
 - [**DCP Meeting calendar**](https://calendar.google.com/calendar?cid=YnJvYWRpbnN0aXR1dGUub3JnXzNrMWxzaW4wcGI0dXRnZzhkODdwbG5oY2M4QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This is where DCP-wide meetings are scheduled, not all meetings are relevant to wranglers. It includes meetings that could be across multiple sites UCSC/Broad/EBI/CZI/Stanford
-- [**HCA-EBI BlueJeans Calendar**](https://calendar.google.com/calendar/b/1?cid=ZWJpLmFjLnVrXzl1NG1tdmFudmcxazBmNmNwOTVzMGlsZXZzQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This lets you know who is using the BlueJeans account when, more info [here](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/HCA+BlueJeans+account).
 - [**AIT Calendar**](https://calendar.google.com/calendar?cid=ZWJpLmFjLnVrX2luOHQzc2IwZTRlbGtoc21xaGkyaXY4cDgwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This calendar is where the AIT team record AIT group meetings, vacation and sick leave, work from home (WFH) days and training.
 
 If you can't see any of the above calendars, request access from Laura
@@ -118,9 +117,8 @@ Key meetings that wranglers are summarised in the table below:
 
 | Meeting                              | Day       | Time   | Frequency             | Notes                                |
 |--------------------------------------|-----------|--------|-----------------------|--------------------------------------|
-| Metadata community call              | Monday    | 4pm    | First monday Monthly  | Telecon                              |
-| Operations planning/review           | Wednesday | 11am   | Weekly                | |
-| Dev sprint kick off meeting          | Wednesday | 9.30am | Bi-weekly             | At start of EBI sprint,only dev wrangler needs to attend |
+| Operations planning/review           | Wednesday | 9.30am | Weekly                | |
+| Dev sprint kick off meeting          | Wednesday | 10.30am| Bi-weekly             | At start of EBI sprint,only dev wrangler needs to attend |
 | EBI-DCP Sprint Planning & Demo       | Tuesday   | 2pm    | Bi-weekly             | 1 hour, telecon, at end of a sprint  |
 | EBI DCP Sprint Retro                 | Tuesday   | 4pm    | Bi-weekly             | 1 hour, telecon                      |
 | User stories for next sprint         | Monday    | 10am   | Bi-weekly             | 1 hour, monday before end of EBI sprint |
@@ -241,7 +239,10 @@ The address of the EC2 is `tool.archive.data.humancellatlas.org`
 
 #### EBI compute resources
 
-We also have access to various EBI compute resources including a cluster. TODO: add links and more info]
+We also have access to various EBI compute resources including a cluster. 
+<!-- 
+TODO: add links and more info
+-->
 
 ### Github
 
