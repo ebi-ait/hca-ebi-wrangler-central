@@ -45,7 +45,7 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 
 1) Go to the `scripts/populate-ingest/` folder inside your cloned version of the `hca-ebi-dev-team` repository
 
-2) Run `populate_ingest_from_nxn.py -tp token_path.txt`
+2) Run `python -m populate_ingest.populate_ingest_from_nxn -tp <path to token file>`
     
    The script runs against local host, in dry-run mode by default
    
