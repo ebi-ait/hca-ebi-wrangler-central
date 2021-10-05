@@ -43,30 +43,36 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 
 #### nxn.se single cell database
 
-1) Go to the `scripts/populate-ingest/` folder inside your cloned version of the `hca-ebi-dev-team` repository
+1) Go to the `scripts/populate_ingest/` folder inside your cloned version of the `hca-ebi-dev-team` repository
 
-2) Run `python -m populate_ingest.populate_ingest_from_nxn -tp <path to token file>`
+2) Create a `.env` file in `scripts/populate_ingest/`. Specify the relevant ingest api url and ingest api token in
+this file. For example, to run against dev:
+
+```
+    INGEST_API_URL= https://api.ingest.dev.archive.data.humancellatlas.org/
+    INGEST_API_TOKEN=<dev authentication token>
+```
+
+By default, the script runs against local host
+
+2) Run `python -m populate_ingest.populate_ingest_from_nxn`
     
    The script runs against local host, in dry-run mode by default
    
-   The `-tp` parameter is for the txt file path with the authentication token.
-   
-   To run against another environment, specify the value of the environment variable `INGEST_API_URL`, 
-   for e.g. against the dev env:
-   `export INGEST_API_URL=https://dev.contribute.data.humancellatlas.org` 
-   
    To run in write mode, and write to ingest, use the `w` flag, e.g.
-   `populate_ingest_from_nxn.py -tp token_path.txt -w`
+   `python -m populate_ingest.populate_ingest_from_nxn.py -w`
    
-   This script compares data between ingest and the nxn.se database, using `doi`, `accessions` and `title`
-   and populates ingest with the new entries from nxn.se database.
+   This script compares data between ingest and the nxn.se database, using `doi`, `accessions` and `title`, filters
+   data using eligible `organisms`, `technologies` and `measurements` and populates ingest with the new entries
+   from nxn.se database.
    
    Currently, the script is able to populate the project title, description, publication, funders, contributors,
    accessions, cell count and species.
    The technology, organ, and data access fields have to be manually curated and entered.
    
    The logs can be found at `scripts/populate-ingest/nxn_db.log`
-   The uuids of the projects created in ingest can be found at `scripts/populate-ingest/added_uuids.txt`.
+   The uuids of the projects created in ingest can be found at `scripts/populate_ingest/added_uuids.txt`.
+   The projects that would get created in ingest can be found at `scripts/populate_ingest/projects_to_be_added.json`
    
 #### ENA
 [WIP/Need Dev script to parse ENA API]
