@@ -37,31 +37,14 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 - Clone the `hca-ebi-dev-team` repo if you haven’t already and install the requirements:
    ```
    git clone https://github.com/ebi-ait/hca-ebi-dev-team.git
-   cd scripts/populate-ingest/
+   cd scripts/populate_ingest/
    pip install -r requirements.txt
    ```
 
-#### nxn.se single cell database
+#### Populate Ingest from nxn.se single cell database
 
-1) Go to the `scripts/populate_ingest/` folder inside your cloned version of the `hca-ebi-dev-team` repository
+##### Scope of the script
 
-2) Create a `.env` file in `scripts/populate_ingest/`. Specify the relevant ingest api url and ingest api token in
-this file. For example, to run against dev:
-
-```
-    INGEST_API_URL= https://api.ingest.dev.archive.data.humancellatlas.org/
-    INGEST_API_TOKEN=<dev authentication token>
-```
-
-By default, the script runs against local host
-
-2) Run `python -m populate_ingest.populate_ingest_from_nxn`
-    
-   The script runs against local host, in dry-run mode by default
-   
-   To run in write mode, and write to ingest, use the `w` flag, e.g.
-   `python -m populate_ingest.populate_ingest_from_nxn.py -w`
-   
    This script compares data between ingest and the nxn.se database, using `doi`, `accessions` and `title`, filters
    data using eligible `organisms`, `technologies` and `measurements` and populates ingest with the new entries
    from nxn.se database.
@@ -69,10 +52,37 @@ By default, the script runs against local host
    Currently, the script is able to populate the project title, description, publication, funders, contributors,
    accessions, cell count and species.
    The technology, organ, and data access fields have to be manually curated and entered.
+
+##### Running the script
+
+1) Go to the `scripts/populate_ingest/` folder inside your cloned version of the `hca-ebi-dev-team` repository
+
+2) Create a `.env` file in `scripts/populate_ingest/`. Specify the relevant ingest api url and ingest api token in
+this file. For example, to run against dev:
+
+    ```
+        INGEST_API_URL= https://api.ingest.dev.archive.data.humancellatlas.org
+        INGEST_API_TOKEN=<dev authentication token>
+    ```
+    By default, the script runs against local host
+
+3) Run `python -m populate_ingest.populate_ingest_from_nxn`
+    
+   The script runs against local host, in dry-run mode by default
    
-   The logs can be found at `scripts/populate-ingest/nxn_db.log`
+   To run in write mode, and write to ingest, use the `w` flag, e.g.
+   `python -m populate_ingest.populate_ingest_from_nxn.py -w`
+   
+   
+   
+   The logs can be found at `scripts/populate_ingest/nxn_db.log`
+   
    The uuids of the projects created in ingest can be found at `scripts/populate_ingest/added_uuids.txt`.
-   The projects that would get created in ingest can be found at `scripts/populate_ingest/projects_to_be_added.json`
+   
+   The projects that would get created in ingest can be found at `scripts/populate_ingest/projects_to_be_added.json`; 
+   this is helpful for checking which projects would get created in ingest, when running the script in dry-run mode
+   
+   The slice of nxn_db with new, valid projects is also exported as `scripts/populate_ingest/new_nxn_data.tsv`
    
 #### ENA
 [WIP/Need Dev script to parse ENA API]
