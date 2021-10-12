@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Data retraction SOP
+title: GDPR_Guidelines
 parent: SOPs
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
@@ -19,4 +19,4 @@ parent: SOPs
 This document will serve to display our guidelines for GDPR and data protection restrictions when wrangling. 
 
 
-![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/GDPR_screenshots/GDPR_Flowchart.png?raw=true)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/GDPR_screenshots/GDPR_Flowchart.jpg?raw=true)
