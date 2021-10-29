@@ -52,8 +52,13 @@ def ena_dict(data):
     """
     ena_run_id = {}
     for i in range(len(data)):
-        ena_run_id[data[i]['experiment_accession']] = [
-            i, len(data[i]['fastq_ftp'].split(';'))]
+        if data[i]['experiment_accession'] in ena_run_id:
+            ena_run_id[data[i]['experiment_accession']][0].append(i)
+            ena_run_id[data[i]['experiment_accession']][1].append(
+                len(data[i]['fastq_ftp'].split(';')))
+        else:
+            ena_run_id[data[i]['experiment_accession']] = [
+                [i], [len(data[i]['fastq_ftp'].split(';'))]]
 
     return ena_run_id
 
@@ -77,24 +82,26 @@ def fill_spreadsheet(ena_run_id, data, new_df, original_df):
         new_df (pandas.dataframe): 'Sequence file' sheet updated
     """
     for key in ena_run_id.keys():
-        if ena_run_id[key][1] == 1:
-            j = ena_run_id[key][0]
-            new_df = new_df.append(
-                original_df.loc[original_df['INSDC EXPERIMENT ACCESSION (Required)'] == key])
-            new_df.loc[new_df.index[-1],
-                       'FILE NAME (Required)'] = data[j]['fastq_ftp'].split('/')[-1]
-            new_df.reset_index(drop=True, inplace=True)
-        elif ena_run_id[key][1] > 1:
-            j = ena_run_id[key][0]
-            for i in range(0, ena_run_id[key][1]):
+        for k in range(len(ena_run_id[key][0])):
+            if ena_run_id[key][1][k] == 1:
+                j = ena_run_id[key][0][k]
                 new_df = new_df.append(
                     original_df.loc[original_df['INSDC EXPERIMENT ACCESSION (Required)'] == key])
+                new_df.loc[new_df.index[-1],
+                       'FILE NAME (Required)'] = data[j]['fastq_ftp'].split('/')[-1]
                 new_df.reset_index(drop=True, inplace=True)
-                new_df.loc[new_df.index[-1], 'FILE NAME (Required)'] = data[j]['fastq_ftp'].split(';')[
-                    i].split('/')[-1]
-                new_df.reset_index(drop=True, inplace=True)
-        else:  # if the number of fastq files is 0
-            print('No fastq files for run accession: ' + key)
+
+            elif ena_run_id[key][1][k] > 1:
+                j = ena_run_id[key][0][k]
+                for i in range(0, ena_run_id[key][1][k]):
+                    new_df = new_df.append(
+                        original_df.loc[original_df['INSDC EXPERIMENT ACCESSION (Required)'] == key])
+                    new_df.reset_index(drop=True, inplace=True)
+                    new_df.loc[new_df.index[-1], 'FILE NAME (Required)'] = data[j]['fastq_ftp'].split(';')[
+                        i].split('/')[-1]
+                    new_df.reset_index(drop=True, inplace=True)
+            else:  # if the number of fastq files is 0
+                print('No fastq files for run accession: ' + key)
 
     return new_df
 
@@ -109,7 +116,7 @@ def input_cell_suspension(original_df, suspension_worksheet):
     Args:
         original_df (pandas.dataframe): Cell suspension sheet as pandas
                                         dataframe
-        suspension_worksheet (str): Cell suspension sheet as pandas
+        suspension_worksheet (pandas.dataframe): Cell suspension sheet as pandas
                                     dataframe
 
     Returns:
