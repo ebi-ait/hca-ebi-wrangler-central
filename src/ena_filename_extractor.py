@@ -120,7 +120,7 @@ def input_cell_suspension(original_df, suspension_worksheet):
 
     for i in original_df.index:
         original_df.loc[i, 'cell_suspension.biomaterial_core.biomaterial_id'] = \
-            suspension_worksheet.loc[suspension_worksheet['INSDC EXPERIMENT ACCESSION (Required)']
+            suspension_worksheet.loc[suspension_worksheet['process.insdc_experiment.insdc_experiment_accession']
             == original_df.loc[i, 'process.insdc_experiment.insdc_experiment_accession'],
                                      'cell_suspension.biomaterial_core.biomaterial_id'].values[0]
 
