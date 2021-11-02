@@ -66,7 +66,7 @@ def ena_dict(ena_report):
     return ena_run_id
 
 
-def fill_spreadsheet(ena_run_id, data, new_df, original_df):
+def fill_spreadsheet(ena_run_id, ena_report, new_df, original_df):
     """ Fill the dataframe with the corresponding name of files
 
     Add row by row the values in the same order as in the
@@ -76,7 +76,7 @@ def fill_spreadsheet(ena_run_id, data, new_df, original_df):
 
     Args:
         ena_run_id (dict): dictionary created by ena_dict
-        data (list): list of dictionaries from a JSON file
+        ena_report (list): list of dictionaries from a JSON file
         new_df (pandas.dataframe): 'Sequence file' sheet as pandas dataframe
         original_df (pandas.dataframe): Wrangling spreadsheet as pandas
                                         dataframe, sequence file sheet
@@ -84,26 +84,18 @@ def fill_spreadsheet(ena_run_id, data, new_df, original_df):
     Returns:
         new_df (pandas.dataframe): 'Sequence file' sheet updated
     """
-    for key in ena_run_id.keys():
-        for k in range(len(ena_run_id[key][0])):
-            if ena_run_id[key][1][k] == 1:
-                j = ena_run_id[key][0][k]
+    for key, values in ena_run_id.items():
+        for i in range(len(values[0])):
+            index_report = values[0][i]
+            fastq_number = values[1][i]
+            for j in range(fastq_number):
                 new_df = new_df.append(
-                    original_df.loc[original_df['INSDC EXPERIMENT ACCESSION (Required)'] == key])
-                new_df.loc[new_df.index[-1],
-                       'FILE NAME (Required)'] = data[j]['fastq_ftp'].split('/')[-1]
+                        original_df.loc[original_df['process.insdc_experiment.insdc_experiment_accession'] == key])
                 new_df.reset_index(drop=True, inplace=True)
-
-            elif ena_run_id[key][1][k] > 1:
-                j = ena_run_id[key][0][k]
-                for i in range(0, ena_run_id[key][1][k]):
-                    new_df = new_df.append(
-                        original_df.loc[original_df['INSDC EXPERIMENT ACCESSION (Required)'] == key])
-                    new_df.reset_index(drop=True, inplace=True)
-                    new_df.loc[new_df.index[-1], 'FILE NAME (Required)'] = data[j]['fastq_ftp'].split(';')[
-                        i].split('/')[-1]
-                    new_df.reset_index(drop=True, inplace=True)
-            else:  # if the number of fastq files is 0
+                new_df.loc[new_df.index[-1], 'sequence_file.file_core.file_name'] = \
+                    ena_report[index_report]['fastq_ftp'].split(';')[j].split('/')[-1]
+                new_df.reset_index(drop=True, inplace=True)
+            if not fastq_number:  # if the number of fastq files is 0
                 print('No fastq files for run accession: ' + key)
 
     return new_df
@@ -127,8 +119,10 @@ def input_cell_suspension(original_df, suspension_worksheet):
     """
 
     for i in original_df.index:
-        original_df.loc[i, 'INPUT CELL SUSPENSION ID (Required)'] = suspension_worksheet.loc[suspension_worksheet['INSDC EXPERIMENT ACCESSION (Required)']
-                                                                                             == original_df.loc[i, 'INSDC EXPERIMENT ACCESSION (Required)'], 'CELL SUSPENSION ID (Required)'].values[0]
+        original_df.loc[i, 'cell_suspension.biomaterial_core.biomaterial_id'] = \
+            suspension_worksheet.loc[suspension_worksheet['INSDC EXPERIMENT ACCESSION (Required)']
+            == original_df.loc[i, 'process.insdc_experiment.insdc_experiment_accession'],
+                                     'cell_suspension.biomaterial_core.biomaterial_id'].values[0]
 
     return original_df
 
@@ -170,7 +164,7 @@ def main(args):
 
     # Read the spreadsheet as a pandas dataframe
     pandas_worksheet = pd.read_excel(
-        io=args.spreadsheet, sheet_name='Sequence file')
+        io=args.spreadsheet, sheet_name='Sequence file', header=3)
     # Drop the first 4 rows, which are not useful
     pandas_worksheet.drop(pandas_worksheet.index[:4], inplace=True)
     # Create a new empty dataframe with the same column names as the previous one
@@ -180,7 +174,7 @@ def main(args):
     df = fill_spreadsheet(ena_run_id, ena_report, df, pandas_worksheet)
 
     # If needed, fill the dataframe with the corresponding cell suspension ID
-    # and rorder the spreadsheet to match the order of Cell suspension IDs
+    # and reorder the spreadsheet to match the order of Cell suspension IDs
     # at the cell suspension sheet
     if args.cell_suspension == True:
         suspension_worksheet = pd.read_excel(
