@@ -31,12 +31,14 @@ functions:
 
 import json
 import argparse
+from os.path import isfile
+
 from openpyxl import load_workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
 import pandas as pd
 
 
-def ena_dict(data):
+def ena_dict(ena_report):
     """ Create a dictionary with the fastq files per accession.
 
     Creates a dictionary where the key is the run accession and
@@ -44,21 +46,22 @@ def ena_dict(data):
     JSON structure, and the number of fastq files associated to it
 
     Args:
-        data (list): list of dictionaries from a JSON file
+        ena_report (list): list of dictionaries from a JSON file
 
     Returns:
         ena_run_id (dict): dictionary with accessions as keys
                            and fastq files as values 
     """
     ena_run_id = {}
-    for i in range(len(data)):
-        if data[i]['experiment_accession'] in ena_run_id:
-            ena_run_id[data[i]['experiment_accession']][0].append(i)
-            ena_run_id[data[i]['experiment_accession']][1].append(
-                len(data[i]['fastq_ftp'].split(';')))
-        else:
-            ena_run_id[data[i]['experiment_accession']] = [
-                [i], [len(data[i]['fastq_ftp'].split(';'))]]
+    for i, run in enumerate(ena_report):
+        if not run.get('experiment_accession', '') in ena_run_id:
+            ena_run_id[run.get('experiment_accession', '')] = [[], []]
+        ena_run_id[run.get('experiment_accession')][0].append(i)
+        ena_run_id[run.get('experiment_accession')][1].append(
+            len(run.get('fastq_ftp', '').split(';')))
+
+    if "" in ena_run_id:
+        del ena_run_id[""]
 
     return ena_run_id
 
@@ -160,10 +163,10 @@ def reorder_sheet(source_sheet, source_column, destination_sheet, destination_co
 def main(args):
     # Load the JSON file
     with open(args.input) as json_file:
-        data = json.load(json_file)
+        ena_report = json.load(json_file)
 
     # Create the dictionary
-    ena_run_id = ena_dict(data)
+    ena_run_id = ena_dict(ena_report)
 
     # Read the spreadsheet as a pandas dataframe
     pandas_worksheet = pd.read_excel(
@@ -174,7 +177,7 @@ def main(args):
     df = pd.DataFrame(columns=pandas_worksheet.columns.values.tolist())
 
     # Fill the dataframe with the corresponding name of files
-    df = fill_spreadsheet(ena_run_id, data, df, pandas_worksheet)
+    df = fill_spreadsheet(ena_run_id, ena_report, df, pandas_worksheet)
 
     # If needed, fill the dataframe with the corresponding cell suspension ID
     # and rorder the spreadsheet to match the order of Cell suspension IDs
@@ -212,7 +215,8 @@ def main(args):
 #######################
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description='''Convert ENA JSON to spreadsheet. This script takes as input a
+        description='''\
+        Convert ENA JSON to spreadsheet. This script takes as input a
         JSON file dowloaded from ENA with information about the experiment and the
         ftp links to dowload the files. It also needs as input/output a wrangling
         spreadsheet with at least one sheet named as "Sequence file". It will match
@@ -224,9 +228,9 @@ if __name__ == '__main__':
         3) Save the updated spreadsheet
         ''')
     parser.add_argument(
-        '-i', '--input', help='Input JSON file', type=str, required=True)
+        '-i', '--input', help='Input JSON file', type=isfile, required=True)
     parser.add_argument(
-        '-s', '--spreadsheet', help='Wrangling spreadsheet, must be xlsx', type=str, required=True)
+        '-s', '--spreadsheet', help='Wrangling spreadsheet, must be xlsx', type=isfile, required=True)
     parser.add_argument(
         '-o', '--output', help='Alternative output location, including xlsx filename', type=str, required=False)
     parser.add_argument(
