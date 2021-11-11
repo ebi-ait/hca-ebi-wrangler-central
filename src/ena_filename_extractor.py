@@ -90,7 +90,7 @@ def fill_spreadsheet(ena_run_id, ena_report, new_df, original_df):
             fastq_number = values[1][i]
             for j in range(fastq_number):
                 new_df = new_df.append(
-                        original_df.loc[original_df['process.insdc_experiment.insdc_experiment_accession'] == key])
+                        original_df.loc[original_df['process.insdc_experiment.insdc_experiment_accession'] == key].reset_index(drop=True).loc[j,:])
                 new_df.reset_index(drop=True, inplace=True)
                 new_df.loc[new_df.index[-1], 'sequence_file.file_core.file_name'] = \
                     ena_report[index_report]['fastq_ftp'].split(';')[j].split('/')[-1]
@@ -158,28 +158,25 @@ def main(args):
     # Load the JSON file
     with open(args.input) as json_file:
         ena_report = json.load(json_file)
-
     # Create the dictionary
     ena_run_id = ena_dict(ena_report)
-
     # Read the spreadsheet as a pandas dataframe
     pandas_worksheet = pd.read_excel(
         io=args.spreadsheet, sheet_name='Sequence file', header=3)
-    # Drop the first 4 rows, which are not useful
-    pandas_worksheet.drop(pandas_worksheet.index[:4], inplace=True)
+    # Drop the first row, which is not useful
+    pandas_worksheet.drop(pandas_worksheet.index[:1], inplace=True)
     # Create a new empty dataframe with the same column names as the previous one
     df = pd.DataFrame(columns=pandas_worksheet.columns.values.tolist())
 
     # Fill the dataframe with the corresponding name of files
     df = fill_spreadsheet(ena_run_id, ena_report, df, pandas_worksheet)
-
     # If needed, fill the dataframe with the corresponding cell suspension ID
     # and reorder the spreadsheet to match the order of Cell suspension IDs
     # at the cell suspension sheet
     if args.cell_suspension == True:
         suspension_worksheet = pd.read_excel(
-            io=args.spreadsheet, sheet_name='Cell suspension')
-        suspension_worksheet.drop(suspension_worksheet.index[:4], inplace=True)
+            io=args.spreadsheet, sheet_name='Cell suspension', header=3)
+        suspension_worksheet.drop(suspension_worksheet.index[:1], inplace=True)
         df = input_cell_suspension(df, suspension_worksheet)
 
     # Save the dataframe to the destination spreadsheet
@@ -222,9 +219,9 @@ if __name__ == '__main__':
         3) Save the updated spreadsheet
         ''')
     parser.add_argument(
-        '-i', '--input', help='Input JSON file', type=isfile, required=True)
+        '-i', '--input', help='Input JSON file', type=str, required=True)
     parser.add_argument(
-        '-s', '--spreadsheet', help='Wrangling spreadsheet, must be xlsx', type=isfile, required=True)
+        '-s', '--spreadsheet', help='Wrangling spreadsheet, must be xlsx', type=str, required=True)
     parser.add_argument(
         '-o', '--output', help='Alternative output location, including xlsx filename', type=str, required=False)
     parser.add_argument(
