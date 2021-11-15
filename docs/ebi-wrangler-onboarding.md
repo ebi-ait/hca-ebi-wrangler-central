@@ -57,6 +57,7 @@ This is a living document we want to make it better with every person that joins
 | Wei Kheng Teh       | EBI         | wteh@ebi.ac.uk |
 | Ami Day             | EBI         | ami@ebi.ac.uk       |
 | Irene Perez Diez    | EBI         | ipediez@ebi.ac.uk   |
+| Ida Zucchi          | EBI         | idazucchi@ebi.ac.uk |
 | Parisa Nejad        | UCSC        | pnejad@ucsc.edu     |
 | William Sullivan    | UCSC        | wisulliv@ucsc.edu   |
 
