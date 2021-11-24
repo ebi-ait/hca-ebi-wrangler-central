@@ -322,13 +322,19 @@ If any issues are encountered when trying to upload, update or delete projects o
 ### Experimental graph validation
 The ingest graph validator allows wranglers to visualise the experimental graph of the experiment and also performs some tests to check against our current graph assumptions. 
 
-Please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator) to run the current graph validator tests.
+Validation currently happens automatically in ingest. Once the metadata is validated against the schema, in the "Validate" tab in ingest you will find a button. Click on it and your experimental graph will be validated against the test currently deployed to master.
+
+Any test that fails to pass will show a useful error message, alongside the entity that is related to the error. An example of this:
+
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/ingest_graph_validator_screenshots/ingest_graph_validator_error.png)
+
+If you want to run the tests locally, or suggest a new test/report a bug, please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator).
 
 ## Secondary Review
 
 Once the spreadsheet has passed both phases of validation, the primary wrangler should ask another wrangler in the team to review the spreadsheet and suggest any required edits or updates. Once someone asks for secondary review, they should move the ticket to the `Secondary wrangling` pipeline on the tracking board.
 
-If any edits or updates are made, the existing submission in ingest will need to be deleted and the new spreadsheet uploaded in its place. 
+If any edits or updates are made, the existing submission in ingest will need to be deleted and the new spreadsheet uploaded in its place.
 
 If any changes may have also affected the linking in the spreadsheet it should also be run through the ingest-graph-validator again.
 
