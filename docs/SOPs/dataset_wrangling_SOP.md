@@ -248,6 +248,8 @@ Where either the expression matrix or cell type annotations cannot be found, the
 
 ### Filling in metadata about the files
 
+For datasets with large number of files, the [ENA filename extractor tool](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/src/fill_ontologies.py) can be of use. It requires at least to have already filled the 'INSDC Experiment Accesion' at the 'Cell suspension' and the 'Sequence file' tabs. The wangler has to manually download a JSON report from the corresponding project's page at ENA. This script will fill in the 'File name' column at the 'Sequence file' tab. 
+
 For each expression matrix or cell type annotation file that is found, a row needs to be filled in the metadata spreadsheet, in the ‘Analysis file’ tab. Analysis files can be linked to sequence files or biomaterial entities via processes; This is done in the spreadsheet in the same way that other entities are linked. Information related to the analysis protocol is captured in the Analysis_protocol entity (See the Analysis protocol tab) linked to the process
 
 The best practice is to link the analysis files to sequence file entities, if possible. Alternatively, you can also link the analysis files to cell suspension entities. This is currently done by adding the ‘Input Cell Suspension ID’ column to the ‘Analysis File’ tab and adding the linked cell suspensions to the cell.
