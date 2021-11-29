@@ -326,7 +326,8 @@ Validation currently happens automatically in ingest. Once the metadata is valid
 
 Any test that fails to pass will show a useful error message, alongside the entity that is related to the error. An example of this:
 
-![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/ingest_graph_validator_screenshots/ingest_graph_validator_error.png?raw=true)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/ingest_graph_validator_screenshots/ingest_graph_validator_error_1.png?raw=true)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/ingest_graph_validator_screenshots/ingest_graph_validator_error_2.png?raw=true)
 
 If you want to run the tests locally, or suggest a new test/report a bug, please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator).
 
