@@ -84,6 +84,34 @@ this file. For example, to run against dev:
    
    The slice of nxn_db with new, valid projects is also exported as `scripts/populate_ingest/new_nxn_data.tsv`
    
+##### Manual curation after addition
+
+1. Find out the datasets that were just added (You can look at the output of the script)
+1. Go to the project page, and curate the following from the paper:
+   - Technology: Add the library preparation technologies
+   - Organ: Add the organs used in the experiment
+   - Cell count: Add how many cells were **generated** in the paper
+   - Data access: Fill in the type of data access (Managed, open, mix, it's complicated)
+   - Release date: Add today's date
+   - Publications: Check if it's an HCA paper by looking for the string "Human cell atlas"
+   - Contributors/funders: If a required text field is missing, add `unspecified`. This will be curated when working on the project.
+   - Accessions: Make sure that all accessions mentioned in the paper are present
+   - Status: Change the status to `eligible` or `non-eligible`
+   - Priority: Set the priority based on the chart below
+
+**Priority chart**
+
+| Priority number | Requisites (Any/All) |
+|----------------|-----------|
+| 1 | HCA paper, Contributor |
+| 2 | Primary tissue, Human data, literature | 
+| 3 | Other |
+
+**Edge case 1 (Reanalysis paper)**: Add everything aside from cell count, set cell count to 0, status "not eligible"
+
+**Edge case 2 (Review paper)**: Add everything aside from cell count and accessions, set cell count to 0, status "not eligible"
+
+
 #### ENA
 [WIP/Need Dev script to parse ENA API]
 
