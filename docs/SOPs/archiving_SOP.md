@@ -44,7 +44,10 @@ Please note when using the documentation below:
     * API -> **ingest_submission_uuid**
     * Archiver -> **dsp_submission_uuid**
 *   Obtain and replace `{archiver_api_key}` with the key obtained by running the following cmd (replace `dev` with `staging` or `prod` depending on the environment):
-    *   `aws --region us-east-1 secretsmanager get-secret-value --secret-id ingest/dev/secrets --query SecretString --output text | jq -jr .archiver_api_key`
+    *   specify if prod/staging/dev
+        ```
+         aws --region us-east-1 secretsmanager get-secret-value --secret-id ingest/archiver/wrangler/secrets --query SecretString --output text | jq -jr .prod_archiver_api_key
+        ``` 
     *   If you can't retrieve the archiver service api key using this command, it is likely because you do not have the required permissions. Ask a dev or wrangler to obtain the key
 
 
