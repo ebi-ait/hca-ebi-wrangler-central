@@ -33,7 +33,7 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 
 #### Requirements
 
-- Python3
+- Python3 (note: 3.7 works, 3.10 is not supported yet)
 - Clone the `hca-ebi-dev-team` repo if you haven’t already and install the requirements:
    ```
    git clone https://github.com/ebi-ait/hca-ebi-dev-team.git
