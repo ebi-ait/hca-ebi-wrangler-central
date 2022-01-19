@@ -115,3 +115,15 @@ aws s3 rm s3://hca-ncbi-cloud-data/directory_name --recursive
 aws s3 rm s3://hca-ncbi-cloud-data/filename
 ```
 
+* You can remove directories or files that follow a wildcard pattern as follows:
+
+```
+aws s3 rm s3://hca-ncbi-cloud-data/ --recursive --exclude * --include wildcard
+```
+
+   An example of this last operation would be:
+   ```
+   aws s3 rm s3://hca-ncbi-cloud-data/ --recursive --exclude "*" --include "SRR818047*"
+   ```
+   Which will delete all files that are in directories under the SRA run accession SRR818047* (In this case, deleted all the files for runs SRR8180470, SRR8180471, SRR8180472 and SRR8180473). 
+
