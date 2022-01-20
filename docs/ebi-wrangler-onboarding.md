@@ -192,7 +192,7 @@ You have unlimited storage in Google Drive. Use it for storing all the documents
 
 Google Docs has most of the important documents that are used by the team on a regular basis. We don't expect you to know all of them the first day, so ask for a link to the document if you can't find it. Searching is useful for finding documents (if you know what you're looking for) but if there's anything you can't find do ask.
 
-A good place to start is by checking out the `[Data Lifecycle and Brokering Project](https://drive.google.com/drive/folders/1y_6QcB_laGdfKAUklNaC0i2SPV7zwGJI)` folder (search is your friend) which is mainly where we store documents related to our ongoing wrangling tasks.
+A good place to start is by checking out the `[Brokering](https://drive.google.com/drive/folders/1y_6QcB_laGdfKAUklNaC0i2SPV7zwGJI)` folder (search is your friend) which is mainly where we store documents related to our ongoing wrangling tasks.
 
 ### E-mail
 
