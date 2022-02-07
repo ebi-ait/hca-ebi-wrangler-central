@@ -4,7 +4,7 @@
 ### Library preparation protocol parameters
 
 
-| Technology                                 | Cell barcode read | Cell barcode offset | Cell barcode length | Input nucleic acid | Library construction method ontology       | End bias    | Primer  | strand    | Umi barcode read | Umi barcode offset | Umi barcode length |
+| Technology                                 | Cell barcode read | Cell barcode offset | Cell barcode length | Input nucleic acid | Library construction method ontology       | End bias    | Primer  | Strand    | Umi barcode read | Umi barcode offset | Umi barcode length |
 |--------------------------------------------|-------------------|---------------------|---------------------|--------------------|--------------------------------------------------|-------------|---------|-----------|------------------|--------------------|--------------------|
 | 10X 3' v2                                  | Read 1            | 0                   | 16                  | polyA RNA          | EFO:0009899                                      | 3 prime tag | poly-dT | first     | Read 1           | 16                 | 10                 |
 | 10X 3' v3                                  | Read 1            | 0                   | 16                  | polyA RNA          | EFO:0009922                                      | 3 prime tag | poly-dT | first     | Read 1           | 16                 | 12                 |
