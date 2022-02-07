@@ -26,20 +26,18 @@
 | CEL-seq2                                   | Read 1            | 6                   | 6                   | polyA RNA          | EFO:0010010                                      | 3 prime tag | poly-dT | first     | Read 1           | 0                  | 6                  |
 | sci-RNA-seq                                | Read 1            | 8                   | 10                  | polyA RNA          | EFO:0010550                                      | 3 prime tag | poly-dT | first     | Read 1           | 0                  | 8                  |
 | Seq-Well                                   | Read 1            | 0                   | 12                  | polyA RNA          | EFO:0008919                                      | 3 prime tag | poly-dT | first     | Read 1           | 12                 | 8                  |
-                                             |                   |                     |                     |                    |
-                                   |             |         |           |                  |                    |                    |   
+|                                            |                   |                     |                     |                    |                                                  |                       |           |                  |                    |                    | 
 | Visium Spatial gene Expression             |                   |                     |                     |                    | EFO:0010961
                                    |             |         |           |                  |                    |                    |
-                                             |                   |                     |                     |                    |
-                                   |             |         |           |                  |                    |                    |   
+|                                            |                   |                     |                     |                    |                                                  |                       |           |                  |                    |                    |   
 | ATAC-seq                                   |                   |                     |                     |                    | DNA library construction (EFO:0010172)         |             |         |           |                  |                    |                    |      
 | RNA-Seq                          |             |         |           |                  |                    |                  | cDNA library construction (EFO:0004187)
                                    |             |         |           |                  |                    |                    |
 
 ### Sequencing protocol parameters for technology types
 
-| Technology                                 | Paired end  | Sequencing method                |     | Sequencing method ontology
-|--------------------------------------------|-------------|----------------------------------|-----|----------------------------|
+| Technology                                 | Paired end  | Sequencing method                      | Sequencing method ontology
+|--------------------------------------------|-------------|----------------------------------------|----------------------------|
 | 10X 3' v2                                  | no          | tag based single cell RNA sequencing   | EFO:0008440                |                 
 | 10X 3' v3                                  | no          | tag based single cell RNA sequencing   | EFO:0008440                |                 
 | 10X 3' v1                                  | no          | tag based single cell RNA sequencing   | EFO:0008440                |                 
