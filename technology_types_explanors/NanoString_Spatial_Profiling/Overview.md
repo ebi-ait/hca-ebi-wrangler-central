@@ -63,7 +63,7 @@ visually or computationally elucidate the morphology of the tissue.
 ### Aim
 
 Map a small set (<= 20) of target RNA molecules with morphological context in FFPE or fresh-frozen tissues and quantify the counts of each target
-probe in spatial context. Note it is *not high-throughput* and *not* a sequencing method. The technique can be used to complement other spatial profiling
+probe in spatial context. Note it is **not high-throughput** and **not a sequencing method**. The technique can be used to complement other spatial profiling
 technques. For example, it can help to guide region of interest (ROI) selection prior to NanoString Digital Spatial Profiling. 
 
 ### Input
