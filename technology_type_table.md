@@ -1,7 +1,7 @@
 # Technology type metadata
 
 
-### Library preparation protocol parameters for technology types
+### Library preparation protocol parameters
 
 
 | Technology                                 | Cell barcode read | Cell barcode offset | Cell barcode length | Input nucleic acid | Library construction method ontology       | End bias    | Primer  | strand    | Umi barcode read | Umi barcode offset | Umi barcode length |
@@ -27,12 +27,12 @@
 | sci-RNA-seq                                | Read 1            | 8                   | 10                  | polyA RNA          | EFO:0010550                                      | 3 prime tag | poly-dT | first     | Read 1           | 0                  | 8                  |
 | Seq-Well                                   | Read 1            | 0                   | 12                  | polyA RNA          | EFO:0008919                                      | 3 prime tag | poly-dT | first     | Read 1           | 12                 | 8                  |
 |                                            |                   |                     |                     |                    |                                                  |             |         |           |                  |                    |                    |
-| Visium Spatial gene Expression             |i5 Index & i7 Index| 0                   | 10                  | polyA RNA          | EFO:0010961                                      | 3 prime tag | poly-dT | first     | Read 1           | 0 spatial,16 umi  | 16 spatial,10 umi   |      
+| Visium Spatial Gene Expression             |i5 Index & i7 Index| 0                   | 10                  | polyA RNA          | EFO:0010961                                      | 3 prime tag | poly-dT | first     | Read 1           | 0 spatial,16 umi  | 16 spatial,10 umi   |      
 |                                            |                   |                     |                     |                    |                                                  |             |         |           |                  |                    |                    |
 | ATAC-seq                                   | NA                | NA                  | NA                  | DNA                | DNA library construction (EFO:0010172)         | full length | random  | unstranded| NA               | NA                 | NA                 |      
 | RNA-seq                                   | NA                | NA                  | NA                  | polyA RNA            | cDNA library construction (EFO:0004187)         | full length | poly-dT | unstranded| NA               | NA                 | NA                 |
 
-### Sequencing protocol parameters for technology types
+### Sequencing protocol parameters
 
 | Technology                                 | Paired end  | Sequencing method                      | Sequencing method ontology
 |--------------------------------------------|-------------|----------------------------------------|----------------------------|
