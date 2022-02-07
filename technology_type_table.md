@@ -29,7 +29,7 @@
 |                                            |                   |                     |                     |                    |                                                  |                       |           |                  |                    |                    | 
 | Visium Spatial gene Expression             |                   |                     |                     |                    | EFO:0010961
                                    |             |         |           |                  |                    |                    |
-|                                            |                   |                     |                     |                    |                                                  |                       |           |                  |                    |                    |   
+|                                            |                   |                     |                     |                    |                                                  |             |         |           |                  |                    |                    |
 | ATAC-seq                                   |                   |                     |                     |                    | DNA library construction (EFO:0010172)         |             |         |           |                  |                    |                    |      
 | RNA-Seq                          |             |         |           |                  |                    |                  | cDNA library construction (EFO:0004187)
                                    |             |         |           |                  |                    |                    |
