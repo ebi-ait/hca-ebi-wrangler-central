@@ -21,26 +21,20 @@ Map the whole transcriptome with morphological context in FFPE or fresh-frozen t
 ### Input
 
 Tissue section prepared on a slide with millions of capture oligos on 5,000 barcoded spots per capture area on the slide.
-Input image file of tissue section on slide with marked spots with coordinates.
 
 ### Output
 
 - Raw RNA sequencing data with a spatial barcode and umi barcode present in Read 1 (fastq files).
 
-- A list of spatial barcodes mapped to the image file coordinates.
+- Gene expression mtrix derived from raw RNA sequencing data.
 
-E.g.
+- A list of spatial barcodes.
 
-| Spatial barcode    | x | y | z |      |      |
-|--------------------|---|---|---|------|------|
-| ACGCCTGACACGCGCT-1 | 0 | 0 | 0 | 3682 | 5098 |
-| TACCGATCCAACACTT-1 | 0 | 1 | 1 | 3935 | 5242 |
-| ATTAAAGCGGACGAGC-1 | 0 | 0 | 2 | 3683 | 5388 |
+- An image file with barcoded spots. Each of these spots is assigned a set of coordinates.
 
-### References
+**Example Visium Datasets:**
 
-https://www.scdiscoveries.com/lp/10x-genomics-visium-spatial-gene-expression/?utm_adgroup=Visium&device=c&position=&utm_medium=ppc&utm_source=adwords&utm_campaign=Visium_UK&utm_term=visium&hsa_cam=12975501249&hsa_ver=3&hsa_grp=123142151498&hsa_tgt=kwd-443475866843&hsa_ad=519286235190&hsa_kw=visium&hsa_acc=9446530101&hsa_mt=e&hsa_src=g&hsa_net=adwords&gclid=CjwKCAjwsNiIBhBdEiwAJK4khqCcz9_BwHwWoaOxu-NlJWrC4dnkzi3RZFF_jQU0jJ2HZU3wPNn7dRoCU1oQAvD_BwE#workflow
-Visium example datasets (see input and output) https://www.10xgenomics.com/resources/datasets?query=&page=1&configure%5Bfacets%5D%5B0%5D=chemistryVersionAndThroughput&configure%5Bfacets%5D%5B1%5D=pipeline
+https://www.10xgenomics.com/resources/datasets?query=&page=1&configure%5Bfacets%5D%5B0%5D=chemistryVersionAndThroughput&configure%5Bfacets%5D%5B1%5D=pipeline
 
 ## **RNAScope**
 
