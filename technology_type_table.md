@@ -26,5 +26,41 @@
 | CEL-seq2                                   | Read 1            | 6                   | 6                   | polyA RNA          | EFO:0010010                                      | 3 prime tag | poly-dT | first     | Read 1           | 0                  | 6                  |
 | sci-RNA-seq                                | Read 1            | 8                   | 10                  | polyA RNA          | EFO:0010550                                      | 3 prime tag | poly-dT | first     | Read 1           | 0                  | 8                  |
 | Seq-Well                                   | Read 1            | 0                   | 12                  | polyA RNA          | EFO:0008919                                      | 3 prime tag | poly-dT | first     | Read 1           | 12                 | 8                  |
+|--------------------------------------------|-------------------|---------------------|---------------------|--------------------|--------------------------------------------------|-------------|---------|-----------|------------------|--------------------|--------------------|
+| Visium Spatial gene Expression             |                   |                     |                     |                    | EFO:0010961
+                                   |             |         |           |                  |                    |                    |
+|--------------------------------------------|-------------------|---------------------|---------------------|--------------------|--------------------------------------------------|-------------|---------|-----------|------------------|--------------------|--------------------|
+| ATAC-seq                                   |                   |                     |                     |                    | DNA library construction (EFO:0010172)         |             |         |           |                  |                    |                    |
+| RNA-Seq                                    |                   |                     |                     |                    | cDNA library construction (EFO:0004187)
+                                   |             |         |           |                  |                    |                    |
 
 ### Sequencing protocol parameters for technology types
+
+| Technology                                 | paired end  | sequencing method                |
+|--------------------------------------------|-------------|----------------------------------|
+| 10X 3' v2                                  | no          | tag based single cell RNA sequencing   | EFO:0008440   |                    
+| 10X 3' v3                                  | no          | tag based single cell RNA sequencing   | EFO:0008440   |                  
+| 10X 3' v1                                  | no          | tag based single cell RNA sequencing   | EFO:0008440   |                         
+| 10X 5' v2                                  | no          | tag based single cell RNA sequencing   | EFO:0008440   |                          
+| 10X 5' v1                                  | no          | tag based single cell RNA sequencing   | EFO:0008440   |   
+| Drop-seq                                   | no          | tag based single cell RNA sequencing   | EFO:0008440   |
+| DroNc-seq                                  | no          | tag based single cell RNA sequencing   | EFO:0008440   |                             
+| inDrop                                     | no          | tag based single cell RNA sequencing   | EFO:0008440   |            
+| Smart-seq2                                 | yes         | full length single cell RNA sequencing | EFO:0008441   |         
+| Smart-seq                                  | yes         | full length single cell RNA sequencing | EFO:0008441   |                
+| Smart-like                                 | yes         | full length single cell RNA sequencing | EFO:0008441   |                   
+| Fluidigm C1-based library preparation      | yes         | full length single cell RNA sequencing | EFO:0008441   |     
+| 10X scATAC-seq                             | yes         | scATAC-seq                             | EFO:0010891   |
+| scATAC-seq (Microfluidics)                 | yes         | scATAC-seq                             | EFO:0010891   |
+| CITE-seq (cell surface protein profiling)  | no          | tag based single cell RNA sequencing   | EFO:0008440   |      
+| CITE-seq (sample multiplexing)             | no          | tag based single cell RNA sequencing   | EFO:0008440   |    
+| CEL-seq                                    | no          | tag based single cell RNA sequencing   | EFO:0008440   |                       
+| CEL-seq2                                   | no          | tag based single cell RNA sequencing   | EFO:0008440   |    
+| sci-RNA-seq                                | no          | tag based single cell RNA sequencing   | EFO:0008440   |   
+| Seq-Well                                   | no          | tag based single cell RNA sequencing   | EFO:0008440   |
+|--------------------------------------------|-------------|----------------------------------------|---------------|
+| Visium Spatial Gene Expression             |             |                                        | EFO:0010961   |
+| NanoString Digital Spatial Profiling       |             |                                        | EFO:0030029   |
+|--------------------------------------------|-------------|----------------------------------------|---------------|
+| ATAC-seq                                   | no          | tag based single cell RNA sequencing   | EFO:0007045   |
+| RNA-Seq                                    | no          | tag based single cell RNA sequencing   | EFO:0008896   |
