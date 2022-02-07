@@ -25,12 +25,15 @@ Input image file of tissue section on slide with marked spots with coordinates.
 
 ### Output
 
-Gene expression data (fastq) with spatial barcode and umi barcode
-Output table with spatial barcode sequences (or names) mapped to their positions/coordinates in the image (analysis file).
+- Raw RNA sequencing data with a spatial barcode and umi barcode present in Read 1 (fastq files).
+- 
+- A list of spatial barcodes mapped to the image file coordinates.
+
 E.g.
-ACGCCTGACACGCGCT-1	0	0	0	3682	5098
-TACCGATCCAACACTT-1	0	1	1	3935	5242
-ATTAAAGCGGACGAGC-1	0	0	2	3683	5388
+|--------------------|---|---|---|------|------|
+| ACGCCTGACACGCGCT-1 | 0 | 0 | 0 | 3682 | 5098 |
+| TACCGATCCAACACTT-1 | 0 | 1 | 1 | 3935 | 5242 |
+| ATTAAAGCGGACGAGC-1 | 0 | 0 | 2 | 3683 | 5388 |
 
 ### References
 
