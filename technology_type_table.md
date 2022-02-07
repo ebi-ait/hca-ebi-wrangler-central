@@ -26,10 +26,12 @@
 | CEL-seq2                                   | Read 1            | 6                   | 6                   | polyA RNA          | EFO:0010010                                      | 3 prime tag | poly-dT | first     | Read 1           | 0                  | 6                  |
 | sci-RNA-seq                                | Read 1            | 8                   | 10                  | polyA RNA          | EFO:0010550                                      | 3 prime tag | poly-dT | first     | Read 1           | 0                  | 8                  |
 | Seq-Well                                   | Read 1            | 0                   | 12                  | polyA RNA          | EFO:0008919                                      | 3 prime tag | poly-dT | first     | Read 1           | 12                 | 8                  |
-|--------------------------------------------|-------------------|---------------------|---------------------|--------------------|--------------------------------------------------|-------------|---------|-----------|------------------|--------------------|--------------------|
+|                                            |                   |                     |                     |          
+                                   |             |         |           |                  |                    |                    |
 | Visium Spatial gene Expression             |                   |                     |                     |                    | EFO:0010961
                                    |             |         |           |                  |                    |                    |
-|--------------------------------------------|-------------------|---------------------|---------------------|--------------------|--------------------------------------------------|-------------|---------|-----------|------------------|--------------------|--------------------|
+|                                            |                   |                     |                     |          
+                                   |             |         |           |                  |                    |                    |
 | ATAC-seq                                   |                   |                     |                     |                    | DNA library construction (EFO:0010172)         |             |         |           |                  |                    |                    |
 | RNA-Seq                                    |                   |                     |                     |                    | cDNA library construction (EFO:0004187)
                                    |             |         |           |                  |                    |                    |
@@ -58,9 +60,9 @@
 | CEL-seq2                                   | no          | tag based single cell RNA sequencing   | EFO:0008440   |    
 | sci-RNA-seq                                | no          | tag based single cell RNA sequencing   | EFO:0008440   |   
 | Seq-Well                                   | no          | tag based single cell RNA sequencing   | EFO:0008440   |
-|--------------------------------------------|-------------|----------------------------------------|---------------|
+|                                            |             |                                        |               |
 | Visium Spatial Gene Expression             |             |                                        | EFO:0010961   |
 | NanoString Digital Spatial Profiling       |             |                                        | EFO:0030029   |
-|--------------------------------------------|-------------|----------------------------------------|---------------|
+|                                            |             |                                        |               |
 | ATAC-seq                                   | no          | tag based single cell RNA sequencing   | EFO:0007045   |
 | RNA-Seq                                    | no          | tag based single cell RNA sequencing   | EFO:0008896   |
