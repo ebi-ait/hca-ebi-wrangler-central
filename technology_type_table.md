@@ -27,12 +27,10 @@
 | sci-RNA-seq                                | Read 1            | 8                   | 10                  | polyA RNA          | EFO:0010550                                      | 3 prime tag | poly-dT | first     | Read 1           | 0                  | 8                  |
 | Seq-Well                                   | Read 1            | 0                   | 12                  | polyA RNA          | EFO:0008919                                      | 3 prime tag | poly-dT | first     | Read 1           | 12                 | 8                  |
 |                                            |                   |                     |                     |                    |                                                  |             |         |           |                  |                    |                    |
-| Visium Spatial gene Expression             |                   |                     |                     |                    | EFO:0010961
-                                   |             |         |           |                  |                    |                    |
+| Visium Spatial gene Expression             | Read 1            | 0                   | 16                  | polyA RNA          | EFO:0010961                                      | 3 prime tag | poly-dT | first     | Read 1           | 16                 | 12                 |
 |                                            |                   |                     |                     |                    |                                                  |             |         |           |                  |                    |                    |
-| ATAC-seq                                   |                   |                     |                     |                    | DNA library construction (EFO:0010172)         |             |         |           |                  |                    |                    |      
-| RNA-Seq                                    |                   |                     |                     |                    | cDNA library construction (EFO:0004187)         |             |         |           |                  |                    |                    |
-                     
+| ATAC-seq                                   | NA                | NA                  | NA                  | DNA                | DNA library construction (EFO:0010172)         | full length | random  | unstranded| NA               | NA                 | NA                 |      
+| RNA-seq                                   | NA                | NA                  | NA                  | DNA                | cDNA library construction (EFO:0004187)         | full length | poly-dT | unstranded| NA               | NA                 | NA                 |
 
 ### Sequencing protocol parameters for technology types
 
