@@ -51,7 +51,7 @@ Before any data and metadata can be received, either the contributor or an autho
 The first follow up email should contain:
 - Link to terms and conditions form (https://forms.gle/8XW8vapGQJRfKrc36)
 
-[Template email](#terms-and-conditions-and-consent){: .btn .btn-blue }
+[Template email](#terms-and-conditions){: .btn .btn-blue }
 
 Once the terms and conditions form is complete, the metadata spreadsheet and the instructions and credentials for uploading data to their ingest upload area can be provided to the contributor. 
 
@@ -106,7 +106,7 @@ Only if there are supplementary files: Make sure the files have been input twice
 
 Once a submission is 100% valid and has been reviewed, a final confirmation email should be sent to the contributor with the latest spreadsheet attached to confirm they are happy with the curation.
 
-[Template email](#final-confirmation-before-submission){: .btn .btn-blue }
+[Template email](#final-confirmation-before-a-submission){: .btn .btn-blue }
 
 ## Confirmation of Accessions
 
@@ -231,7 +231,7 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > On behalf of the HCA DCP Data Wrangling Team
 
 
-### Final confirmation before submission
+### Final confirmation before a submission
 
 > Dear [name/s of contributor/s],
 >
