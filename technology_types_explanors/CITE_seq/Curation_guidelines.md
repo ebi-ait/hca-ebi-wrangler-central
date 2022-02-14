@@ -5,7 +5,7 @@
 This guide is intended to hightlight the ***required metadata*** for CITE-seq data. Optional metadata fields should be evaluated on an individual
 project basis given the experimental design and available metadata.
 
-The ***required metadata*** includes:
+**Required metadata includes:**
 
 (1) ontology terms: library construction method, sequencing method
 
@@ -43,16 +43,22 @@ The ***required metadata*** includes:
 
 ### CITE-seq (cell surface protein profiling) EFO:0030008 ###
 
-- raw sequencing scRNA-seq data
-- raw sequencing ADT barcodes
+- raw sequencing fastq: scRNA-seq data
+- raw sequencing fastq: ADT barcodes
+
+*n.b. a separate cell suspension id should be created for each library type*
 
 ### CITE-seq (sample multiplexing) EFO:0030009 ###
 
-- raw sequencing scRNA-seq data
-- raw sequencing HTO barcodes
+- raw sequencing fastq: scRNA-seq data
+- raw sequencing fastq: HTO barcodes
+
+*n.b. a separate cell suspension id should be created for each library type*
 
 ### CITE-seq (cell surface protein profiling) EFO:0030008 & CITE-seq (sample multiplexing) EFO:0030009 ###
 
-- raw sequencing scRNA-seq data
-- raw sequencing ADT barcodes
-- raw sequencing HTO barcodes
+- raw sequencing fastq: scRNA-seq data
+- raw sequencing fastq: ADT barcodes
+- raw sequencing fastq: HTO barcodes
+
+*n.b. a separate cell suspension id should be created for each library type*
