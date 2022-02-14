@@ -31,7 +31,11 @@ CITE-seq has 2 purposes. The first is sample multiplexing (EFO:0030009). It is b
 
 The second purpose is for cell surface protein profiling (EFO:0030008). While similar in method, the aim is to identify biomarkers and better characterize cell phenotypes. In this context, the antibody-tagged DNA barcodes are referred to as 'Antibody Derived Tags' (ADT).
 
-CITE-seq and Cell Hashing can be performed simultaneously to generate both HTO and ADT sequencing libraries from the same cell. For example, see [Satija et al., 2018](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1603-1#Sec9). In this study, PBMCs from different donors were independently stained with one of a set of HTO-conjugated antibody pools and a pool of seven immunophenotypic markers for CITE-seq. Specifically, HTO and ADT oligonucleotides are spiked into the cDNA amplification PCR, and cDNA is amplified according to a standard protocol such as 10x Single Cell 3′ v2. Following PCR, clean-up beads are used to separate the cDNA derived from cellular mRNAs from the ADT- and HTO- containing fraction, according to their size. The cDNA fraction is then further processed as standard e.g. according to the 10x Genomics Single Cell 3′ v2 protocol. Separate PCRs with distinct primers are also set up to generate the CITE-seq ADT library and the HTO library. This enables Hashtag Oligos (HTO), Antibody Derived Tags (ADT) and scRNA-seq libraries to be independently amplified and pooled for sequencing.
+CITE-seq and Cell Hashing can be performed simultaneously to generate both HTO and ADT sequencing libraries from the same cell. For example, see [Satija et al., 2018](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1603-1#Sec9).
+
+In the study, PBMCs from different donors were independently stained with one of a set of HTO-conjugated antibody pools and a pool of seven immunophenotypic markers for CITE-seq. HTO and ADT oligonucleotides were spiked into the cDNA amplification PCR, and cDNA was amplified according to the standard 10x Single Cell 3′ v2 protocol.
+
+Following PCR, cDNA derived from cellular mRNAs was sepafrated from the ADT- and HTO- containing fraction, according to transcript size. The cDNA fraction was then processed as standard. Separate PCRs with distinct primers were set up to generate the CITE-seq ADT library and the HTO library. This enabled Hashtag Oligos (HTO), Antibody Derived Tags (ADT) and scRNA-seq libraries to be independently amplified and pooled for sequencing.
 
 ### Input (other than standard scRNA-seq)
 
