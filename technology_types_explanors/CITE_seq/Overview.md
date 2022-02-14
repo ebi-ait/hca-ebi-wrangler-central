@@ -4,7 +4,7 @@
 
 CITE-seq enables researchers to simultaneously capture the transcriptome and surface protein expression on the same cells with next generation sequencing technology. This can be done using DNA-barcoded antibodies which convert the detection of 1 or more surface proteins into a quantitative, sequenceable readout.
 
-Specifically, a set of DNA-barcoded antibodies are bound to specific cell surface protein(s). The cell and bound antibody are then encapsulated in a droplet alongside a poly-dT oligo-coated bead, and the cell is lysed. Reverse transcription and cDNA amplification of the antibody-bound DNA barcode and cellular mRNA transcripts then occurs, and transcripts are indexed with a cell barcode.
+Specifically, a set of DNA-barcoded antibodies are bound to specific cell surface protein(s). The cell and bound antibody are then encapsulated in a droplet alongside a poly-dT oligo-coated bead, and the cell is lysed. Reverse transcription and cDNA amplification of the antibody-bound DNA barcode and cellular mRNA transcripts then occurs, and transcripts are indexed with a cell barcode. This is illustrated below in **Figure 1**.
 
 Once scRNA-seq libraries are sequenced, transcripts can be mapped back to individual cells using the cell barcode. The presence of a particular single cell surface protein can also be identified by the antibody barcode. The scRNA-seq library preparation method used for CITE-seq is typically 10X Genomics, Drop-seq or other oligodT-based scRNA-seq methods.
 
@@ -15,16 +15,16 @@ Once scRNA-seq libraries are sequenced, transcripts can be mapped back to indivi
 
 <img src="https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/Add-technology-type-info-folder/technology_types_explanors/CITE_seq/visuals/CITE-seq.png" width="700" height="500">
 
-## Is CITE-seq a single-cell method?
+### Is CITE-seq a single-cell method?
 
 Yes.
 
 ### Aim
 
-CITE-seq has 2 purposes. The first is sample multiplexing (EFO:0030009). It is based on the concept of 'Cell Hashing'. Cell Hashing uses the series of oligo-tagged antibodies against expressed surface proteins to uniquely label cells from distinct samples, which can be subsequently pooled in one scRNA-seq run. By sequencing these tags alongside the cellular transcriptome, we can assign each cell to its sample of origin. In this context, the antibody-tagged DNA barcodes are referred to as 'hashtag oligos' (HTO).
+CITE-seq has 2 purposes. The first is sample multiplexing (EFO:0030009). It is based on the concept of 'Cell Hashing'. Cell Hashing uses the series of oligo-tagged antibodies against expressed surface proteins to uniquely label cells from distinct samples, which can be subsequently pooled in one scRNA-seq run. By sequencing these tags alongside the cellular transcriptome, we can assign each cell to its sample of origin. In this context, the antibody-tagged DNA barcodes are referred to as 'hashtag oligos' (HTO). This is illusrated in **Figure 2**.
 
 
-<center><u> Figure 1</u>: Illustration of Cell Hashing</center>
+<center><u> Figure 2</u>: Illustration of Cell Hashing</center>
 
 
 <img src="https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/Add-technology-type-info-folder/technology_types_explanors/CITE_seq/visuals/Cell-Hashing.png" width="1000" height="400">
