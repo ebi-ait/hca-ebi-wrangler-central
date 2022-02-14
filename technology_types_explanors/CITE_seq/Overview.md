@@ -13,7 +13,7 @@ Once scRNA-seq libraries are sequenced, transcripts can be mapped back to indivi
 <br
     </br>
 
-<img src="https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/Add-technology-type-info-folder/technology_types_explanors/CITE_seq/visuals/CITE-seq.png" width="500" height="500">
+<img src="https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/Add-technology-type-info-folder/technology_types_explanors/CITE_seq/visuals/CITE-seq.png" width="700" height="500">
 
 ## Is CITE-seq a single-cell method?
 
