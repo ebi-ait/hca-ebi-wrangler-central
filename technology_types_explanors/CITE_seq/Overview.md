@@ -1,5 +1,4 @@
-# CITE-seq:
-# Cellular Indexing of Transcriptomes and Epitopes by Sequencing
+# CITE-seq: Cellular Indexing of Transcriptomes and Epitopes by Sequencing
 
 ### Method
 
