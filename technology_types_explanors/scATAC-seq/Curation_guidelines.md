@@ -15,3 +15,7 @@ The ***required metadata*** includes:
 - See [technology type table](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/documentation_add_tech_type_table/technology_type_table.md)
 
 ### (2) Analysis file(s)
+
+- Raw DNA sequencing data derived from sequencing of scATAC-seq libraries.
+
+- A "peaks" file containing the genomic coordinates corresponding to scATAC-seq peak identification. There is no strict format requirement. The peaks might be recorded in a bed file or a simple txt file, for example. 
