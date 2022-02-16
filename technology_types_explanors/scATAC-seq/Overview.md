@@ -24,9 +24,9 @@ ATAC-Seq has become a common first step into epigenomic analysis that opens a lo
 
 - Raw DNA sequencing data derived from sequencing of scATAC-seq libraries.
 
-- A "peaks" file containing the genomic coordinates corresponding to scATAC-seq peak identification. There is no strict format requirement. The peaks might be recorded in a bed file or a simple txt file, for example. See [here]() for an example dataset.
+- A "peaks" file containing the genomic coordinates corresponding to scATAC-seq peak identification. There is no strict format requirement. The peaks might be recorded in a bed file or a simple txt file, for example. See [here](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/Add-technology-type-info-folder/technology_types_explanors/scATAC-seq/example_datasets/atac_v1_pbmc_10k_peaks.bed) for an example dataset.
 
-- A peak by cell matrix. See [here]() for an example dataset.
+- A peak by cell matrix.
 
-- A peaks annotation file might also be available, but it is not required. It would typically include the name of the gene spanning the peak region and the type of peak (e.g. promoter, distal). See [here]() for an example dataset.
+- A peaks annotation file might also be available, but it is not required. It would typically include the name of the gene spanning the peak region and the type of peak (e.g. promoter, distal). See [here](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/Add-technology-type-info-folder/technology_types_explanors/scATAC-seq/example_datasets/atac_v1_pbmc_10k_peak_annotation.tsv) for an example dataset.
 
