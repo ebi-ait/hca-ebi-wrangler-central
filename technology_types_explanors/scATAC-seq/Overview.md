@@ -22,3 +22,7 @@ ATAC-Seq has become a common first step into epigenomic analysis that opens a lo
 
 ### Output
 
+- Raw DNA sequencing data derived from sequencing of scATAC-seq libraries.
+
+- A "peaks" file containing the genomic coordinates corresponding to scATAC-seq peak identification. There is no strict format requirement. The peaks might be recorded in a bed file or a simple txt file, for example.
+
