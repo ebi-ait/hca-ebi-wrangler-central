@@ -26,8 +26,8 @@ There are some general project management tasks when working with new datasets t
 
 New contributors will almost always contact us via the wranglers email list. When we work with them to get their projects submitted, the wranglers email list should be copied into all emails.
 1. Create a [project tracker ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=dataset&template=project_tracker.md&title= ) to track dataset progress should be created in the `hca-ebi-wrangler-central` repo 
-2. Add the dataset to the [dataset tracker sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0) 
-  * Change `hca_status` to 'in progress'
+2. Add the dataset to Ingest 
+  * Change `wrangling status` to 'in progress'
   * Ensure all required fields are filled out
   * Ensure you are listed as the `primary_wrangler`
 3. Create a new folder to store the dataset metadata in the [Brokering drive](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA) 
@@ -41,13 +41,12 @@ Wrangling progress is tracked primarily through movement of the `project tracker
 | New Issues          | Auto-placed                            | This pipeline is where issues automatically end up but issues shouldn't stay here for long |
 | Queued for Wrangling      | When created                           | Issues should be placed here when they are created but before a wrangler actively starts working on it |
 | Wrangling           | When in progress                       | The primary wrangler moves the tracker ticket here when they have started working on it |
-| Secondary reviewing | When review starts                     | The secondary wrangler moves the tracker ticket here when they start reviewing |
+| Secondary reviewing | When review starts                     | The primary wrangler moves the tracker ticket and asks for an available secondary reviewer |
 | Archiving           | When archiving process starts          | The primary wrangler moves the tracker ticket here when Archiving starts (if required), if already archived would skip to ready for export |
-| Ready for export          | When ready to be exported              | The primary wrangler moves the tracker ticket here when all that is left is to hit submit|
-| AE/SCEA brokering   | When ready to be converted to MAGE-TAB | The primary wrangler moves the tracker ticket here when it is ready to be converted to MAGE-TAB to give to ArrayExpress of SCEA if suitable |
 | Needs update        | If project needs an update             | A wrangler moves the tracker ticket here if the project requires some kind of update |
 | Stalled             | If project becomes stuck               | If project spends more than 2 weeks with no progress, the ticket should be moved here and label applied to indicate reason  |
-| Finished            | When finished                          | The primary wrangler moves the ticket here to indicate all work is complete. The ticket should be closed at the end of the sprint. |
+| Finished            | When finished                          | The primary wrangler moves the ticket here to indicate all work is complete and the dataset has been exported. |
+| Verified in Data Browser            | After a release                          | The primary wrangler moves the ticket here after checking the dataset in the Data Portal. The ticket should be closed at the end of the sprint. |
 
 [Labels](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels) are also applied to tickets to provide further information about the ticket. Definitions for each label and when they should be applied can be [found here](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels).
 
@@ -74,6 +73,8 @@ If you already have some information about the dataset and don’t need the cont
 - Does your team have consent for public release for all the raw sequencing data included in this dataset?
 
 - Do you have a specific release date or any publication embargo requirements?
+
+- Does the data come from living donors?
 
 ### Terms and conditions form
 

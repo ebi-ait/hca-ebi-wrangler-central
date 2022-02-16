@@ -7,9 +7,7 @@ parent: SOPs
 # HCA Dataset Eligibility criteria 
 
 ## Purpose of this document
-As wranglers, our current method of tracking new, in-progress (wrangling) and complete datasets is by indicating their priority and status and other key information about the dataset in a tracker sheet. When new datasets are added to the sheet, we need to assess whether they are eligible for HCA. There are specific eligibility criteria that we use to decide whether a dataset is eligible or not. It is important that this information is available so that time is not wasted on wrangling datasets that are not eligible for HCA and/or cannot be ingested in our system. The purpose of this document is to list the specific criteria we use to assess dataset eligibility and our general approach to implement these. Any feedback on this process is very welcome and should be added to this document; please make it clear that it is feedback. In the longer term we are aiming for a software focused solution to this task.
-
-[Link to dataset tracking sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0){: .btn }
+As wranglers, our current method of tracking new, in-progress (wrangling) and complete datasets is by indicating their wrangling status, priority and release in Ingest. When new datasets are added, we need to assess whether they are eligible for HCA. There are specific eligibility criteria that we use to decide whether a dataset is eligible or not. It is important that this information is available so that time is not wasted on wrangling datasets that are not eligible for HCA and/or cannot be ingested in our system. The purpose of this document is to list the specific criteria we use to assess dataset eligibility and our general approach to implement these. Any feedback on this process is very welcome and should be added to this document; please make it clear that it is feedback. In the longer term we are aiming for a software focused solution to this task.
 
 ### HCA Eligibility
 
