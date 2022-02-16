@@ -20,9 +20,13 @@ Yes.
 
 ATAC-Seq has become a common first step into epigenomic analysis that opens a lot of hypotheses about the molecular mechanisms responsible for regulating many different cellular processes. The sequencing of open chromatin regions that are being transcribed can lead to the identification of transcription factors that are active in the phenotype or conditions being investigated. ATAC-Seq assays are also powerful because they can be used to determine nucleosome positioning.
 
-### Output
+### Output (other than standard scRNA-seq data)
 
 - Raw DNA sequencing data derived from sequencing of scATAC-seq libraries.
 
-- A "peaks" file containing the genomic coordinates corresponding to scATAC-seq peak identification. There is no strict format requirement. The peaks might be recorded in a bed file or a simple txt file, for example.
+- A "peaks" file containing the genomic coordinates corresponding to scATAC-seq peak identification. There is no strict format requirement. The peaks might be recorded in a bed file or a simple txt file, for example. See [here]() for an example dataset.
+
+- A peak by cell matrix. See [here]() for an example dataset.
+
+- A peaks annotation file might also be available, but it is not required. It would typically include the name of the gene spanning the peak region and the type of peak (e.g. promoter, distal). See [here]() for an example dataset.
 
