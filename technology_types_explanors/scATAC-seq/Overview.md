@@ -9,7 +9,7 @@ The ATAC-Seq method relies on next-generation sequencing (NGS) library construct
 <center><u> Figure 1</u>: Illustration of ATAC-seq</center>
 
 
-<img src="https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/Add-technology-type-info-folder/technology_types_explanors/CITE_seq/visuals/Cell-Hashing.png" width="500" height="500">
+<img src="https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/Add-technology-type-info-folder/technology_types_explanors/scATAC-seq/visuals/ATAC-seq.png" width="500" height="500">
 
 
 ### Is CITE-seq a single-cell method?
