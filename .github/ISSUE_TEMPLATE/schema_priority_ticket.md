@@ -1,9 +1,10 @@
 ---
 name: Schema update priority
 about: Create a priority ticket for the next iteration of schema updates
-title: 'Schema update priority ticket - YYYY-MM-DD'
-labels: operations, next
+title: Schema update priority ticket - YYYY-MM-DD
+labels: next, operations
 assignees: ''
+
 ---
 
 **What are the next schema updates?**
