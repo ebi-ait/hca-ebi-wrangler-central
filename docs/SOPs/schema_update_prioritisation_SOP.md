@@ -32,7 +32,7 @@ This document will not cover the steps required to make an actual schema change.
 
 ### Ticket acknowledgement
 
-Every 2 weeks, the **designated wrangler** will review and update the [rolling ticket](​​https://github.com/HumanCellAtlas/metadata-schema/issues/1391) with the new issues that are not already collected. 
+Every 2 weeks, the **designated wrangler** will review and update the [rolling ticket](https://github.com/HumanCellAtlas/metadata-schema/issues/1391) with the new issues that are not already collected. 
 
 ### Wrangler catch-up
 
