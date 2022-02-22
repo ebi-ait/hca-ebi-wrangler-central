@@ -1,3 +1,8 @@
+---
+layout: default
+title: Download Data from Node SOP
+parent: SOPs
+---
 
 # Downloading data from Node
 
