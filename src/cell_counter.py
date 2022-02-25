@@ -96,7 +96,6 @@ def main(geo_accession, reader_function, download_mode=False):
     connection.cwd(f'geo/series/{geo_accession[:-3] + "nnn"}/{geo_accession}/')
     try:
         series_matrix_path = get_series_matrix_path(connection)
-        print(series_matrix_path)
     except Exception as e:
         print(e)
     finally:
