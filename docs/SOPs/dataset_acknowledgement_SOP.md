@@ -131,8 +131,8 @@ When the dataset is not present, please fill in **at least** the following infor
 - **library preparation**: Indicate the technology used to generate the library preparations.
 - **Living eu donors**: When human, indicate if they were living EU citizens when the samples were collected on the admin area, under the notes section) .
 - **Cell count**: Add the number of cells sequenced in the experiment, or at least an approximation
-- **Broker to archives**: If data comes from contributor and need to broker to ENA, add this also to the notes section at the admin area.
-- **Broker to scea**: Based on their guidelines, in case it is needed, indicate it at the notes section of the admin area
+- **Broker to archives**: If data comes from contributor and need to broker to ENA, add this to the notes section at the admin area.
+- **Broker to scea**: Always check if the dataset is eligible for SCEA based on their guidelines. If it is eligible for SCEA, please indicate this in the notes section of the admin area.
 - **Contributors**: If available, fill in the contributors section
 - **Publications**: If a publication or pre-print is available, fill in the publications section, including the DOI and PMID if available. If it is an offical HCA publication, don't forget to tick the Official HCA Publication checkbox.
 - **Admin Area**: Remember to set the wrangling status as elegible, and set the wrangling priority based on the priority chart.
