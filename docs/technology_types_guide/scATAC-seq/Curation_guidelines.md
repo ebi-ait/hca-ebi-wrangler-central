@@ -18,4 +18,8 @@ The ***required metadata*** includes:
 
 - Raw DNA sequencing data derived from sequencing of scATAC-seq libraries.
 
-- A "peaks" file containing the genomic coordinates corresponding to scATAC-seq peak identification. There is no strict format requirement. The peaks might be recorded in a bed file or a simple txt file, for example. 
+- A "peaks" file containing the genomic coordinates corresponding to scATAC-seq peak identification. There is no strict format requirement. The peaks might be recorded in a bed file or a simple txt file, for example.
+
+# Barcodes
+
+The cell barcode read and umi barcode read should be double-checked on a dataset basis, as this might change depending on whether 10X is used, and also how the user names their files. This [link](https://divingintogeneticsandgenomics.rbind.io/post/understand-10x-scrnaseq-and-scatac-fastqs/) describes the barcode reads and lengths for 10X scATAC-seq.
