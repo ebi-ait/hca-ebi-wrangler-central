@@ -256,7 +256,7 @@ The best practice is to link the analysis files to sequence file entities, if po
 
 The gene expression matrix and cell annotations files should be added to the S3 bucket in the ingest-area together with raw data files, for instructions on how to use hca-util to do this, see ['here'](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util)
 
-![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/Cgms_screenshot.png?raw=true)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/matrices_screenshots/cgms_screenshot.png?raw=true)
 
 
 ## Metadata Validation
