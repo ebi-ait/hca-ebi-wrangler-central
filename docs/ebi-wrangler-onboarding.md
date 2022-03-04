@@ -20,6 +20,7 @@ Welcome to the EBI HCA data wrangling & metadata team! Here, you will find some 
     + [E-mail](#e-mail)
     + [VPN](#vpn)
     + [Github](#github)
+    + [Useful Bookmarks](#useful-bookmarks)
     + [Browser plug-ins](#browser-plug-ins)
     + [Miscellanea](#miscellanea)
 
@@ -31,14 +32,14 @@ The [EBI Intranet](https://tsc.ebi.ac.uk/) is a great resource and the search fu
 
 ### EBI Human Cell Atlas team processes and procedures
 
-Our main source for general info about our processes at the EBI branch of the HCA is the [confluence website](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Human+Cell+Atlas+Home), take all information found here with a grain of salt because much of it is outdated. You will need editing privileges to the wiki in order to fill out your [Weekly Activity Report](https://www.ebi.ac.uk/seqdb/confluence/pages/viewpage.action?spaceKey=HCA&title=Weekly+Activity+Reports) so if you don't see an `edit` button at the top right of the page then ask @lauraclarke to give you the appropriate access. It is a good idea to have a brief look over the various pages that exist on confluence as you will most likely need to refer back to them later.
+Our main source for general info about our processes at the EBI branch of the HCA is the [confluence website](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Human+Cell+Atlas+Home), take all information found here with a grain of salt because much of it is outdated. You will need editing privileges to the wiki in order to fill out your [Weekly Activity Report](https://www.ebi.ac.uk/seqdb/confluence/pages/viewpage.action?spaceKey=HCA&title=Weekly+Activity+Reports) so if you don't see an `edit` button at the top right of the page then ask Oihane to give you the appropriate access. It is a good idea to have a brief look over the various pages that exist on confluence as you will most likely need to refer back to them later.
 
 In particular take note of the following pages:
 - [Holiday request and sick leave procedure](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Holiday+requests%2C+working+from+home+and+sick+leave)
 - [Work travel procedure](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/HCA+Travel+Procedure)
 - [Timesheet policy](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Timesheet+Guidance)
 
-If anything isn’t clear, please ask Laura or Claire.
+If anything isn’t clear, please ask Gabs or Oihane.
 
 ### About the Human Cell Atlas
 
@@ -53,16 +54,17 @@ This is a living document we want to make it better with every person that joins
 | Name                | Institution | E-mail              |
 |---------------------|-------------|---------------------|
 | Enrique Sapena Ventura     | EBI         | enrique@ebi.ac.uk   |
-| Marion Shadbolt     | EBI         | mshadbolt@ebi.ac.uk |
-| Ray Stefancsik      | EBI         | ray@ebi.ac.uk       |
-| Amy Day             | EBI         | ami@ebi.ac.uk       |
+| Wei Kheng Teh       | EBI         | wteh@ebi.ac.uk |
+| Ami Day             | EBI         | ami@ebi.ac.uk       |
+| Irene Perez Diez    | EBI         | ipediez@ebi.ac.uk   |
+| Ida Zucchi          | EBI         | idazucchi@ebi.ac.uk |
 | Parisa Nejad        | UCSC        | pnejad@ucsc.edu     |
 | William Sullivan    | UCSC        | wisulliv@ucsc.edu   |
 
 ## General suggestions
 
 ### First day
-- Send your github username to Laura so that you can get access to our git organisation
+- Send your github username to Amnon so that you can get access to our git organisation
   - You will need to configure/add 2-factor authentication to your Github account. Information about how to do this can be [found here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/configuring-two-factor-authentication)
 - Set up your computer. Do ask any of the wrangler team if you encounter any issues.
 - Set up your favourite web browser. It will make more sense later, but the usual "go-to" for the wranglers is Google Chrome, as some of the tasks that you’re going to do require some plug-ins.
@@ -71,7 +73,6 @@ This is a living document we want to make it better with every person that joins
   - **E-mail manager app**. People use either the default installed by your operating system or thunderbird, though any e-mail manager should be fine (Except for Gmail). Information about setting up your email for EBI users can be [found on the intranet](https://tsc.ebi.ac.uk/article/desktop/email/email-basics-0).
   - **Notes app**. You can use either google keep, Evernote (Pretty useful, and it’s on the recommended list), or your choice of preference.  Make sure you record every single thing that you do while working (Doesn’t have to be long, just a short a concise job description). It may seem like a major inconvenience at the beginning, but it will come in very handy when you have to fill your timesheets, especially if you have to dedicate percentages of time to different grants.
   - **[Slack](https://slack.com/intl/en-gb/downloads/)**. It is highly recommended to set it up on your desktop rather than using the web app. It is optional whether you want to install the app on your phone. 
-  - **[Bluejeans](https://www.bluejeans.com/downloads)**. You will use this for some teleconferences.
 - Make sure you have all the necessary cables/adaptors to set up your mac with your monitor, with an appropriate keyboard and mouse. 
 - Make sure you have access to:
   - [SAP](https://saperp.embl.de/nwbc)
@@ -103,9 +104,8 @@ This is a living document we want to make it better with every person that joins
 
 ### Calendar
 You can either set it up on your favourite calendar app or use google calendar. Most of the wranglers use google calendar, but it’s your decision to make. Thunderbird has a nifty Google Calendar extension which might be of interest. Once set up, you will notice that the events represented inside have different colours which are customisable by you. The Calendars that you should have access to are:
-- [**HCA google calendar**](https://calendar.google.com/calendar?cid=ZWJpLmFjLnVrXzhzbm5la2c1b3Yxcm81ZW5vYXY2M3ZmbDZjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This is where anyone working on the HCA at EBI records events that may affect the EBI team (need to check this), they may or may not be relevant to wranglers. This calendar is managed by Oihane
+- [**HCA google calendar**](https://calendar.google.com/calendar?cid=ZWJpLmFjLnVrXzhzbm5la2c1b3Yxcm81ZW5vYXY2M3ZmbDZjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This is where anyone working on the HCA at EBI records events that may affect the EBI team, they may or may not be relevant to wranglers. This calendar is managed by Oihane
 - [**DCP Meeting calendar**](https://calendar.google.com/calendar?cid=YnJvYWRpbnN0aXR1dGUub3JnXzNrMWxzaW4wcGI0dXRnZzhkODdwbG5oY2M4QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This is where DCP-wide meetings are scheduled, not all meetings are relevant to wranglers. It includes meetings that could be across multiple sites UCSC/Broad/EBI/CZI/Stanford
-- [**HCA-EBI BlueJeans Calendar**](https://calendar.google.com/calendar/b/1?cid=ZWJpLmFjLnVrXzl1NG1tdmFudmcxazBmNmNwOTVzMGlsZXZzQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This lets you know who is using the BlueJeans account when, more info [here](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/HCA+BlueJeans+account).
 - [**AIT Calendar**](https://calendar.google.com/calendar?cid=ZWJpLmFjLnVrX2luOHQzc2IwZTRlbGtoc21xaGkyaXY4cDgwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This calendar is where the AIT team record AIT group meetings, vacation and sick leave, work from home (WFH) days and training.
 
 If you can't see any of the above calendars, request access from Laura
@@ -119,9 +119,8 @@ Key meetings that wranglers are summarised in the table below:
 
 | Meeting                              | Day       | Time   | Frequency             | Notes                                |
 |--------------------------------------|-----------|--------|-----------------------|--------------------------------------|
-| Metadata community call              | Monday    | 4pm    | First monday Monthly  | Telecon                              |
-| Operations planning/review           | Wednesday | 11am   | Weekly                | |
-| Dev sprint kick off meeting          | Wednesday | 9.30am | Bi-weekly             | At start of EBI sprint,only dev wrangler needs to attend |
+| Operations planning/review           | Wednesday | 9.30am | Weekly                | |
+| Dev sprint kick off meeting          | Wednesday | 10.30am| Bi-weekly             | At start of EBI sprint,only dev wrangler needs to attend |
 | EBI-DCP Sprint Planning & Demo       | Tuesday   | 2pm    | Bi-weekly             | 1 hour, telecon, at end of a sprint  |
 | EBI DCP Sprint Retro                 | Tuesday   | 4pm    | Bi-weekly             | 1 hour, telecon                      |
 | User stories for next sprint         | Monday    | 10am   | Bi-weekly             | 1 hour, monday before end of EBI sprint |
@@ -133,7 +132,7 @@ Key meetings that wranglers are summarised in the table below:
 Scientific meetings are held a few times a year and are a great opportunity to connect directly with researchers involved in the HCA. However, the tickets for these events are limited so Wranglers aren't guaranteed a spot. Project leads do their best to advocate for Wranglers attending so check on whether you are likely to attend the next one.
 
 ### Slack
-We use slack a lot. If you haven't already been invited to these two slack instances, please tell another member of the team or Claire/Laura and it can be easily sorted. There may also be otther slack instances that it is useful to join but you will be made aware of those as and when it is relevant.
+We use slack a lot. If you haven't already been invited to these two slack instances, please tell another member of the team or Gabs/Oihane and it can be easily sorted. There may also be other slack instances that it is useful to join but you will be made aware of those as and when it is relevant.
 
 HCA: https://join-hca-slack.data.humancellatlas.org/
 AIT: https://tsc.ebi.ac.uk/article/slack-getting-started
@@ -160,7 +159,7 @@ In the HCA slack, the open channels you will find useful are - although much les
 
 #papers - Cell atlas relevant papers get posted here
 
-You will need to ask Claire to invite you to some private channels, these are different subsets of our team and collaborators to enable private communication.
+You will need to ask Gabs to invite you to some private channels, these are different subsets of our team and collaborators to enable private communication.
 
 Data-wrangling-int
 Ebi-content-internal
@@ -177,7 +176,7 @@ For EMBL-EBI Wranglers
 #### Timesheets
 
 We are required to record our time working at the EBI in timesheets. A couple of clarifications:
-- If you don’t have access to your cost centres (Only EBI time budget displays, or it doesn’t display the correct one(s)), ask Laura or Norman to follow up. If you don’t know which cost centres you should use for your timesheet, don’t hesitate to ask your PL.
+- If you don’t have access to your cost centres (Only EBI time budget displays, or it doesn’t display the correct one(s)), ask Gabs or Oihane to follow up. If you don’t know which cost centres you should use for your timesheet, don’t hesitate to ask your PL.
 - In order to fill your timesheet, you need to have a row per cost centre per day. If you do work for more than one cost centre in one day you will need to add row so don't be shy to click the "add row" button if necessary!
 
 **Tips**: 
@@ -193,7 +192,7 @@ You have unlimited storage in Google Drive. Use it for storing all the documents
 
 Google Docs has most of the important documents that are used by the team on a regular basis. We don't expect you to know all of them the first day, so ask for a link to the document if you can't find it. Searching is useful for finding documents (if you know what you're looking for) but if there's anything you can't find do ask.
 
-A good place to start is by checking out the `Brokering` folder (search is your friend) which is mainly where we store documents related to our ongoing wrangling tasks.
+A good place to start is by checking out the `[Brokering](https://drive.google.com/drive/folders/1y_6QcB_laGdfKAUklNaC0i2SPV7zwGJI)` folder (search is your friend) which is mainly where we store documents related to our ongoing wrangling tasks. The spreadsheets are in: `PROJECTS - [IN PROGRESS|FINISHED]`, etc
 
 ### E-mail
 
@@ -205,7 +204,7 @@ Your email should be checked throughout every working day. Part of your job as a
 
 #### Central HCA email lists
 
-Check your [google groups](https://groups.google.com/a/data.humancellatlas.org/forum/#!myforums) and ask Laura to add you if you are not a member of any of the following groups:
+Check your [google groups](https://groups.google.com/a/data.humancellatlas.org/forum/#!myforums) and ask Oihane to add you if you are not a member of any of the following groups:
 
  - DCP Metadata Team
  - DCP Ingest Team
@@ -222,7 +221,7 @@ The advantage of this system is that the history of the email address is all rea
 - [List of EBI mailing lists](https://listserver.ebi.ac.uk/mailman/listinfo), feel free to join whichever you find interesting
 - [List of Sanger mailing lists](https://lists.sanger.ac.uk/mailman/listinfo), feel free to join whichever you find interesting, popular ones to join are [for sale](https://lists.sanger.ac.uk/mailman/listinfo/for-sale) and [general chat](https://lists.sanger.ac.uk/mailman/listinfo/chat) also good for wranglers [Single Cell Genomics](https://lists.sanger.ac.uk/mailman/listinfo/singlecellgenomics)
 
-Additionally, make sure to send an email to ITSupport@ebi.ac.uk (cc'ing Laura) and ask to be added to the ait-hca email list. 
+Additionally, make sure to send an email to ITSupport@ebi.ac.uk (cc'ing Gabs) and ask to be added to the ait-hca email list. 
 
 ### VPN
 
@@ -242,7 +241,10 @@ The address of the EC2 is `tool.archive.data.humancellatlas.org`
 
 #### EBI compute resources
 
-We also have access to various EBI compute resources including a cluster. TODO: add links and more info]
+We also have access to various EBI compute resources including a cluster. 
+<!-- 
+TODO: add links and more info
+-->
 
 ### Github
 
@@ -271,6 +273,25 @@ Repositories you will mainly use:
 
 - [`HumanCellAtlas/dcp-community`](https://github.com/HumanCellAtlas/dcp-community): This is where a lot of the documentation for how the DCP works as a whole lives - most is now out of date. 
   - **Charters**: It would be useful to read through the [Metadata Schema](https://github.com/HumanCellAtlas/dcp-community/blob/master/charters/MetadataSchema/charter.md) and [Ingestion Service](https://github.com/HumanCellAtlas/dcp-community/blob/master/charters/IngestionService/charter.md) charters as Data Wrangling forms part of both of these. 
+
+### Useful Bookmarks 
+#### General 
+- [`Timesheet Guidance`](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Timesheet+Guidance) 
+- [`Holiday Requests, working from home and sick leave`](https://www.ebi.ac.uk/seqdb/confluence/display/HCA/Holiday+requests%2C+working+from+home+and+sick+leave) 
+- [`Weekly Activity Reports`](https://www.ebi.ac.uk/seqdb/confluence/pages/viewpage.action?spaceKey=HCA&title=Weekly+Activity+Reports) 
+- [`Operations Planning Notes`](https://docs.google.com/document/d/1O2nCBtnFY-AWh_1_s188xLTyvaZpwbUUp3Pvs_aV_jc/edit#heading=h.usaswk9ioim4) 
+
+#### Wrangling
+- [`Dataset Wrangling Zenhub Board`](https://app.zenhub.com/workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) 
+- [`HCA Wrangling Datasets SOP`](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_wrangling_SOP.html) 
+- [`Dataset Brokering Folder`](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA) 
+- [`Single Cell Genomics Library Structure`](https://teichlab.github.io/scg_lib_structs/) 
+- [`Assay Cheat Sheet`](https://docs.google.com/spreadsheets/d/1H9i1BK-VOXtMgGVv8LJZZZ9rbTG4XCQTBRxErdqMvWk/edit#gid=0) 
+- [`Using hca-util`](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util) 
+- [`HCA Import Request for Production Releases`](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/viewform?gxids=7628) 
+- [`Ontology Lookup Service`](https://ontology.archive.data.humancellatlas.org/index) 
+
+
 
 ### Browser plug-ins
 

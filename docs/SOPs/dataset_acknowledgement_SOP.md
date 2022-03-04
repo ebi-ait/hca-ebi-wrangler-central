@@ -33,48 +33,84 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 
 #### Requirements
 
-- Python3
-- Clone the `hca-ebi-wrangler-central` repo if you haven’t already and install the requirements:
+- Python3 (note: python 3.8 works, 3.10 is not supported yet)
+- Clone the `hca-ebi-dev-team` repo if you haven’t already and install the requirements:
    ```
-   git clone https://github.com/ebi-ait/hca-ebi-wrangler-central.git
-   cd hca-ebi-wrangler-central/src/
+   git clone https://github.com/ebi-ait/hca-ebi-dev-team.git
+   cd scripts/populate_ingest/
    pip install -r requirements.txt
    ```
 
-#### nxn.se single cell database
+#### Populate Ingest from nxn.se single cell database
 
-1) Go to the `src/` folder inside your cloned version of the `hca-ebi-wrangler-central` repository
+##### Scope of the script
 
-2) Run `python3 compare_tracker_with_nxn_sheet.py -c | pbcopy`
+   This script compares data between ingest and the nxn.se database, using `doi`, `accessions` and `title`, filters
+   data using eligible `organisms`, `technologies` and `measurements` and populates ingest with the new entries
+   from nxn.se database.
    
-   This runs the comparison part of the script and copies the output to your clipboard. Once complete, paste the results into the leftmost cell under the latest dataset acknowledged. It’s already formatted with the tracker’s format, so it’s just a paste operation
+   Currently, the script is able to populate the project title, description, publication, funders, contributors,
+   accessions, cell count and species.
+   The technology, organ, and data access fields have to be manually curated and entered.
 
-3) Then run `python3 compare_tracker_with_nxn_sheet.py -d`
+##### Running the script
 
-   This runs the identifying duplication part of the script and outputs it in the `hca-ebi-wrangler-central/src/` folder as  duplicate_entries.txt. 
+1) Go to the `scripts/populate_ingest/` folder inside your cloned version of the `hca-ebi-dev-team` repository
 
-Find any duplicates within the dataset tracker, and check to see why they were added / who added them. Useful fields to check include primary wrangler, accession, and publication name. If no useful information will be removed, then remove the duplicate.
+2) Create a `.env` file in `scripts/populate_ingest/`. Specify the relevant ingest api url and ingest api token in
+this file. For example, to run against dev:
 
-The script updates itself with a timestamp to keep track of when it was last run. After running, push the changes to the repo:
-```
-git checkout master
-git pull
-git add compare_tracker_with_nxn_sheet.py
-git commit -m "Updated tracker sheet."
-git push origin master
-```
+    ```
+        INGEST_API_URL= https://api.ingest.dev.archive.data.humancellatlas.org
+        INGEST_API_TOKEN=<dev authentication token>
+    ```
+    By default, the script runs against local host
 
-New publications from the single cell database need an additional step of manual curation to ensure certain fields meet the requirements for prioritisation and suitability. 
+3) Run `python -m populate_ingest.populate_ingest_from_nxn`
+    
+   The script runs against local host, in dry-run mode by default
+   
+   To run in write mode, and write to ingest, use the `w` flag, e.g.
+   `python -m populate_ingest.populate_ingest_from_nxn.py -w`
+   
+   
+   
+   The logs can be found at `scripts/populate_ingest/nxn_db.log`
+   
+   The uuids of the projects created in ingest can be found at `scripts/populate_ingest/added_uuids.txt`.
+   
+   The projects that would get created in ingest can be found at `scripts/populate_ingest/projects_to_be_added.json`; 
+   this is helpful for checking which projects would get created in ingest, when running the script in dry-run mode
+   
+   The slice of nxn_db with new, valid projects is also exported as `scripts/populate_ingest/new_nxn_data.tsv`
+   
+##### Manual curation after addition
 
-The following columns need to be curated:
-1. **assay_type**: 10x is usually abbreviated as “Chromium”, independently of the chemistry or end bias. A more specific term is needed.
-1. **health_status**: Need to indicate if normal, not normal or both, and if the 2 latest indicate the phenotype.
-1. **access_permission**: if accession is not from EGA/dbGAP,  usually “open”. Otherwise, “managed” or “mix”
-1. **living_eu_donors**: If mice, indicate `no,none`. If human, looking at the laboratory location should be enough to fill this.
-1. **nucleic_acid_source**: Select one or more of: single cell, single nucleus, bulk
-1. **technical_benchmarking**: If the dataset is a benchmarking experiment, `yes`. Else, `no` 
-1. **broker_to_archives**: Usually `no`, as the data is being extracted from the archives
-1. **broker_to_scea**: Based on SCEA’s guidelines, provide with “yes” or “no”. If you have filled everything else, there should be enough information for you to choose one of the two.
+1. Find out the datasets that were just added (You can look at the output of the script)
+1. Go to the project page, and curate the following from the paper:
+   - Technology: Add the library preparation technologies
+   - Organ: Add the organs used in the experiment
+   - Cell count: Add how many cells were **generated** in the paper
+   - Data access: Fill in the type of data access (Managed, open, mix, it's complicated)
+   - Release date: Add today's date
+   - Publications: Check if it's an HCA paper by looking for the string "Human cell atlas"
+   - Contributors/funders: If a required text field is missing, add `unspecified`. This will be curated when working on the project.
+   - Accessions: Make sure that all accessions mentioned in the paper are present
+   - Status: Change the status to `eligible` or `non-eligible`
+   - Priority: Set the priority based on the chart below
+
+**Priority chart**
+
+| Priority number | Requisites (Any/All) |
+|----------------|-----------|
+| 1 | HCA paper, Contributor |
+| 2 | Primary tissue, Human data, literature | 
+| 3 | Other |
+
+**Edge case 1 (Reanalysis paper)**: Add everything aside from cell count, set cell count to 0, status "not eligible"
+
+**Edge case 2 (Review paper)**: Add everything aside from cell count and accessions, set cell count to 0, status "not eligible"
+
 
 #### ENA
 [WIP/Need Dev script to parse ENA API]

@@ -96,7 +96,7 @@ You need to set up a storage area for the transferred files using [hca-util](htt
 The NCBI SRA cloud data delivery service will create directories in the `hca-ncbi-cloud-data` bucket named after SRA runs. You can parse the SRA Run identifiers from the NCBI service provided `sra_metadata.*.csv` file that came with the data files in the same bucket and use them as the DIRECTORYNAME in the following command to copy the files without the SRR directory structure:
 
 ```
-aws s3 sync s3://hca-ncbi-cloud-data/DIRECTORYNAME s3://target-bucket/UUID
+aws s3 sync s3://hca-ncbi-cloud-data/DIRECTORYNAME s3://hca-util-upload-area/UUID
 ```
 
 The UUID is the upload area uuid that you created for the files using [hca-util](https://pypi.org/project/hca-util/).
@@ -114,4 +114,16 @@ The command above shall not remove the empty bucket and that is fine. However, y
 aws s3 rm s3://hca-ncbi-cloud-data/directory_name --recursive
 aws s3 rm s3://hca-ncbi-cloud-data/filename
 ```
+
+* You can remove directories or files that follow a wildcard pattern as follows:
+
+```
+aws s3 rm s3://hca-ncbi-cloud-data/ --recursive --exclude * --include wildcard
+```
+
+   An example of this last operation would be:
+   ```
+   aws s3 rm s3://hca-ncbi-cloud-data/ --recursive --exclude "*" --include "SRR818047*"
+   ```
+   Which will delete all files that are in directories under the SRA run accession SRR818047* (In this case, deleted all the files for runs SRR8180470, SRR8180471, SRR8180472 and SRR8180473). 
 

@@ -2,7 +2,7 @@
 layout: default
 title: Wrangling datasets SOP
 parent: SOPs
-has_children: true
+has_children: false
 last_modified_date: 22/03/2020
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
@@ -97,12 +97,6 @@ Once you have an understanding of which biomaterials, protocols, and processes a
 
 Instead of the iterative process of the contributor filling in what they can, the wrangler reviewing, curating, and asking questions, there is only you (the wrangler) working with the spreadsheet. It is easy to get stuck, so don’t forget that you’re working as a team and get a second opinion if necessary! 
 
-After generating the spreadsheet, we move onto raw data upload. There is no contributor to upload their data manually, so we must take on that role and: 
-* Create an upload area
-* Upload files to the upload area. 
-
-There is a useful [script](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/handy_snippets.html#uploading-files-to-an-s3-bucket-from-the-archives) for uploading files to an s3 bucket, which can speed up the process tremendously. Note that this step does not need to be completed now, and can wait until after the metadata spreadsheet has been gathered. 
-
 Then move onto the [‘curating metadata’](#curating-metadata) section. 
 
 ### Spreadsheet template generation
@@ -120,32 +114,104 @@ After the spreadsheet is generated some manual steps can help contributors under
 
 Once you have a customised and potentially pre-filled spreadsheet it can be sent to the contributor along with the contributor spreadsheet guide. It is generally an iterative process of the contributor filling in what they can, the wrangler reviewing, curating and asking questions before further curation until the metadata is complete. 
 
-## Raw Data Upload (fastq)
+
+### Raw Data (fastq) download
+
+After generating the spreadsheet, we move onto raw data upload. There is no contributor to upload their data manually, so we must take on that role and: 
+* Create an upload area
+* Upload files to the upload area. 
+
+Note that this step does not need to be completed now, and can wait until after the metadata spreadsheet has been gathered. 
+
+Once the upload area has been created, there are several ways to upload the files from ENA/SRA (Sorted from easiest/fastest to most manual/slow):
+
+**Python script in hca-ebi-wrangler-central repository**
+
+There is a useful [script](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/handy_snippets.html#uploading-files-to-an-s3-bucket-from-the-archives) for uploading files to an s3 bucket, which can speed up the process tremendously.
+However, this script may fail the request to get the files sometimes if ENA's servers are overloaded.
+
+**NCBI/SRA cold storage**
+
+NCBI provides, for most of the new datasets, amazon s3 storage for fastq files. Applying for the data is free and the data is transferred in about 2 to 3 working days. For more information, follow the [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/NCBI_SRA_cold_storage_how_to.html)
+
+**Aspera**
+
+If the other 2 options don't work, ENA offers an option to download their data files through Aspera, which is usually faster than accessing the files through each link.
+
+To install:
+1. Download aspera on your home directory on EC2 using the following command:
+   ```
+   wget https://ak-delivery04-mul.dhe.ibm.com/sar/CMA/OSA/08q6g/0/ibm-aspera-cli-3.9.6.1467.159c5b1-linux-64-release.sh
+   ```
+1. Run the file to install aspera:
+   ```
+   sh ibm-aspera-cli-3.9.6.1467.159c5b1-linux-64-release.sh
+   ```
+1. After installing, export the path to your .bashrc file by running `vim .bashrc` and copying this `export` statement to the end of the file: `export PATH=~/.aspera/cli/bin:$PATH`. The next time you log into the EC2, you will be able to run the commands without any additional step.
+   
+Once installed, downloading the files locally is easy by following the instructions on [ENA's ReadTheDocs page](https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html#using-aspera). Alternatively, you can follow these steps if you need to download a full dataset:
+1. Locate the project page (e.g. https://www.ebi.ac.uk/ena/browser/view/PRJEB40448)
+1. Download the Json report at the bottom of the page and upload it to your own `/data/` folder in the EC2
+1. Open a virtual session (The next step will take some time, so it's better to leave it running under a virtual session)
+1. `cd` to your `/data/` folder and run the following command:
+   ```
+   cat <name_of_report_file> | jq '.[].fastq_ftp' | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} \$( echo {} | awk -F/ '{print $6}' )"
+   ```
+   This command will read the report, isolate the file names and start downloading them. A couple of useful tips:
+   * You can pass the argument -P to parallelize xargs. This will run several downloads in parallel
+   Example:
+   ```
+   cat <name_of_report_file> | jq '.[].fastq_ftp' | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} -P [enter parallelisation number] sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} \$( echo {} | awk -F/ '{print $6}' )"
+   ```
+   * The last `{}` is the filename that will be used for download. If you want to create a specific folder for the files, you can create the folder and append it to the argument, following the next example (where `\"my_cool_fastq/\"` would be the name of the folder)
+   Example:
+   ```
+   cat <name_of_report_file> | jq '.[].fastq_ftp' | grep -E -o "ftp\.[^;]*fastq\.gz" | sed 's/ftp.sra.ebi.ac.uk\///g' | xargs -I{} sh -c "ascp -QT -l 300m -P33001 -i ~/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:{} \$( echo {} | awk -F/ '{print \"my_cool_fastq/\" $6}' )"
+   ```
+   
+Once downloaded locally, the data files need to be uploaded to an hca-util area. You can follow the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) for contributors.
+
+## Raw Data (fastq) and Processed Data Upload  
 
 ### AWS User for Contributors
 
-In order for a contributor to upload their data, they would need their own AWS user that is assigned to the hca-contirbutor group. A dev would need to create the user for them using the commands listed below.
+In order for a contributor to upload their data, they would need their own AWS user that is assigned to the hca-contributor group. 
+A request for an account should be files as [a new ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=operations&template=new-contributor-account.md&title=contributor+account+for%3A+%3Ccontributor-name%3E) for the ingest team. The board is monitored regularly so the new ticket would be picked up within the day.
+In order for a contributor to upload their data, they would need their own AWS user that is assigned to the hca-contributor group.
+
+A request for an account should be filed as [a new ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=operations&template=new-contributor-account.md&title=contributor+account+for%3A+%3Ccontributor-name%3E) for the ingest team. The board is monitored regularly so the new ticket would be picked up within the day.
+
+_**This is done by a team member with a developer role.**_
+
+1. Create an AWS user
+   
+   Use the name part of the email address for the account name.
+  
+```shell
+# to add user walter.white@example.com as a contributor
+aws iam create-user --user-name walter.white --tags Key=project,Value=hca Key=owner,Value=tburdett Key=service,Value=ait
+aws iam add-user-to-group --group hca-contributor --user-name walter.white
+# generate secrets 
+aws iam create-access-key --user-name walter.white 
+```
+
+2. The developer need to send the generated access key in an email to the person (usually a wrangler) who requested the account for the contributor.  
 
 ### Data upload Procedure
 
-- create an AWS user for them
-  
-```shell
-# to add user alice as a contributor
-aws iam create-user --user-name alice --tags Key=project,Value=hca Key=owner,Value=tburdett Key=service,Value=ait
-aws iam add-user-to-group --group hca-contributor --user-name alice
-# generate secrets 
-aws iam create-access-key --user-name alice 
-```
-- provide them a set of contributor AWS access keys. 
-- provide them with a data upload area UUID
+_**This is done by a wrangler.**_ 
 
-These two sets of information need to be sent separately to minimise the chance of them falling into the wrong hands and being misused.
+1. Obtain the access key from a developer ([previous step](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/dataset_wrangling_SOP.md#aws-user-for-contributors))
+2. Create an upload area using the guide: [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
+3. Get the UUID from the created upload area
+Send these two sets of information separately to the contributor to minimise the chance of them falling into the wrong hands and being misused.
 
 * **Contributor AWS Access keys** are not considered secure and can be sent in the main `wrangler-team` email thread, usually in the same email with the first spreadsheet and [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
 * **Upload area UUID** is a secure piece of information that should be shared in a separate email with only the contributor and primary wrangler 
 
-To get an Upload area UUID, you will need to create an upload area using the guide: [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
+_**Working with multiplexed data**_ 
+
+If the dataset is multiplexed, for example, if distinct samples have been pooled before library preparation and sequencing, then the fastq data must be demultiplexed by the sample barcode before being uploaded to ingest. The pipelines team works on the assumption that there is 1 input sample per run and it is up to us to demultiplex multiplexed data.
 
 ## Curating metadata
 
@@ -169,6 +235,29 @@ If donors are from CBTM or HDBR we have direct routes of obtaining more detailed
 - The `organ_part` or `model_organ_part` should be the most specific organ part available
 - `biomaterial_id`s should be either consistent with the publication or the tissue provider to allow identification of biomaterials with shared donors
 - Try to encourage the contributor to provide a meaningful identifier, not just a single digit
+
+## Contributor Matrix and cell types SOP 
+For each project, wranglers should endeavour to find an expression matrix and if not embedded within that matrix, a listing of cell type annotations. These are generally linked from a publication, present as a supplementary file on the publication, GEO or ArrayExpress submission.
+
+The preferred formats for matrix files are:
+* `loom`
+* `h5ad`
+* RObj?
+
+Where either the expression matrix or cell type annotations cannot be found, the primary wrangler should write an email to the contributor/author asking for them to provide the appropriate files in the preferred format. If the contributors cannot provide in the preferred format, we will take whatever is available. It is important to be able to link the cell type annotations to the cell suspensions and/or cell barcodes provided in the metadata.
+
+### Filling in metadata about the files
+
+For datasets with large number of files, the [ENA filename extractor tool](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/src/fill_ontologies.py) can be of use. It requires at least to have already filled the 'INSDC Experiment Accesion' at the 'Cell suspension' and the 'Sequence file' tabs. The wangler has to manually download a JSON report from the corresponding project's page at ENA. This script will fill in the 'File name' column at the 'Sequence file' tab. 
+
+For each expression matrix or cell type annotation file that is found, a row needs to be filled in the metadata spreadsheet, in the ‘Analysis file’ tab. Analysis files can be linked to sequence files or biomaterial entities via processes; This is done in the spreadsheet in the same way that other entities are linked. Information related to the analysis protocol is captured in the Analysis_protocol entity (See the Analysis protocol tab) linked to the process
+
+The best practice is to link the analysis files to sequence file entities, if possible. Alternatively, you can also link the analysis files to cell suspension entities. This is currently done by adding the ‘Input Cell Suspension ID’ column to the ‘Analysis File’ tab and adding the linked cell suspensions to the cell.
+
+The gene expression matrix and cell annotations files should be added to the S3 bucket in the ingest-area together with raw data files, for instructions on how to use hca-util to do this, see ['here'](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util)
+
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/Cgms_screenshot.png?raw=true)
+
 
 ## Metadata Validation
 Once the spreadsheet is considered complete by the primary wrangler, there are two phases of metadata validation that can be completed.
@@ -235,13 +324,20 @@ If any issues are encountered when trying to upload, update or delete projects o
 ### Experimental graph validation
 The ingest graph validator allows wranglers to visualise the experimental graph of the experiment and also performs some tests to check against our current graph assumptions. 
 
-Please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator) to run the current graph validator tests.
+Validation currently happens automatically in ingest. Once the metadata is validated against the schema, in the "Validate" tab in ingest you will find a button. Click on it and your experimental graph will be validated against the test currently deployed to master.
+
+Any test that fails to pass will show a useful error message, alongside the entity that is related to the error. An example of this:
+
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/ingest_graph_validator_screenshots/ingest_graph_validator_error_2.png?raw=true)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/ingest_graph_validator_screenshots/ingest_graph_validator_error_1.png?raw=true)
+
+If you want to run the tests locally, or suggest a new test/report a bug, please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator).
 
 ## Secondary Review
 
 Once the spreadsheet has passed both phases of validation, the primary wrangler should ask another wrangler in the team to review the spreadsheet and suggest any required edits or updates. Once someone asks for secondary review, they should move the ticket to the `Secondary wrangling` pipeline on the tracking board.
 
-If any edits or updates are made, the existing submission in ingest will need to be deleted and the new spreadsheet uploaded in its place. 
+If any edits or updates are made, the existing submission in ingest will need to be deleted and the new spreadsheet uploaded in its place.
 
 If any changes may have also affected the linking in the spreadsheet it should also be run through the ingest-graph-validator again.
 
@@ -309,7 +405,8 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
 | Email address             | So you can be contacted if any issues with import                 |
 | Release #                 | The integer number of the ~monthly release cutoff                 |
 | Google storage cloud path | `gs://broad-dsp-monster-hca-prod-ebi-storage/prod/[PROJECT_UUID]` |
-| Additional info           | If exporting an update to an existing project, please flag here it is an update and whether it is metadata only or files have been updated.|
+| Is this new data, updated data or analysis results? | Choose the appropriate response, 'Brand new data' for a new, never been exported project, or 'An update to data that is already in production' if it is an update. |
+| Additional info           | Any other notes you want to communicate to the import team. |
   
 #### Import Form Details for DCP testing
   
@@ -335,4 +432,4 @@ Additionally, move all the corresponding documents to the [finished_projects](ht
 
 ## Brokering to SCEA
 
-**WIP** Will link to other documentation
+See documentation on the [hca-to-scea repo](https://github.com/ebi-ait/hca-to-scea-tools)

@@ -10,6 +10,7 @@ from urllib.request import urlopen
 from urllib.request import OpenerDirector
 from urllib.parse import quote_plus
 from urllib.parse import unquote_plus
+from urllib.error import URLError
 from multiprocessing import Pool
 from io import BytesIO
 from xml.parsers.expat import ExpatError
@@ -36,7 +37,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--database', "-db", default='sra', type=str,
                         choices=['sra','ena'],help='Which database to use: sra or ena')
     parser.add_argument('--allowed', "-a", type=str,
-                        help='Full path to plain text file with line separated list of files that should be transferred.',)
+                        help='Full path to plain text file with line separated list of files that should be transferred.')
+    parser.add_argument("--respect-filenames", "-r", default=False, action='store_true', dest='respect_filename',
+                        help="Try to correct filenames based on cross-database metadata")
 
     return parser.parse_args()
 
@@ -52,7 +55,7 @@ def retrieve_from_ae(study_accession: str) -> (list, list):
 
 def retrieve_from_ena(study_accession: str) -> (list, list):
     field = "submitted_ftp" if "PRJEB" in study_accession else "fastq_ftp"
-    request_url = (f"https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession={study_accession}"
+    request_url = (f"https://www.ebi.ac.uk/ena/portal/api/filereport?accession={study_accession}"
                    f"&result=read_run&fields={field}")
     request = rq.get(request_url)
     lines = request.text.splitlines()[1:]
@@ -157,8 +160,14 @@ def correct_filename_from_ena(run_accession, filename):
     else:
         return filename
 
-    # Search in the options
-    real_filename = next(real_name for real_name in filenames if f"R{read_index}" in real_name)
+    # Search in the options. If there are no results (Empty iterator), return filename.
+    try:
+        real_filename = next(real_name for real_name in filenames if f"R{read_index}" in real_name)
+    except StopIteration:
+        real_filename = ""
+        pass
+    finally:
+        real_filename = filename if not real_filename else real_filename
 
     # Correct the ".1" at the end
     real_filename = real_filename.split('.1')[0] if real_filename.endswith('.1') else real_filename
@@ -166,12 +175,14 @@ def correct_filename_from_ena(run_accession, filename):
     return real_filename
 
 
-def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str, str):
+def define_source_parameters(path: str, respect_filename: bool) -> (any([OpenerDirector, str]), int, str, str):
     """
     Finds and returns the source file parameters given a path.
 
     :param path: str
                  string that contains the path to the file (Currently accepted: ftp, s3, local)
+    :param respect_filename: bool
+                             If true, don't try to correct the filename
     :returns streamable: any([OpenerDirector, str])
                          Entity that can be passed to smart_open to stream the file
     :returns file_size: int
@@ -182,11 +193,24 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
                      Source of the file. Currently accepted: ftp, s3, local.
     """
     if "ftp" in path:
+        MAX_RETRIES = 10
+        source = "ftp"
         if not path.startswith("ftp://"):
             path = f"ftp://{path}"
-        streamable = urlopen(path)
-        file_size = int(streamable.headers['Content-length'])
-        source = "ftp"
+
+        for attempt in range(0, MAX_RETRIES):
+            try:
+                streamable = urlopen(path)
+                file_size = int(streamable.headers['Content-length'])
+                break
+            except URLError as e:
+                print(e.reason)
+                print("Retrying...")
+                print("Waiting for 5 seconds...")
+                sleep(5)
+        else:
+            raise IOError(f"Retried the maximum amount of times to get stream from {path}.")
+
 
     elif "s3" in path:
         streamable = path
@@ -214,7 +238,7 @@ def define_source_parameters(path: str) -> (any([OpenerDirector, str]), int, str
     if filename.endswith('.1'):
         filename = filename.strip('.1')
 
-    if 'SRR' in filename:
+    if 'SRR' in filename and not respect_filename:
         filename = correct_filename_from_ena(path.split('/')[-2], filename)
 
     return streamable, file_size, filename, source
@@ -235,7 +259,7 @@ def define_destination_parameters(output: str) -> str:
         return "local"
 
 
-def transfer_file(path: str, output: str) -> None:
+def transfer_file(path: str, output: str, respect_filename: bool) -> None:
     """
     General function to transfer the files. Takes a file path and an output folder.
 
@@ -243,11 +267,14 @@ def transfer_file(path: str, output: str) -> None:
                  Path to the file to be transferred. Accepts s3, ftp and local, but needs to be a full path for remote.
     :param output: str
                    Path to the directory where the file will be transferred. Needs to be a full path for remote.
+    :param respect_filename: bool
+                   If true, respect filenames from original database.
     """
-    file_stream, file_size, filename, source = define_source_parameters(path)
+    file_stream, file_size, filename, source = define_source_parameters(path, respect_filename)
     with op(file_stream, 'rb', ignore_ext=True) as f:
         globals()[f'transfer_file_to_{define_destination_parameters(output)}'](f, output, filename, file_size)
-
+        if source == "ftp":
+            file_stream.close()
 
 def transfer_file_to_local(origin: any([str, BytesIO]), destination: str, filename: str = '',
                            file_size: int = None) -> None:
@@ -361,14 +388,14 @@ def filter_by_allowed(allowed_list_path: str, file_list: list) -> list:
 
 
 def main(args):
-    file_list, runs_not_available = retrieve_file_urls(args.study_accession,args.database)
+    file_list, runs_not_available = retrieve_file_urls(args.study_accession, args.database)
     if not file_list:
         print("Couldn't find any mean of downloading the proper fastq. Try with the sratoolkit")
 
     if args.allowed:
         file_list = filter_by_allowed(args.allowed, file_list)
 
-    output_args = [(file, args.output_path) for file in file_list]
+    output_args = [(file, args.output_path, args.respect_filename) for file in file_list]
     try:
         with Pool(args.threads) as p:
             p.starmap(transfer_file, output_args)
