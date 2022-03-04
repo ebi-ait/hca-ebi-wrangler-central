@@ -99,6 +99,8 @@ Once a submission is ready in ingest (`Archiving` status after hitting submit), 
 
 ## Step 2 of 3 - Archiving Files to DSP
 
+_Note: When direct archiving is fully functional, the instructions at the end of this step on __Uploading files directly to ENA__ should be followed instead of the following._
+
 Once the metadata is in DSP, the next step is to upload the files.
 
 ### Before you start
@@ -367,6 +369,27 @@ bsub -J laurenti_upload -M 64000 'singularity run -B /nfs/production/hca/laurent
 
 
 If running parallel jobs, choose different <file_name> / <job_names> because you will have multiple file-upload-infos and multiple jobs, in this case I’ve used the name of the output bam file as the job_name and file_name.
+
+
+### Uploading files directly to ENA
+
+This is a much simplified flow and only requires the user to trigger data files archiving by sending a HTTP POST request to a new endpoint in `ingest-archiver`. The request bypasses DSP and uploads files directly to ENA.
+
+Trigger data archiving endpoint:
+```
+{INGEST_ARCHIVER_URL}/archiveSubmissions/data
+```
+
+Example usage in the terminal:
+```
+curl -X POST {INGEST_ARCHIVER_URL}/archiveSubmissions/data -H 'Content-Type: application/json' -H "Api-Key:{ARCHIVER_API_KEY}" -d '{"sub_uuid": "{SUB_UUID}"}'
+```
+- `INGEST_ARCHIVER_URL` See the Archiver endpoints section in Step 1 above.
+- `ARCHIVER_API_KEY` See how to obtain the archiver API key in Step 1 above.
+- `SUB_UUID` The submission uuid.
+
+The README of the [ingest-data-archiver](https://github.com/ebi-ait/ingest-data-archiver) contains more examples of the valid requests, including with the `files` property which permits the user to specify individual data file(s) of a particular submission instead of the default (without `files` property) where all files of the submission are archived.
+
 
 # Step 3 of 3 - Complete DSP Submission
 
