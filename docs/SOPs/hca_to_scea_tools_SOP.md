@@ -492,5 +492,3 @@ To install the tool on your local machine:
    cd hca2scea-backend
    ./install.sh
    ```
-
-Once installed, please follow the instructions below
