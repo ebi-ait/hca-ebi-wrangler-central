@@ -121,7 +121,7 @@ this file. For example, to run against dev:
 
 ### Manual ad-hoc dataset addition
 
-When needed, datasets can also be added manually. First, make sure to check that the dataset is not duplicated by searching in Ingest by DOI or project title. This can be checked too while trying to create a new project based on DOI or GEO accession, as Ingest will search for them in the database to avoid duplication.
+When needed, datasets can also be added manually. First, make sure to check that the dataset is not duplicated by searching in Ingest by DOI, project title or project accession. This can be checked too while trying to create a new project based on DOI or GEO accession, as Ingest will search for them in the database to avoid duplication.
 
 When the dataset is not present, please fill in **at least** the following information:
 - **Accessions**: If available, add the corresponding data accessions.
