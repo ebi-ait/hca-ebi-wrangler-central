@@ -208,7 +208,7 @@ aws iam create-access-key --user-name walter.white
 }
 ```
 
-3. Compress the file.
+3. Compress the file with password. The following steps works for mac os.
 ```bash
 zip -er walter.white-access-keys.zip ayumu.tsubosaka-access-keys.txt
 ```
