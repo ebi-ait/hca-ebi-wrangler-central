@@ -195,7 +195,62 @@ aws iam add-user-to-group --group hca-contributor --user-name walter.white
 aws iam create-access-key --user-name walter.white 
 ```
 
-2. The developer need to send the generated access key in an email to the person (usually a wrangler) who requested the account for the contributor.  
+2. Save the credentials json output into a `walter.white-access-keys.txt` file.
+```json
+{
+    "AccessKey": {
+        "UserName": "walter.white",
+        "AccessKeyId": "access-key-id",
+        "Status": "Active",
+        "SecretAccessKey": "secret-access-key",
+        "CreateDate": "2022-03-10T16:35:07+00:00"
+    }
+}
+```
+
+3. Compress the file with password. The following steps works for mac os.
+```bash
+zip -er walter.white-access-keys.zip ayumu.tsubosaka-access-keys.txt
+```
+You will be prompted to input a password. You could use any password generator.
+```
+Enter password:
+Verify password:
+  adding: walter.white-access.txt (deflated 30%)
+
+```
+
+4. Compose an email and attached the `.zip` file
+
+Subject: `AWS access keys for hca-util tool`
+
+To: `contributor.email@domain.org`
+
+CC: `wrangler.email@domain.org`, `wrangler-team@data.humancellatlas.org`
+
+Message:
+> Dear < Contributor Name >
+> 
+> Attached at the end of the email you will find a zip file with the credentials you need for the hca-util tool to upload your data. I will send you a separate email for the password of the zip file.
+>
+> < Wrangler Name > will provide you with further details on how to continue with the submission.
+> 
+> 
+> Best regards
+> 
+> < Your Name >
+
+5. Compose a second email containing the `.zip` file password
+
+>Dear < Contributor Name >
+> 
+>The password to open the zip file is: < password >
+> 
+> 
+> Best Regards
+> 
+> < Your Name > 
+   
 
 ### Data upload Procedure
 
