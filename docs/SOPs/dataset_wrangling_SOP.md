@@ -42,13 +42,12 @@ Wrangling progress is tracked primarily through movement of the `project tracker
 | Queued for Wrangling      | When created                           | Issues should be placed here when they are created but before a wrangler actively starts working on it |
 | Wrangling           | When in progress                       | The primary wrangler moves the tracker ticket here when they have started working on it |
 | Secondary reviewing | When review starts                     | The secondary wrangler moves the tracker ticket here when they start reviewing |
+| Finalising          | When reviewed but needs changed        | The primary wrangler moves the tracker ticket here when applying changes to secondary wrangled datasets |
 | Archiving           | When archiving process starts          | The primary wrangler moves the tracker ticket here when Archiving starts (if required), if already archived would skip to ready for export |
-| Ready for export          | When ready to be exported              | The primary wrangler moves the tracker ticket here when all that is left is to hit submit|
-| AE/SCEA brokering   | When ready to be converted to MAGE-TAB | The primary wrangler moves the tracker ticket here when it is ready to be converted to MAGE-TAB to give to ArrayExpress of SCEA if suitable |
 | Needs update        | If project needs an update             | A wrangler moves the tracker ticket here if the project requires some kind of update |
 | Stalled             | If project becomes stuck               | If project spends more than 2 weeks with no progress, the ticket should be moved here and label applied to indicate reason  |
 | Finished            | When finished                          | The primary wrangler moves the ticket here to indicate all work is complete. The ticket should be closed at the end of the sprint. |
-
+| Verified in data browser | When project has been verified in the data browser | The primary wrangler moves the ticket here to indicate that it has been verified in the data browser. |
 [Labels](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels) are also applied to tickets to provide further information about the ticket. Definitions for each label and when they should be applied can be [found here](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels).
 
 **If you are wrangling a dataset from a published project, click [here](#for-published-datasets-only). If not, continue reading the following directions.** 
