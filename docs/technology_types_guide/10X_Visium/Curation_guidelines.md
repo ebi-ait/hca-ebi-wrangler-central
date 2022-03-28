@@ -36,4 +36,4 @@ and not left empty. For 10X Visium data, the following tabs should be filled:
 
 - For each imaged specimen, there should be a list of 10X Visium spatial barcodes linked to the image coordinates. [See tissue_positions_list.csv.](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/technology_types_guide/10X_Visium/example_dataset/tissue_positions_list.csv)
 
-- If the imaged specimen(s) have been annotated by a contributor (e.g. organ-specific anatomical parts), ideally, we should include a file linking   the annotations to the image coordinates.
+- If the imaged specimen(s) have been annotated by a contributor (e.g. organ-specific anatomical parts), ideally, we should include a file linking the annotations to the image coordinates.
