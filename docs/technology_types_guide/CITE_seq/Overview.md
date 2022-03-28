@@ -13,7 +13,7 @@ Once scRNA-seq libraries are sequenced, transcripts can be mapped back to indivi
 <br
     </br>
 
-<img src="https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/Add-technology-type-info-folder/technology_types_explanors/CITE_seq/visuals/CITE-seq.png" width="700" height="500">
+<img src="https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/technology_types_guide/CITE_seq/visuals/CITE-seq.png" width="700" height="500">
 
 ### Is CITE-seq a single-cell method?
 
@@ -27,7 +27,7 @@ CITE-seq has 2 purposes. The first is sample multiplexing (EFO:0030009). It is b
 <center><u> Figure 2</u>: Illustration of Cell Hashing</center>
 
 
-<img src="https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/Add-technology-type-info-folder/technology_types_explanors/CITE_seq/visuals/Cell-Hashing.png" width="1000" height="400">
+<img src="https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/technology_types_guide/CITE_seq/visuals/Cell-Hashing.png" width="1000" height="400">
 
 The second purpose is for cell surface protein profiling (EFO:0030008). While similar in method, the aim is to identify biomarkers and better characterize cell phenotypes. In this context, the antibody-tagged DNA barcodes are referred to as 'Antibody Derived Tags' (ADT).
 
@@ -50,10 +50,10 @@ DNA-barcoded antibodies for cell staining (antibody serived tag - ADT)
 
 - Raw HTO sequencing data with an HTO barcode sequence. HTO data are mapped to a typically 10-12 bp reference HTO list separately.
 
-- An HTO antibody index index file which has the format “feature_barcode, feature_name". This should include the DNA barcode sequence and the antibody name, antibody ID or multiplex HTO sample ID. The mapped barcode counts might also be included in this file. See example dataset [here](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/Add-technology-type-info-folder/technology_types_explanors/CITE_seq/example_datasets/GSM2895283_Hashtag-HTO-count.csv).
+- An HTO antibody index index file which has the format “feature_barcode, feature_name". This should include the DNA barcode sequence and the antibody name, antibody ID or multiplex HTO sample ID. The mapped barcode counts might also be included in this file. See example dataset [here](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/technology_types_guide/CITE_seq/example_datasets/GSM2895283_Hashtag-HTO-count.csv).
 
 - Raw ADT sequencing data with an ADT barcode sequence. ADT data are mapped to a typically 10-12 bp reference ADT list separately.
 
-- An ADT antibody index index file which has the format “feature_barcode, feature_name". This should include the DNA barcode sequence and the antibody name, antibody ID or multiplex HTO sample ID. The mapped barcode counts might also be included in this file. See example dataset [here](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/Add-technology-type-info-folder/technology_types_explanors/CITE_seq/example_datasets/GSM2895283_Hashtag-ADT-1-count.csv).
+- An ADT antibody index index file which has the format “feature_barcode, feature_name". This should include the DNA barcode sequence and the antibody name, antibody ID or multiplex HTO sample ID. The mapped barcode counts might also be included in this file. See example dataset [here](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/technology_types_guide/CITE_seq/example_datasets/GSM2895283_Hashtag-ADT-1-count.csv).
 
 - The HTO feature data and ADT feature data might be aggregated in 1 file, in which case the "feature type" will also be included in the file ("cite-seq" or "hashtag").
