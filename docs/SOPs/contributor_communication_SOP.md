@@ -109,7 +109,9 @@ Once a submission is 100% valid and has been reviewed, a final confirmation emai
 
 ## Confirmation of Accessions
 
-Once the submission has been successfully archived, accessions should be communicated back to the contributor. If there is a risk that the deadline the contributor gave will not be met, the contributor should be contacted to inform them of the risk and offer alternatives or work arounds. The project level accessions should be provided within the main body of the email.
+Once the submission has been successfully archived, accessions should be communicated back to the contributor. If there is a risk that the deadline the contributor gave will not be met, the contributor should be contacted to inform them of the risk and offer alternatives or workarounds. The project level accessions should be provided within the main body of the email.
+
+By default, the release date will be set up to 2 years from the moment the submission is archived. This date can be changed to an earlier date (Provided by the contributor) but **we won't hold the data for more than 2 years**
 
 Once the dataset is released in an HCA snapshot release, the contributor should be informed and provided with the link to their dataset on the HCA Data Browser.
 
@@ -217,9 +219,9 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > 
 > 3 What’s next?
 > 
-> After we have put together your data and metadata into a valid submission we will archive your data and metadata in [BioStudies](https://www.ebi.ac.uk/biostudies/), [BioSamples](https://www.ebi.ac.uk/biosamples/) and the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser/home) and provide you with accessions for your manuscript. We will also ensure your data and metadata make it into the next HCA DCP snapshot releaserelease/snapshot. As indicated by you, we will ensure no data or metadata is made public until [enter date] / we will make the data public as soon as it is submitted.
+> After we have put together your data and metadata into a valid submission we will archive your data and metadata in [BioStudies](https://www.ebi.ac.uk/biostudies/), [BioSamples](https://www.ebi.ac.uk/biosamples/) and the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser/home) and provide you with accessions for your manuscript. We will also ensure your data and metadata make it into the next HCA DCP snapshot releaserelease/snapshot. As indicated by you, we will ensure no data or metadata is made public until [enter date, 2 years from now]. / we will make the data public as soon as it is submitted.
 > 
-> If you would also like your study to be brokered to [ArrayExpress](https://www.ebi.ac.uk/arrayexpress/), please let us know. 
+> [IF DATA RELEASE IS NOT IMMEDIATE] Please note that this is a release date that we set up as default to allow for manuscripts to be reviewed and corrections to be made. If you want this data to be released earlier, please contact us when the data can be openly shared and we will release it immediately.
 > 
 > Don’t hesitate to get back in touch if you have any issues with any part of the process.
 > 
