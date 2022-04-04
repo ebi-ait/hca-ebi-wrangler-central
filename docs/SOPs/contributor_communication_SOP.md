@@ -126,7 +126,7 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > 2 Please fill out the dataset questionnaire (https://forms.gle/HWADhk3Z6hUEbvVh8). The questionnaire asks for information about your experiments. This will help us create a tailor spreadsheet for you to fill out about your project.
 >
-> Please be aware that as per GDPR guidelines, we are not able to directly wrangle any metadata or data originating from living donors. If your project > contains metadata or data originating from living donors, please do not send us that information. 
+> Please be aware that as per GDPR guidelines, we are not able to directly wrangle any metadata or data originating from living donors. If your project contains metadata or data originating from living donors, please refrain from sending us that information. 
 >
 > After filling both forms, we will contact you with the next steps to continue the submission of your metadata collection and data.
 > 
