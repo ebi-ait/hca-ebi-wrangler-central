@@ -124,8 +124,10 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > 1 Register as part of the HCA by filling the following form: https://www.humancellatlas.org/register (if you haven’t already)
 > 
-> 2 Please fill out the dataset questionnaire (https://forms.gle/HWADhk3Z6hUEbvVh8). The questionnaire  asks for information about your experiments. This will help us create a tailor spreadsheet for you to fill out about your project 
-> 
+> 2 Please fill out the dataset questionnaire (https://forms.gle/HWADhk3Z6hUEbvVh8). The questionnaire asks for information about your experiments. This will help us create a tailor spreadsheet for you to fill out about your project.
+>
+> Please be aware that as per GDPR guidelines, we are not able to directly wrangle any metadata or data originating from living donors. If your project contains metadata or data originating from living donors, please refrain from sending us that information. 
+>
 > After filling both forms, we will contact you with the next steps to continue the submission of your metadata collection and data.
 > 
 > I am happy to set up a meeting or call about any concerns or queries that your team might have.
