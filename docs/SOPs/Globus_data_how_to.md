@@ -2,11 +2,11 @@
 
 # How to get data from Globus
 
-Globus is a service that makes it easy to move, sync, and share large amounts of data. Globus can manage file transfers, monitor performance, retry failures, recover from faults automatically when possible, and report the status of data transfer. Globus uses GridFTP for more reliable and high-performance file transfer, and will queue file transfers to be performed asynchronously in the background.
+[Globus](https://www.globus.org/) is a service that makes it easy to move, sync, and share large amounts of data. Globus can manage file transfers, monitor performance, retry failures, recover from faults automatically when possible, and report the status of data transfer. Globus uses GridFTP for more reliable and high-performance file transfer, and will queue file transfers to be performed asynchronously in the background.
 Globus was developed and is maintained at the University of Chicago and is used extensively at supercomputer centres and major research facilities. 
 
 Globus can support different types of storage and present them through a unified interface to simplify file transfer. 
-A resource (server, cluster, storage system, laptop, or other system) is identified through an endpoint: an endpoint is defined, it will be available to authorised users who can transfer files to or from this endpoint.
+A resource - server, cluster, storage system, laptop, or other system - is identified through an endpoint: an endpoint is defined, it will be available to authorised users who can transfer files to or from this endpoint.
 
 ## General flow
 Using GlobusPersonalConnect you can establish a private endpoint in your machine, for example in the ec2 instance. 
@@ -16,13 +16,13 @@ Once the data is in your filesystem you can upload it to a bucket with hca-util.
 To avoid transfering the files twice we could potentially mount the hca-util bucket to the ec2 and transfer the files directly in the hca-util bucket. There are guides on how to mount s3 buckets but that would require a dev because wranglers don’t have sudo powers in the ec2.
 
 #### Step 1: Sign up
-Register on globus here\
+Register on globus [here](https://auth.globus.org/p/login?client_id=89ba3e72-768f-4ddb-952d-e0bb7305e2c7&scope=urn%3Aglobus%3Aauth%3Ascope%3Aauth.globus.org%3Aview_identities+urn%3Aglobus%3Aauth%3Ascope%3Anexus.api.globus.org%3Agroups+urn%3Aglobus%3Aauth%3Ascope%3Atransfer.api.globus.org%3Aall&response_type=token&redirect_uri=%2Fv2%2Foauth2%2Fauthorize%3Fclient_id%3D89ba3e72-768f-4ddb-952d-e0bb7305e2c7%26scope%3Durn%253Aglobus%253Aauth%253Ascope%253Aauth.globus.org%253Aview_identities%2520urn%253Aglobus%253Aauth%253Ascope%253Anexus.api.globus.org%253Agroups%2520urn%253Aglobus%253Aauth%253Ascope%253Atransfer.api.globus.org%253Aall%26response_type%3Dtoken%26redirect_uri%3Dhttps%253A%252F%252Fapp.globus.org%252Flogin%26redirect_name%3DGlobus%2520Web%2520App%26state%3Dewa5ysmp6xj%26viewlocale%3Den_US&redirect_name=Globus+Web+App&viewlocale=en_US)\
 If you just want to browse the files available from a public endpoint this could be enough.
  <br/>
   <br/>
 
 #### Step 2: Get Globus Connect Personal
-Download Globus Connect Personal from here\
+Download Globus Connect Personal from [here](https://docs.globus.org/how-to/globus-connect-personal-linux/)\
 Authenticate following the instructions there
  <br/>
  <br/>
@@ -33,14 +33,14 @@ Establish an endpoint in the ec2
 $ ./globusconnectpersonal -setup 
 ```
 Note that by default the only path that globus personal connect will share is the home directory.\
-To enable globus to see and move files to other locations, like the folders under /data you have to edit the file `~/.globusonline/lta/config-paths` see instructions
+To enable globus to see and move files to other locations, like the folders under /data you have to edit the file `~/.globusonline/lta/config-paths` [see instructions](https://docs.globus.org/how-to/globus-connect-personal-linux/#config-paths)
  <br/>
  <br/>
 
 #### Step 4: Globus cli
-At this point you can move files between your private endpoint in the ec2 and any public endpoint by using the graphic interface here
+At this point you can move files between your private endpoint in the ec2 and any public endpoint by using the graphic interface [here](https://auth.globus.org/p/login?client_id=89ba3e72-768f-4ddb-952d-e0bb7305e2c7&scope=urn%3Aglobus%3Aauth%3Ascope%3Aauth.globus.org%3Aview_identities+urn%3Aglobus%3Aauth%3Ascope%3Anexus.api.globus.org%3Agroups+urn%3Aglobus%3Aauth%3Ascope%3Atransfer.api.globus.org%3Aall&response_type=token&redirect_uri=%2Fv2%2Foauth2%2Fauthorize%3Fclient_id%3D89ba3e72-768f-4ddb-952d-e0bb7305e2c7%26scope%3Durn%253Aglobus%253Aauth%253Ascope%253Aauth.globus.org%253Aview_identities%2520urn%253Aglobus%253Aauth%253Ascope%253Anexus.api.globus.org%253Agroups%2520urn%253Aglobus%253Aauth%253Ascope%253Atransfer.api.globus.org%253Aall%26response_type%3Dtoken%26redirect_uri%3Dhttps%253A%252F%252Fapp.globus.org%252Flogin%26redirect_name%3DGlobus%2520Web%2520App%26state%3Dewa5ysmp6xj%26viewlocale%3Den_US&redirect_name=Globus+Web+App&viewlocale=en_US)
 
-To move files from with a cli in the ec2 you need to install the python package globus from here, the documentation is here \
+To move files from with a cli in the ec2 you need to install the python package globus from [here](https://docs.globus.org/cli/), the documentation is [here](https://docs.globus.org/cli/reference/list-commands/) \
 With this you can do a couple of useful things like:
 
 - `bookmark` \
@@ -66,7 +66,7 @@ To filter for certain words use the option `--filter`
 ```bash
 $ globus ls endpoint:path –-filter ~*key_word*
 ```
-For a more detailed description see the documentation
+For a more detailed description see the [documentation](https://docs.globus.org/cli/reference/ls/)
  <br/>
  <br/>
 
