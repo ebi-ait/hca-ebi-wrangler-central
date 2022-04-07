@@ -1,4 +1,10 @@
-
+---
+layout: default
+title: How to get data from Globus
+parent: SOPs
+has_children: false
+last_modified_date: 7/04/2022
+---
 
 # How to get data from Globus
 
