@@ -37,7 +37,7 @@ New contributors will almost always contact us via the wranglers email list. Whe
 Wrangling progress is tracked primarily through movement of the `project tracker ticket` through the pipelines on the [Dataset wrangling status](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) Zenhub Board. 
 
 | Pipeline            | When                                   | Explanation                                                                                                                                 |
-|---------------------|----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+|:---------------------|:----------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
 | New Issues          | Auto-placed                            | This pipeline is where issues automatically end up but issues shouldn't stay here for long |
 | Queued for Wrangling      | When created                           | Issues should be placed here when they are created but before a wrangler actively starts working on it |
 | Wrangling           | When in progress                       | The primary wrangler moves the tracker ticket here when they have started working on it |
