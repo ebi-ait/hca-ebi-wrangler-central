@@ -2,7 +2,7 @@
 name: CellxGene Project Tracker
 about: Create a ticket for a cellxgene project
 title: ''
-labels: ''
+labels: cellxgene, dataset
 assignees: ''
 
 ---
