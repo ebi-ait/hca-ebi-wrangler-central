@@ -7,8 +7,10 @@ assignees: ''
 
 ---
 
-**Dataset/group this task is for:**
+**Collection/dataset this task is for:**
 <!--Indicate the name of the group or the dataset this task is for. e.g. Tissue Sensitivity dataset.-->
+- file name - 
+- [link to existing collection in cellxgene]()
 - project uuid - c5f46615-68de-4cf4-bbc2-a0ae10f08243
 - [ticket link to DCP wrangling ticket]()
 - [link to ingest UI](https://contribute.data.humancellatlas.org/projects/detail?uuid=c5f46615-68de-4cf4-bbc2-a0ae10f08243)
