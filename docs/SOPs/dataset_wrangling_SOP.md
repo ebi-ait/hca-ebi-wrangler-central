@@ -122,7 +122,8 @@ After generating the spreadsheet, we move onto raw data upload. There is no cont
 
 Note that this step does not need to be completed now, and can wait until after the metadata spreadsheet has been gathered. 
 
-Once the upload area has been created, there are several ways to upload the files from ENA/SRA (Sorted from easiest/fastest to most manual/slow):
+Once the upload area has been created, there are several ways to upload the files from ENA/SRA (Sorted from easiest/fastest to most manual/slow).
+If the files are deposited in Node follow this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Node_data_how_to), if they are is in Globus follow this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Globus_data_how), 
 
 **Python script in hca-ebi-wrangler-central repository**
 
