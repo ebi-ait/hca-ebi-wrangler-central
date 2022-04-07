@@ -10,10 +10,9 @@ assignees: ''
 **Collection/dataset this task is for:**
 <!--Indicate the name of the group or the dataset this task is for. e.g. Tissue Sensitivity dataset.-->
 - file name - 
-- [link to existing collection in cellxgene]()
-- project uuid - c5f46615-68de-4cf4-bbc2-a0ae10f08243
-- [ticket link to DCP wrangling ticket]()
-- [link to ingest UI](https://contribute.data.humancellatlas.org/projects/detail?uuid=c5f46615-68de-4cf4-bbc2-a0ae10f08243)
+- link to existing collection in cellxgene"
+- ticket link to DCP wrangling ticket (if available)
+- link to ingest UI:
 
 **Relevant People**
 - Wrangler
@@ -26,10 +25,10 @@ assignees: ''
 ### Associated files
 * [SOP](https://docs.google.com/document/d/1UVGIllybmEI46x22NSDpMNRywT3c8hcGrcw6opiHdbg/edit#)
 * [Knowledge Sharing Drive](https://drive.google.com/drive/folders/1cIgfeZZaoo2mFo2mN9iZ00_MZt94mvLv)
-*[Ingest-cellxgene-submitter](https://github.com/ebi-ait/ingest-cellxgene-submitter) 
-*[Cellxgene-schema](https://github.com/chanzuckerberg/single-cell-curation/blob/main/schema/2.0.0/schema.md)
-*[Cellxgene-schema-validate](https://github.com/chanzuckerberg/single-cell-curation)
-*[Cellxgene-submit-collection](https://cellxgene.cziscience.com/?curator=true)
+* [Ingest-cellxgene-submitter](https://github.com/ebi-ait/ingest-cellxgene-submitter) 
+* [Cellxgene-schema](https://github.com/chanzuckerberg/single-cell-curation/blob/main/schema/2.0.0/schema.md)
+* [Cellxgene-schema-validate](https://github.com/chanzuckerberg/single-cell-curation)
+* [Cellxgene-submit-collection](https://cellxgene.cziscience.com/?curator=true)
 
 ### Published study links
 
