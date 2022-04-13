@@ -30,7 +30,7 @@ parent: SOPs
     
 ### Step 2 - Submit project, study, samples, sequencing experiments using the Archiver and DSP service
 
-### Before using the Archiver service 
+#### Before using the Archiver service 
 
 Please note when using the documentation below:
 
