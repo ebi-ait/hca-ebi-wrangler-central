@@ -28,7 +28,7 @@ parent: SOPs
 4. Once finished, the submission will be marked as: **Archiving**
     1. **Please now poke your #hca-operations buddies to continue the process below by Archiving the Metadata to DSP.**
     
-### 2 - Submit project, study, samples, sequencing experiments using the Archiver and DSP service
+### Step 2 - Submit project, study, samples, sequencing experiments using the Archiver and DSP service
 
 ### Before using the Archiver service 
 
@@ -88,6 +88,6 @@ Once a submission is ready in ingest (`Archiving` status after hitting submit), 
 curl -X POST https://archiver.ingest.staging.archive.data.humancellatlas.org/archiveSubmissions/<dsp_submission_uuid>/complete -H 'Api-Key: {archiver_api_key}' 
 ```
 
-### 3 - Submit sequencing runs directly to ENA
+### Step 3 - Submit sequencing runs directly to ENA
 
 Follow Step 3 (Submit new sequencing runs) of "Update ENA runs SOP" page.
