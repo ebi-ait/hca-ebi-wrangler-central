@@ -17,7 +17,7 @@ parent: SOPs
 
 ## Steps
 
-![Archiving steps](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/ebi-ait/hca-ebi-wrangler-central/master/assets/plantuml_diagrams/archiving_sop.diag)
+![Archiving steps](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/ebi-ait/hca-ebi-wrangler-central/ops-485_update-archiving-sop/assets/plantuml_diagrams/archiving_sop.diag)
 
 
 ### Step 1: Submit for Archiving
