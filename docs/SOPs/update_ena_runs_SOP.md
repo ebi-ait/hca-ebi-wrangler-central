@@ -35,22 +35,24 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
       Authorization: Bearer <copy the very long string of random characters>
       ```
    1. That token has 1 hr validity. The token will be needed in the submitter script later.
+
 ## Steps
 
+### 1 - Suppress sequencing runs
 1. Get the list of sequencing runs to be suppressed. This can be downloaded as TSV/JSON from the ENA Browser. 
-   
-2. Make sure
-   that the metadata in Ingest contains sequencing experiment accessions. The submitter script will raise an error if
-   any of the assay processes has no accession. The assay processes in the submission should have the following
-   property:
 
-    ```
-    "insdc_experiment": {
-      "insdc_experiment_accession": "ERX4319109"
-    }
-    ```
+2. File a ticket via [ENA helpdesk](https://www.ebi.ac.uk/ena/browser/support) to suppress the old sequencing runs.
+   Guide on answering the form questions:
+   ```
+   Submitter: Broker
+   Query is related to: Suppression
+   I work on: Humans
+   Organisms classification: Not applicable
+   The work is: Other/not sure (Raw sequencing reads)
+   ```
 
-2. Clear the sequencing run accessions in file metadata. The following should not be in the file metadata json:
+### 2 - Clear sequencing runs
+   Clear the sequencing run accessions in file metadata. The following should not be in the file metadata json:
     ```
     "insdc_run_accessions": [
       "ERR6449905"
@@ -62,16 +64,27 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
     python clear_run_accession_from_files.py <submission-uuid>
     ```
 
-4. Download all files from Ingest / Terra upload area to any directory inside `/nfs/production/hca/` in the EBI cluster.
+### 3 - Submit new sequencing runs
+1. Make sure that the metadata in Ingest contains sequencing experiment accessions. The submitter script will raise an error if
+   any of the assay processes has no accession. The assay processes in the submission should have the following
+   property:
+
+    ```
+    "insdc_experiment": {
+      "insdc_experiment_accession": "ERX4319109"
+    }
+    ```
+
+2. Download all files from Ingest / Terra upload area to any directory inside `/nfs/production/hca/` in the EBI cluster.
    [gsutil](https://cloud.google.com/storage/docs/downloading-objects) can be used for downloading the files
    The files may also be in the hca-util upload area but we should make sure they're valid. Using Ingest/Terra upload area means the files have already been validated before.
    Please prefer downloading the Terra upload area as downloading from Ingest upload area will incur cost to our AWS account.
 
-5. Checksum all the files.
+3. Checksum all the files.
     ``` 
     gsutil hash -hm gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project_uuid>/data/* | grep -A1 "hex" | awk -F"/" '{printf $4 $1}' | awk -F"--" '{for (i=1;i<NF;i++)print $i}' | awk -F":" '{print $1 $3}' > <md-filename>.txt
     ```
-6. Upload the files to Webin FTP upload area (could be in parallel with checksumming)
+4. Upload the files to Webin FTP upload area (could be in parallel with checksumming)
    ```
    $ cd <directory where you downloaded the files>
    $ lftp webin2.ebi.ac.uk -u <webin-user>
@@ -81,19 +94,10 @@ This is the SOP for fixing datasets in the issue: ebi-ait/hca-ebi-wrangler-centr
    $ mput *
    ```   
    Please refer to [ENA documentation](https://ena-docs.readthedocs.io/en/latest/update/metadata/programmatic-read.html) for more details
-7. Run the submit_10x_fastq_files.py script. The `receipt.xml` and `report.json` file should be available after running the script.
+5. Run the submit_10x_fastq_files.py script. The `receipt.xml` and `report.json` file should be available after running the script.
    The `receipt.xml` will contain the ENA REST API response. The `report.json` will contain some report on which files were updated with the run accessions from ENA response.
    ```bash
    python submit_10x_fastq_files.py <submission-uuid> <md5-filename> <jwt-token-from-ingest-ui> [--ftp_dir <parent-dir>]
    ```
-8. Verify that the new runs were submitted. They should be visible in the Webin Portal but it may take 48 hours before they become available in the ENA browser
+6. Verify that the new runs were submitted. They should be visible in the Webin Portal but it may take 48 hours before they become available in the ENA browser
 
-9. File a ticket via [ENA helpdesk](https://www.ebi.ac.uk/ena/browser/support) to suppress the old sequencing runs.
-   Guide on answering the form questions:
-   ```
-   Submitter: Broker
-   Query is related to: Suppression
-   I work on: Humans
-   Organisms classification: Not applicable
-   The work is: Other/not sure (Raw sequencing reads)
-   ```
