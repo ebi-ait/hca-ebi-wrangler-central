@@ -26,7 +26,7 @@ This document will serve to display our guidelines for GDPR and data protection 
 
 ## Specific guidelines
 
-GDPR concers arise when dealing with living donors, as HCA sticks to a strict interpretation of the regulations. One of the first assessments a wrangler has to do when wrangling a dataset (contributor-led or publication-led) is to determine werthere there are living donors or not, to comply with our GDPR restrictions. Those donors alive at the moment of sample collection are subjected to GDPR restrictions. Thus, deceased and pre-natal donors can be wrangled without taking these GDPR guidelines into consideration.
+GDPR concerns arise when dealing with living donors, as HCA sticks to a strict interpretation of the regulations. One of the first assessments a wrangler has to do when wrangling a dataset (contributor-led or publication-led) is to determine werthere there are living donors or not, to comply with our GDPR restrictions. Those donors alive at the moment of sample collection are subjected to GDPR restrictions. Thus, deceased and pre-natal donors can be wrangled without taking these GDPR guidelines into consideration.
 
 ### Data 
 When wrangling any kind of data or metadata related to living donors, wranglers can only ingest into the system data that is already in the public domain. Wranglers shoud **never ask for extra data**. Here by data we specifically refer to:
