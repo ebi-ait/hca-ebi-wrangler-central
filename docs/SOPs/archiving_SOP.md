@@ -22,7 +22,7 @@ parent: SOPs
 
 ### Step 1: Submit for Archiving
 
-1. Once the data files are uploaded and graph validated, the submission should be listed as **Graph Valid.**
+1. Once the data files are uploaded and the submission has been validated, the submission should be listed as **Graph Valid.**
 2. On the _Submit_ tab, click the Submit Button.
 3. The submission will be marked as **Processing** as it maps the experimental graph
 4. Once finished, the submission will be marked as: **Archiving**
