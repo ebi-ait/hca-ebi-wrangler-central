@@ -115,4 +115,4 @@ Once a submission is ready in ingest (`Archiving` status after hitting submit), 
 
 ### Step 3 - Submit sequencing runs directly to ENA
 
-Follow Step 3 (Submit new sequencing runs) of "Update ENA runs SOP" page.
+Follow Step 3 (Submit new sequencing runs) of [Update ENA runs SOP](docs/SOPs/update_ena_runs_SOP.md#3---submit-new-sequencing-runs) page.
