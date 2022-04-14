@@ -28,7 +28,7 @@ parent: SOPs
 4. Once finished, the submission will be marked as: **Archiving**
     1. **Please now poke your #hca-operations buddies to continue the process below by Archiving the Metadata to DSP.**
     
-### Step 2 - Submit project, study, samples, sequencing experiments using the Archiver and DSP service
+### Step 2 - Submit project, study, samples and sequencing experiments using the Archiver and DSP service
 
 #### Before using the Archiver service 
 
