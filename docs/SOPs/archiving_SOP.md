@@ -39,7 +39,7 @@ Please note when using the documentation below:
     * Archiver -> **dsp_submission_uuid**
 *   Obtain and replace `{archiver_api_key}` with the key obtained by running the following cmd (replace `dev` with `staging` or `prod` depending on the environment):
     *   specify if prod/staging/dev
-        ```
+        ```bash
          aws --region us-east-1 secretsmanager get-secret-value --secret-id ingest/archiver/wrangler/secrets --query SecretString --output text | jq -jr .prod_archiver_api_key
         ``` 
     *   If you can't retrieve the archiver service api key using this command, it is likely because you do not have the required permissions. Ask a dev or wrangler to obtain the key
@@ -60,33 +60,58 @@ Once a submission is ready in ingest (`Archiving` status after hitting submit), 
 
 1. Open a terminal
 1. Create a DSP submission given an ingest submission UUID with a POST request
-   ```
+   ```bash
    curl -X POST https://archiver.ingest.staging.archive.data.humancellatlas.org/archiveSubmissions -H 'Content-Type: application/json' -H 'Api-Key: {archiver_api_key}' -d '{"submission_uuid": "{ingest_submission_uuid}", "alias_prefix": "HCA", "exclude_types": ["sequencingRun"] }'
    ```
    Please note this is an async request and even if it's successfully triggered (You will get a response saying that), it may take a while to create the submission.
+
 1. Retrieve the DSP submission UUID via the ingest submission UUID
 
-   ```
+   ```bash
    curl -X GET  -H 'Api-Key: {archiver_api_key}' https://archiver.ingest.staging.archive.data.humancellatlas.org/latestArchiveSubmission/<ingest_submission_uuid>
    ```
-   This request should give you the UUID in the json response
+
+   TThis request should give you the **latest archive submission entity** in Ingest. The entity contains the DSP submission UUID in the json response, it also gives the full DSP submission url.
 
 1. Check if submission is submittable
 
-    *  **Check validation errors**
-       ```
-       curl -X GET https://archiver.ingest.staging.archive.data.humancellatlas.org/archiveSubmissions/<dsp_submission_uuid>/validationErrors -H 'Api-Key: {archiver_api_key}' 
-       ```
+    Check validation errors
+    ```bash
+    curl -X GET https://archiver.ingest.staging.archive.data.humancellatlas.org/archiveSubmissions/<dsp_submission_uuid>/validationErrors -H 'Api-Key: {archiver_api_key}' 
+    ```
+
+    Check any submission blockers
+    ```bash
+    curl -X GET https://archiver.ingest.staging.archive.data.humancellatlas.org/archiveSubmissions/<dsp_submission_uuid>/blockers -H 'Api-Key: {archiver_api_key}' 
+    ```
+
+    Ignore the following if there are no validation errors nor submission blockers.
     
-    *  **Check any submission blockers**
-       ```
-       curl -X GET https://archiver.ingest.staging.archive.data.humancellatlas.org/archiveSubmissions/<dsp_submission_uuid>/blockers -H 'Api-Key: {archiver_api_key}' 
-       ```
+    If there are **validation errors**, we may have to fix something in the archiver's conversion, in which case we need to delete the archive submission entities in Ingest and DSP submission and start from [Step 1: Submit for Archiving](#step-1-submit-for-archiving)) again.  
+   
+    Get AAP token needed to delete DSP submission:
+    ```bash
+    curl -u hca-ingest:<aap-password> https://api.aai.ebi.ac.uk/auth > aap.jwt
+    export AAP_TOKEN=`cat aap.jwt`
+    ```
+    The `hca-ingest` is the AAP username of the Archiver service and the password should be in the AWS secrets [ingest/prod/secrets](https://us-east-1.console.aws.amazon.com/secretsmanager/home?region=us-east-1#!/secret?name=ingest%2Fprod%2Fsecrets) , see the value for `aap_api_password`. Only an Ingest developer has an access to this.
+
+    Delete the DSP submission:
+    ```bash
+    curl -X DELETE -H "Authorization: Bearer $AAP_TOKEN" <dsp-url>
+    ```
+
+    Please also delete the **archive submission entity** created to track this DSP submission in Ingest. For this request, you need to use the Ingest API token which you can get from the Ingest UI.
+    ```bash
+    curl -X DELETE -H "Authorization: Bearer $INGEST_API_TOKEN" <ingest-archive-submission-self-url>
+    ```
+
+    If there are **validation errors/blockers** and we couldn't resolve ourselves, pls contact karoly@ebi.ac.uk or mhaseeb@ebi.ac.uk in the [#data-submission-portal](https://embl-ebi-ait.slack.com/archives/CNL3AH7BQ) slack channel 
 
 1. Once the archive metadata entities are validated, to finish the submission, just run the following request to complete the submission:
-```
-curl -X POST https://archiver.ingest.staging.archive.data.humancellatlas.org/archiveSubmissions/<dsp_submission_uuid>/complete -H 'Api-Key: {archiver_api_key}' 
-```
+    ```bash
+    curl -X POST https://archiver.ingest.staging.archive.data.humancellatlas.org/archiveSubmissions/<dsp_submission_uuid>/complete -H 'Api-Key: {archiver_api_key}' 
+    ```
 
 ### Step 3 - Submit sequencing runs directly to ENA
 
