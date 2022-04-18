@@ -1,0 +1,33 @@
+@startuml
+actor User as u
+participant "UI" as ui
+participant "Archiver API" as archiver
+participant "DSP" as dsp
+participant "EBI cluster" as ebic
+participant "ENA" as ena
+
+group 1 - Submit for archiving
+u -> ui : has a "Graph valid" submission
+u -> ui : submits to archives
+u -> ui : waits until submission is set to Archiving
+end
+
+group 2 - Submit project, study, samples and sequencing experiments
+u -> archiver : POST /archiveSubmissions \nusing ingest-submission-uuid
+archiver-->archiver : converts HCA metadata
+archiver-->dsp : creates submission \nproject, study, samples,\nsequencing experiments
+u -> archiver: gets DSP submission uuid
+u -> archiver: checks if DSP submission is valid
+u -> archiver : when DSP submission is valid,\nPOST /complete to submit DSP submission
+end
+
+group 3 - Submit sequencing runs
+u -> ebic: ssh to ebi-cli.ebi.ac.uk
+u -> ebic: runs command to copy data files\nfrom Ingest upload area  to ENA FTP dir \n(or from Terra if already exported)
+ebic --> ena: transfers files
+u -> ebic: generates md5 file
+u -> ebic: runs python script
+ebic --> ena: creates and submits submission\nwith sequencing runs
+end
+
+@enduml
