@@ -219,6 +219,8 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > Please let us know and if you are able to provide the above files, we can work on submitting your project to the Cellxgene visualisation platform. 
 > Let us know if you have any questions! 
 > 
+> Warm regards,
+> 
 > [primary wrangler name]
 >
 > On behalf of the HCA DCP 
@@ -232,7 +234,7 @@ Note that this is a constantly changing space, this email was last updated 2020-
 >
 > We are now wrangling projects with appropriate expression matrices from the HCA DCP to CellxGene. I was wondering if you would be interested in submitting your analysis files to the Cellxgene visualization portal?
 >
-> If so, we would need to alter the three .h5ad file provided on Mendeley to comply with Cellxgene's schema requirements.
+> If so, we would need to alter the .h5ad file(s) provided on Mendeley to comply with Cellxgene's schema requirements.
 >
 > Let me know if you have any questions,
 > 
