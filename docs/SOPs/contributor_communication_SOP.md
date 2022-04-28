@@ -210,11 +210,11 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > We are also working with CellxGene to wrangle projects with appropriate expression matrices. I was wondering if you would be interested in submitting your analysis files to the [Cellxgene visualization portal](cellxgene.cziscience.com/)?
 >
 > We would require the following, and would create an h5ad object meeting Cellxgene's [schema requirements](https://github.com/chanzuckerberg/single-cell-curation/blob/main/schema/2.0.0/schema.md).
-> - Raw count matrix
-> - Cell type annotation
-> - Cell-level metadata
-> - Embedding (Tsne/umap/spatial coordinates) 
-> - Normalised count matrix (optional) 
+- Raw count matrix
+- Cell type annotation
+- Cell-level metadata
+- Embedding (Tsne/umap/spatial coordinates) 
+- Normalised count matrix (optional) 
 > 
 > Please let us know and if you are able to provide the above files, we can work on submitting your project to the Cellxgene visualisation platform. 
 > Let us know if you have any questions! 
