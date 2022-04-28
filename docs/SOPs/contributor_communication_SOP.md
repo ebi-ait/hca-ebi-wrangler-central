@@ -228,7 +228,7 @@ Note that this is a constantly changing space, this email was last updated 2020-
  
 > Dear [name/s of contributor/s],
 >
-> I am writing about your paper (Cell Types of the Human Retina and Its Organoids at Single-Cell Resolution) which has been published in the HCA Data Portal. (https://data.humancellatlas.org/explore/projects/1dddae6e-3753-48af-b20e-fa22abad125d) 
+> I am writing about your paper [Name of Paper] which has been published in the HCA Data Portal. [Link to Paper in Data Portal]
 >
 > We are now wrangling projects with appropriate expression matrices from the HCA DCP to CellxGene. I was wondering if you would be interested in submitting your analysis files to the Cellxgene visualization portal?
 >
