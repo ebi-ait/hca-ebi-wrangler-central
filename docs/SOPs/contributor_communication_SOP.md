@@ -218,7 +218,12 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > 
 > Please let us know and if you are able to provide the above files, we can work on submitting your project to the Cellxgene visualisation platform. 
 > Let us know if you have any questions! 
+> 
+> [primary wrangler name]
+>
+> On behalf of the HCA DCP 
 
+ 
 #### Informing Contributor of Project in HCA-DCP being wrangled to CellxGene
  
 > Dear [name/s of contributor/s],
@@ -231,7 +236,10 @@ Note that this is a constantly changing space, this email was last updated 2020-
 >
 > Let me know if you have any questions,
 > 
+> [primary wrangler name]
+>
 > On behalf of the HCA DCP 
+ 
  
 #### Informing Contributor of PRoject in HCA-DCP already wrangled to CellxGene
 
@@ -245,7 +253,10 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > This is the link to the private collection in CellxGene where you can download and explore the h5ad files. Please let us know in the next couple of weeks if there is anything you would like to change or update!
 >
 > Warm regards,
-> Wei Kheng
+>
+> [primary wrangler name]
+>
+> On behalf of the HCA DCP 
 
  
 ### Spreadsheet and Data upload instructions
