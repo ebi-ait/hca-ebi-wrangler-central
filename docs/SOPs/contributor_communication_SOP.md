@@ -201,6 +201,53 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > 
 > On behalf of the HCA DCP Data Wrangling Team
 
+### Contributor Matrices and Cell Types 
+
+#### Asking for Matrices from Contributor
+ 
+> Dear [name/s of contributor/s], 
+>
+> We are also working with CellxGene to wrangle projects with appropriate expression matrices. I was wondering if you would be interested in submitting > your analysis files to the [Cellxgene visualization portal](cellxgene.cziscience.com/)?
+>
+> We would require the following, and would create an h5ad object meeting Cellxgene's [schema requirements](https://github.com/chanzuckerberg/single-cell-curation/blob/main/schema/2.0.0/schema.md).
+> Raw count matrix
+> Cell type annotation
+> Cell-level metadata
+> Embedding (Tsne/umap/spatial coordinates) 
+> Normalised count matrix (optional) 
+> 
+> Please let us know and if you are able to provide the above files, we can work on submitting your project to the Cellxgene visualisation platform. 
+> Let us know if you have any questions! 
+
+#### Informing Contributor of Project in HCA-DCP being wrangled to CellxGene
+ 
+> Dear [name/s of contributor/s],
+>
+> I am writing about your paper (Cell Types of the Human Retina and Its Organoids at Single-Cell Resolution) which has been published in the HCA Data Portal. (https://data.humancellatlas.org/explore/projects/1dddae6e-3753-48af-b20e-fa22abad125d) 
+>
+> We are now wrangling projects with appropriate expression matrices from the HCA DCP to CellxGene. I was wondering if you would be interested in submitting your analysis files to the Cellxgene visualization portal?
+>
+> If so, we would need to alter the three .h5ad file provided on Mendeley to comply with Cellxgene's schema requirements.
+>
+> Let me know if you have any questions,
+> 
+> On behalf of the HCA DCP 
+ 
+#### Informing Contributor of PRoject in HCA-DCP already wrangled to CellxGene
+
+> Dear [name/s of contributor/s],
+> 
+> I am writing about your paper [Name of Paper] which has been public in our HCA Data Portal. [Link to Paper in Data Portal]
+> 
+> As a pilot project, we have wrangled your dataset’s expression matrices to a private collection in the Cellxgene visualisation portal. To do this, we have altered your analysis file to comply with Cellxgene’s schema requirements. 
+>
+> 
+> This is the link to the private collection in CellxGene where you can download and explore the h5ad files. Please let us know in the next couple of weeks if there is anything you would like to change or update!
+>
+> Warm regards,
+> Wei Kheng
+
+ 
 ### Spreadsheet and Data upload instructions
 
 > Dear [name/s of contributor/s],
