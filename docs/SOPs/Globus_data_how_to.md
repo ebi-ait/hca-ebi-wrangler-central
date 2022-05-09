@@ -1,12 +1,12 @@
 ---
 layout: default
-title: How to get data from Globus
+title: Download data from Globus
 parent: SOPs
 has_children: false
 last_modified_date: 7/04/2022
 ---
 
-# How to get data from Globus
+# Downloading data from Globus
 
 [Globus](https://www.globus.org/) is a service that makes it easy to move, sync, and share large amounts of data. Globus can manage file transfers, monitor performance, retry failures, recover from faults automatically when possible, and report the status of data transfer. Globus uses GridFTP for more reliable and high-performance file transfer, and will queue file transfers to be performed asynchronously in the background.
 Globus was developed and is maintained at the University of Chicago and is used extensively at supercomputer centres and major research facilities. 
