@@ -37,7 +37,7 @@ New contributors will almost always contact us via the wranglers email list. Whe
 Wrangling progress is tracked primarily through movement of the `project tracker ticket` through the pipelines on the [Dataset wrangling status](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) Zenhub Board. 
 
 | Pipeline            | When                                   | Explanation                                                                                                                                 |
-|---------------------|----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+|:---------------------|:----------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
 | New Issues          | Auto-placed                            | This pipeline is where issues automatically end up but issues shouldn't stay here for long |
 | Queued for Wrangling      | When created                           | Issues should be placed here when they are created but before a wrangler actively starts working on it |
 | Wrangling           | When in progress                       | The primary wrangler moves the tracker ticket here when they have started working on it |
@@ -50,7 +50,9 @@ Wrangling progress is tracked primarily through movement of the `project tracker
 | Verified in data browser | When project has been verified in the data browser | The primary wrangler moves the ticket here to indicate that it has been verified in the data browser. |
 | CellxGene | When working on wrangling to CellxGene | The primary wrangler moves the ticket here to indicate that the project is actively being wrangled to CellxGene |
 
+
 [Labels](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels) are also applied to tickets to provide further information about the ticket. Definitions for each label and when they should be applied can be [found here](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels).
+
 
 **If you are wrangling a dataset from a published project, click [here](#for-published-datasets-only). If not, continue reading the following directions.** 
 
