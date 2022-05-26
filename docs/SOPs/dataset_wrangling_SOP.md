@@ -41,12 +41,14 @@ Wrangling progress is tracked primarily through movement of the `project tracker
 | New Issues          | Auto-placed                            | This pipeline is where issues automatically end up but issues shouldn't stay here for long |
 | Queued for Wrangling      | When created                           | Issues should be placed here when they are created but before a wrangler actively starts working on it |
 | Wrangling           | When in progress                       | The primary wrangler moves the tracker ticket here when they have started working on it |
-| Secondary reviewing | When review starts                     | The primary wrangler moves the tracker ticket and asks for an available secondary reviewer |
+| Secondary reviewing | When review starts                     | The secondary wrangler moves the tracker ticket here when they start reviewing |
+| Finalising          | When reviewed but needs changed        | The primary wrangler moves the tracker ticket here when applying changes to secondary wrangled datasets |
 | Archiving           | When archiving process starts          | The primary wrangler moves the tracker ticket here when Archiving starts (if required), if already archived would skip to ready for export |
 | Needs update        | If project needs an update             | A wrangler moves the tracker ticket here if the project requires some kind of update |
 | Stalled             | If project becomes stuck               | If project spends more than 2 weeks with no progress, the ticket should be moved here and label applied to indicate reason  |
-| Finished            | When finished                          | The primary wrangler moves the ticket here to indicate all work is complete and the dataset has been exported. |
-| Verified in Data Browser            | After a release                          | The primary wrangler moves the ticket here after checking the dataset in the Data Portal. The ticket should be closed at the end of the sprint. |
+| Exported in the DCP            | When finished                          | The primary wrangler moves the ticket here to indicate the project is exported to the DCP.  |
+| Verified in data browser | When project has been verified in the data browser | The primary wrangler moves the ticket here to indicate that it has been verified in the data browser. |
+| CellxGene | When working on wrangling to CellxGene | The primary wrangler moves the ticket here to indicate that the project is actively being wrangled to CellxGene |
 
 [Labels](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels) are also applied to tickets to provide further information about the ticket. Definitions for each label and when they should be applied can be [found here](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels).
 
