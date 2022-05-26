@@ -26,8 +26,8 @@ There are some general project management tasks when working with new datasets t
 
 New contributors will almost always contact us via the wranglers email list. When we work with them to get their projects submitted, the wranglers email list should be copied into all emails.
 1. Create a [project tracker ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=dataset&template=project_tracker.md&title= ) to track dataset progress should be created in the `hca-ebi-wrangler-central` repo 
-2. Add the dataset to the [dataset tracker sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0) 
-  * Change `hca_status` to 'in progress'
+2. Add the dataset to Ingest 
+  * Change `wrangling status` to 'in progress'
   * Ensure all required fields are filled out
   * Ensure you are listed as the `primary_wrangler`
 3. Create a new folder to store the dataset metadata in the [Brokering drive](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA) 
@@ -53,6 +53,7 @@ Wrangling progress is tracked primarily through movement of the `project tracker
 
 [Labels](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels) are also applied to tickets to provide further information about the ticket. Definitions for each label and when they should be applied can be [found here](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels).
 
+
 **If you are wrangling a dataset from a published project, click [here](#for-published-datasets-only). If not, continue reading the following directions.** 
 
 ## Early contact with contributors
@@ -76,6 +77,8 @@ If you already have some information about the dataset and don’t need the cont
 - Does your team have consent for public release for all the raw sequencing data included in this dataset?
 
 - Do you have a specific release date or any publication embargo requirements?
+
+- Does the data come from living donors?
 
 ### Terms and conditions form
 
