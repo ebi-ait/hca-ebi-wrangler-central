@@ -18,7 +18,7 @@ parent: SOPs
 
 This document describes the process of prioritising schema updates. It focuses on the early stages of schema updates:
 - Discovery and prioritisation of next updates
-- Responsibilities </br>
+- Responsibilities 
 
 This document will not cover the steps required to make an actual schema change. Those steps are covered in the following documents:
 - [DCP2 specs - DCP2 specifications](https://github.com/HumanCellAtlas/dcp2/blob/main/docs/dcp2_system_design.rst): This document describes the way data is exchanged and regulated among the DCP components.
