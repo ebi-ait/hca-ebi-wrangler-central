@@ -116,7 +116,7 @@ You can view the calendar from other people of the team, unless they make it pri
 
 #### Regular Meetings                                                                                                                                                                                                   
 Key meetings that wranglers are summarised in the table below:
-
+See [charing rota](https://docs.google.com/spreadsheets/d/1-y7QNoIdwYdFHVxJUc5XWcQuuv6VYhvPLpt9Ls2PK7M/edit#gid=1591324846)
 | Meeting                              | Day       | Time   | Frequency             | Notes                                |
 |--------------------------------------|-----------|--------|-----------------------|--------------------------------------|
 | Operations planning/review           | Wednesday | 9.30am | Weekly                | |
@@ -141,15 +141,15 @@ Most slack is through the AIT slack
 
 Useful channels include:
 
-#hca - this is where most of the general communication about HCA takes place as well as announcements, reminders of stand up etc
+[#hca](https://embl-ebi-ait.slack.com/archives/CSDN3M2P5) - this is where most of the general communication about HCA takes place as well as announcements, reminders of stand up etc
 
-#hca-operations - channel for discussions of operations tasks and submitting datasets to the DCP
+[#hca-operations](https://embl-ebi-ait.slack.com/archives/CSDN3M2P5) - channel for discussions of operations tasks and submitting datasets to the DCP
 
-#hca-development - channel for discussion about the current development work, sorting testing, answering questions etc
+[#hca-development](https://embl-ebi-ait.slack.com/archives/C016R78CDV1) - channel for discussion about the current development work, sorting testing, answering questions etc
 
 #hca-wrangler-metadata - this is where most of the discussion relating to wrangling and the the HCA metadata are discussed
 
-#dcp-2 - This is a shared channel with the HCA slack. It is used for general announcements about the DCP or questions about the DCP, this is a good place to introduce yourself when you have logged in. 
+[#dcp-2](https://embl-ebi-ait.slack.com/archives/C01360XN04S) - This is a shared channel with the HCA slack. It is used for general announcements about the DCP or questions about the DCP, this is a good place to introduce yourself when you have logged in. 
 
 In the HCA slack, the open channels you will find useful are - although much less chat happens on these channels now.
 
