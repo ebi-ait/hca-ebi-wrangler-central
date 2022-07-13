@@ -116,7 +116,8 @@ You can view the calendar from other people of the team, unless they make it pri
 
 #### Regular Meetings                                                                                                                                                                                                   
 Key meetings that wranglers are summarised in the table below:
-See [charing rota](https://docs.google.com/spreadsheets/d/1-y7QNoIdwYdFHVxJUc5XWcQuuv6VYhvPLpt9Ls2PK7M/edit#gid=1591324846)
+See [chairing rota](https://docs.google.com/spreadsheets/d/1-y7QNoIdwYdFHVxJUc5XWcQuuv6VYhvPLpt9Ls2PK7M/edit#gid=1591324846)
+
 | Meeting                              | Day       | Time   | Frequency             | Notes                                |
 |--------------------------------------|-----------|--------|-----------------------|--------------------------------------|
 | Operations planning/review           | Wednesday | 9.30am | Weekly                | |
