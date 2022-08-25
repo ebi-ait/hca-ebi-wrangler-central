@@ -146,27 +146,26 @@ Please note:
 
 ### Header rows
 
-Each spreadsheet tab has five header rows that should not be edited. These rows contain the field name (row 1), a description (row 2), an example of usage (row 3), the programmatic name (row 4), and a buffer row (row 5) separating the header information from where metadata should be entered (row 6 and below).
+Each spreadsheet tab has five header rows that should not be edited. These rows contain:
+- Row 1 : the field name 
+- Row 2 : description 
+- Row 3 : an example of usage 
+- Row 4 : the programmatic name - **editing this row will cause the ingest importer to fail**
+- Row 5 : a buffer row separating the header information from where metadata should be entered (row 6 and below).
 
 *Wranglers note:*
-
-* *The current spreadsheet builder produces a different order field description (row 1), an example (row 2), the user-friendly name (row 3), the programmatic name (row 4), and a buffer row (row 5) user provided metadata (row 6 and below). This will soon be changed to the ordering described above based on UX consultation.* **TICKET**
 
 * *The style guide suggests a new metadata term ‘guidelines’. Upon adoption of this the ordering will be slightly altered again.* **TICKET**
 
-* *The spreadsheet builder extracts descriptions, examples, and user-friendly names directly from the metadata schema. If you spot an error in these fields, create a GitHub issue [here]([https://github.com/HumanCellAtlas/metadata-schema/issue*s](https://github.com/HumanCellAtlas/metadata-schema/issues)).*
+* *The spreadsheet builder extracts descriptions, examples, and user-friendly names directly from the metadata schema. If you spot an error in these fields, create a GitHub issue [here](https://github.com/HumanCellAtlas/metadata-schema/issues).*
 
-Programmatic names in row 4 are used by ingest to interpret the spreadsheet so these should not be altered.
-
-*Wranglers note:*
-
-*While edits to rows 1-3 will not affect how the spreadsheet is imported, edits to programmatic names in row 4 will break the importer. It is advisable to hide row 4 when sharing a spreadsheet with a data contributor to avoid accidental edits to the programmatic names. The spreadsheet builder may do this automatically in the future.* **TICKET**
+* *While edits to rows 1-3 will not affect how the spreadsheet is imported, edits to programmatic names in row 4 will break the importer. It is advisable to hide row 4 when sharing a spreadsheet with a data contributor to avoid accidental edits to the programmatic names.*
 
 ### Tabs
 
 The following tabs **should** be in your sheet:
 
-**Metadata about the whole project in in tabs:**
+**Metadata about the whole project in tabs:**
 
 - Project
 - Contact
@@ -211,15 +210,7 @@ The following tabs **may** be in your sheet:
 
 *These types exist in the schema and early iterations of the spreadsheet builder put them into automatically generated sheets but these tabs should not be passed onto user as the metadata is entered by the DCP.*
 
-*Analysis file- used by analysis*
-
-*Reference file- used by analysis*
-
-*Process- used by ingest*
-
-*Analysis process- used by analysis*
-
-*Analysis protocol- used by analysis*
+*Process - used by ingest*
 
 ### Filling out the spreadsheet
 
@@ -241,7 +232,8 @@ The Project tab is the best place to start when filling out the spreadsheet. It 
 
 *Wranglers note:*
 
-*Contact, funder, and publication information is represented by arrays (can have more than one entry for each) and is recorded in separate tabs. Handling of the contact, funder, and publications tabs is currently hard-coded in the importer and not intrinsic to the schema.*
+*Contact, funder, and publication information is represented by arrays (can have more than one entry for each) and is recorded in separate tabs. Handling of the contact, funder, and publications tabs is currently hard-coded in the importer and not intrinsic to the schema. \
+Usually most of the information for these tabs, such as author lists and address, is already filled out in ingest and can be edited from the UI.*
 
 ##### Contact
 
@@ -327,7 +319,7 @@ Although this sample shows the linking of one protocol, multiple protocols can b
 
 ### Bundles
 
-Datasets are not submitted to the data store or analyzed by the secondary analysis pipelines as a whole; instead, datasets are organized into bundles. The splitting is roughly technology dependent as files are grouped together based on requirements for each analysis pipeline run. Bundling for technologies that do not yet have a pipeline should be done consistently with other datasets in the HCA. If you are unsure you should consult with the pipeline developers and other wranglers to define the ideal bundle.
+Datasets are not submitted to the data store, instead datasets are organized into bundles. The splitting is roughly technology dependent as files are grouped together based on requirements for each analysis pipeline run. Bundling for technologies that do not yet have a pipeline should be done consistently with other datasets in the HCA. If you are unsure you should consult with the pipeline developers and other wranglers to define the ideal bundle.
 
 Ingest creates one bundle for every process linked to a sequence or image file. As mentioned above, one process is automatically created between every entity. Therefore, by default each file will be exported in a separate bundle. Often we do not want this behavior and instead want to bundle differently.
 
@@ -401,7 +393,7 @@ Some fields require identifiers (CURIEs) from the HCA ontology ([HCAO](https://o
 
 *Wrangler note 1: For humans, use only development stages from the Human Developmental Stages ontology. For mouse, use appropriate stages from EFO's developmental stage hierarchy (EFO:0000399). **Never** use Uberon developmental stages!*
 
-*Wrangler note 2: Be careful to differentiate between disease at the level of the organism and disease at the level of the specimen! Diseases captured at the organism level should include any conditions that the donor was diagnosed with, irrespective of whether they are likely going to affect the specimen. Diseases captures at the specimen level should include any conditions that affect the specimen only, without there necessarily being a diagnosis available for the donor. Examples include tissue cirrhosis or necrosis, or neoplasms without system-wide symptoms.*
+*Wrangler note 2: Be careful to differentiate between disease at the level of the organism and disease at the level of the specimen! Diseases captured at the organism level should include any conditions that the donor was diagnosed with, irrespective of whether they are likely going to affect the specimen. Diseases captures at the specimen level should include any conditions that affect the specimen only, without there necessarily being a diagnosis available for the donor. Examples include tissue cirrhosis or necrosis, or neoplasms without system-wide symptoms. The `disease` field can also accept terms from the phenotype ontology HP.*
 
 **Specimen:**
 
@@ -463,7 +455,7 @@ e.g. process.process_core.process_id
 
 *The full string is called the qualified field name and is always the full path through the schema hierarchy. In the example above, the "**process.process_core.process_id**" term is the qualified field name. The qualified name appears in the spreadsheet in row 4 and is used by the importer to convert the spreadsheet to JSON documents and guide linking between entities.*
 
-***Exception for ontologized fields. For fields that are governed by an ontology, the unqualified field name is the penultimate term. The unqualified field name is then followed by either "text", “ontology”, or “ontology label” as the ultimate term. In the example below, **selected_cell_type** is the unqualified field name, and can be followed by .**text**, .**ontology**, or .**ontology_label**
+***Exception for ontologized fields**. For fields that are governed by an ontology, the unqualified field name is the penultimate term. The unqualified field name is then followed by either "text", “ontology”, or “ontology label” as the ultimate term. In the example below, **selected_cell_type** is the unqualified field name, and can be followed by .**text**, .**ontology**, or .**ontology_label***
 
 e.g.
 
