@@ -22,7 +22,7 @@ This document is an in-depth walkthrough for filling out the metadata spreadshee
 
 * **Experimental design represented as HCA metadata**- How to convert experimental design to a metadata template *(currently wrangler led)*
 
-* **Making a spreadsheet template**- Generating a spreadsheet using the spreadsheet builder (including making a YAML and converting a YAML to an xlsx spreadsheet) *(wrangler only)* On HOLD- Dani
+* **Making a spreadsheet template**- Generating a spreadsheet using the spreadsheet builder *(wrangler only)* 
 
 * **Filling out the spreadsheet**-General layout of spreadsheet tabs how to use it *(contributors and wrangler only where highlighted)*
 
@@ -48,7 +48,7 @@ This document is an in-depth walkthrough for filling out the metadata spreadshee
 
 ### What isn't in this document?
 
- - A quick digest of this information for data contributors
+ - A quick digest of this information for data contributors - see the [Spreadsheet quick guide](https://ebi-ait.github.io/hca-metadata-community/contributing/spreadsheet-guide.html) for that
 
  - Details about the entity model we use. [This is found here](https://github.com/HumanCellAtlas/metadata-schema/blob/master/docs/structure.md)
 
@@ -58,7 +58,7 @@ Prior to metadata entry, a bespoke spreadsheet should be generated that reflects
 
 *Wranglers note:*
 
-*Currently wranglers facilitate this process by directly working with labs to understand metadata requirements. Eventually this process will be more user led however, this provides an opportunity to improve our metadata schema.*
+*Currently wranglers facilitate this process by directly working with labs to understand metadata requirements. Eventually this process will be more user led however, this provides an opportunity to improve our metadata schema.* 
 
 ### Project level metadata
 
@@ -124,9 +124,7 @@ Once you understand how to design this metadata graph for your experiment, you c
 
 *Wranglers note:*
 
-*Spreadsheets are built using the template generator app (launched using python) which dictates which tabs should be included and which fields should be in each tab. This app generates both a spreadsheet and a YAML config file. We will most often need to generate sheets against the latest schema in the production environment. The app is used to query the schemas to generate the spreadsheet. Instructions for running the app can be found [here](https://github.com/HumanCellAtlas/hca-data-wrangling/blob/master/docs/wrangler_tool_survey.adoc#generating-custom-template-metadata-spreadsheet-template_generator_app-py)*
-
-*The generated YAML can be used later to generate a spreadsheet using [this tool](https://github.com/HumanCellAtlas/ingest-client/tree/master/ingest/template).*
+*The tool that generates a tailored spreadsheet has been integrated in ingest.  You can find it in the `Experiment Information` tab, `Generate a metadata template` section of any project in ingest.*
 
 ## The spreadsheet
 
@@ -369,11 +367,11 @@ In the Sequence file tab below, notice that although we have linked these two bu
 
 ### Ontology columns
 
-Some fields require identifiers (CURIEs) from the HCA ontology ([HCAO](http://ontology.staging.data.humancellatlas.org)) in addition to plain text. Contributors should leave these fields blank if they are unfamiliar with ontologies and request help to fill them out through data-help@thehumancellatlas.org. 
+Some fields require identifiers (CURIEs) from the HCA ontology ([HCAO](https://ontology.archive.data.humancellatlas.org/index)) in addition to plain text. Contributors should leave these fields blank if they are unfamiliar with ontologies and request help to fill them out through data-help@thehumancellatlas.org. 
 
 *Wrangler note:*
 
-*Wranglers should familiarise themselves with the HCAO at [http://ontology.staging.data.humancellatlas.org](http://ontology.staging.data.humancellatlas.org). By the end of phase 2, this should no longer be an issue as ontology mappings should occur as part of the spreadsheet upload*
+*Wranglers should familiarise themselves with the [HCAO](https://ontology.archive.data.humancellatlas.org/index). By the end of phase 2, this should no longer be an issue as ontology mappings should occur as part of the spreadsheet upload*
 
 *Each ontologized field is represented by an ontology object (module) in the schema. Each ontology object consists of three fields: text, ontology_label, and ontology. The text field contains the string provided by the user. The ontology_label field contains the exact text that corresponds to the ontology field (which contains the ontology CURIE). **_CURIES** should contain a colon between the ontology and the numeric value, not an underscore.*
 
