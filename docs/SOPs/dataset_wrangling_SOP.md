@@ -92,8 +92,11 @@ Currently the HCA DCP cannot accept datasets without full open consent for publi
 
 With a published dataset, there is no requirement for the terms and conditions form or template emails to send to the contributor. First, start by getting some initial information about the dataset from reading the published paper, and checking if there is data that is publicly available. 
 
-Once you have an understanding of which biomaterials, protocols, and processes are used, it is time to generate a metadata spreadsheet. As below, the spreadsheet can be generated using the  [`schema-template-generator`](https://github.com/HumanCellAtlas/schema-template-generator)but as there is no contributor involved, do make the spreadsheet as comprehensive as you think is necessary. 
+Once you have an understanding of which biomaterials, protocols, and processes are used, it is time to generate a metadata spreadsheet. The tool to generate a tailored spreadsheet is integrated in ingest.  You can find it in the `Experiment Information` tab, `Generate a metadata template` section of your project.
 
+_If needed the spreadsheet generator can be found in this repo  [`schema-template-generator`](https://github.com/HumanCellAtlas/schema-template-generator)_ 
+
+Since there is no contributor involved, do make the spreadsheet as comprehensive as you think is necessary. 
 Instead of the iterative process of the contributor filling in what they can, the wrangler reviewing, curating, and asking questions, there is only you (the wrangler) working with the spreadsheet. It is easy to get stuck, so don’t forget that you’re working as a team and get a second opinion if necessary! 
 
 Then move onto the [‘curating metadata’](#curating-metadata) section. 
@@ -273,7 +276,7 @@ If the dataset is multiplexed, for example, if distinct samples have been pooled
 
 For ontologised fields, wranglers need to assign an ontology term that best suits the text provided by the contributor. The ontologised fields must be present within the latest version of the HCAO and meet the graph restriction present in the schema. The [ontology filler tool](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/src/fill_ontologies.py) can help with this process, but should be reviewed once complete. 
 
-If a wrangler cannot find an accurate ontology term and believes a term should be added to the relevant ontology, they should follow the [Request ontology terms SOP](request_ontology_terms).
+If a wrangler cannot find an accurate ontology term and believes a term should be added to the relevant ontology, they should follow the [Request ontology terms SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/request_ontology_terms.html).
 
 ### General metadata curation tips
 
@@ -289,6 +292,9 @@ If donors are from CBTM or HDBR we have direct routes of obtaining more detailed
 - The `organ_part` or `model_organ_part` should be the most specific organ part available
 - `biomaterial_id`s should be either consistent with the publication or the tissue provider to allow identification of biomaterials with shared donors
 - Try to encourage the contributor to provide a meaningful identifier, not just a single digit
+
+**Library preparation protocol** <br>
+You can refer to the [assay cheat sheet](https://docs.google.com/spreadsheets/d/1H9i1BK-VOXtMgGVv8LJZZZ9rbTG4XCQTBRxErdqMvWk/edit#gid=0) for existing, standard assays so that we stay consistent across Lattice, EBI and UCSC wrangling teams.
 
 ## Contributor Matrix and cell types SOP 
 For each project, wranglers should endeavour to find an expression matrix and if not embedded within that matrix, a listing of cell type annotations. These are generally linked from a publication, present as a supplementary file on the publication, GEO or ArrayExpress submission.
