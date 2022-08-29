@@ -523,4 +523,5 @@ Additionally, move all the corresponding documents to the [finished_projects](ht
 
 ## Brokering to SCEA
 
-See documentation on the [hca-to-scea repo](https://github.com/ebi-ait/hca-to-scea-tools)
+- [hca_to_scea_tools_SOP]
+- See documentation on the [hca-to-scea repo](https://github.com/ebi-ait/hca-to-scea-tools)
