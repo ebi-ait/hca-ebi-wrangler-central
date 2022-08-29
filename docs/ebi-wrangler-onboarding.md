@@ -56,7 +56,6 @@ This is a living document we want to make it better with every person that joins
 | Enrique Sapena Ventura     | EBI         | enrique@ebi.ac.uk   |
 | Wei Kheng Teh       | EBI         | wteh@ebi.ac.uk |
 | Ami Day             | EBI         | ami@ebi.ac.uk       |
-| Irene Perez Diez    | EBI         | ipediez@ebi.ac.uk   |
 | Ida Zucchi          | EBI         | idazucchi@ebi.ac.uk |
 | Parisa Nejad        | UCSC        | pnejad@ucsc.edu     |
 | William Sullivan    | UCSC        | wisulliv@ucsc.edu   |
@@ -108,7 +107,7 @@ You can either set it up on your favourite calendar app or use google calendar. 
 - [**DCP Meeting calendar**](https://calendar.google.com/calendar?cid=YnJvYWRpbnN0aXR1dGUub3JnXzNrMWxzaW4wcGI0dXRnZzhkODdwbG5oY2M4QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This is where DCP-wide meetings are scheduled, not all meetings are relevant to wranglers. It includes meetings that could be across multiple sites UCSC/Broad/EBI/CZI/Stanford
 - [**AIT Calendar**](https://calendar.google.com/calendar?cid=ZWJpLmFjLnVrX2luOHQzc2IwZTRlbGtoc21xaGkyaXY4cDgwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This calendar is where the AIT team record AIT group meetings, vacation and sick leave, work from home (WFH) days and training.
 
-If you can't see any of the above calendars, request access from Laura
+If you can't see any of the above calendars, request access from Amnon
 
 If you need to create an event (e.g., to book a meeting with someone), you can left-click on the appropriate time (It goes by 30-minute periods), fill out the event details (title names should be short and concise, if you need to explain further details you can do so in the event description), and click on “more options” if you need to invite a guest.
 
@@ -226,7 +225,7 @@ Additionally, make sure to send an email to ITSupport@ebi.ac.uk (cc'ing Gabs) an
 
 ### VPN
 
-- In order to be able to use most of the EBI services when you’re off-site, you will have to set up a VPN connection. You’ll have to set a 2-FOA (Factor Of Authentication) to be able to connect. A useful guide to do so can be found [here](https://tsc.ebi.ac.uk/article/linotp-tokens-setup-connecting). The easiest way is with a Google Authenticator compliant app, of your preference between the ones listed on the webpage.
+- In order to be able to use most of the EBI services when you’re off-site, you will have to set up a VPN connection. You’ll have to set a 2FA (Two Factor Authentication) to be able to connect. A useful guide to do so can be found [here](https://tsc.ebi.ac.uk/article/linotp-tokens-setup-connecting). The easiest way is with a Google Authenticator compliant app, of your preference between the ones listed on the webpage.
 
 ### Computing resources
 
