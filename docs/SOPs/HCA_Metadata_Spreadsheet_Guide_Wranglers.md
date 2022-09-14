@@ -22,7 +22,7 @@ This document is an in-depth walkthrough for filling out the metadata spreadshee
 
 * **Experimental design represented as HCA metadata**- How to convert experimental design to a metadata template *(currently wrangler led)*
 
-* **Making a spreadsheet template**- Generating a spreadsheet using the spreadsheet builder *(wrangler only)* 
+* **Making a spreadsheet template**- Generating a spreadsheet using the spreadsheet builder *(wrangler only)* or using the UI interface (After filling out basic project information) *(wrangler only)*
 
 * **Filling out the spreadsheet**-General layout of spreadsheet tabs how to use it *(contributors and wrangler only where highlighted)*
 
@@ -319,9 +319,9 @@ Although this sample shows the linking of one protocol, multiple protocols can b
 
 ### Bundles
 
-Datasets are not submitted to the data store, instead datasets are organized into bundles. The splitting is roughly technology dependent as files are grouped together based on requirements for each analysis pipeline run. Bundling for technologies that do not yet have a pipeline should be done consistently with other datasets in the HCA. If you are unsure you should consult with the pipeline developers and other wranglers to define the ideal bundle.
+Datasets are not submitted to terra as a whole; instead, datasets are organized into subgraphs. The splitting is roughly technology dependent as files are grouped together based on requirements for each analysis pipeline run. Grouping should be done consistently with other datasets in the HCA. If you are unsure, you should consult with the pipeline developers and other wranglers to define the ideal subgraph.
 
-Ingest creates one bundle for every process linked to a sequence or image file. As mentioned above, one process is automatically created between every entity. Therefore, by default each file will be exported in a separate bundle. Often we do not want this behavior and instead want to bundle differently.
+Ingest creates one subgraph for every process linked to a sequence or image file. As mentioned above, one process is automatically created between every entity. Therefore, by default each file will be exported in a separate subgraph. Often we do not want this behavior and instead want to group differently.
 
   | Technology| Bundle content| Files in bundle|
   |---------- |---------------| ---------------|
@@ -337,7 +337,7 @@ Ingest creates one bundle for every process linked to a sequence or image file. 
 
 *optional
 
-As an example, to create two bundles for a SmartSeq2, paired-end dataset consisting of 2 cells, we need to impose two processes each linked to two files.
+As an example, to create two subgraphs for a SmartSeq2, paired-end dataset consisting of 2 cells, we need to impose two processes each linked to two files.
 
 ![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_6.png)
 
