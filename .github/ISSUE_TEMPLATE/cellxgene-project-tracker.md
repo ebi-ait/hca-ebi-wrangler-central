@@ -8,19 +8,16 @@ assignees: ''
 ---
 
 **Collection/dataset this task is for:**
-<!--Indicate the name of the group or the dataset this task is for. e.g. Tissue Sensitivity dataset.-->
-- file name - 
-- link to existing collection in cellxgene"
+- Title: 
+- Project Short Name: 
 - ticket link to DCP wrangling ticket (if available)
 - link to ingest UI:
+- link to collection in cellxgene:
 
 **Relevant People**
 - Wrangler
 - Contributor
-- dev
-<!--Set Primary Wrangler as assignee and set project when issue is created. Title should contain an accession-->
 
-### Primary Wrangler:
 
 ### Associated files
 * [SOP](https://docs.google.com/document/d/1UVGIllybmEI46x22NSDpMNRywT3c8hcGrcw6opiHdbg/edit#)
@@ -38,16 +35,11 @@ assignees: ''
 
 ### Key Events
 
-- [ ] Collect necessary matrix, cell-type annotation, and embedding files
-- [ ] Modified var layer to meet cellxgene schema (adding feature_is_filtered)
-- [ ] Created/Modified raw.var to meet cellxgene schema
-- [ ] Modified obs layer to meet cellxgene schema 
-- [ ] Created uns layer to meet cellxgene schema
-- [ ] Ensured obsm layer is present
-- [ ] Created h5ad with processed component parts using AnnData
-- [ ] Created h5ad with raw matrix and raw var using AnnData
-- [ ] Filtered ENSEMBL IDs from annotated and raw matrix
-- [ ] Combined processed and raw h5ad to one h5ad object
+- [ ] Communicated with contributors and collected necessary files 
+- [ ] Checked that metadata in the HCA DCP matches up to number of samples in the contributor file
+- [ ] Edited and created a final H5ad object
 - [ ] Run [cellxgene-schema validate](https://github.com/chanzuckerberg/single-cell-curation)
-- [ ] Secondary review (?) 
 - [ ] Submitted to collection in [cellxgene](https://cellxgene.cziscience.com/?curator=true)
+- [ ] Sent to CellXGene curators (Jason Hilton) to validate 
+- [ ] Sent to contributors to confirm that publishing will be allowed
+- [ ] Collection has been published
