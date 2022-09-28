@@ -317,19 +317,19 @@ To create a link from one collection protocol to 5 processes between ‘donor or
 
 Although this sample shows the linking of one protocol, multiple protocols can be added to a process.
 
-### Bundles
+### Subgraphs
 
 Datasets are not submitted to terra as a whole; instead, datasets are organized into subgraphs. The splitting is roughly technology dependent as files are grouped together based on requirements for each analysis pipeline run. Grouping should be done consistently with other datasets in the HCA. If you are unsure, you should consult with the pipeline developers and other wranglers to define the ideal subgraph.
 
 Ingest creates one subgraph for every process linked to a sequence or image file. As mentioned above, one process is automatically created between every entity. Therefore, by default each file will be exported in a separate subgraph. Often we do not want this behavior and instead want to group differently.
 
-  | Technology| Bundle content| Files in bundle|
+  | Technology| Subgraph content| Files in subgraph|
   |---------- |---------------| ---------------|
   | SmartSeq2, single-end| 1 cell| R1| 
   | SmartSeq2, paired-end| 1 cell| R1, R2| 
   | 10X, non-multiplexed| | R1, R2, I1*, I2*| 
   | 10X, multiplexed| | R1, R2, I1, I2*| 
-  | Imaging| One FOV per bundle| TBD| 
+  | Imaging| One FOV per subgraph| TBD| 
   | MARS seq | One plate |R1, R2 |
   |DroNc-Seq | 1 cell| R1, R2 |
    |inDrop-Seq | 1 cell| R1, R2 |
@@ -349,11 +349,11 @@ This would require the following setup in the Sequence file tab:
 
 Technical replicates are defined as multiple sets of files produced from multiple rounds of sequencing done on the same sequencing library preparation. This definition is generally consistent with how experimentalists think of technical replicate experiments. As we don’t capture sequencing libraries as a separate entity we have to group bundles of sequencing files that were generated from the same libraries.
 
-In this 10X example, one cell suspension has been used to make one library preparation (not represented in the graph) which was then sequenced twice. Here we need to produce two bundles by imposing two process IDs from the same cell suspension.
+In this 10X example, one cell suspension has been used to make one library preparation (not represented in the graph) which was then sequenced twice. Here we need to produce two subgraphs by imposing two process IDs from the same cell suspension.
 
 ## ![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_8.png)
 
-In the Sequence file tab below, notice that although we have linked these two bundles (process_ID1 and process_ID2) with the library preparation ID (Library_prep_ID1), the graph is not affected by the library prep ID as links are not created. However, this allows links to be retrospectively added if introspection of technical replicates is required by a data consumer. 
+In the Sequence file tab below, notice that although we have linked these two processes (process_ID1 and process_ID2) with the library preparation ID (Library_prep_ID1), the graph is not affected by the library prep ID as links are not created. However, this allows links to be retrospectively added if introspection of technical replicates is required by a data consumer. 
 
 ![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_9.png)
 
