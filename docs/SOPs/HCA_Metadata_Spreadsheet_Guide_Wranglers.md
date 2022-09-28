@@ -22,7 +22,7 @@ This document is an in-depth walkthrough for filling out the metadata spreadshee
 
 * **Experimental design represented as HCA metadata**- How to convert experimental design to a metadata template *(currently wrangler led)*
 
-* **Making a spreadsheet template**- Generating a spreadsheet using the spreadsheet builder (including making a YAML and converting a YAML to an xlsx spreadsheet) *(wrangler only)* On HOLD- Dani
+* **Making a spreadsheet template**- Generating a spreadsheet using the spreadsheet builder *(wrangler only)* or using the UI interface (After filling out basic project information) *(wrangler only)*
 
 * **Filling out the spreadsheet**-General layout of spreadsheet tabs how to use it *(contributors and wrangler only where highlighted)*
 
@@ -48,7 +48,7 @@ This document is an in-depth walkthrough for filling out the metadata spreadshee
 
 ### What isn't in this document?
 
- - A quick digest of this information for data contributors
+ - A quick digest of this information for data contributors - see the [Spreadsheet quick guide](https://ebi-ait.github.io/hca-metadata-community/contributing/spreadsheet-guide.html) for that
 
  - Details about the entity model we use. [This is found here](https://github.com/HumanCellAtlas/metadata-schema/blob/master/docs/structure.md)
 
@@ -58,7 +58,7 @@ Prior to metadata entry, a bespoke spreadsheet should be generated that reflects
 
 *Wranglers note:*
 
-*Currently wranglers facilitate this process by directly working with labs to understand metadata requirements. Eventually this process will be more user led however, this provides an opportunity to improve our metadata schema.*
+*Currently wranglers facilitate this process by directly working with labs to understand metadata requirements. Eventually this process will be more user led however, this provides an opportunity to improve our metadata schema.* 
 
 ### Project level metadata
 
@@ -124,9 +124,7 @@ Once you understand how to design this metadata graph for your experiment, you c
 
 *Wranglers note:*
 
-*Spreadsheets are built using the template generator app (launched using python) which dictates which tabs should be included and which fields should be in each tab. This app generates both a spreadsheet and a YAML config file. We will most often need to generate sheets against the latest schema in the production environment. The app is used to query the schemas to generate the spreadsheet. Instructions for running the app can be found [here](https://github.com/HumanCellAtlas/hca-data-wrangling/blob/master/docs/wrangler_tool_survey.adoc#generating-custom-template-metadata-spreadsheet-template_generator_app-py)*
-
-*The generated YAML can be used later to generate a spreadsheet using [this tool](https://github.com/HumanCellAtlas/ingest-client/tree/master/ingest/template).*
+*The tool that generates a tailored spreadsheet has been integrated in ingest.  You can find it in the `Experiment Information` tab, `Generate a metadata template` section of any project in ingest.*
 
 ## The spreadsheet
 
@@ -148,27 +146,26 @@ Please note:
 
 ### Header rows
 
-Each spreadsheet tab has five header rows that should not be edited. These rows contain the field name (row 1), a description (row 2), an example of usage (row 3), the programmatic name (row 4), and a buffer row (row 5) separating the header information from where metadata should be entered (row 6 and below).
+Each spreadsheet tab has five header rows that should not be edited. These rows contain:
+- Row 1 : the field name 
+- Row 2 : description 
+- Row 3 : an example of usage 
+- Row 4 : the programmatic name - **editing this row will cause the ingest importer to fail**
+- Row 5 : a buffer row separating the header information from where metadata should be entered (row 6 and below).
 
 *Wranglers note:*
-
-* *The current spreadsheet builder produces a different order field description (row 1), an example (row 2), the user-friendly name (row 3), the programmatic name (row 4), and a buffer row (row 5) user provided metadata (row 6 and below). This will soon be changed to the ordering described above based on UX consultation.* **TICKET**
 
 * *The style guide suggests a new metadata term ‘guidelines’. Upon adoption of this the ordering will be slightly altered again.* **TICKET**
 
-* *The spreadsheet builder extracts descriptions, examples, and user-friendly names directly from the metadata schema. If you spot an error in these fields, create a GitHub issue [here]([https://github.com/HumanCellAtlas/metadata-schema/issue*s](https://github.com/HumanCellAtlas/metadata-schema/issues)).*
+* *The spreadsheet builder extracts descriptions, examples, and user-friendly names directly from the metadata schema. If you spot an error in these fields, create a GitHub issue [here](https://github.com/HumanCellAtlas/metadata-schema/issues).*
 
-Programmatic names in row 4 are used by ingest to interpret the spreadsheet so these should not be altered.
-
-*Wranglers note:*
-
-*While edits to rows 1-3 will not affect how the spreadsheet is imported, edits to programmatic names in row 4 will break the importer. It is advisable to hide row 4 when sharing a spreadsheet with a data contributor to avoid accidental edits to the programmatic names. The spreadsheet builder may do this automatically in the future.* **TICKET**
+* *While edits to rows 1-3 will not affect how the spreadsheet is imported, edits to programmatic names in row 4 will break the importer. It is advisable to hide row 4 when sharing a spreadsheet with a data contributor to avoid accidental edits to the programmatic names.*
 
 ### Tabs
 
 The following tabs **should** be in your sheet:
 
-**Metadata about the whole project in in tabs:**
+**Metadata about the whole project in tabs:**
 
 - Project
 - Contact
@@ -213,15 +210,7 @@ The following tabs **may** be in your sheet:
 
 *These types exist in the schema and early iterations of the spreadsheet builder put them into automatically generated sheets but these tabs should not be passed onto user as the metadata is entered by the DCP.*
 
-*Analysis file- used by analysis*
-
-*Reference file- used by analysis*
-
-*Process- used by ingest*
-
-*Analysis process- used by analysis*
-
-*Analysis protocol- used by analysis*
+*Process - used by ingest*
 
 ### Filling out the spreadsheet
 
@@ -243,7 +232,8 @@ The Project tab is the best place to start when filling out the spreadsheet. It 
 
 *Wranglers note:*
 
-*Contact, funder, and publication information is represented by arrays (can have more than one entry for each) and is recorded in separate tabs. Handling of the contact, funder, and publications tabs is currently hard-coded in the importer and not intrinsic to the schema.*
+*Contact, funder, and publication information is represented by arrays (can have more than one entry for each) and is recorded in separate tabs. Handling of the contact, funder, and publications tabs is currently hard-coded in the importer and not intrinsic to the schema. \
+Usually most of the information for these tabs, such as author lists and address, is already filled out in ingest and can be edited from the UI.*
 
 ##### Contact
 
@@ -269,7 +259,7 @@ Typically HCA metadata contains entities with different ratios. For example, one
 
 All entities should be assigned a unique (within the dataset) ID by the contributor. To create these links you need to enter the ID of the derived from entity into the ‘Source Biomaterial ID’ field.
 
-![image alt text](../../images/ssheet_guidance_image_0.png)
+![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_0.png)
 
 ### Biomaterials
     
@@ -283,11 +273,11 @@ Every biomaterial tab except the Donor tab has a second biomaterial ID field tha
 
 In the spreadsheet example below, five tissue specimens were collected from a single donor and the Specimen tab is filled out as:
 
-![image alt text](../../images/ssheet_guidance_image_1.png)
+![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_1.png)
 
 This will create the following links:
 
-![image alt text](../../images/ssheet_guidance_image_2.png)
+![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_2.png)
 
 Key points:
 
@@ -313,33 +303,33 @@ The highest level biological entity (often Donor) is not ‘derived from’ anyt
 
 One process entity is automatically created between every biomaterial, protocol, and file entity in the graph. A process entity contains metadata about the transition between entities. The process itself contains the who, when, where metadata which is linked to protocol entities with detailed metadata about the methods. One process can link to zero, one, or more protocols.
 
-![image alt text](../../images/ssheet_guidance_image_3.png)
+![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_3.png)
 
 ### Protocols
 
 Protocols need to be linked to the processes sandwiched between biomaterial and/or file entities.
 
-![image alt text](../../images/ssheet_guidance_image_4.png)
+![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_4.png)
 
 To create a link from one collection protocol to 5 processes between ‘donor organism’ and ‘specimen from organism’, we add the collection protocol ID to the specimen tab. **We always add protocol IDs to the lower entity in the hierarchy**.
 
-![image alt text](../../images/ssheet_guidance_image_5.png)
+![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_5.png)
 
 Although this sample shows the linking of one protocol, multiple protocols can be added to a process.
 
-### Bundles
+### Subgraphs
 
-Datasets are not submitted to the data store or analyzed by the secondary analysis pipelines as a whole; instead, datasets are organized into bundles. The splitting is roughly technology dependent as files are grouped together based on requirements for each analysis pipeline run. Bundling for technologies that do not yet have a pipeline should be done consistently with other datasets in the HCA. If you are unsure you should consult with the pipeline developers and other wranglers to define the ideal bundle.
+Datasets are not submitted to terra as a whole; instead, datasets are organized into subgraphs. The splitting is roughly technology dependent as files are grouped together based on requirements for each analysis pipeline run. Grouping should be done consistently with other datasets in the HCA. If you are unsure, you should consult with the pipeline developers and other wranglers to define the ideal subgraph.
 
-Ingest creates one bundle for every process linked to a sequence or image file. As mentioned above, one process is automatically created between every entity. Therefore, by default each file will be exported in a separate bundle. Often we do not want this behavior and instead want to bundle differently.
+Ingest creates one subgraph for every process linked to a sequence or image file. As mentioned above, one process is automatically created between every entity. Therefore, by default each file will be exported in a separate subgraph. Often we do not want this behavior and instead want to group differently.
 
-  | Technology| Bundle content| Files in bundle|
+  | Technology| Subgraph content| Files in subgraph|
   |---------- |---------------| ---------------|
   | SmartSeq2, single-end| 1 cell| R1| 
   | SmartSeq2, paired-end| 1 cell| R1, R2| 
   | 10X, non-multiplexed| | R1, R2, I1*, I2*| 
   | 10X, multiplexed| | R1, R2, I1, I2*| 
-  | Imaging| One FOV per bundle| TBD| 
+  | Imaging| One FOV per subgraph| TBD| 
   | MARS seq | One plate |R1, R2 |
   |DroNc-Seq | 1 cell| R1, R2 |
    |inDrop-Seq | 1 cell| R1, R2 |
@@ -347,33 +337,33 @@ Ingest creates one bundle for every process linked to a sequence or image file. 
 
 *optional
 
-As an example, to create two bundles for a SmartSeq2, paired-end dataset consisting of 2 cells, we need to impose two processes each linked to two files.
+As an example, to create two subgraphs for a SmartSeq2, paired-end dataset consisting of 2 cells, we need to impose two processes each linked to two files.
 
-![image alt text](../../images/ssheet_guidance_image_6.png)
+![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_6.png)
 
 This would require the following setup in the Sequence file tab:
 
-![image alt text](../../images/ssheet_guidance_image_7.png)
+![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_7.png)
 
 ### Technical Replicates / Library prep group
 
 Technical replicates are defined as multiple sets of files produced from multiple rounds of sequencing done on the same sequencing library preparation. This definition is generally consistent with how experimentalists think of technical replicate experiments. As we don’t capture sequencing libraries as a separate entity we have to group bundles of sequencing files that were generated from the same libraries.
 
-In this 10X example, one cell suspension has been used to make one library preparation (not represented in the graph) which was then sequenced twice. Here we need to produce two bundles by imposing two process IDs from the same cell suspension.
+In this 10X example, one cell suspension has been used to make one library preparation (not represented in the graph) which was then sequenced twice. Here we need to produce two subgraphs by imposing two process IDs from the same cell suspension.
 
-## ![image alt text](../../images/ssheet_guidance_image_8.png)
+## ![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_8.png)
 
-In the Sequence file tab below, notice that although we have linked these two bundles (process_ID1 and process_ID2) with the library preparation ID (Library_prep_ID1), the graph is not affected by the library prep ID as links are not created. However, this allows links to be retrospectively added if introspection of technical replicates is required by a data consumer. 
+In the Sequence file tab below, notice that although we have linked these two processes (process_ID1 and process_ID2) with the library preparation ID (Library_prep_ID1), the graph is not affected by the library prep ID as links are not created. However, this allows links to be retrospectively added if introspection of technical replicates is required by a data consumer. 
 
-![image alt text](../../images/ssheet_guidance_image_9.png)
+![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_9.png)
 
 ### Ontology columns
 
-Some fields require identifiers (CURIEs) from the HCA ontology ([HCAO](http://ontology.staging.data.humancellatlas.org)) in addition to plain text. Contributors should leave these fields blank if they are unfamiliar with ontologies and request help to fill them out through data-help@thehumancellatlas.org. 
+Some fields require identifiers (CURIEs) from the HCA ontology ([HCAO](https://ontology.archive.data.humancellatlas.org/index)) in addition to plain text. Contributors should leave these fields blank if they are unfamiliar with ontologies and request help to fill them out through data-help@thehumancellatlas.org. 
 
 *Wrangler note:*
 
-*Wranglers should familiarise themselves with the HCAO at [http://ontology.staging.data.humancellatlas.org](http://ontology.staging.data.humancellatlas.org). By the end of phase 2, this should no longer be an issue as ontology mappings should occur as part of the spreadsheet upload*
+*Wranglers should familiarise themselves with the [HCAO](https://ontology.archive.data.humancellatlas.org/index). By the end of phase 2, this should no longer be an issue as ontology mappings should occur as part of the spreadsheet upload*
 
 *Each ontologized field is represented by an ontology object (module) in the schema. Each ontology object consists of three fields: text, ontology_label, and ontology. The text field contains the string provided by the user. The ontology_label field contains the exact text that corresponds to the ontology field (which contains the ontology CURIE). **_CURIES** should contain a colon between the ontology and the numeric value, not an underscore.*
 
@@ -403,7 +393,7 @@ Some fields require identifiers (CURIEs) from the HCA ontology ([HCAO](http://on
 
 *Wrangler note 1: For humans, use only development stages from the Human Developmental Stages ontology. For mouse, use appropriate stages from EFO's developmental stage hierarchy (EFO:0000399). **Never** use Uberon developmental stages!*
 
-*Wrangler note 2: Be careful to differentiate between disease at the level of the organism and disease at the level of the specimen! Diseases captured at the organism level should include any conditions that the donor was diagnosed with, irrespective of whether they are likely going to affect the specimen. Diseases captures at the specimen level should include any conditions that affect the specimen only, without there necessarily being a diagnosis available for the donor. Examples include tissue cirrhosis or necrosis, or neoplasms without system-wide symptoms.*
+*Wrangler note 2: Be careful to differentiate between disease at the level of the organism and disease at the level of the specimen! Diseases captured at the organism level should include any conditions that the donor was diagnosed with, irrespective of whether they are likely going to affect the specimen. Diseases captures at the specimen level should include any conditions that affect the specimen only, without there necessarily being a diagnosis available for the donor. Examples include tissue cirrhosis or necrosis, or neoplasms without system-wide symptoms. The `disease` field can also accept terms from the phenotype ontology HP.*
 
 **Specimen:**
 
@@ -465,7 +455,7 @@ e.g. process.process_core.process_id
 
 *The full string is called the qualified field name and is always the full path through the schema hierarchy. In the example above, the "**process.process_core.process_id**" term is the qualified field name. The qualified name appears in the spreadsheet in row 4 and is used by the importer to convert the spreadsheet to JSON documents and guide linking between entities.*
 
-***Exception for ontologized fields. For fields that are governed by an ontology, the unqualified field name is the penultimate term. The unqualified field name is then followed by either "text", “ontology”, or “ontology label” as the ultimate term. In the example below, **selected_cell_type** is the unqualified field name, and can be followed by .**text**, .**ontology**, or .**ontology_label**
+***Exception for ontologized fields**. For fields that are governed by an ontology, the unqualified field name is the penultimate term. The unqualified field name is then followed by either "text", “ontology”, or “ontology label” as the ultimate term. In the example below, **selected_cell_type** is the unqualified field name, and can be followed by .**text**, .**ontology**, or .**ontology_label***
 
 e.g.
 
