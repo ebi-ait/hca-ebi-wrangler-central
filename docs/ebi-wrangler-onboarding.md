@@ -96,7 +96,7 @@ This is a living document we want to make it better with every person that joins
 - Keep a good record of what you are doing, how many hours and, in case you have more than one cost centre, try to prioritize 
 
 ### Each week:
-- Fill in your timesheet (SAP)
+- [Fill in your timesheet (SAP)]([url](https://saperp.embl.de/nwbc))
 - Fill in the WAR (Confluence) - each Monday for the previous week of work
 
 ## Specifics
