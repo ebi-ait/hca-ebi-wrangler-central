@@ -26,8 +26,8 @@ There are some general project management tasks when working with new datasets t
 
 New contributors will almost always contact us via the wranglers email list. When we work with them to get their projects submitted, the wranglers email list should be copied into all emails.
 1. Create a [project tracker ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=dataset&template=project_tracker.md&title= ) to track dataset progress should be created in the `hca-ebi-wrangler-central` repo 
-2. Add the dataset to the [dataset tracker sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0) 
-  * Change `hca_status` to 'in progress'
+2. Add the dataset to Ingest 
+  * Change `wrangling status` to 'in progress'
   * Ensure all required fields are filled out
   * Ensure you are listed as the `primary_wrangler`
 3. Create a new folder to store the dataset metadata in the [Brokering drive](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA) 
@@ -37,7 +37,7 @@ New contributors will almost always contact us via the wranglers email list. Whe
 Wrangling progress is tracked primarily through movement of the `project tracker ticket` through the pipelines on the [Dataset wrangling status](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) Zenhub Board. 
 
 | Pipeline            | When                                   | Explanation                                                                                                                                 |
-|---------------------|----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+|:---------------------|:----------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
 | New Issues          | Auto-placed                            | This pipeline is where issues automatically end up but issues shouldn't stay here for long |
 | Queued for Wrangling      | When created                           | Issues should be placed here when they are created but before a wrangler actively starts working on it |
 | Wrangling           | When in progress                       | The primary wrangler moves the tracker ticket here when they have started working on it |
@@ -46,9 +46,13 @@ Wrangling progress is tracked primarily through movement of the `project tracker
 | Archiving           | When archiving process starts          | The primary wrangler moves the tracker ticket here when Archiving starts (if required), if already archived would skip to ready for export |
 | Needs update        | If project needs an update             | A wrangler moves the tracker ticket here if the project requires some kind of update |
 | Stalled             | If project becomes stuck               | If project spends more than 2 weeks with no progress, the ticket should be moved here and label applied to indicate reason  |
-| Finished            | When finished                          | The primary wrangler moves the ticket here to indicate all work is complete. The ticket should be closed at the end of the sprint. |
+| Exported in the DCP            | When finished                          | The primary wrangler moves the ticket here to indicate the project is exported to the DCP.  |
 | Verified in data browser | When project has been verified in the data browser | The primary wrangler moves the ticket here to indicate that it has been verified in the data browser. |
+| CellxGene | When working on wrangling to CellxGene | The primary wrangler moves the ticket here to indicate that the project is actively being wrangled to CellxGene |
+
+
 [Labels](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels) are also applied to tickets to provide further information about the ticket. Definitions for each label and when they should be applied can be [found here](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels).
+
 
 **If you are wrangling a dataset from a published project, click [here](#for-published-datasets-only). If not, continue reading the following directions.** 
 
@@ -73,6 +77,8 @@ If you already have some information about the dataset and don’t need the cont
 - Does your team have consent for public release for all the raw sequencing data included in this dataset?
 
 - Do you have a specific release date or any publication embargo requirements?
+
+- Does the data come from living donors?
 
 ### Terms and conditions form
 
@@ -125,7 +131,8 @@ After generating the spreadsheet, we move onto raw data upload. There is no cont
 
 Note that this step does not need to be completed now, and can wait until after the metadata spreadsheet has been gathered. 
 
-Once the upload area has been created, there are several ways to upload the files from ENA/SRA (Sorted from easiest/fastest to most manual/slow):
+Once the upload area has been created, there are several ways to upload the files from ENA/SRA (Sorted from easiest/fastest to most manual/slow).
+If the files are deposited in Node follow this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Node_data_how_to), if they are deposited in Globus follow this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Globus_data_how_to), 
 
 **Python script in hca-ebi-wrangler-central repository**
 
@@ -270,6 +277,36 @@ _**Working with multiplexed data**_
 
 If the dataset is multiplexed, for example, if distinct samples have been pooled before library preparation and sequencing, then the fastq data must be demultiplexed by the sample barcode before being uploaded to ingest. The pipelines team works on the assumption that there is 1 input sample per run and it is up to us to demultiplex multiplexed data.
 
+### Download Gene expression matrices 
+
+If there are no gene expression matrices available in the public domain, then you should ask the publication lead contributing author for the file(s).
+
+However, for most publications with a GEO accession, gene matrices files are available for download. The matrices files can be directly downloaded either locally to your desktop by clicking the link, or via wget in the terminal and on EC2.
+
+If the file is particularly large, the wget command will get stuck and the matrices file will not be downloaded. In that case, you can do the following:
+
+Upon running the wget command, if the file is particularly large, you will see that an index.html file path is returned.
+
+Example:
+
+`index.html?acc=GSE171668.1 saved`
+
+You can then run the following command to get an ftp link:
+
+`cat index.html\?acc\=[your GEO accession] | grep "RAW.tar"`
+
+Example:
+
+`cat index.html\?acc\=GSE171668 | grep "RAW.tar"`
+
+You can then wget the ftp link:
+
+`wget ftp://ftp.ncbi.nlm.nih.gov/geo/series/[your GEO accession prefix]nnn/[your GEO accession]/suppl/[your GEO accession]_RAW.tar`
+
+Example:
+
+`wget ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE171nnn/GSE171668/suppl/GSE171668_RAW.tar`
+
 ## Curating metadata
 
 ### Ontology curation
@@ -308,7 +345,7 @@ Where either the expression matrix or cell type annotations cannot be found, the
 
 ### Filling in metadata about the files
 
-For datasets with large number of files, the [ENA filename extractor tool](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/src/fill_ontologies.py) can be of use. It requires at least to have already filled the 'INSDC Experiment Accesion' at the 'Cell suspension' and the 'Sequence file' tabs. The wangler has to manually download a JSON report from the corresponding project's page at ENA. This script will fill in the 'File name' column at the 'Sequence file' tab. 
+For datasets with large number of files, the [ENA filename extractor tool](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/src/ena_filename_extractor.py) can be of use. It requires at least to have already filled the 'INSDC Experiment Accesion' at the 'Cell suspension' and the 'Sequence file' tabs. The wrangler has to manually download a JSON report from the corresponding project's page at ENA. This script will fill in the 'File name' column at the 'Sequence file' tab. 
 
 For each expression matrix or cell type annotation file that is found, a row needs to be filled in the metadata spreadsheet, in the ‘Analysis file’ tab. Analysis files can be linked to sequence files or biomaterial entities via processes; This is done in the spreadsheet in the same way that other entities are linked. Information related to the analysis protocol is captured in the Analysis_protocol entity (See the Analysis protocol tab) linked to the process
 
@@ -492,4 +529,5 @@ Additionally, move all the corresponding documents to the [finished_projects](ht
 
 ## Brokering to SCEA
 
-See documentation on the [hca-to-scea repo](https://github.com/ebi-ait/hca-to-scea-tools)
+- [hca_to_scea_tools_SOP]
+- See documentation on the [hca-to-scea repo](https://github.com/ebi-ait/hca-to-scea-tools)

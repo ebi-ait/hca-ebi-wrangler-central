@@ -109,7 +109,9 @@ Once a submission is 100% valid and has been reviewed, a final confirmation emai
 
 ## Confirmation of Accessions
 
-Once the submission has been successfully archived, accessions should be communicated back to the contributor. If there is a risk that the deadline the contributor gave will not be met, the contributor should be contacted to inform them of the risk and offer alternatives or work arounds. The project level accessions should be provided within the main body of the email.
+Once the submission has been successfully archived, accessions should be communicated back to the contributor. If there is a risk that the deadline the contributor gave will not be met, the contributor should be contacted to inform them of the risk and offer alternatives or workarounds. The project level accessions should be provided within the main body of the email.
+
+By default, the release date will be set up to 2 years from the moment the submission is archived. This date can be changed to an earlier date (Provided by the contributor) but **we won't hold the data for more than 2 years**
 
 Once the dataset is released in an HCA snapshot release, the contributor should be informed and provided with the link to their dataset on the HCA Data Browser.
 
@@ -124,8 +126,10 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > 1 Register as part of the HCA by filling the following form: https://www.humancellatlas.org/register (if you haven’t already)
 > 
-> 2 Please fill out the dataset questionnaire (https://forms.gle/HWADhk3Z6hUEbvVh8). The questionnaire  asks for information about your experiments. This will help us create a tailor spreadsheet for you to fill out about your project 
-> 
+> 2 Please fill out the dataset questionnaire (https://forms.gle/HWADhk3Z6hUEbvVh8). The questionnaire asks for information about your experiments. This will help us create a tailor spreadsheet for you to fill out about your project.
+>
+> Please be aware that as per GDPR guidelines, we are not able to directly wrangle any metadata or data originating from living donors. If your project contains metadata or data originating from living donors, please refrain from sending us that information. 
+>
 > After filling both forms, we will contact you with the next steps to continue the submission of your metadata collection and data.
 > 
 > I am happy to set up a meeting or call about any concerns or queries that your team might have.
@@ -197,6 +201,68 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > 
 > On behalf of the HCA DCP Data Wrangling Team
 
+### Contributor Matrices and Cell Types 
+
+#### Asking for Matrices from Contributor
+ 
+> Dear [name/s of contributor/s], 
+>
+> We are also working with CellxGene to wrangle projects with appropriate expression matrices. I was wondering if you would be interested in submitting your analysis files to the [Cellxgene visualization portal](cellxgene.cziscience.com/)?
+>
+> We would require the following, and would create an h5ad object meeting Cellxgene's [schema requirements](https://github.com/chanzuckerberg/single-cell-curation/blob/main/schema/2.0.0/schema.md).
+- Raw count matrix
+- Cell type annotation
+- Cell-level metadata
+- Embedding (Tsne/umap/spatial coordinates) 
+- Normalised count matrix (optional) 
+> 
+> Please let us know and if you are able to provide the above files, we can work on submitting your project to the Cellxgene visualisation platform. 
+> Let us know if you have any questions! 
+> 
+> Warm regards,
+> 
+> [primary wrangler name]
+>
+> On behalf of the HCA DCP 
+
+ 
+#### Informing Contributor of Project in HCA-DCP being wrangled to CellxGene
+ 
+> Dear [name/s of contributor/s],
+>
+> I am writing about your paper [Name of Paper] which has been published in the HCA Data Portal. [Link to Paper in Data Portal]
+>
+> We are now wrangling projects with appropriate expression matrices from the HCA DCP to CellxGene. I was wondering if you would be interested in submitting your analysis files to the Cellxgene visualization portal?
+>
+> If so, we would need to alter the .h5ad file(s) accompanying the dataset to comply with Cellxgene's schema requirements.
+>
+> Let me know if you have any questions,
+> 
+> Warm regards,
+>
+> [primary wrangler name]
+>
+> On behalf of the HCA DCP 
+ 
+ 
+#### Informing Contributor of PRoject in HCA-DCP already wrangled to CellxGene
+
+> Dear [name/s of contributor/s],
+> 
+> I am writing about your paper [Name of Paper] which has been public in our HCA Data Portal. [Link to Paper in Data Portal]
+> 
+> As a pilot project, we have wrangled your dataset’s expression matrices to a private collection in the Cellxgene visualisation portal. To do this, we have altered your analysis file to comply with Cellxgene’s schema requirements. 
+>
+> 
+> This is the link to the private collection in CellxGene where you can download and explore the h5ad files. Please let us know in the next couple of weeks if there is anything you would like to change or update!
+>
+> Warm regards,
+>
+> [primary wrangler name]
+>
+> On behalf of the HCA DCP 
+
+ 
 ### Spreadsheet and Data upload instructions
 
 > Dear [name/s of contributor/s],
@@ -217,9 +283,9 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > 
 > 3 What’s next?
 > 
-> After we have put together your data and metadata into a valid submission we will archive your data and metadata in [BioStudies](https://www.ebi.ac.uk/biostudies/), [BioSamples](https://www.ebi.ac.uk/biosamples/) and the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser/home) and provide you with accessions for your manuscript. We will also ensure your data and metadata make it into the next HCA DCP snapshot releaserelease/snapshot. As indicated by you, we will ensure no data or metadata is made public until [enter date] / we will make the data public as soon as it is submitted.
+> After we have put together your data and metadata into a valid submission we will archive your data and metadata in [BioStudies](https://www.ebi.ac.uk/biostudies/), [BioSamples](https://www.ebi.ac.uk/biosamples/) and the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser/home) and provide you with accessions for your manuscript. We will also ensure your data and metadata make it into the next HCA DCP snapshot releaserelease/snapshot. As indicated by you, we will ensure no data or metadata is made public until [enter date, 2 years from now]. / we will make the data public as soon as it is submitted.
 > 
-> If you would also like your study to be brokered to [ArrayExpress](https://www.ebi.ac.uk/arrayexpress/), please let us know. 
+> [IF DATA RELEASE IS NOT IMMEDIATE] Please note that this is a release date that we set up as default to allow for manuscripts to be reviewed and corrections to be made. If you want this data to be released earlier, please contact us when the data can be openly shared and we will release it immediately.
 > 
 > Don’t hesitate to get back in touch if you have any issues with any part of the process.
 > 

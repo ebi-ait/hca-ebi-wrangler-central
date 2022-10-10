@@ -23,7 +23,7 @@ In general you should try to include as much information as possible when reques
 
 * Indicate your use case
 * Indicate the evidence for your term such as a publication or link to description
-* tag [@paolaroncaglia](https://github.com/paolaroncaglia) in the ticket and label the ticket with `HCA` if possible
+* tag [@zoependlington](https://github.com/zoependlington) in the ticket and label the ticket with `HCA` if possible
 * Indicate priority if urgent
 * Use the applicable issue template
 
@@ -36,7 +36,7 @@ If you aren't sure about what to do or have an ontology question, [create a tick
 As above [for all ontology terms](#general-guidance-for-all-ontology-terms) plus:
 * Check whether the term exists in [FMA](https://www.ebi.ac.uk/ols/ontologies/fma), if so, please include the FMA ID in the definition section of the issue template
 * Quote a publication or literature and evidence to support the term
-* tag [@paolaroncaglia](https://github.com/paolaroncaglia) in the ticket
+* tag [@zoependlington](https://github.com/zoependlington) in the ticket
 * Indicate any known taxon restrictions i.e. is the term only applicable to mammals? Quote literature if possible
 
 [Request UBERON term](https://github.com/obophenotype/uberon/issues/new?labels=new+term+request&template=a_adding_term.md){: .btn .btn-blue }

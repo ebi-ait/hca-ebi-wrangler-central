@@ -12,6 +12,7 @@ assignees: ''
 <!--
 Please create a list with a link to the individual schema tickets. Also 
 please indicate the wrangler responsible to create the corresponding PR.
+Please add the link to the PR once it is ready
 -->
 
 **What schemas will they affect?**

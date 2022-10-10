@@ -33,4 +33,4 @@ Lists of ranked donor locations and ranked sample locations need to be completed
 
 ### Prioritisation Discussion Meetings
 
-A regular meeting will be set up for the team to meet and discuss datasets where prioritisation is unclear. Each wrangler will be responsible for summarising the datasets that they had labelled this way for discussion in the meeting, and we will discuss them all between us. For now, I propose we set this up as a regular monthly meeting between the AIT HCA wranglers, Laura and Claire. We could adjust the time interval based on how this works out. This can be a never-ending task; we need to decide whether we set a certain number of datasets to be assessed (like 30) or do this task for a certain time (2 hours, for example). The idea is that this SOP document and potentially the tracker sheet will be updated based on feedback from these discussions.
+A regular meeting will be set up for the designed ops lead to discuss and prioritise with the product owner and the project manager the elegible datasets. 
