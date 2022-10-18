@@ -52,7 +52,7 @@ Check the type of consent:
 
 Additionally, GDPR is in consideration; if the dataset contains samples from living donors, no externally obtained data or metadata can be added. We consider externally obtained data any type of information that is not obtained from public sources (e.g. the manuscript or archives such as GEO).
 
-Check that the sequence data is available (similar to the above). If the sequence data is fully available in fastq format, this is suitable. If the sequence data cannot be found or is not in fastq format, then the dataset can still be included if there are publically sharable contributor generated matrices. If there is no sharable data in the form of fastq files or a gene expression matrix, the dataset should be down prioritised or possibly considered ineligible.
+Check that the sequence data is available (similar to the above). If the sequence data is fully available in fastq format, this is suitable. If the sequence data cannot be found or is not in fastq format, then the dataset can still be included if there are publicly sharable contributor generated matrices. If there is no shareable data in the form of fastq files or a gene expression matrix, the dataset should be down prioritised or possibly considered ineligible.
 
 Check that the sequence data is available in a valid format: i.e. fastq format and both Read1 and Read2 are available. If bam files are available they can be converted to fastq.
 
