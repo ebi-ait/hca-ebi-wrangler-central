@@ -62,6 +62,8 @@ _**Demultiplexing**: In the past if the experimental design involved multiple sa
 
 Is the technology supported by our defined HCA metadata schema? If we can’t capture the information appropriately, then the dataset is blocked until the schema changes can be made to support the technology, but this does not make it ineligible. (see [HCA dataset triage SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_triage_SOP.html)).
 
+To check wether we have already discussed about a specific technology type, please refer to the [assay cheat sheet](https://docs.google.com/spreadsheets/d/1H9i1BK-VOXtMgGVv8LJZZZ9rbTG4XCQTBRxErdqMvWk/edit#gid=0)
+
 ## Other
 
 Scan the publication title and abstract to check for any signs that the dataset may be unsuitable due to unsupported experiment designs. This may also be indicated in the ‘HCA priority’ column by indicating that the datasets ‘requires discussion’ by the team.
