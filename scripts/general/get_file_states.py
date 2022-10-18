@@ -23,11 +23,19 @@ if __name__ == '__main__':
     url = "https://api.ingest.archive.data.humancellatlas.org/submissionEnvelopes/search/findByUuidUuid?uuid="
     submission = rq.get(f"{url}{uuid}").json()
     files_page = rq.get(submission.get('_links').get('files').get('href')).json()
-    files = files_page['_embedded']['files']
+    page_number = files_page['page']['totalPages']
     rows = []
-    for file in files:
-        file_name = file['content']['file_core']['file_name']
-        state = file.get('validationState')
-        rows.append([file_name,state])
+    for num in range(0,page_number):
+        files_page = rq.get(submission.get('_links').get('files').get('href'),params={'page': num}).json()
+        files = files_page["_embedded"]["files"]
+        for file in files:
+            file_name = file['content']['file_core']['file_name']
+            state = file.get('validationState')
+            errors = file.get('validationErrors')
+            if errors:
+                error_type = errors[0]['errorType']
+            else:
+                error_type = ''
+            rows.append([file_name,state,error_type])
 df = pd.DataFrame(rows)
 df.to_csv("file_states.txt",sep="\t")
