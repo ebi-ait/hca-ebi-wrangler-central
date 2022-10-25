@@ -83,7 +83,7 @@ As such, this document should be an updated **living document** containing the b
 * In **xenograft** experiments:
   * The donor is the one that the sample comes from, not the one that the sample is grafted inside. Think of the grafted individual as a "glorified petri dish"
   * Xenograft would be mentioned in the cell suspension section, under growth environment or free text description
-  * Example dataset: transplantedHumanIsletsNuclei
+  * Example dataset: [transplantedHumanIsletsNuclei](https://contribute.data.humancellatlas.org/projects/detail?uuid=a991ef15-4d4a-4b80-a93e-c538b4b54127)
 
 ### Specimen from organism
 
