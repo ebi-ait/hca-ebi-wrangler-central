@@ -309,6 +309,9 @@ Example:
 
 ## Curating metadata
 
+### General best practices
+For best practices on dataset wrangling, please refer to the document [Wrangling best practices](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/wrangling_best_practices.html)
+
 ### Ontology curation
 
 For ontologised fields, wranglers need to assign an ontology term that best suits the text provided by the contributor. The ontologised fields must be present within the latest version of the HCAO and meet the graph restriction present in the schema. The [ontology filler tool](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/src/fill_ontologies.py) can help with this process, but should be reviewed once complete. 
