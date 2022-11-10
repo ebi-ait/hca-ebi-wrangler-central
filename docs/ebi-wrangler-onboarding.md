@@ -96,7 +96,7 @@ This is a living document we want to make it better with every person that joins
 - Keep a good record of what you are doing, how many hours and, in case you have more than one cost centre, try to prioritize 
 
 ### Each week:
-- Fill in your timesheet (SAP)
+- [Fill in your timesheet (SAP)]([url](https://saperp.embl.de/nwbc))
 - Fill in the WAR (Confluence) - each Monday for the previous week of work
 
 ## Specifics
@@ -120,6 +120,7 @@ See [chairing rota](https://docs.google.com/spreadsheets/d/1-y7QNoIdwYdFHVxJUc5X
 | Meeting                              | Day       | Time   | Frequency             | Notes                                |
 |--------------------------------------|-----------|--------|-----------------------|--------------------------------------|
 | Operations planning/review           | Wednesday | 9.30am | Weekly                | |
+| Dily Standup Session                | Daily     | 9.30am | Daily (excl. Wed).    | see Chait/Note Taker[rota]([url](https://docs.google.com/spreadsheets/d/1-y7QNoIdwYdFHVxJUc5XWcQuuv6VYhvPLpt9Ls2PK7M/edit#gid=1591324846))|
 | Dev sprint kick off meeting          | Wednesday | 10.30am| Bi-weekly             | At start of EBI sprint,only dev wrangler needs to attend |
 | EBI-DCP Sprint Planning & Demo       | Tuesday   | 2pm    | Bi-weekly             | 1 hour, telecon, at end of a sprint  |
 | EBI DCP Sprint Retro                 | Tuesday   | 4pm    | Bi-weekly             | 1 hour, telecon                      |
@@ -185,6 +186,15 @@ We are required to record our time working at the EBI in timesheets. A couple of
 - Balance your time so every week you have the percentages (According to the grants related to your job) right.
 - Try to remember to submit your timesheet each week as a minimum, or strive for daily to ensure you're always recording your time accurately while it's fresh in your mind
 - The hard deadline for submitting a timesheet is by the last day of each calendar month to ensure your supervisor has enough time to review and approve
+
+#### Leaves of Absence
+
+1. request from line manager on SAP
+2. advance notice required is equal to the length of vacation
+3. mark your personal calendar as _busy_ or our of office so people who try to invite you to a meeting at the specific time you would be off can notice you would be away.
+4. add an entry to the AIT Calendar with a general comment about you being away, e.g. _John AL_. This way, team mates will notice you are away in the standup session. ![image](https://user-images.githubusercontent.com/927145/193549987-f71dbd17-4aec-400e-9405-8a24cd3fa4bd.png)
+
+5. notify the #hca channel: _I plan to be on vacation on  dd/mm_
 
 ### Google Docs and Drive
 
