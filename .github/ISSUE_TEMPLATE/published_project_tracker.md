@@ -34,8 +34,8 @@ assignees: ''
 - [ ] Manually curate dataset to meet HCA metadata standard
 - [ ] Collect any matrix and cell-type annotation files
 - [ ] Upload sheet to validate metadata
-- [ ] Check linking using ingest graph validator
 - [ ] Transfer raw files to ingest to validate data files
+- [ ] Check linking using ingest graph validator
 - [ ] Ask the Secondary Wrangler for an end-to-end review of the project. Ask the Expertise Wrangler to review specific tabs if needed
 - [ ] Submit dataset to Production 
 - [ ] Complete the Export SOP
