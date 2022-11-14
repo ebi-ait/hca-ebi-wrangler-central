@@ -3,7 +3,7 @@ argparse
 boto3
 tqdm
 smart_open
-#hca-ingest==0.6.11
+hca-ingest==0.6.11
 xlrd>=1.0.0
 pandas
 openpyxl==3.0.1
