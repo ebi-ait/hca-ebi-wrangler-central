@@ -81,7 +81,7 @@ This is a living document we want to make it better with every person that joins
 - Since your e-mail was probably created some weeks before your actual starting day, you will probably have 100+ e-mails. Most of them won’t have any interest to you (Mostly the older ones) but try to at least read the title before archiving/deleting them (And try to not delete any important e-mail. They should be archived, as they might be useful to revisit in the future)
 - At reception, they will give you some documents to fill in.
 - You will most likely have a meeting with your Human Resources (HR) officer where you will be provided with more forms and information. They will also guide you through your first steps. Don't hesitate to ask them, they are here to help.
-- The bus timetables and routes can be found [here](https://helix.wtgc.org/content/bus-timetables).
+- The bus timetables and routes can be found [here](https://fred.wellcomegenomecampus.org/Interact/Pages/Content/Document.aspx?id=2075&SearchId=0&utm_source=interact&utm_medium=category_search&utm_term=*).
 
 ### First week
 - Make sure you check the calendar every day. There might be meetings you don’t want to miss. This is a general thing to do, but it will probably only take you a couple days to get used to.
@@ -108,7 +108,7 @@ You can either set it up on your favourite calendar app or use google calendar. 
 - [**DCP Meeting calendar**](https://calendar.google.com/calendar?cid=YnJvYWRpbnN0aXR1dGUub3JnXzNrMWxzaW4wcGI0dXRnZzhkODdwbG5oY2M4QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This is where DCP-wide meetings are scheduled, not all meetings are relevant to wranglers. It includes meetings that could be across multiple sites UCSC/Broad/EBI/CZI/Stanford
 - [**AIT Calendar**](https://calendar.google.com/calendar?cid=ZWJpLmFjLnVrX2luOHQzc2IwZTRlbGtoc21xaGkyaXY4cDgwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20): This calendar is where the AIT team record AIT group meetings, vacation and sick leave, work from home (WFH) days and training.
 
-If you can't see any of the above calendars, request access from Laura
+If you can't see any of the above calendars, request access from Oihane
 
 If you need to create an event (e.g., to book a meeting with someone), you can left-click on the appropriate time (It goes by 30-minute periods), fill out the event details (title names should be short and concise, if you need to explain further details you can do so in the event description), and click on “more options” if you need to invite a guest.
 
@@ -120,7 +120,7 @@ Key meetings that wranglers are summarised in the table below:
 | Meeting                              | Day       | Time   | Frequency             | Notes                                |
 |--------------------------------------|-----------|--------|-----------------------|--------------------------------------|
 | Operations planning/review           | Wednesday | 9.30am | Weekly                | |
-| Dev sprint kick off meeting          | Wednesday | 10.30am| Bi-weekly             | At start of EBI sprint,only dev wrangler needs to attend |
+| Dev sprint kick off meeting          | Wednesday | 10.30am| Bi-weekly             | At start of EBI sprint, only dev wrangler needs to attend |
 | EBI-DCP Sprint Planning & Demo       | Tuesday   | 2pm    | Bi-weekly             | 1 hour, telecon, at end of a sprint  |
 | EBI DCP Sprint Retro                 | Tuesday   | 4pm    | Bi-weekly             | 1 hour, telecon                      |
 | User stories for next sprint         | Monday    | 10am   | Bi-weekly             | 1 hour, monday before end of EBI sprint |
@@ -147,7 +147,7 @@ Useful channels include:
 
 #hca-development - channel for discussion about the current development work, sorting testing, answering questions etc
 
-#hca-wrangler-metadata - this is where most of the discussion relating to wrangling and the the HCA metadata are discussed
+#hca-wrangler-metadata - this is where most of the discussion relating to wrangling and the HCA metadata are discussed
 
 #dcp-2 - This is a shared channel with the HCA slack. It is used for general announcements about the DCP or questions about the DCP, this is a good place to introduce yourself when you have logged in. 
 
@@ -162,7 +162,6 @@ In the HCA slack, the open channels you will find useful are - although much les
 You will need to ask Gabs to invite you to some private channels, these are different subsets of our team and collaborators to enable private communication.
 
 Data-wrangling-int
-Ebi-content-internal
 ebi-wrangler-metadata
 
 This is a current list of useful channels. Please always ask if a channel you are a member of is very quiet and you aren't sure if you are missing anything or if you aren't sure if there is a channel for a particular topic that you should join.
@@ -192,13 +191,13 @@ You have unlimited storage in Google Drive. Use it for storing all the documents
 
 Google Docs has most of the important documents that are used by the team on a regular basis. We don't expect you to know all of them the first day, so ask for a link to the document if you can't find it. Searching is useful for finding documents (if you know what you're looking for) but if there's anything you can't find do ask.
 
-A good place to start is by checking out the `[Brokering](https://drive.google.com/drive/folders/1y_6QcB_laGdfKAUklNaC0i2SPV7zwGJI)` folder (search is your friend) which is mainly where we store documents related to our ongoing wrangling tasks. The spreadsheets are in: `PROJECTS - [IN PROGRESS|FINISHED]`, etc
+A good place to start is by checking out the [`Brokering`](https://drive.google.com/drive/folders/1y_6QcB_laGdfKAUklNaC0i2SPV7zwGJI) folder (search is your friend) which is mainly where we store documents related to our ongoing wrangling tasks. The spreadsheets are in: `PROJECTS - [IN PROGRESS|FINISHED]`, etc
 
 ### E-mail
 
 You should be able to access your email straight away via [webmail](https://webmail.ebi.ac.uk/) with the username and password given to you by your PL.
 
-If you would also like to access your email using a desktop app you can follow the instructions [here](https://tsc.ebi.ac.uk/article/desktop/email/email-basics-0).
+If you would also like to access your email using a desktop app you can follow the instructions [here](https://embl.service-now.com/sp?id=kb_article&sysparm_article=KB0010551&sys_kb_id=74f454c61bc25510b7405fc4464bcbbe&spa=1).
 
 Your email should be checked throughout every working day. Part of your job as a wrangler consists of providing the data contributors all the help they might need. That being said, that doesn’t mean that you should leave everything you’re doing to answer an e-mail. Check the priorities and answer in an appropriate amount of time. 
 
@@ -302,5 +301,4 @@ Repositories you will mainly use:
 ### Miscellanea
 
 - Printers: If you install the correspondent apps (You can search for them as “Printer”, under the “Managed software centre” app), you will be able to use the Konica printers in both buildings. Using them to print personal photocopies has a little cost (1 pence) that is automatically subtracted from your salary.
-- Fill in your details at the [`Bios and Photos – DCP`](https://docs.google.com/document/d/1Gwrn2KgGGiEV37g0vhWnBrGLRvAPp-xXgq569R5WuPY/edit) document.
-- Campus wifi: The mobile phone coverage on campus is quite patchy so you may wish to connect to the campus wifi. There is a Guest wifi (WGCGuest) as well as eduroam. To access eduroam you will need to first register. There are instructions via this link: https://tsc.ebi.ac.uk/article/wifi/eduroam
+- Campus wifi: The mobile phone coverage on campus is quite patchy so you may wish to connect to the campus wifi. There is a Guest wifi (WGCGuest) as well as eduroam. To access eduroam you will need to first register. There are instructions [here](https://embl.service-now.com/sp?id=kb_article&sysparm_article=KB0010565&sys_kb_id=a3b2d7a41b329110b7405fc4464bcb70&spa=1)
