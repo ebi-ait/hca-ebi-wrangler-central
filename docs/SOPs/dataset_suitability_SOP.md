@@ -8,8 +8,9 @@ parent: SOPs
 
 ## Purpose of this document
 As wranglers we track new, in-progress (wrangling) and complete datasets by adding them as projects in ingest. You can [add a project](https://contribute.data.humancellatlas.org/projects/register/autofill) automatically with a doi or an accession, or you can register one manually.
+Additionally, datasets are automatically added every month by our [script] (https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_acknowledgement_SOP.html#populate-ingest-from-nxnse-single-cell-database).
 
-When we register a new project we need to indicate its priority, eligibility, status and other key information in ingest (see the dataset [acknowledgment SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_acknowledgement_SOP.html#manual-curation-after-addition)). Having all this information helps us to select quickly projects to wrangle and keeps us from wasting time on projects that cannot be ingested and/or are not eligible for the HCA.
+When we register a new project we need to indicate its priority, eligibility, status and other key information in ingest (see the dataset [acknowledgment SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_acknowledgement_SOP.html#manual-curation-after-addition)). Having all this information helps the wranglers to quickly select the projects to wrangle, rejecting datasets that are not eligible for the HCA.
 
 The purpose of this document is to list the specific criteria we use to assess dataset eligibility and our general approach to implement these. Any feedback on this process is very welcome and should be added to this document; please make it clear that it is feedback. In the longer term we are aiming for a software focused solution to this task.
 
@@ -36,7 +37,7 @@ To be eligible for this category, datasets must:
 (1)  https://contribute.data.humancellatlas.org/
 (2)  https://www.humancellatlas.org/publications/
 
-This criteria means a huge number of datasets are eligible, and we need rules to assign priority in order to understand in which order the datasets should be wrangled. See [HCA dataset triage SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_triage_SOP.html)
+This criteria means a great number of datasets are eligible, and we need rules to assign priority. See [HCA dataset triage SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_triage_SOP.html) for more information.
 
 
 ### Note
@@ -45,9 +46,13 @@ It is easiest/most productive to apply this to a list of datasets that have alre
 
 ## Assess data availability
 
-Check the type of consent: if the data is open, this is suitable. If the data is managed access, has living European donors and has no cell count matrices available or cannot be found the dataset is ineligible. The dataset can now be included if there are publically sharable contributor generated matrices. If there is no sharable data the dataset should be down prioritised or possibly considered ineligible.
+Check the type of consent: 
+- Open: **suitable**. 
+- Managed/Controlled access: Needs to at least have **publicly accessible count matrices**. If there is no shareable data the dataset should be down prioritised or possibly considered ineligible.
 
-Check that the sequence data is available (similar to the above). If the sequence data is fully available in fastq format, this is suitable. If the sequence data cannot be found or is not in fastq format, then the dataset can still be included if there are publically sharable contributor generated matrices. If there is no sharable data in the form of fastq files or a gene expression matrix, the dataset should be down prioritised or possibly considered ineligible.
+Additionally, GDPR is in consideration; if the dataset contains samples from living donors, no externally obtained data or metadata can be added. We consider externally obtained data any type of information that is not obtained from public sources (e.g. the manuscript or archives such as GEO).
+
+Check that the sequence data is available (similar to the above). If the sequence data is fully available in fastq format, this is suitable. If the sequence data cannot be found or is not in fastq format, then the dataset can still be included if there are publicly sharable contributor generated matrices. If there is no shareable data in the form of fastq files or a gene expression matrix, the dataset should be down prioritised or possibly considered ineligible.
 
 Check that the sequence data is available in a valid format: i.e. fastq format and both Read1 and Read2 are available. If bam files are available they can be converted to fastq.
 
@@ -56,6 +61,8 @@ _**Demultiplexing**: In the past if the experimental design involved multiple sa
 ## Assess Technology
 
 Is the technology supported by our defined HCA metadata schema? If we can’t capture the information appropriately, then the dataset is blocked until the schema changes can be made to support the technology, but this does not make it ineligible. (see [HCA dataset triage SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_triage_SOP.html)).
+
+To check wether we have already discussed about a specific technology type, please refer to the [assay cheat sheet](https://docs.google.com/spreadsheets/d/1H9i1BK-VOXtMgGVv8LJZZZ9rbTG4XCQTBRxErdqMvWk/edit#gid=0)
 
 ## Other
 

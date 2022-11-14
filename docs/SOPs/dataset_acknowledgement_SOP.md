@@ -17,15 +17,15 @@ parent: SOPs
 
 
 ## Purpose of this document
-This document defines the who, when and how to acknowledge datasets as an “up-and-running” operational task. By ‘acknowledgement’, it's meant how to add datasets to the [Dataset Tracking sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0) as potential datasets to wrangle and include in the HCA DCP. 
+This document defines the who, when and how to acknowledge datasets as an “up-and-running” operational task. By ‘acknowledgement’, it's meant how to add datasets to Ingest as potential datasets to wrangle and include in the HCA DCP. 
 
 ## Who
 A wrangler in the operation team, decided at the beginning of the sprint, will be the person responsible for acknowledgement of newly published datasets. The decision is recorded every sprint in the Operations planning notes.
 
-In addition, anyone, at any time, may add published papers/preprints/datasets to the dataset tracker sheet, provided they follow this process and fill in the fields according to the agreed requirements and conventions.
+In addition, anyone, at any time, may add published papers/preprints/datasets to Ingest, provided they follow this process and fill in the fields according to the agreed requirements and conventions.
 
 ## When
-At any point before halfway through the sprint, the wrangler/person responsible needs to run the scripts and update the Dataset Tracking Sheet with any new data found. This only needs to be done once per sprint.
+At any point before halfway through the sprint, the wrangler/person responsible needs to run the scripts. This only needs to be done once per sprint.
 
 ## How
 
@@ -121,33 +121,18 @@ this file. For example, to run against dev:
 
 ### Manual ad-hoc dataset addition
 
-When needed, datasets can also be added manually. First, make sure to check (With ctrl + f) that the dataset is not duplicated by looking at the following fields:
-- DOI
-- Paper Title
-- Accession
+When needed, datasets can also be added manually. First, make sure to check that the dataset is not duplicated by searching in Ingest by DOI, project title or project accession. This can be checked too while trying to create a new project based on DOI or GEO accession, as Ingest will search for them in the database to avoid duplication.
 
-If any of those 3 is already in the dataset tracking sheet, it is highly likely the dataset has been already added. If you think the information there is wrong/incomplete, feel free to curate the row.
-
-When the dataset is not present, please fill in **at least** the following columns:
-- **data_accession**: Accession for the raw sequencing data. If contributor data to archive, leave blank.
-- **contributor_involved**: `no` if dataset from archives/public sources, `yes` if primary contribution
-- **hca_status**: `acknowledged`
-- **date_added**: The date the dataset is being added, in YYYY-MM-DD format.
-- **access_permission**: If dataset requires managed access, indicate here.
-- **organism**: Use the dropdown to indicate `mouse`, `human`, or `human&mouse`
-- **sample_type**: Indicate the type of sample (Can choose more than one)
-- **health_status**: Indicate if `normal`, `not normal` or `both`
-- **phenotype**: If the health status is not `normal`, indicate the phenotype here
-- **assay_type**: Indicate the technology used to generate the library preparations. If the technology is not listed, please add it to the dropdown
-- **organ**: Indicate, with ontology terms from UBERON when possible, the organ where the samples come from.
-- **living_eu_donors**: When human, indicate if they were living EU citizens when the samples were collected. When other organism, indicate `no,none`
-- **nucleic_acid_source**: Indicate if bulk, single cell or single nucleus
-- **data_available**: `yes` if the raw sequencing data is available
-- **technical_benchmarking**: Indicate if the dataset is a benchmarking experiment (e.g. how does tissue storage affect library preparation) 
-- **broker_to_archives**: Usually `no` if from archives, `yes` if from contributor and need to broker to ENA
-- **broker_to_scea**: Based on their guidelines, indicate `yes` or `no`
-- **pub_title**: Indicate publication title
-- **hca_pub**: Indicate if it's an HCA publication
-- **pub_link**: Indicate the link to the publication (Can be any link as long as it resolves to the manuscript in the journal)
-- **pmid**: Indicate pmid. An easy way to do it is by using the tracking sheet function `setPmid()` indicating the cell with the title as a parameter
-- **doi**: Indicate DOI. Make sure it starts with `10.`.
+When the dataset is not present, please fill in **at least** the following information:
+- **Accessions**: If available, add the corresponding data accessions.
+- **Data access**: Fill in the type of data access (managed, open, mix, it's complicated). 
+- **Organism**: Indicate the organism, generally human.
+- **Organs**: Indicate the organs used in the experiment.
+- **library preparation**: Indicate the technology used to generate the library preparations.
+- **Living eu donors**: When human, indicate if they were living EU citizens when the samples were collected on the admin area, under the notes section) .
+- **Cell count**: Add the number of cells sequenced in the experiment, or at least an approximation
+- **Broker to archives**: If data comes from contributor and need to broker to ENA, add this to the notes section at the admin area.
+- **Broker to scea**: Always check if the dataset is eligible for SCEA based on their guidelines. If it is eligible for SCEA, please indicate this in the notes section of the admin area.
+- **Contributors**: If available, fill in the contributors section
+- **Publications**: If a publication or pre-print is available, fill in the publications section, including the DOI and PMID if available. If it is an offical HCA publication, don't forget to tick the Official HCA Publication checkbox.
+- **Admin Area**: Remember to set the wrangling status as elegible, and set the wrangling priority based on the priority chart.

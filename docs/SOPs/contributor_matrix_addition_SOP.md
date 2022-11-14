@@ -21,7 +21,8 @@ For each project, wranglers should endeavour to find an expression matrix and if
 The preferred formats for matrix files are:
 * `loom`
 * `h5ad`
-* RObj?
+* `RData`
+* `RDS`
 
 Where either the expression matrix or cell type annotations cannot be found, the primary wrangler should write an email to the contributor/author asking for them to provide the appropriate files in the preferred format. If the contributors cannot provide in the preferred format, we will take whatever is available. It is important to be able to link the cell type annotations to the cell suspensions and/or cell barcodes provided in the metadata.
 
