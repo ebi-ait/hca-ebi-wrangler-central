@@ -120,10 +120,9 @@ See [chairing rota](https://docs.google.com/spreadsheets/d/1-y7QNoIdwYdFHVxJUc5X
 | Meeting                              | Day       | Time   | Frequency             | Notes                                |
 |--------------------------------------|-----------|--------|-----------------------|--------------------------------------|
 | Operations planning/review           | Wednesday | 9.30am | Weekly                | |
-| Dev sprint kick off meeting          | Wednesday | 10.30am| Bi-weekly             | At start of EBI sprint, only dev wrangler needs to attend |
+| Dev sprint kick off meeting          | Wednesday | 10.30am| Bi-weekly             | At start of EBI sprint, only wrangler on development needs to attend |
 | EBI-DCP Sprint Planning & Demo       | Tuesday   | 2pm    | Bi-weekly             | 1 hour, telecon, at end of a sprint  |
 | EBI DCP Sprint Retro                 | Tuesday   | 4pm    | Bi-weekly             | 1 hour, telecon                      |
-| User stories for next sprint         | Monday    | 10am   | Bi-weekly             | 1 hour, monday before end of EBI sprint |
 | DCP Sprint Demo                      | Tuesday   | 4pm    | Bi-weekly             | At end of DCP sprint (see DCP calendar)    |
 | AIT Team meetings                    | Thursday  | 3pm    | Bi-weekly             | In person, alternates between dev and general interest |
 
@@ -150,6 +149,8 @@ Useful channels include:
 #hca-wrangler-metadata - this is where most of the discussion relating to wrangling and the HCA metadata are discussed
 
 [#dcp-2](https://embl-ebi-ait.slack.com/archives/C01360XN04S) - This is a shared channel with the HCA slack. It is used for general announcements about the DCP or questions about the DCP, this is a good place to introduce yourself when you have logged in. 
+
+[#dcp-ops](https://embl-ebi-ait.slack.com/archives/C9XD6L0AD) - This is a shared channel with the HCA slack. It is used for operation discussion/announcements, including when releases are available for review or they go live.
 
 In the HCA slack, the open channels you will find useful are - although much less chat happens on these channels now.
 
@@ -300,5 +301,5 @@ Repositories you will mainly use:
 
 ### Miscellanea
 
-- Printers: If you install the correspondent apps (You can search for them as “Printer”, under the “Managed software centre” app), you will be able to use the Konica printers in both buildings. Using them to print personal photocopies has a little cost (1 pence) that is automatically subtracted from your salary.
+- Printers: If you install the correspondent apps (You can search for them as “Printer”, under the “Managed software centre” app), you will be able to use the Konica printers in both buildings. Using the printers has a small cost which comes out of the group's budget.  
 - Campus wifi: The mobile phone coverage on campus is quite patchy so you may wish to connect to the campus wifi. There is a Guest wifi (WGCGuest) as well as eduroam. To access eduroam you will need to first register. There are instructions [here](https://embl.service-now.com/sp?id=kb_article&sysparm_article=KB0010565&sys_kb_id=a3b2d7a41b329110b7405fc4464bcb70&spa=1)
