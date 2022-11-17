@@ -126,7 +126,7 @@ python3 hca2scea.py -s /home/aday/GSE111976-endometrium_MC_SCEA.xlsx -id 379ed69
 
 **How to choose an E-HCAD accession number**
 
-Please check the [tracker sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0) for the next suitable E-HCAD accession number. Please ensure the E-HCAD id you choose is unique and not already present in the tracker sheet. It should be the next consecutive number after the maximum number in the sheet.
+Please check the [tracker sheet](https://docs.google.com/spreadsheets/d/1iQNiES-xLs3wcR6FjKcN9hIXgDFlzpiP2Z6_Syy2QKI/edit#gid=0) for the next suitable E-HCAD accession number. Please ensure the E-HCAD id you choose is unique and not already present in the tracker sheet. It should be the next consecutive number after the maximum number in the sheet.
 
 *Example*
 
@@ -186,7 +186,7 @@ Alternatively, see [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/too
 
 ## Record assigned E-HCAD ID ##
 
-At this point you should enter the newly assigned E-HCAD id(s) (e.g. E-HCAD-33) into the [tracker sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0). Please enter in all relevent accession columns to make sure they are visible to other wranglers when they select the next E-HCAD accession number for their dataset.
+At this point you should enter the newly assigned E-HCAD id(s) (e.g. E-HCAD-33) into the [tracker sheet](https://docs.google.com/spreadsheets/d/1iQNiES-xLs3wcR6FjKcN9hIXgDFlzpiP2Z6_Syy2QKI/edit#gid=0). Please enter in all relevent accession columns to make sure they are visible to other wranglers when they select the next E-HCAD accession number for their dataset.
 
 Please also note the E-HCAD id in the dataset ticket in the HCA Dataset Wrangling Zenhub board and manage the SCEA curation status of your dataset using the SCEA wrangling Zenhub board.
 
