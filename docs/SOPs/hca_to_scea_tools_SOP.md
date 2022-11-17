@@ -2,7 +2,7 @@
 layout: default
 title: HCA to SCEA Guide
 parent: SOPs
-last_modified_date: 28/04/2021
+last_modified_date: 17/11/2022
 ---
 
 # HCA to SCEA Guide
