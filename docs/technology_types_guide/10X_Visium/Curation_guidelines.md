@@ -2,6 +2,7 @@
 layout: default
 title: How to curate 10X Visium Gene Expression Data
 parent: 10X_Visium
+grand_parent: Technology Types Guide
 nav_order: 1
 ---
 

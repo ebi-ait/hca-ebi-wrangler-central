@@ -2,6 +2,7 @@
 layout: default
 title: How to curate scATAC-seq Data
 parent: scATAC-seq
+grand_parent: Technology Types Guide
 nav_order: 1
 ---
 

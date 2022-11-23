@@ -2,6 +2,7 @@
 layout: default
 title: How to curate CITE-seq Gene Expression & Surface Protein Data
 parent: CITE-Seq
+grand_parent: Technology Types Guide
 nav_order: 1
 ---
 

@@ -2,6 +2,7 @@
 layout: default
 title: CITE-seq: Cellular Indexing of Transcriptomes and Epitopes by Sequencing
 parent: CITE-Seq 
+grand_parent: Technology Types Guide
 nav_order: 2
 ---
 
@@ -17,8 +18,7 @@ Once scRNA-seq libraries are sequenced, transcripts can be mapped back to indivi
 
 
 <center><u>Figure 1</u>: Illustration of CITE-seq</center>
-<br
-    </br>
+<br>
 
 <img src="https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/technology_types_guide/CITE_seq/visuals/CITE-seq.png" width="700" height="500">
 

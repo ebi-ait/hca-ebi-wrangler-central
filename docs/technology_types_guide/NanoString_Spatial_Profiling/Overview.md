@@ -3,6 +3,7 @@ layout: default
 title: Overview of NanoString Digital Spatial Profiling and RNAScope
 parent: NanoString Spatial Profiling
 nav_order: 2
+grand_parent: Technology Types Guide
 ---
 
 # Overview of NanoString Digital Spatial Profiling and RNAScope
