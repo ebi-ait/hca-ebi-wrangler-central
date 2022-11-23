@@ -1,3 +1,10 @@
+---
+layout: default
+title: How to curate scATAC-seq Data
+parent: scATAC-seq
+nav_order: 1
+---
+
 # How to curate scATAC-seq Data
 
 ### Overview

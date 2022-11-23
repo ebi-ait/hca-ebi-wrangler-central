@@ -1,3 +1,10 @@
+---
+layout: default
+title: Overview of NanoString Digital Spatial Profiling and RNAScope
+parent: NanoString Spatial Profiling
+nav_order: 2
+---
+
 # Overview of NanoString Digital Spatial Profiling and RNAScope
 
 ## NanoString Digital Spatial Profiling

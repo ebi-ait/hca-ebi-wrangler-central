@@ -1,3 +1,10 @@
+---
+layout: default
+title: How to curate CITE-seq Gene Expression & Surface Protein Data
+parent: CITE-Seq
+nav_order: 1
+---
+
 # How to curate CITE-seq Gene Expression & Surface Protein Data
 
 ## Overview

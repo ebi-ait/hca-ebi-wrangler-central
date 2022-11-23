@@ -1,3 +1,10 @@
+---
+layout: default
+title: scATAC-seq: Single-cell sequencing assay for transposase-accessible chromatin
+parent: scATAC-seq
+nav_order: 2
+---
+
 # scATAC-seq: Single-cell sequencing assay for transposase-accessible chromatin
 
 ### Method

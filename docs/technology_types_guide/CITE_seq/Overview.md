@@ -1,3 +1,10 @@
+---
+layout: default
+title: CITE-seq: Cellular Indexing of Transcriptomes and Epitopes by Sequencing
+parent: CITE-Seq
+nav_order: 2
+---
+
 # CITE-seq: Cellular Indexing of Transcriptomes and Epitopes by Sequencing
 
 ### Method

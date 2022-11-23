@@ -1,3 +1,10 @@
+---
+layout: default
+title: How to curate 10X Visium Gene Expression Data
+parent: 10X_Visium
+nav_order: 1
+---
+
 # How to curate 10X Visium Gene Expression Data
 
 ### Overview

@@ -1,3 +1,10 @@
+---
+layout: default
+title: 10X Spatial Transcriptomics
+parent: 10X_Visium
+nav_order: 2
+---
+
 ## 10X Spatial Transcriptomics
 
 ### Method
