@@ -31,6 +31,14 @@ and not left empty. For 10X Visium data, the following tabs should be filled:
 - Imaging preparation protocol
 - Imaging protocol
 
+Example Graph:
+
+Specimen --> Imaging preparation protocol --> Imaged_specimen --> Imaging protocol --> Image file
+
+&
+
+Imaged_specimen --> sequencing protocol --> sequence file
+
 ### (2) Ontology terms
 
 - See [technology type table](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/technology_type_table.md)
