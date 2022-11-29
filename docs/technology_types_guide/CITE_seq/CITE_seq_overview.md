@@ -20,7 +20,7 @@ Once scRNA-seq libraries are sequenced, transcripts can be mapped back to indivi
 <center><u>Figure 1</u>: Illustration of CITE-seq</center>
 <br>
 
-<img src="{{site.baseurl}}/docs/technology_types_guide/visuals/CITE-seq.png" width="700" height="500">
+<img src="{{site.baseurl}}/technology_types_guide/CITE_seq/visuals/CITE-seq.png" width="700" height="500">
 
 ### Is CITE-seq a single-cell method?
 
@@ -34,7 +34,7 @@ CITE-seq has 2 purposes. The first is sample multiplexing (EFO:0030009). It is b
 <center><u> Figure 2</u>: Illustration of Cell Hashing</center>
 
 
-<img src="{{site.baseurl}}/docs/technology_types_guide/CITE_seq/visuals/Cell-Hashing.png" width="1000" height="400">
+<img src="{{site.baseurl}}/technology_types_guide/CITE_seq/visuals/Cell-Hashing.png" width="1000" height="400" alt="Flowers in Chania">
 
 The second purpose is for cell surface protein profiling (EFO:0030008). While similar in method, the aim is to identify biomarkers and better characterize cell phenotypes. In this context, the antibody-tagged DNA barcodes are referred to as 'Antibody Derived Tags' (ADT).
 
