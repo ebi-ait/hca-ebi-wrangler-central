@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 10X Spatial Transcriptomics
-parent: 10X_Visium
+parent: 10X - Visium
 grand_parent: Technology Types Guide
 nav_order: 2
 ---
