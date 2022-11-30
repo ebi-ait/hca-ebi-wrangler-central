@@ -20,8 +20,6 @@ This document will serve to display our guidelines for GDPR and data protection 
 
 ## Summary diagram
 
-<iframe width="768" height="432" src="https://miro.com/app/live-embed/o9J_lzQKwKI=/?moveToViewport=-2604,-1179,5558,2621" frameBorder="0" scrolling="no" allowFullScreen></iframe>
-
 ![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/GDPR_screenshots/GDPR_Flowchart.jpg?raw=true)
 
 ## Specific guidelines
