@@ -1,7 +1,7 @@
 ---
 layout: default
 title: How to curate 10X Visium Gene Expression Data
-parent: 10X_Visium
+parent: 10X - Visium
 grand_parent: Technology Types Guide
 nav_order: 1
 ---
@@ -14,15 +14,15 @@ This guide is intended to hightlight the ***required metadata*** for 10X Visium 
 
 The ***required metadata*** includes:
 
-(1) metadata fields labelled as required in the metadata schema (i.e. necessary for validation)
+1. [metadata fields labelled as required in the metadata schema (i.e. necessary for validation)](#required-metadata)
 
-(2) ontology terms: library construction method, sequencing method
+2. [ontology terms: library construction method, sequencing method](#ontology-terms)
 
-(3) image file types that we require based on discussion with researchers (not evaluated during metadata schema validation)
+3. [image file types that we require based on discussion with researchers (not evaluated during metadata schema validation)](#image-files)
 
-(4) analysis file types that we require based on discussion with researchers (not evaluated during metadata schema validation)
+4. [analysis file types that we require based on discussion with researchers (not evaluated during metadata schema validation)](#analysis-files)
 
-### (1) Required metadata
+### Required metadata
 
 Required metadata are labelled in the template spreadsheet. Some metadata is required only if the tab is present in the spreadsheet
 and not left empty. For 10X Visium data, the following tabs should be filled:
@@ -33,22 +33,27 @@ and not left empty. For 10X Visium data, the following tabs should be filled:
 
 Example Graph:
 
-Specimen --> Imaging preparation protocol --> Imaged_specimen --> Imaging protocol --> Image file
+```mermaid
+graph TD;
+A[Specimen] --> B[Imaging preparation protocol]
+B --> C[Imaged specimen]
+C --> D[Imaging protocol]
+D --> E[Image file]
+C --> G[Sequencing protocol]
+G --> H[Sequence file]
+```
 
-&
-
-Imaged_specimen --> sequencing protocol --> sequence file
-
-### (2) Ontology terms
+### Ontology terms
 
 - See [technology type table](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/technology_type_table.md)
 
-### (3) Image file(s)
+### Image file(s)
 
 - Image file(s) associated with each imaged specimen should be included as a supplementary file in the Imaged specimen tab.
 
 - At least 1 image file per imaged specimen should be overlaid with 10X Visium image coordinates. [See detected_tissue_image.jpg.](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/technology_types_guide/10X_Visium/example_dataset/detected_tissue_image.jpg)
-### (4) Analysis file(s)
+
+### Analysis file(s)
 
 - For each imaged specimen, there should be a list of 10X Visium spatial barcodes linked to the image coordinates. [See tissue_positions_list.csv.](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/technology_types_guide/10X_Visium/example_dataset/tissue_positions_list.csv)
 
