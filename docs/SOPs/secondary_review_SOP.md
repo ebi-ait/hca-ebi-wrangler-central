@@ -23,7 +23,6 @@ Wrangler should be able to identify whether the same library preparation was seq
 
 ## Confirm files are uploaded to s3
 
-
 Wrangler should be able to confirm that every sequencing, imaging, and supplementary file listed in the spreadsheet is located in the associated s3 bucket for that project. File names need to match exactly. The thing being checked here is that all relevant files have been submitted.
 
 Wrangler should be able to identify if there are any extra files in the s3 bucket that are not represented in the spreadsheet. If there are such files, primary wrangler should confirm with contributor (secondary wrangler should confirm with primary wrangler) whether these files are:
