@@ -229,13 +229,11 @@ Verify password:
 
 ```
 
-4. Compose an email and attached the `.zip` file
+4. Compose an email and attach the `.zip` file
 
 Subject: `AWS access keys for hca-util tool`
 
-To: `contributor.email@domain.org`
-
-CC: `wrangler.email@domain.org`, `wrangler-team@data.humancellatlas.org`
+To: `wrangler.email@domain.org`
 
 Message:
 > Dear < Contributor Name >
@@ -266,8 +264,8 @@ Message:
 _**This is done by a wrangler.**_ 
 
 1. Obtain the access key from a developer ([previous step](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/dataset_wrangling_SOP.md#aws-user-for-contributors))
-2. Create an upload area using the guide: [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
-3. Get the UUID from the created upload area
+1. Create an upload area using the guide: [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
+1. Get the UUID from the created upload area
 Send these two sets of information separately to the contributor to minimise the chance of them falling into the wrong hands and being misused.
 
 * **Contributor AWS Access keys** are not considered secure and can be sent in the main `wrangler-team` email thread, usually in the same email with the first spreadsheet and [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
