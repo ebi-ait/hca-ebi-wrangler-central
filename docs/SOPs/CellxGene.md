@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Contributor communication
+title: CellxGene
 parent: SOPs
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
