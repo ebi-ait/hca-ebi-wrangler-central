@@ -10,6 +10,7 @@ assignees: ''
 **Collection/dataset this task is for:**
 - Title: 
 - Project Short Name: 
+- DOI: 
 - ticket link to DCP wrangling ticket (if available)
 - link to ingest UI:
 - link to collection in cellxgene:
@@ -17,7 +18,6 @@ assignees: ''
 **Relevant People**
 - Wrangler
 - Contributor
-
 
 ### Associated files
 * [SOP](https://docs.google.com/document/d/1UVGIllybmEI46x22NSDpMNRywT3c8hcGrcw6opiHdbg/edit#)
@@ -28,13 +28,10 @@ assignees: ''
 * [Cellxgene-submit-collection](https://cellxgene.cziscience.com/?curator=true)
 
 ### Published study links
-
 * Paper:
-
 * Accessioned data:
 
 ### Key Events
-
 - [ ] Communicated with contributors and collected necessary files 
 - [ ] Checked that metadata in the HCA DCP matches up to number of samples in the contributor file
 - [ ] Edited and created a final H5ad object
