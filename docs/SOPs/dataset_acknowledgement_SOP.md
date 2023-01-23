@@ -63,15 +63,15 @@ this file. For  instructions on how to obtain the token see [this guide](https:/
 
     ```
         INGEST_API_URL= https://api.ingest.dev.archive.data.humancellatlas.org
-        INGEST_API_TOKEN="BearerToken <dev authentication token>"
+        INGEST_API_TOKEN="Bearer <dev authentication token>"
     ```
    To run against **prod**:
 
     ```
         INGEST_API_URL= https://api.ingest.archive.data.humancellatlas.org
-        INGEST_API_TOKEN="BearerToken <prod authentication token>"
+        INGEST_API_TOKEN="Bearer <prod authentication token>"
     ```
-   By default, the script runs against local host
+   By default, the script runs in dry-run mode, avoiding API operations
 
 4) Run `python -m populate_ingest.populate_ingest_from_nxn`
     
