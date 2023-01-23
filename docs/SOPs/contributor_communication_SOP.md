@@ -115,6 +115,12 @@ By default, the release date will be set up to 2 years from the moment the submi
 
 Once the dataset is released in an HCA snapshot release, the contributor should be informed and provided with the link to their dataset on the HCA Data Browser.
 
+## Follow-up email after release
+
+Once the submission has been successfully released into the HCA data portal, it should be communicated to the contributors (Even if the dataset was wrangled from the public domain). 
+
+This is not only to increase engagement from the community, but also to encourage scientists to send us datasets that we may have not discovered and may be of interest to the HCA.
+
 ## Template emails
 These templates are considered a guide to provide a skeleton with the required information. The primary wrangler can choose to edit and customise to make it more personal or appropriate for the situation.
 
@@ -317,3 +323,18 @@ Note that this is a constantly changing space, this email was last updated 2020-
 > [primary wrangler name]
 > 
 > On behalf of the HCA DCP Data Wrangling Team
+
+
+### Follow-up after dataset release in the Data portal
+
+> Dear [main contact from dataset],
+>
+> We are glad to inform you that the data associated with the manuscript titled [manuscript title] has been incorporated to the HCA Data portal, and can be accessed via the following link: [HCA link].
+>
+> We would be happy to work with you to incorporate other datasets that you have worked on that may be of interest to the Human Cell Atlas, so if you have any recommendations please let us know!
+>
+> Best regards,
+>
+> [wrangler name]
+> 
+> On behalf of the HCA DCP Data Wrangling team 
