@@ -462,6 +462,10 @@ The path after submission can go one of several ways:
 
 Always untick the `Delete the upload area and data files after successful submission.` checkbox.
 
+## After the data release
+
+Once a dataset has been made live in the browser, please contact the contributors (Even if the data was wrangled from the public domain) using the [template](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/contributor_communication_SOP.html#follow-up-after-dataset-release-in-the-data-portal).
+
 ### Archiving the submission
 
 If the submission needs to be archived, ensure you have the `Submit to the EMBL-EBI public archives and get accessions...` check box ticked. If not, proceed to [exporting the submission to DCP2](#exporting-the-submission-to-dcp2)
@@ -527,6 +531,8 @@ Notes
 <i class="fas fa-exclamation-triangle"></i> **Warning**: Wranglers should be aware of when prod releases are occurring and not upload/submit until after the release to that environment is completed. Releases do not currently follow a set schedule so stay tuned to updates posted in the `#hca` slack channel in the AIT workspace. See the [Ingest release SOP](https://github.com/HumanCellAtlas/ingest-central/wiki/Ingest-Release-SOP#release-schedule) for more details.
 
 Additionally, move all the corresponding documents to the [finished_projects](https://github.com/HumanCellAtlas/hca-data-wrangling/tree/master/projects/finished_projects) in hca-wrangling repo and to Google Drive/Brokering/[PROJECTS-FINISHED](https://drive.google.com/drive/folders/1FNRVqlhSwwTKoynIHhq5gsILGyRqd6F9)
+
+## After exporting
 
 ## Brokering to SCEA
 
