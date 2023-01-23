@@ -532,8 +532,6 @@ Notes
 
 Additionally, move all the corresponding documents to the [finished_projects](https://github.com/HumanCellAtlas/hca-data-wrangling/tree/master/projects/finished_projects) in hca-wrangling repo and to Google Drive/Brokering/[PROJECTS-FINISHED](https://drive.google.com/drive/folders/1FNRVqlhSwwTKoynIHhq5gsILGyRqd6F9)
 
-## After exporting
-
 ## Brokering to SCEA
 
 - [hca_to_scea_tools_SOP]
