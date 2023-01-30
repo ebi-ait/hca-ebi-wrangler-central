@@ -58,15 +58,22 @@ At any point before halfway through the sprint, the wrangler/person responsible 
 1) Go to the `scripts/populate_ingest/` folder inside your cloned version of the `hca-ebi-dev-team` repository
 
 2) Create a `.env` file in `scripts/populate_ingest/`. Specify the relevant ingest api url and ingest api token in
-this file. For example, to run against dev:
+this file. For  instructions on how to obtain the token see [this guide](https://ebi-ait.github.io/hca-ebi-dev-team/operations_tasks/api_token.html).
+<br>To run against dev:
 
     ```
         INGEST_API_URL= https://api.ingest.dev.archive.data.humancellatlas.org
-        INGEST_API_TOKEN=<dev authentication token>
+        INGEST_API_TOKEN="Bearer <dev authentication token>"
     ```
-    By default, the script runs against local host
+   To run against **prod**:
 
-3) Run `python -m populate_ingest.populate_ingest_from_nxn`
+    ```
+        INGEST_API_URL= https://api.ingest.archive.data.humancellatlas.org
+        INGEST_API_TOKEN="Bearer <prod authentication token>"
+    ```
+   By default, the script runs in dry-run mode, avoiding API operations
+
+4) Run `python -m populate_ingest.populate_ingest_from_nxn`
     
    The script runs against local host, in dry-run mode by default
    
@@ -75,7 +82,8 @@ this file. For example, to run against dev:
    
    
    
-   The logs can be found at `scripts/populate_ingest/nxn_db.log`
+   The logs can be found at `scripts/populate_ingest/nxn_db.log`. If you are having trouble running the script make sure
+ that the token is still valid, it will expire after a few hours.
    
    The uuids of the projects created in ingest can be found at `scripts/populate_ingest/added_uuids.txt`.
    
