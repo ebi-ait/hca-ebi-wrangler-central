@@ -57,6 +57,7 @@ This is a living document we want to make it better with every person that joins
 | Wei Kheng Teh       | EBI         | wteh@ebi.ac.uk |
 | Ida Zucchi          | EBI         | idazucchi@ebi.ac.uk |
 | Arsenios Chatzigeorgiou    | EBI         | arsenios@ebi.ac.uk  |
+| Anu Shivalikanjli   | EBI         | anu@ebi.ac.uk       |
 | Parisa Nejad        | UCSC        | pnejad@ucsc.edu     |
 | William Sullivan    | UCSC        | wisulliv@ucsc.edu   |
 
