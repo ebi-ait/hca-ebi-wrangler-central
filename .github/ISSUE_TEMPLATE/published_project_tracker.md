@@ -40,3 +40,4 @@ assignees: ''
 - [ ] Submit dataset to Production 
 - [ ] Complete the Export SOP
 - [ ] Convert project data to SCEA format following the SCEA conversion SOP if appropriate
+- [ ] Are the analysis files suitable for CellxGene? If something is missing get in touch witht the authors to request it
