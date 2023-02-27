@@ -259,7 +259,7 @@ Typically HCA metadata contains entities with different ratios. For example, one
 
 All entities should be assigned a unique (within the dataset) ID by the contributor. To create these links you need to enter the ID of the derived from entity into the ‘Source Biomaterial ID’ field.
 
-![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_0.png)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_0.png)
 
 ### Biomaterials
     
@@ -273,11 +273,11 @@ Every biomaterial tab except the Donor tab has a second biomaterial ID field tha
 
 In the spreadsheet example below, five tissue specimens were collected from a single donor and the Specimen tab is filled out as:
 
-![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_1.png)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_1.png)
 
 This will create the following links:
 
-![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_2.png)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_2.png)
 
 Key points:
 
@@ -303,17 +303,17 @@ The highest level biological entity (often Donor) is not ‘derived from’ anyt
 
 One process entity is automatically created between every biomaterial, protocol, and file entity in the graph. A process entity contains metadata about the transition between entities. The process itself contains the who, when, where metadata which is linked to protocol entities with detailed metadata about the methods. One process can link to zero, one, or more protocols.
 
-![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_3.png)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_3.png)
 
 ### Protocols
 
 Protocols need to be linked to the processes sandwiched between biomaterial and/or file entities.
 
-![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_4.png)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_4.png)
 
 To create a link from one collection protocol to 5 processes between ‘donor organism’ and ‘specimen from organism’, we add the collection protocol ID to the specimen tab. **We always add protocol IDs to the lower entity in the hierarchy**.
 
-![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_5.png)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_5.png)
 
 Although this sample shows the linking of one protocol, multiple protocols can be added to a process.
 
@@ -339,11 +339,11 @@ Ingest creates one subgraph for every process linked to a sequence or image file
 
 As an example, to create two subgraphs for a SmartSeq2, paired-end dataset consisting of 2 cells, we need to impose two processes each linked to two files.
 
-![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_6.png)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_6.png)
 
 This would require the following setup in the Sequence file tab:
 
-![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_7.png)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_7.png)
 
 ### Technical Replicates / Library prep group
 
@@ -351,11 +351,11 @@ Technical replicates are defined as multiple sets of files produced from multipl
 
 In this 10X example, one cell suspension has been used to make one library preparation (not represented in the graph) which was then sequenced twice. Here we need to produce two subgraphs by imposing two process IDs from the same cell suspension.
 
-## ![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_8.png)
+## ![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_8.png)
 
 In the Sequence file tab below, notice that although we have linked these two processes (process_ID1 and process_ID2) with the library preparation ID (Library_prep_ID1), the graph is not affected by the library prep ID as links are not created. However, this allows links to be retrospectively added if introspection of technical replicates is required by a data consumer. 
 
-![image alt text](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_9.png)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_9.png)
 
 ### Ontology columns
 
