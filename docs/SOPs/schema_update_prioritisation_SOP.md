@@ -72,5 +72,5 @@ Please take a look at the [message template](#template-messages) to announce the
 
 ### DCP-2 slack channel message
 > Hi team! I've opened a PR <insert link to the PR> in the schema repo to <brief description of the PR's aim> (more context here <link to the schema repo issue>). 
-> @Enrique Sapena Ventura @Amnon @rmunshi @aherbst @Hannes @Dave Rogers Could you please review it?
+> @Enrique Sapena Ventura @Amnon @rmunshi @ncalvanese @Hannes @Dave Rogers Could you please review it?
 > 
