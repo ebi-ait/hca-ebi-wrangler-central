@@ -150,7 +150,18 @@ These templates are considered a guide to provide a skeleton with the required i
 > [primary wrangler name]
 > 
 > On behalf of the HCA DCP Data Wrangling Team
+#### HCA branded publication - no preprint or publication 
 
+Dear [name/s of contributor/s],
+
+Congratulations on your HCA manuscript! We are looking forward to hearing more about your project, and will add your publication to our project catalogue (https://www.ebi.ac.uk/humancellatlas/project-catalogue/) as a HCA publication once a preprint or publication is available. 
+
+Do you have any time-sensitive requirements on archiving, or have you already archived your data in a specific database?
+
+Warm regards,
+[wrangler name] 
+
+On Behalf of the HCA DCP Ingestion Service
 #### HCA branded publication - first contact
 
 > Dear [name/s of contributor/s],
