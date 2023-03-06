@@ -386,6 +386,8 @@ Some fields require identifiers (CURIEs) from the HCA ontology ([HCAO](https://o
 *Diseases*
 - normal: PATO:0000461
 - type 2 diabetes mellitus: MONDO:0005148
+- Hepatic fibrosis: HP:0001395
+Human Phenotype (HP) has some overlap with MONDO, but it's a phenotype ontology rather than a disease ontology, so whenever the same term is available in MONDO we should use the latter. 
 
 *Development stage*
 - adult: HsapDv:0000087
