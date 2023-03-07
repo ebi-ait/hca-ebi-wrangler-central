@@ -157,7 +157,7 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > Congratulations on your HCA manuscript! We are looking forward to hearing more about your project, and will add your publication to our project catalogue (https://www.ebi.ac.uk/humancellatlas/project-catalogue/) as a HCA publication once a preprint or publication is available. 
 > 
-> Do you have any time-sensitive requirements on archiving, or have you already archived your data in a specific database?
+> If you would like your data to be added to the HCA DCP Data Portal, please contact us and we can start the submission process.
 > 
 > Warm regards,
 > [wrangler name] 
