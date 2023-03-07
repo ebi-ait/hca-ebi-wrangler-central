@@ -46,7 +46,8 @@ The first contact email should contain:
 ### Contact after an HCA publication email
 Wrangler team might be CC'ed in an email informing the authors that a publication has been accepted as an HCA publication (subject __HCA Branded Publication__). In this case, we can contact them and do not wait for them to reach. 
 
-[Template email](#hca-branded-publication---first-contact){: .btn .btn-blue }
+[Template email- no preprint or publication available](#hca-branded-publication---no-preprint-or-publication){: .btn .btn-blue }
+[Template email- preprint or publication available](#hca-branded-publication---with-preprint-or-publication){: .btn .btn-blue }
 
 ## Follow-up contact
 Once the primary wrangler has gained more information about the dataset, a custom spreadsheet can be generated with the relevant tabs and fields for the contributor’s experiment. 
