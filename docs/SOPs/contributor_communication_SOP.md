@@ -164,7 +164,7 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > On Behalf of the HCA DCP Ingestion Service
 
-#### HCA branded publication - first contact
+#### HCA branded publication - with preprint or publication
 
 > Dear [name/s of contributor/s],
 > 
