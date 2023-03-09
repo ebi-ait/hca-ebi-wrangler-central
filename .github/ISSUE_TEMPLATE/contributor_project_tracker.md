@@ -2,7 +2,7 @@
 name: Contributor Project Tracker
 about: Create a ticket for tracking key events of an in-progress project from a contributor.
 title: ''
-labels: dataset, contributor dataset
+labels: "dataset", "contributor dataset"
 assignees: ''
 
 ---
