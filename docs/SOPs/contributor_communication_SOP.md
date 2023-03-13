@@ -173,7 +173,7 @@ These templates are considered a guide to provide a skeleton with the required i
 > We have added the information about your publication to our project catalogue (https://www.ebi.ac.uk/humancellatlas/project-catalogue/) as a HCA publication.
 > Due to internal processes it will take a day to display the publication information, in the meantime any feedback about the HCA project catalogue is greatly appreciated!
 > 
-> Do you have any time-sensitive requirements on archiving, or have you already archived your data in a specific database?
+> If you have already archived your data in any database, could you provide us the accession number? Otherwise, if you would like your data to be added to the HCA DCP Data Portal, please contact us and we can start the submission process. Also, please inform us for any time-sensitive requirements on archiving.
 > 
 > Warm regards,
 > [wrangler name]
