@@ -175,7 +175,7 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > If you have already archived your data in any database, could you provide us with the accession number?
 > 
-> If you would like your data to be added to the HCA DCP Data Portal, please contact us and we can start the submission process. Also in that case, please inform us of any time-sensitive requirements on archiving.
+> If you would like your data to be added to the HCA DCP Data Portal, please contact us and we can start the submission process. Also in that case, please inform us of any time-sensitive requirements.
 > 
 > Warm regards,
 > [wrangler name]
