@@ -23,7 +23,7 @@ As such, this document should be an updated **living document** containing the b
 
 ## General Best Practices
 
-* <span style="color:red">**VERY IMPORTANT**</span>: Do not use “||” in the project spreadsheet apart from when used for linking entities. It should not end up in the metadata of any of the entities.
+* <span style="color:red">**VERY IMPORTANT**</span>: Do not use “\|\|” in the project spreadsheet apart from when used for linking entities. It should not end up in the metadata of any of the entities.
 * **Always** have someone review your dataset before submission
 * Look for examples to model after if it’s a cell line dataset or one with a unique experimental design
 * Use the [assay cheat sheet](https://docs.google.com/spreadsheets/d/1H9i1BK-VOXtMgGVv8LJZZZ9rbTG4XCQTBRxErdqMvWk/edit#gid=0) for existing, standard assays so that we stay consistent across Lattice, EBI and UCSCwrangling teams
