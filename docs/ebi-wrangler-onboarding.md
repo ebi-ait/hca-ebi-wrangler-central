@@ -1,9 +1,7 @@
 ---
 layout: default
 title: EBI wrangler onboarding
-parent: Introduction
-grand_parent: SOPs
-nav_order: 1
+nav_order: 4
 ---
 
 # EBI Onboarding document
