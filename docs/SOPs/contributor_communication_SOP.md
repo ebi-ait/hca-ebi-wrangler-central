@@ -43,6 +43,12 @@ The first contact email should contain:
 
 [Template email](#first-contact---data-questionnaire){: .btn .btn-blue }
 
+### Contact after an HCA publication email
+Wrangler team might be CC'ed in an email informing the authors that a publication has been accepted as an HCA publication (subject __HCA Branded Publication__). In this case, we can contact them and do not wait for them to reach. 
+
+[Template email- no preprint or publication available](#hca-branded-publication---no-preprint-or-publication){: .btn .btn-blue }
+[Template email- preprint or publication available](#hca-branded-publication---with-preprint-or-publication){: .btn .btn-blue }
+
 ## Follow-up contact
 Once the primary wrangler has gained more information about the dataset, a custom spreadsheet can be generated with the relevant tabs and fields for the contributor’s experiment. 
 
@@ -145,6 +151,36 @@ These templates are considered a guide to provide a skeleton with the required i
 > [primary wrangler name]
 > 
 > On behalf of the HCA DCP Data Wrangling Team
+
+### HCA branded publication - no preprint or publication 
+
+> Dear [name/s of contributor/s],
+> 
+> Congratulations on your HCA manuscript! We are looking forward to hearing more about your project, and will add your publication to our project catalogue (https://www.ebi.ac.uk/humancellatlas/project-catalogue/) as a HCA publication once a preprint or publication is available. 
+> 
+> If you would like your data to be added to the HCA DCP Data Portal, please contact us and we can start the submission process.
+> 
+> Warm regards,
+> [wrangler name] 
+> 
+> On Behalf of the HCA DCP Ingestion Service
+
+#### HCA branded publication - with preprint or publication
+
+> Dear [name/s of contributor/s],
+> 
+> Congratulations on your HCA manuscript!
+> We have added the information about your publication to our project catalogue (https://www.ebi.ac.uk/humancellatlas/project-catalogue/) as a HCA publication.
+> Due to internal processes it will take a day to display the publication information, in the meantime any feedback about the HCA project catalogue is greatly appreciated!
+> 
+> If you have already archived your data in any database, could you provide us with the accession number?
+> 
+> If you would like your data to be added to the HCA DCP Data Portal, please contact us and we can start the submission process. Also in that case, please inform us of any time-sensitive requirements.
+> 
+> Warm regards,
+> [wrangler name]
+> 
+> On Behalf of the HCA DCP Ingestion Service
 
 ### Terms and Conditions
 
