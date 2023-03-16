@@ -4,7 +4,6 @@ title: Access data files
 nav_order: 4
 parent: SOPs
 has_children: true
-permalink: docs/SOPs/Access_data_files
 ---
 {{toc}}
 

@@ -4,7 +4,6 @@ title: Metadata spreadsheet
 nav_order: 3
 parent: SOPs
 has_children: true
-permalink: SOPs/Metadata_spreadsheet
 ---
 # Metadata SpreadSheet
 
