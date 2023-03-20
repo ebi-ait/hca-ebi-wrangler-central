@@ -57,10 +57,10 @@ DNA-barcoded antibodies for cell staining (antibody serived tag - ADT)
 
 - Raw HTO sequencing data with an HTO barcode sequence. HTO data are mapped to a typically 10-12 bp reference HTO list separately.
 
-- An HTO antibody index index file which has the format “feature_barcode, feature_name". This should include the DNA barcode sequence and the antibody name, antibody ID or multiplex HTO sample ID. The mapped barcode counts might also be included in this file. See example dataset [here](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/technology_types_guide/CITE_seq/example_datasets/GSM2895283_Hashtag-HTO-count.csv).
+- An HTO antibody index index file which has the format “feature_barcode, feature_name". This should include the DNA barcode sequence and the antibody name, antibody ID or multiplex HTO sample ID. The mapped barcode counts might also be included in this file. See example dataset [here](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/technology_types_guide/CITE_seq/example_datasets/GSM2895283_Hashtag-HTO-count.csv).
 
 - Raw ADT sequencing data with an ADT barcode sequence. ADT data are mapped to a typically 10-12 bp reference ADT list separately.
 
-- An ADT antibody index index file which has the format “feature_barcode, feature_name". This should include the DNA barcode sequence and the antibody name, antibody ID or multiplex HTO sample ID. The mapped barcode counts might also be included in this file. See example dataset [here](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/technology_types_guide/CITE_seq/example_datasets/GSM2895283_Hashtag-ADT-1-count.csv).
+- An ADT antibody index index file which has the format “feature_barcode, feature_name". This should include the DNA barcode sequence and the antibody name, antibody ID or multiplex HTO sample ID. The mapped barcode counts might also be included in this file. See example dataset [here](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/technology_types_guide/CITE_seq/example_datasets/GSM2895283_Hashtag-ADT-1-count.csv).
 
 - The HTO feature data and ADT feature data might be aggregated in 1 file, in which case the "feature type" will also be included in the file ("cite-seq" or "hashtag").

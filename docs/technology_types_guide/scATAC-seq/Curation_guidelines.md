@@ -20,7 +20,7 @@ The ***required metadata*** includes:
 
 ### (1) Ontology terms
 
-- See [technology type table](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/technology_type_table.md)
+- See [technology type table](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/technology_types_guide/technology_types_table.md)
 
 ### (2) Analysis file(s)
 

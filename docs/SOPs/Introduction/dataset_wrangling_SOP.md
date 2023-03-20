@@ -265,7 +265,7 @@ Message:
 
 _**This is done by a wrangler.**_ 
 
-1. Obtain the access key from a developer ([previous step](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/dataset_wrangling_SOP.md#aws-user-for-contributors))
+1. Obtain the access key from a developer ([previous step](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/Introduction/dataset_wrangling_SOP.md#aws-user-for-contributors))
 1. Create an upload area using the guide: [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
 1. Get the UUID from the created upload area
 Send these two sets of information separately to the contributor to minimise the chance of them falling into the wrong hands and being misused.
