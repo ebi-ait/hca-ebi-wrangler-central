@@ -33,6 +33,7 @@ assignees: ''
 - [ ] Convert published metadata to HCA spreadsheet
 - [ ] Manually curate dataset to meet HCA metadata standard
 - [ ] Collect any matrix and cell-type annotation files
+- [ ] Are the analysis files suitable for CellxGene? If something is missing get in touch with the authors to request it
 - [ ] Upload sheet to validate metadata
 - [ ] Transfer raw files to ingest to validate data files
 - [ ] Check linking using ingest graph validator
@@ -40,4 +41,3 @@ assignees: ''
 - [ ] Submit dataset to Production 
 - [ ] Complete the Export SOP
 - [ ] Convert project data to SCEA format following the SCEA conversion SOP if appropriate
-- [ ] Are the analysis files suitable for CellxGene? If something is missing get in touch witht the authors to request it
