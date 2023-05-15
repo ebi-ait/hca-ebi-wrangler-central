@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Handy snippets
+title: All snippets
 parent: Tools
 ---
 

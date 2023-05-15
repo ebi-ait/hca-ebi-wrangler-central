@@ -2,6 +2,8 @@
 layout: default
 title: Technology Types Guide
 has_children: true
-nav_order: 4
+parent: SOPs
+nav_order: 8
 ---
-Technology_Types_Guide
+# Technology Types Guide
+Here are some guidelines for wrangling specific technologies.

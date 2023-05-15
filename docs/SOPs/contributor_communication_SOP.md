@@ -2,6 +2,7 @@
 layout: default
 title: Contributor communication
 parent: SOPs
+nav_order: 5
 ---
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
 # Contributor communication SOP
