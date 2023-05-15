@@ -2,6 +2,7 @@
 layout: default
 title: HCA wrangler docs visual index
 nav_order: 5
+permalink: /
 ---
 
 # [HCA wrangler docs visual index](https://ebi-ait.github.io/hca-ebi-wrangler-central/)
