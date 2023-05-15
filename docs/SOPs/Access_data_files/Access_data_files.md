@@ -13,5 +13,5 @@ Here are some options on how to access data files and upload to the EC2
 
 Some useful links are available in the Tools section of this page:
 
-[Tools - Downloading from archive](/docs/tools/Download_from_archives)
+[Tools - Downloading from archive](/tools/Download_from_archives/Download_from_archives)
 
