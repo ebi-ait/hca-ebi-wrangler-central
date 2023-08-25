@@ -1,3 +1,5 @@
+import os
+
 import pymongo
 import uuid
 import json
@@ -24,7 +26,7 @@ def replace_uuids(collection, old_uuid, new_uuid):
     entity = collection.update_one({'uuid': {'uuid': uuid.UUID(old_uuid)}}, update={'$set': {'uuid': {'uuid': uuid.UUID(new_uuid)}}})
 
 
-def main(mongodb_uri = 'mongodb://localhost:27017/admin', map_json_path='uuid_mapping.json'):
+def main(mongodb_uri, map_json_path):
     reverse_map = load_and_reverse_map(map_json_path)
     db = pymongo.mongo_client.MongoClient(mongodb_uri, uuidRepresentation='javaLegacy') # we should really document this, it was a nightmare
     admin = db['admin']
@@ -38,4 +40,6 @@ def main(mongodb_uri = 'mongodb://localhost:27017/admin', map_json_path='uuid_ma
 
 
 if __name__ == '__main__':
-    main()
+    mongodb_uri = os.getenv('mongodb_uri') or 'mongodb://localhost:27017/'
+    map_json_path = os.getenv('map_json_path') or 'uuid_mapping.json'
+    main(mongodb_uri, map_json_path)

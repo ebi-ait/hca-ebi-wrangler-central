@@ -21,7 +21,7 @@ The algorithm is as follows:
 To fix the links, when finished, update through the UI with the spreadsheet
 """
 import json
-import sys
+import os
 
 from hca_ingest.api.ingestapi import IngestApi
 
@@ -47,13 +47,14 @@ global_uuid_mapping = {'processes': {},
                        'protocol': {},
                        'file': {}}
 
+
 def link_entities(to_link, from_link, ingest_api):
     ingest_api.headers['Content-Type'] = 'text/uri-list'
     ingest_api.post(to_link, data=from_link)
     ingest_api.headers['Content-Type'] = 'application/hal+json'
 
 
-def create_submission_link_project(project_uuid, submission_uuid, ingest_api):
+def create_submission_link_project(project_uuid, ingest_api):
     # Step 1: Create submission, assign new UUID to that submission, attach to project
     submission = ingest_api.create_submission()
 
@@ -136,11 +137,11 @@ def save_global_mapping():
     with open('uuid_mapping.json', 'w') as f:
         json.dump(global_uuid_mapping, f, indent=4, separators=(', ', ': '))
 
-def main(project_uuid, token, spreadsheet_path, submission_uuid):
-    ingest_api = IngestApi('https://api.ingest.archive.data.humancellatlas.org/')
+def main(project_uuid, token, spreadsheet_path):
+    ingest_api = IngestApi()
     ingest_api.set_token(token)
 
-    submission = create_submission_link_project(project_uuid, submission_uuid, ingest_api)  # Step 1
+    submission = create_submission_link_project(project_uuid, ingest_api)  # Step 1
     spreadsheet_json = load_spreadsheet_json(spreadsheet_path, ingest_api)  # Step 2
     create_non_linked_processes(spreadsheet_json, ingest_api, submission)  # Step 3
     create_rest_entities(spreadsheet_json, ingest_api, submission)  # Step 4
@@ -148,4 +149,10 @@ def main(project_uuid, token, spreadsheet_path, submission_uuid):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+    project_uuid = os.getenv('project_uuid')
+    token = os.getenv('ingest_token')
+    spreadsheet_path = os.getenv('spreadsheet_path')
+    if all([project_uuid, token, spreadsheet_path]):
+        main(project_uuid, token, spreadsheet_path)
+    else:
+        print("Please set up the environment variables for 'project_uuid', 'ingest_token' and 'spreadsheet_path'")

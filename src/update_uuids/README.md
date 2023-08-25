@@ -17,15 +17,18 @@ In short, what they do is:
 - python3 (With the libraries from the requirements.txt installed)
 - [Kubernetes clusters set-up](https://github.com/ebi-ait/ingest-kube-deployment)
 - Spreadsheet with UUIDs
+- Set up the following environment variables:
+  - `ingest_token`: Ingest token obtained from ingest. Instructions [here](https://ebi-ait.github.io/hca-ebi-dev-team/operations_tasks/api_token.html)
+  - `project_uuid`: Project UUID to which the new submission will be attached.
+  - `spreadsheet_path`: Full path to the spreadsheet used to create the submission.
+  - `INGEST_API`: URL linking to the Ingest Api. Prod value should be: `https://api.ingest.archive.data.humancellatlas.org/`
 
 ## Step 1: create a submission
 
 For this step, we run the first script:
 ```
-python3 create_submission_from_spreadsheet_with_uuids.py <project_uuid> <token_ingest> <spreadsheet_path> <submission_uuid>
+python3 create_submission_from_spreadsheet_with_uuids.py
 ```
-
-The ingest token can be retrieved following [these steps](https://ebi-ait.github.io/hca-ebi-dev-team/operations_tasks/api_token.html)
 
 This step will generate a submission in ingest, under the project specified, and result in a json file called `uuid_mapping.json`
 
@@ -61,7 +64,7 @@ If the submission has already been pushed to the Data portal, Azul has a copy of
 as this information does not live in the spreadsheet.
 
 ```bash
-python3 modify_fileUuids_in_db.py <project_uuid>
+python3 modify_fileUuids_in_db.py
 ```
 
 After this, everything should be set-up and the submission should be ready for file upload.

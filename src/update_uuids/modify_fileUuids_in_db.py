@@ -1,13 +1,13 @@
 import json
 import pymongo
 import requests as rq
-import sys
+import os
 import uuid
 
 
 def find_file_ids(project_uuid):
     uuid_to_fileuuid = {}
-    azul_url = "https://service.azul.data.humancellatlas.org/index/files"
+    azul_url = os.getenv('azul_url') or "https://service.azul.data.humancellatlas.org/index/files"
     params = {"catalog": "dcp29",
               "filters": json.dumps({
                                     "projectId": {'is': [project_uuid]}
@@ -30,10 +30,10 @@ def load_map_files(map_json_path):
     return map_json['file']
 
 def set_fileuuid(collection, document_uuid, file_uuid):
-    entity = collection.update_one({'uuid': {'uuid': uuid.UUID(document_uuid)}}, update={'$set': {'dataFileUuid': uuid.UUID(file_uuid)}})
+    collection.update_one({'uuid': {'uuid': uuid.UUID(document_uuid)}}, update={'$set': {'dataFileUuid': uuid.UUID(file_uuid)}})
 
 
-def main(project_uuid='577c946d-6de5-4b55-a854-cd3fde40bff2', mongodb_uri = 'mongodb://localhost:27017/admin', map_json_path='uuid_mapping.json'):
+def main(project_uuid, mongodb_uri, map_json_path):
     reverse_map = load_map_files(map_json_path)
     uuid_to_fileuuid = find_file_ids(project_uuid)
     final_map = {u: value for u, value in uuid_to_fileuuid.items() if u in reverse_map}
@@ -46,4 +46,10 @@ def main(project_uuid='577c946d-6de5-4b55-a854-cd3fde40bff2', mongodb_uri = 'mon
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    project_uuid = os.getenv('project_uuid')
+    mongodb_uri = os.getenv('mongodb_uri') or 'mongodb://localhost:27017/'
+    map_json_path = os.getenv('map_json_path') or 'uuid_mapping.json'
+    if not project_uuid:
+        print("Project uuid missing")
+    else:
+        main(project_uuid, mongodb_uri, map_json_path)
