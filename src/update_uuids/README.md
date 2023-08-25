@@ -2,7 +2,7 @@
 
 ## Description of the scripts
 
-These scripts were created to fix the issue described in [dcp1163](https://app.zenhub.com/workspaces/operations-5fa2d8f2df78bb000f7fb2b5/issues/gh/ebi-ait/hca-ebi-wrangler-central/1163)
+These scripts were created to fix the issue described in ebi-ait/hca-ebi-wrangler-central#1163
 
 In short, what they do is:
 
