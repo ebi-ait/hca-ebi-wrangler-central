@@ -7,7 +7,7 @@ import uuid
 
 def find_file_ids(project_uuid):
     uuid_to_fileuuid = {}
-    azul_url = os.getenv('azul_url') or "https://service.azul.data.humancellatlas.org/index/files"
+    azul_url = os.getenv('AZUL_URL', default="https://service.azul.data.humancellatlas.org/index/files")
     params = {"catalog": "dcp29",
               "filters": json.dumps({
                                     "projectId": {'is': [project_uuid]}
@@ -47,8 +47,8 @@ def main(project_uuid, mongodb_uri, map_json_path):
 
 if __name__ == '__main__':
     project_uuid = os.getenv('PROJECT_UUID')
-    mongodb_uri = os.getenv('MONGODB_URI') or 'mongodb://localhost:27017/'
-    map_json_path = os.getenv('MAP_JSON_PATH') or 'uuid_mapping.json'
+    mongodb_uri = os.getenv('MONGODB_URI', default='mongodb://localhost:27017/')
+    map_json_path = os.getenv('MAP_JSON_PATH', default='uuid_mapping.json')
     if not project_uuid:
         print("Project uuid missing")
     else:

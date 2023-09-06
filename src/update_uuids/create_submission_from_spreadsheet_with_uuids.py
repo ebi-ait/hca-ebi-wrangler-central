@@ -155,4 +155,4 @@ if __name__ == '__main__':
     if all([project_uuid, token, spreadsheet_path]):
         main(project_uuid, token, spreadsheet_path)
     else:
-        print("Please set up the environment variables for 'project_uuid', 'ingest_token' and 'spreadsheet_path'")
+        print("Please set up the environment variables for 'PROJECT_UUID', 'INGEST_TOKEN' and 'SPREADSHEET_PATH'")
