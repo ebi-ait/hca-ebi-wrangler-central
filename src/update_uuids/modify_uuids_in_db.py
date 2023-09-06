@@ -40,6 +40,6 @@ def main(mongodb_uri, map_json_path):
 
 
 if __name__ == '__main__':
-    mongodb_uri = os.getenv('mongodb_uri') or 'mongodb://localhost:27017/'
-    map_json_path = os.getenv('map_json_path') or 'uuid_mapping.json'
+    mongodb_uri = os.getenv('MONGODB_URI') or 'mongodb://localhost:27017/'
+    map_json_path = os.getenv('MAP_JSON_PATH') or 'uuid_mapping.json'
     main(mongodb_uri, map_json_path)

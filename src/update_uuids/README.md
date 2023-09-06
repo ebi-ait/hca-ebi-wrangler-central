@@ -18,9 +18,9 @@ In short, what they do is:
 - [Kubernetes clusters set-up](https://github.com/ebi-ait/ingest-kube-deployment)
 - Spreadsheet with UUIDs
 - Set up the following environment variables:
-  - `ingest_token`: Ingest token obtained from ingest. Instructions [here](https://ebi-ait.github.io/hca-ebi-dev-team/operations_tasks/api_token.html)
-  - `project_uuid`: Project UUID to which the new submission will be attached.
-  - `spreadsheet_path`: Full path to the spreadsheet used to create the submission.
+  - `INGEST_TOKEN`: Ingest token obtained from ingest. Instructions [here](https://ebi-ait.github.io/hca-ebi-dev-team/operations_tasks/api_token.html)
+  - `PROJECT_UUID`: Project UUID to which the new submission will be attached.
+  - `SPREADSHEET_PATH`: Full path to the spreadsheet used to create the submission.
   - `INGEST_API`: URL linking to the Ingest Api. Prod value should be: `https://api.ingest.archive.data.humancellatlas.org/`
 
 ## Step 1: create a submission

@@ -149,9 +149,9 @@ def main(project_uuid, token, spreadsheet_path):
 
 
 if __name__ == '__main__':
-    project_uuid = os.getenv('project_uuid')
-    token = os.getenv('ingest_token')
-    spreadsheet_path = os.getenv('spreadsheet_path')
+    project_uuid = os.getenv('PROJECT_UUID')
+    token = os.getenv('INGEST_TOKEN')
+    spreadsheet_path = os.getenv('SPREADSHEET_PATH')
     if all([project_uuid, token, spreadsheet_path]):
         main(project_uuid, token, spreadsheet_path)
     else:
