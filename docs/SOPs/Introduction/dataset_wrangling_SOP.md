@@ -199,11 +199,12 @@ _**This is done by a team member with a developer role.**_
    Use the name part of the email address for the account name.
   
 ```shell
-# to add user walter.white@example.com as a contributor
-aws iam create-user --user-name walter.white --tags Key=project,Value=hca Key=owner,Value=tburdett Key=service,Value=ait
-aws iam add-user-to-group --group hca-contributor --user-name walter.white
+# to add user as a contributor
+read -p "enter username: " contributor_username
+aws iam create-user --user-name $contributor_username --tags Key=project,Value=hca Key=owner,Value=tburdett Key=service,Value=ait
+aws iam add-user-to-group --group hca-contributor --user-name $contributor_username
 # generate secrets 
-aws iam create-access-key --user-name walter.white 
+aws iam create-access-key --user-name $contributor_username 
 ```
 
 2. Save the credentials json output into a `walter.white-access-keys.txt` file.
