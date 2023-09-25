@@ -204,10 +204,10 @@ read -p "enter username: " contributor_username
 aws iam create-user --user-name $contributor_username --tags Key=project,Value=hca Key=owner,Value=tburdett Key=service,Value=ait
 aws iam add-user-to-group --group hca-contributor --user-name $contributor_username
 # generate secrets 
-aws iam create-access-key --user-name $contributor_username 
+aws iam create-access-key --user-name $contributor_username > ${contributor_username}.txt
 ```
 
-2. Save the credentials json output into a `walter.white-access-keys.txt` file.
+2. The credentials json output into a `<username>-access-keys.txt` file. Example:
 ```json
 {
     "AccessKey": {
@@ -222,7 +222,7 @@ aws iam create-access-key --user-name $contributor_username
 
 3. Compress the file with password. The following steps works for mac os.
 ```bash
-zip -er walter.white-access-keys.zip ayumu.tsubosaka-access-keys.txt
+zip -er ${$contributor_username}-access-keys.zip ${$contributor_username}-access-keys.txt
 ```
 You will be prompted to input a password. You could use any password generator.
 ```
