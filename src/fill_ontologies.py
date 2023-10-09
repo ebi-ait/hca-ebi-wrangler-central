@@ -48,6 +48,9 @@ Instructions of use and main algorithm
         - Input 'm': You'll be prompted to introduce the term that you want to look for
         - Input 'none': The ontology cells will be filled with empty strings
     - No ontology was found for this term. Please input it manually: Input the term that you want to search.
+
+    If new ontology branches have been added to the ontology modules take care to delete the pickled schemas so that
+    the script can load the updated schemas instead
 """
 
 import os
@@ -295,6 +298,7 @@ def parse_wb(file_path, wb, schema, zooma, keep):
                         if ontologies_dict:  # Select term from found ontologies
                             ontology, known_iri = select_term(ontologies_dict, cell.value, programmatic_key,
                                                               schema_info, zooma, known_iri)
+                            # todo: change select_term to evaluate multi fields and compare w/known_terms and known_ontologies
                             known_terms.append(cell.value)
                             if isinstance(ontology, list):  # If multi ontology returned, concatenate values
                                 ontologies = {}
