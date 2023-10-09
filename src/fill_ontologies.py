@@ -239,8 +239,12 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
         elif answer.lower() == 'exit' or answer.lower() == "q":
             raise KeyboardInterrupt
         else:
-            dict_index_key = list(ontologies_dict.keys())[int(answer)-1]
-            return ontologies_dict[dict_index_key], known_iri
+            try:
+                dict_index_key = list(ontologies_dict.keys())[int(answer)-1]
+                return ontologies_dict[dict_index_key], known_iri
+            except:
+                print("Invalid answer: {} \nNew attempt".format(answer))
+                return select_term(ontologies_dict, term, key, schema_info, zooma, known_iri)
 
 
 def save_workbook(path, workbook, suffix="_ontologies"):
