@@ -190,7 +190,8 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
         return ontologies_dict[first_key], known_iri
     # If there is an exact string match, use it - unless it's from HP --> MONDO terms have priority even if they are not an exact string match
     elif ontologies_dict and ontologies_dict[first_key]["label"].lower() == term.lower() and \
-            not ontologies_dict[first_key]["ontology_prefix"]=="HP" and not zooma:
+            not ontologies_dict[first_key]["ontology_prefix"]=="HP" and \
+            ontologies_dict[first_key]["is_defining_ontology"]==True and not zooma:
         print("Found exact match for term {} (Ontology: {})".format(term, ontologies_dict[first_key]["obo_id"]))
         return ontologies_dict[first_key], known_iri
     else:
