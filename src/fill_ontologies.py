@@ -48,6 +48,9 @@ Instructions of use and main algorithm
         - Input 'm': You'll be prompted to introduce the term that you want to look for
         - Input 'none': The ontology cells will be filled with empty strings
     - No ontology was found for this term. Please input it manually: Input the term that you want to search.
+
+    If new ontology branches have been added to the ontology modules take care to delete the pickled schemas so that
+    the script can load the updated schemas instead
 """
 
 import os
@@ -185,8 +188,9 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
             ontologies_dict[first_key]["source"] == "HCA":
         print("Found high confidence, HCA match for term {} (Ontology: {})".format(term, ontologies_dict[first_key]["obo_id"]))
         return ontologies_dict[first_key], known_iri
-    # If there is an exact string match, use it
-    elif ontologies_dict and ontologies_dict[first_key]["label"].lower() == term.lower() and not zooma:
+    # If there is an exact string match, use it - unless it's from HP --> MONDO terms have priority even if they are not an exact string match
+    elif ontologies_dict and ontologies_dict[first_key]["label"].lower() == term.lower() and \
+            not ontologies_dict[first_key]["obo_id"][0:2]=="HP" and not zooma:
         print("Found exact match for term {} (Ontology: {})".format(term, ontologies_dict[first_key]["obo_id"]))
         return ontologies_dict[first_key], known_iri
     else:
@@ -239,8 +243,12 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
         elif answer.lower() == 'exit' or answer.lower() == "q":
             raise KeyboardInterrupt
         else:
-            dict_index_key = list(ontologies_dict.keys())[int(answer)-1]
-            return ontologies_dict[dict_index_key], known_iri
+            try:
+                dict_index_key = list(ontologies_dict.keys())[int(answer)-1]
+                return ontologies_dict[dict_index_key], known_iri
+            except:
+                print("Invalid answer: {} \nNew attempt".format(answer))
+                return select_term(ontologies_dict, term, key, schema_info, zooma, known_iri)
 
 
 def save_workbook(path, workbook, suffix="_ontologies"):
