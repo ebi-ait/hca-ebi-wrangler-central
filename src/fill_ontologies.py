@@ -144,7 +144,7 @@ def search_child_term(term, schema_info, iri={}):
         ontology_response.extend(response["response"]["docs"])
     else:
         if "none" in term.lower():
-            return [{"obo_id": "", "label": ""}], iri
+            return {"none": {"obo_id": "", "label": ""}}, iri
         return None, iri
     ontology_dict = {ontology['obo_id']: ontology for ontology in ontology_response}
     return ontology_dict, iri
