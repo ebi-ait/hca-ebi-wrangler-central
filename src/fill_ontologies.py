@@ -145,7 +145,9 @@ def search_child_term(term, schema_info, iri={}):
     else:
         if "none" in term.lower():
             return {"none": {"obo_id": "", "label": ""}}, iri
-        return None, iri
+        term = input("No ontologies were found for the term (Cell value = {}). Please input it manually: "
+                     .format(term))
+        return search_child_term(term, schema_info)
     ontology_dict = {ontology['obo_id']: ontology for ontology in ontology_response}
     return ontology_dict, iri
 
