@@ -80,7 +80,7 @@ def get_iri(classes, iri={}):
     for ontology_class in classes:
         ontology_name = ontology_class.split(":")[0]
         if ontology_name not in iri:
-            request = rq.get("https://www.ebi.ac.uk/ols/api/terms?id={}".format(ontology_class))
+            request = rq.get("https://ontology.archive.data.humancellatlas.org/api/terms?id={}".format(ontology_class))
             response = request.json()
             iri[ontology_name] = "/".join(response["_embedded"]["terms"][0]["iri"].split("/")[:-1])
     return iri
@@ -127,11 +127,10 @@ def get_schema_info(key, json_schemas):
 def search_child_term(term, schema_info, iri={}):
     # Search OLS for ontologies based on string matching in ontologies determined by schema graph restriction
     ontology_response = []
-    request_query = "https://ontology.archive.data.humancellatlas.org/api/search?q=" if "hcao" in schema_info['ontologies'] else \
-                    "http://www.ebi.ac.uk/ols/api/search?q="
+    request_query = "https://ontology.archive.data.humancellatlas.org/api/search?q="
     if schema_info['include_self']:
         for ontology_class in schema_info['classes']:
-            request = rq.get("http://www.ebi.ac.uk/ols/api/terms?id={}".format(ontology_class))
+            request = rq.get("https://ontology.archive.data.humancellatlas.org/api/terms?id={}".format(ontology_class))
             response = request.json()
             if response["_embedded"]["terms"][0]["label"] == term:
                 return {response["_embedded"]["terms"][0]["obo_id"]: response["_embedded"]["terms"][0]}, iri
@@ -144,8 +143,10 @@ def search_child_term(term, schema_info, iri={}):
         ontology_response.extend(response["response"]["docs"])
     else:
         if "none" in term.lower():
-            return [{"obo_id": "", "label": ""}], iri
-        return None, iri
+            return {"none": {"obo_id": "", "label": ""}}, iri
+        term = input("No ontologies were found for the term (Cell value = {}). Please input it manually: "
+                     .format(term))
+        return search_child_term(term, schema_info)
     ontology_dict = {ontology['obo_id']: ontology for ontology in ontology_response}
     return ontology_dict, iri
 
