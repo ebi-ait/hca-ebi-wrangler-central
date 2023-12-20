@@ -68,6 +68,8 @@ The second follow-up email should contain:
 - Reminder that they will get the credentials sent to them shortly (Dev work)
 - Link to instructions for how to upload data to an upload area(https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util)
 
+If the contributors need help to edit an existing submission in ArrayExpress that was done by Enrique his Annotare credentials are stored in aws secrets.
+
 [Template email](#spreadsheet-and-data-upload-instructions){: .btn .btn-blue }
 
 ### Frequency of contact
