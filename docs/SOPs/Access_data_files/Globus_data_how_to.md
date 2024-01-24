@@ -22,6 +22,8 @@ Once the data is in your filesystem you can upload it to a bucket with hca-util.
 
 To avoid transfering the files twice we could potentially mount the hca-util bucket to the ec2 and transfer the files directly in the hca-util bucket. There are guides on how to mount s3 buckets but that would require a dev because wranglers don’t have sudo powers in the ec2.
 
+
+### First time set-up
 #### Step 1: Sign up
 Register on globus [here](https://auth.globus.org/p/login?client_id=89ba3e72-768f-4ddb-952d-e0bb7305e2c7&scope=urn%3Aglobus%3Aauth%3Ascope%3Aauth.globus.org%3Aview_identities+urn%3Aglobus%3Aauth%3Ascope%3Anexus.api.globus.org%3Agroups+urn%3Aglobus%3Aauth%3Ascope%3Atransfer.api.globus.org%3Aall&response_type=token&redirect_uri=%2Fv2%2Foauth2%2Fauthorize%3Fclient_id%3D89ba3e72-768f-4ddb-952d-e0bb7305e2c7%26scope%3Durn%253Aglobus%253Aauth%253Ascope%253Aauth.globus.org%253Aview_identities%2520urn%253Aglobus%253Aauth%253Ascope%253Anexus.api.globus.org%253Agroups%2520urn%253Aglobus%253Aauth%253Ascope%253Atransfer.api.globus.org%253Aall%26response_type%3Dtoken%26redirect_uri%3Dhttps%253A%252F%252Fapp.globus.org%252Flogin%26redirect_name%3DGlobus%2520Web%2520App%26state%3Dmq2sv0x1w8h%26viewlocale%3Den_US&redirect_name=Globus+Web+App&viewlocale=en_US)\
 If you just want to browse the files available from a public endpoint this could be enough.
@@ -45,8 +47,20 @@ To enable globus to see and move files to other locations, like the folders unde
  <br/>
  <br/>
 
-#### Step 4: Globus cli
-At this point you can move files between your private endpoint in the ec2 and any public endpoint by using the graphic interface [here](https://auth.globus.org/p/login?client_id=89ba3e72-768f-4ddb-952d-e0bb7305e2c7&scope=urn%3Aglobus%3Aauth%3Ascope%3Aauth.globus.org%3Aview_identities+urn%3Aglobus%3Aauth%3Ascope%3Anexus.api.globus.org%3Agroups+urn%3Aglobus%3Aauth%3Ascope%3Atransfer.api.globus.org%3Aall&response_type=token&redirect_uri=%2Fv2%2Foauth2%2Fauthorize%3Fclient_id%3D89ba3e72-768f-4ddb-952d-e0bb7305e2c7%26scope%3Durn%253Aglobus%253Aauth%253Ascope%253Aauth.globus.org%253Aview_identities%2520urn%253Aglobus%253Aauth%253Ascope%253Anexus.api.globus.org%253Agroups%2520urn%253Aglobus%253Aauth%253Ascope%253Atransfer.api.globus.org%253Aall%26response_type%3Dtoken%26redirect_uri%3Dhttps%253A%252F%252Fapp.globus.org%252Flogin%26redirect_name%3DGlobus%2520Web%2520App%26state%3Dewa5ysmp6xj%26viewlocale%3Den_US&redirect_name=Globus+Web+App&viewlocale=en_US)
+### How to
+#### Activate private endpoint 
+To transfer files to your private endpoint you have to active your endpoint
+```bash
+$ ./globusconnectpersonal -start 
+```
+The program will keep running, to get the prompt back you can send the program to the background.
+```bash
+$ ./globusconnectpersonal -start &
+```
+Now you can either work with the globus cli or the ui.
+
+#### Globus cli
+You can move files between your private endpoint in the ec2 and any public endpoint by using the graphic interface [here](https://auth.globus.org/p/login?client_id=89ba3e72-768f-4ddb-952d-e0bb7305e2c7&scope=urn%3Aglobus%3Aauth%3Ascope%3Aauth.globus.org%3Aview_identities+urn%3Aglobus%3Aauth%3Ascope%3Anexus.api.globus.org%3Agroups+urn%3Aglobus%3Aauth%3Ascope%3Atransfer.api.globus.org%3Aall&response_type=token&redirect_uri=%2Fv2%2Foauth2%2Fauthorize%3Fclient_id%3D89ba3e72-768f-4ddb-952d-e0bb7305e2c7%26scope%3Durn%253Aglobus%253Aauth%253Ascope%253Aauth.globus.org%253Aview_identities%2520urn%253Aglobus%253Aauth%253Ascope%253Anexus.api.globus.org%253Agroups%2520urn%253Aglobus%253Aauth%253Ascope%253Atransfer.api.globus.org%253Aall%26response_type%3Dtoken%26redirect_uri%3Dhttps%253A%252F%252Fapp.globus.org%252Flogin%26redirect_name%3DGlobus%2520Web%2520App%26state%3Dewa5ysmp6xj%26viewlocale%3Den_US&redirect_name=Globus+Web+App&viewlocale=en_US)
 See [here](https://docs.globus.org/how-to/get-started/) for a short guide on how to use the graphical interface.
 
 To move files from with a cli in the ec2 you need to install the python package globus from [here](https://docs.globus.org/cli/), the documentation is [here](https://docs.globus.org/cli/reference/list-commands/) \
@@ -79,7 +93,7 @@ For a more detailed description see the [documentation](https://docs.globus.org/
  <br/>
  <br/>
 
-#### Step 5: Transfer files
+#### Transfer files
 Using globus transfer you can transfer files between 2 endpoints for which you have the id.
 You can:
 1. Transfer a single file
