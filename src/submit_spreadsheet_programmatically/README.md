@@ -45,7 +45,7 @@ optional arguments:
 An example execution:
 
 ```shell
-python3 bypass_download_submit.py -u "907d5566-6533-41ef-8198-a1582ef11b8e" -s "eQTL_OA2_ontologies.xlsx" \
+python3 submit_spreadsheet_programmatically.py -u "907d5566-6533-41ef-8198-a1582ef11b8e" -s "eQTL_OA2_ontologies.xlsx" \
 -t "eyJWTOKEN" \
 -p 49b71044-9510-47f9-a9cc-6acb9c202412 -d
 ```
