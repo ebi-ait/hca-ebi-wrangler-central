@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Update schema & ontology
-nav_order: 7
+nav_order: 8
 parent: SOPs
 has_children: true
 ---
