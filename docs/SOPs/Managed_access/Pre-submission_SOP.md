@@ -32,10 +32,10 @@ Send to the contributor, with the wrangler email in CC
 
 
 ## Prepare a secure storage area
-Prepare a secure storage area for the projects’ data and metadata. 
+Prepare a secure storage area in AWS for the projects’ data and metadata. 
 1. Create a storage area using the project's uuid as name \
 `$ hca-util create <uuid-of-project>` 
-2. The contributor needs a set of credentials to be able to upload data to the hca-util area. 
+2. The contributor needs a set of credentials (AWS access key and AWS secret key) to be able to upload data to the AWS secure storage area.
 Ask a developer to follow [these instructions](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#aws-user-for-contributors) to create the credentials. The only information needed is the contributor’s name and email address. 
 
 
@@ -53,7 +53,7 @@ For next steps see [Managed access project - Data Transfer SOP](https://ebi-ait.
 >
 > If you’ve used organoid or cell line samples or you’ve performed spatial transcriptomics experiments please let me know so I can send you additional information. It’s possible to customise the spreadsheet to better fit your experiment design, so please get in touch if this is something I can help with.
 > 2. Upload your data and metadata to our secure cloud space
-> I am preparing a secure area specific for your data submission where you can upload your data files and the filled-in spreadsheet. Please let me know once you are happy you have filled out the spreadsheet and are ready to upload your data and metadata files, and I'll send you the details of this upload area and instructions on next steps.
+> I am preparing a secure storage area specific for your project where you can upload your data files and the filled-in spreadsheet. Please let me know once you are happy you have filled out the spreadsheet and are ready to upload your data and metadata files, and I'll send you the details of this upload area and instructions on next steps.
 > 
 >**In order to avoid circulating any potentially sensitive data over unencrypted channels, please refrain from sending any data or metadata via email.** This includes filled-in or partially completed copies of the spreadsheet. 
 > 3. Review and Export
