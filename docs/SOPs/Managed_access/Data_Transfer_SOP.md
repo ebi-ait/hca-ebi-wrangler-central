@@ -36,7 +36,7 @@ If the hca-util area contains the expected files proceed to the [Managed access 
 ### Email templates
 >Dear < Contributor Name >
 >
->The upload area UUID for your project is: <uuid>
+>The identifier for your project is: <uuid>
 >To upload files to the secure AWS storage area please refer to [this guide](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util). You should receive the credentials needed to access the area soon, if you have any issues please let me know.
 >Please let me know when you’ve completed the upload of data and metadata so that we can proceed with the submission.
 >
