@@ -4,12 +4,12 @@ title: Data Transfer SOP
 parent: Managed access
 grand_parent: SOPs
 nav_order: 4
-last_modified_date: 30/05/2024
+last_modified_date: 04/06/2024
 ---
 
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
 
-# Managed access dataset - Data Transfer SOP
+# Managed access project - Data Transfer SOP
 Once the data contributor has notified the HCA data wrangler that they have completed the  metadata spreadsheet, the wrangler can give them access to hca-util area
 
 ## Data and metadata upload prerequisites
@@ -29,7 +29,7 @@ Once the contributors have notified the wrangler that the upload is complete:
 1. Check the contents of the hca-util area - make sure the spreadsheet is there
 2. Confirm with the contributor the name of the metadata spreadsheet and the number of files uploaded
 
-If the hca-util area contains the expected files proceed to the [Managed access dataset - Data and metadata review and export SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Review_and_export_SOP.html)
+If the hca-util area contains the expected files proceed to the [Managed access project - Data and metadata review and export SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Review_and_export_SOP.html)
 )
 
 

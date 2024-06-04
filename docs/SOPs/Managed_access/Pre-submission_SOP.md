@@ -4,20 +4,20 @@ title: Pre-submission SOP
 parent: Managed access
 grand_parent: SOPs
 nav_order: 3
-last_modified_date: 30/05/2024
+last_modified_date: 04/06/2024
 ---
 
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
 
-# Managed access dataset - Pre-submission SOP
-Refer to this guide to prepare for the ingestion of a managed access dataset once the DCA has been signed.
+# Managed access project - Pre-submission SOP
+Refer to this guide to prepare for the ingestion of a managed access project once the DCA has been signed.
 
 ## Register the project in DUOS system
 
-A copy of the managed access project will have to be created in [DUOS](https://duos.org/) to control access to the dataset once it’s available on the Data Portal.
+A copy of the managed access project will have to be created in [DUOS](https://duos.org/) to control access to the data once it’s available on the HCA Data Portal.
 
-1. Email Jonathan at jlawson@broadinstitute.org with the [DUOS project information fields](https://docs.google.com/document/d/18pzeKafFQZ0rhqrb2DLOCciHUu4On4g2rtgnqygIfTE/edit#heading=h.674bm0dao5mr), using the information from the DCA agreement. This is mainly information about the dataset, the only personal data shared with the Broad is the PI’s name.
-2. Register in ingest the project’s DUOS id provided by Jonathan
+1. Email the DUOS representative (Jonathan at jlawson@broadinstitute.org) with the [DUOS project information fields](https://docs.google.com/document/d/18pzeKafFQZ0rhqrb2DLOCciHUu4On4g2rtgnqygIfTE/edit#heading=h.674bm0dao5mr), using the information from the DCA agreement. This is mainly project metadata, the only personal data shared with the Broad is the PI’s name.
+2. Register in the HCA Data Repository Ingest Service the project’s DUOS id provided by the DUOS representative
 
 ## Send instructions to contributor
 Send an email to the data contributor with instructions on next steps*
@@ -40,7 +40,7 @@ Ask a developer to follow [these instructions](https://ebi-ait.github.io/hca-ebi
 
 
 
-For next steps see [Managed access dataset - Data Transfer SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Transfer_SOP.html)
+For next steps see [Managed access project - Data Transfer SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Transfer_SOP.html)
 
 ### Email template - Instructions for the contributor
 
@@ -59,7 +59,7 @@ For next steps see [Managed access dataset - Data Transfer SOP](https://ebi-ait.
 > 3. Review and Export
 > The HCA data wrangling team will take care of reviewing and validating the data and metadata once you upload it. If anything needs to be adjusted, I’ll update you in due course. In general we aim to complete the review in 7 business days.
 > 4. Publish the project
->Once everything is reviewed and ready, I’ll update you with a possible release date so you can confirm if you’re ready to proceed with publishing the dataset under managed access.
+>Once everything is reviewed and ready, I’ll update you with a possible release date so you can confirm if you’re ready to proceed with publishing the project under managed access.
 >
 > Do not hesitate to get back in touch if you have any issues with any part of the process. I would also like to suggest a Zoom call to walk you through the metadata spreadsheet once you have taken an initial look at it. Please let me know what times might be suitable for you.
 >
