@@ -4,7 +4,7 @@ title: Data Transfer SOP
 parent: Managed access
 grand_parent: SOPs
 nav_order: 4
-last_modified_date: 04/06/2024
+last_modified_date: 05/06/2024
 ---
 
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
@@ -18,7 +18,7 @@ To upload data to the AWS secure storage area using the hca-util tool contributo
 2. Send an email addressed only to the contributor containing the zipped credentials
 3. Send an email addressed only to the contributor containing the password for the zipped credentials
 
-[Template emails](#Email-templates){: .btn .btn-blue }
+[Template emails](#email-templates){: .btn .btn-blue }
 
 ## Data and Metadata Upload
 1. Send the contributor [these instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util), explaining how to securely transfer their data to their assigned secure storage area, using the template below. 
@@ -34,27 +34,28 @@ If the hca-util area contains the expected files proceed to the [Managed access 
 
 
 ### Email templates
->Dear < Contributor Name >
+> Dear [Contributor Name]
 >
->The identifier for your project is: <uuid>
->To upload files to the secure AWS storage area please refer to [this guide](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util). You should receive the credentials needed to access the area soon, if you have any issues please let me know.
->Please let me know when you’ve completed the upload of data and metadata so that we can proceed with the submission.
+> The identifier for your project is: `<uuid>` \
+> To upload files to the secure AWS storage area please refer to [this guide](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util). You should receive the credentials needed to access the area soon, if you have any issues please let me know. \
+> Please let me know when you’ve completed the upload of data and metadata so that we can proceed with the submission.
 >
->Best regards
->< Your Name >
+> Best regards \
+> [Your Name]
 
->Dear < Contributor Name >
->
->Attached at the end of the email you will find a zip file with the credentials you need for the hca-util tool to upload your data. I will send you a separate email for the password of the zip file.
->Please treat these credentials securely and do not share them with anyone. 
->
->Best regards
->< Your Name >
+ 
 
+> Dear [Contributor Name]
+>
+> Attached at the end of the email you will find a zip file with the credentials you need for the hca-util tool to upload your data. I will send you a separate email for the password of the zip file. \
+> Please treat these credentials securely and do not share them with anyone. 
+>
+> Best regards \
+> [Your Name]
 
->Dear < Contributor Name >
+> Dear [Contributor Name]
 >
->The password to open the credentials zip file is: < password >
+> The password to open the credentials zip file is: `<password>`
 >
->Best Regards
->< Your Name >
+> Best Regards \
+> [Your Name]
