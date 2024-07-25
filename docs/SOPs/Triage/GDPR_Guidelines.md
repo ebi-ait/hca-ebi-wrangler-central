@@ -37,7 +37,7 @@ graph TD
     E -->|No| R{Ask contributor\nabout consent they hold}
     
     R -->|Must be open acccess\nwith only these data?| I[Wrangle\nonly the open access\ndata & metadata:\nproject-level data\nanalysis protocols\nand analysis files]
-    R -->|consent\nfor more open data?| J[Contributor\ncan provide written consent\nthat they are aware that data\nwill be publicly open]
+    R -->|consent\nfor more open data?| J[Contributor\ncan provide written consent\nto release metadata\nas open access]
     R -->|Must be managed access?| K[Follow the\nManaged Access route\nto archive\nwith controlled access]
 
     H --> L[Be aware of obtaining\nextra metadata or data\non existing living donors\nnot publicly available\nas that may be subject\nto data protection]
