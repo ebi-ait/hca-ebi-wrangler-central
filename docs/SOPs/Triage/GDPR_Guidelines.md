@@ -41,7 +41,7 @@ graph TD
     R -->|Must be managed access?| K[Follow the\nManaged Access route\nto archive\nwith controlled access]
 
     H --> L[Be aware of obtaining\nextra metadata or data\non existing living donors\nnot publicly available\nas that may be subject\nto data protection]
-    H -->|consent\nfor more open data?| J[Contributor\ncan provide written consent\nthat they are aware that data\nwill be publicly open]
+    H -->|consent\nfor more open data?| J[Contributor\ncan provide written consent\nto release metadata\nas open access]
     
     G -->|Yes| M[Subject to GDPR/\ndata restrictions]
     G -->|No| N[Recommend ENA.\nWe can curate with no worries.]
