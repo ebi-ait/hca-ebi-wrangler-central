@@ -50,9 +50,9 @@ It is easiest/most productive to apply this to a list of datasets that have alre
 
 Check the type of consent: 
 - Open: **suitable**. 
-- Managed/Controlled access: Needs to at least have **publicly accessible count matrices**. If there is no shareable data the dataset should be down prioritised or possibly considered ineligible.
+- Managed/ Controlled access: if data are not public, we could send email to suggest the managed access route ([managed access SOPs](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Managed_access.html)). If raw data is not available for open or managed access publication in Data Portal, we could publish with public available contributor generated matrices.
 
-Additionally, GDPR is in consideration; if the dataset contains samples from living donors, no externally obtained data or metadata can be added. We consider externally obtained data any type of information that is not obtained from public sources (e.g. the manuscript or archives such as GEO).
+Additionally, GDPR is in consideration; if the dataset contains samples from living donors, we should ask the data owner to take (written) responsibility to share and inform them that the data will be openly shared through the HCA Data Portal without access controls in place to monitor who has accessed the data and for which research purpose.
 
 Check that the sequence data is available (similar to the above). If the sequence data is fully available in fastq format, this is suitable. If the sequence data cannot be found or is not in fastq format, then the dataset can still be included if there are publicly sharable contributor generated matrices. If there is no shareable data in the form of fastq files or a gene expression matrix, the dataset should be down prioritised or possibly considered ineligible.
 
