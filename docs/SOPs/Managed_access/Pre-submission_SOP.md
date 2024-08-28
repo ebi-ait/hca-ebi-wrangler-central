@@ -4,7 +4,7 @@ title: Pre-submission SOP
 parent: Managed access
 grand_parent: SOPs
 nav_order: 3
-last_modified_date: 05/06/2024
+last_modified_date: 28/08/2024
 ---
 
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
@@ -52,7 +52,7 @@ For next steps see [Managed access project - Data Transfer SOP](https://ebi-ait.
 > Attached to this email you will find a metadata spreadsheet where you can fill in all the details of your experimental metadata. A guide to help in this process can be found here: [Spreadsheet Quick Guide](https://ebi-ait.github.io/hca-metadata-community/contributing/spreadsheet-guide.html) \
 > If you’ve used organoid or cell line samples or you’ve performed spatial transcriptomics experiments please let me know so I can send you additional information. It’s possible to customise the spreadsheet to better fit your experiment design, so please get in touch if this is something I can help with.
 > 2. Upload your data and metadata to our secure cloud space \
-> I am preparing a secure storage area specific for your project where you can upload your data files and the filled-in spreadsheet. Please let me know once you are happy you have filled out the spreadsheet and are ready to upload your data and metadata files, and I'll send you the details of this upload area and instructions on next steps. \
+> I am preparing a secure storage area specific for your project where you can upload your data files and the filled-in spreadsheet. I'll send you the details of this upload area and instructions on next steps in a separate email to keep the credentials secure. \
 > **In order to avoid circulating any potentially sensitive data over unencrypted channels, please refrain from sending any data or metadata via email.** This includes filled-in or partially completed copies of the spreadsheet. 
 > 3. Review and Export \
 > The HCA data wrangling team will take care of reviewing and validating the data and metadata once you upload it. If anything needs to be adjusted, I’ll update you in due course. In general we aim to complete the review in 7 business days.
