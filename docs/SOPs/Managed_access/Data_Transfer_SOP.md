@@ -4,13 +4,13 @@ title: Data Transfer SOP
 parent: Managed access
 grand_parent: SOPs
 nav_order: 4
-last_modified_date: 05/06/2024
+last_modified_date: 28/08/2024
 ---
 
 <script src="https://kit.fontawesome.com/fc66878563.js" crossorigin="anonymous"></script>
 
 # Managed access project - Data Transfer SOP
-Once the data contributor has notified the HCA data wrangler that they have completed the  metadata spreadsheet, the wrangler can give them access to the secure storage area
+The wrangler can give the contributor access to the secure storage area at the same time as the pre-submission instructions
 
 ## Data and metadata upload prerequisites
 To upload data to the AWS secure storage area using the hca-util tool contributors need credentials and their project’s area uuid. Credentials for hca-util tool must be zipped and password protected. 
