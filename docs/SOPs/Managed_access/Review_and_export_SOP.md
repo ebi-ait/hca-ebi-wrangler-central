@@ -15,13 +15,13 @@ Once the wrangler has verified that the data and metadata files were transferred
 ## Submission review and validation
 Data and metadata in a managed access submission are considered sensitive information and must be kept encrypted. Unlike in the case of open access projects, review for a managed access project must be done without ever downloading the metadata spreadsheet - or the data - to a non-encrypted location, like a laptop.
 1. Once the metadata spreadsheet is uploaded to the secure AWS storage area a lambda function will automatically notify the wrangler.
-2. The wrangler can review and edit the spreadsheet in a secure space through aws WorkSpace - [see here for set-up instructions]([url](https://github.com/ebi-ait/dcp-secure-spreadsheet-upload/wiki))
-3. The wrangler triggers the upload of the spreadsheet to its respective project in the HCA Data Repository Ingest Service. If the spreadsheet upload fails because HCA Data Repository Ingest Service cannot process the spreadsheet, the wrangler will get notified of the problem.
-4. If the spreadsheet imports successfully in HCA Data Repository Ingest Service, review the submission for metadata errors and communicate with the contributor on how to fix them. Ask the contributor to upload the corrected spreadsheet to the secure storage area and repeat the activities from step 1 onwards. 
-5. Sync the data files directly from the secure storage area provided to the contributor to the HCA Data Repository Ingest Service AWS staging area \
+2. The wrangler can review and edit the spreadsheet in a secure space through aws WorkSpace - see here for set-up [instructions](https://github.com/ebi-ait/dcp-secure-spreadsheet-upload/wiki#intermediate-editing-through-aws-workspaces)
+4. The wrangler triggers the upload of the spreadsheet to its respective project in the HCA Data Repository Ingest Service. If the spreadsheet upload fails because HCA Data Repository Ingest Service cannot process the spreadsheet, the wrangler will get notified of the problem.
+5. If the spreadsheet imports successfully in HCA Data Repository Ingest Service, review the submission for metadata errors and communicate with the contributor on how to fix them. Ask the contributor to upload the corrected spreadsheet to the secure storage area and repeat the activities from step 1 onwards. 
+6. Sync the data files directly from the secure storage area provided to the contributor to the HCA Data Repository Ingest Service AWS staging area \
 `$ hca-util sync s3://org-hca-data-archive-upload-prod/<submission-uuid>`
-6. Within HCA Data Repository Ingest Service, add ontology terms where necessary, for example for methods, species and developmental stage.
-7. Validate the experimental design with the graph validation step. If there are any errors, communicate with the contributor so that they can amend the metadata spreadsheet and upload the corrected spreadsheet to the secure storage area and repeat the activities from step 1 onwards.
+7. Within HCA Data Repository Ingest Service, add ontology terms where necessary, for example for methods, species and developmental stage.
+8. Validate the experimental design with the graph validation step. If there are any errors, communicate with the contributor so that they can amend the metadata spreadsheet and upload the corrected spreadsheet to the secure storage area and repeat the activities from step 1 onwards.
 
 ## Confirm Project data release
 
