@@ -25,31 +25,31 @@ This document will serve to display our guidelines for GDPR and data protection 
 ```mermaid
 graph TD
     A[What is the source of the project?]
-    A -->|Published Paper| B{Does the project\nhave living donors?}
-    A -->|Contributor\nCommunications| C{Is the project\narchived?}
+    A -->|Published Paper| B{Does the project<br>have living donors?}
+    A -->|Contributor<br>Communications| C{Is the project<br>archived?}
     C -->|Yes| B
-    C -->|No| G{Does the project\nhave living donors?}
+    C -->|No| G{Does the project<br>have living donors?}
  
-    B -->|Yes| E{"Is the data and metadata\nopen access in the public domain?\n(ENA, AE, publication)"}
-    B -->|No| F[We can curate it\nwith no worries]
+    B -->|Yes| E{"Is the data and metadata<br>open access in the public domain?<br>(ENA, AE, publication)"}
+    B -->|No| F[We can curate it<br>with no worries]
     
-    E -->|Yes| H[We can curate\nwhatever is in the public domain]
-    E -->|No| R{Ask contributor\nabout consent they hold}
+    E -->|Yes| H[We can curate<br>whatever is in the public domain]
+    E -->|No| R{Ask contributor<br>about consent they hold}
     
-    R -->|Must be open acccess\nwith only these data?| I[Wrangle\nonly the open access\ndata & metadata:\nproject-level data\nanalysis protocols\nand analysis files]
-    R -->|consent\nfor more open data?| J[Contributor\ncan provide written consent\nto release metadata\nas open access]
-    R -->|Must be managed access?| K[Follow the\nManaged Access route\nto archive\nwith controlled access]
+    R -->|Must be open acccess<br>with only these data?| I[Wrangle<br>only the open access<br>data & metadata:<br>project-level data<br>analysis protocols<br>and analysis files]
+    R -->|consent<br>for more open data?| J[Contributor<br>can provide written consent<br>to release metadata<br>as open access]
+    R -->|Must be managed access?| K[Follow the<br>Managed Access route<br>to archive<br>with controlled access]
 
-    H --> L[Be aware of obtaining\nextra metadata or data\non existing living donors\nnot publicly available\nas that may be subject\nto data protection]
-    H -->|consent\nfor more open data?| J[Contributor\ncan provide written consent\nto release metadata\nas open access]
+    H --> L[Be aware of obtaining<br>extra metadata or data<br>on existing living donors<br>not publicly available<br>as that may be subject<br>to data protection]
+    H -->|consent<br>for more open data?| J[Contributor<br>can provide written consent<br>to release metadata<br>as open access]
     
-    G -->|Yes| M[Subject to GDPR/\ndata restrictions]
-    G -->|No| N[Recommend ENA.\nWe can curate with no worries.]
+    G -->|Yes| M[Subject to GDPR/<br>data restrictions]
+    G -->|No| N[Recommend ENA.<br>We can curate with no worries.]
     N -->C
     
-    M --> O{Has the contributor explicitly\ninstructed us to archive\nin open access database?}
-    O -->|Yes| P[Confirm that the data\nthey are providing is open access,\nthen recommend ENA]
-    O -->|No| Q[Recommend contributor\nsubmits to EGA]
+    M --> O{Has the contributor explicitly<br>instructed us to archive<br>in open access database?}
+    O -->|Yes| P[Confirm that the data<br>they are providing is open access,<br>then recommend ENA]
+    O -->|No| Q[Recommend contributor<br>submits to EGA]
 
     P -->C
     Q -->C
