@@ -103,7 +103,7 @@ As such, this document should be an updated **living document** containing the b
     * Specimen (single cell/nuclei OR bulk)
     * Cell line
     * Organoid
-    * Cell suspension (WIP; please see this [ticket](https://app.zenhub.com/workspaces/operations-5fa2d8f2df78bb000f7fb2b5/issues/ebi-ait/hca-ebi-wrangler-central/927))
+    * Cell suspension (WIP; please see this [ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/927))
     
 ### Organoids
 

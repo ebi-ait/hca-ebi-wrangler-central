@@ -282,7 +282,7 @@ Repositories you will mainly use:
 - [`Operations Planning Notes`](https://docs.google.com/document/d/1O2nCBtnFY-AWh_1_s188xLTyvaZpwbUUp3Pvs_aV_jc/edit#heading=h.usaswk9ioim4) 
 
 #### Wrangling
-- [`Dataset Wrangling Zenhub Board`](https://app.zenhub.com/workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) 
+- [`Dataset Wrangling Github Projects Board`](https://github.com/orgs/ebi-ait/projects/12/) 
 - [`HCA Wrangling Datasets SOP`](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_wrangling_SOP.html) 
 - [`Dataset Brokering Folder`](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA) 
 - [`Single Cell Genomics Library Structure`](https://teichlab.github.io/scg_lib_structs/) 
@@ -295,9 +295,12 @@ Repositories you will mainly use:
 
 ### Browser plug-ins
 
-- [Zenhub](https://chrome.google.com/webstore/detail/zenhub-for-github/ogcgkffhplmphkaahpmffcafajaocjbd): used by many of the teams in the DCP as way to implement the SCRUM and Agile methodologies within github. We have a combined [ingest board](https://github.com/ebi-ait/hca-ebi-wrangler-central/edit/master/docs/ebi-wrangler-onboarding.md#workspaces/ingest-dev-5cfe1cb26482e537cf35e8d1/board?repos=249765101,232300832,244611740,261790554,240563208,132741306,237019026,102351002) for tracking all work for the ingest team at EBI. You can play around with visibility to ensure the board is most relevant to your work.
+- [modHeader](https://modheader.com/): Navigate ingest-api via browser, when authorisation token is required. 
+    > Tip: Add "Request URL Filter": .\*://api.ingest.archive.data.humancellatlas.org/.\* to avoid sending header to any website.
 - [Octotree](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc): Adds easier navigation of repos in github
 - JSON viewer of your choice.
+- ~~[Zenhub](https://chrome.google.com/webstore/detail/zenhub-for-github/ogcgkffhplmphkaahpmffcafajaocjbd):~~ Zenhub access has been expired, and we are no longer using it.
+
 
 ### Miscellanea
 

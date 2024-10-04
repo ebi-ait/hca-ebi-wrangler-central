@@ -4,6 +4,7 @@ about: Create a ticket for a dataset-related wrangler task.
 title: dataset problem - HCADataSetXYZ
 labels: dataset, operations, task
 assignees: ''
+projects: "ebi-ait/12"
 
 ---
 
