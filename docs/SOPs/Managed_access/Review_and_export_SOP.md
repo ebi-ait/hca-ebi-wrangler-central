@@ -20,8 +20,9 @@ Data and metadata in a managed access submission are considered sensitive inform
 5. If the spreadsheet imports successfully in HCA Data Repository Ingest Service, review the submission for metadata errors and communicate with the contributor on how to fix them. Ask the contributor to upload the corrected spreadsheet to the secure storage area and repeat the activities from step 1 onwards. 
 6. Sync the data files directly from the secure storage area provided to the contributor to the HCA Data Repository Ingest Service AWS staging area \
 `$ hca-util sync s3://org-hca-data-archive-upload-prod/<submission-uuid>`
-7. Within HCA Data Repository Ingest Service, add ontology terms where necessary, for example for methods, species and developmental stage.
-8. Validate the experimental design with the graph validation step. If there are any errors, communicate with the contributor so that they can amend the metadata spreadsheet and upload the corrected spreadsheet to the secure storage area and repeat the activities from step 1 onwards.
+7. Remove the metadata spreadsheet from the data section so the project can validate, and from the `s3://org-hca-data-archive-upload-prod/<uuid>` so it's not exported with the project
+8. Within HCA Data Repository Ingest Service, add ontology terms where necessary, for example for methods, species and developmental stage.
+9. Validate the experimental design with the graph validation step. If there are any errors, communicate with the contributor so that they can amend the metadata spreadsheet and upload the corrected spreadsheet to the secure storage area and repeat the activities from step 1 onwards.
 
 ## Confirm Project data release
 
