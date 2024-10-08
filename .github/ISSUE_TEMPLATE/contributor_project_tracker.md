@@ -4,6 +4,7 @@ about: Create a ticket for tracking key events of an in-progress project from a 
 title: ''
 labels: dataset,contributor dataset
 assignees: ''
+projects: "ebi-ait/12"
 
 ---
 

@@ -37,7 +37,7 @@ Things that can’t be done: (?)
 * Analysed datasets - OPEN QUESTION: Should be coordinated with the Matrix Service/DataOps?
 
 ## Procedure
-1. The identifier of the issue reopens the project tracker ticket for that project if it has been closed and moves it to the 'Needs Update' pipeline of the [`Dataset wrangling status`](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) Zenhub board and makes a comment that contains the following information, (if not already specified in the ticket body)
+1. The identifier of the issue reopens the project tracker ticket for that project if it has been closed, adds the label 'needsUpdate' and moves it to an appropriate pipeline of the [`Dataset wrangling status`](https://github.com/orgs/ebi-ait/projects/12) Github Projects board and makes a comment that contains the following information, (if not already specified in the ticket body)
     1. project full name
     1. project short name 
     1. Project UUID
