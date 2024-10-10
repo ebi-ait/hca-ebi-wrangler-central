@@ -41,6 +41,8 @@ C --> D[Imaging protocol]
 D --> E[Image file]
 C --> G[Sequencing protocol]
 G --> H[Sequence file]
+C --> I[Analysis protocol]
+I --> J[Analysis file]
 ```
 
 ### Ontology terms
