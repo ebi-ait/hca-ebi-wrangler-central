@@ -36,21 +36,16 @@ New contributors will almost always contact us via the wranglers email list. Whe
 
 ### Tracking wrangling progress
 
-Wrangling progress is tracked primarily through movement of the `project tracker ticket` through the pipelines on the [Dataset wrangling status](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) Zenhub Board. 
+Wrangling progress is tracked primarily through movement of the `project tracker ticket` through the status on the [Dataset wrangling status](https://github.com/orgs/ebi-ait/projects/12/) Github Projects Board. 
 
-| Pipeline            | When                                   | Explanation                                                                                                                                 |
+| Status            | When                                   | Explanation                                                                                                                                 |
 |:---------------------|:----------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
-| New Issues          | Auto-placed                            | This pipeline is where issues automatically end up but issues shouldn't stay here for long |
-| Queued for Wrangling      | When created                           | Issues should be placed here when they are created but before a wrangler actively starts working on it |
-| Wrangling           | When in progress                       | The primary wrangler moves the tracker ticket here when they have started working on it |
-| Secondary reviewing | When review starts                     | The secondary wrangler moves the tracker ticket here when they start reviewing |
-| Finalising          | When reviewed but needs changed        | The primary wrangler moves the tracker ticket here when applying changes to secondary wrangled datasets |
-| Archiving           | When archiving process starts          | The primary wrangler moves the tracker ticket here when Archiving starts (if required), if already archived would skip to ready for export |
-| Needs update        | If project needs an update             | A wrangler moves the tracker ticket here if the project requires some kind of update |
+| Todo      | When created or if project needs update          | Issues should be placed here when they are created but before a wrangler actively starts working on it or if project requires some kind of update |
 | Stalled             | If project becomes stuck               | If project spends more than 2 weeks with no progress, the ticket should be moved here and label applied to indicate reason  |
-| Exported in the DCP            | When finished                          | The primary wrangler moves the ticket here to indicate the project is exported to the DCP.  |
-| Verified in data browser | When project has been verified in the data browser | The primary wrangler moves the ticket here to indicate that it has been verified in the data browser. |
-| CellxGene | When working on wrangling to CellxGene | The primary wrangler moves the ticket here to indicate that the project is actively being wrangled to CellxGene |
+| Wrangling           | When in progress                       | The primary wrangler moves the tracker ticket here when they have started working on it |
+| Review | When review starts                     | The secondary wrangler moves the tracker ticket here when they start reviewing |
+| Verify            | When finished                          | The primary wrangler moves the ticket here to indicate the project is exported to the DCP and is waiting to be verified.  |
+| Done | When project has been verified in the data browser | The primary wrangler moves the ticket here to indicate that it has been verified in the data browser. |
 
 
 [Labels](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels) are also applied to tickets to provide further information about the ticket. Definitions for each label and when they should be applied can be [found here](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels).
@@ -444,7 +439,7 @@ If you want to run the tests locally, or suggest a new test/report a bug, please
 
 ## Secondary Review
 
-Once the spreadsheet has passed both phases of validation, the primary wrangler should ask another wrangler in the team to review the spreadsheet and suggest any required edits or updates. Once someone asks for secondary review, they should move the ticket to the `Secondary wrangling` pipeline on the tracking board.
+Once the spreadsheet has passed both phases of validation, the primary wrangler should ask another wrangler in the team to review the spreadsheet and suggest any required edits or updates. Once someone asks for secondary review, they should move the ticket to the `Review` status on the tracking board.
 
 If any edits or updates are made, the existing submission in ingest will need to be deleted and the new spreadsheet uploaded in its place.
 
@@ -452,7 +447,7 @@ If any changes may have also affected the linking in the spreadsheet it should a
 
 A detailed guide to performing secondary review [can be found here](secondary_review_SOP).
 
-Once both the Primary and Secondary wrangler are happy with the submission and it is valid in ingest, move the dataset tracker ticket to the `Ready to Export` pipeline of the [Dataset wrangling board](https://github.com/ebi-ait/hca-ebi-wrangler-central#workspaces/dataset-wrangling-status-5f994cb88e0805001759d2e9/board?repos=261790554) and change the `hca_status` to 'ready to export' in the [Dataset Tracking Sheet](https://docs.google.com/spreadsheets/d/1rm5NZQjE-9rZ2YmK_HwjW-LgvFTTLs7Q6MzHbhPftRE/edit#gid=0). The data files can now be moved from the contributor bucket into the ingest upload area.
+Once both the Primary and Secondary wrangler are happy with the submission and it is valid in ingest, the data files can now be moved from the contributor bucket into the ingest upload area.
 
 ## Transferring data from `hca-util` upload area to ingest upload area
 

@@ -15,7 +15,7 @@ Begin with a introductory tasks and introduction. This could be something like:
 Welcome to the HCA DCP! We are pleased to introduce you to the data wrangling team. Before beginning to work by yourself, you'll be asked to complete a set of tasks and meetings. These will guide you through both the general and specifics of your role, and it will help us make sure you understand how we work in the team. Your introductory tasks are:
 
 - [ ] Read the [onboarding document](https://ebi-ait.github.io/hca-ebi-wrangler-central/ebi-wrangler-onboarding.html).
-- [ ] Move this ticket from "to do" to "in progress" Pipeline in ZenHub.
+- [ ] Move this ticket from "to do" to "in progress" Status in Github Projects.
 - [ ] Create an issue for each [general task](#general-tasks) and link it to this epic.
 - [ ] Clone all the basic repos to your computer (look at the [onboarding document](https://ebi-ait.github.io/hca-ebi-wrangler-central/ebi-wrangler-onboarding.html) for more information)
 - [ ] Locate all the documents regarding SOPs. You don't need to read them for now, but make sure to know where they are (Via notes, bookmarking, etc)
