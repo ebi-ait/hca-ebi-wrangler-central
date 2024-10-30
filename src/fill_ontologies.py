@@ -184,8 +184,11 @@ def search_zooma(term, schema_info):
     return annotation_dict
 
 
-def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, multi_flag=False):
+def select_term(ontologies_dict, term, key, schema_info, zooma, known_terms=[], known_ontologies={}, known_iri={}, multi_flag=False):
     first_key = next(iter(ontologies_dict))
+    # if the term is known use the known ontology
+    if term in known_terms:
+        return known_ontologies[term], known_iri
     # If there is a high confidence match from HCA, use it
     if "confidence" in ontologies_dict[first_key].keys() and ontologies_dict[first_key]["confidence"] == "HIGH" and \
             ontologies_dict[first_key]["source"] == "HCA":
@@ -201,7 +204,7 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
             term = input("No ontologies were found for the term (Cell value = {}, Key = {}). Please input it manually: "
                          .format(term, key))
             ontologies_dict, known_iri = search_child_term(term, schema_info)
-            return select_term(ontologies_dict, term, key, schema_info, zooma, known_iri)
+            return select_term(ontologies_dict, term, key, schema_info, zooma, known_terms, known_ontologies, known_iri)
         # If multiple terms present, search each term
         if re.search("\|\|", term) and not multi_flag:
             print("Multiple terms detected for term: {} in field {}.".format(term, key))
@@ -220,8 +223,8 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
                             "Term '{}' was not found (Property = {}).\nPlease input it manually:".format(each_term, key))
                         each_ontologies_dict, known_iri = search_child_term(manual_term, schema_info)
                 # TODO: extend only ontologies, not known iri
-                multi_ontology.extend(select_term(each_ontologies_dict, each_term, key, schema_info, zooma, known_iri,
-                                                  multi_flag=True))
+                multi_ontology.extend(select_term(each_ontologies_dict, each_term, key, schema_info, zooma, known_terms,
+                                                  known_ontologies, known_iri, multi_flag=True))
             return multi_ontology, known_iri
         print("{} matches found for your search term '{}' for field {}.".format(len(ontologies_dict), term, key))
         i = 1
@@ -238,7 +241,7 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
         if answer.lower() == 'm':
             term = input("Please input the term manually: ")
             ontologies_dict, known_iri = search_child_term(term, schema_info)
-            return select_term(ontologies_dict, term, key, schema_info, zooma, known_iri)
+            return select_term(ontologies_dict, term, key, schema_info, zooma, known_terms, known_ontologies, known_iri)
         elif answer.lower() == 'none' or answer.lower() == 'skip':
             blank_annotation = {"obo_id": "",
                                 "label": ""}
@@ -248,10 +251,13 @@ def select_term(ontologies_dict, term, key, schema_info, zooma, known_iri={}, mu
         else:
             try:
                 dict_index_key = list(ontologies_dict.keys())[int(answer)-1]
+                # add selected term to known options
+                known_terms.append(term)
+                known_ontologies[term] = ontologies_dict[dict_index_key]
                 return ontologies_dict[dict_index_key], known_iri
             except:
                 print("Invalid answer: {} \nNew attempt".format(answer))
-                return select_term(ontologies_dict, term, key, schema_info, zooma, known_iri)
+                return select_term(ontologies_dict, term, key, schema_info, zooma, known_terms, known_ontologies, known_iri)
 
 
 def save_workbook(path, workbook, suffix="_ontologies"):
@@ -301,7 +307,7 @@ def parse_wb(file_path, wb, schema, zooma, keep):
                                 ontologies_dict, known_iri = search_child_term(term, schema_info)
                         if ontologies_dict:  # Select term from found ontologies
                             ontology, known_iri = select_term(ontologies_dict, cell.value, programmatic_key,
-                                                              schema_info, zooma, known_iri)
+                                                              schema_info, zooma, known_terms, known_ontologies, known_iri)
                             known_terms.append(cell.value)
                             if isinstance(ontology, list):  # If multi ontology returned, concatenate values
                                 ontologies = {}
