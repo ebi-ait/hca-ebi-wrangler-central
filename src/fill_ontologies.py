@@ -80,7 +80,7 @@ def get_iri(classes, iri={}):
     for ontology_class in classes:
         ontology_name = ontology_class.split(":")[0]
         if ontology_name not in iri:
-            request = rq.get("https://ontology.archive.data.humancellatlas.org/api/terms?id={}".format(ontology_class))
+            request = rq.get("https://www.ebi.ac.uk/ols/api/terms?id={}".format(ontology_class))
             response = request.json()
             iri[ontology_name] = "/".join(response["_embedded"]["terms"][0]["iri"].split("/")[:-1])
     return iri
@@ -127,16 +127,18 @@ def get_schema_info(key, json_schemas):
 def search_child_term(term, schema_info, iri={}):
     # Search OLS for ontologies based on string matching in ontologies determined by schema graph restriction
     ontology_response = []
-    request_query = "https://ontology.archive.data.humancellatlas.org/api/search?q="
+    request_query = "https://www.ebi.ac.uk/ols/api/search?q="
     if schema_info['include_self']:
         for ontology_class in schema_info['classes']:
-            request = rq.get("https://ontology.archive.data.humancellatlas.org/api/terms?id={}".format(ontology_class))
+            request = rq.get("https://www.ebi.ac.uk/ols/api/terms?id={}".format(ontology_class))
             response = request.json()
             if response["_embedded"]["terms"][0]["label"] == term:
                 return {response["_embedded"]["terms"][0]["obo_id"]: response["_embedded"]["terms"][0]}, iri
 
     iri = get_iri(schema_info['classes'], iri)
     iri_query = ",".join([iri[ontology_class.split(":")[0]] + "/" + ontology_class.replace(":", "_") for ontology_class in schema_info['classes']])
+    # OLS now uses EDAM as prefix for all EDAM terms, but their iri is still http://edamontology.org/data_XXXX so the queries won't work unless we swap _EDAM for _data
+    iri_query = iri_query.replace("EDAM","data")
     request = request_query + "{}&ontology={}&allChildrenOf={}".format(term, schema_info['ontologies'], iri_query)
     response = rq.get(request).json()
     if response["response"]["numFound"] != 0:
