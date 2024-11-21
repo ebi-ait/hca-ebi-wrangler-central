@@ -10,3 +10,4 @@ openpyxl==3.0.1
 requests
 xmltodict
 fsspec
+h5py
