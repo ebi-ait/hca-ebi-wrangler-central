@@ -338,17 +338,8 @@ For each project, wranglers should endeavour to find an expression matrix and if
 The preferred formats for matrix files are:
 * `loom`
 * `h5ad`
+* cell ranger format - split into three files for features, matrix and cell barcodes
 * RObj?
-
-Wranglers should evaluate whether a project is suitable to be wrangled to CellxGene. To be eligible a project needs:
-- raw cell counts
-- ENSEBML gene ids
-- cell types
-- spatial embeddings (umap, tSNE,..)
-- optional: normalised cell counts
-
-If some of these elements are missing wranglers should get in touch with the authors to see if they are interested in publishing their dataset in CellxGene and whether they are able to provide the missing elements. See [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/contributor_communication_SOP.html#asking-for-matrices-from-contributor) for an email template.
-Resources on how to wrangle a dataset to CellxGene are [here](https://github.com/ebi-ait/cellxgene-wrangling), including templates, CellxGene schema guide and a tool to extract metadata from ingest.
 
 ### Filling in metadata about the files
 
