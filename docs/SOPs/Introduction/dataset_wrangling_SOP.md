@@ -312,13 +312,7 @@ If a wrangler cannot find an accurate ontology term and believes a term should b
 
 ### General metadata curation tips
 
-Wranglers should endeavour to fill in as much metadata as is possible. We have a fairly minimal set of required fields but we should seek to provide as much detail as possible. 
-
-Examples of metadata that we strive for even if it is not strictly required:
-General demographics - Age, weight, ethnicity for human donors
-Basic medical info - cause of death, smoking status, alcohol status
-
-If donors are from CBTM or HDBR we have direct routes of obtaining more detailed metadata if it hasn’t been provided by the contributor.
+When wranging from publication wranglers need to take care to only include tier 1 metadata. Without being in contact with the authors we have are unable to confirm that the dataset is consented for open access publication in compliance with local laws, so to protect potentially sensitive metadata we only collect metadata that can be released publicly.
 
 - `organ` or `model_organ` should be the broad major organ type, not a system
 - The `organ_part` or `model_organ_part` should be the most specific organ part available
