@@ -36,11 +36,11 @@ While wrangling a dataset from a contributor a wrangler needs to be in contact w
 <i class="fa fa-phone-square" aria-hidden="true"></i> Always leave the option of a **meeting to chat** if things seem to be getting complicated
 
 ## First contact
-The aim of the first contact with a contributor is to find out some key information about the project and ask the contributor to provide more detailed information using the data questionnaire form(https://forms.gle/KFYna7zGdQvwya8b8) or by setting up a meeting in-person or via video chat.
+The aim of the first contact with a contributor is to find out some key information about the project and ask the contributor to provide more detailed information using the data questionnaire form(https://forms.gle/ayT9vfc4WtjTisEZ7) or by setting up a meeting in-person or via video chat.
 
 The first contact email should contain:
 - Link to register as part of the HCA
-- Link to the dataset questionnaire(https://forms.gle/KFYna7zGdQvwya8b8) or an attempt to set up a meeting
+- Link to the dataset questionnaire(https://forms.gle/ayT9vfc4WtjTisEZ7) or an attempt to set up a meeting
 
 [Template email](#first-contact---data-questionnaire){: .btn .btn-blue }
 
@@ -141,7 +141,7 @@ These templates are considered a guide to provide a skeleton with the required i
 > 
 > 1 Register as part of the HCA by filling the following form: https://www.humancellatlas.org/register (if you haven’t already)
 > 
-> 2 Please fill out the dataset questionnaire (https://forms.gle/HWADhk3Z6hUEbvVh8). The questionnaire asks for information about your experiments. This will help us create a tailor spreadsheet for you to fill out about your project.
+> 2 Please fill out the dataset questionnaire (https://forms.gle/ayT9vfc4WtjTisEZ7). The questionnaire asks for information about your experiments. This will help us create a tailor spreadsheet for you to fill out about your project.
 >
 > Please be aware that as per GDPR guidelines, we are not able to directly wrangle any metadata or data originating from living donors. If your project contains metadata or data originating from living donors, please refrain from sending us that information. 
 >
