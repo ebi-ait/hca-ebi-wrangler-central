@@ -324,7 +324,7 @@ def parse_wb(file_path, wb, schema, zooma, keep):
 
 
 def main(args):
-    wb = openpyxl.load_workbook(args.wb_path)
+    wb = openpyxl.load_workbook(args.wb_path, data_only=True)
     script_path = os.path.realpath(__file__)
     script_dir = os.path.split(script_path)[0]
     pickled_schema_path = os.path.join(script_dir, 'pickled_schemas.pkl')
