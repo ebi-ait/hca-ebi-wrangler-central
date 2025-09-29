@@ -1,3 +1,4 @@
+import argparse
 import requests
 import tqdm
 import pandas as pd
@@ -5,6 +6,14 @@ from hca_ingest.api.ingestapi import IngestApi
 
 INGEST_API_URL = "https://api.ingest.archive.data.humancellatlas.org/"
 ACCESSION_FIELDS = ['insdc_project_accessions', 'ega_accessions', 'dbgap_accessions', 'geo_series_accessions', 'array_express_accessions', 'insdc_study_accessions', 'biostudies_accessions']
+
+def define_parser():
+    """Defines and returns the argument parser."""
+    parser = argparse.ArgumentParser(description="Parser for the arguments")
+    parser.add_argument("-t", "--ingest_token", action="store",
+                        dest="token", type=str, required=False,
+                        help="Ingest token to query for existing projects with same DOI")
+    return parser
 
 def get_valid_api(token=None):
     """Get a valid Ingest API client. Request a new token if the current one is invalid."""
@@ -32,6 +41,7 @@ def input_multiple_lines():
             uuid_lines.append(line.strip())
         except EOFError:
             break
+    uuid_lines = {uuid for uuid in uuid_lines if uuid != '#N/A'}
     return uuid_lines
 
 def get_azul_fields(azul):
@@ -58,8 +68,8 @@ def save_to_csv(proj_status, csv_path='project_status.csv'):
     df.to_csv(csv_path)
     print(f"Project status csv saved to {csv_path}")
 
-def main():
-    api = get_valid_api()
+def main(token=None):
+    api = get_valid_api(token)
     uuids = input_multiple_lines()
 
     # initialise project status dictionary
@@ -86,4 +96,5 @@ def main():
     save_to_csv(proj_status)
 
 if __name__ == "__main__":
-    main()
+    args = define_parser().parse_args()
+    main(args.token)
