@@ -13,6 +13,9 @@ def define_parser():
     parser.add_argument("-t", "--ingest_token", action="store",
                         dest="token", type=str, required=False,
                         help="Ingest token to query for existing projects with same DOI")
+    parser.add_argument("-i", "--input_csv", action="store",
+                        dest="input_csv", type=str, required=False,
+                        help="CSV file path with a list of project UUIDs (one per line). If not provided, UUIDs will be read from standard input.")
     return parser
 
 def get_valid_api(token=None):
@@ -21,11 +24,11 @@ def get_valid_api(token=None):
         token = input("Please provide a valid token:").strip()
     api = IngestApi(INGEST_API_URL)
     api.set_token(f"Bearer {token}")
-    response = requests.get(f"{INGEST_API_URL}/submissionEnvelopes/", headers=api.get_headers())
+    response = requests.get(f"{INGEST_API_URL}/submissionEnvelopes/", headers=api.get_headers(), timeout=10)
     while response.status_code != 200:
         token = input("Please provide a valid token:").strip()
         api.set_token(f"Bearer {token}")
-        response = requests.get(f"{INGEST_API_URL}/submissionEnvelopes/", headers=api.get_headers())
+        response = requests.get(f"{INGEST_API_URL}/submissionEnvelopes/", headers=api.get_headers(), timeout=10)
         print("Invalid token.")
     return api
 
@@ -68,15 +71,20 @@ def save_to_csv(proj_status, csv_path='project_status.csv'):
     df.to_csv(csv_path)
     print(f"Project status csv saved to {csv_path}")
 
-def main(token=None):
+def main(token=None, csv_path=None):
     api = get_valid_api(token)
-    uuids = input_multiple_lines()
+    if not csv_path:
+        uuids = input_multiple_lines()
+    else:
+        df = pd.read_csv(csv_path, header=None)
+        df.columns = ['uuid']
+        uuids = set(df['uuid'].dropna().astype(str).tolist())
 
     # initialise project status dictionary
     proj_status = {}
 
     for uuid in tqdm.tqdm(uuids, unit="uuid"):
-        azul = requests.get("https://service.azul.data.humancellatlas.org/index/projects/" + uuid)
+        azul = requests.get("https://service.azul.data.humancellatlas.org/index/projects/" + uuid, timeout=10)
         proj_status[uuid] = get_azul_fields(azul)
         # get azul project information
         try:
@@ -84,17 +92,17 @@ def main(token=None):
             subm_envs = api.get(proj['_links']['submissionEnvelopes']['href']).json()
             proj_status[uuid].update(get_proj_fields(proj))
             proj_status[uuid].update(get_subm_envs_fields(subm_envs))
-        except:
+        except Exception as e:
             if azul.ok:
                 proj_status[uuid].update({
                     "wrangling_state": None,
                     "submission_states": None
                 })
             else:
-                print(f"{uuid}\tconnection problems")
+                print(f"{uuid}\tconnection problems: {e}")
                 break
     save_to_csv(proj_status)
 
 if __name__ == "__main__":
     args = define_parser().parse_args()
-    main(args.token)
+    main(args.token, args.input_csv)
