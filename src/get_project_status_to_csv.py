@@ -20,16 +20,11 @@ def define_parser():
 
 def get_valid_api(token=None):
     """Get a valid Ingest API client. Request a new token if the current one is invalid."""
-    if not token:
-        token = input("Please provide a valid token:").strip()
     api = IngestApi(INGEST_API_URL)
     api.set_token(f"Bearer {token}")
     response = requests.get(f"{INGEST_API_URL}/submissionEnvelopes/", headers=api.get_headers(), timeout=10)
-    while response.status_code != 200:
-        token = input("Please provide a valid token:").strip()
-        api.set_token(f"Bearer {token}")
-        response = requests.get(f"{INGEST_API_URL}/submissionEnvelopes/", headers=api.get_headers(), timeout=10)
-        print("Invalid token.")
+    if response.status_code != 200:
+        raise ValueError("Invalid or no token provided. Please provide a valid token.")
     return api
 
 def input_multiple_lines():
