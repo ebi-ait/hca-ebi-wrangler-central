@@ -19,6 +19,9 @@ A copy of the managed access project will have to be created in [DUOS](https://d
 1. Email the DUOS representative (Jonathan at jlawson@broadinstitute.org) with the [DUOS project information fields](https://docs.google.com/document/d/18pzeKafFQZ0rhqrb2DLOCciHUu4On4g2rtgnqygIfTE/edit#heading=h.674bm0dao5mr), using the information from the DCA agreement. This is mainly project metadata, the only personal data shared with the Broad is the PI’s name.
 2. Register in the HCA Data Repository Ingest Service the project’s DUOS id provided by the DUOS representative
 
+[Template email](#email-template---registration-to-duos){: .btn .btn-blue }
+
+
 ## Send instructions to contributor
 Send an email to the data contributor with instructions on next steps*
 
@@ -41,6 +44,39 @@ Ask a developer to follow [these instructions](https://ebi-ait.github.io/hca-ebi
 
 
 For next steps see [Managed access project - Data Transfer SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Transfer_SOP.html)
+
+### Email template - Registration to DUOS
+
+> Hi Jonathan,
+> Can you please register this project in DUOS?
+> Please let me know if you need more information on any of the fields.
+> 
+> ### Study Name*
+> \<PROJECT TITLE>
+> ### Study Description*
+> \<PROJECT DESCRIPTION>
+> ### Data Types*
+> \<Fastqs and cell count matrix>
+> ### Principal Investigator Name*
+> \<PI full name>
+> ### Public Visibility*
+> Please select one of the following data use permissions for your dataset
+> - Yes, I want my dataset info to be visible and available for requests
+> - No, I do not want my dataset info to be visible and available for requests
+> ## Data Access Governance (for individual datasets)
+> ### Consent Group (Dataset) Name
+> \<PROJECT TITLE>
+> ### Primary Data Use Terms*
+> General Research Use
+> ### Secondary Data Use Terms
+> Non-Commercial Use / None
+> ### Data Location*
+> TDR
+> ### \# of Participants*
+> \<n> donors
+
+Best,
+<wrangler>
 
 ### Email template - Instructions for the contributor
 
