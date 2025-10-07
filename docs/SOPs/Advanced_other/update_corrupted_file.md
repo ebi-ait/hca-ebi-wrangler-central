@@ -83,7 +83,7 @@ response = api.post('https://api.ingest.archive.data.humancellatlas.org/files/qu
 ```
 
 #### Note:
-First, verify that project is not Managed Access. If it's managed access, we should reach out to contributor to provide file again and make sure that file is not downloaded locally at any time. Descriptors and metadata should be fine to have locally.
+First, verify that project is not Managed Access. If it's managed access, we should reach out to contributor to provide file again and make sure that file is not downloaded locally at any time. Descriptors and file metadata should be fine to have locally.
 
 From the output, identify the file `uuid`, and information that would help to identify file in the archive. For example, if it's `sequence_file` we could look for `insdc_run_accession`, `insdc_experiment_accession`, `read_index` and `lane_index`.
 
