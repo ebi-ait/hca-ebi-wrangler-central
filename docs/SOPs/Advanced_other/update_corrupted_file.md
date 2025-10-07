@@ -10,25 +10,25 @@ last_modified_date: 07/10/2025
 
 Here is a guide on how to update files published in Terra Data Repository that have been identified as corrupted. 
 
-# Context
+## Context
 Use case issue: #1396
 UCSC team performs checks on the integrity of the data in order to be mirrored to AWS Open Data. During such check, they might identify mismatches in the checksum of files in TDR. 
 
 In such cases, uncorrupted data should be re-submitted by wranglers. One option would be to re-export data from ingest. However, upload api doesn't allow us to re-upload files that have previously been deleted.
 A workaround is to override ingest and update file directly in the staging area. In order for TDR to allow overwritting the previous file, we should update the file version.
 
-# process
-1. identify the corrupted files in database (uuid)
-2. identify and download correct file to re-download from archives
-3. calculate sha256 checksum hash
-4. get json metadata/ descriptor for files
-5. amend json files according to [dcp2 SOP](https://github.com/HumanCellAtlas/dcp2/blob/main/docs/dcp2_system_design.rst#442update-a-data-file)
-6. ensure staging area is cleaned
-7. populate staging area:
+## process
+1. [identify the corrupted files in database](#1-identify-the-corrupted-files-in-database)
+2. [identify and download correct file to re-download from archives](#2-identify-and-download-correct-file-to-re-download-from-archives)
+3. [calculate sha256 checksum hash](#3-calculate-sha256-checksum-hash)
+4. [get json metadata/ descriptor for files](#4-get-json-metadata-descriptor-for-files)
+5. [amend json files according to dcp2 SOP](#5-amend-json-files-according-to-dcp2-sop)
+6. [ensure staging area is cleaned](#6-ensure-staging-area-is-cleaned)
+7. [populate staging area](#7-populate-staging-area):
 	1. `/data` with correct files
 	2. `/metadata/*file` with amended json
 	3. `/descriptors/*file` with amended json
-8. import form
+8. [import form](#8-import-form)
 
 ### 1. identify the corrupted files in database
 In order to identify the file in ingest database, you would need to query ingest with the following command or script for scale.
@@ -62,17 +62,17 @@ First, verify that project is not Managed Access. If it's managed access, we sho
 
 From the output, identify the file `uuid`, and information that would help to identify file in the archive. For example, if it's `sequence_file` we could look for `insdc_run_accession`, `insdc_experiment_accession`, `read_index` and `lane_index`.
 
-## 2. identify and download correct file to re-download from archives
+### 2. identify and download correct file to re-download from archives
 Using information from step 1, we will try to identify the file in the archives. If we know that file was not accessed from archive but from contributor see note above.
 If file is fastq derived from BAM file, take advantage of the complementary read_index to identify the library that was specified in tha bamtofastq argument.
 
-## 3. calculate sha256 checksum hash
+### 3. calculate sha256 checksum hash
 Here we want to verify that the substitution we are attemting makes sense. 
 Use command `sha256` or equivalent to get the hash of the file, compare the sha256 with the "corrupted" file and the metadata hash value.
 
 If the corruption occured after deposition in staging area, the sha256 value should match the value in the metadata. If values doesn't match but we are sure that this is the correct file to have in place, we can proceed. 
 
-## 4. get json metadata/ descriptor for files
+### 4. get json metadata/ descriptor for files
 Check if staging area for project is still filled, with the following command:
 ```bash
 gsutil ls gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/metadata/<entity_type>
@@ -88,7 +88,7 @@ gsutil -m cp -r gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/
 
 If staging area is cleaned up and no such file exist there, ask the import team or indexing team to share these json files.
 
-## 5. amend json files according to dcp2 SOP
+### 5. amend json files according to dcp2 SOP
 [dcp2 SOP](https://github.com/HumanCellAtlas/dcp2/blob/main/docs/dcp2_system_design.rst#442update-a-data-file)
 
 We want to edit the files so that TDR will understand that these are separate **versions**. We might also need to update all the **checksum** as well. 
@@ -158,31 +158,31 @@ for descriptor in descriptors:
 ```
 </details>
 
-## 6. ensure staging area is cleaned
+### 6. ensure staging area is cleaned
 
 Make sure that staging area has been cleared from other files that might cause validation to fail. If you are SURE that the contents of staging area for this project can be repopulated use the following command
 ```shell
 gsutil -m rm -r gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>
 ```
 
-## 7. populate staging area
+### 7. populate staging area
 Next step is to upload files into the staging area.
 
-### 1. `/data`
+#### 1. `/data`
 Upload correct files into the staging area with the command:
 ```shell
 gsutil cp <path/to/file> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/data
 ```
-### 2. `/metadata/*file`
+#### 2. `/metadata/*file`
 Upload amended metadata json files. Careful not to upload the descriptor file that share the same name.
 ```shell
 gsutil cp <path/to/metadata_file> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/metadata/<entity_name>/
 ```
-### 3. `/descriptors/*file`
+#### 3. `/descriptors/*file`
 The same with amended descriptor json. Again be careful not to upload metadata file that share the same name.
 ```shell
 gsutil cp <path/to/descriptor_file> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/descriptors/<entity_name>/
 ```
 
-## 8. import form
+### 8. import form
 As a final step, don't forget to let the import team to import the dataset for the next release using the import form.
