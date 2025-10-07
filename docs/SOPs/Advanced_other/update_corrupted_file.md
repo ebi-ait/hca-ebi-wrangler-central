@@ -31,6 +31,30 @@ A workaround is to override ingest and update file directly in the staging area.
 	3. `/descriptors/*file` with amended json
 8. [import form](#8-import-form)
 
+```mermaid
+flowchart TB
+	subgraph a[inform]
+    	A(UCSC detects corrupted)
+	end
+	subgraph b[get new file]
+		B[1. Identify file in ingest]
+		C[2. Download file from archives]
+		D[3. check sha256]
+	end
+	subgraph c[update file]
+    	E[4. get json files]
+		F[5. amend files]
+	end
+	subgraph d[upload]
+		G[6. ensure staging clear]
+		H[7. populate staging]
+		I[8. import form]
+	end
+	A --> B --> C --> D
+	C --> E --> F --> G
+	F --> H --> I
+```
+
 ### 1. identify the corrupted files in database
 In order to identify the file in ingest database, you would need to query ingest with the following command or script for scale.
 
@@ -80,14 +104,29 @@ gsutil ls gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/metada
 ```
 and identify the file with the file <uuid> in the file_name prefix.
 
-Download locally the `/metadata` file and the `/descriptors` file. Both have the same file_name so make sure to download in different directories.
+Download locally the `/metadata` file and the `/descriptors` file. Both have the same file_name so make sure to download in different directories. Staging has the following structure:
+```
+<project-uuid>/
+├── data/
+│   ├── SRR111111_1.fastq.gz
+│   └── ...
+├── metadata/
+│   └── sequence_file/
+│       ├── <file_uuid>_<timestamp>.json
+│       └── ...
+└── descriptors/
+    └── sequence_file/
+        ├── <file_uuid>_<timestamp>.json
+        └── ...
+```
+
 Ideally, use the same hierahical folder structure with this command.
 ```shell
 gsutil -m cp -r gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/metadata <path/to/download/metadata>
 gsutil -m cp -r gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/descriptors <path/to/download/descriptors>
 ```
 
-If staging area is cleaned up and no such file exist there, ask the import team or indexing team to share these json files.
+If staging area is cleaned up and no such file exist there, ask the import team or indexing team in initial slack thread to share these json files.
 
 ### 5. amend json files according to dcp2 SOP
 [dcp2 SOP](https://github.com/HumanCellAtlas/dcp2/blob/main/docs/dcp2_system_design.rst#442update-a-data-file)
@@ -170,21 +209,21 @@ gsutil -m rm -r gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>
 ### 7. populate staging area
 Next step is to upload files into the staging area.
 
-#### 1. `/data`
-Upload correct files into the staging area with the command:
-```shell
-gsutil cp <path/to/file> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/data
-```
-#### 2. `/metadata/*file`
-Upload amended metadata json files. Careful not to upload the descriptor file that share the same name.
-```shell
-gsutil cp <path/to/metadata_file> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/metadata/<entity_name>/
-```
-#### 3. `/descriptors/*file`
-The same with amended descriptor json. Again be careful not to upload metadata file that share the same name.
-```shell
-gsutil cp <path/to/descriptor_file> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/descriptors/<entity_name>/
-```
+1. #### `/data`
+    Upload correct files into the staging area with the command:
+    ```shell
+    gsutil cp <path/to/file> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/data
+    ```
+2. #### `/metadata/*file`
+    Upload amended metadata json files. Careful not to upload the descriptor file that share the same name.
+    ```shell
+    gsutil cp <path/to/metadata_file> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/metadata/<entity_name>/
+    ```
+3. #### `/descriptors/*file`
+    The same with amended descriptor json. Again be careful not to upload metadata file that share the same name.
+    ```shell
+    gsutil cp <path/to/descriptor_file> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/descriptors/<entity_name>/
+    ```
 
 ### 8. import form
 As a final step, don't forget to let the import team to import the dataset for the next release using the import form.
