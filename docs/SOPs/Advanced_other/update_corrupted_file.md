@@ -88,14 +88,19 @@ First, verify that project is not Managed Access. If it's managed access, we sho
 From the output, identify the file `uuid`, and information that would help to identify file in the archive. For example, if it's `sequence_file` we could look for `insdc_run_accession`, `insdc_experiment_accession`, `read_index` and `lane_index`.
 
 ### 2. identify and download correct file from archives
-Using information from step 1, we will try to identify the file in the archives. If we know that file was not accessed from archive but from contributor see note above.
+Using information from step 1, we will try to identify the file in the archives. If we know that file was not accessed from archive but from contributor see [note](#note) above.
+
 If file is fastq derived from BAM file, take advantage of the complementary read_index to identify the library that was specified in tha bamtofastq argument.
+
+Download locally, unless it is managed access.
 
 ### 3. calculate sha256 checksum hash
 Here we want to verify that the substitution we are attemting makes sense. 
-Use command `sha256` or equivalent to get the hash of the file, compare the sha256 with the "corrupted" file and the metadata hash value.
+Use command `sha256` or equivalent to get the hash of the downloaded file, compare the sha256 with the "corrupted" file and the metadata hash value provided by the indexing team.
 
-If the corruption occured after deposition in staging area, the sha256 value should match the value in the metadata. If values doesn't match but we are sure that this is the correct file to have in place, we can proceed. 
+If the corruption occured after deposition in staging area, the sha256 value should match the value in the metadata. That way, re-submitting the file will fix the issue.
+
+If checksum values doesn't match but we are sure that TDR file is corrupt and the downloaded file is the correct file, we can proceed.
 
 ### 4. get json metadata/ descriptor for files
 Check if staging area for project is still filled, with the following command:
