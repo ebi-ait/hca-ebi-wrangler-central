@@ -1,3 +1,11 @@
+---
+layout: default
+title: Update corrupted files in TDR
+parent: Advanced & other SOPs
+grand_parent: SOPs
+last_modified_date: 07/10/2025
+---
+
 # Update corrupted files in TDR
 
 Here is a guide on how to update files published in Terra Data Repository that have been identified as corrupted. 
