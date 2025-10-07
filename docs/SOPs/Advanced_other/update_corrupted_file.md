@@ -105,6 +105,7 @@ The changes for TDR to understand that this file should be updated are the follo
 		Note: trailing digits after decimal point compared to ISO_8601.
 - `descriptor` file:
 	- `file_version` to any more recent date in the format ([ISO_8601](https://en.wikipedia.org/wiki/ISO_8601) is used, for example: `2025-08-07T16:15:39.822Z`)
+    - `file_name` might have the bundle uuid as a prefix to the actual file_name like `30fb759a-546a-4cfa-a55a-195bc008621a/SRR1111111_1.fastq.gz`. this uuid up to `/` character needs to be removed to leave clean file_name
 	- make sure that `size`, `sha1`, `sha256` and `crc32c` are updated as well (check script bellow)
 	- update the **descriptor** file file_name suffix with the same most recent date.
 		For example:
