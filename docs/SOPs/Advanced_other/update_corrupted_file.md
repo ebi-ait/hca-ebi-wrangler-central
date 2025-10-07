@@ -20,7 +20,7 @@ A workaround is to override ingest and update file directly in the staging area.
 
 ## process
 1. [identify the corrupted files in database](#1-identify-the-corrupted-files-in-database)
-2. [identify and download correct file to re-download from archives](#2-identify-and-download-correct-file-to-re-download-from-archives)
+2. [identify and download correct file from archives](#2-identify-and-download-correct-file-from-archives)
 3. [calculate sha256 checksum hash](#3-calculate-sha256-checksum-hash)
 4. [get json metadata/ descriptor for files](#4-get-json-metadata-descriptor-for-files)
 5. [amend json files according to dcp2 SOP](#5-amend-json-files-according-to-dcp2-sop)
@@ -63,7 +63,7 @@ First, verify that project is not Managed Access. If it's managed access, we sho
 
 From the output, identify the file `uuid`, and information that would help to identify file in the archive. For example, if it's `sequence_file` we could look for `insdc_run_accession`, `insdc_experiment_accession`, `read_index` and `lane_index`.
 
-### 2. identify and download correct file to re-download from archives
+### 2. identify and download correct file from archives
 Using information from step 1, we will try to identify the file in the archives. If we know that file was not accessed from archive but from contributor see note above.
 If file is fastq derived from BAM file, take advantage of the complementary read_index to identify the library that was specified in tha bamtofastq argument.
 
