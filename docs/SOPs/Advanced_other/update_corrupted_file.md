@@ -11,7 +11,8 @@ last_modified_date: 07/10/2025
 Here is a guide on how to update files published in Terra Data Repository that have been identified as corrupted. 
 
 ## Context
-Use case issue: #1396
+Use case issue: [#1396](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/1396)
+
 UCSC team performs checks on the integrity of the data in order to be mirrored to AWS Open Data. During such check, they might identify mismatches in the checksum of files in TDR. 
 
 In such cases, uncorrupted data should be re-submitted by wranglers. One option would be to re-export data from ingest. However, upload api doesn't allow us to re-upload files that have previously been deleted.
