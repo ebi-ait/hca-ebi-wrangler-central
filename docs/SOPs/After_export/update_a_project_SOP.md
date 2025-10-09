@@ -3,7 +3,7 @@ layout: default
 title: Update a project
 parent: After export
 grand_parent: SOPs
-nav_order: 3
+nav_order: 1
 last_modified_date: 31/03/2020
 ---
 
@@ -33,11 +33,11 @@ Things that can’t be done: (?)
 
 ### When can I update a project?
 
-* Non-analysed datasets - No restrictions
-* Analysed datasets - OPEN QUESTION: Should be coordinated with the Matrix Service/DataOps?
+* No restrictions
+* DCP Pipelines - Analysed datasets: Question on what to do with dcp derived matrices (as of 2025 pipelines are retired)
 
 ## Procedure
-1. The identifier of the issue reopens the project tracker ticket for that project if it has been closed, adds the label 'needsUpdate' and moves it to an appropriate pipeline of the [`Dataset wrangling status`](https://github.com/orgs/ebi-ait/projects/12) Github Projects board and makes a comment that contains the following information, (if not already specified in the ticket body)
+1. The identifier of the issue reopens the project tracker ticket for that project if it has been closed, adds the label 'needsUpdate' and moves it to the `Todo` pipeline of the [`Dataset wrangling status`](https://github.com/orgs/ebi-ait/projects/12) Github Projects board and makes a comment that contains the following information, (if not already specified in the ticket body)
     1. project full name
     1. project short name 
     1. Project UUID
@@ -46,7 +46,7 @@ Things that can’t be done: (?)
     1. Most recent submission date and uuid if different from above
     1. Primary wrangler name, (tag if not the identifier)
     1. Changes that need to be addressed. 
-    1. Check if affects secondary analysis (fields used, explanation)
+    1. ~~Check if affects secondary analysis (fields used, explanation)~~
 
 1. If the person performing the update is not the primary wrangler, the performer should check-in with the primary wrangler to ensure there are no other outstanding changes that need to be made. If primary wrangler no longer works for the DCP or does not respond after 1 full business day, the performer can proceed.
 
@@ -90,7 +90,7 @@ Once the spreadsheet is completed, then create a new submission to the project u
 Now you will be able to export the submission to the downstream components. See '[here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Exporting_SOP.html)'. 
 
 ## Exporting a submission to downstream components
-There is a fantastic SOP [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_wrangling_SOP.html#exporting-the-submission-to-dcp). 
+There is a fantastic SOP [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#exporting-the-submission-to-dcp). 
 
 When filling in the import request form for export of an update submission, please specify in the 'Additional info' section that it is an update so that the import team is aware.
 
