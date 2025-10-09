@@ -56,3 +56,7 @@ The script takes some time to get started (If it's loading a SchemaTemplate obje
 ### submit_project_from_doi.py
 
 This is deprecated as it can now be done directly in the production ui.
+
+### get uuid map per twin project.py
+
+Get csv with `entity`, `id`, `ma_uuid`, `oa_uuid` for twin project described in #1430 . Provide MA and OA spreadsheets with uuids to produce mapping csv.
