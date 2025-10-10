@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Update corrupted files in TDR
-parent: Advanced & other SOPs
+parent: After export
 grand_parent: SOPs
 last_modified_date: 07/10/2025
 ---
@@ -13,10 +13,10 @@ Here is a guide on how to update files published in Terra Data Repository that h
 ## Context
 Use case issue: [#1396](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/1396)
 
-UCSC team performs checks on the integrity of the data in order to be mirrored to AWS Open Data. During such check, they might identify mismatches in the checksum of files in TDR. 
+UCSC team performs checks on the integrity of the data. During such check, they might identify mismatches in the checksum of file in TDR and checksum in metadata.
 
-In such cases, uncorrupted data should be re-submitted by wranglers. One option would be to re-export data from ingest. However, upload api doesn't allow us to re-upload files that have previously been deleted.
-A workaround is to override ingest and update file directly in the staging area. In order for TDR to allow overwritting the previous file, we should update the file version.
+In such cases, uncorrupted data should be re-submitted by wranglers. One option would be to re-export data from ingest. However, [upload api](https://github.com/ebi-ait/upload-service) doesn't allow us to re-upload files that have previously been deleted.
+A workaround is to override ingest and update file directly in the staging area. In order for TDR to allow overwritting the previous file, we should update the file version. Files that we don't want to update, doesn't have to be in staging area.
 
 ## process
 1. [identify the corrupted files in database](#1-identify-the-corrupted-files-in-database)
@@ -56,7 +56,7 @@ flowchart TB
 ```
 
 ### 1. identify the corrupted files in database
-In order to identify the file in ingest database, you would need to query ingest with the following command or script for scale.
+In order to identify the file in ingest database, you would need to query ingest with the following `command` or `python script`.
 
 ```bash
 curl --request POST \
@@ -88,28 +88,38 @@ First, verify that project is not Managed Access. If it's managed access, we sho
 From the output, identify the file `uuid`, and information that would help to identify file in the archive. For example, if it's `sequence_file` we could look for `insdc_run_accession`, `insdc_experiment_accession`, `read_index` and `lane_index`.
 
 ### 2. identify and download correct file from archives
-Using information from step 1, we will try to identify the file in the archives. If we know that file was not accessed from archive but from contributor see [note](#note) above.
+Using information from step 1, we will try to identify the file in the archives (for example, [ENA](https://www.ebi.ac.uk/ena/browser/) if file in INSDC). If we know that corrupted file was not accessed from archive but from contributor see [note](#note) above.
 
-If file is fastq derived from BAM file, take advantage of the complementary read_index to identify the library that was specified in tha bamtofastq argument.
+If corrupted file is fastq derived from BAM file, take advantage of the complementary read_index to identify the library that was specified in tha bamtofastq argument.
 
 Download locally, unless it is managed access.
 
 ### 3. calculate sha256 checksum hash
 Here we want to verify that the substitution we are attemting makes sense. 
-Use command `sha256` or equivalent to get the hash of the downloaded file, compare the sha256 with the "corrupted" file and the metadata hash value provided by the indexing team.
 
-If the corruption occured after deposition in staging area, the sha256 value should match the value in the metadata. That way, re-submitting the file will fix the issue.
-
-If checksum values doesn't match but we are sure that TDR file is corrupt and the downloaded file is the correct file, we can proceed.
+1. Use command `sha256` or equivalent to get the hash of the downloaded file.
+1. Compare the `sha256` value with:
+    1. Corrupted file's `sha256` (provided by the indexing team)
+	1. `sha256` value in metadata (if not provided bu indexing team, seek inside descriptor file in [next step](#4-get-json-metadata-descriptor-for-files)).
+1. If downloaded's file `sha256` value:
+	1. matches to value in corrupted file, and file can be accessed, it's possible that error is on metadata value. TODO: add SOP for updating metadata only.
+	1. matches to value in metadata file, file has been corrupted at one point after deposition in staging area, the sha256 value should match the value in the metadata. Re-submitting the file should fix the issue.
+	1. doesn't match any value but we are sure that TDR file is corrupted and the downloaded file is the correct file, we can proceed to next step as well.
 
 ### 4. get json metadata/ descriptor for files
+In order to do an update, we need the metadata and descriptor files to accompany the data file (links are not needed since we are not changing the `file_uuid`). If we can't re-genarate metadata and descriptor files from ingest by re-exporting project, we will have to override ingest and access the previously exported files.
+
+This could be done either from staging (if dir is not cleared up) or from TDR (someone with access to tables could provide those to us).
+
+#### Get metadata & descriptors from staging area
+
 Check if staging area for project is still filled, with the following command:
 ```bash
 gsutil ls gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/metadata/<entity_type>
 ```
 and identify the file with the file <uuid> in the file_name prefix.
 
-Download locally the `/metadata` file and the `/descriptors` file. Both have the same file_name so make sure to download in different directories. Staging has the following structure:
+Download locally the `/metadata` file and the `/descriptors` file. Both have the same file_name so make sure to download in different directories. Staging has the following structure (if entity is `sequence_file`):
 ```
 <project-uuid>/
 ├── data/
@@ -125,36 +135,36 @@ Download locally the `/metadata` file and the `/descriptors` file. Both have the
         └── ...
 ```
 
-Ideally, use the same hierahical folder structure with this command.
+Ideally, use the same hierahical folder structure by downloading the whole dir with these commands.
 ```shell
 gsutil -m cp -r gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/metadata <path/to/download/metadata>
 gsutil -m cp -r gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/descriptors <path/to/download/descriptors>
 ```
 
-If staging area is cleaned up and no such file exist there, ask the import team or indexing team in initial slack thread to share these json files.
+#### Get metadata & descriptors from TDR
+If staging area is cleaned up and no such file exist there, ask the import team or indexing team in initial slack thread to pull these json files from TDR and share.
 
 ### 5. amend json files according to dcp2 SOP
-[dcp2 SOP](https://github.com/HumanCellAtlas/dcp2/blob/main/docs/dcp2_system_design.rst#442update-a-data-file)
 
-We want to edit the files so that TDR will understand that these are separate **versions**. We might also need to update all the **checksum** as well. 
+We want to edit the files so that TDR will understand that these are separate **versions**. We might also need to update the **checksum** as well. 
 
-Higher version means most recent update-date. It doesn't have to be an actual date of update. 
+Updating to higher version means adding a most recent update-date. It doesn't have to be the actual date of update, just a most recent one.
 
-The changes for TDR to understand that this file should be updated are the following:
+The changes for TDR to percive this file as an update are described in [dcp2 SOP](https://github.com/HumanCellAtlas/dcp2/blob/main/docs/dcp2_system_design.rst#442update-a-data-file). Here is are the precise changes that needs to be done:
 - `metadata` file:
 	- `provenance.update_date` to any more recent date in the format ([ISO_8601](https://en.wikipedia.org/wiki/ISO_8601) is used, for example: `2025-08-07T16:15:39.822Z`)
-	- update the **metadata** file file_name suffix with the same most recent date. 
-		For example:
-		`aaaaaaaa-5258-aaaa-84f3-aaaaaaaaaaaa_2025-08-22T13:43:40.996000Z.json` should be updated with `aaaaaaaa-5258-aaaa-84f3-aaaaaaaaaaaa_2025-09-23T14:45:40.996000Z.json`
-		Note: trailing digits after decimal point compared to ISO_8601.
+	- update the **metadata** file `file_name` suffix (not `file_name` field) with the same most recent date.
+		<br>For example:<br>
+		`aaaaaaaa-5258-aaaa-84f3-aaaaaaaaaaaa_2025-08-22T13:43:40.996000Z.json` should be renamed to <br>`aaaaaaaa-5258-aaaa-84f3-aaaaaaaaaaaa_2025-09-23T14:45:40.996000Z.json`
+		<br>Note: trailing digits after decimal point compared to ISO_8601.
 - `descriptor` file:
 	- `file_version` to any more recent date in the format ([ISO_8601](https://en.wikipedia.org/wiki/ISO_8601) is used, for example: `2025-08-07T16:15:39.822Z`)
     - `file_name` might have the bundle uuid as a prefix to the actual file_name like `30fb759a-546a-4cfa-a55a-195bc008621a/SRR1111111_1.fastq.gz`. this uuid up to `/` character needs to be removed to leave clean file_name
 	- make sure that `size`, `sha1`, `sha256` and `crc32c` are updated as well (check script bellow)
-	- update the **descriptor** file file_name suffix with the same most recent date.
-		For example:
-		`aaaaaaaa-5258-aaaa-84f3-aaaaaaaaaaaa_2025-08-22T13:43:40.996000Z.json` should be updated with `aaaaaaaa-5258-aaaa-84f3-aaaaaaaaaaaa_2025-09-23T14:45:40.996000Z.json`
-		Note: trailing digits after decimal point compared to ISO_8601.
+	- update the **descriptor** file `file_name` suffix (not `file_name` field) with the same most recent date.
+		<br>Similarly:<br>
+		`aaaaaaaa-5258-aaaa-84f3-aaaaaaaaaaaa_2025-08-22T13:43:40.996000Z.json` should be renamed to <br>`aaaaaaaa-5258-aaaa-84f3-aaaaaaaaaaaa_2025-09-23T14:45:40.996000Z.json`
+		<br>Note: trailing digits after decimal point compared to ISO_8601.
 
 <details><summary>script to edit descriptor contents</summary>
 
@@ -162,7 +172,11 @@ If the documents is structured in a hierahical way as it is in staging area you 
 (Update `today` variable with the desired update-date, or update the entity_type if file is not sequence file)
 
 ```python
+"""
+That's a script to replace (valid) descriptor contents with correct hash values and 
+"""
 import os
+import re
 import json
 import hashlib
 import google_crc32c
@@ -198,7 +212,7 @@ for descriptor in descriptors:
 		seq_file = proj + '/data/' + d['file_name'].split("/")[1]
 		d.update(hashes[seq_file])
 	os.remove(descriptor)
-	descriptor = descriptor[0:100] + today + descriptor[116:]
+	descriptor = re.sub(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}', today, descriptor)
 	with open(descriptor, 'w') as file:
 		json.dump(d, file)
 ```
@@ -206,7 +220,9 @@ for descriptor in descriptors:
 
 ### 6. ensure staging area is cleaned
 
-Make sure that staging area has been cleared from other files that might cause validation to fail. If you are SURE that the contents of staging area for this project can be repopulated use the following command
+Make sure that staging area has been cleared from other files that might cause validation to fail. The following command will clear up the whole project from staging area.
+
+CAUTION! Make sure that all contents of directory are intended to be removed (or not updated). If ingest is not working we would not be able to re-populate with files deleted here!
 ```shell
 gsutil -m rm -r gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>
 ```
@@ -217,18 +233,18 @@ Next step is to upload files into the staging area.
 1. #### `/data`
     Upload correct files into the staging area with the command:
     ```shell
-    gsutil cp <path/to/file> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/data
+    gsutil cp <path/to/file_name> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/data/<file_name>
     ```
 2. #### `/metadata/*file`
     Upload amended metadata json files. Careful not to upload the descriptor file that share the same name.
     ```shell
-    gsutil cp <path/to/metadata_file> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/metadata/<entity_name>/
+    gsutil cp <path/to/metadata_file_name> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/metadata/<entity_name>/<metadata_file_name>
     ```
 3. #### `/descriptors/*file`
     The same with amended descriptor json. Again be careful not to upload metadata file that share the same name.
     ```shell
-    gsutil cp <path/to/descriptor_file> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/descriptors/<entity_name>/
+    gsutil cp <path/to/descriptor_file_name> gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<project-uuid>/descriptors/<entity_name>/<descriptor_file_name>
     ```
 
 ### 8. import form
-As a final step, don't forget to let the import team to import the dataset for the next release using the import form.
+As a final step, fill [import form](https://docs.google.com/forms/u/0/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/formResponse) so Import team will include this project in the next release.
