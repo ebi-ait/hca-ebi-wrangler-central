@@ -8,7 +8,7 @@ nav_order: 4
 
 # HCA metadata schema
 
-HCA Data Repository and HCA Data Platform, uses the [HCA metadata schema](https://github.com/HumanCellAtlas/metadata-schema/tree/master/json_schema). You can read more about it in [HCA metadata structure](https://github.com/HumanCellAtlas/metadata-schema/blob/master/docs/structure.md).
+HCA Data Repository and HCA Data Portal, uses the [HCA metadata schema](https://github.com/HumanCellAtlas/metadata-schema/tree/master/json_schema). You can read more about it in [HCA metadata structure](https://github.com/HumanCellAtlas/metadata-schema/blob/master/docs/structure.md). This is sometimes referenced as DCP metadata schema (DCP is a deprecated term for HCA Data Coordination Platform for what now is called HCA Data Portal).
 
 # Tier-ed metadata schema
 Other HCA parts however, are using a different metadata schema, the Tiered schema. This include 3 different groups of metadata fields, Tier 1, Tier 2 and Tier 2 (CAP) metadata.
@@ -31,3 +31,11 @@ Tier 2 metadata are defined and collected by our team in collaboration with each
 
 ## Tier 3 / CAP metadata schema
 Cell‑annotation metadata standardizes cell‑type labels. Stored on the [Cell Annotation Platform](https://celltype.info/) (CAP), the schema records each cell’s ontology term, synonyms, and parent category. See the CAP AnnData schema for additional details.
+
+## Conversion between Tier-ed metadata schema and HCA metadata schema
+Absolute conversion between Tier 1 and HCA metadata schema is not possible since each schema has a different scope.
+- HCA metadata schema scope is to represent the experimental design as detailed as possible
+- Tier 1 metadata schema scope is to provide all the required information (and potential batch factors) for the integration team in order to perform the integration.
+However, there are scripts that can convert between HCA metadata schema to Tier 1 metadata schema, and vice-versa.
+* [hca-tier1-to-dcp](https://github.com/ebi-ait/hca-tier1-to-dcp) + tier2 merge
+* [hca-dcp-to-tier1](https://github.com/ebi-ait/hca-dcp-to-tier1)
