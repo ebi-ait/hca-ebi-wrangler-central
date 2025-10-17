@@ -3,18 +3,15 @@ import re
 import json
 import ftplib
 import string
-import requests
+import argparse
 from tqdm import tqdm
 
-FTP_SERVER = 'ftp.ebi.ac.uk'
-BASE_PATH = '/pub/databases/microarray/data/atlas/experiments/'
-# BASE_PATH = '/pub/databases/microarray/data/atlas/sc_experiments/'
-FTP_DIR = 'gxa_idf_files'
-# FTP_DIR = 'scea_idf_files'
+def define_args():
+    parser = argparse.ArgumentParser(description="Download ExpressionAtlas experiment IDF files from EBI FTP and extract DOIs.")
+    parser.add_argument('--scea', "-sc", action="store_true", help='Download SCEA instead of default GXA IDF files')
+    return parser.parse_args()
 
-def download_idf_from_ftp(output_dir = FTP_DIR,
-                     ftp_server = FTP_SERVER, 
-                     base_path = BASE_PATH):
+def download_idf_from_ftp(output_dir, ftp_server, base_path):
     os.makedirs(output_dir, exist_ok=True)
     missing_dirs = [] # btw we can check dirs that are files in the ftp
     with ftplib.FTP(ftp_server) as ftp:
@@ -60,26 +57,39 @@ def get_doi_from_idf(output_dir, idf_file):
 def fix_json_dois(jd):
     ab = list(string.ascii_lowercase)
     new_jd = {}
+    doi_missing = {}
     for key, value in jd.items():
         if not value:
             continue
         elif not any(v.startswith('10') for v in value):
-            print(f"DOI missing: {key}-> {value}")
+            doi_missing[key] = value
             continue
         elif len(value) == 1:
             new_jd[key] = value[0]
         elif len(value) > 1:
             for i, v in enumerate(value):
                 new_jd[f"{key}_{ab[i]}"] = v
+    print(f"DOI missing or not standard for {len(doi_missing)} accessions: {doi_missing}")
     return new_jd
 
-def main():
+def main(is_scea):
     acc_dict = {}
-    download_idf_from_ftp()
-    for d in tqdm(os.listdir(FTP_DIR)):
+    ftp_server = 'ftp.ebi.ac.uk'
+    base_paths = {'gxa': '/pub/databases/microarray/data/atlas/experiments/',
+                  'scea': '/pub/databases/microarray/data/atlas/sc_experiments/'}
+    default_output_dirs = {
+        'gxa': 'gxa_idf_files',
+        'scea': 'scea_idf_files'
+    }
+
+    output_subdir = default_output_dirs['scea' if is_scea else 'gxa']
+    base_path = base_paths['scea' if is_scea else 'gxa']
+
+    download_idf_from_ftp(output_dir = output_subdir, ftp_server = ftp_server, base_path = base_path)
+    for d in tqdm(os.listdir(output_subdir)):
         scea_acc = d.removesuffix(".idf.txt")
         try:
-            dois = get_doi_from_idf(FTP_DIR, d)
+            dois = get_doi_from_idf(output_subdir, d)
         except Exception as e:
             print(f"Error reading file {d}: {e}")
         acc_dict[scea_acc] = None
@@ -89,9 +99,10 @@ def main():
         acc_dict[scea_acc] = dois
     
     acc_dict = fix_json_dois(acc_dict)
-    with open(f'{FTP_DIR.replace("files", "doi")}.json', 'w', encoding='utf-8') as f:
+    with open(f'{output_subdir.replace("files", "doi")}.json', 'w', encoding='utf-8') as f:
         json.dump(acc_dict, f)
 
 
 if __name__ == "__main__":
-    main()
+    args = define_args()
+    main(args.scea)
