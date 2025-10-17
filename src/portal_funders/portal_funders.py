@@ -21,7 +21,7 @@ session.mount("http://", adapter)
 session.mount("https://", adapter)
 
 def get_gxa_dois():
-    with open("gxa_idf_doi.json", "r") as f:
+    with open("gxa_idf_doi.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     return data
 
@@ -126,11 +126,14 @@ def add_wellcome_trust_amounts(df):
 # cxg
 if os.path.exists("cxg_uk_funded_grants_uk.csv"):
     cxg_df = pd.read_csv("cxg_uk_funded_grants_uk.csv", index_col=False)
+elif os.path.exists("cxg_uk_funded_grants.csv"):
+    cxg_df = pd.read_csv("cxg_uk_funded_grants.csv", index_col=False)
 else:
     dois = get_cxg_dois()
     cxg_dict = get_wide_funders(dois)
     cxg_df = pd.DataFrame(cxg_dict).groupby('grant_id', as_index=False).agg(collapse_values)
     cxg_df.to_csv("cxg_uk_funded_grants.csv", index=False)
+if 'pounds' not in cxg_df.columns:
     print("Fetching data for grant IDs:")
     print("NOTE: This may take a while.")
     cxg_df['pounds'] = cxg_df['grant_id'].apply(lambda x: fetch_grant_data(x)['amount'] if pd.notna(x) else 0)
@@ -141,11 +144,14 @@ cxg_df.to_csv("cxg_uk_funded_grants_uk.csv", index=False)
 # hca
 if os.path.exists("hca_uk_funded_grants_uk.csv"):
     hca_df = pd.read_csv("hca_uk_funded_grants_uk.csv", index_col=False)
+elif os.path.exists("hca_uk_funded_grants.csv"):
+    hca_df = pd.read_csv("hca_uk_funded_grants.csv", index_col=False)
 else:
     dois = get_hca_dois()
     hca_dict = get_wide_funders(dois)
     hca_df = pd.DataFrame(hca_dict).groupby('grant_id', as_index=False).agg(collapse_values)
     hca_df.to_csv("hca_uk_funded_grants.csv", index=False)
+if 'pounds' not in hca_df.columns:
     print("Fetching data for grant IDs:")
     print("NOTE: This may take a while.")
     hca_df['pounds'] = hca_df['grant_id'].apply(lambda x: fetch_grant_data(x)['amount'] if pd.notna(x) else 0)
@@ -156,11 +162,14 @@ hca_df.to_csv("hca_uk_funded_grants_uk.csv", index=False)
 # scea
 if os.path.exists("scea_uk_funded_grants_uk.csv"):
     scea_df = pd.read_csv("scea_uk_funded_grants_uk.csv", index_col=False)
+elif os.path.exists("scea_uk_funded_grants.csv"):
+    scea_df = pd.read_csv("scea_uk_funded_grants.csv", index_col=False)
 else:
     dois = get_scea_dois()
     scea_dict = get_wide_funders(dois)
     scea_df = pd.DataFrame(scea_dict).groupby('grant_id', as_index=False).agg(collapse_values)
     scea_df.to_csv("scea_uk_funded_grants.csv", index=False)
+if 'pounds' not in scea_df.columns:
     print("Fetching data for grant IDs:")
     print("NOTE: This may take a while.")
     scea_df['pounds'] = scea_df['grant_id'].apply(lambda x: fetch_grant_data(x)['amount'] if pd.notna(x) else 0)
@@ -171,6 +180,8 @@ scea_df.to_csv("scea_uk_funded_grants_uk.csv", index=False)
 
 # gxa
 if os.path.exists("gxa_uk_funded_grants.csv"):
+    gxa_df = pd.read_csv("gxa_uk_funded_grants.csv", index_col=False)
+elif os.path.exists("gxa_uk_funded_grants.csv"):
     gxa_df = pd.read_csv("gxa_uk_funded_grants.csv", index_col=False)
 else:
     dois = get_gxa_dois()
