@@ -6,29 +6,27 @@ grand_parent: Tools
 ---
 # Extract all text to ontology mappings from one or more submissions in ingest
 
-TODO: Check if this will work for current ingest or how to modify to make it work
-
 ## Pre-requisites and installation
 
 - python 3
 - pip
 - python requests module (install via `pip install requests` - only needed once!)
 
+## Reasoning
+Extracts all ontology text and the applied ontology for all entities of project(s) and produces a tsv output in the following format:
+| STUDY | BIOENTITY | PROPERTY_TYPE | PROPERTY_VALUE | SEMANTIC_TAG | 
+| - | - | - | - | - |
+| StudyLabel | project | project_role | Principal Investigator | http://www.ebi.ac.uk/efo/EFO_0009736 | 
+| StudyLabel | donor_organism | diseases | normal | http://purl.obolibrary.org/obo/PATO_0000461 |
+
+This can be used to investigate mappings that have been done and also different mappings across projects that might be useful to standardise.
+
 ## Usage
-
-Edit the script by putting the submission envelope IDs for the submissions you want to extract mappings from into the empty array at the very bottom of the script:
-
-```
-# -----> PUT YOUR ENVELOPE IDs IN HERE <---------
-    envelope_ids = []
-```
-
-If you don't want the output file to have the default file name, you can also edit this.
 
 Run the script in the command line using
 
 ```
-python3 ontology_mappings_extractor.py
+python3 ontology_mappings_extractor.py -p <project-uuid(s)> -t <ingest-token>
 ```
 
 Once the output file has been generated, remove duplicate entries from the file by running

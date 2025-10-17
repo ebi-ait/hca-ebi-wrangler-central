@@ -623,23 +623,6 @@ python template_generator_app.py
 
 Copy the local URL printed to the terminal and paste in a browser to launch the generator app. After selecting/loading the schemas/fields of interest, click "Generate spreadsheet" and the metadata spreadsheet will be downloaded to your machine.
 
-### Converting JSON schema properties to csv: json_fields_to_csv.py
-
-#### Pre-requisites and installation
-
-- python3
-- python packages: json, argparse, os, logging
-
-#### Usage
-
-This script converts all properties in the JSON schema files into csv format. A file path to the metadata repo needs to be provided. For guidance on how to use the tool, run the script with `--help`:
-
-```
-dwelter$ python3 json_fields_to_csv.py --path_to_schemas ../../metadata-schema/json_schema
-
-```
-
-
 ## git commands
 
 The following wrangler tools are related to using git. When working in the terminal, there are a few useful git commands to remember. To use them, you must have run `git clone <repo>` locally to get a copy of the repository and you must be currently located somewhere in the cloned git folder.

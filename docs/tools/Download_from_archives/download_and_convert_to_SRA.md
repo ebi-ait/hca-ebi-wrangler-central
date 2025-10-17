@@ -21,7 +21,6 @@ Sometimes when converting published datasets from GEO, there are only single fas
 
 1. Activate your desired virtualenv
 1. Install pysradb with `pip install pysradb`
-1.
 
 ```
 pysradb download -y -t 3 --out-dir ./pysradb_downloads -p SRP063852
@@ -32,7 +31,7 @@ This command saves sra object files in a folder structure of `SRP`/`SRX`/`SRR`.
 To convert each SRR sra object to separate fastqs, we need to use the [`fastq-dump`](https://ncbi.github.io/sra-tools/fastq-dump.html) command in the sratoolkit
 
 ```
-fastq-dump --split-files <path to file/accession>
+fastq-dump --split-files --include-technical <path to file/accession>
 ```
 
 You can use a bash for loop to iterate over all the runs that were downloaded.

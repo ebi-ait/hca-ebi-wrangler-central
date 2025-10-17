@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Ingest programmatic submission
-nav_order: 2
+nav_order: 1
 parent: Advanced & other SOPs
 grand_parent: SOPs
 has_children: false

@@ -26,7 +26,6 @@ import sys
 from datetime import datetime
 import re
 
-
 def define_parser():
     parser = argparse.ArgumentParser(description="Parser for the arguments")
     parser.add_argument("--file", "-f", action="store", dest="file_path", type=str,
@@ -41,10 +40,25 @@ def define_parser():
     parser.add_argument("--iri_replace", "-i", action="store", dest="iri_replace",
                         help="Path to a file where there are obo ids like EFO:000001 in column named 'SEMANTIC_TAG' "
                              "and replace these with full iris. All other arguments ignored.")
+    parser.add_argument("--token", "-t", action="store", dest="token", type=str,
+                        help="API token for authentication.")
     return parser
 
+def api_header(token):
+    """
+    Create the header for api requests, with or without authentication token.
+    :param token: The api token if available
+    :type token: string
+    :return: The header to use in requests
+    :rtype: dict
+    """
+    if token:
+        headers = {'Authorization': 'Bearer {}'.format(token)}
+    else:
+        headers = {}
+    return headers
 
-def extract_mappings(uuid, api, unique, file_string):
+def extract_mappings(uuid, api, unique, file_string, token):
     """
     Method to iterate over project metadata as well as the entities in all submissions in a project and save progress to
     file.
@@ -65,23 +79,23 @@ def extract_mappings(uuid, api, unique, file_string):
     project_mapping_list = read_properties(project_content, 'project', project_name, property_list=[])
     save_df(project_mapping_list, unique, file_string)
     submissions_link = project_json['_links']['submissionEnvelopes']['href']
-    submissions_json = requests.get(submissions_link).json()
+    submissions_json = requests.get(submissions_link, headers=api_header(token)).json()
     for submission in submissions_json['_embedded']['submissionEnvelopes']:
         biomaterials_link = submission['_links']['biomaterials']['href']
-        biomaterials_mapping_list = process_json(biomaterials_link, 'biomaterials', project_name)
+        biomaterials_mapping_list = process_json(biomaterials_link, 'biomaterials', project_name, token)
         save_df(biomaterials_mapping_list, unique, file_string)
 
         protocols_link = submission['_links']['protocols']['href']
-        protocols_mapping_list = process_json(protocols_link, 'protocols', project_name)
+        protocols_mapping_list = process_json(protocols_link, 'protocols', project_name, token)
         save_df(protocols_mapping_list, unique, file_string)
 
         files_link = submission['_links']['files']['href']
-        files_mapping_list = process_json(files_link, 'files', project_name)
+        files_mapping_list = process_json(files_link, 'files', project_name, token)
         save_df(files_mapping_list, unique, file_string)
     # TODO: Process Analysis entities
 
 
-def process_json(link, schema_type, project_name):
+def process_json(link, schema_type, project_name, token):
     """
     Iterate through all pages of entities for a particular schema type in a particular submission.
     :param link: Link to the submission entities to request
@@ -96,7 +110,7 @@ def process_json(link, schema_type, project_name):
     done = False
     mapping_list = []
     while not done:
-        entries = requests.get(link).json()
+        entries = requests.get(link, headers=api_header(token)).json()
         try:
             for entry in entries['_embedded'][schema_type]:
                 bioentity = entry['content']['describedBy'].split('/')[-1]
@@ -210,7 +224,7 @@ def replace_obo_ids(property_df):
     return property_df
 
 
-def main(project_uuids, unique, api, iri_replace):
+def main(project_uuids, unique, api, iri_replace, token):
     """
     The main method of the program that calls other methods and iterates over the specified project uuids.
     :param project_uuids: A list of project uuids from which to retrieve ontology curations
@@ -239,7 +253,7 @@ def main(project_uuids, unique, api, iri_replace):
     i = 1
     for uuid in project_uuids:
         print("Processing {}, project {} of {}.".format(uuid, i, total_projects))
-        extract_mappings(uuid, api, unique, file_name)
+        extract_mappings(uuid, api, unique, file_name, token)
         i += 1
     print("Getting full iris")
     with open(file_name) as mappings_file:
@@ -269,4 +283,4 @@ if __name__ == "__main__":
         id_list = uuid_list
     else:
         id_list = []
-    main(id_list, args.unique, args.ingest_api_url, args.iri_replace)
+    main(id_list, args.unique, args.ingest_api_url, args.iri_replace, args.token)

@@ -9,4 +9,4 @@ has_children: true
 # Introduction
 
 Welcome to the team! Here you can find some guidelines on how to get started in the wrangling process.  
-Be sure to check the [onboarding document](/ebi-wrangler-onboarding) first.
+Be sure to check the [onboarding document](/hca-ebi-wrangler-central/ebi-wrangler-onboarding) first.
