@@ -51,28 +51,30 @@ For next steps see [Managed access project - Data Transfer SOP](https://ebi-ait.
 > Can you please register this project in DUOS?
 > Please let me know if you need more information on any of the fields.
 > 
-> ### Study Name*
+> ### Study Name
 > \<PROJECT TITLE>
-> ### Study Description*
+> ### Study Description
 > \<PROJECT DESCRIPTION>
-> ### Data Types*
+> ### Data Types
 > \<Fastqs and cell count matrix>
-> ### Principal Investigator Name*
+> ### Principal Investigator Name
 > \<PI full name>
-> ### Public Visibility*
+> ### Public Visibility
 > Please select one of the following data use permissions for your dataset
 > - Yes, I want my dataset info to be visible and available for requests
 > - No, I do not want my dataset info to be visible and available for requests
 > ## Data Access Governance (for individual datasets)
 > ### Consent Group (Dataset) Name
 > \<PROJECT TITLE>
-> ### Primary Data Use Terms*
+> ### Primary Data Use Terms
 > General Research Use
 > ### Secondary Data Use Terms
 > Non-Commercial Use / None
-> ### Data Location*
-> TDR
-> ### \# of Participants*
+> ### Data Location
+> Terra Data Repository
+> ### Phenotype
+> Healthy/ Diseased
+> ### \# of Participants
 > \<n> donors
 
 Best,
