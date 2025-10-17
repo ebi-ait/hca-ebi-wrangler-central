@@ -4,6 +4,6 @@
 **/.DS_Store/*
 
 __pycache__
-src/portal_funders/gxa_idf_files
+src/portal_funders/*_idf_files
 src/portal_funders/*csv
 src/portal_funders/*xlsx
