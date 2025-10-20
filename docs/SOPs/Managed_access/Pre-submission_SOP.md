@@ -33,6 +33,9 @@ Send to the contributor, with the wrangler email in CC
 
 [Template email](#email-template---instructions-for-the-contributor){: .btn .btn-blue }
 
+If data contributor will just contribute Tier 2 metadata (and FASTQ files), an alterned doc should be shared:
+
+[Tier 2 template email](#)
 
 ## Prepare a secure storage area
 Prepare a secure storage area in AWS for the projects’ data and metadata. 
@@ -104,3 +107,22 @@ Best,
 > 
 > On behalf of the HCA Data Platform - Data Wrangling Team
 
+### Tier 2 email template - Instructions for the contributor
+> Dear <name>,
+> Thank you for signing the Data Contributor Agreement, all parties have now signed. You should have received an email with a copy of the Agreement document, let me know if you haven't received that so I can share it with you.
+> The next steps are:
+> 1. Assemble your Tier 2 metadata & File manifest in the HCA standards
+> Attached to this email, you will find a spreadsheet template where you can fill all the Tier 2 metadata for this Lung project. Please use the same donor_IDs as those you've provided for Tier 1 metadata before. Remember, you don't have to fill all the Tier 2 fields just what you have in place.
+> Attached is also a file manifest, to enable us mapping library_ID with each FASTQ file along with read_index, lane_number and file_format of each file.
+> 2. Upload your data and metadata to our secure cloud space
+> I am preparing a secure storage area specific for your project where you can upload your data files and the filled-in spreadsheet. I’ll send you the details of this upload area and instructions on next steps in a separate email to keep the credentials secure.
+> In order to avoid circulating any potentially sensitive data over unencrypted channels, please refrain from sending any data or metadata via email. This includes filled-in or partially completed copies of the spreadsheet.
+> 3. Review and Export
+> The HCA data wrangling team will take care of reviewing and validating the data and metadata once you upload it. If anything needs to be adjusted, I’ll update you in due course. In general we aim to complete the review in 7 business days.
+> 4. Publish the project
+> Once everything is reviewed and ready, I’ll update you with a possible release date so you can confirm if you’re ready to proceed with publishing the project under managed access.
+> Do not hesitate to get in touch if you have any issues with any part of the process. We are able to arrange a Zoom call to help you out if you need any help filling the spreadsheets or uploading files.
+>
+> Warm regards,
+> Arsenios & Ida
+> On behalf of HCA Data Repository - Data Wrangling Team
