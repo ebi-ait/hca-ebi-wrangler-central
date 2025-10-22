@@ -1,5 +1,5 @@
 ---
-name: Published Project Tracker
+name: Wrangling Project Tracker
 about: Create a ticket for tracking key events of an in-progress project.
 title: ''
 labels: dataset,publication
@@ -22,24 +22,23 @@ projects: 'ebi-ait/12'
 
 * Google Drive:
 * Ingest uuid:
-* Atlas Tracker Study name: 
 
-### Published study links
+### Study links
 
 * Paper:
 * Accessioned data:
+* Atlas Tracker Study name:
 
 
 ### Key Events
 
-- [ ] Convert published metadata to HCA spreadsheet
-- [ ] Manually curate dataset to meet HCA metadata standard
-- [ ] Collect any matrix and cell-type annotation files
-- [ ] Are the analysis files suitable for CellxGene? If something is missing get in touch with the authors to request it
-- [ ] Upload sheet to validate metadata
-- [ ] Transfer raw files to ingest to validate data files
-- [ ] Check linking using ingest graph validator
-- [ ] Ask the Secondary Wrangler for an end-to-end review of the project. Ask the Expertise Wrangler to review specific tabs if needed
-- [ ] Submit dataset to Production 
+- [ ] Confirm the consent type of project
+- [ ] Collect any files according to consent type
+- [ ] Populate the HCA metadata spreadsheet to meet HCA metadata standard
+- [ ] Upload sheet to create submission and validate metadata
+- [ ] Transfer files to ingest via [hca-util](https://github.com/ebi-ait/hca-util) to validate data files (`Metadata valid` state)
+- [ ] Check linking using ingest graph validator (`Graph valid` state)
+- [ ] Ask the Secondary Wrangler for an end-to-end review of the project, apply comments and validate again (`Graph valid` state)
+- [ ] Submit dataset to Production (`Submitted` state)
+- [ ] Check export is completed (`Exported` state)
 - [ ] Complete the Export SOP
-- [ ] Convert project data to SCEA format following the SCEA conversion SOP if appropriate
