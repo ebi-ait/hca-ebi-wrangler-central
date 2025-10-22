@@ -18,14 +18,14 @@ projects: 'ebi-ait/12'
 
 <!--Link to associated files-->
 
-### Associated files
+### Internal links
 
 * Google Drive:
+* Ingest uuid: 
 
 ### Published study links
 
 * Paper:
-
 * Accessioned data:
 
 
