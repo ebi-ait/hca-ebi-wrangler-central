@@ -21,7 +21,8 @@ projects: 'ebi-ait/12'
 ### Internal links
 
 * Google Drive:
-* Ingest uuid: 
+* Ingest uuid:
+* Atlas Tracker Study name: 
 
 ### Published study links
 
