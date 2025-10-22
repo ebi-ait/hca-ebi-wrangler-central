@@ -53,14 +53,14 @@ Wrangler team might be CC'ed in an email informing the authors that a publicatio
 ## Follow-up contact
 Once the primary wrangler has gained more information about the dataset, a custom spreadsheet can be generated with the relevant tabs and fields for the contributor’s experiment. 
 
-Before any data and metadata can be received, either the contributor or an authorised representative from their lab, must agree to the HCA terms and conditions by completing the HCA terms and conditions form.
+Before any data and metadata can be received, either the contributor or an authorised representative from their lab, must sign the Data contributor agreement. If the data is going to be deposited under managed access refer to the [managed access SOPs](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Managed_access.html).
 
 The first follow up email should contain:
-- Link to terms and conditions form (https://forms.gle/8XW8vapGQJRfKrc36)
+- a copy of the Data contributor agreement
 
 [Template email](#terms-and-conditions){: .btn .btn-blue }
 
-Once the terms and conditions form is complete, the metadata spreadsheet and the instructions and credentials for uploading data to their ingest upload area can be provided to the contributor. 
+Once the DCA is signed, the metadata spreadsheet and the instructions and credentials for uploading data to their ingest upload area can be provided to the contributor. 
 
 The second follow-up email should contain:
 - Custom metadata spreadsheet

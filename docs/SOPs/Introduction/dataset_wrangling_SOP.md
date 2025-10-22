@@ -79,21 +79,17 @@ If you already have some information about the dataset and don’t need the cont
 
 ### Terms and conditions form
 
-Before metadata and data can be received from contributors they are required to fill in a terms and conditions agreement form which confirms open consent to their data and other agreements ([Terms and conditions form](https://docs.google.com/forms/d/e/1FAIpQLScYrxmDb9rD38J7k0lmfhM7JKmKgSaXegx7Imlbecsu4vNrcg/viewform)). This can be sent to them either straight away or after asking them and confirming that they do have full consent for public release. 
+Before metadata and data can be received from contributors they are required to sign the HCA Data contributor agreement (DCA). Two versions are available, a light DCA to be used for open access dataseta, requiring no institutional signer, and the [full DCA](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Contributor_Agreement_explained.html) to be used for managed access dataset. After confirming what type of consent the contributor have obtained for their dataset send them the appropriate DCA. For more information on managed access SOPs, including how to sign the DCA, see [this section]([https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Contributor_Agreement_SOP.html)
 
-Set of Template emails: 
+For open access template emails:
 
 [Template Emails](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/contributor_communication_SOP#template-emails){: .btn .btn-blue }
-
-*What do I do if a contributor’s data is not fully consented for public release?*
-
-Currently the HCA DCP cannot accept datasets without full open consent for public release. We are currently working on a solution to help contributors make their data and metadata accessible via managed access. See [Contributor Communication SOP](contributor_communication_SOP) for further guidance on how to respond to these enquiries.
 
 ## Gathering data & metadata
 
 ### For published datasets only 
 
-With a published dataset, there is no requirement for the terms and conditions form or template emails to send to the contributor. First, start by getting some initial information about the dataset from reading the published paper, and checking if there is data that is publicly available. 
+With a published dataset, there is no requirement for a signed DCA or template emails to send to the contributor. First, start by getting some initial information about the dataset from reading the published paper, and checking if there is data that is publicly available. 
 
 Once you have an understanding of which biomaterials, protocols, and processes are used, it is time to generate a metadata spreadsheet. The tool to generate a tailored spreadsheet is integrated in ingest.  You can find it in the `Experiment Information` tab, `Generate a metadata template` section of your project.
 
@@ -106,7 +102,7 @@ Then move onto the [‘curating metadata’](#curating-metadata) section.
 
 ### Spreadsheet template generation
 
-Once the terms and conditions form has been submitted, and you have some initial information about the dataset from the questionnaire or meeting, it is time to generate a spreadsheet for the contributor to fill in. The spreadsheet is generated using the [`schema-template-generator`](https://github.com/HumanCellAtlas/schema-template-generator) repo that can be cloned and run locally, see README for install and usage instructions.
+Once the DCA has been signed, and you have some initial information about the dataset from the questionnaire or meeting, it is time to generate a spreadsheet for the contributor to fill in. The spreadsheet is generated using the [`schema-template-generator`](https://github.com/HumanCellAtlas/schema-template-generator) repo that can be cloned and run locally, see README for install and usage instructions.
 
 The spreadsheet should be as simple as possible for the given experiment so that it is more easily understandable for the contributor so only select schema and properties that are relevant to their experiment.
 
@@ -316,13 +312,7 @@ If a wrangler cannot find an accurate ontology term and believes a term should b
 
 ### General metadata curation tips
 
-Wranglers should endeavour to fill in as much metadata as is possible. We have a fairly minimal set of required fields but we should seek to provide as much detail as possible. 
-
-Examples of metadata that we strive for even if it is not strictly required:
-General demographics - Age, weight, ethnicity for human donors
-Basic medical info - cause of death, smoking status, alcohol status
-
-If donors are from CBTM or HDBR we have direct routes of obtaining more detailed metadata if it hasn’t been provided by the contributor.
+When wranging from publication wranglers need to take care to only include tier 1 metadata. Without being in contact with the authors we have are unable to confirm that the dataset is consented for open access publication in compliance with local laws, so to protect potentially sensitive metadata we only collect metadata that can be released publicly.
 
 - `organ` or `model_organ` should be the broad major organ type, not a system
 - The `organ_part` or `model_organ_part` should be the most specific organ part available
@@ -338,17 +328,8 @@ For each project, wranglers should endeavour to find an expression matrix and if
 The preferred formats for matrix files are:
 * `loom`
 * `h5ad`
+* cell ranger format - split into three files for features, matrix and cell barcodes
 * RObj?
-
-Wranglers should evaluate whether a project is suitable to be wrangled to CellxGene. To be eligible a project needs:
-- raw cell counts
-- ENSEBML gene ids
-- cell types
-- spatial embeddings (umap, tSNE,..)
-- optional: normalised cell counts
-
-If some of these elements are missing wranglers should get in touch with the authors to see if they are interested in publishing their dataset in CellxGene and whether they are able to provide the missing elements. See [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/contributor_communication_SOP.html#asking-for-matrices-from-contributor) for an email template.
-Resources on how to wrangle a dataset to CellxGene are [here](https://github.com/ebi-ait/cellxgene-wrangling), including templates, CellxGene schema guide and a tool to extract metadata from ingest.
 
 ### Filling in metadata about the files
 
