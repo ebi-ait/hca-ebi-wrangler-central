@@ -53,6 +53,7 @@ graph TD
 
     P -->C
     Q -->C
+    click K href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Managed_access.html" "MA SOP"
 ```
 
 ## Specific guidelines
