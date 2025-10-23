@@ -23,6 +23,7 @@ def define_parser():
 
 def getDryadDatasetFileManifest(dataset_doi_url_format, dryad_api_url):
     "Given the url-doi for a Dryad dataset return the filenames and download urls"
+    print("Downloading file manifest...")
     #### Get the dataset version
     dataset_url = f"{dryad_api_url}api/v2/datasets/{dataset_doi_url_format}"
     contents = requests.get(dataset_url, timeout=10)
@@ -51,14 +52,14 @@ def getDryadDatasetFileManifest(dataset_doi_url_format, dryad_api_url):
             file_manifest.append([file_download_url,file_correct_name])
             file_counter = file_counter + 1
         if file_counter > files_total:
-            break
+            raise ValueError(f"Total files {file_counter} exceeded the expected value {files_total}")
         if "next" in page["_links"]:
             next_file_page = requests.get(f"{dryad_api_url}{page["_links"]["next"]["href"]}", timeout=10)
             page = next_file_page.json()
         else:
             break
 
-    print("Manifest length matches the expected length: ",file_counter==files_total)
+    # print("Manifest length matches the expected length: ",file_counter==files_total)
     return file_manifest
 
 def saveDryadFileManifest(dataset_doi,file_manifest, output_dir):
@@ -125,11 +126,10 @@ def main(dataset_doi, dryad_api, output_dir):
                 file.write(chunk)
 
         # Check file integrity
-        if sha256File(file_name)!=response.headers.get("x-amz-meta-sha256"):
-            print(file_name, sha256File(file_name), response.headers.get("x-amz-meta-sha256"))
-            break
-        else:
-            print(f"{file_name} downloaded")
+        sha256 = sha256File(file_path)
+        if sha256 != response.headers.get("x-amz-meta-sha256"):
+            raise ValueError(f"Invalid sha256 value for file {file_name}\nActual: {sha256}\nExpected: {response.headers.get("x-amz-meta-sha256")}")
+        print(f"{file_path} downloaded")
 
 if __name__ == "__main__":
     args = define_parser().parse_args()
