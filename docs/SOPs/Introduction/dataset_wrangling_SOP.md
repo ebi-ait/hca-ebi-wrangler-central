@@ -14,7 +14,7 @@ last_modified_date: 22/03/2020
 ## Background
 {: .no_toc }
 
-This SOP document aims to describe the process of receiving new datasets from contributors and uploading their metadata and data to ingest for archiving in EBI archives and submission to DCP2.0.
+This SOP document aims to describe the process of wrangling datasets into ingest for submission to DCP2.0.
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -22,68 +22,34 @@ This SOP document aims to describe the process of receiving new datasets from co
 1. TOC
 {:toc}
 
-## Project Management
 
-There are some general project management tasks when working with new datasets to ensure all team members can track their status.
+## Consent type
 
-New contributors will almost always contact us via the wranglers email list. When we work with them to get their projects submitted, the wranglers email list should be copied into all emails.
-1. Create a [project tracker ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/new?assignees=&labels=dataset&template=project_tracker.md&title= ) to track dataset progress should be created in the `hca-ebi-wrangler-central` repo 
-2. Add the dataset to Ingest 
-  * Change `wrangling status` to 'in progress'
-  * Ensure all required fields are filled out
-  * Ensure you are listed as the `primary_wrangler`
-3. Create a new folder to store the dataset metadata in the [Brokering drive](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA) 
+Before any metadata and data can be received from contributors they are required to sign the HCA Data contributor agreement (DCA). Two versions are available, 
+* a light DCA to be used for open access dataseta, requiring no institutional signer
+* a [full DCA](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Contributor_Agreement_explained.html) to be used for managed access dataset.
 
-### Tracking wrangling progress
+After confirming what type of consent the contributor have obtained for their dataset, send them the appropriate DCA. 
 
-Wrangling progress is tracked primarily through movement of the `project tracker ticket` through the status on the [Dataset wrangling status](https://github.com/orgs/ebi-ait/projects/12/) Github Projects Board. 
-
-| Status            | When                                   | Explanation                                                                                                                                 |
-|:---------------------|:----------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
-| Todo      | When created or if project needs update          | Issues should be placed here when they are created but before a wrangler actively starts working on it or if project requires some kind of update |
-| Stalled             | If project becomes stuck               | If project spends more than 2 weeks with no progress, the ticket should be moved here and label applied to indicate reason  |
-| Wrangling           | When in progress                       | The primary wrangler moves the tracker ticket here when they have started working on it |
-| Review | When review starts                     | The secondary wrangler moves the tracker ticket here when they start reviewing |
-| Verify            | When finished                          | The primary wrangler moves the ticket here to indicate the project is exported to the DCP and is waiting to be verified.  |
-| Done | When project has been verified in the data browser | The primary wrangler moves the ticket here to indicate that it has been verified in the data browser. |
-
-
-[Labels](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels) are also applied to tickets to provide further information about the ticket. Definitions for each label and when they should be applied can be [found here](https://github.com/ebi-ait/hca-ebi-wrangler-central/labels).
-
-
-**If you are wrangling a dataset from a published project, click [here](#for-published-datasets-only). If not, continue reading the following directions.** 
-
-## Early contact with contributors
-
-The wranglers and managers are first notified of a new contributor by email to a team-wide email list and as a team they decide who will be responsible for the new dataset. Work is divided between EBI and UCSC wranglers based on convenience, time zones, current workload and existing relationships. Generally speaking, UCSC wranglers are responsible for contributor relationships from Central USA, Central America and the Pacific rim region, whereas EBI wranglers are responsible for Europe, Africa, Central Asia, Eastern USA and most of South America. 
-
-Once a primary wrangler is assigned, they will communicate with the contributor via email and set up virtual or in-person meetings to discuss their project needs. Specific guidance on how to communicate with contributors can be found in the [Contributor communication SOP](contributor_communication_SOP).
-
-### Finding out about the dataset
-
-If nothing is known about the project, the first step is to find out enough information in order to create a customised spreadsheet template for the contributor to fill in. This can be done either by:
-
-1. Sending the contributor the [HCA Dataset Questionnaire form](https://docs.google.com/forms/d/e/1FAIpQLSdjPk2Z6xYozds53ycvXo57PvFsyqOF6XMpSWCVNTpQYalZzQ/viewform?usp=sf_link) 
-
-[suggested template email](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/contributor_communication_SOP#first-contact---data-questionnaire){: .btn .btn-blue }
-
-2. Setting up an in-person or video call. The questions in the HCA Dataset Questionnaire form can be used as guide to know what questions to ask of the contributor
-
-If you already have some information about the dataset and don’t need the contributor to fill in the entire Dataset Questionnaire it is still important to find out answers to the following questions:
-
-- Does your team have consent for public release for all the raw sequencing data included in this dataset?
-
-- Do you have a specific release date or any publication embargo requirements?
-
-- Does the data come from living donors?
-
-### Terms and conditions form
-
-Before metadata and data can be received from contributors they are required to sign the HCA Data contributor agreement (DCA). Two versions are available, a light DCA to be used for open access dataseta, requiring no institutional signer, and the [full DCA](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Contributor_Agreement_explained.html) to be used for managed access dataset. After confirming what type of consent the contributor have obtained for their dataset send them the appropriate DCA. For more information on managed access SOPs, including how to sign the DCA, see [this section]([https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Contributor_Agreement_SOP.html)
+For more information on managed access SOPs, including how to sign the DCA read here:
+* [DCA explained](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/docs/SOPs/Managed_access/Data_Contributor_Agreement_explained.html)
+* [DCA SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Contributor_Agreement_SOP.html)
+* [Data Transfer SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Transfer_SOP.html)
+* [Pre-submission SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Pre-submission_SOP.html)
+* [Review and export SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Review_and_export_SOP.html)
 
 For open access template emails:
+* [Template Emails](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/contributor_communication_SOP#template-emails){: .btn .btn-blue }
 
-[Template Emails](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/contributor_communication_SOP#template-emails){: .btn .btn-blue }
+OA DCA SOPs might have to change soon.
+
+## Project managment
+When working with new projects we need to be sure that we keep track of everything in the same way, so all team members can track their status. Two main tracking systems exist:
+1. Ingest project
+1. Github project issue
+
+Read more in the relevant [SOP](/SOPs/Introduction/wrangling_project_management.md)
+
 
 ## Gathering data & metadata
 
@@ -138,23 +104,11 @@ NCBI provides, for most of the new datasets, amazon s3 storage for fastq files. 
    
 Once downloaded locally, the data files need to be uploaded to an hca-util area. You can follow the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) for contributors.
 
-## Raw Data (fastq) and Processed Data Upload  
+## Raw Data (fastq) and Processed Data Upload
 
 ### Data upload Procedure
 
-_**This is done by a wrangler.**_ 
-
-1. Obtain the access key from a developer ([previous step](/SOPs/Access_data_files/aws_contributor_credentials.md))
-1. Create an upload area using the guide: [how to create an upload area for the contributors using the hca-util tool]( https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util)
-1. Get the UUID from the created upload area
-Send these two sets of information separately to the contributor to minimise the chance of them falling into the wrong hands and being misused.
-
-* **Contributor AWS Access keys** are not considered secure and can be sent in the main `wrangler-team` email thread, usually in the same email with the first spreadsheet and [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
-* **Upload area UUID** is a secure piece of information that should be shared in a separate email with only the contributor and primary wrangler 
-
-_**Working with multiplexed data**_ 
-
-If the dataset is multiplexed, for example, if distinct samples have been pooled before library preparation and sequencing, then the fastq data must be demultiplexed by the sample barcode before being uploaded to ingest. The pipelines team works on the assumption that there is 1 input sample per run and it is up to us to demultiplex multiplexed data.
+If contributor is to upload their data, this should be done via hca-util. In order to do that an aws account needs to be created using this [SOP](/SOPs/Access_data_files/aws_contributor_credentials.md).
 
 ### Download Gene expression matrices 
 
