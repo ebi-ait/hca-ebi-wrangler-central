@@ -81,7 +81,7 @@ For next steps see [Managed access project - Data Transfer SOP](https://ebi-ait.
 > \<n> donors
 
 Best,
-<wrangler>
+<wrangler name>
 
 ### Email template - Instructions for the contributor
 
@@ -112,7 +112,7 @@ Best,
 > Thank you for signing the Data Contributor Agreement, all parties have now signed. You should have received an email with a copy of the Agreement document, let me know if you haven't received that so I can share it with you.
 > The next steps are:
 > 1. Assemble your Tier 2 metadata & File manifest in the HCA standards
-> Attached to this email, you will find a spreadsheet template where you can fill all the Tier 2 metadata for this Lung project. Please use the same donor_IDs as those you've provided for Tier 1 metadata before. Remember, you don't have to fill all the Tier 2 fields just what you have in place.
+> Attached to this email, you will find a spreadsheet template where you can fill all the Tier 2 metadata for this <Lung> project. Please use the same donor_IDs as those you've provided for Tier 1 metadata before. Remember, you don't have to fill all the Tier 2 fields just what you have in place.
 > Attached is also a file manifest, to enable us mapping library_ID with each FASTQ file along with read_index, lane_number and file_format of each file.
 > 2. Upload your data and metadata to our secure cloud space
 > I am preparing a secure storage area specific for your project where you can upload your data files and the filled-in spreadsheet. I’ll send you the details of this upload area and instructions on next steps in a separate email to keep the credentials secure.
