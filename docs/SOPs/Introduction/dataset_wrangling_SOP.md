@@ -350,7 +350,7 @@ After the project has been Archived, if the `Submit to the Human Cell Atlas...` 
 Notes
 {: label label-blue }
 
-* UCSC & EBI will export on demand, and notify the Broad
+* EBI will export on demand, and notify the Broad
 * Broad will batch import once prior to the monthly release
 * Responsibility for who deletes the contents of the staging area is still being decided.
 * This is likely to evolve as we go, so please note issues with completing this process so we can improve it.
@@ -362,5 +362,5 @@ Additionally, move all the corresponding documents to the [finished_projects](ht
 
 ## Brokering to SCEA
 
-- [hca_to_scea_tools_SOP]
+- [hca_to_scea_tools_SOP](/SOPs/After_export/hca_to_scea_tools_SOP.md)
 - See documentation on the [hca-to-scea repo](https://github.com/ebi-ait/hca-to-scea-tools)
