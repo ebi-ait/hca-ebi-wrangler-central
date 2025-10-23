@@ -6,15 +6,15 @@ import urllib.parse
 def getDryadDatasetFileManifest(dataset_doi_url_format, dryad_api_url):
     "Given the url-doi for a Dryad dataset return the filenames and download urls"
     #### Get the dataset version
-    dataset_url = "{}api/v2/datasets/{}".format(dryad_api_url,dataset_doi_url_format)
-    contents = requests.get(dataset_url)
+    dataset_url = f"{dryad_api_url}api/v2/datasets/{dataset_doi_url_format}"
+    contents = requests.get(dataset_url, timeout=10)
     dataset_record = contents.json()
     dataset_version_id_address = dataset_record["_links"]["stash:version"]["href"]
     # print(dataset_version_id_address)
 
     #### Get the file manifest page
-    dataset_files_url = "{}{}/files".format(dryad_api_url,dataset_version_id_address)
-    file_page = requests.get(dataset_files_url)
+    dataset_files_url = f"{dryad_api_url}{dataset_version_id_address}/files"
+    file_page = requests.get(dataset_files_url, timeout=10)
 
     ### Paginate file manifest and extract filename + url
     page = file_page.json()
@@ -28,17 +28,16 @@ def getDryadDatasetFileManifest(dataset_doi_url_format, dryad_api_url):
 
         ### Get filename + url
         for a_file in files:
-            file_download_url = "{}{}".format(dryad_api_url, a_file["_links"]["stash:download"]["href"])
+            file_download_url = f"{dryad_api_url}{a_file["_links"]["stash:download"]["href"]}"
             file_correct_name = a_file["path"]
             file_manifest.append([file_download_url,file_correct_name])
             file_counter = file_counter + 1
         if file_counter > files_total:
             break
         if "next" in page["_links"]:
-            next_file_page = requests.get("{}{}".format(dryad_api_url,page["_links"]["next"]["href"]))
+            next_file_page = requests.get(f"{dryad_api_url}{page["_links"]["next"]["href"]}", timeout=10)
             page = next_file_page.json()
         else:
-            #print(page["_links"])
             break
 
     print("Manifest length matches the expected length: ",file_counter==files_total)
@@ -47,11 +46,11 @@ def getDryadDatasetFileManifest(dataset_doi_url_format, dryad_api_url):
 def saveDryadFileManifest(dataset_doi,file_manifest):
     "Given a Dryad file manifest and its doi save the manifest to a file named after the doi"
     dataset_doi_url_format = urllib.parse.quote(dataset_doi, safe='')
-    manifest_filename = "{}_file_manifest.txt".format(dataset_doi_url_format)
+    manifest_filename = f"{dataset_doi_url_format}_file_manifest.txt"
     with open(manifest_filename, "w") as f:
         for file_data in file_manifest:
             download_url, file_name = file_data
-            f.write("{} {}\n".format(download_url, file_name))
+            f.write(f"{download_url} {file_name}\n")
 
 def sha256File(file_path):
     "Given the filepath return the sha256"
