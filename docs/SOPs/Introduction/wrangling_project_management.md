@@ -42,7 +42,12 @@ Wrangling progress is tracked primarily through movement of the `project tracker
 
 
 ## Updating project
-Once the wrangling is proceeding, tick the boxes in the github issue, add wrangling notes as comments, and update the labels in ticket and in ingest.
+Once the wrangling is proceeding:
+- tick the boxes in the github issue
+- add wrangling notes as comments in ticket
+- move ticket in appropriate status
+- update labels in ticket
+- update `Wrangler Notes` in Admin tab in ingest
 
 When submission is completed, add appropriate __Release label__ in github issue (for example [release 55](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues?q=state%3Aopen%20label%3A%22Release%2055%22)) so you can easily retrieve all dataset issues for each release.
 
