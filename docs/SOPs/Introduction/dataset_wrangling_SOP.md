@@ -48,7 +48,7 @@ When working with new projects we need to be sure that we keep track of everythi
 1. Ingest project
 1. Github project issue
 
-Read more in the relevant [SOP](/SOPs/Introduction/wrangling_project_management.md)
+Read more in the relevant [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/wrangling_project_management.md)
 
 ## Gathering data & metadata
 
@@ -107,7 +107,7 @@ Once downloaded locally, the data files need to be uploaded to an hca-util area.
 
 ### Data upload Procedure
 
-If contributor is to upload their data, this should be done via hca-util. In order to do that an aws account needs to be created using this [SOP](/SOPs/Access_data_files/aws_contributor_credentials.md).
+If contributor is to upload their data, this should be done via hca-util. In order to do that an aws account needs to be created using this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/aws_contributor_credentials.md).
 
 ### Download Gene expression matrices 
 
@@ -361,5 +361,5 @@ Additionally, move all the corresponding documents to the [finished_projects](ht
 
 ## Brokering to SCEA
 
-- [hca_to_scea_tools_SOP](/SOPs/After_export/hca_to_scea_tools_SOP.md)
+- [hca_to_scea_tools_SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/After_export/hca_to_scea_tools_SOP.md)
 - See documentation on the [hca-to-scea repo](https://github.com/ebi-ait/hca-to-scea-tools)

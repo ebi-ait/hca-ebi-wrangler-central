@@ -42,7 +42,7 @@ Prepare a secure storage area in AWS for the projects’ data and metadata.
 1. Create a storage area using the project's uuid as name \
 `$ hca-util create <uuid-of-project>` 
 2. The contributor needs a set of credentials (AWS access key and AWS secret key) to be able to upload data to the AWS secure storage area.
-Ask a developer to follow [these instructions](/SOPs/Access_data_files/aws_contributor_credentials.md) to create the credentials. The only information needed is the contributor’s name and email address. 
+Ask a developer to follow [these instructions](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/aws_contributor_credentials.md) to create the credentials. The only information needed is the contributor’s name and email address. 
 
 
 

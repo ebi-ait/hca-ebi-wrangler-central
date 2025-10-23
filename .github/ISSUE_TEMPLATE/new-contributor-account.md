@@ -19,4 +19,4 @@ Request Details:
 * request email details:
 > quote request email here
 
-[SOP link](/SOPs/Access_data_files/aws_contributor_credentials.md)
+[SOP link](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/aws_contributor_credentials.md)
