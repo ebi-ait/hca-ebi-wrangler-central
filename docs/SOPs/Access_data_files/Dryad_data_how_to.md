@@ -15,7 +15,7 @@ nav_order: 4
 
 If your dataset is smaller than 11GB you can dowload the whole dataset in one click
 
-If your dataset is bigger than 11GB you can use [get_dryad_dataset](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/iz-data-from-dryad/src/get_dryad_dataset.py) script to dowload the whole dataset taking advantage of dryad's api
+If your dataset is bigger than 11GB you can use [get_dryad_dataset.py](https://github.com/ebi-ait/hca-ebi-wrangler-central/tree/master/src/get_dryad_dataset.py) script to dowload the whole dataset taking advantage of dryad's api
 
 #### Requirements:
 The script only requires the dataset's doi which can be found in the url or the ui page \
