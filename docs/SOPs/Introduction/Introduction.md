@@ -11,7 +11,7 @@ has_children: true
 Welcome to the team! Here you can find some guidelines on how to get started in the wrangling process.  
 Be sure to check the [onboarding document](/hca-ebi-wrangler-central/ebi-wrangler-onboarding) first.
 
-As of 2025, the wrangling process starts from any of those 3 routes.
+As of 2025, the wrangling process starts from defining the consent type.
 
 ```mermaid
 flowchart TD
@@ -61,7 +61,7 @@ flowchart TD
     end
     C3 --upload--> I2
 
-    dca --> proj --> data
+    dca --dca signed--> proj --> data
     proj --> metadata
 
 ```
