@@ -115,14 +115,16 @@ def main(dataset_doi, dryad_api, output_dir):
     # Save file manifest
     saveDryadFileManifest(dataset_doi,dataset_file_manifest, output_dir)
 
+    # Convert
     # Download each file in the dataset manifest
-    for file_data in dataset_file_manifest:
+    n_all = len(dataset_file_manifest)
+    for n, file_data in enumerate(dataset_file_manifest):
         file_download_url, file_name = file_data
         file_path = output_dir / file_name
         # Stream file
         response = requests.get(file_download_url, stream=True, timeout=10)
-        with open(file_name, mode="wb") as file:
-            for chunk in response.iter_content(chunk_size=10 * 1024):
+        with open(file_path, mode="wb") as file:
+            for chunk in tqdm(response.iter_content(chunk_size=10 * 1024), unit='chunks', desc=f"Downloading file {file_name} {n}/{n_all}"):
                 file.write(chunk)
 
         # Check file integrity
