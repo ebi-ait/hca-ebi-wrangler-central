@@ -79,10 +79,23 @@ def sha256File(file_path):
 
     return sha256.hexdigest()
 
+def convert_doi_to_url(dataset_doi):
+    dryad_doi_prefix_pattern = r"^doi:10\.5061/dryad\.[A-Z0-9]+"
+    dryad_doi_pattern = r"^10\.5061/dryad\.[A-Z0-9]+"
+    # according to crossref documentation https://www.crossref.org/blog/dois-and-matching-regular-expressions/
+    general_doi_pattern = r'^10\.\d{4,9}/[-._;()/:A-Z0-9]+$'
+    if re.match(dryad_doi_prefix_pattern, dataset_doi, re.IGNORECASE):
+        return urllib.parse.quote(dataset_doi, safe='')
+    if re.match(dryad_doi_pattern, dataset_doi, re.IGNORECASE):
+        return urllib.parse.quote(f"doi:{dataset_doi}", safe='')
+    if re.match(general_doi_pattern, dataset_doi, re.IGNORECASE):
+        raise ValueError(f"DOI: {dataset_doi} does not follow the Dryad DOI pattern '10.5061/dryad.<a-zA-Z0-9>")
+    return ValueError(f"DOI: {dataset_doi} is not in a DOI format")
+
 def main(dataset_doi, dryad_api):
     
     # Convert doi to url format
-    dataset_doi_url_encoded = urllib.parse.quote(dataset_doi, safe='')
+    dataset_doi_url_encoded = convert_doi_to_url(dataset_doi)
 
     # Get dataset's file manifest
     dataset_file_manifest = getDryadDatasetFileManifest(dataset_doi_url_encoded, dryad_api)
