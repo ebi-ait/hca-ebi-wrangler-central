@@ -50,7 +50,6 @@ When working with new projects we need to be sure that we keep track of everythi
 
 Read more in the relevant [SOP](/SOPs/Introduction/wrangling_project_management.md)
 
-
 ## Gathering data & metadata
 
 ### For published datasets only 

@@ -20,14 +20,13 @@ flowchart TD
     MA["Managed Access (MA) DCA"]
     OA["Open Access (OA) DCA"]
     end
-
+    
+    subgraph metadata [gather metadata]
+    direction LR
     P1["Published contribution"]
     P2["Unpublished contribution"]
     P3["Tier 1 metadata"]
     HMS("HCA Metadata spreadsheet")
-    
-    subgraph metadata [gather metadata]
-    direction LR
     P1--"wrangle from publication"-->HMS
     P2--"contributor fills spreadsheet"-->HMS
     P3--"convert tier 1 to dcp spreadsheet"-->HMS
@@ -48,12 +47,12 @@ flowchart TD
     C2 --> C3
     end
 
+    subgraph ingest [ingest submission process]
     I1["Create submission"]
     I2["Validate data/ metadata"]
     I3["Validate graph"]
     I4["Secondary review"]
     I5["Export"]
-    subgraph ingest [ingest submission process]
     HMS --> I1
     I1 --> I2
     I2 --> I3 --> I4 --> I5 
@@ -61,8 +60,15 @@ flowchart TD
     end
     C3 --upload--> I2
 
+    subgraph import [staging area]
+    M1["Import form filled"]
+    M2["Monitor TDR validation"]
+    I5 --> M1
+    end
+
     dca --dca signed--> proj --> data
     proj --> metadata
 
+    click M2 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/access_tera.html" "Access TDR SOP"
 ```
 
