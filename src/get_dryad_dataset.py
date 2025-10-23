@@ -1,6 +1,18 @@
+import re
+import argparse
 import requests
 import hashlib
 import urllib.parse
+
+def define_parser():
+    parser = argparse.ArgumentParser(description="Parser for the arguments")
+    parser.add_argument("-d", "--dataset_doi", action="store",
+                        type=str, required=True,
+                        help="Dataset DOI")
+    parser.add_argument("-a", "--dryad_api", action="store",
+                        type=str, required=False, default="https://datadryad.org/",
+                        help="Dryad API URL (default: https://datadryad.org/)")
+    return parser
 
 
 def getDryadDatasetFileManifest(dataset_doi_url_format, dryad_api_url):
@@ -67,30 +79,33 @@ def sha256File(file_path):
 
     return sha256.hexdigest()
 
-dataset_doi = "doi:10.5061/dryad.8pk0p2ns8"
-dryad_api = "https://datadryad.org/"
+def main(dataset_doi, dryad_api):
+    
+    # Convert doi to url format
+    dataset_doi_url_encoded = urllib.parse.quote(dataset_doi, safe='')
 
-# Convert doi to url format
-dataset_doi_url_encoded = urllib.parse.quote(dataset_doi, safe='')
+    # Get dataset's file manifest
+    dataset_file_manifest = getDryadDatasetFileManifest(dataset_doi_url_encoded, dryad_api)
 
-# Get dataset's file manifest
-dataset_file_manifest = getDryadDatasetFileManifest(dataset_doi_url_encoded, dryad_api)
+    # Save file manifest
+    saveDryadFileManifest(dataset_doi,dataset_file_manifest)
 
-# Save file manifest
-saveDryadFileManifest(dataset_doi,dataset_file_manifest)
+    # Download each file in the dataset manifest
+    for file_data in dataset_file_manifest:
+        file_download_url, file_name = file_data
+        # Stream file
+        response = requests.get(file_download_url, stream=True, timeout=10)
+        with open(file_name, mode="wb") as file:
+            for chunk in response.iter_content(chunk_size=10 * 1024):
+                file.write(chunk)
 
-# Download each file in the dataset manifest
-for file_data in dataset_file_manifest:
-    file_download_url, file_name = file_data
-    # Stream file
-    response = requests.get(file_download_url, stream=True)
-    with open(file_name, mode="wb") as file:
-         for chunk in response.iter_content(chunk_size=10 * 1024):
-             file.write(chunk)
+        # Check file integrity
+        if sha256File(file_name)!=response.headers.get("x-amz-meta-sha256"):
+            print(file_name, sha256File(file_name), response.headers.get("x-amz-meta-sha256"))
+            break
+        else:
+            print(f"{file_name} downloaded")
 
-    # Check file integrity
-    if sha256File(file_name)!=response.headers.get("x-amz-meta-sha256"):
-        print(file_name, sha256File(file_name), response.headers.get("x-amz-meta-sha256"))
-        break
-    else:
-        print("{} downloaded".format(file_name))
+if __name__ == "__main__":
+    args = define_parser().parse_args()
+    main(args.dataset_doi, args.dryad_api)
