@@ -3,6 +3,9 @@ import argparse
 import requests
 import hashlib
 import urllib.parse
+from pathlib import Path
+
+from tqdm import tqdm
 
 def define_parser():
     parser = argparse.ArgumentParser(description="Parser for the arguments")
@@ -12,6 +15,9 @@ def define_parser():
     parser.add_argument("-a", "--dryad_api", action="store",
                         type=str, required=False, default="https://datadryad.org/",
                         help="Dryad API URL (default: https://datadryad.org/)")
+    parser.add_argument("-o", "--output_dir", action="store",
+                        type=str, required=False, default="out",
+                        help="Output directory")
     return parser
 
 
@@ -55,14 +61,16 @@ def getDryadDatasetFileManifest(dataset_doi_url_format, dryad_api_url):
     print("Manifest length matches the expected length: ",file_counter==files_total)
     return file_manifest
 
-def saveDryadFileManifest(dataset_doi,file_manifest):
+def saveDryadFileManifest(dataset_doi,file_manifest, output_dir):
     "Given a Dryad file manifest and its doi save the manifest to a file named after the doi"
     dataset_doi_url_format = urllib.parse.quote(dataset_doi, safe='')
-    manifest_filename = f"{dataset_doi_url_format}_file_manifest.txt"
-    with open(manifest_filename, "w") as f:
+    manifest_file_name = f"{dataset_doi_url_format}_file_manifest.txt"
+    manifest_file_path = output_dir / manifest_file_name
+    with open(manifest_file_path, "w") as f:
         for file_data in file_manifest:
             download_url, file_name = file_data
             f.write(f"{download_url} {file_name}\n")
+    print(f"File manifest saved: {manifest_file_path}")
 
 def sha256File(file_path):
     "Given the filepath return the sha256"
@@ -92,7 +100,10 @@ def convert_doi_to_url(dataset_doi):
         raise ValueError(f"DOI: {dataset_doi} does not follow the Dryad DOI pattern '10.5061/dryad.<a-zA-Z0-9>")
     return ValueError(f"DOI: {dataset_doi} is not in a DOI format")
 
-def main(dataset_doi, dryad_api):
+def main(dataset_doi, dryad_api, output_dir):
+
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
     
     # Convert doi to url format
     dataset_doi_url_encoded = convert_doi_to_url(dataset_doi)
@@ -101,11 +112,12 @@ def main(dataset_doi, dryad_api):
     dataset_file_manifest = getDryadDatasetFileManifest(dataset_doi_url_encoded, dryad_api)
 
     # Save file manifest
-    saveDryadFileManifest(dataset_doi,dataset_file_manifest)
+    saveDryadFileManifest(dataset_doi,dataset_file_manifest, output_dir)
 
     # Download each file in the dataset manifest
     for file_data in dataset_file_manifest:
         file_download_url, file_name = file_data
+        file_path = output_dir / file_name
         # Stream file
         response = requests.get(file_download_url, stream=True, timeout=10)
         with open(file_name, mode="wb") as file:
@@ -121,4 +133,4 @@ def main(dataset_doi, dryad_api):
 
 if __name__ == "__main__":
     args = define_parser().parse_args()
-    main(args.dataset_doi, args.dryad_api)
+    main(dataset_doi=args.dataset_doi, dryad_api=args.dryad_api, output_dir=args.output_dir)
