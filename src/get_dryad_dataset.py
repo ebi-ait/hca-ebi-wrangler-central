@@ -44,12 +44,6 @@ def getDryadDatasetFileManifest(dataset_doi_url_format, dryad_api_url):
     print("Manifest length matches the expected length: ",file_counter==files_total)
     return file_manifest
 
-
-    file_metadata = files_json["_embedded"]["stash:files"][0]
-    file_download_url = "{}{}".format(dryad_api_url,file_metadata["_links"]["stash:download"]["href"])
-    file_correct_name = file_metadata["path"]
-    print(file_download_url, file_correct_name)
-
 def saveDryadFileManifest(dataset_doi,file_manifest):
     "Given a Dryad file manifest and its doi save the manifest to a file named after the doi"
     dataset_doi_url_format = urllib.parse.quote(dataset_doi, safe='')
