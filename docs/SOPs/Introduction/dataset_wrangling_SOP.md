@@ -223,6 +223,11 @@ Please note:
 * Once a project has been created in the UI, it is best practice to retain the project's unique identifier throughout the submission and validation process, so please only delete the project if there are serious issues with project level metadata that cannot be fixed easily in the UI.
 * There should never be duplicate projects in the production ui, if you do need to reupload an entire project, please delete the existing project before re-uploading a spreadsheet. 
 
+### Sync data
+__Transferring data from `hca-util` upload area to ingest upload area__
+
+Once the contributor has uploaded all the data that is specified for the project or you have transferred the raw data files from the archive into an `hca-util` upload area and you have a valid metadata submission in the ingest UI, follow the [hca-util guide](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util#sync-data-to-the-ingest-s3-bucket) to sync the data to the `Upload Area Location` that is specified on the submission at the bottom of the `Data` tab. 
+
 ### Experimental graph validation
 Graph validator allows wranglers to perform some tests to check against our current graph assumptions. 
 
@@ -236,7 +241,7 @@ Any test that fails to pass will show a useful error message, alongside the enti
 [Here](https://github.com/ebi-ait/ingest-graph-validator/tree/master/graph_test_set) you can see the list of rules.
 If you want to run the tests locally, or suggest a new test/report a bug, please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator). Local deployment allows wrangler to visualise the experimental graph of the experiment.
 
-## Secondary Review
+### Secondary Review
 
 Once the spreadsheet has passed both phases of validation, the primary wrangler should ask another wrangler in the team to review the spreadsheet and suggest any required edits or updates. Once someone asks for secondary review, they should move the ticket to the `Review` status on the tracking board.
 
@@ -247,10 +252,6 @@ If any changes may have also affected the linking in the spreadsheet it should a
 A detailed guide to performing secondary review [can be found here](secondary_review_SOP).
 
 Once both the Primary and Secondary wrangler are happy with the submission and it is valid in ingest, the data files can now be moved from the contributor bucket into the ingest upload area.
-
-## Transferring data from `hca-util` upload area to ingest upload area
-
-Once the contributor has uploaded all the data that is specified for the project or you have transferred the raw data files from the archive into an `hca-util` upload area and you have a valid metadata submission in the ingest UI, follow the [hca-util guide](https://github.com/ebi-ait/hca-documentation/wiki/How-to-administrate-upload-areas-and-transfer-data-using-hca-util#sync-data-to-the-ingest-s3-bucket) to sync the data to the `Upload Area Location` that is specified on the submission at the bottom of the `Data` tab. 
 
 ## Completing the submission
 
