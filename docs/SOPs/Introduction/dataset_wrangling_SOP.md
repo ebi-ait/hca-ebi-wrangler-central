@@ -282,8 +282,7 @@ Once submission is submitted, there is a separate export SOP beyond ingest:
     1. Fill the [HCA Import request for Production Releases](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/viewform?gxids=7628) (see [values below](#import-form-details-for-dcp-data-releases))
     * __wait until monthly release__
 5. The submitting wrangler is notified that import has been successful or if there are issues for EBI to investigate
-    * Broad data import team will notify via slack in the dcp-ops channel slack of any import problems (validation or import) or forward ticket UCSC team 
-    <br>__\# TODO add typical hacks to resolve import errors__
+    * Broad data import team will notify via slack in the dcp-ops channel slack of any import problems ([see bellow](#tdr-import-errors)) or forward ticket UCSC team
 6. UCSC Browser team will notify submitting wrangler and Broad team when release is indexed and in the browser or if issues are encountered.
     * Via slack in the dcp-ops channel notifying wranglers when a release is in the browser to review or of any issues.
 7. A wrangler will do a final check that everything looks ok and notify UCSC on the data-ops channel. 
@@ -295,9 +294,8 @@ Once submission is submitted, there is a separate export SOP beyond ingest:
         * Wrangler will trigger export by hitting submit and following steps 2-7 until the project is available and looks ok
 8. When the project is available in the browser, the wrangler can [email](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/233) the contributor or contacts from the publication to inform them of the URL where the project is available
 
-#### Import Form Details for DCP data releases
-[Import form](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/)
-
+### Import Form Details for DCP data releases
+[Import form](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/)<br>
 [Import form result sheet](https://docs.google.com/spreadsheets/d/1xApi-qay1H9ef2JQAmPNXH63Xy-0cNYBN4wBaq-YC3U/edit?usp=sharing)
 
 | Field                     | Explanation                                                       |
@@ -331,5 +329,10 @@ Additionally, move all the corresponding documents to Google Drive/Brokering/[PR
 
 ## Brokering to SCEA
 
-- [hca_to_scea_tools_SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/After_export/hca_to_scea_tools_SOP.html)
-- See documentation on the [hca-to-scea repo](https://github.com/ebi-ait/hca-to-scea-tools)
+[hca_to_scea_tools_SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/After_export/hca_to_scea_tools_SOP.html)
+See documentation on the [hca-to-scea repo](https://github.com/ebi-ait/hca-to-scea-tools)
+
+
+## TDR import errors
+
+link to <br>__\# TODO add typical hacks to resolve import errors__
