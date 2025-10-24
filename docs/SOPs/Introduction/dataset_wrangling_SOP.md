@@ -224,7 +224,7 @@ Please note:
 * There should never be duplicate projects in the production ui, if you do need to reupload an entire project, please delete the existing project before re-uploading a spreadsheet. 
 
 ### Experimental graph validation
-The ingest graph validator allows wranglers to visualise the experimental graph of the experiment and also performs some tests to check against our current graph assumptions. 
+Graph validator allows wranglers to perform some tests to check against our current graph assumptions. 
 
 Validation currently happens automatically in ingest. Once the metadata is validated against the schema, in the "Validate" tab in ingest you will find a button. Click on it and your experimental graph will be validated against the test currently deployed to master.
 
@@ -233,7 +233,8 @@ Any test that fails to pass will show a useful error message, alongside the enti
 ![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/ingest_graph_validator_screenshots/ingest_graph_validator_error_2.png?raw=true)
 ![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/ingest_graph_validator_screenshots/ingest_graph_validator_error_1.png?raw=true)
 
-If you want to run the tests locally, or suggest a new test/report a bug, please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator).
+[Here](https://github.com/ebi-ait/ingest-graph-validator/tree/master/graph_test_set) you can see the list of rules.
+If you want to run the tests locally, or suggest a new test/report a bug, please follow the documentation in the [ingest graph validator repository](https://github.com/ebi-ait/ingest-graph-validator). Local deployment allows wrangler to visualise the experimental graph of the experiment.
 
 ## Secondary Review
 
