@@ -43,20 +43,21 @@ flowchart TD
     C2 --"upload"--> C3
     end
 
-    subgraph ingest [ingest submission process]
+    subgraph ingest [<a href='https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#submission-process-in-ingest'>ingest submission process</a>]
     I1["Create submission"]
     I2["Validate data/ metadata"]
     I3["Validate graph"]
     I4["Secondary review"]
-    I5["Export"]
+    I5["Submit"]
     I1 --> I2
     I2 --> I3 --> I4 --> I5 
     I4 --> I2
     end
 
-    subgraph import [staging area]
-    M1["Import form filled"]
-    M2["Monitor TDR validation"]
+    subgraph import [<a href='https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/access_tera.html'>staging area</a>]
+    M1["Export"]
+    M2["Import form filled"]
+    M3["Monitor TDR validation"]
     I5 --> M1
     end
 
@@ -73,7 +74,13 @@ flowchart TD
     click D1 href "https://github.com/ebi-ait/hca-ebi-wrangler-central/issues" "wrangler repo"
     click D2 href "https://contribute.data.humancellatlas.org/" "ingest site"
     click HMS href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Metadata_spreadsheet/HCA_Metadata_Spreadsheet_Guide_Wranglers.html" "HCA metadata spreadsheet guide"
+    click I1 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#create-submission" "Create ingest submission"
+    click I2 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#metadata-validation" "Validate data/metadata"
+    click I3 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#experimental-graph-validation" "Validate graph"
     click I4 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/secondary_review_SOP.html" "Secondary review SOP"
-    click M2 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/access_tera.html" "Access TDR SOP"
+    click I5 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#completing-the-submission" "Completing the submission SOP"
+    click M1 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#export" "Export SOP"
+    click M2 href "https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/" "Import form"
+    click M3 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/access_tera.html" "Access TDR SOP"
 ```
 
