@@ -255,20 +255,21 @@ Once both the Primary and Secondary wrangler are happy with the submission and i
 
 ## Completing the submission
 
-Once all the files have been validated the project will be ready for submission. 
+Once all the files and experimental graph have been validated and reviewed, the project will be ready for submission via Ingest UI.
 
 If wrangling the project with direct input from a contributor, the primary wrangler should [email the contributor](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/contributor_communication_SOP.html#final-confirmation-before-submission) to confirm:
 - They are happy with the final spreadsheet and curated ontologies, and 
 - The date they have identified for the data and metadata to be released publicly
 
-Currently, you ca export either:
+Currently, you can export either:
 1. only metadata `Submit only metadata to the Human Cell Atlas.`. This is useful only for updates. *`Known bug`*: If only metadata is exported, and data files are not in staging area, Import team's validation will fail. To prevent that, remove all metadata/descriptors/links related to files not in staging.
 1. full submission `Submit metadata and data to the Human Cell Atlas.` This will make submission public with the next snapshot.
 
 Always untick the `Delete the upload area and data files after successful submission.` checkbox. This is because once data is removed from ingest upload area, UploadApi is not allowing re-assignment of data files.
 
+Once submission is submitted, there is a separate export SOP beyond ingest:
 
-### Export submission to DCP
+## Export
 
 1. As soon as a dataset is ready for export, the wrangler should hit the submit button in the UI with the `Submit to the Human Cell Atlas...` checkbox ticked to trigger export and note the project UUID.
     1. *`Current mechanism`*: Wrangler retrieves the project UUID from the URL when viewing the project in the ingest browser.
