@@ -10,7 +10,7 @@ has_children: true
 
 As of 2025, we might have to deal with 4 types of submissions based the state of data/metadata:
 1. Submission from Published project
-1. Submission from Unpublished project
+1. Submission from contributor or Unpublished project
 1. Tier 1 submission
 1. Tier 2 submission
 
@@ -27,7 +27,7 @@ On the other hand, Tier-ed metadata can be easily converted to HCA schema theref
 ## 1. Submission from published project
 
 ### Why?
-We might have to wrangle a dataset from a publication. One case would be because contributor is not responding but project is valuable for the atlas. Other reason could be that project is HCA publication.
+We might have to wrangle a dataset from a publication. One case would be because contributor is not responding but project is valuable for the atlas.
 
 ### How?
 ```mermaid
@@ -41,12 +41,12 @@ flowchart LR
     DW --"review spreadsheet"--> I([Ingest]) --> DP[("Data Portal")]
 ```
 - No contact with contributor is achieved
-- DCA might be required
+- If no DCA can be aquired, use only Tier 1 equivalent metadata ([see here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#curating-metadata)).
 
-## 2. Submission from unpublished project
+## 2. Submission from contributor or unpublished project
 
 ### Why?
-We might have to wrangle a dataset that has not been published before. One case could be that project is HCA publication but it has not been published yet.
+We might have to wrangle a dataset that has not been published before or help a contributor do that. One case could be that project is HCA publication.
 
 ### How?
 ```mermaid
@@ -54,11 +54,11 @@ flowchart LR
     C{{"Contributor"}}
     DW{{"Data Wrangler"}}
     UA[["hca-util upload area"]]
-    C --"fill in spreadsheet"--> DW
-    C --"upload data"--> UA
-    UA --> I
+    C --"fill in spreadsheet"--x DW
+    C x--"upload data"--x UA
+    UA x--x I
     DW --"share init spreadsheet"--> C
-    DW --"review spreadsheet"--> I([Ingest]) --> DP[("Data Portal")]
+    DW x--"review spreadsheet"--x I([Ingest]) x--x DP[("Data Portal")]
 ```
 - No contact with contributor is achieved
 - DCA might be required
