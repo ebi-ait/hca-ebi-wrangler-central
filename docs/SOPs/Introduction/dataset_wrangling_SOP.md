@@ -190,39 +190,23 @@ The gene expression matrix and cell annotations files should be added to the S3 
 
 ![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/matrices_screenshots/cgms_screenshot.png?raw=true)
 
-
-## Metadata validation
+## Submission process in Ingest
 Once the spreadsheet is considered complete by the primary wrangler, there are two phases of metadata validation that can be completed.
 
-### Spreadsheet and JSON schema validation
+### Create submission
 The primary wrangler should upload the spreadsheet to the [ingest production ui](https://contribute.data.humancellatlas.org/) to check the validity of the spreadsheet.
 
-This can be done in one of two ways
+In order to upload a spreadsheet, you need to attach spreadsheet into a submission to a project that already exists in the ingest ui: 
+1. Click [register](https://contribute.data.humancellatlas.org/projects/register/) project in homepage
+1. Fill as many project metadata as possible
+1. Register project
+1. In project page, go to `3. Data upload` tab and click the `Submit to Project` button to upload the spreadsheet
+    1. If you added project metadata in your spreadsheet (prefferable) select: `Update the project metadata.` This will overwrite the existing project metadata.
+    1. If spreadsheet does not have project metadata select: `Do not update the project metadata.` This will ignore project worksheet in the spreadsheet.
 
-#### 1. Full spreadsheet with project metadata
+### Metadata validation
 
-To create a new project from a full spreadsheet:
-1. go to the `ALL SUBMISSIONS` tab then click the `Upload New Submission` button in the top right. 
-    1. If all the metadata is valid, you can move on to uploading the fastq files data. 
-    1. If any metadata is invalid,  you will need to resolve any errors or problems. This can be done directly in the UI or by uploading a new spreadsheet to the existing project. 
-1. To Upload a fixed spreadsheet to the project:
-    1. Fix the errors in the spreadsheet and return to the existing project in the ui
-    1. Click the `3. Upload` tab to view the submissions
-    1. Delete the submission with errors by clicking the trash icon next to the submission
-    1. Go to the `3. Upload` tab and click the `Submit to Project` button to upload the fixed spreadsheet. If the button doesn't appear try refreshing the page.
-    1. repeat these steps until you have a project with valid metadata
-1. To edit in the UI
-    1. change any fields that need to be edited
-    1. click save
-1. When all metadata is valid, proceed to upload the required files
-
-#### 2. Pre-registered project that already exists in ingest
-
-If attaching a submission to a project that already exists in the ingest ui: 
-1. Go to the project page
-1. Click the `Edit project` button 
-1. Go to the `3. Upload` tab and click the `Submit to Project` button to upload the spreadsheet
-    1. If any metadata is invalid,  you will need to resolve any errors or problems. This can be done directly in the UI or by uploading a new spreadsheet to the existing project. 
+If any metadata is invalid,  you will need to resolve any errors or problems. This can be done directly in the UI or by uploading a new fixed spreadsheet to the existing project.
 1. To upload a fixed spreadsheet to the project:
     1. Fix the errors in the spreadhseet and return to the existing project in the ui
     1. Click the `3. Upload` tab to view the submissions
