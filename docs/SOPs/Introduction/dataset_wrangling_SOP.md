@@ -116,7 +116,7 @@ You can follow the [upload instructions](https://github.com/ebi-ait/hca-document
 
 If contributor is to upload their data, this should be done via `hca-util` as well. In order to do that an aws account needs to be created using this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/aws_contributor_credentials.md).
 
-Then share this email template for contributor to fill the metadata. # TODO add email template for contributor uploading files
+Then share this email template for contributor to fill the metadata. # TODO add link to email template for contributor how to uploading files
 
 ## Gather metadata
 
