@@ -159,13 +159,13 @@ Once you have a customised and potentially pre-filled spreadsheet it can be sent
 - `specimen_from_organism.organ`
 
 ### General best practices
-For best practices on dataset wrangling, please refer to the document [Wrangling best practices](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/wrangling_best_practices.html)
+For best practices on dataset wrangling, please refer to the document [Wrangling best practices](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Metadata_spreadsheet/wrangling_best_practices.html)
 
 ### Ontology curation
 
-For ontologised fields, wranglers need to assign an ontology term that best suits the text provided by the contributor. The ontologised fields must be present within the latest version of the HCAO and meet the graph restriction present in the schema. The [ontology filler tool](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/src/fill_ontologies.py) can help with this process, but should be reviewed once complete. 
+For ontologised fields, wranglers need to assign an ontology term that best suits the text provided by the contributor. You can use EBI's [Ontology Lookup Service](https://www.ebi.ac.uk/ols4/) (OLS). The ontologised fields must be present within the latest version of the HCAO or OLS4 and meet the graph restriction present in the schema. The [ontology filler script](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/src/fill_ontologies.py) can help with this process, but should be reviewed once complete. 
 
-If a wrangler cannot find an accurate ontology term and believes a term should be added to the relevant ontology, they should follow the [Request ontology terms SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/request_ontology_terms.html).
+~~If a wrangler cannot find an accurate ontology term and believes a term should be added to the relevant ontology, they should follow the [Request ontology terms SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Update_schema_ontology/request_ontology_terms.html).~~_~~ _Is HCAO able to get new terms?_
 
 ### General metadata curation tips
 
