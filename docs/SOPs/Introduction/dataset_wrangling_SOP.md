@@ -56,7 +56,7 @@ Read more in the relevant [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-centr
 
 ## Gathering data
 
-The first step in the wrangling process is always to make sure that we have files available to deposit. If no file can be associated with metadata, the submission will be invalid.
+The first step in the wrangling process is making sure that we have files available to deposit. If no file can be associated with metadata, the submission will be invalid.
 
 We might have to use previously archived data, or ask contributor to archive data directly to DCP.
 
@@ -72,24 +72,35 @@ Once we have make sure that files can be downloaded, or accessed we need to:
 
 If the data that are going to be deposited are in a public archive, we should transfer data to the hca-util upload area.
 
-**Raw (fastq) data files**
+**Raw (fastq) data files:**
 Once the upload area has been created, there are several ways to upload the files from ENA/SRA.
 We have multiple SOPs depending on where files are deposited:
 - Node [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/Node_data_how_to.html)
 - Globus [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/Globus_data_how_to.html)
 - Dryad [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/Dryad_data_how_to.html)
+- aspera [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Download_from_archives/aspera_download.html)
 - ENA [script to upload to an s3 bucket](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Download_from_archives/upload_files_to_an_s3_bucket_from_the_archives.html)
     - This script may fail the request to get the files sometimes if ENA's servers are overloaded.
 - SRA/ NCBI
     - [cloud delivery SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/NCBI_SRA_cold_storage_how_to.html)
-- aspera [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Download_from_archives/aspera_download.html)
 
-**GEO Matrix data files**
+**GEO Matrix data files:**
 For most publications with a GEO accession, gene matrices files are available for download. The matrices files can be directly downloaded either locally to your desktop by clicking the link, or via wget in the terminal and on EC2.
 
 There is an [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Download_from_archives/download_GEO_matrices.html) to help with programmatic downloading of GEO supplementary files.
 
-**Other repos**
+**Matrix and Cell types:**
+For each project, wranglers should endeavour to find an expression matrix and if not embedded within that matrix, a listing of cell type annotations. These are generally linked from a publication, present as a supplementary file on the publication, GEO or ArrayExpress submission.
+
+The preferred formats for matrix files are:
+* `loom`
+* `h5ad`
+* `rds` or `Robj`
+* cell ranger format (`csv` & `mtx`) - split into three files for `_features.csv`, `_matrix.mtx` and cell `_barcodes.csv`
+
+If analysis files are separated in count matrix/ feature/ barcode, join them into a single process to represent a single cell ranger run.
+
+**Other repos:**
 It is very common for contributors to upload their processed data into a custom webside that is not an archive. In this case, if you are sure there is consent to download and re-distribute data, you should get files locally.
 
 ## Data upload
@@ -98,7 +109,7 @@ Once all files are downloaded locally (or in EC2 / S3), the data files need to b
 
 You can follow the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
 
-## Data upload contributor
+### Data upload - contributor
 
 If contributor is to upload their data, this should be done via `hca-util` as well. In order to do that an aws account needs to be created using this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/aws_contributor_credentials.html).
 
@@ -108,11 +119,9 @@ Then share this email template for contributor to fill the metadata. # TODO add 
 
 ### For published datasets only 
 
-With a published dataset, there is no requirement for a signed DCA or template emails to send to the contributor. First, start by getting some initial information about the dataset from reading the published paper, and checking if there is data that is publicly available. 
+First, start by getting some initial information about the dataset from reading the published paper, and checking if there is data that is publicly available. 
 
-Once you have an understanding of which biomaterials, protocols, and processes are used, it is time to generate a metadata spreadsheet. The tool to generate a tailored spreadsheet is integrated in ingest.  You can find it in the `Experiment Information` tab, `Generate a metadata template` section of your project.
-
-_If needed the spreadsheet generator can be found in this repo  [`schema-template-generator`](https://github.com/HumanCellAtlas/schema-template-generator)_ 
+Once you have an understanding of which biomaterials, protocols, and processes are used, it is time to generate a metadata spreadsheet. 
 
 Since there is no contributor involved, do make the spreadsheet as comprehensive as you think is necessary. 
 Instead of the iterative process of the contributor filling in what they can, the wrangler reviewing, curating, and asking questions, there is only you (the wrangler) working with the spreadsheet. It is easy to get stuck, so don’t forget that you’re working as a team and get a second opinion if necessary! 
@@ -156,15 +165,6 @@ When wranging from publication wranglers need to take care to only include tier 
 
 **Library preparation protocol** <br>
 You can refer to the [assay cheat sheet](https://docs.google.com/spreadsheets/d/1H9i1BK-VOXtMgGVv8LJZZZ9rbTG4XCQTBRxErdqMvWk/edit#gid=0) for existing, standard assays so that we stay consistent across Lattice, EBI and UCSC wrangling teams.
-
-## Contributor Matrix and cell types SOP 
-For each project, wranglers should endeavour to find an expression matrix and if not embedded within that matrix, a listing of cell type annotations. These are generally linked from a publication, present as a supplementary file on the publication, GEO or ArrayExpress submission.
-
-The preferred formats for matrix files are:
-* `loom`
-* `h5ad`
-* cell ranger format - split into three files for features, matrix and cell barcodes
-* RObj?
 
 ### Filling in metadata about the files
 
