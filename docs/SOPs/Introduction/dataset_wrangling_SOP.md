@@ -146,6 +146,18 @@ Once you have a customised and potentially pre-filled spreadsheet it can be sent
 
 ## Curating metadata
 
+<i class="fas fa-exclamation-triangle"></i> __CAUTION!__
+{: .label .label-purple }
+> When wranging from publication wranglers need to take care to only include donor metadata that are mapped to Tier 1. Without a DCA we are unable to confirm that the dataset is consented for open access publication in compliance with local laws, so to protect potentially sensitive metadata we only collect metadata that can be released publicly.
+
+- `donor_organism.biomaterial_core.biomaterial_id`
+- `donor_organism.biomaterial_core.ncbi_taxon_id`
+- `donor_organism.sex`
+- `donor_organism.organism_age` - in 10 year bins (i.e. 20-29 year, 70-79 years old)
+- `donor_organism.development_stage` - in 10 year bins (i.e. [20-29 years old](https://www.ebi.ac.uk/ols4/ontologies/hsapdv/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FHsapDv_0000237), [70-79 years old](https://www.ebi.ac.uk/ols4/ontologies/hsapdv/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FHsapDv_0000241?lang=en))
+- `specimen_from_organism.biomaterial_core.biomaterial_id`
+- `specimen_from_organism.organ`
+
 ### General best practices
 For best practices on dataset wrangling, please refer to the document [Wrangling best practices](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/wrangling_best_practices.html)
 
@@ -156,8 +168,6 @@ For ontologised fields, wranglers need to assign an ontology term that best suit
 If a wrangler cannot find an accurate ontology term and believes a term should be added to the relevant ontology, they should follow the [Request ontology terms SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/request_ontology_terms.html).
 
 ### General metadata curation tips
-
-When wranging from publication wranglers need to take care to only include tier 1 metadata. Without being in contact with the authors we have are unable to confirm that the dataset is consented for open access publication in compliance with local laws, so to protect potentially sensitive metadata we only collect metadata that can be released publicly.
 
 - `organ` or `model_organ` should be the broad major organ type, not a system
 - The `organ_part` or `model_organ_part` should be the most specific organ part available
