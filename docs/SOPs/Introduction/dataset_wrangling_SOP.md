@@ -50,7 +50,70 @@ When working with new projects we need to be sure that we keep track of everythi
 
 Read more in the relevant [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/wrangling_project_management.md)
 
-## Gathering data & metadata
+## Type of submission
+
+As of 2025, we might have to deal with 4 types of submissions based on the `request type`, as shown in the [wrangling process diagram](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/Introduction/wrangling_process_diagram.md):
+1. Tier 1 submission
+1. Tier 2 submission
+1. Submission from Published project
+1. Submission from Unpublished project
+
+### Tier-ed metadata
+
+Integration teams are using their own distinct metadata schema, to accomodate their needs. We can [convert](https://github.com/ebi-ait/hca-tier1-to-dcp) this Tier-ed schema into the [HCA metadata schema](https://github.com/HumanCellAtlas/metadata-schema/tree/master/json_schema), in order to proceed with ingestion into the DCP2.0. 
+
+More information can be found in the [confluence page](https://embl.atlassian.net/wiki/spaces/HCA/pages/142936546/HCA+metadata+schema+s+-+decisions).
+
+Since Tier-ed metadata can be easily converted to HCA schema there is limited curation required for the submission to be complete. 
+
+On the other hand, in cases 3-4 we would need to gather the metadata (case 3), or help the contributor to gather the metadata (case 4). In this SOP we will focus on the cases 3-4.
+
+## Gathering data
+
+The first step in the wrangling process is always to make sure that we have files available to deposit. If no file can be associated with metadata, the submission will be invalid.
+
+We might have to use previously archived data, or ask contributor to archive data directly to DCP.
+
+EBI team has created a very handy aws-wrapper cli tool to upload data into the appropriate bucket called [hca-util](https://github.com/ebi-ait/hca-util). You can read more about `hca-util` [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Accessing_upload_area/hca_util.html).
+
+Once we have make sure that files can be downloaded, or accessed we need to: 
+* Create an upload area
+* Upload files to the upload area
+
+> Note that this step does not need to be completed now, and can wait until after the metadata spreadsheet has been gathered. 
+
+### Raw Data (fastq) download
+
+If the data that are going to be deposited are in a public archive, we should transfer data to the hca-util upload area.
+
+Once the upload area has been created, there are several ways to upload the files from ENA/SRA.
+We have multiple SOPs depending on where files are deposited:
+- Node [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/Node_data_how_to.html)
+- Globus [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/Globus_data_how_to.html)
+- Dryad [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/Dryad_data_how_to.html)
+- ENA [script to upload to an s3 bucket](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Download_from_archives/upload_files_to_an_s3_bucket_from_the_archives.html)
+    - This script may fail the request to get the files sometimes if ENA's servers are overloaded.
+- SRA/ NCBI
+    - [cloud delivery SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/NCBI_SRA_cold_storage_how_to.html)
+- aspera [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Download_from_archives/aspera_download.html)
+
+### Analysis files download
+
+If there are no gene expression matrices available in the public domain, then you should ask the publication lead contributing author for the file(s).
+
+For most publications with a GEO accession, gene matrices files are available for download. The matrices files can be directly downloaded either locally to your desktop by clicking the link, or via wget in the terminal and on EC2.
+
+There is an [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Download_from_archives/download_GEO_matrices.html) to help with programmatic downloading of GEO supplementary files.
+
+## Data Upload
+
+Once all files are downloaded locally (or in EC2 / S3), the data files need to be uploaded to an `hca-util` upload area. You can follow the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) for contributors.
+
+### Data upload Procedure
+
+If contributor is to upload their data, this should be done via hca-util. In order to do that an aws account needs to be created using this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/aws_contributor_credentials.md).
+
+## Gather metadata
 
 ### For published datasets only 
 
@@ -79,65 +142,6 @@ After the spreadsheet is generated some manual steps can help contributors under
 - Pre-fill any metadata you already know (optional): if the dataset has a publication it is normally possible to gain information from the publication and prefill it into the spreadsheet
 
 Once you have a customised and potentially pre-filled spreadsheet it can be sent to the contributor along with the contributor spreadsheet guide. It is generally an iterative process of the contributor filling in what they can, the wrangler reviewing, curating and asking questions before further curation until the metadata is complete. 
-
-
-### Raw Data (fastq) download
-
-After generating the spreadsheet, we move onto raw data upload. There is no contributor to upload their data manually, so we must take on that role and: 
-* Create an upload area
-* Upload files to the upload area. 
-
-Note that this step does not need to be completed now, and can wait until after the metadata spreadsheet has been gathered. 
-
-Once the upload area has been created, there are several ways to upload the files from ENA/SRA (Sorted from easiest/fastest to most manual/slow).
-If the files are deposited in Node follow this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Node_data_how_to), if they are deposited in Globus follow this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Globus_data_how_to), 
-
-**Python script in hca-ebi-wrangler-central repository**
-
-There is a useful [script](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/handy_snippets.html#uploading-files-to-an-s3-bucket-from-the-archives) for uploading files to an s3 bucket, which can speed up the process tremendously.
-However, this script may fail the request to get the files sometimes if ENA's servers are overloaded.
-
-**NCBI/SRA cold storage**
-
-NCBI provides, for most of the new datasets, amazon s3 storage for fastq files. Applying for the data is free and the data is transferred in about 2 to 3 working days. For more information, follow the [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/NCBI_SRA_cold_storage_how_to.html). You can also use aspera following this [SOP](/tools/Download_from_archives/aspera_download.md)
-   
-Once downloaded locally, the data files need to be uploaded to an hca-util area. You can follow the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) for contributors.
-
-## Raw Data (fastq) and Processed Data Upload
-
-### Data upload Procedure
-
-If contributor is to upload their data, this should be done via hca-util. In order to do that an aws account needs to be created using this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/aws_contributor_credentials.md).
-
-### Download Gene expression matrices 
-
-If there are no gene expression matrices available in the public domain, then you should ask the publication lead contributing author for the file(s).
-
-However, for most publications with a GEO accession, gene matrices files are available for download. The matrices files can be directly downloaded either locally to your desktop by clicking the link, or via wget in the terminal and on EC2.
-
-If the file is particularly large, the wget command will get stuck and the matrices file will not be downloaded. In that case, you can do the following:
-
-Upon running the wget command, if the file is particularly large, you will see that an index.html file path is returned.
-
-Example:
-
-`index.html?acc=GSE171668.1 saved`
-
-You can then run the following command to get an ftp link:
-
-`cat index.html\?acc\=[your GEO accession] | grep "RAW.tar"`
-
-Example:
-
-`cat index.html\?acc\=GSE171668 | grep "RAW.tar"`
-
-You can then wget the ftp link:
-
-`wget ftp://ftp.ncbi.nlm.nih.gov/geo/series/[your GEO accession prefix]nnn/[your GEO accession]/suppl/[your GEO accession]_RAW.tar`
-
-Example:
-
-`wget ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE171nnn/GSE171668/suppl/GSE171668_RAW.tar`
 
 ## Curating metadata
 
