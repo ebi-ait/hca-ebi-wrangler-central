@@ -20,24 +20,25 @@ flowchart TD
     subgraph dca ["Consent type"]
     MA["Managed Access (MA) DCA"]
     OA["Open Access (OA) DCA"]
+    MA ~~~ OA
     end
     
-    subgraph metadata [gather metadata]
-    HMS("HCA Metadata spreadsheet")
-    P1--"fill spreadsheet"-->HMS
-    end
-
     subgraph proj ["project managment"]
     D1["Create github ticket"]
     D2["Create ingest project"]
+    D1 ~~~ D2
+    end
+
+    subgraph metadata [gather metadata]
+    HMS("HCA Metadata spreadsheet")
     end
 
     subgraph data [gather data]
     C1["Archives"]
     C2["Contributor"]
     C3["hca-util upload area"]
-    C1 --> C3
-    C2 --> C3
+    C1 --"upload"--> C3
+    C2 --"upload"--> C3
     end
 
     subgraph ingest [ingest submission process]
@@ -46,7 +47,6 @@ flowchart TD
     I3["Validate graph"]
     I4["Secondary review"]
     I5["Export"]
-    HMS --> I1
     I1 --> I2
     I2 --> I3 --> I4 --> I5 
     I4 --> I2
@@ -60,8 +60,9 @@ flowchart TD
 
     C3 --sync--> I2
     first --> dca
-    dca --dca signed--> proj --> data
-    proj --> metadata
+    dca--dca signed-->proj--> metadata
+    HMS--"fill spreadsheet"--> I1
+    proj-->data
 
     click MA href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#consent-type" "Consent type"
     click proj href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/wrangling_project_management.html" "Project managment"
