@@ -46,9 +46,9 @@ def getDryadDatasetFileManifest(dataset_doi_url_format, dryad_api_url):
         # print(len(files), file_counter)
 
         ### Get filename + url
-        for a_file in files:
-            file_download_url = f"{dryad_api_url}{a_file["_links"]["stash:download"]["href"]}"
-            file_correct_name = a_file["path"]
+        for file_metadata in files:
+            file_download_url = f"{dryad_api_url}{file_metadata["_links"]["stash:download"]["href"]}"
+            file_correct_name = file_metadata["path"]
             file_manifest.append([file_download_url,file_correct_name])
             file_counter = file_counter + 1
         if file_counter > files_total:
