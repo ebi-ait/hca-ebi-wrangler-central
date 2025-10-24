@@ -117,20 +117,21 @@ Then share this email template for contributor to fill the metadata. # TODO add 
 
 ## Gather metadata
 
-### For published datasets only 
-
 First, start by getting some initial information about the dataset from reading the published paper, and checking if there is data that is publicly available. 
 
 Once you have an understanding of which biomaterials, protocols, and processes are used, it is time to generate a metadata spreadsheet. 
+
+### For published datasets only 
 
 Since there is no contributor involved, do make the spreadsheet as comprehensive as you think is necessary. 
 Instead of the iterative process of the contributor filling in what they can, the wrangler reviewing, curating, and asking questions, there is only you (the wrangler) working with the spreadsheet. It is easy to get stuck, so don’t forget that you’re working as a team and get a second opinion if necessary! 
 
 Then move onto the [‘curating metadata’](#curating-metadata) section. 
 
-### Spreadsheet template generation
+### Spreadsheet template tailoring
 
-Once the DCA has been signed, and you have some initial information about the dataset from the questionnaire or meeting, it is time to generate a spreadsheet for the contributor to fill in. The spreadsheet is generated using the [`schema-template-generator`](https://github.com/HumanCellAtlas/schema-template-generator) repo that can be cloned and run locally, see README for install and usage instructions.
+Once the DCA has been signed, and you have some initial information about the dataset from a questionnaire, the publication or ameeting, it is time to tailor the spreadsheet for the contributor to fill in.
+You can use [`schema-template-generator`](https://github.com/HumanCellAtlas/schema-template-generator) but other option is to get the most recent full HCA metadata template from [geo-to-hca](https://github.com/ebi-ait/geo_to_hca/) repo, ([download link](https://github.com/ebi-ait/geo_to_hca/raw/refs/heads/master/template/hca_template.xlsx)).
 
 The spreadsheet should be as simple as possible for the given experiment so that it is more easily understandable for the contributor so only select schema and properties that are relevant to their experiment.
 
@@ -138,10 +139,10 @@ After the spreadsheet is generated some manual steps can help contributors under
 - Ordering of tabs and ordering protocols between biomaterials can help contributors understand our graphical experiment model
 - Ordering of columns: Move linking columns e.g. `INPUT DONOR ORGANISM` to be in the first few columns of the sheet to be more visible
 - Ensure every tab that requires a link has a linking column (these are easy to miss)
-- Delete or hide columns that you know aren’t relevant (if you forgot to uncheck during initial generation)
+- Delete or hide columns that you know aren’t relevant
 - Pre-fill any metadata you already know (optional): if the dataset has a publication it is normally possible to gain information from the publication and prefill it into the spreadsheet
 
-Once you have a customised and potentially pre-filled spreadsheet it can be sent to the contributor along with the contributor spreadsheet guide. It is generally an iterative process of the contributor filling in what they can, the wrangler reviewing, curating and asking questions before further curation until the metadata is complete. 
+Once you have a customised and potentially pre-filled spreadsheet it can be sent to the contributor along with the [contributor spreadsheet guide](https://ebi-ait.github.io/hca-metadata-community/contributing/spreadsheet-guide.html). It is generally an iterative process of the contributor filling in what they can, the wrangler reviewing, curating and asking questions before further curation until the metadata is complete. 
 
 ## Curating metadata
 
