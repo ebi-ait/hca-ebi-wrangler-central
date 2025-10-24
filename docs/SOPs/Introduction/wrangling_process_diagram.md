@@ -60,7 +60,7 @@ flowchart TD
     I2 --> I3 --> I4 --> I5 
     I4 --> I2
     end
-    C3 --upload--> I2
+    C3 --sync--> I2
 
     subgraph import [staging area]
     M1["Import form filled"]
@@ -73,6 +73,9 @@ flowchart TD
 
     click MA href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#consent-type" "Consent type"
     click proj href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/wrangling_project_management.html" "Project managment"
+    click C1 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#gathering-data" "Gathering data"
+    click C2 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#data-upload-contributor" "Data upload contributor"
+    click C3 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Accessing_upload_area/hca_util.html)" "hca-util"
     click M2 href "https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/access_tera.html" "Access TDR SOP"
 ```
 

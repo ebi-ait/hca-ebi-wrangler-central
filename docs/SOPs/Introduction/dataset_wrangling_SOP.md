@@ -82,10 +82,11 @@ Once we have make sure that files can be downloaded, or accessed we need to:
 
 > Note that this step does not need to be completed now, and can wait until after the metadata spreadsheet has been gathered. 
 
-### Raw Data (fastq) download
+### Data download
 
 If the data that are going to be deposited are in a public archive, we should transfer data to the hca-util upload area.
 
+**Raw (fastq) data files**
 Once the upload area has been created, there are several ways to upload the files from ENA/SRA.
 We have multiple SOPs depending on where files are deposited:
 - Node [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/Node_data_how_to.html)
@@ -97,21 +98,25 @@ We have multiple SOPs depending on where files are deposited:
     - [cloud delivery SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/NCBI_SRA_cold_storage_how_to.html)
 - aspera [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Download_from_archives/aspera_download.html)
 
-### Analysis files download
-
-If there are no gene expression matrices available in the public domain, then you should ask the publication lead contributing author for the file(s).
-
+**GEO Matrix data files**
 For most publications with a GEO accession, gene matrices files are available for download. The matrices files can be directly downloaded either locally to your desktop by clicking the link, or via wget in the terminal and on EC2.
 
 There is an [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Download_from_archives/download_GEO_matrices.html) to help with programmatic downloading of GEO supplementary files.
 
-## Data Upload
+**Other repos**
+It is very common for contributors to upload their processed data into a custom webside that is not an archive. In this case, if you are sure there is consent to download and re-distribute data, you should get files locally.
 
-Once all files are downloaded locally (or in EC2 / S3), the data files need to be uploaded to an `hca-util` upload area. You can follow the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util) for contributors.
+## Data upload
 
-### Data upload Procedure
+Once all files are downloaded locally (or in EC2 / S3), the data files need to be uploaded to an `hca-util` upload area. This is an intermediate bucket that allows us fast upload to final upload area in case submission envelope changes.
 
-If contributor is to upload their data, this should be done via hca-util. In order to do that an aws account needs to be created using this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/aws_contributor_credentials.md).
+You can follow the [upload instructions](https://github.com/ebi-ait/hca-documentation/wiki/How-to-upload-data-to-an-upload-area-using-hca-util).
+
+## Data upload contributor
+
+If contributor is to upload their data, this should be done via `hca-util` as well. In order to do that an aws account needs to be created using this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/aws_contributor_credentials.md).
+
+Then share this email template for contributor to fill the metadata. # TODO add email template for contributor uploading files
 
 ## Gather metadata
 
@@ -188,7 +193,7 @@ The gene expression matrix and cell annotations files should be added to the S3 
 ![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/matrices_screenshots/cgms_screenshot.png?raw=true)
 
 
-## Metadata Validation
+## Metadata validation
 Once the spreadsheet is considered complete by the primary wrangler, there are two phases of metadata validation that can be completed.
 
 ### Spreadsheet and JSON schema validation
