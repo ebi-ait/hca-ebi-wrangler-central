@@ -261,28 +261,14 @@ If wrangling the project with direct input from a contributor, the primary wrang
 - They are happy with the final spreadsheet and curated ontologies, and 
 - The date they have identified for the data and metadata to be released publicly
 
-The path after submission can go one of several ways:
-1. the project needs to go to DCP and EBI Archives -> Tick both the `Submit to the EMBL-EBI public archives` and `Submit to the Human Cell Atlas` checkboxes
-1. The project needs to go to DCP only -> Tick only `Submit to the Human Cell Atlas` checkbox
-1. The project needs to go to EBI archives only (if it can't currently be exported to DCP) -> tick only `Submit to the EMBL-EBI public archives` checkbox
+Currently, you ca export either:
+1. only metadata `Submit only metadata to the Human Cell Atlas.`. This is useful only for updates. *`Known bug`*: If only metadata is exported, and data files are not in staging area, Import team's validation will fail. To prevent that, remove all metadata/descriptors/links related to files not in staging.
+1. full submission `Submit metadata and data to the Human Cell Atlas.` This will make submission public with the next snapshot.
 
-Always untick the `Delete the upload area and data files after successful submission.` checkbox.
+Always untick the `Delete the upload area and data files after successful submission.` checkbox. This is because once data is removed from ingest upload area, UploadApi is not allowing re-assignment of data files.
 
-## After the data release
 
-Once a dataset has been made live in the browser, please contact the contributors (Even if the data was wrangled from the public domain) using the [template](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/contributor_communication_SOP.html#follow-up-after-dataset-release-in-the-data-portal).
-
-### Archiving the submission
-
-If the submission needs to be archived, ensure you have the `Submit to the EMBL-EBI public archives and get accessions...` check box ticked. If not, proceed to [exporting the submission to DCP2](#exporting-the-submission-to-dcp2)
-
-The project should go into `Archiving` status, at this point you need to inform the developer on operations who will assist with the Archiving process, which is currently semi-manual.
-
-Further documentation for the archiving process can be found here: [Ingestion to Archives Instructions](https://docs.google.com/document/d/1S4fyCSqB3nLrCUssNMwSp6ff8tmeipMi_slnXW2Lrq4/edit?pli=1#heading=h.n3qy5yl0auvs)
-
-After the project has been Archived, if the `Submit to the Human Cell Atlas...` checkbox was also ticked, the project should proceed to `Exporting` status and the following steps should be followed from step 2 onwards.
-
-### Exporting the submission to DCP
+### Export submission to DCP
 
 1. As soon as a dataset is ready for export, the wrangler should hit the submit button in the UI with the `Submit to the Human Cell Atlas...` checkbox ticked to trigger export and note the project UUID.
     1. *`Current mechanism`*: Wrangler retrieves the project UUID from the URL when viewing the project in the ingest browser.
