@@ -11,7 +11,7 @@ def define_parser():
     parser = argparse.ArgumentParser(description="Parser for the arguments")
     parser.add_argument("-d", "--dataset_doi", action="store",
                         type=str, required=True,
-                        help="Dataset DOI")
+                        help="Dataset DOI in the format doi:10.5061/dryad.8pk0p2ns8 ")
     parser.add_argument("-a", "--dryad_api", action="store",
                         type=str, required=False, default="https://datadryad.org/",
                         help="Dryad API URL (default: https://datadryad.org/)")
