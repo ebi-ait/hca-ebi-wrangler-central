@@ -14,7 +14,10 @@ last_modified_date: 22/03/2020
 ## Background
 {: .no_toc }
 
-This SOP document aims to describe the process of wrangling datasets into ingest for submission to DCP2.0.
+This SOP document aims to describe the process of wrangling datasets into ingest for submission into the Data Portal.<br>
+Keep track of the wrangling process documentation using the [wrangling process diagram](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/Introduction/wrangling_process_diagram.md).
+
+We'll focus on submitting from a publication, but more alternatives are found [here](https://ebi-ait.github.io/hca-ebi-wrangler-central//SOPs/Introduction/submission_variations.html).
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -22,6 +25,7 @@ This SOP document aims to describe the process of wrangling datasets into ingest
 1. TOC
 {:toc}
 
+Once a dataset needs wrangling is assigned to us, first thing to do is to decide on the consent type of the donors.
 
 ## Consent type
 
@@ -49,24 +53,6 @@ When working with new projects we need to be sure that we keep track of everythi
 1. Github project issue
 
 Read more in the relevant [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/wrangling_project_management.html)
-
-## Type of submission
-
-As of 2025, we might have to deal with 4 types of submissions based on the `request type`, as shown in the [wrangling process diagram](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/docs/SOPs/Introduction/wrangling_process_diagram.md):
-1. Tier 1 submission
-1. Tier 2 submission
-1. Submission from Published project
-1. Submission from Unpublished project
-
-### Tier-ed metadata
-
-Integration teams are using their own distinct metadata schema, to accomodate their needs. We can [convert](https://github.com/ebi-ait/hca-tier1-to-dcp) this Tier-ed schema into the [HCA metadata schema](https://github.com/HumanCellAtlas/metadata-schema/tree/master/json_schema), in order to proceed with ingestion into the DCP2.0. 
-
-More information can be found in [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/hca_metadata_struct.html), or the [confluence page](https://embl.atlassian.net/wiki/spaces/HCA/pages/142936546/HCA+metadata+schema+s+-+decisions).
-
-Since Tier-ed metadata can be easily converted to HCA schema there is limited curation required for the submission to be complete. 
-
-On the other hand, in cases 3-4 we would need to gather the metadata (case 3), or help the contributor to gather the metadata (case 4). In this SOP we will focus on the cases 3-4.
 
 ## Gathering data
 
