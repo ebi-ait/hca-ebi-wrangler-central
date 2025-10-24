@@ -296,36 +296,38 @@ Once submission is submitted, there is a separate export SOP beyond ingest:
 8. When the project is available in the browser, the wrangler can [email](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/233) the contributor or contacts from the publication to inform them of the URL where the project is available
 
 #### Import Form Details for DCP data releases
+[Import form](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/)
+
+[Import form result sheet](https://docs.google.com/spreadsheets/d/1xApi-qay1H9ef2JQAmPNXH63Xy-0cNYBN4wBaq-YC3U/edit?usp=sharing)
 
 | Field                     | Explanation                                                       |
 |---------------------------|-------------------------------------------------------------------|
 | Email address             | So you can be contacted if any issues with import                 |
 | Release #                 | The integer number of the ~monthly release cutoff                 |
-| Google storage cloud path | `gs://broad-dsp-monster-hca-prod-ebi-storage/prod/[PROJECT_UUID]` |
-| Is this new data, updated data or analysis results? | Choose the appropriate response, 'Brand new data' for a new, never been exported project, or 'An update to data that is already in production' if it is an update. |
-| Additional info           | Any other notes you want to communicate to the import team. |
-  
-#### Import Form Details for DCP testing
-  
-| Field                     | Explanation                                                       |
-|---------------------------|-------------------------------------------------------------------|
-| Email address             | So you can be contacted if any issues with import                 |
-| Release #                 | `Test export`                                                     |
-| Google storage cloud path | `gs://broad-dsp-monster-hca-prod-ebi-storage/staging/[PROJECT_UUID]` |
-| Additional info           | Fill in any special instructions such as details like the environment, catalog and dataset ID. If not sure ask import team on slack  |
+| Your Institution          | The institution of submitting wrangler                            |
+| Project Name              | Project name of exported project                                  |
+| Is this new data, updated data or analysis results? | Choose the appropriate responses.       |
+| Project UUID              | Exported project uuid                                             |
+| Project DUOS ID           | If project is MA, specify the assigned DUOS-ID                    |
+| Does this project contain Managed Access data? | Yes/ No                                      |
+| Additional info           | Any other notes you want to communicate to the import team.       |
+| Optional Release Note for HCA Releases | Public notes to be included in Release notes         |
+| Additional Info           | Internal information for other components                         |
+| Project Contact           | Corresponding author of the project to be contacted upon release  |
+| Highlight in an upcoming DCP users announcement? | Help engagement team to select projects for Release notes |
 
+  
 Notes
 {: label label-blue }
 
-* EBI will export on demand, and notify the Broad
-* Broad will batch import once prior to the monthly release
-* Responsibility for who deletes the contents of the staging area is still being decided.
-* This is likely to evolve as we go, so please note issues with completing this process so we can improve it.
+* EBI will export on demand, and notify the Broad via import form
+* Broad will batch import once prior to the monthly release (check the exact date on [Import form](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/viewform) release description)
+* Contents of the staging area should be deleted for a clean export, unless data already in staging can be used
 * [See this sheet](https://docs.google.com/spreadsheets/d/1xApi-qay1H9ef2JQAmPNXH63Xy-0cNYBN4wBaq-YC3U/edit?usp=sharing) for a rolling list of projects where a an import request form has been filled out.
 
 <i class="fas fa-exclamation-triangle"></i> **Warning**: Wranglers should be aware of when prod releases are occurring and not upload/submit until after the release to that environment is completed. Releases do not currently follow a set schedule so stay tuned to updates posted in the `#hca` slack channel in the AIT workspace. See the [Ingest release SOP](https://github.com/HumanCellAtlas/ingest-central/wiki/Ingest-Release-SOP#release-schedule) for more details.
 
-Additionally, move all the corresponding documents to the [finished_projects](https://github.com/HumanCellAtlas/hca-data-wrangling/tree/master/projects/finished_projects) in hca-wrangling repo and to Google Drive/Brokering/[PROJECTS-FINISHED](https://drive.google.com/drive/folders/1FNRVqlhSwwTKoynIHhq5gsILGyRqd6F9)
+Additionally, move all the corresponding documents to Google Drive/Brokering/[PROJECTS-FINISHED](https://drive.google.com/drive/folders/1FNRVqlhSwwTKoynIHhq5gsILGyRqd6F9)
 
 ## Brokering to SCEA
 
