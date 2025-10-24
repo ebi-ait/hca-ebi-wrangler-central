@@ -48,7 +48,7 @@ When working with new projects we need to be sure that we keep track of everythi
 1. Ingest project
 1. Github project issue
 
-Read more in the relevant [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/wrangling_project_management.md)
+Read more in the relevant [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/wrangling_project_management.html)
 
 ## Type of submission
 
@@ -62,7 +62,7 @@ As of 2025, we might have to deal with 4 types of submissions based on the `requ
 
 Integration teams are using their own distinct metadata schema, to accomodate their needs. We can [convert](https://github.com/ebi-ait/hca-tier1-to-dcp) this Tier-ed schema into the [HCA metadata schema](https://github.com/HumanCellAtlas/metadata-schema/tree/master/json_schema), in order to proceed with ingestion into the DCP2.0. 
 
-More information can be found in the [confluence page](https://embl.atlassian.net/wiki/spaces/HCA/pages/142936546/HCA+metadata+schema+s+-+decisions).
+More information can be found in [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/hca_metadata_struct.html), or the [confluence page](https://embl.atlassian.net/wiki/spaces/HCA/pages/142936546/HCA+metadata+schema+s+-+decisions).
 
 Since Tier-ed metadata can be easily converted to HCA schema there is limited curation required for the submission to be complete. 
 
@@ -114,7 +114,7 @@ You can follow the [upload instructions](https://github.com/ebi-ait/hca-document
 
 ## Data upload contributor
 
-If contributor is to upload their data, this should be done via `hca-util` as well. In order to do that an aws account needs to be created using this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/aws_contributor_credentials.md).
+If contributor is to upload their data, this should be done via `hca-util` as well. In order to do that an aws account needs to be created using this [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/aws_contributor_credentials.html).
 
 Then share this email template for contributor to fill the metadata. # TODO add link to email template for contributor how to uploading files
 
@@ -370,5 +370,5 @@ Additionally, move all the corresponding documents to the [finished_projects](ht
 
 ## Brokering to SCEA
 
-- [hca_to_scea_tools_SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/After_export/hca_to_scea_tools_SOP.md)
+- [hca_to_scea_tools_SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/After_export/hca_to_scea_tools_SOP.html)
 - See documentation on the [hca-to-scea repo](https://github.com/ebi-ait/hca-to-scea-tools)
