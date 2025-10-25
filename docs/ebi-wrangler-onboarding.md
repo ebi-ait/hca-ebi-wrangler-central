@@ -272,6 +272,8 @@ Currently WIP, update if more context is relevant
     > Tip: Add "Request URL Filter": .\*://api.ingest.archive.data.humancellatlas.org/.\* to avoid sending header to any website.
 - [Octotree](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc): Adds easier navigation of repos in github
 - JSON viewer of your choice.
+- ~~[Zenhub](https://chrome.google.com/webstore/detail/zenhub-for-github/ogcgkffhplmphkaahpmffcafajaocjbd):~~ Zenhub access has been expired, and we are no longer using it.
+
 
 ### Miscellanea
 
