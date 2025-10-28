@@ -10,7 +10,7 @@ last_modified_date: 23/10/2025
 
 # Wrangling Project Management
 
-When working with new projects we need to be sure that we keep track of everything in the same way, so all team members can track their status. Two main tracking systems exist:
+When working with new projects we need to be sure that we track progress in a consistent way, so all team members can review a project's status. Two main tracking systems exist:
 1. Ingest project
     1. Add the project to Ingest 
         * Change `wrangling status` to 'in progress'
