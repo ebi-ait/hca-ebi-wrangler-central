@@ -58,7 +58,7 @@ Data for the submission might be already deposited as open access in other archi
 
 EBI team has created a very handy aws-wrapper cli tool to upload data into the appropriate bucket called [hca-util](https://github.com/ebi-ait/hca-util). You can read more about how to use `hca-util` to create and manage upload areas for data [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Accessing_upload_area/hca_util.html).
 
-Once we have make sure that files can be downloaded, or accessed we need to: 
+Once we have made sure that files are available for the project we need to: 
 * Create an upload area
 * Upload files to the upload area
 
