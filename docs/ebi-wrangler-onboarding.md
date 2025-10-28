@@ -178,7 +178,6 @@ Your email should be checked throughout every working day. Part of your job as a
 
 Check your [google groups](https://groups.google.com/a/data.humancellatlas.org/forum/#!myforums) and ask Amnon to add you if you are not a member of any of the following groups:
 
- - DCP Metadata Team
  - DCP Ingest Team
  - DCP Wrangler Team 
  - metadata-community 
