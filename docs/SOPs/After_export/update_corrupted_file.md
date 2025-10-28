@@ -17,7 +17,7 @@ Use case issue: [#1396](https://github.com/ebi-ait/hca-ebi-wrangler-central/issu
 UCSC team performs checks on the integrity of the data. During such check, they might identify mismatches in the checksum of file in TDR and checksum in metadata.
 
 In such cases, uncorrupted data should be re-submitted by wranglers. One option would be to re-export data from ingest. However, [upload api](https://github.com/ebi-ait/upload-service) doesn't allow us to re-upload files that have previously been deleted.
-A workaround is to override ingest and update file directly in the staging area. In order for TDR to allow overwritting the previous file, we should update the file version. Files that we don't want to update, doesn't have to be in staging area.
+A workaround is to override ingest and update file directly in the staging area. In order for TDR to allow overwriting the previous file, we should update the file version. Files that we don't want to update don't have to be in staging area.
 
 ## process
 1. [identify the corrupted files in database](#1-identify-the-corrupted-files-in-database)
