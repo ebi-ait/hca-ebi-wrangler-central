@@ -178,7 +178,6 @@ Your email should be checked throughout every working day. Part of your job as a
 
 Check your [google groups](https://groups.google.com/a/data.humancellatlas.org/forum/#!myforums) and ask Amnon to add you if you are not a member of any of the following groups:
 
- - DCP Ingest Team
  - DCP Wrangler Team 
  
 These are mailing lists that are used by the Data Portal to reach the metadata and wrangling teams, respectively. The DCP Wrangler Team email (`wrangler-team@data.humancellatlas.org`) is also used by data contributors for help during the submission process. 
