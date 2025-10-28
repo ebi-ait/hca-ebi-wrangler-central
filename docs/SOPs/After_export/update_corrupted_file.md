@@ -174,7 +174,7 @@ If the documents is structured in a hierahical way as it is in staging area you 
 
 ```python
 """
-That's a script to replace (valid) descriptor contents with correct hash values and 
+That's a script to replace (valid) descriptor contents with correct hash values and rename descriptor filename
 """
 import os
 import re
