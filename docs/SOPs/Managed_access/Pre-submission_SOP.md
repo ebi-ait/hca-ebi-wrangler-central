@@ -35,7 +35,7 @@ Send to the contributor, with the wrangler email in CC
 
 If data contributor will just contribute Tier 2 metadata (and FASTQ files), an alterned doc should be shared:
 
-[Tier 2 template email](#)
+[Tier 2 template email](#tier-2-email-template---instructions-for-the-contributor)
 
 ## Prepare a secure storage area
 Prepare a secure storage area in AWS for the projects’ data and metadata. 
