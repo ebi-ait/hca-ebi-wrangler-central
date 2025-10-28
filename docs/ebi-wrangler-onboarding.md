@@ -180,7 +180,6 @@ Check your [google groups](https://groups.google.com/a/data.humancellatlas.org/f
 
  - DCP Ingest Team
  - DCP Wrangler Team 
- - metadata-community 
  
 These are mailing lists that are used by the Data Portal to reach the metadata and wrangling teams, respectively. The DCP Wrangler Team email (`wrangler-team@data.humancellatlas.org`) is also used by data contributors for help during the submission process. 
 
