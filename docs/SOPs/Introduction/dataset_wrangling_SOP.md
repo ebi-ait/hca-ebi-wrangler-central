@@ -54,7 +54,7 @@ Read more in the relevant [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-centr
 
 The first step in the wrangling process is making sure that we have files available to deposit. If no file can be associated with metadata, the submission will be invalid.
 
-We might have to use previously archived data, or ask contributor to archive data directly to DCP.
+Data for the submission might be already deposited as open access in other archives or repositories in the case of published datasets, or it might come directly from a contributor in case of direct submission to the Data Portal.
 
 EBI team has created a very handy aws-wrapper cli tool to upload data into the appropriate bucket called [hca-util](https://github.com/ebi-ait/hca-util). You can read more about `hca-util` [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Accessing_upload_area/hca_util.html).
 
