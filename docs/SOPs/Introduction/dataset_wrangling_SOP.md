@@ -288,13 +288,22 @@ A quite nice Data Portal Release SOP has been implemented by the Broad folks [he
 6. UCSC Browser team will notify submitting wrangler and Broad team when release is indexed and in the browser or if issues are encountered.
     * Via slack in the dcp-ops channel notifying wranglers when a release is in the browser to review or of any issues.
 7. A wrangler will do a final check that everything looks ok and notify UCSC on the data-ops channel. 
-    <br>__\# TODO add paragraph to check what review in browser__
     1. If big issue occurs, snapshot can be removed from release, fixed and re-export in next release.
     1. If minor issue occurs, dataset can stay in release but a fix will be re-exported in next release.
         * In order to move submission status, you can edit \*any* field and submission state will go to draft and validate.
         * Contents of the project staging area in the staging bucket might be required to be deleted as well
         * Wrangler will trigger export by hitting submit and following steps 2-7 until the project is available and looks ok
 8. When the project is available in the browser, the wrangler can [email](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/233) the contributor or contacts from the publication to inform them of the URL where the project is available
+
+### What to review in browser?
+
+When wrangler is reviewing data in browser, we want to make sure that all the changes are applied and no weird thing is shown into the Portal. This could be:
+- all facet'ed fields are as expected (righten side of page)
+- contributors names are presented as expected
+- matrix files are shown in tab as expected
+- publication name and url is valid
+- file formats and number of files are as expected
+- biomaterial and atlas icon is correct
 
 ### Import Form Details for DCP data releases
 [Import form](https://docs.google.com/forms/d/e/1FAIpQLSeokUTa-aVXGDdSNODEYetxezasFKp2oVLz65775lgk5t0D2w/)<br>
