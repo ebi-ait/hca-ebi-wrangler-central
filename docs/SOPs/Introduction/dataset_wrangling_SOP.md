@@ -329,12 +329,12 @@ Notes
 
 Additionally, move all the corresponding documents to Google Drive/Brokering/[PROJECTS-FINISHED](https://drive.google.com/drive/folders/1FNRVqlhSwwTKoynIHhq5gsILGyRqd6F9)
 
+## TDR import errors
+
+If some errors in Import into TDR occur, we have an SOP that provides some insights on how to handle those errors
+https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/After_export/tdr_issues.html
+
 ## Brokering to SCEA
 
 [hca_to_scea_tools_SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/After_export/hca_to_scea_tools_SOP.html)
 See documentation on the [hca-to-scea repo](https://github.com/ebi-ait/hca-to-scea-tools)
-
-
-## TDR import errors
-
-link to <br>__\# TODO add typical hacks to resolve import errors__
