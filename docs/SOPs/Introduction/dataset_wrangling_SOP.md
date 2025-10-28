@@ -271,6 +271,8 @@ Once submission is submitted, there is a separate export SOP beyond ingest:
 
 ## Export
 
+A quite nice Data Portal Release SOP has been implemented by the Broad folks [here](https://docs.google.com/document/d/1F_kkj9LPkKsYx0MKWumgoDEj2i05tcHWfxqaKk7aDAA/edit?tab=t.0#heading=h.yccd6tshcqi).
+
 1. As soon as a dataset is ready for export, the wrangler should hit the submit button in the UI with the `Submit to the Human Cell Atlas...` checkbox ticked to trigger export and note the project UUID.
     1. Retrieve the project UUID from the URL of project page in the ingest browser or by clicking the "ID" value in the top right of project page
 1. The submitting wrangler checks export is complete.
