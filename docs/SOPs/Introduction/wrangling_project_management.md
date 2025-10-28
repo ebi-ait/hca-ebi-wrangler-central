@@ -44,7 +44,7 @@ Wrangling progress is tracked primarily through movement of the `project tracker
 ## Updating project
 Once the wrangling is proceeding:
 - tick the boxes in the github issue
-- add wrangling notes as comments in ticket
+- add wrangling notes as comments in ticket, recording errors encountered or modeling choices and their explanation
 - move ticket in appropriate status
 - update labels in ticket
 - update `Wrangler Notes` in Admin tab in ingest
