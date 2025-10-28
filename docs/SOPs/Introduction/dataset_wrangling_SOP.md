@@ -30,7 +30,7 @@ Once a dataset needs wrangling is assigned to us, first thing to do is to decide
 ## Consent type
 
 Before any metadata and data can be received from contributors they are required to sign the HCA Data contributor agreement (DCA). Two versions are available, 
-* a light DCA to be used for open access dataseta, requiring no institutional signer
+* a light DCA to be used for open access dataseta, requiring no institutional signer - _DCA is being finalised, todo: add link to pdf_
 * a [full DCA](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Contributor_Agreement_explained.html) to be used for managed access dataset.
 
 After confirming what type of consent the contributor have obtained for their dataset, send them the appropriate DCA. 
