@@ -43,7 +43,7 @@ In most cases, safest solution would be to clear up staging area and re-export.
 ```bash
 gsutil -m rm gs://broad-dsp-monster-hca-prod-ebi-storage/prod/<proj-uuid>/*
 ```
-However, sometimes we don't want to luxury to re-export the whole project (i.e. we no longer have the data files in ingest, or we don't want to add redundant transfer of data that is not updated). Therefore we will have to see more hacky solutions.
+However, sometimes re-exporting the whole project is not possible (i.e. we no longer have the data files in ingest, or we don't want to add redundant transfer of data that is not updated). Therefore we will have to see more hacky solutions.
 
 Some common errors are shown [here](https://docs.google.com/presentation/d/1S3YRzpOo2ZUdgYGkWJBNpcqpnTKqpbBJQ8uByqRVcyU/edit?slide=id.g2ec95778594_0_74#slide=id.g2ec95778594_0_74).
 
