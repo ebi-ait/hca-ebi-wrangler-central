@@ -124,5 +124,5 @@ Best,
 > Do not hesitate to get in touch if you have any issues with any part of the process. We are able to arrange a Zoom call to help you out if you need any help filling the spreadsheets or uploading files.
 >
 > Warm regards,
-> Arsenios & Ida
+>  <wranlger name>
 > On behalf of HCA Data Repository - Data Wrangling Team
