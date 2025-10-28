@@ -63,7 +63,7 @@ flowchart TD
 
     C3 --sync--> I2
     first --> dca
-    dca--dca signed-->proj--> metadata
+    dca-->proj--> metadata
     HMS--"fill spreadsheet"--> I1
     proj-->data
 
