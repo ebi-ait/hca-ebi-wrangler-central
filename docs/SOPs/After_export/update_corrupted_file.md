@@ -89,7 +89,7 @@ First, verify that project is not Managed Access. If it's managed access, we sho
 From the output, identify the file `uuid`, and information that would help to identify file in the archive. For example, if it's `sequence_file` we could look for `insdc_run_accession`, `insdc_experiment_accession`, `read_index` and `lane_index`.
 
 ### 2. identify and download correct file from archives
-Using information from step 1, we will try to identify the file in the archives (for example, [ENA](https://www.ebi.ac.uk/ena/browser/) if file in INSDC). If we know that corrupted file was not accessed from archive but from contributor see [note](#note) above.
+Using information from step 1, we will try to identify the file in the archives (for example, [ENA](https://www.ebi.ac.uk/ena/browser/) if file in INSDC). If we know that the corrupted file was not retrieved from an archive but from a contributor see [note](#note) above.
 
 If corrupted file is fastq derived from BAM file, take advantage of the complementary read_index to identify the library that was specified in tha bamtofastq argument.
 
