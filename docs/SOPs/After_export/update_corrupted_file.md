@@ -161,7 +161,7 @@ The changes for TDR to percive this file as an update are described in [dcp2 SOP
 - `descriptor` file:
 	- `file_version` to any more recent date in the format ([ISO_8601](https://en.wikipedia.org/wiki/ISO_8601) is used, for example: `2025-08-07T16:15:39.822Z`)
     - `file_name` might have the bundle uuid as a prefix to the actual file_name like `30fb759a-546a-4cfa-a55a-195bc008621a/SRR1111111_1.fastq.gz`. this uuid up to `/` character needs to be removed to leave clean file_name
-	- make sure that `size`, `sha1`, `sha256` and `crc32c` are updated as well (check script bellow)
+	- make sure that `size`, `sha1`, `sha256` and `crc32c` are updated as well (check script below)
 	- update the **descriptor** file `file_name` suffix (not `file_name` field) with the same most recent date.
 		<br>Similarly:<br>
 		`aaaaaaaa-5258-aaaa-84f3-aaaaaaaaaaaa_2025-08-22T13:43:40.996000Z.json` should be renamed to <br>`aaaaaaaa-5258-aaaa-84f3-aaaaaaaaaaaa_2025-09-23T14:45:40.996000Z.json`
