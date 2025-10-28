@@ -36,11 +36,7 @@ Before any metadata and data can be received from contributors they are required
 After confirming what type of consent the contributor have obtained for their dataset, send them the appropriate DCA. 
 
 For more information on managed access SOPs, including how to sign the DCA read here:
-* [DCA explained](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/docs/SOPs/Managed_access/Data_Contributor_Agreement_explained.html)
-* [DCA SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Contributor_Agreement_SOP.html)
-* [Data Transfer SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Transfer_SOP.html)
-* [Pre-submission SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Pre-submission_SOP.html)
-* [Review and export SOP](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Review_and_export_SOP.html)
+* [Managed access SOPs](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Managed_access.html)
 
 For open access template emails:
 * [Template Emails](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/contributor_communication_SOP#template-emails){: .btn .btn-blue }
