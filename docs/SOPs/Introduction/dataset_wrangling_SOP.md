@@ -94,7 +94,6 @@ The preferred formats for matrix files are:
 * `rds` or `Robj`
 * cell ranger format (`csv` & `mtx`) - split into three files for `_features.csv`, `_matrix.mtx` and cell `_barcodes.csv`
 
-If analysis files are separated in count matrix/ feature/ barcode, join them into a single process to represent a single cell ranger run.
 
 **Other repos:**
 It is very common for contributors to upload their processed data into a custom webside that is not an archive. In this case, if you are sure there is consent to download and re-distribute data, you should get files locally.
