@@ -47,7 +47,7 @@ Once the wrangling is proceeding:
 - add wrangling notes as comments in ticket, recording errors encountered or modeling choices and their explanation
 - move ticket in appropriate status
 - update labels in ticket
-- update `Wrangler Notes` in Admin tab in ingest
+- update `Wrangler Notes` in Admin tab in ingest, in particular if the dataset is stalled and/or the ticket closed
 
 When submission is completed, add appropriate __Release label__ in github issue (for example [release 55](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues?q=state%3Aopen%20label%3A%22Release%2055%22)) so you can easily retrieve all dataset issues for each release.
 
