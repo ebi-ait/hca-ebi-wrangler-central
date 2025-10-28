@@ -66,7 +66,7 @@ Once we have made sure that files are available for the project we need to:
 
 ### Data download
 
-If the data that are going to be deposited are in a public archive, we should transfer data to the hca-util upload area.
+If the data that is going to be deposited is in a public archive, the wranlger is in charge of transferring the data to the hca-util upload area.
 
 **Raw (fastq) data files:**
 Once the upload area has been created, there are several ways to upload the files from ENA/SRA.
