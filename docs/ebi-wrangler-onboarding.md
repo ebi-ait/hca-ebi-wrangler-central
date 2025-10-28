@@ -142,7 +142,7 @@ For EMBL-EBI Wranglers
 #### Timesheets
 
 We are required to record our time working at the EBI in timesheets. A couple of clarifications:
-- If you don’t have access to your cost centres (Only EBI time budget displays, or it doesn’t display the correct one(s)), ask Christina or Rhyan to follow up. If you don’t know which cost centres you should use for your timesheet, don’t hesitate to ask your PL.
+- If you don’t have access to your cost centres (Only EBI time budget displays, or it doesn’t display the correct one(s)), ask Christina or Rhian to follow up. If you don’t know which cost centres you should use for your timesheet, don’t hesitate to ask your PL.
 - In order to fill your timesheet, you need to have a row per cost centre per day. If you do work for more than one cost centre in one day you will need to add row so don't be shy to click the "add row" button if necessary!
 
 **Tips**: 
