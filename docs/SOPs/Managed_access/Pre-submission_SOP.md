@@ -116,7 +116,7 @@ Best,
 > Attached is also a [file manifest](https://docs.google.com/spreadsheets/d/128R6-kDIgFMXnEmvnFpg--GTMVuqDN6klD5ToUH9wXM/edit?gid=791554370#gid=791554370), to enable us mapping library_ID with each FASTQ file along with read_index, lane_number and file_format of each file.
 > 2. Upload your data and metadata to our secure cloud space
 > I am preparing a secure storage area specific for your project where you can upload your data files and the filled-in spreadsheet. I’ll send you the details of this upload area and instructions on next steps in a separate email to keep the credentials secure.
-> In order to avoid circulating any potentially sensitive data over unencrypted channels, please refrain from sending any data or metadata via email. This includes filled-in or partially completed copies of the spreadsheet.
+> In order to avoid circulating any potentially sensitive data over unencrypted channels, **please refrain from sending any data or metadata via email**. This includes filled-in or partially completed copies of the spreadsheet.
 > 3. Review and Export
 > The HCA data wrangling team will take care of reviewing and validating the data and metadata once you upload it. If anything needs to be adjusted, I’ll update you in due course. In general we aim to complete the review in 7 business days.
 > 4. Publish the project
