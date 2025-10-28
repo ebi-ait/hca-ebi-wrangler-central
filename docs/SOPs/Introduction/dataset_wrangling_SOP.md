@@ -52,7 +52,7 @@ Read more in the relevant [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-centr
 
 ## Gathering data
 
-The first step in the wrangling process is making sure that we have files available to deposit. If no file can be associated with metadata, the submission will be invalid.
+After we are made sure that a DCA is in place, we can start with making sure that we have the files available to deposit. If no file can be associated with metadata, submission will not be possible to be ingested.
 
 Data for the submission might be already deposited as open access in other archives or repositories in the case of published datasets, or it might come directly from a contributor in case of direct submission to the Data Portal.
 
