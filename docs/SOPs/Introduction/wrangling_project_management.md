@@ -54,4 +54,4 @@ When submission is completed, add appropriate __Release label__ in github issue 
 ### Note
 If project is Managed Access avoid adding sensitive (meta)data and links (hca-util upload area `uuid`) in the (public) github repository. 
 
-You are encouraged to add all those links in a Google document in Brokering [folder](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA) and allow only authorised users to view.
+Instead record the hca-util `uuid` in a Google document in the Brokering [folder](https://drive.google.com/drive/folders/118kh4wiHmn4Oz9n1-WZueaxm-8XuCMkA) and allow only authorised users to view it.
