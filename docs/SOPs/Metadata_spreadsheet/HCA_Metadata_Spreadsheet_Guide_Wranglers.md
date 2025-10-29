@@ -18,13 +18,13 @@ This doc also contains *wrangler notes and workarounds* to help us use the syste
 
 Spreadsheets (Google Sheets and Excel spreadsheets) are used to gather metadata from data contributors prior to ingest. During ingest the sheets are interpreted and formatted as nested JSON by the ingest importer. JSON can be nested to represent multiple dimensions such as an array of arrays which is often required when multiple biological entities produce multiple entities and some of the fields therein are also arrays.
 
-This document is an in-depth walkthrough for filling out the metadata spreadsheet targeted at HCA wranglers rather than data contributors. It is likely that new datasets won't perfectly fit into the current schema, and new features or additional fields may be required. Requests for updates to the schema should be recorded as [issues in GitHub](https://github.com/HumanCellAtlas/metadata-schema/issues). Data contributors can also request updates this way or via data-help@thehumancellatlas.org. For enhancements to infrastructure including formatting or the spreadsheet builder, [post issues here](https://github.com/HumanCellAtlas/ingest-central).
+This document is an in-depth walkthrough for filling out the metadata spreadsheet targeted at HCA wranglers rather than data contributors. It is likely that new datasets won't perfectly fit into the current schema, and new features or additional fields may be required. Requests for updates to the schema should be recorded as [issues in GitHub](https://github.com/HumanCellAtlas/metadata-schema/issues). Data contributors can also request updates this way or via data-help@thehumancellatlas.org.
 
 ### What is in this document?
 
 * **Experimental design represented as HCA metadata**- How to convert experimental design to a metadata template *(currently wrangler led)*
 
-* **Making a spreadsheet template**- Generating a spreadsheet using the spreadsheet builder *(wrangler only)* or using the UI interface (After filling out basic project information) *(wrangler only)*
+* **Making a spreadsheet template**- Generating a spreadsheet using the spreadsheet builder *(wrangler only)* or using the UI interface (After filling out basic project information) *(wrangler only)* or by tailoring down the [hca_full_template.xlsx](https://github.com/ebi-ait/geo_to_hca/blob/master/template/hca_full_template.xlsx)
 
 * **Filling out the spreadsheet**-General layout of spreadsheet tabs how to use it *(contributors and wrangler only where highlighted)*
 
@@ -60,12 +60,12 @@ Prior to metadata entry, a bespoke spreadsheet should be generated that reflects
 
 *Wranglers note:*
 
-*Currently wranglers facilitate this process by directly working with labs to understand metadata requirements. Eventually this process will be more user led however, this provides an opportunity to improve our metadata schema.* 
+*Currently wranglers facilitate this process by directly working with labs or directly studying the publication to understand metadata requirements. Eventually this process will be more user led however, this provides an opportunity to improve our metadata schema.* 
 
 ### Project level metadata
 
 
-Metadata applicable to the whole project is entered in several ‘project level’ tabs and all sheets will contain these tabs. These tabs include: Project, Contacts*, Funders*, Publications. These tabs do not need to be part of the entity linking described for biomaterial, file and protocol tabs.
+Metadata applicable to the whole project is entered in several ‘project level’ tabs and all sheets will contain these tabs. These tabs include: Project, Contacts*, Funders*, Publications*, HCA Bionetworks*. These tabs do not need to be part of the entity linking described for biomaterial, file and protocol tabs.
 
 *Wranglers note:*
 
@@ -111,8 +111,8 @@ Add in one or more protocols between biomaterial entities:
   | iPSC induction protocol| Cell line & Cell line; Specimen from organism & Cell line|
   | Imaging preparation protocol| Specimen from organism & Imaged specimen| 
   | Imaging protocol| Imaged specimen & Image file| 
-  | Library preparation protocol| Cell suspension & Sequence file| 
-  | Sequencing protocol| Cell suspension & Sequence file| 
+  | Library preparation protocol| Cell suspension & Sequence file; Cell suspension & Analysis file| 
+  | Sequencing protocol| Cell suspension & Analysis file| 
 
 
 
@@ -173,6 +173,7 @@ The following tabs **should** be in your sheet:
 - Contact
 - Funder
 - Publications
+- HCA Bionetworks
 
 The following tabs **may** be in your sheet:
 
@@ -189,6 +190,7 @@ The following tabs **may** be in your sheet:
 
 - Sequence file
 - Image file
+- Analysis file
 - Supplementary file
 
 **Metadata about protocols:**
@@ -208,7 +210,7 @@ The following tabs **may** be in your sheet:
 
 *Wranglers note:*
 
-*Contact, Funder, Publications, Imaging targets and Imaging channels are sub schema of the Project entity. Currently separation of these fields into separate tabs and subsequent interpretation of these tabs is hard coded. This is a temporary mechanism to allow users to input arrays within schema.* **TICKET**
+*Contact, Funder, Publications, HCA Bionetworks, Imaging protocol - Probe and Imaging protocol - Channel are sub schema of the Project entity. Currently separation of these fields into separate tabs and subsequent interpretation of these tabs is hard coded. This is a temporary mechanism to allow users to input arrays within schema.* **TICKET**
 
 *These types exist in the schema and early iterations of the spreadsheet builder put them into automatically generated sheets but these tabs should not be passed onto user as the metadata is entered by the DCP.*
 
@@ -234,7 +236,7 @@ The Project tab is the best place to start when filling out the spreadsheet. It 
 
 *Wranglers note:*
 
-*Contact, funder, and publication information is represented by arrays (can have more than one entry for each) and is recorded in separate tabs. Handling of the contact, funder, and publications tabs is currently hard-coded in the importer and not intrinsic to the schema. \
+*Contact, funder, publication information and HCA Bionetwork (HCA Biological Network) is represented by arrays (can have more than one entry for each) and is recorded in separate tabs. Handling of the contact, funder, publications and HCA Bionetwork tabs is currently hard-coded in the importer and not intrinsic to the schema. \
 Usually most of the information for these tabs, such as author lists and address, is already filled out in ingest and can be edited from the UI.*
 
 ##### Contact
@@ -299,7 +301,8 @@ You must create the correct source Biomaterial ID for the tab in question. For e
 
 Note:
 
-The highest level biological entity (often Donor) is not ‘derived from’ anything. However all other biomaterials in the dataset are derived from another entity, most often this entity will be another biomaterial. 
+- The highest level biological entity (often Donor) is not ‘derived from’ anything. However all other biomaterials in the dataset are derived from another entity, most often this entity will be another biomaterial. 
+- If a source biomaterial ID field is not shown in the tab, please add the appropriate column to the tab by copying ID column from the source tab and pasting into the target tab.
 
 ### Processes
 
@@ -323,7 +326,7 @@ Although this sample shows the linking of one protocol, multiple protocols can b
 
 Datasets are not submitted to terra as a whole; instead, datasets are organized into subgraphs. The splitting is roughly technology dependent as files are grouped together based on requirements for each analysis pipeline run. Grouping should be done consistently with other datasets in the HCA. If you are unsure, you should consult with the pipeline developers and other wranglers to define the ideal subgraph.
 
-Ingest creates one subgraph for every process linked to a sequence or image file. As mentioned above, one process is automatically created between every entity. Therefore, by default each file will be exported in a separate subgraph. Often we do not want this behavior and instead want to group differently.
+Ingest creates one subgraph for every process linked to a sequence, analysis or image file. As mentioned above, one process is automatically created between every entity. Therefore, by default each file will be exported in a separate subgraph. Often we do not want this behavior and instead want to group differently.
 
   | Technology| Subgraph content| Files in subgraph|
   |---------- |---------------| ---------------|
@@ -347,13 +350,17 @@ This would require the following setup in the Sequence file tab:
 
 ![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_7.png?raw=true)
 
+#### Analysis files - Subgraphs
+
+Usually, analysis files can also be generated by a single process. For example, the barcodes, feature table and the matrix could be the output of a singular run. We want to capture these in tha same subgraph similarly, so if you have tripplets of analysis files or any other combination that is known to be derived by a single algorithm run, group them together into a subgraph by using a single process to link them to their source entity.
+
 ### Technical Replicates / Library prep group
 
 Technical replicates are defined as multiple sets of files produced from multiple rounds of sequencing done on the same sequencing library preparation. This definition is generally consistent with how experimentalists think of technical replicate experiments. As we don’t capture sequencing libraries as a separate entity we have to group bundles of sequencing files that were generated from the same libraries.
 
 In this 10X example, one cell suspension has been used to make one library preparation (not represented in the graph) which was then sequenced twice. Here we need to produce two subgraphs by imposing two process IDs from the same cell suspension.
 
-## ![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_8.png?raw=true)
+![image](https://github.com/ebi-ait/hca-ebi-wrangler-central/blob/master/assets/images/spreadsheet_guidance/ssheet_guidance_image_8.png?raw=true)
 
 In the Sequence file tab below, notice that although we have linked these two processes (process_ID1 and process_ID2) with the library preparation ID (Library_prep_ID1), the graph is not affected by the library prep ID as links are not created. However, this allows links to be retrospectively added if introspection of technical replicates is required by a data consumer. 
 
@@ -365,7 +372,7 @@ Some fields require identifiers (CURIEs) from the HCA ontology ([HCAO](https://o
 
 *Wrangler note:*
 
-*Wranglers should familiarise themselves with the [HCAO](https://ontology.archive.data.humancellatlas.org/index). By the end of phase 2, this should no longer be an issue as ontology mappings should occur as part of the spreadsheet upload*
+*Wranglers should familiarise themselves with the [HCAO](https://ontology.archive.data.humancellatlas.org/index). *
 
 *Each ontologized field is represented by an ontology object (module) in the schema. Each ontology object consists of three fields: text, ontology_label, and ontology. The text field contains the string provided by the user. The ontology_label field contains the exact text that corresponds to the ontology field (which contains the ontology CURIE). **_CURIES** should contain a colon between the ontology and the numeric value, not an underscore.*
 
@@ -448,7 +455,7 @@ If metadata is missing for an optional field (column), leave the field blank. If
 
 ## Wranglers FAQ
 
-Wrangler tools are documented in `/hca-data-wrangling/docs/wrangler_tool_survey.adoc`.
+Wrangler tools are documented in [wrangler docs](https://ebi-ait.github.io/hca-ebi-wrangler-central/).
 
 
 **_What does the programmatic dot notation name tell me?_**
