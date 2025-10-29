@@ -70,6 +70,12 @@ After both PRs are accepted or rejected, the **designated wrangler** will be in 
 The PR process is covered on the other documents listed in the “purpose” section of the document.
 Please take a look at the [message template](#template-messages) to announce the PR on the `#dcp2` slack channel provided in this SOP
 
+### After the PR is merged
+
+Once the PR is merged there are 2 documents that need to be updated with the new fields:
+1. The metadata spreadsheet [template](https://github.com/ebi-ait/geo_to_hca/tree/master/template)
+1. Add the new fields and their tier 2 name to the [mapping dictionary](https://github.com/ebi-ait/hca-tier1-to-dcp/blob/main/helper_files/constants/tier2_mapping.py) in the hca-tier1-to-dcp - this is essential to allow tier 2 merging and conversion
+
 ## Template messages
 
 ### DCP-2 slack channel message
