@@ -26,7 +26,7 @@ As such, this document should be an updated **living document** containing the b
 * <span style="color:red">**VERY IMPORTANT**</span>: Do not use “\|\|” in the project spreadsheet apart from when used for linking entities. It should not end up in the metadata of any of the entities.
 * **Always** have someone review your dataset before submission
 * Look for examples to model after if it’s a cell line dataset or one with a unique experimental design
-* Use the [assay cheat sheet](https://docs.google.com/spreadsheets/d/1H9i1BK-VOXtMgGVv8LJZZZ9rbTG4XCQTBRxErdqMvWk/edit#gid=0) for existing, standard assays so that we stay consistent across Lattice, EBI and UCSCwrangling teams
+* Use the [assay cheat sheet](https://docs.google.com/spreadsheets/d/1H9i1BK-VOXtMgGVv8LJZZZ9rbTG4XCQTBRxErdqMvWk/edit#gid=0) for existing, standard assays so that we stay consistent across Lattice and EBI wrangling teams
 
 
 
@@ -41,10 +41,8 @@ As such, this document should be an updated **living document** containing the b
     * Organ
     * Accessions
     * Estimated cell count
-  
-(Some guidelines can be found [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/dataset_acknowledgement_SOP.html#manual-curation-after-addition))
 * Fill out the admin area, this helps other people when using ingest as a backoffice
-* Project shortname → should be more descriptive than IDs (_For example: CoolOrganProject._)
+* Project shortname → should be more descriptive than IDs (_For example: CoolOrganProject or RandomTissueTechnologyAuthor._)
 
 
 ### Project - Contributors
@@ -72,10 +70,10 @@ As such, this document should be an updated **living document** containing the b
 ### Donor organism
 
 * Fetal samples are their own donors
-* If it is a fetal donor age should be gestational age
+* If it is a fetal donor gestational age should be filled instead of organism age
 * Use HSAPDV for human-specific development stages. Avoid using over-specific ontologies for non-fetal donors, as we have the "age" field for that, favouring ontologies such as “child stage” or “human adult stage”.
   * Use EFO for humans only when<span style="color:red"> age is not publicly available for GDPR-affected donors</span> (Living individuals)
-* If donors are alive at the time of biomaterial collection, **you shouldn’t ask for extra metadata to the authors**. This is to maintain consistency with our GDPR guidelines, that state that for living organisms, we wrangle data that is publicly available (Diagram here [https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/GDPR_Guidelines.html](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/GDPR_Guidelines.html))
+* If OA DCA has been signed, you should stick to the metadata that the authors provide and **you shouldn’t ask for extra metadata to the authors**. 
 * Donor organism name can match the description
 * If the dataset is curated from publicly available sources, chances are the donor **organism does not have an accession.** Sample accessions are usually generated automatically by ENA/SRA when archiving, and usually scientists take samples as the input to the sequencing processes.
 * Genus species is required even though it's not schema required
@@ -86,6 +84,8 @@ As such, this document should be an updated **living document** containing the b
   * The donor is the one that the sample comes from, not the one that the sample is grafted inside. Think of the grafted individual as a "glorified petri dish"
   * Xenograft would be mentioned in the cell suspension section, under growth environment or free text description
   * Example dataset: [transplantedHumanIsletsNuclei](https://contribute.data.humancellatlas.org/projects/detail?uuid=a991ef15-4d4a-4b80-a93e-c538b4b54127)
+
+__Wrangler note__: field `specimen_from_organism.transplant_organ` is for the case where a specimen had been extracted for transplant but procedure was not done
 
 ### Specimen from organism
 
@@ -103,7 +103,7 @@ As such, this document should be an updated **living document** containing the b
     * Specimen (single cell/nuclei OR bulk)
     * Cell line
     * Organoid
-    * Cell suspension (WIP; please see this [ticket](https://github.com/ebi-ait/hca-ebi-wrangler-central/issues/927))
+    * Cell suspension
     
 ### Organoids
 
@@ -117,7 +117,7 @@ As such, this document should be an updated **living document** containing the b
 ### Cell line
 
 * Cell lines should always have information about the donor in the `Donor organism` tab.
-  * Example dataset: [pyleSkeletalMuscle](https://contribute.data.humancellatlas.org/projects/detail?uuid=4037007b-0eff-4e6d-b7bd-8dd8eec80143)
+    * Example dataset: [pyleSkeletalMuscle](https://contribute.data.humancellatlas.org/projects/detail?uuid=4037007b-0eff-4e6d-b7bd-8dd8eec80143)
 * A cell line can make another cell line (also the input)
     * Example dataset: [iPSCderivedTenocyte](https://contribute.data.humancellatlas.org/projects/detail?uuid=78d7805b-fdc8-472b-8058-d92cf886f7a4)
 * If the cell line was purchased, please use the name listed here: [Cellosaurus](https://web.expasy.org/cellosaurus). This helps with consistency within the database.
@@ -130,6 +130,7 @@ As such, this document should be an updated **living document** containing the b
     * Donor_organism → specimen_from_organism → imaged_specimen → …
     * Imaged_specimen → image_file
     * Imaged_specimen → sequence_file
+    * Imaged_specimen → analysis_file
 * It’s helpful to use the Visium Spatial Gene Expression ontology term as the library preparation protocol to generate the Visium fastq files
 * FFPE vs Fresh-Frozen information can be stored in the `preservation method` term
 * Add the `permeabilization time` to the imaging_preparation_protocol
@@ -141,13 +142,13 @@ As such, this document should be an updated **living document** containing the b
 * Always fill up the `file source`. This helps the downstream components to identify the CGMs.
   * <span style="color:red">Do not use DCP/2 Ingest</span>. That term is reserved for the spreadsheet generated by ingest.
 * Always include ontologies for `content description`
-  * If there is a zip file, list multiple ontologies as an array
+  * If there is a zip file, unzip it or if not possible list multiple ontologies as an array
 
 ### Image File
 
 * All image files **and** files related to analyzing, understanding, processing the image files should be in this tab
 * This includes .csv files containing spatial barcodes, and files which link the annotations of the image file image coordinates
-* The JSON files containing the spot diameter and scale factors for the image acquisition are important for the reusability of the data. These should be included, and the recommended ontology term for their content description is `data:3546`: `Image metadata`.
+* The JSON files containing the spot diameter and scale factors for the image acquisition are important for the reusability of the data. These should be included, and the recommended ontology term for their content description is `EDAM:3546`: `Image metadata`.
 * Obtain <span style="color:red">HIGH RESOLUTION</span> images if possible. Low resolution images are not useful for analysis.
 
 ### Sequence File
@@ -200,172 +201,25 @@ As such, this document should be an updated **living document** containing the b
 * Source of truth for existing assays: [https://docs.google.com/spreadsheets/d/1H9i1BK-VOXtMgGVv8LJZZZ9rbTG4XCQTBRxErdqMvWk/edit#gid=0](https://docs.google.com/spreadsheets/d/1H9i1BK-VOXtMgGVv8LJZZZ9rbTG4XCQTBRxErdqMvWk/edit#gid=0)
     * Modified versions of assays need to be double checked
 
-<table>
-  <tr>
-   <td>
-<strong>Field</strong>
-   </td>
-   <td><strong><a href="https://www.ebi.ac.uk/ols/ontologies">Ontology</a></strong>
-   </td>
-   <td><strong>url</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>species
-   </td>
-   <td>NCBITaxon
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/ncbitaxon">NCBITaxon</a>
-   </td>
-  </tr>
-  <tr>
-   <td>ethnicity
-   </td>
-   <td>HANCESTRO
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/hancestro">HANCESTRO</a>
-   </td>
-  </tr>
-  <tr>
-   <td>developmental stage
-   </td>
-   <td>HsapDv (for human), EFO (for mouse)
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/hsapdv">HSAPDV</a>
-   </td>
-  </tr>
-  <tr>
-   <td>disease
-   </td>
-   <td>MONDO, PATO (if normal)
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/mondo">MONDO</a>
-   </td>
-  </tr>
-  <tr>
-   <td>units of measurement
-   </td>
-   <td>UO
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/uo">UO</a>
-   </td>
-  </tr>
-  <tr>
-   <td>enrichment method
-   </td>
-   <td>EFO
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/efo">EFO</a>
-   </td>
-  </tr>
-  <tr>
-   <td>dissociation method
-   </td>
-   <td>EFO
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/efo">EFO</a>
-   </td>
-  </tr>
-  <tr>
-   <td>collection method
-   </td>
-   <td>EFO
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/efo">EFO</a>
-   </td>
-  </tr>
-  <tr>
-   <td>library preparation method
-   </td>
-   <td>EFO
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/efo">EFO</a>
-   </td>
-  </tr>
-  <tr>
-   <td>sequencing approach
-   </td>
-   <td>EFO
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/efo">EFO</a>
-   </td>
-  </tr>
-  <tr>
-   <td>organ & organ_part
-   </td>
-   <td>UBERON
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/uberon">UBERON</a>
-   </td>
-  </tr>
-  <tr>
-   <td>cell type
-   </td>
-   <td>CL
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/cl">CL</a>
-   </td>
-  </tr>
-  <tr>
-   <td>biological macromolecule
-   </td>
-   <td>OBI, CHEBI
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/obi">OBI</a> <a href="https://www.ebi.ac.uk/ols/ontologies/chebi">CHEBI</a>
-   </td>
-  </tr>
-  <tr>
-   <td>library pre/amplification
-   </td>
-   <td>OBI, EFO
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/obi">OBI</a>, <a href="https://www.ebi.ac.uk/ols/ontologies/efo">EFO</a>
-   </td>
-  </tr>
-  <tr>
-   <td>sequencing instrument
-   </td>
-   <td>EFO
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/efo">EFO</a>
-   </td>
-  </tr>
-  <tr>
-   <td>file content description
-   </td>
-   <td>data (EDAM)
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/edam/terms?iri=http%3A%2F%2Fedamontology.org%2Fdata_0867">EDAM</a>
-   </td>
-  </tr>
-  <tr>
-   <td>project role
-   </td>
-   <td>EFO
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/efo">EFO</a>
-   </td>
-  </tr>
-  <tr>
-   <td>mouse strain
-   </td>
-   <td>EFO
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/efo">EFO</a>
-   </td>
-  </tr>
-  <tr>
-   <td>cell cycle
-   </td>
-   <td>GO
-   </td>
-   <td><a href="https://www.ebi.ac.uk/ols/ontologies/go">GO</a>
-   </td>
-  </tr>
-</table>
+| Field | [Ontology](https://www.ebi.ac.uk/ols/ontologies) |
+| ----- | -------- |
+| species | [NCBITaxon](https://www.ebi.ac.uk/ols/ontologies/NCBITaxon) |
+| ethnicity | [HANCESTRO](https://www.ebi.ac.uk/ols/ontologies/HANCESTRO) |
+| developmental stage | [HsapDv (for human)](https://www.ebi.ac.uk/ols/ontologies/HSAPDV) ; [EFO (for mouse)](https://www.ebi.ac.uk/ols/ontologies/EFO) |
+| disease | [MONDO](https://www.ebi.ac.uk/ols/ontologies/MONDO) ; [normal (from PATO)](https://www.ebi.ac.uk/ols4/ontologies/pato/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPATO_0000461) |
+| units of measurement | [UO](https://www.ebi.ac.uk/ols/ontologies/UO) |
+| enrichment method | [EFO](https://www.ebi.ac.uk/ols/ontologies/EFO) |
+| dissociation method | [EFO](https://www.ebi.ac.uk/ols/ontologies/EFO) |
+| collection method | [EFO](https://www.ebi.ac.uk/ols/ontologies/EFO) |
+| library preparation method | [EFO](https://www.ebi.ac.uk/ols/ontologies/EFO) |
+| sequencing approach | [EFO](https://www.ebi.ac.uk/ols/ontologies/EFO) |
+| organ & organ_part | [UBERON](https://www.ebi.ac.uk/ols/ontologies/UBERON) |
+| cell type | [CL](https://www.ebi.ac.uk/ols/ontologies/CL) |
+| biological macromolecule | [OBI](https://www.ebi.ac.uk/ols/ontologies/OBI); [CHEBI](https://www.ebi.ac.uk/ols/ontologies/CHEBI) |
+| library pre/amplification | [OBI](https://www.ebi.ac.uk/ols/ontologies/OBI); [EFO](https://www.ebi.ac.uk/ols/ontologies/EFO)|
+| sequencing instrument | [EFO](https://www.ebi.ac.uk/ols/ontologies/EFO) |
+| file content description | [EDAM](https://www.ebi.ac.uk/ols/ontologies/EDAM) |
+| project role | [EFO](https://www.ebi.ac.uk/ols/ontologies/EFO) |
+| mouse strain | [EFO](https://www.ebi.ac.uk/ols/ontologies/EFO) |
+| cell cycle | [GO](https://www.ebi.ac.uk/ols/ontologies/GO) |
 
-## Archiving
-
-Once the submission has been successfully archived, accessions should be communicated back to the contributor. If there is a risk that the deadline the contributor gave will not be met, the contributor should be contacted to inform them of the risk and offer alternatives or workarounds. The project level accessions should be provided within the main body of the email.
-
-By default, the release date will be set up to 2 years from the moment the submission is archived. This date can be changed to an earlier date (Provided by the contributor) but we won't hold the data for more than 2 years. After 2 years the data will be made public. 
