@@ -52,7 +52,7 @@ Read more in the relevant [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-centr
 
 ## Gathering data
 
-After we are made sure that a DCA is in place, we can start with making sure that we have the files available to deposit. If no file can be associated with metadata, submission will not be possible to be ingested.
+Collecting data files is important because submissions with no data are not allowed in the Data portal, and a submission with no data will fail the validation step when ingested.
 
 Data for the submission might be already deposited as open access in other archives or repositories in the case of published datasets, or it might come directly from a contributor in case of direct submission to the Data Portal.
 **When working on a direct submission for a contributor wranglers need to have a signed DCA in place before collecting data.**
