@@ -85,7 +85,7 @@ As such, this document should be an updated **living document** containing the b
   * Xenograft would be mentioned in the cell suspension section, under growth environment or free text description
   * Example dataset: [transplantedHumanIsletsNuclei](https://contribute.data.humancellatlas.org/projects/detail?uuid=a991ef15-4d4a-4b80-a93e-c538b4b54127)
 
-__Wrangler note__: field `specimen_from_organism.transplant_organ` is for the case where a specimen had been extracted for transplant but procedure was not done
+__Wrangler note__: field `specimen_from_organism.transplant_organ` is for the case where a specimen had been extracted for transplant but ultimately was not transplanted to a recipient
 
 ### Specimen from organism
 
