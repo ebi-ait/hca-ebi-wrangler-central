@@ -19,4 +19,4 @@ Request Details:
 * request email details:
 > quote request email here
 
-[SOP link](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Introduction/dataset_wrangling_SOP.html#aws-user-for-contributors)
+[SOP link](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Access_data_files/aws_contributor_credentials.md)

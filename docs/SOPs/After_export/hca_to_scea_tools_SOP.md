@@ -3,7 +3,7 @@ layout: default
 title: HCA to SCEA Guide
 parent: After export
 grand_parent: SOPs
-nav_order: 5
+nav_order: 3
 last_modified_date: 17/11/2022
 ---
 

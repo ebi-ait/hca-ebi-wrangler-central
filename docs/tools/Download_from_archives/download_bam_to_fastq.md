@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Downloading 10x files from archives
+title: Downloading 10x BAM files from archives
 parent: Download from archives
 grand_parent: Tools
 has_children: false
 nav_order: 1
 ---
-# Downloading 10x files from archives
+# Downloading 10x BAM files from archives
 
 These instructions are for getting BAM files of primary sequence data from the ENA that represent 10X sequencing data and converting them to the original I1, R1, and R2 files using the 10X `bamtofastq` tool. Please note that this tool only works for 10X data, and even then only for data processed with CellRanger and LongRagner. See the [10X website](https://support.10xgenomics.com/docs/bamtofastq) for more information about what data can be converted with this tool.
 
