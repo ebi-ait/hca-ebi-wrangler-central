@@ -73,7 +73,7 @@ As such, this document should be an updated **living document** containing the b
 * If it is a fetal donor gestational age should be filled instead of organism age
 * Use HSAPDV for human-specific development stages. Avoid using over-specific ontologies for non-fetal donors, as we have the "age" field for that, favouring ontologies such as “child stage” or “human adult stage”.
   * Use EFO for humans only when<span style="color:red"> age is not publicly available for GDPR-affected donors</span> (Living individuals)
-* If OA DCA has been signed, you should stick to the metadata that the authors provide and **you shouldn’t ask for extra metadata to the authors**. 
+* If an open access DCA has been signed, you should validate the metadata that the authors provide and **you shouldn’t ask for extra metadata to the authors**. 
 * Donor organism name can match the description
 * If the dataset is curated from publicly available sources, chances are the donor **organism does not have an accession.** Sample accessions are usually generated automatically by ENA/SRA when archiving, and usually scientists take samples as the input to the sequencing processes.
 * Genus species is required even though it's not schema required
