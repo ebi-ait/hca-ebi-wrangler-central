@@ -55,6 +55,7 @@ Read more in the relevant [SOP](https://ebi-ait.github.io/hca-ebi-wrangler-centr
 After we are made sure that a DCA is in place, we can start with making sure that we have the files available to deposit. If no file can be associated with metadata, submission will not be possible to be ingested.
 
 Data for the submission might be already deposited as open access in other archives or repositories in the case of published datasets, or it might come directly from a contributor in case of direct submission to the Data Portal.
+**When working on a direct submission for a contributor wranglers need to have a signed DCA in place before collecting data.**
 
 EBI team has created a very handy aws-wrapper cli tool to upload data into the appropriate bucket called [hca-util](https://github.com/ebi-ait/hca-util). You can read more about how to use `hca-util` to create and manage upload areas for data [here](https://ebi-ait.github.io/hca-ebi-wrangler-central/tools/Accessing_upload_area/hca_util.html).
 
