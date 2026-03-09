@@ -30,7 +30,7 @@ Once a dataset needs wrangling is assigned to us, first thing to do is to decide
 ## Consent type
 
 Before any metadata and data can be received from contributors they are required to sign the HCA Data contributor agreement (DCA). Two versions are available, 
-* a light DCA to be used for open access dataseta, requiring no institutional signer - _DCA is being finalised, todo: add link to pdf_
+* a [light DCA](https://drive.google.com/file/d/1cmV9FKsNn2rOicy6fcfJRyYN8Wi2eOg0/view?usp=sharing) to be used for open access dataset, requiring no institutional signer. In particular, pay attention to page 13 and the conditions listed for a dataset to meet the HCA open access criteria. 
 * a [full DCA](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/Managed_access/Data_Contributor_Agreement_explained.html) to be used for managed access dataset.
 
 After confirming what type of consent the contributor have obtained for their dataset, send them the appropriate DCA. 
@@ -40,8 +40,6 @@ For more information on managed access SOPs, including how to sign the DCA read 
 
 For open access template emails:
 * [Template Emails](https://ebi-ait.github.io/hca-ebi-wrangler-central/SOPs/contributor_communication_SOP#template-emails){: .btn .btn-blue }
-
-OA DCA SOPs might have to change soon.
 
 ## Project managment
 When working with new projects we need to be sure that we keep track of everything in the same way, so all team members can track their status. Two main tracking systems exist:
