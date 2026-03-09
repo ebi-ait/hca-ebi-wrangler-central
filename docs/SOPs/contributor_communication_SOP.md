@@ -209,12 +209,16 @@ These templates are considered a guide to provide a skeleton with the required i
 
 > Dear <name/s of contributor/s>,
 > 
-> Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
-> 
-> Currently we cannot handle raw sequencing data for projects that require controlled access. However, we can help you get your processed data (Gene count matrices, annotation files, etc) and publicly available metadata into the DCP data portal.
-> 
-> Please confirm if that option is ok with you, and we will proceed to share with you the next steps in metadata assembly and data upload.
-> 
+> Thank you for letting us know your dataset requires managed access.
+>
+> To deposit managed access data you will need to sign the Data contributor agreement (preview [here](https://drive.google.com/file/d/17JPclvgDVBCnOD3tIA0dThk4yImxWRLy/view?usp=sharing)). 
+>
+> The required signers are the PI responsible for the study, and an institutional representative who can sign legal agreements on behalf of their institute. 
+
+> We handle signatures through DocuSign, so if you send me the name and email address for the PI and institutional representative, I can get the signing process started.
+>
+> If you have any questions about the agreement or the process please let me know.
+
 > Best regards,
 > 
 > [primary wrangler name]
