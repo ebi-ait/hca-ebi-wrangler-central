@@ -42,7 +42,7 @@ The first contact email should contain:
 - Link to register as part of the HCA
 - Link to the dataset questionnaire(https://forms.gle/ayT9vfc4WtjTisEZ7) or an attempt to set up a meeting
 
-[Template email](#first-contact---data-questionnaire){: .btn .btn-blue }
+[Template email](#first-contact---access-type){: .btn .btn-blue }
 
 ### Contact after an HCA publication email
 Wrangler team might be CC'ed in an email informing the authors that a publication has been accepted as an HCA publication (subject __HCA Branded Publication__). In this case, we can contact them and do not wait for them to reach. 
@@ -133,21 +133,19 @@ This is not only to increase engagement from the community, but also to encourag
 ## Template emails
 These templates are considered a guide to provide a skeleton with the required information. The primary wrangler can choose to edit and customise to make it more personal or appropriate for the situation.
 
-### First contact - Data questionnaire
+### First contact - Access type
 
 > Dear [name/s of contributor/s],
 > 
-> Thank you for contacting us regarding your interest in registering your project with the Human Cell Atlas! Below you will find the first steps:
+> Thank you for contacting us regarding your interest in registering your project with the Human Cell Atlas! 
 > 
-> 1 Register as part of the HCA by filling the following form: https://www.humancellatlas.org/register (if you haven’t already)
+> To proceed with your submission please let us know if your dataset needs to be deposited under open access or under managed access. Depending on the access type we will ask you to sign the appropriate Data contributor agreement.
 > 
-> 2 Please fill out the dataset questionnaire (https://forms.gle/ayT9vfc4WtjTisEZ7). The questionnaire asks for information about your experiments. This will help us create a tailor spreadsheet for you to fill out about your project.
+> Once you’ve informed us of the access type we will follow up with a copy of the agreement so you can review it. We will contact you with details on metadata and data collection once the agreement is signed.
 >
-> Please be aware that as per GDPR guidelines, we are not able to directly wrangle any metadata or data originating from living donors. If your project contains metadata or data originating from living donors, please refrain from sending us that information. 
+> **If your project contains sensitive metadata or data, please refrain from sending us that information via email.** 
 >
-> After filling both forms, we will contact you with the next steps to continue the submission of your metadata collection and data.
-> 
-> I am happy to set up a meeting or call about any concerns or queries that your team might have.
+> If you have any questions or would like to set up a meeting to discuss your dataset please let me know.
 > 
 > Best regards,
 > 
@@ -191,16 +189,15 @@ These templates are considered a guide to provide a skeleton with the required i
 
 > Dear [name/s of contributor/s],
 > 
-> Thank you for registering with the HCA and filling in our Dataset Questionnaire. 
+>  Thank you for letting us know your dataset can be deposited as open access.
+>
+> To deposit open access data you will need to sign the Data contributor agreement. The only required signer is the PI responsible for the study, so it’s easier to process.
 > 
-> Can you, or an authorised member of your lab, please officially confirm whether your data are from human research subjects and whether the data requires controlled access? You can do this by agreeing to our terms and conditions via the following form: https://forms.gle/8XW8vapGQJRfKrc36  
-> 
-> Once you have confirmed we are able to handle your metadata and data and we can share with you the next steps in metadata assembly and data upload.
-> 
-> We do/don’t think we will be able to provide you with accessions for your dataset by your requested date <enter date here>. 
-> 
-> *[If we don’t think we can meet the deadline]* 
-> The earliest date we can offer would be [enter date here].
+> You can review a [pdf](https://drive.google.com/file/d/1cmV9FKsNn2rOicy6fcfJRyYN8Wi2eOg0/view?usp=sharing) copy of the Agreement, in particular appendix B (page 13) highlights the conditions for an open access dataset. 
+>
+> We handle signatures through DocuSign, so if you send me the name and email address for the PI, I can get the signing process started. 
+>
+> If you have any questions about the agreement or the process please let me know.
 > 
 > Best regards,
 > 
